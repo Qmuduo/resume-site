@@ -17,6 +17,6 @@
     },
     "required": ["name"]
   },
-  "html": "<div class=\"resume-minimal\"><p>{{name}}</p><p>{{contact}}</p><ul>{{highlights}}</ul></div>",
+  "html": "<div class=\"resume-minimal\"><h1>{{name}}</h1><p>{{contact.email}}</p><p>{{contact.phone}}</p><ul>{{#each highlights}}<li>{{.}}</li>{{/each}}</ul></div>",
   "css": ".resume-minimal{letter-spacing:.05em;line-height:1.8}"
 }

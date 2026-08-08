@@ -10,7 +10,11 @@ function showReady() {
 <template>
   <main class="home">
     <h1>Resume Template Site</h1>
-    <nav><RouterLink to="/templates">内置模板</RouterLink></nav>
+    <nav>
+      <RouterLink to="/templates">内置模板</RouterLink>
+      <span> </span>
+      <RouterLink to="/editor">简历编辑</RouterLink>
+    </nav>
     <button type="button" @click="showReady">Hello</button>
   </main>
 </template>

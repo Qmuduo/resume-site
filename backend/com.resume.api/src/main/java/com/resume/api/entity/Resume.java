@@ -19,6 +19,9 @@ public class Resume {
 
     private Long templateId;
 
+    /** 使用的内置模板编码（对应 resources/templates/*.json 的 code） */
+    private String templateCode;
+
     private String title;
 
     /** 简历内容 JSON */
@@ -52,6 +55,14 @@ public class Resume {
 
     public void setTemplateId(Long templateId) {
         this.templateId = templateId;
+    }
+
+    public String getTemplateCode() {
+        return templateCode;
+    }
+
+    public void setTemplateCode(String templateCode) {
+        this.templateCode = templateCode;
     }
 
     public String getTitle() {

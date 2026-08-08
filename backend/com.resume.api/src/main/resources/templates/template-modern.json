@@ -24,6 +24,6 @@
     },
     "required": ["name"]
   },
-  "html": "<div class=\"resume-modern\"><aside>{{name}}<br/>{{email}}</aside><section>{{summary}}</section></div>",
-  "css": ".resume-modern{display:flex;gap:24px}.resume-modern aside{width:220px}"
+  "html": "<div class=\"resume-modern\"><aside><h1>{{name}}</h1><p>{{email}}</p><p>{{phone}}</p></aside><section><h2>个人简介</h2><p>{{summary}}</p><h2>工作经历</h2>{{#each experiences}}<div class=\"exp\"><h3>{{company}}</h3><span>{{start}} - {{end}}</span><p>{{title}}</p></div>{{/each}}</section></div>",
+  "css": ".resume-modern{display:flex;gap:24px}.resume-modern aside{width:220px;background:#f5f7fa;padding:16px}.resume-modern .exp{margin-bottom:8px}"
 }

@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS resume (
     id          BIGINT       NOT NULL COMMENT '主键',
     user_id     BIGINT       NOT NULL COMMENT '所属用户',
     template_id BIGINT       NULL COMMENT '使用的模板',
+    template_code VARCHAR(64) NULL COMMENT '内置模板编码（resources/templates/*.json 的 code）',
     title       VARCHAR(128) NOT NULL COMMENT '简历标题',
     data        JSON         NOT NULL COMMENT '简历内容（JSON）',
     status      TINYINT      NOT NULL DEFAULT 0 COMMENT '状态：0 草稿 / 1 已发布',

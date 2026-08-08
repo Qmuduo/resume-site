@@ -12,6 +12,16 @@ const router = createRouter({
       path: '/templates',
       name: 'templates',
       component: () => import('@/views/TemplateList.vue')
+    },
+    {
+      path: '/editor',
+      name: 'editor',
+      component: () => import('@/views/ResumeEditor.vue')
+    },
+    {
+      path: '/editor/:id',
+      name: 'editor-edit',
+      component: () => import('@/views/ResumeEditor.vue')
     }
   ]
 })

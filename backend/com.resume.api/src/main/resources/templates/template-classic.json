@@ -23,6 +23,6 @@
     },
     "required": ["name"]
   },
-  "html": "<div class=\"resume-classic\"><h1>{{name}}</h1><h2>教育背景</h2>{{education}}</div>",
-  "css": ".resume-classic{max-width:720px;margin:0 auto}"
+  "html": "<div class=\"resume-classic\"><h1>{{name}}</h1><p>{{email}} / {{phone}}</p><h2>教育背景</h2>{{#each education}}<div><h3>{{school}}</h3><span>{{degree}}（{{year}}）</span></div>{{/each}}<h2>技能</h2>{{#each skills}}<span class=\"skill\">{{.}}</span>{{/each}}</div>",
+  "css": ".resume-classic{max-width:720px;margin:0 auto}.resume-classic .skill{display:inline-block;margin-right:8px;padding:2px 8px;background:#f5f7fa}"
 }
