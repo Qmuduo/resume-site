@@ -1,0 +1,61 @@
+-- Resume Template Site 初始化脚本（MySQL 8）
+
+CREATE DATABASE IF NOT EXISTS resume
+    DEFAULT CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
+
+USE resume;
+
+CREATE TABLE IF NOT EXISTS `user` (
+    id          BIGINT       NOT NULL COMMENT '主键（MyBatis-Plus ASSIGN_ID 生成）',
+    username    VARCHAR(64)  NOT NULL COMMENT '登录名',
+    password    VARCHAR(128) NOT NULL COMMENT '密码（加密后存储）',
+    email       VARCHAR(128) NULL COMMENT '邮箱',
+    nickname    VARCHAR(64)  NULL COMMENT '昵称',
+    created_at  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    updated_at  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    PRIMARY KEY (id),
+    UNIQUE KEY uk_user_username (username)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = '用户表';
+
+CREATE TABLE IF NOT EXISTS resume (
+    id          BIGINT       NOT NULL COMMENT '主键',
+    user_id     BIGINT       NOT NULL COMMENT '所属用户',
+    template_id BIGINT       NULL COMMENT '使用的模板',
+    title       VARCHAR(128) NOT NULL COMMENT '简历标题',
+    data        JSON         NOT NULL COMMENT '简历内容（JSON）',
+    status      TINYINT      NOT NULL DEFAULT 0 COMMENT '状态：0 草稿 / 1 已发布',
+    created_at  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    updated_at  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    PRIMARY KEY (id),
+    KEY idx_resume_user_id (user_id)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = '简历表';
+
+CREATE TABLE IF NOT EXISTS template (
+    id          BIGINT       NOT NULL COMMENT '主键',
+    code        VARCHAR(64)  NOT NULL COMMENT '模板编码',
+    name        VARCHAR(64)  NOT NULL COMMENT '模板名称',
+    description VARCHAR(512) NULL COMMENT '模板描述',
+    schema_json JSON         NULL COMMENT '简历数据 JSON Schema',
+    html        MEDIUMTEXT   NULL COMMENT '模板 HTML 描述',
+    css         MEDIUMTEXT   NULL COMMENT '模板 CSS 描述',
+    builtin     TINYINT      NOT NULL DEFAULT 0 COMMENT '是否内置：0 否 / 1 是',
+    created_at  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    updated_at  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    PRIMARY KEY (id),
+    UNIQUE KEY uk_template_code (code)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = '简历模板表';
+
+CREATE TABLE IF NOT EXISTS ai_session (
+    id            BIGINT      NOT NULL COMMENT '主键',
+    user_id       BIGINT      NOT NULL COMMENT '所属用户',
+    resume_id     BIGINT      NULL COMMENT '关联简历',
+    scene         VARCHAR(32) NOT NULL COMMENT '会话场景：resume_generate / template_generate 等',
+    status        VARCHAR(16) NOT NULL DEFAULT 'pending' COMMENT '状态：pending / running / success / failed',
+    request_data  JSON        NULL COMMENT 'AI 请求负载（JSON）',
+    response_data JSON        NULL COMMENT 'AI 响应负载（JSON）',
+    created_at    DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    updated_at    DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    PRIMARY KEY (id),
+    KEY idx_ai_session_user_id (user_id)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = 'AI 生成会话表';

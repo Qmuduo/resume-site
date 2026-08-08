@@ -1,0 +1,28 @@
+{
+  "code": "classic",
+  "name": "经典单栏",
+  "description": "传统单栏排版，自上而下罗列信息，适合保守型行业。",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": { "type": "string" },
+      "email": { "type": "string" },
+      "phone": { "type": "string" },
+      "education": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "school": { "type": "string" },
+            "degree": { "type": "string" },
+            "year": { "type": "string" }
+          }
+        }
+      },
+      "skills": { "type": "array", "items": { "type": "string" } }
+    },
+    "required": ["name"]
+  },
+  "html": "<div class=\"resume-classic\"><h1>{{name}}</h1><h2>教育背景</h2>{{education}}</div>",
+  "css": ".resume-classic{max-width:720px;margin:0 auto}"
+}

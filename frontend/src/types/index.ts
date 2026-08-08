@@ -4,3 +4,13 @@ export interface ApiResult<T = unknown> {
   message: string
   data: T
 }
+
+/** 与后端内置模板 JSON 对齐的模板类型（字段为 docs/template-schema.json 白名单） */
+export interface ResumeTemplate {
+  code: string
+  name: string
+  description: string
+  schema: Record<string, unknown>
+  html: string
+  css: string
+}

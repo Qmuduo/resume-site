@@ -1,0 +1,22 @@
+{
+  "code": "minimal",
+  "name": "极简留白",
+  "description": "大留白、少装饰，突出文字内容本身。",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": { "type": "string" },
+      "contact": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string" },
+          "phone": { "type": "string" }
+        }
+      },
+      "highlights": { "type": "array", "items": { "type": "string" } }
+    },
+    "required": ["name"]
+  },
+  "html": "<div class=\"resume-minimal\"><p>{{name}}</p><p>{{contact}}</p><ul>{{highlights}}</ul></div>",
+  "css": ".resume-minimal{letter-spacing:.05em;line-height:1.8}"
+}
