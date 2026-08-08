@@ -44,3 +44,7 @@
 - 不要碰 docs/ 外的 SQL 初始化文件以外的 DB 手动改表
 - 不要把 secret 写进代码或 AGENTS.md
 - 不要用 full-auto 在主干直接跑
+
+## Per-Module Rules
+- Backend: see [backend/AGENTS.md](backend/AGENTS.md)
+- Frontend: see [frontend/AGENTS.md](frontend/AGENTS.md)
