@@ -72,6 +72,14 @@ src/
    - 全局样式 assets/styles/global.scss、主题变量 variables.scss 待建
    - 颜色值用 CSS 变量（var(--primary-color)）
 
+9. **UI 风格规范（现代极简 SaaS）**
+   - 设计 token 唯一来源 frontend/src/assets/styles/global.css：背景 #F7F8FA、主文字 #1A1A1A、强调色 #4F46E5、辅助文字 #6B7280、圆角统一 12px（rounded-xl）；Element Plus 主色已通过 CSS 变量覆盖为 #4F46E5，禁止组件里写死旧色值（如 #409eff、#ebeef5）
+   - 字体优先 'Inter'，回退 'PingFang SC' / 'Microsoft YaHei' / system-ui；不引入远程字体依赖
+   - 微交互：hover/focus 一律 transition-all duration-200 ease-out；只允许 translateY(-4px)+阴影加深、透明度/颜色变化，禁止突兀位移或缩放
+   - 导航：sticky 吸顶、高 64px、border-bottom 1px #E5E7EB、logo 左对齐菜单右对齐、hover/active 变强调色
+   - Hero：浅灰背景、标题 clamp(28px,4vw,48px)、副标题灰 400、搜索框 focus 强调色描边、分类 chips pill（选中强调底白字）
+   - 模板卡片：白底 rounded-xl 柔和阴影、hover translateY(-4px)+阴影加深、封面固定 16:9（无缩略图用渐变占位）、标题加粗、标签小字 pill、右下角「预览」ghost 按钮 hover 才显示；预览样式注入遵循规则 6
+
 ## Build & Run
 - 开发：npm run dev（端口 5173，proxy /api → localhost:8080）
 - 构建：npm run build（vue-tsc --noEmit + vite build，输出 dist/）

@@ -51,54 +51,54 @@ function formatTime(value: string | null): string {
 </script>
 
 <template>
-  <main class="admin-users">
-    <header class="page-header">
-      <h1>用户管理</h1>
+  <main class="page-container">
+    <header class="page-header admin-header">
+      <div>
+        <h1 class="page-title">用户管理</h1>
+        <p class="page-subtitle">查看用户并调整角色权限</p>
+      </div>
       <el-button :loading="loading" @click="load">刷新</el-button>
     </header>
 
-    <el-table v-loading="loading" :data="users" border stripe>
-      <el-table-column prop="id" label="ID" width="90" />
-      <el-table-column prop="username" label="用户名" min-width="140" />
-      <el-table-column prop="nickname" label="昵称" min-width="120">
-        <template #default="{ row }">{{ row.nickname || '-' }}</template>
-      </el-table-column>
-      <el-table-column prop="email" label="邮箱" min-width="180">
-        <template #default="{ row }">{{ row.email || '-' }}</template>
-      </el-table-column>
-      <el-table-column label="角色" width="160">
-        <template #default="{ row }">
-          <el-select
-            v-model="row.role"
-            :disabled="changingId === row.id || isSelf(row as UserInfo)"
-            size="small"
-            @change="(role: UserRole) => onRoleChange(row as UserInfo, role)"
-          >
-            <el-option label="USER" value="USER" />
-            <el-option label="ADMIN" value="ADMIN" />
-          </el-select>
-        </template>
-      </el-table-column>
-      <el-table-column label="创建时间" width="180">
-        <template #default="{ row }">{{ formatTime(row.createdAt) }}</template>
-      </el-table-column>
-    </el-table>
+    <div class="surface-card table-card">
+      <el-table v-loading="loading" :data="users" stripe>
+        <el-table-column prop="id" label="ID" width="90" />
+        <el-table-column prop="username" label="用户名" min-width="140" />
+        <el-table-column prop="nickname" label="昵称" min-width="120">
+          <template #default="{ row }">{{ row.nickname || '-' }}</template>
+        </el-table-column>
+        <el-table-column prop="email" label="邮箱" min-width="180">
+          <template #default="{ row }">{{ row.email || '-' }}</template>
+        </el-table-column>
+        <el-table-column label="角色" width="160">
+          <template #default="{ row }">
+            <el-select
+              v-model="row.role"
+              :disabled="changingId === row.id || isSelf(row as UserInfo)"
+              size="small"
+              @change="(role: UserRole) => onRoleChange(row as UserInfo, role)"
+            >
+              <el-option label="USER" value="USER" />
+              <el-option label="ADMIN" value="ADMIN" />
+            </el-select>
+          </template>
+        </el-table-column>
+        <el-table-column label="创建时间" width="180">
+          <template #default="{ row }">{{ formatTime(row.createdAt) }}</template>
+        </el-table-column>
+      </el-table>
+    </div>
   </main>
 </template>
 
 <style scoped>
-.admin-users {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 24px;
-}
-.page-header {
+.admin-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
 }
-.page-header h1 {
-  margin: 0;
+
+.table-card {
+  padding: 16px;
 }
 </style>

@@ -79,10 +79,13 @@ async function onSubmit() {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f5f7fa;
+  background: var(--color-page);
 }
 .auth-card {
   width: 380px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
 }
 .auth-card h2 {
   margin: 0 0 16px;

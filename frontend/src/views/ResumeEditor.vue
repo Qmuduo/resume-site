@@ -218,16 +218,17 @@ function mergeDefaults(schema: SchemaNode, base: Record<string, unknown>): Recor
 }
 
 .editor-form {
-  border: 1px solid #e4e7ed;
-  border-radius: 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
   padding: 16px;
 }
 
 .editor-preview {
-  border: 1px solid #e4e7ed;
-  border-radius: 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
   min-height: 600px;
   padding: 24px;
-  background: #fff;
 }
 </style>
