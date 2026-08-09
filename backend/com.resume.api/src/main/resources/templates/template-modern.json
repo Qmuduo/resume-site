@@ -1,13 +1,16 @@
 {
   "code": "modern",
-  "name": "现代简洁",
-  "description": "左侧个人信息栏加右侧经历时间线，适合技术类岗位。",
+  "name": "现代双栏",
+  "description": "深海军蓝侧栏 + 白色内容区双栏，卡片式分区，适合技术岗位。",
   "schema": {
     "type": "object",
     "properties": {
       "name": { "type": "string" },
-      "email": { "type": "string" },
+      "title": { "type": "string" },
       "phone": { "type": "string" },
+      "email": { "type": "string" },
+      "location": { "type": "string" },
+      "linkedin": { "type": "string" },
       "summary": { "type": "string" },
       "experiences": {
         "type": "array",
@@ -20,10 +23,25 @@
             "end": { "type": "string" }
           }
         }
-      }
+      },
+      "education": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "school": { "type": "string" },
+            "degree": { "type": "string" },
+            "year": { "type": "string" }
+          }
+        }
+      },
+      "skills": { "type": "array", "items": { "type": "string" } },
+      "languages": { "type": "array", "items": { "type": "string" } },
+      "certifications": { "type": "array", "items": { "type": "string" } },
+      "achievements": { "type": "array", "items": { "type": "string" } }
     },
     "required": ["name"]
   },
-  "html": "<div class=\"resume-modern\"><aside><h1>{{name}}</h1><p>{{email}}</p><p>{{phone}}</p></aside><section><h2>个人简介</h2><p>{{summary}}</p><h2>工作经历</h2>{{#each experiences}}<div class=\"exp\"><h3>{{company}}</h3><span>{{start}} - {{end}}</span><p>{{title}}</p></div>{{/each}}</section></div>",
-  "css": ".resume-modern{display:flex;gap:24px}.resume-modern aside{width:220px;background:#f5f7fa;padding:16px}.resume-modern .exp{margin-bottom:8px}"
+  "html": "<div class=\"modern-page\"><aside class=\"modern-side\"><div class=\"photo\">PHOTO</div><h1>{{name}}</h1><p class=\"side-title\">{{title}}</p><div class=\"side-block\"><h3>联系方式</h3><p class=\"contact-item\">✆ {{phone}}</p><p class=\"contact-item\">✉ {{email}}</p><p class=\"contact-item\">◎ {{location}}</p><p class=\"contact-item\">in {{linkedin}}</p></div><div class=\"side-block\"><h3>技能</h3><ul>{{#each skills}}<li>{{.}}</li>{{/each}}</ul></div><div class=\"side-block\"><h3>语言</h3><ul>{{#each languages}}<li>{{.}}</li>{{/each}}</ul></div><div class=\"side-block\"><h3>证书</h3><ul>{{#each certifications}}<li>{{.}}</li>{{/each}}</ul></div></aside><section class=\"modern-main\"><div class=\"card\"><h2>个人简介</h2><p class=\"summary\">{{summary}}</p></div><div class=\"card\"><h2>工作经历</h2>{{#each experiences}}<div class=\"exp\"><div class=\"logo\"></div><div class=\"exp-body\"><div class=\"exp-head\"><h3>{{company}}</h3><span class=\"exp-date\">{{start}} - {{end}}</span></div><p class=\"exp-title\">{{title}}</p></div></div>{{/each}}</div><div class=\"card\"><h2>教育背景</h2>{{#each education}}<div class=\"edu\"><h3>{{school}}</h3><span>{{degree}} · {{year}}</span></div>{{/each}}</div><div class=\"card\"><h2>成就</h2><ul>{{#each achievements}}<li>{{.}}</li>{{/each}}</ul></div></section></div>",
+  "css": ".modern-page{display:flex;width:210mm;min-height:297mm;margin:0 auto;background:#ffffff;color:#1a1a1a;font-family:'Inter','PingFang SC',Arial,sans-serif;box-sizing:border-box}.modern-side{width:30%;background:#1e293b;color:#ffffff;padding:0.5in 0.4in;box-sizing:border-box}.photo{width:88px;height:88px;border-radius:50%;background:#334155;border:3px solid #10b981;margin:0 0 16px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:9pt;letter-spacing:0.1em}.modern-side h1{font-size:19pt;margin:0 0 2px;color:#ffffff}.side-title{color:#10b981;font-size:10.5pt;margin:0 0 20px}.side-block{margin-bottom:18px}.side-block h3{font-size:10pt;text-transform:uppercase;letter-spacing:0.12em;color:#94a3b8;border-bottom:1px solid #334155;padding-bottom:6px;margin:0 0 8px}.contact-item{font-size:9.5pt;color:#cbd5e1;margin:0 0 6px}.side-block ul{list-style:none;margin:0;padding:0}.side-block li{font-size:9.5pt;color:#e2e8f0;padding:3px 0 3px 14px;position:relative}.side-block li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:#10b981}.modern-main{width:70%;padding:0.5in 0.45in;box-sizing:border-box;background:#ffffff}.card{background:#ffffff;border-radius:12px;box-shadow:0 1px 3px rgba(15,23,42,0.08),0 4px 12px rgba(15,23,42,0.05);padding:16px 18px;margin-bottom:14px}.card h2{font-size:11.5pt;color:#1e293b;margin:0 0 10px;padding-bottom:6px;border-bottom:2px solid #10b981;display:inline-block}.summary{font-size:10pt;line-height:1.6;color:#334155;margin:0}.exp{display:flex;gap:12px;position:relative;margin-bottom:14px;padding-left:18px}.exp::before{content:'';position:absolute;left:2px;top:16px;bottom:-10px;width:2px;background:#e2e8f0}.exp:last-child::before{display:none}.exp::after{content:'';position:absolute;left:-1px;top:8px;width:8px;height:8px;border-radius:50%;background:#10b981}.logo{width:34px;height:34px;border-radius:8px;background:#f1f5f9;border:1px solid #e2e8f0;flex-shrink:0;margin-top:2px;position:relative}.logo::after{content:'';position:absolute;left:50%;top:50%;width:14px;height:14px;transform:translate(-50%,-50%);background:#cbd5e1;border-radius:3px}.exp-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}.exp-head h3{margin:0;font-size:11pt;color:#1e293b}.exp-date{font-size:9pt;color:#64748b;white-space:nowrap}.exp-title{margin:2px 0 0;font-size:9.5pt;color:#475569}.edu{margin-bottom:6px;font-size:10pt}.edu h3{display:inline;margin:0 8px 0 0;font-size:10.5pt;color:#1e293b}.edu span{color:#64748b}.modern-main ul{list-style:none;margin:0;padding:0}.modern-main li{font-size:9.5pt;color:#334155;padding:3px 0 3px 16px;position:relative}.modern-main li::before{content:'✓';position:absolute;left:0;color:#10b981}@media print{.modern-page{margin:0}}"
 }
