@@ -71,6 +71,10 @@ async function init() {
       }
       form.value = mergeDefaults(selectedTemplate.value?.schema ?? {}, parseData(resume.data))
     } else {
+      const fromQuery = typeof route.query.template === 'string' ? route.query.template : ''
+      if (fromQuery && templates.value.some((tpl) => tpl.code === fromQuery)) {
+        selectedCode.value = fromQuery
+      }
       form.value = mergeDefaults(selectedTemplate.value?.schema ?? {}, {})
     }
   } catch {
@@ -105,12 +109,12 @@ async function save() {
     }
     if (editId.value) {
       await updateResume(editId.value, payload)
-      ElMessage.success('已更新')
-    } else {
-      const created = await createResume(payload)
       ElMessage.success('已保存')
-      await router.replace(`/editor/${created.id}`)
+    } else {
+      await createResume(payload)
+      ElMessage.success('已保存')
     }
+    await router.replace('/resumes')
   } catch {
     ElMessage.error('保存失败')
   } finally {
@@ -165,6 +169,7 @@ function mergeDefaults(schema: SchemaNode, base: Record<string, unknown>): Recor
         </el-select>
         <el-input v-model="title" class="title-input" placeholder="简历标题" />
         <el-button type="primary" :loading="saving" @click="save">保存</el-button>
+        <el-button @click="router.push('/resumes')">返回列表</el-button>
       </header>
       <div v-if="selectedTemplate" class="editor-body">
         <section class="editor-form">

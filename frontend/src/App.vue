@@ -98,7 +98,8 @@ async function onSubmitPassword() {
     <header class="header">
       <RouterLink class="brand" to="/">Resume Site</RouterLink>
       <nav class="nav">
-        <RouterLink to="/templates">模板</RouterLink>
+        <RouterLink to="/templates">模板市场</RouterLink>
+        <RouterLink v-if="userStore.isLoggedIn" to="/resumes">我的简历</RouterLink>
         <RouterLink to="/editor">编辑简历</RouterLink>
         <RouterLink v-if="isAdmin" to="/admin/users">用户管理</RouterLink>
       </nav>

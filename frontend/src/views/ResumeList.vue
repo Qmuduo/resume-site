@@ -1,0 +1,97 @@
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { deleteResume, fetchResumes } from '@/api/resume'
+import { getErrorMessage } from '@/utils/error'
+import type { ResumeRecord } from '@/types'
+
+const router = useRouter()
+const resumes = ref<ResumeRecord[]>([])
+const loading = ref(false)
+
+onMounted(load)
+
+async function load() {
+  loading.value = true
+  try {
+    resumes.value = await fetchResumes()
+  } catch (error) {
+    ElMessage.error(getErrorMessage(error, '加载简历列表失败'))
+  } finally {
+    loading.value = false
+  }
+}
+
+async function onDelete(row: ResumeRecord) {
+  try {
+    await ElMessageBox.confirm(`确定删除简历「${row.title}」吗？删除后不可恢复。`, '删除确认', {
+      type: 'warning'
+    })
+  } catch {
+    return
+  }
+  try {
+    await deleteResume(row.id)
+    ElMessage.success('已删除')
+    await load()
+  } catch (error) {
+    ElMessage.error(getErrorMessage(error, '删除失败'))
+  }
+}
+
+function formatTime(value?: string): string {
+  if (!value) return '-'
+  const date = new Date(value)
+  return Number.isNaN(date.getTime()) ? '-' : date.toLocaleString()
+}
+</script>
+
+<template>
+  <main class="resume-list">
+    <header class="page-header">
+      <h1>我的简历</h1>
+      <el-button type="primary" @click="router.push('/editor')">新建简历</el-button>
+    </header>
+
+    <el-table v-loading="loading" :data="resumes" border stripe empty-text="还没有简历，点击右上角新建">
+      <el-table-column prop="title" label="标题" min-width="200" />
+      <el-table-column label="模板" min-width="140">
+        <template #default="{ row }">{{ row.templateCode || '-' }}</template>
+      </el-table-column>
+      <el-table-column label="状态" width="110">
+        <template #default="{ row }">
+          <el-tag :type="row.status === 1 ? 'success' : 'info'">
+            {{ row.status === 1 ? '已发布' : '草稿' }}
+          </el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column label="更新时间" width="180">
+        <template #default="{ row }">{{ formatTime(row.updatedAt) }}</template>
+      </el-table-column>
+      <el-table-column label="操作" width="160">
+        <template #default="{ row }">
+          <el-button size="small" @click="router.push(`/editor/${row.id}`)">编辑</el-button>
+          <el-button size="small" type="danger" @click="onDelete(row as ResumeRecord)">删除</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+  </main>
+</template>
+
+<style scoped>
+.resume-list {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px;
+}
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.page-header h1 {
+  margin: 0;
+}
+</style>

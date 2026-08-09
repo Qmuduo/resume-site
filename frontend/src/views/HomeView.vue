@@ -1,26 +1,28 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { ElMessage } from 'element-plus'
+import { useUserStore } from '@/stores/userStore'
 
-function showReady() {
-  ElMessage.info('前端骨架已就绪')
-}
+const userStore = useUserStore()
 </script>
 
 <template>
   <main class="home">
     <h1>Resume Template Site</h1>
+    <p class="slogan">在线简历模板市场，登录后创建并管理你的简历</p>
     <nav>
-      <RouterLink to="/templates">内置模板</RouterLink>
-      <span> </span>
-      <RouterLink to="/editor">简历编辑</RouterLink>
+      <RouterLink to="/templates">模板市场</RouterLink>
+      <RouterLink v-if="userStore.isLoggedIn" to="/resumes">我的简历</RouterLink>
+      <RouterLink v-else to="/login">登录</RouterLink>
     </nav>
-    <button type="button" @click="showReady">Hello</button>
   </main>
 </template>
 
 <style scoped>
 .home {
   padding: 24px;
+  text-align: center;
+}
+.slogan {
+  color: #909399;
 }
 </style>

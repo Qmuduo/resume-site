@@ -14,6 +14,12 @@ const router = createRouter({
       component: () => import('@/views/TemplateList.vue')
     },
     {
+      path: '/resumes',
+      name: 'resumes',
+      component: () => import('@/views/ResumeList.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
       path: '/editor',
       name: 'editor',
       component: () => import('@/views/ResumeEditor.vue'),
