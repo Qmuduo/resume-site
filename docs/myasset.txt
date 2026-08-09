@@ -1,0 +1,7 @@
+git@github.com:Qmuduo/resume-site.git
+
+
+3. 改密/注销的联动
+后端改密是全端下线，前端拿到成功后要清掉本地 token 并跳登录，避免带着失效 token 反复撞 401。
+4. ADMIN 界面（可选）
+如果要做角色管理，再加一个管理页调 GET /api/v1/admin/users 和 PUT .../role，普通用户隐藏入口。
