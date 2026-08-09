@@ -73,8 +73,9 @@ function formatTime(value?: string): string {
         <el-table-column label="更新时间" width="180">
           <template #default="{ row }">{{ formatTime(row.updatedAt) }}</template>
         </el-table-column>
-        <el-table-column label="操作" width="160">
+        <el-table-column label="操作" width="230">
           <template #default="{ row }">
+            <el-button size="small" @click="router.push(`/resumes/${row.id}/preview`)">查看</el-button>
             <el-button size="small" @click="router.push(`/editor/${row.id}`)">编辑</el-button>
             <el-button size="small" type="danger" @click="onDelete(row as ResumeRecord)">删除</el-button>
           </template>

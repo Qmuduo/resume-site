@@ -7,6 +7,7 @@ import SchemaForm from '@/components/SchemaForm.vue'
 import { fetchTemplates } from '@/api/template'
 import { createResume, fetchResume, updateResume } from '@/api/resume'
 import { renderTemplate, sanitizeCss } from '@/template-engine'
+import { usePageScale } from '@/composables/usePageScale'
 import type { ResumeTemplate, SchemaNode } from '@/types'
 
 const route = useRoute()
@@ -19,7 +20,10 @@ const form = ref<Record<string, unknown>>({})
 const loading = ref(false)
 const saving = ref(false)
 const previewRef = ref<HTMLElement | null>(null)
+const previewContentRef = ref<HTMLElement | null>(null)
 let previewStyleEl: HTMLStyleElement | null = null
+
+const { viewportStyle, scalerStyle } = usePageScale(previewRef, previewContentRef)
 
 const editId = computed(() => (typeof route.params.id === 'string' ? route.params.id : undefined))
 
@@ -176,7 +180,11 @@ function mergeDefaults(schema: SchemaNode, base: Record<string, unknown>): Recor
           <SchemaForm :schema="selectedTemplate.schema" :model="form" />
         </section>
         <section ref="previewRef" class="editor-preview">
-          <div class="preview-html" v-html="previewHtml"></div>
+          <div class="preview-viewport" :style="viewportStyle">
+            <div ref="previewContentRef" class="preview-scaler" :style="scalerStyle">
+              <div class="preview-html" v-html="previewHtml"></div>
+            </div>
+          </div>
         </section>
       </div>
       <p v-else>暂无可用模板</p>

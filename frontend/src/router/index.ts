@@ -20,6 +20,12 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     {
+      path: '/resumes/:id/preview',
+      name: 'resume-preview',
+      component: () => import('@/views/ResumePreview.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
       path: '/editor',
       name: 'editor',
       component: () => import('@/views/ResumeEditor.vue'),
