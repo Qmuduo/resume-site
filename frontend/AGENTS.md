@@ -50,19 +50,24 @@ src/
 
 4. **API 调用**
    - 所有请求走 src/api/，不在组件里直接写 axios（现状一致）
-   - Token 注入、401 跳登录、500 统一提示：待 JWT 接入后在 http.ts 拦截器实现
+   - Token 注入、401 自动刷新重试、刷新失败跳登录已在 http.ts 拦截器实现（见 src/api/http.ts）
 
 5. **模板渲染安全（现状已落实）**
    - v-html 只允许渲染 template-engine 消毒后的输出（schema 白名单 + HTML 转义 + sanitizeHtml）
    - CSS 注入前过 sanitizeCss；模板 HTML 结构由受控 schema 驱动，不执行任意字符串
    - DOMPurify 未引入；如需替换自研消毒器，先按根 AGENTS.md 确认依赖
 
-6. **路由规范**
+6. **Vue SFC 模板样式注入（禁止 <style> 标签）**
+   - Vue SFC 模板里禁止直接写 `<style>`（含 `<style ref>`）标签，会触发 vite:vue "Tags with side effect" 编译错误（ResumeEditor 曾踩坑）
+   - 动态注入预览 CSS：onMounted 时 document.createElement('style') 挂到目标容器，watchEffect 同步消毒后的 CSS，onBeforeUnmount 时 remove 防止路由切换样式残留
+   - 参照 frontend/src/views/ResumeEditor.vue 的实现方式
+
+7. **路由规范**
    - 懒加载：component: () => import('@/views/Xxx.vue')（现状一致）
-   - 路由守卫 guards.ts 待 JWT 接入后实现（未登录 → /login）
+   - 路由守卫 guards.ts 已实现：未登录 → /login（带 redirect 回跳）、ADMIN-only 页面拦截非 ADMIN 用户
    - path 用 kebab-case（现状：/templates、/editor；目标 /resume-editor/:id 可后续统一）
 
-7. **样式规范**
+8. **样式规范**
    - 使用 scoped style，避免全局污染（现状一致）
    - 全局样式 assets/styles/global.scss、主题变量 variables.scss 待建
    - 颜色值用 CSS 变量（var(--primary-color)）

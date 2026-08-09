@@ -3,9 +3,10 @@ package com.resume.api.controller;
 import com.resume.api.common.Result;
 import com.resume.api.dto.ResumeRequest;
 import com.resume.api.entity.Resume;
+import com.resume.api.security.CustomUserDetails;
 import com.resume.api.service.ResumeService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -34,13 +35,13 @@ public class ResumeController {
     }
 
     @GetMapping
-    public Result<List<Resume>> list(HttpServletRequest request) {
-        return Result.ok(resumeService.listByUser(currentUserId(request)));
+    public Result<List<Resume>> list(@AuthenticationPrincipal CustomUserDetails user) {
+        return Result.ok(resumeService.listByUser(user.getId()));
     }
 
     @GetMapping("/{id}")
-    public Result<Resume> get(@PathVariable Long id, HttpServletRequest request) {
-        Resume resume = resumeService.getByUser(currentUserId(request), id);
+    public Result<Resume> get(@PathVariable Long id, @AuthenticationPrincipal CustomUserDetails user) {
+        Resume resume = resumeService.getByUser(user.getId(), id);
         if (resume == null) {
             return Result.fail(404, "简历不存在或无权访问");
         }
@@ -48,15 +49,16 @@ public class ResumeController {
     }
 
     @PostMapping
-    public Result<Resume> create(@Valid @RequestBody ResumeRequest body, HttpServletRequest request) {
-        return Result.ok(resumeService.create(currentUserId(request), body));
+    public Result<Resume> create(@Valid @RequestBody ResumeRequest body,
+                                 @AuthenticationPrincipal CustomUserDetails user) {
+        return Result.ok(resumeService.create(user.getId(), body));
     }
 
     @PutMapping("/{id}")
     public Result<Resume> update(@PathVariable Long id,
                                  @Valid @RequestBody ResumeRequest body,
-                                 HttpServletRequest request) {
-        Resume resume = resumeService.update(currentUserId(request), id, body);
+                                 @AuthenticationPrincipal CustomUserDetails user) {
+        Resume resume = resumeService.update(user.getId(), id, body);
         if (resume == null) {
             return Result.fail(404, "简历不存在或无权访问");
         }
@@ -64,8 +66,8 @@ public class ResumeController {
     }
 
     @DeleteMapping("/{id}")
-    public Result<Void> delete(@PathVariable Long id, HttpServletRequest request) {
-        if (!resumeService.delete(currentUserId(request), id)) {
+    public Result<Void> delete(@PathVariable Long id, @AuthenticationPrincipal CustomUserDetails user) {
+        if (!resumeService.delete(user.getId(), id)) {
             return Result.fail(404, "简历不存在或无权访问");
         }
         return Result.ok(null);
@@ -76,14 +78,4 @@ public class ResumeController {
         return Result.fail(400, e.getMessage());
     }
 
-    /**
-     * JWT 鉴权占位：当前从拦截器拿固定 userId，接入真实 JWT 后改为从 token 解析。
-     */
-    private Long currentUserId(HttpServletRequest request) {
-        Object userId = request.getAttribute("userId");
-        if (userId instanceof Long) {
-            return (Long) userId;
-        }
-        return 1L;
-    }
 }

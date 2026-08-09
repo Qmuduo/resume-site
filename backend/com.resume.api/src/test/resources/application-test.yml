@@ -1,0 +1,11 @@
+jwt:
+  secret: OJcWmzoTrqfPEU7VgEeqNTGrmLMNJ6zEkHKwh+I7S9sj7A+jU20Z/JsqVIVjdpEXP0Hr+TVpXQmtwx+4daPlDQ==
+  access-ttl: 30m
+  refresh-ttl: 7d
+  issuer: resume-api
+
+security:
+  login-fail:
+    window: 10m
+    threshold: 5
+    lock-duration: 15m

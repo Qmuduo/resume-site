@@ -12,11 +12,17 @@ CREATE TABLE IF NOT EXISTS `user` (
     password    VARCHAR(128) NOT NULL COMMENT '密码（加密后存储）',
     email       VARCHAR(128) NULL COMMENT '邮箱',
     nickname    VARCHAR(64)  NULL COMMENT '昵称',
+    role        VARCHAR(16)  NOT NULL DEFAULT 'USER' COMMENT '角色：USER / ADMIN',
     created_at  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     updated_at  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (id),
     UNIQUE KEY uk_user_username (username)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = '用户表';
+
+-- 存量库升级：为已有 user 表补充 role 列
+-- ALTER TABLE `user`
+--     ADD COLUMN role VARCHAR(16) NOT NULL DEFAULT 'USER'
+--     COMMENT '角色：USER / ADMIN' AFTER nickname;
 
 CREATE TABLE IF NOT EXISTS resume (
     id          BIGINT       NOT NULL COMMENT '主键',

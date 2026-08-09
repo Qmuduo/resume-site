@@ -1,33 +1,37 @@
-package com.resume.api.entity;
+package com.resume.api.vo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.resume.api.entity.User;
 
 import java.time.LocalDateTime;
 
 /**
- * 用户实体。
+ * 用户视图对象：永不包含密码。
  */
-@TableName("user")
-public class User {
+public class UserVO {
 
-    @TableId(type = IdType.ASSIGN_ID)
     private Long id;
-
     private String username;
-
-    private String password;
-
-    private String email;
-
     private String nickname;
-
+    private String email;
     private String role;
-
     private LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt;
+    public UserVO() {
+    }
+
+    public UserVO(Long id, String username, String nickname, String email, String role, LocalDateTime createdAt) {
+        this.id = id;
+        this.username = username;
+        this.nickname = nickname;
+        this.email = email;
+        this.role = role;
+        this.createdAt = createdAt;
+    }
+
+    public static UserVO from(User user) {
+        return new UserVO(user.getId(), user.getUsername(), user.getNickname(), user.getEmail(),
+                user.getRole(), user.getCreatedAt());
+    }
 
     public Long getId() {
         return id;
@@ -45,12 +49,12 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getEmail() {
@@ -59,14 +63,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
     }
 
     public String getRole() {
@@ -83,13 +79,5 @@ public class User {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

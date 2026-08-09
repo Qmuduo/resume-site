@@ -16,12 +16,30 @@ const router = createRouter({
     {
       path: '/editor',
       name: 'editor',
-      component: () => import('@/views/ResumeEditor.vue')
+      component: () => import('@/views/ResumeEditor.vue'),
+      meta: { requiresAuth: true }
     },
     {
       path: '/editor/:id',
       name: 'editor-edit',
-      component: () => import('@/views/ResumeEditor.vue')
+      component: () => import('@/views/ResumeEditor.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/views/Login.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('@/views/Register.vue')
+    },
+    {
+      path: '/admin/users',
+      name: 'admin-users',
+      component: () => import('@/views/AdminUsers.vue'),
+      meta: { requiresAuth: true, adminOnly: true }
     }
   ]
 })

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watchEffect } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 
@@ -18,7 +18,8 @@ const title = ref('')
 const form = ref<Record<string, unknown>>({})
 const loading = ref(false)
 const saving = ref(false)
-const previewStyleEl = ref<HTMLStyleElement | null>(null)
+const previewRef = ref<HTMLElement | null>(null)
+let previewStyleEl: HTMLStyleElement | null = null
 
 const editId = computed(() => (typeof route.params.id === 'string' ? route.params.id : undefined))
 
@@ -32,13 +33,28 @@ const previewHtml = computed(() =>
 
 const previewCss = computed(() => sanitizeCss(selectedTemplate.value?.css ?? ''))
 
-watchEffect(() => {
-  if (previewStyleEl.value) {
-    previewStyleEl.value.textContent = previewCss.value
+watchEffect(syncPreviewStyle)
+
+onMounted(() => {
+  previewStyleEl = document.createElement('style')
+  if (previewRef.value) {
+    previewRef.value.appendChild(previewStyleEl)
   }
+  syncPreviewStyle()
+})
+
+onBeforeUnmount(() => {
+  previewStyleEl?.remove()
+  previewStyleEl = null
 })
 
 onMounted(init)
+
+function syncPreviewStyle() {
+  if (previewStyleEl) {
+    previewStyleEl.textContent = previewCss.value
+  }
+}
 
 async function init() {
   loading.value = true
@@ -154,8 +170,7 @@ function mergeDefaults(schema: SchemaNode, base: Record<string, unknown>): Recor
         <section class="editor-form">
           <SchemaForm :schema="selectedTemplate.schema" :model="form" />
         </section>
-        <section class="editor-preview">
-          <style ref="previewStyleEl"></style>
+        <section ref="previewRef" class="editor-preview">
           <div class="preview-html" v-html="previewHtml"></div>
         </section>
       </div>
