@@ -1,0 +1,57 @@
+{
+  "code": "cv2",
+  "name": "学术简历",
+  "description": "Times New Roman 单栏学术简历：居中姓名与联系方式，教育/经历/活动三段式，适合学术与金融岗位投递。",
+  "schema": {
+    "type": "object",
+    "required": ["name"],
+    "properties": {
+      "name": { "type": "string" },
+      "email": { "type": "string" },
+      "phone": { "type": "string" },
+      "linkedin": { "type": "string" },
+      "summary": { "type": "string" },
+      "education": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "school": { "type": "string" },
+            "location": { "type": "string" },
+            "degree": { "type": "string" },
+            "date": { "type": "string" },
+            "bullets": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      },
+      "experience": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "company": { "type": "string" },
+            "location": { "type": "string" },
+            "role": { "type": "string" },
+            "date": { "type": "string" },
+            "bullets": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      },
+      "activities": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "organization": { "type": "string" },
+            "location": { "type": "string" },
+            "role": { "type": "string" },
+            "date": { "type": "string" },
+            "bullets": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    }
+  },
+  "html": "<div class=\"cv2-page\"><div class=\"resume-title\">{{resumeTitle}}</div><div class=\"name\">{{name}}</div><div class=\"contact\">{{email}} | {{phone}} | {{linkedin}}</div><div class=\"summary\">{{summary}}</div><div class=\"section-header\">EDUCATION</div>{{#each education}}<div class=\"entry-header\"><span class=\"entry-title\">{{school}}</span><span class=\"entry-location\">{{location}}</span></div><div class=\"entry-subheader\"><span class=\"entry-role\">{{degree}}</span><span class=\"entry-date\">{{date}}</span></div><div class=\"bullets\">{{#each bullets}}<div class=\"bullet-item\">{{.}}</div>{{/each}}</div>{{/each}}<div class=\"section-header\">RELEVANT EXPERIENCE</div>{{#each experience}}<div class=\"entry-header\"><span class=\"entry-title\">{{company}}</span><span class=\"entry-location\">{{location}}</span></div><div class=\"entry-subheader\"><span class=\"entry-role\">{{role}}</span><span class=\"entry-date\">{{date}}</span></div><div class=\"bullets\">{{#each bullets}}<div class=\"bullet-item\">{{.}}</div>{{/each}}</div>{{/each}}<div class=\"section-header\">EXTRACURRICULAR ACTIVITIES</div>{{#each activities}}<div class=\"entry-header\"><span class=\"entry-title\">{{organization}}</span><span class=\"entry-location\">{{location}}</span></div><div class=\"entry-subheader\"><span class=\"entry-role\">{{role}}</span><span class=\"entry-date\">{{date}}</span></div><div class=\"bullets\">{{#each bullets}}<div class=\"bullet-item\">{{.}}</div>{{/each}}</div>{{/each}}</div>",
+  "css": ".cv2-page{font-family:'Times New Roman',Times,serif;font-size:11pt;line-height:1.2;width:595.5pt;min-height:842pt;margin:0 auto;padding:0 42.5pt;background:#ffffff;color:#000000}.cv2-page .resume-title{font-size:9pt;text-align:center;margin-top:50pt;letter-spacing:0.08em;color:#444444}.cv2-page .name{font-size:24pt;text-align:center;margin-top:6pt;margin-bottom:6pt;font-weight:normal}.cv2-page .contact{font-size:12pt;text-align:center;margin-bottom:10pt}.cv2-page .summary{font-size:11pt;text-align:center;margin-bottom:8pt}.cv2-page .section-header{font-size:11pt;font-weight:bold;margin-top:25pt;margin-bottom:8pt;border-bottom:1px solid #000000;padding-bottom:2pt}.cv2-page .entry-header{display:flex;justify-content:space-between;align-items:baseline;margin-top:5pt}.cv2-page .entry-title{font-weight:bold;font-size:11pt}.cv2-page .entry-location{font-size:11pt;font-style:italic}.cv2-page .entry-subheader{display:flex;justify-content:space-between;align-items:baseline;margin-top:2pt}.cv2-page .entry-role{font-style:italic;font-size:11pt}.cv2-page .entry-date{font-style:italic;font-size:11pt}.cv2-page .bullets{margin-top:4pt;margin-left:22.5pt}.cv2-page .bullet-item{font-size:11pt;margin-bottom:2pt;text-indent:-12pt}.cv2-page .bullet-item::before{content:'● ';font-size:8pt}.cv2-page a{color:#000000;text-decoration:none}@media print{.cv2-page{min-height:auto}}"
+}
