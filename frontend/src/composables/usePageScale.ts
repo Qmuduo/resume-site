@@ -1,4 +1,4 @@
-import { computed, onBeforeUnmount, onMounted, ref, type Ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, ref, watch, type Ref } from 'vue'
 
 const MM_TO_PX = 96 / 25.4
 const PAGE_WIDTH_MM = 210
@@ -14,6 +14,7 @@ export function usePageScale(
   const scale = ref(1)
   const viewport = ref({ width: 0, height: 0 })
   let observer: ResizeObserver | null = null
+  let attached = false
 
   function update() {
     const stage = stageRef.value
@@ -28,15 +29,30 @@ export function usePageScale(
     }
   }
 
-  onMounted(() => {
-    update()
+  function attachObserver() {
+    if (attached) return
+    const stage = stageRef.value
+    const content = contentRef.value
+    if (!stage || !content) return
+    attached = true
     observer = new ResizeObserver(update)
-    if (stageRef.value) observer.observe(stageRef.value)
-    if (contentRef.value) observer.observe(contentRef.value)
+    observer.observe(stage)
+    observer.observe(content)
+  }
+
+  // 预览/编辑器里的目标元素是异步加载后才条件渲染的，
+  // 等 ref 变为可用时再挂载观察器并立即计算一次缩放。
+  watch([stageRef, contentRef], async () => {
+    if (stageRef.value && contentRef.value) {
+      attachObserver()
+      await nextTick()
+      update()
+    }
   })
 
   onBeforeUnmount(() => {
     observer?.disconnect()
+    attached = false
   })
 
   return {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watchEffect } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 
@@ -32,7 +32,9 @@ const selectedTemplate = computed(
 )
 
 const previewHtml = computed(() =>
-  selectedTemplate.value ? renderTemplate(selectedTemplate.value, form.value) : ''
+  selectedTemplate.value
+    ? renderTemplate(selectedTemplate.value, form.value, { resumeTitle: title.value })
+    : ''
 )
 
 const previewCss = computed(() => sanitizeCss(selectedTemplate.value?.css ?? ''))
@@ -41,10 +43,16 @@ watchEffect(syncPreviewStyle)
 
 onMounted(() => {
   previewStyleEl = document.createElement('style')
-  if (previewRef.value) {
-    previewRef.value.appendChild(previewStyleEl)
-  }
   syncPreviewStyle()
+})
+
+// 预览容器是异步加载后才渲染的，等它出现再把模板样式元素挂进去
+watch(previewRef, async (el) => {
+  if (el && previewStyleEl && !previewStyleEl.isConnected) {
+    el.appendChild(previewStyleEl)
+    await nextTick()
+    syncPreviewStyle()
+  }
 })
 
 onBeforeUnmount(() => {

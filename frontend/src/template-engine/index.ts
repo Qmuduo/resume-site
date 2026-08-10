@@ -1,5 +1,10 @@
 import type { ResumeTemplate, SchemaNode } from '@/types'
 
+/** 渲染上下文：目前只有一个保留变量 resumeTitle（简历标题，属于元数据，不放进简历 data） */
+export interface RenderContext {
+  resumeTitle?: string
+}
+
 /**
  * 受控模板渲染引擎。
  *
@@ -9,8 +14,16 @@ import type { ResumeTemplate, SchemaNode } from '@/types'
  * 3. 最终 HTML 经 sanitizeHtml 消毒后才会被 v-html 渲染，不允许执行任意 JS。
  */
 
-export function renderTemplate(template: ResumeTemplate, data: Record<string, unknown>): string {
-  const rendered = renderSegment(template.html, data, data, [], template.schema)
+export function renderTemplate(
+  template: ResumeTemplate,
+  data: Record<string, unknown>,
+  context: RenderContext = {}
+): string {
+  const root: Record<string, unknown> = { ...data }
+  if (context.resumeTitle !== undefined) {
+    root.resumeTitle = context.resumeTitle
+  }
+  const rendered = renderSegment(template.html, root, root, [], template.schema)
   return sanitizeHtml(rendered)
 }
 
@@ -95,6 +108,10 @@ function findEachEnd(html: string, from: number): number {
 }
 
 function isPathAllowed(schema: SchemaNode, parts: string[]): boolean {
+  // 保留变量：简历标题来自渲染上下文，不参与 data 的 schema 白名单校验
+  if (parts.length === 1 && parts[0] === 'resumeTitle') {
+    return true
+  }
   let node: SchemaNode | undefined = schema
   for (const part of parts) {
     if (!node || typeof node !== 'object') {

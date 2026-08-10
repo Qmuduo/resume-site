@@ -1,41 +1,22 @@
-package com.resume.api.entity;
-
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+package com.resume.api.vo;
 
 import java.time.LocalDateTime;
 
 /**
- * 简历模板实体：JSON Schema + HTML/CSS 描述。
+ * 模板视图对象：schema_json 已解析为对象返回。
  */
-@TableName("template")
-public class Template {
+public class TemplateVO {
 
-    @TableId(type = IdType.ASSIGN_ID)
     private Long id;
-
-    /** 创建者用户 ID；NULL 表示系统内置模板 */
     private Long userId;
-
     private String code;
-
     private String name;
-
     private String description;
-
-    /** 简历数据 JSON Schema */
-    private String schemaJson;
-
+    private Object schema;
     private String html;
-
     private String css;
-
     private Integer builtin;
-
     private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
 
     public Long getId() {
         return id;
@@ -77,12 +58,12 @@ public class Template {
         this.description = description;
     }
 
-    public String getSchemaJson() {
-        return schemaJson;
+    public Object getSchema() {
+        return schema;
     }
 
-    public void setSchemaJson(String schemaJson) {
-        this.schemaJson = schemaJson;
+    public void setSchema(Object schema) {
+        this.schema = schema;
     }
 
     public String getHtml() {
@@ -115,13 +96,5 @@ public class Template {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

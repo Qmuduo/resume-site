@@ -26,7 +26,9 @@ const { viewportStyle, scalerStyle } = usePageScale(stageRef, contentRef)
 
 const previewHtml = computed(() => {
   if (!resume.value || !template.value) return ''
-  return renderTemplate(template.value, parseData(resume.value.data))
+  return renderTemplate(template.value, parseData(resume.value.data), {
+    resumeTitle: resume.value.title
+  })
 })
 
 onMounted(async () => {

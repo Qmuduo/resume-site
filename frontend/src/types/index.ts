@@ -14,12 +14,18 @@ export interface SchemaNode {
 
 /** 与后端内置模板 JSON 对齐的模板类型（字段为 docs/template-schema.json 白名单） */
 export interface ResumeTemplate {
+  /** 数据库主键（字符串，避免精度丢失）；内置模板在启动时种子进库后也有该值 */
+  id?: string
   code: string
   name: string
   description: string
   schema: SchemaNode
   html: string
   css: string
+  /** 1=内置模板（系统种子，不可修改/删除），0=用户自定义 */
+  builtin?: number
+  /** 创建者；null 表示系统内置 */
+  userId?: string | null
 }
 
 /**

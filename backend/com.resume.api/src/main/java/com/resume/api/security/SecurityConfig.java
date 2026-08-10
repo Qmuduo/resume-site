@@ -46,8 +46,8 @@ public class SecurityConfig {
                                 "/api/v1/auth/login",
                                 "/api/v1/auth/register",
                                 "/api/v1/auth/refresh",
-                                "/api/templates/**",
                                 "/error").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/templates/**").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().permitAll())

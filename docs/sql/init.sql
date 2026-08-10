@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS resume (
 
 CREATE TABLE IF NOT EXISTS template (
     id          BIGINT       NOT NULL COMMENT '主键',
+    user_id     BIGINT       NULL COMMENT '创建者（NULL=系统内置）',
     code        VARCHAR(64)  NOT NULL COMMENT '模板编码',
     name        VARCHAR(64)  NOT NULL COMMENT '模板名称',
     description VARCHAR(512) NULL COMMENT '模板描述',
