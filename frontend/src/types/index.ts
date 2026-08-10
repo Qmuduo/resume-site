@@ -22,6 +22,10 @@ export interface ResumeTemplate {
   code: string
   name: string
   description: string
+  /** 模板分类（如：金融/咨询/互联网技术） */
+  category?: string | null
+  /** 模板标签 */
+  tags?: string[] | null
   schema?: SchemaNode
   html: string
   css: string

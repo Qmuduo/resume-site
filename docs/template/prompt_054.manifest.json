@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_054",
-  "name": "张明远 · 房地产招商高级经理简历",
+  "name": "辛弃疾 · 房地产招商高级经理简历",
   "sourceFile": "prompt_054.html",
   "renderMode": "static",
   "fields": [
@@ -146,7 +146,7 @@
     }
   ],
   "sampleData": {
-    "name": "张明远",
+    "name": "辛弃疾",
     "title": "| 高级招商经理",
     "phone": "(86) 138-1025-7789",
     "email": "✉️ mingyuan.zhang@realestate.cn",

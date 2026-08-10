@@ -12,6 +12,10 @@ public class TemplateVO {
     private String code;
     private String name;
     private String description;
+    /** 模板分类（如：金融/咨询/互联网技术） */
+    private String category;
+    /** 模板标签（字符串数组，来自 template.tags JSON） */
+    private Object tags;
     private Object schema;
     private String html;
     private String css;
@@ -58,6 +62,22 @@ public class TemplateVO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Object getTags() {
+        return tags;
+    }
+
+    public void setTags(Object tags) {
+        this.tags = tags;
     }
 
     public Object getSchema() {

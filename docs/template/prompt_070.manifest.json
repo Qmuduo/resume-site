@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_070",
-  "name": "陈亦凡 · 高级UI/UX设计主管简历",
+  "name": "李商隐 · 高级UI/UX设计主管简历",
   "sourceFile": "prompt_070.html",
   "renderMode": "static",
   "fields": [
@@ -126,7 +126,7 @@
     }
   ],
   "sampleData": {
-    "name": "陈亦凡",
+    "name": "李商隐",
     "phone": "+86 138 5124 6970",
     "email": "✉️ yifan.chen@design.studio",
     "socials": [],

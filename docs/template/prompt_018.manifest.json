@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_018",
-  "name": "陈远山 · 管理咨询总监",
+  "name": "辛弃疾 · 管理咨询总监",
   "sourceFile": "prompt_018.html",
   "renderMode": "static",
   "fields": [
@@ -126,7 +126,7 @@
     }
   ],
   "sampleData": {
-    "name": "陈远山",
+    "name": "辛弃疾",
     "phone": "+86 138 1024 5678",
     "email": "chen.yuanshan@consulting.com",
     "socials": [

@@ -12,9 +12,11 @@ const activeCategory = ref('')
 
 const chips = [
   { label: '全部', value: '' },
-  { label: '现代', value: 'modern' },
-  { label: '经典', value: 'classic' },
-  { label: '极简', value: 'minimal' }
+  { label: '金融', value: '金融' },
+  { label: '互联网技术', value: '互联网技术' },
+  { label: '设计创意', value: '设计创意' },
+  { label: '咨询', value: '咨询' },
+  { label: '通用商务', value: '通用商务' }
 ]
 
 function goMarket() {

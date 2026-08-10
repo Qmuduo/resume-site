@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_09",
-  "name": "林亦凡 · 后端开发工程师简历",
+  "name": "屈原 · 后端开发工程师简历",
   "sourceFile": "prompt_09.html",
   "renderMode": "static",
   "fields": [
@@ -120,7 +120,7 @@
     }
   ],
   "sampleData": {
-    "name": "林亦凡",
+    "name": "屈原",
     "email": "📧 yifan.lin@dev.me",
     "phone": "+86 139 5028 7614",
     "socials": [

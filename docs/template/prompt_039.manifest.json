@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_039",
-  "name": "张振华 · 农业企业总经理",
+  "name": "陶渊明 · 农业企业总经理",
   "sourceFile": "prompt_039.html",
   "renderMode": "static",
   "fields": [
@@ -147,7 +147,7 @@
     }
   ],
   "sampleData": {
-    "name": "张振华",
+    "name": "陶渊明",
     "title": "| 总经理",
     "phone": "(010) 6832-7592",
     "email": "✉️ zhang.zhenhua@agripro.cn",

@@ -126,6 +126,128 @@
     }
   ],
   "mappings": [],
-  "sampleData": {},
+  "sampleData": {
+    "name": "苏轼",
+    "title": "插画师 & 艺术指导",
+    "phone": "+86 139 5027 6814",
+    "email": "qing.lin@artstudio.cn",
+    "location": "上海 / 远程",
+    "linkedin": "",
+    "website": "qinglin-illustration.com",
+    "summary": "拥有8年经验的插画师与视觉叙事者，擅长将手绘质感与数字媒介融合。曾任多家独立杂志艺术指导，主导品牌视觉重塑项目，追求留白中的情绪张力，以有机线条构建现代叙事。",
+    "experiences": [
+      {
+        "company": "云雀文化",
+        "role": "艺术指导 / 插画总监",
+        "date": "2020 – 至今",
+        "location": "上海",
+        "bullets": [
+          "主导《栖地》独立杂志全系列视觉风格，手绘插画覆盖率达70%，发行量提升45%。",
+          "管理4人插画团队，为品牌客户（包括例外、素然）提供艺术方向，项目续约率超90%。",
+          "建立手绘素材库与数字笔刷系统，将传统水墨纹理融入商业插画，获得2023年Hiii Illustration评审奖。"
+        ]
+      },
+      {
+        "company": "之间设计",
+        "role": "高级插画师",
+        "date": "2017 – 2020",
+        "location": "杭州",
+        "bullets": [
+          "为“木墨”、“失物招领”等家居品牌创作系列叙事插画，应用于产品包装与展览视觉。",
+          "独立完成“城市的诗”绘本项目，融合拼贴与淡彩，入选博洛尼亚插画展长名单。",
+          "与文案团队协作，通过视觉草图推动创意概念，提案通过率提高30%。"
+        ]
+      },
+      {
+        "company": "自由插画师",
+        "role": "合作艺术家",
+        "date": "2015 – 2017",
+        "location": "远程",
+        "bullets": [
+          "为多家独立出版物及品牌提供编辑插画，客户包括《生活月刊》、单向空间等。",
+          "发展个人手绘风格，以炭笔与数字上色结合，作品被多个线上艺术平台收录。"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "中国美术学院",
+        "degree": "插画与漫画 本科",
+        "date": "2011 – 2015",
+        "location": "杭州"
+      }
+    ],
+    "skills": [
+      {
+        "category": "媒介",
+        "items": [
+          "手绘",
+          "数字插画",
+          "水墨"
+        ]
+      },
+      {
+        "category": "风格",
+        "items": [
+          "留白叙事",
+          "有机线条",
+          "拼贴"
+        ]
+      },
+      {
+        "category": "软件",
+        "items": [
+          "Procreate",
+          "Photoshop",
+          "Fresco"
+        ]
+      },
+      {
+        "category": "艺术指导",
+        "items": [
+          "概念开发",
+          "色彩脚本"
+        ]
+      }
+    ],
+    "tags": [
+      "插画",
+      "手绘",
+      "艺术指导",
+      "留白"
+    ],
+    "projects": [
+      {
+        "projectName": "《栖地 Vol.5》",
+        "projectRole": "艺术指导/封面插画",
+        "bullets": [
+          "独立杂志全系列视觉风格，手绘插画覆盖率70%。"
+        ]
+      },
+      {
+        "projectName": "《慢漫》绘本",
+        "projectRole": "作者",
+        "bullets": [
+          "融合拼贴与淡彩的绘本项目。"
+        ]
+      }
+    ],
+    "awards": [
+      {
+        "awardName": "2023 Hiii Illustration 评审奖",
+        "awardDate": "2023"
+      },
+      {
+        "awardName": "3x3 Illustration 优秀奖",
+        "awardDate": "2022"
+      }
+    ],
+    "languages": [
+      "中文（母语）",
+      "英语（专业）"
+    ],
+    "certifications": [],
+    "interests": "展览与艺术书展 · 拼贴实验"
+  },
   "pendingManual": []
 }

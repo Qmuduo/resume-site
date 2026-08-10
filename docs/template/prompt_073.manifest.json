@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_073",
-  "name": "林语·插画师简历 | 手绘留白风格",
+  "name": "李清照·插画师简历 | 手绘留白风格",
   "sourceFile": "prompt_073.html",
   "renderMode": "static",
   "fields": [
@@ -126,7 +126,7 @@
     }
   ],
   "sampleData": {
-    "name": "林语",
+    "name": "李清照",
     "title": "插画师 · 视觉叙事",
     "phone": "✆ +86 139 5027 6314",
     "email": "✉ yu.lin@creativemail.com",

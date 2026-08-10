@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_044",
-  "name": "林清怡 · 新媒体运营简历",
+  "name": "苏轼 · 新媒体运营简历",
   "sourceFile": "prompt_044.html",
   "renderMode": "static",
   "fields": [
@@ -146,7 +146,7 @@
     }
   ],
   "sampleData": {
-    "name": "林清怡",
+    "name": "苏轼",
     "title": "新媒体运营 · 内容策划",
     "email": "✉ qingyi.lin@digital.cn",
     "phone": "(86) 139-5027-6814",

@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_072",
-  "name": "视觉设计师简历 · 张知逸",
+  "name": "视觉设计师简历 · 辛弃疾",
   "sourceFile": "prompt_072.html",
   "renderMode": "static",
   "fields": [
@@ -147,7 +147,7 @@
     }
   ],
   "sampleData": {
-    "name": "张知逸",
+    "name": "辛弃疾",
     "title": "视觉设计师 3年经验",
     "email": "📧 zhiyi.zhang@design.me",
     "phone": "+86 138 8210 4572",

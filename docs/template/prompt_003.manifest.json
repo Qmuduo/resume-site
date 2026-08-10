@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_003",
-  "name": "张维明 · 商业银行对公客户经理 · 简历",
+  "name": "李白 · 商业银行对公客户经理 · 简历",
   "sourceFile": "prompt_003.html",
   "renderMode": "static",
   "fields": [
@@ -160,7 +160,7 @@
     }
   ],
   "sampleData": {
-    "name": "张维明",
+    "name": "李白",
     "title": "商业银行对公客户经理 · 中级经理",
     "phone": "138-2157-8932",
     "email": "✉️ weiming.zhang@finmail.com",

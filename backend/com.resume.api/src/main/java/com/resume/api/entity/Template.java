@@ -24,6 +24,12 @@ public class Template {
 
     private String description;
 
+    /** 模板分类（如：金融/咨询/互联网技术） */
+    private String category;
+
+    /** 模板标签（JSON 字符串数组，如 ["投行","商务深蓝"]） */
+    private String tags;
+
     /** 简历数据 JSON Schema */
     private String schemaJson;
 
@@ -75,6 +81,22 @@ public class Template {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 
     public String getSchemaJson() {

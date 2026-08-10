@@ -31,6 +31,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -48,11 +49,15 @@ public class TemplateService {
     private final TemplateMapper templateMapper;
     private final ObjectMapper objectMapper;
     private final Resource[] builtinTemplateResources;
+    private final Resource marketCatalogResource;
     private final TemplateConfigService templateConfigService;
     private final String manifestDir;
 
     private static final Pattern BODY_PATTERN = Pattern.compile("(?is)<body[^>]*>(.*)</body>");
     private static final Pattern STYLE_PATTERN = Pattern.compile("(?is)<style[^>]*>(.*?)</style>");
+
+    /** 已下架的内置模板编码：不再从资源文件种子，并在启动时从库中清除 builtin 记录 */
+    private static final Set<String> RETIRED_BUILTIN_CODES = Set.of("classic", "minimal", "modern");
 
     /** 全部模板快照缓存；写操作后置空重建 */
     private volatile List<TemplateVO> cache;
@@ -60,11 +65,13 @@ public class TemplateService {
     public TemplateService(TemplateMapper templateMapper,
                            ObjectMapper objectMapper,
                            @Value("classpath*:templates/template-*.json") Resource[] builtinTemplateResources,
+                           @Value("classpath:template-market-catalog.json") Resource marketCatalogResource,
                            TemplateConfigService templateConfigService,
                            @Value("${resume.manifest-dir:../docs/template}") String manifestDir) {
         this.templateMapper = templateMapper;
         this.objectMapper = objectMapper;
         this.builtinTemplateResources = builtinTemplateResources;
+        this.marketCatalogResource = marketCatalogResource;
         this.templateConfigService = templateConfigService;
         this.manifestDir = manifestDir;
     }
@@ -96,8 +103,86 @@ public class TemplateService {
             }
         }
         seedLegacyHtmlTemplates();
+        applyMarketCatalog();
+        // 最后统一清理已下架内置模板，避免过期 classpath 资源（如旧构建产物）再次种子
+        purgeRetiredBuiltinTemplates();
         templateConfigService.syncTemplateIds();
         invalidateCache();
+    }
+
+    /**
+     * 市场目录：为模板补充规范中文名、分类与标签（来源 template-market-catalog.json）。
+     * 可重复执行，只更新目录中存在的模板，不影响用户自定义模板。
+     */
+    private void applyMarketCatalog() {
+        Map<String, MarketCatalogEntry> catalog = loadMarketCatalog();
+        if (catalog.isEmpty()) {
+            return;
+        }
+        int updated = 0;
+        for (Map.Entry<String, MarketCatalogEntry> entry : catalog.entrySet()) {
+            Template template = templateMapper.selectOne(
+                    new LambdaQueryWrapper<Template>().eq(Template::getCode, entry.getKey()).last("LIMIT 1"));
+            if (template == null) {
+                continue;
+            }
+            MarketCatalogEntry meta = entry.getValue();
+            boolean changed = false;
+            if (meta.getName() != null && !meta.getName().isBlank() && !meta.getName().equals(template.getName())) {
+                template.setName(meta.getName().trim());
+                changed = true;
+            }
+            if (meta.getCategory() != null && !meta.getCategory().equals(template.getCategory())) {
+                template.setCategory(meta.getCategory());
+                changed = true;
+            }
+            if (meta.getTags() != null) {
+                String tagsJson = jsonString(meta.getTags());
+                if (tagsJson != null && !tagsJson.equals(template.getTags())) {
+                    template.setTags(tagsJson);
+                    changed = true;
+                }
+            }
+            if (changed) {
+                templateMapper.updateById(template);
+                updated++;
+            }
+        }
+        if (updated > 0) {
+            log.info("applied market catalog to {} templates", updated);
+        }
+    }
+
+    private Map<String, MarketCatalogEntry> loadMarketCatalog() {
+        try (InputStream in = marketCatalogResource.getInputStream()) {
+            return objectMapper.readValue(in, new TypeReference<Map<String, MarketCatalogEntry>>() {
+            });
+        } catch (IOException e) {
+            log.warn("market catalog resource missing, skip: {}", e.getMessage());
+            return Map.of();
+        }
+    }
+
+    /**
+     * 清理已下架内置模板：仅删除 builtin=1 的记录（用户自定义的同名模板不受影响），
+     * 并同步清理 template_config；有存量简历引用时保留引用，由前端提示重新选择模板。
+     */
+    private void purgeRetiredBuiltinTemplates() {
+        for (String code : RETIRED_BUILTIN_CODES) {
+            List<Template> existing = templateMapper.selectList(
+                    new LambdaQueryWrapper<Template>().eq(Template::getCode, code));
+            boolean removed = false;
+            for (Template template : existing) {
+                if (Integer.valueOf(1).equals(template.getBuiltin())) {
+                    templateMapper.deleteById(template.getId());
+                    removed = true;
+                    log.info("removed retired builtin template from db: code={}, id={}", code, template.getId());
+                }
+            }
+            if (removed) {
+                templateConfigService.deleteConfigByCode(code);
+            }
+        }
     }
 
     /**
@@ -357,6 +442,8 @@ public class TemplateService {
         vo.setCode(template.getCode());
         vo.setName(template.getName());
         vo.setDescription(template.getDescription());
+        vo.setCategory(template.getCategory());
+        vo.setTags(parseTags(template.getTags()));
         vo.setSchema(parseSchema(template.getSchemaJson()));
         vo.setHtml(template.getHtml());
         vo.setCss(template.getCss());
@@ -364,6 +451,19 @@ public class TemplateService {
         vo.setManifest(templateConfigService.getManifestByCode(template.getCode()));
         vo.setCreatedAt(template.getCreatedAt());
         return vo;
+    }
+
+    private Object parseTags(String tagsJson) {
+        if (tagsJson == null || tagsJson.isBlank()) {
+            return null;
+        }
+        try {
+            return objectMapper.readValue(tagsJson, new TypeReference<List<String>>() {
+            });
+        } catch (IOException e) {
+            log.warn("template tags parse failed: {}", e.getMessage());
+            return null;
+        }
     }
 
     private Object parseSchema(String schemaJson) {
@@ -426,5 +526,37 @@ public class TemplateService {
         }
         String trimmed = value.trim();
         return trimmed.isEmpty() ? null : trimmed;
+    }
+
+    /** 市场目录条目：template-market-catalog.json 中单个模板的元信息 */
+    public static class MarketCatalogEntry {
+
+        private String name;
+        private String category;
+        private List<String> tags;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getCategory() {
+            return category;
+        }
+
+        public void setCategory(String category) {
+            this.category = category;
+        }
+
+        public List<String> getTags() {
+            return tags;
+        }
+
+        public void setTags(List<String> tags) {
+            this.tags = tags;
+        }
     }
 }

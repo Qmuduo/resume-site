@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_022",
-  "name": "陈启华 · 医院行政院长简历",
+  "name": "杜甫 · 医院行政院长简历",
   "sourceFile": "prompt_022.html",
   "renderMode": "static",
   "fields": [
@@ -146,7 +146,7 @@
     }
   ],
   "sampleData": {
-    "name": "陈启华",
+    "name": "杜甫",
     "title": "医院行政院长 · 医疗机构管理专家",
     "phone": "+86 139 5027 6814",
     "email": "✉️ qh.chen@healthadmin.cn",

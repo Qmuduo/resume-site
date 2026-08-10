@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_048",
-  "name": "张明远 · 商业分析师简历",
+  "name": "陶渊明 · 商业分析师简历",
   "sourceFile": "prompt_048.html",
   "renderMode": "static",
   "fields": [
@@ -167,7 +167,7 @@
     }
   ],
   "sampleData": {
-    "name": "张明远",
+    "name": "陶渊明",
     "title": "商业分析师 · 数据驱动决策",
     "phone": "(86) 138-0000-1234",
     "email": "✉️ mingyuan.zhang@analyst.cn",

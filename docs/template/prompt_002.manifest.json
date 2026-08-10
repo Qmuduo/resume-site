@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_002",
-  "name": "陈启明 · 副总裁 · PE/VC 投资简历",
+  "name": "陶渊明 · 副总裁 · PE/VC 投资简历",
   "sourceFile": "prompt_002.html",
   "renderMode": "static",
   "fields": [
@@ -160,7 +160,7 @@
     }
   ],
   "sampleData": {
-    "name": "陈启明",
+    "name": "陶渊明",
     "title": "副总裁 / 董事 · PE & VC 投资 8年经验",
     "phone": "+86 139 1028 5742",
     "email": "✉️ qiming.chen@pevc.com",

@@ -21,6 +21,7 @@ const router = useRouter()
 const resumeId = computed(() => (typeof route.params.id === 'string' ? route.params.id : ''))
 const resume = ref<ResumeVO | null>(null)
 const template = ref<ResumeTemplate | null>(null)
+const missingTemplateId = ref('')
 const commonData = ref<ResumeCommonData>(emptyCommonData())
 const extendedData = ref<ResumeExtendedData>({})
 const loading = ref(true)
@@ -86,12 +87,16 @@ async function load() {
     extendedData.value = normalizeExtended(res.extendedData)
 
     const templateId = res.currentTemplateId ?? res.templateCode ?? ''
-    const matched = templateId
-      ? (templates.find((tpl) => tpl.code === templateId) ?? null)
-      : null
-    template.value = matched ?? templates[0] ?? null
+    const matched = templateId ? (templates.find((tpl) => tpl.code === templateId) ?? null) : null
+    // 模板已下架（如 classic/minimal/modern）或不存在时：明确提示重新选择，不静默替换模板
+    missingTemplateId.value = templateId && !matched ? templateId : ''
+    template.value = matched ?? (templateId ? null : (templates[0] ?? null))
 
-    if (!matched && template.value) {
+    if (missingTemplateId.value) {
+      ElMessage.warning(
+        `该简历使用的模板「${missingTemplateId.value}」已下架或不存在，请重新选择模板（数据已保留）`
+      )
+    } else if (!matched && template.value) {
       ElMessage.warning(`该简历未保存模板信息，已自动使用「${template.value.name}」预览`)
     }
 
@@ -166,6 +171,14 @@ function saveAsPdf() {
     <div v-else-if="loadError" class="hint-empty">
       <p class="hint">{{ loadError }}</p>
       <el-button size="small" @click="router.push('/resumes')">返回列表</el-button>
+    </div>
+    <div v-else-if="missingTemplateId" class="hint-empty">
+      <p class="hint">
+        该简历使用的模板「{{ missingTemplateId }}」已下架或不存在，请重新选择模板。公共数据与模板专属数据已完整保留。
+      </p>
+      <el-button type="primary" size="small" @click="router.push(`/editor/${resumeId}`)">
+        重新选择模板
+      </el-button>
     </div>
     <div v-else-if="!template" class="hint-empty">
       <p class="hint">该简历未关联任何模板，暂时无法预览</p>

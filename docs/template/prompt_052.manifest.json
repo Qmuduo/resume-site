@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_052",
-  "name": "陈知远 · 留学顾问简历",
+  "name": "李商隐 · 留学顾问简历",
   "sourceFile": "prompt_052.html",
   "renderMode": "static",
   "fields": [
@@ -154,7 +154,7 @@
     }
   ],
   "sampleData": {
-    "name": "陈知远",
+    "name": "李商隐",
     "phone": "(86) 139-5027-6814",
     "email": "✉️ zhiyuan.chen@edupro.com",
     "location": "上海 · 中国",

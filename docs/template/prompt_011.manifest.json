@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_011",
-  "name": "张正阳 · 人力资源总监 HRBP",
+  "name": "陶渊明 · 人力资源总监 HRBP",
   "sourceFile": "prompt_011.html",
   "renderMode": "static",
   "fields": [
@@ -146,7 +146,7 @@
     }
   ],
   "sampleData": {
-    "name": "张正阳",
+    "name": "陶渊明",
     "title": "人力资源总监 / HRBP Head",
     "phone": "(86) 138-0000-1234",
     "email": "✉️ zhangzy@hrbp.pro",

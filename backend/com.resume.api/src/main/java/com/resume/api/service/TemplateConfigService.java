@@ -28,6 +28,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 模板配置服务：把模板 manifest 同步进 template_config 表，并提供缓存读取。
@@ -50,6 +51,9 @@ public class TemplateConfigService {
     private final String manifestDir;
     private final Resource[] classpathManifests;
 
+    /** 已下架的内置模板编码：启动种子时跳过并清理其 template_config 记录 */
+    private static final Set<String> RETIRED_BUILTIN_CODES = Set.of("classic", "minimal", "modern");
+
     /** 模板编码 -> manifest 缓存；写操作后失效重建 */
     private volatile Map<String, TemplateManifest> cache;
 
@@ -67,6 +71,7 @@ public class TemplateConfigService {
 
     @PostConstruct
     public void seed() {
+        purgeRetiredConfigs();
         int count = 0;
         List<Resource> sorted = Arrays.stream(classpathManifests)
                 .sorted(Comparator.comparing(r -> r.getFilename() == null ? "" : r.getFilename()))
@@ -74,6 +79,9 @@ public class TemplateConfigService {
         for (Resource resource : sorted) {
             try (InputStream in = resource.getInputStream()) {
                 TemplateManifest manifest = objectMapper.readValue(in, TemplateManifest.class);
+                if (manifest.getTemplateId() != null && RETIRED_BUILTIN_CODES.contains(manifest.getTemplateId())) {
+                    continue;
+                }
                 if (upsert(manifest)) {
                     count++;
                 }
@@ -96,6 +104,9 @@ public class TemplateConfigService {
                         if (manifest.getTemplateId() == null || manifest.getTemplateId().isBlank()) {
                             manifest.setTemplateId(stripSuffix(file.getFileName().toString(), ".manifest.json"));
                         }
+                        if (RETIRED_BUILTIN_CODES.contains(manifest.getTemplateId())) {
+                            continue;
+                        }
                         if (upsert(manifest)) {
                             count++;
                         }
@@ -110,6 +121,23 @@ public class TemplateConfigService {
 
         invalidateCache();
         log.info("seeded {} template manifests (dir={})", count, manifestDir);
+    }
+
+    /** 启动时清理已下架模板的 manifest 配置；可重复执行 */
+    private void purgeRetiredConfigs() {
+        for (String code : RETIRED_BUILTIN_CODES) {
+            deleteConfigByCode(code);
+        }
+    }
+
+    /** 按模板编码删除 template_config 记录（供内置模板下架清理使用） */
+    public void deleteConfigByCode(String code) {
+        int deleted = templateConfigMapper.delete(
+                new LambdaQueryWrapper<TemplateConfig>().eq(TemplateConfig::getTemplateCode, code));
+        if (deleted > 0) {
+            log.info("removed retired template config: code={}, rows={}", code, deleted);
+        }
+        invalidateCache();
     }
 
     /** 解析 manifest 目录：兼容不同启动目录（项目根/backend/模块目录） */

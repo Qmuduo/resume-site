@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_076",
-  "name": "林逸 · 室内设计师简历",
+  "name": "李白 · 室内设计师简历",
   "sourceFile": "prompt_076.html",
   "renderMode": "static",
   "fields": [
@@ -34,7 +34,7 @@
     }
   ],
   "sampleData": {
-    "name": "林逸",
+    "name": "李白",
     "title": "室内设计师 · 中级"
   },
   "pendingManual": []

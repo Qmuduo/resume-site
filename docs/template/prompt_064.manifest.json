@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_064",
-  "name": "林清悦 · 餐厅店长简历",
+  "name": "李清照 · 餐厅店长简历",
   "sourceFile": "prompt_064.html",
   "renderMode": "static",
   "fields": [
@@ -160,7 +160,7 @@
     }
   ],
   "sampleData": {
-    "name": "林清悦",
+    "name": "李清照",
     "title": "餐厅店长 · 营运经理",
     "phone": "(021) 3856-7924",
     "email": "✉️ qingyue.lin@foodiecareer.cn",

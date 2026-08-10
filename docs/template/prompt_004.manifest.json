@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_004",
-  "name": "张哲维 · 量化交易员简历",
+  "name": "杜甫 · 量化交易员简历",
   "sourceFile": "prompt_004.html",
   "renderMode": "static",
   "fields": [
@@ -161,7 +161,7 @@
     }
   ],
   "sampleData": {
-    "name": "张哲维",
+    "name": "杜甫",
     "title": "| 量化交易分析师",
     "phone": "+86 138 8250 3714",
     "email": "✉️ zhewei.zhang@quant.pro",
@@ -172,7 +172,7 @@
         "url": "🔗 linkedin.com/in/zhewei-q"
       }
     ],
-    "专业发展": "• 中信证券衍生品论坛嘉宾 (2025) • 量化投资协会核心成员 • GitHub开源量化项目Stars 230+ 张哲维 · 量化交易员 · 更新于2026年8月 · 可立即到岗",
+    "专业发展": "• 中信证券衍生品论坛嘉宾 (2025) • 量化投资协会核心成员 • GitHub开源量化项目Stars 230+ 杜甫 · 量化交易员 · 更新于2026年8月 · 可立即到岗",
     "skills": [
       {
         "name": "C++ (高频订单簿)",

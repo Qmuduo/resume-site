@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_063",
-  "name": "林悦 · 旅游策划师简历",
+  "name": "辛弃疾 · 旅游策划师简历",
   "sourceFile": "prompt_063.html",
   "renderMode": "static",
   "fields": [
@@ -132,7 +132,7 @@
     }
   ],
   "sampleData": {
-    "name": "林悦",
+    "name": "辛弃疾",
     "title": "· 旅游策划师",
     "email": "✉ yue.lin@travelcreate.com",
     "phone": "(86) 139-5027-6814",

@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_04",
-  "name": "林清·UI/UX设计师简历",
+  "name": "王维·UI/UX设计师简历",
   "sourceFile": "prompt_04.html",
   "renderMode": "static",
   "fields": [
@@ -160,7 +160,7 @@
     }
   ],
   "sampleData": {
-    "name": "林清",
+    "name": "王维",
     "title": "UI/UX 设计师 · 数字体验塑造者",
     "phone": "+86 139 5028 7614",
     "email": "✉️ lin.qing@ux.studio",

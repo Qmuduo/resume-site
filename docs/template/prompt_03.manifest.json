@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_03",
-  "name": "陈远舟 · 战略咨询总监简历",
+  "name": "白居易 · 战略咨询总监简历",
   "sourceFile": "prompt_03.html",
   "renderMode": "static",
   "fields": [
@@ -140,7 +140,7 @@
     }
   ],
   "sampleData": {
-    "name": "陈远舟",
+    "name": "白居易",
     "title": "｜ 战略咨询总监",
     "phone": "+86 138 1098 7654",
     "email": "yuanzhou.chen@stratex.com",

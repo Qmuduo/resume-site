@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_030",
-  "name": "张正言 · 工程项目经理简历",
+  "name": "李白 · 工程项目经理简历",
   "sourceFile": "prompt_030.html",
   "renderMode": "static",
   "fields": [
@@ -57,7 +57,7 @@
     }
   ],
   "sampleData": {
-    "name": "张正言",
+    "name": "李白",
     "skills": [
       {
         "name": "挣值管理(EVM)",

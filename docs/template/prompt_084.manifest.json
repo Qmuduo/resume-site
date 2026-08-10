@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_084",
-  "name": "林清怡 · 商品企划高级经理 · 简历",
+  "name": "陶渊明 · 商品企划高级经理 · 简历",
   "sourceFile": "prompt_084.html",
   "renderMode": "static",
   "fields": [
@@ -133,7 +133,7 @@
     }
   ],
   "sampleData": {
-    "name": "林清怡",
+    "name": "陶渊明",
     "title": "商品企划高级经理",
     "phone": "+86 139 5028 7614",
     "email": "qingyi.lin@trendforce.cn",

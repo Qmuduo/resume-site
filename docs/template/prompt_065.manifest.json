@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_065",
-  "name": "张振宇 · 零售区域经理简历",
+  "name": "屈原 · 零售区域经理简历",
   "sourceFile": "prompt_065.html",
   "renderMode": "static",
   "fields": [
@@ -146,7 +146,7 @@
     }
   ],
   "sampleData": {
-    "name": "张振宇",
+    "name": "屈原",
     "title": "| 华东区域经理",
     "phone": "(86) 139-8215-6037",
     "email": "✉️ zhenyu.zhang@retail.pro",

@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_057",
-  "name": "张明远 · 新能源项目经理简历",
+  "name": "陶渊明 · 新能源项目经理简历",
   "sourceFile": "prompt_057.html",
   "renderMode": "static",
   "fields": [
@@ -161,7 +161,7 @@
     }
   ],
   "sampleData": {
-    "name": "张明远",
+    "name": "陶渊明",
     "title": "新能源项目经理 · 光伏/储能方向",
     "phone": "+86 139 5027 3841",
     "email": "✉️ mingyuan.zhang@energypro.cn",

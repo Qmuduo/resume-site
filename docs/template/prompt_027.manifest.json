@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_027",
-  "name": "张振华 · 生产厂长简历",
+  "name": "辛弃疾 · 生产厂长简历",
   "sourceFile": "prompt_027.html",
   "renderMode": "static",
   "fields": [
@@ -147,7 +147,7 @@
     }
   ],
   "sampleData": {
-    "name": "张振华",
+    "name": "辛弃疾",
     "title": "生产厂长 · 运营管理专家",
     "phone": "(86) 138-2159-4827",
     "email": "✉️ zhenhua.zhang@manufacture.cn",

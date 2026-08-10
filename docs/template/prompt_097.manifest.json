@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_097",
-  "name": "张启明 · 量化开发工程师简历",
+  "name": "王维 · 量化开发工程师简历",
   "sourceFile": "prompt_097.html",
   "renderMode": "static",
   "fields": [
@@ -147,7 +147,7 @@
     }
   ],
   "sampleData": {
-    "name": "张启明",
+    "name": "王维",
     "title": "量化开发工程师 · C++/Python · 低延迟系统",
     "email": "📧 qiming.zhang@quant.dev",
     "phone": "+86 139 5027 6140",

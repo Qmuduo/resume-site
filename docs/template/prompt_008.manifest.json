@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_008",
-  "name": "张正源 · 财务总监简历",
+  "name": "苏轼 · 财务总监简历",
   "sourceFile": "prompt_008.html",
   "renderMode": "static",
   "fields": [
@@ -147,7 +147,7 @@
     }
   ],
   "sampleData": {
-    "name": "张正源",
+    "name": "苏轼",
     "title": "| 财务总监",
     "phone": "(86) 138-1025-7789",
     "email": "✉️ zzyuan.cfo@finance.cn",

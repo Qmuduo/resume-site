@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_036",
-  "name": "林逸凡 · 翻译口译简历",
+  "name": "辛弃疾 · 翻译口译简历",
   "sourceFile": "prompt_036.html",
   "renderMode": "static",
   "fields": [
@@ -140,7 +140,7 @@
     }
   ],
   "sampleData": {
-    "name": "林逸凡",
+    "name": "辛弃疾",
     "title": "| 高级翻译 (口译组)",
     "phone": "+86 139 5028 7614",
     "email": "✉️ yifan.lin@transpro.cn",

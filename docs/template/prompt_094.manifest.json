@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_094",
-  "name": "林一·测试开发工程师简历",
+  "name": "李白·测试开发工程师简历",
   "sourceFile": "prompt_094.html",
   "renderMode": "static",
   "fields": [
@@ -90,7 +90,7 @@
     }
   ],
   "sampleData": {
-    "name": "林一",
+    "name": "李白",
     "title": "测试开发工程师 SDET",
     "email": "📧 lin.yi.dev@example.com",
     "phone": "+86 (010) 6723-8845",

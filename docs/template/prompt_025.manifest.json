@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_025",
-  "name": "陈道远 · 高校教师/副教授 简历",
+  "name": "李商隐 · 高校教师/副教授 简历",
   "sourceFile": "prompt_025.html",
   "renderMode": "static",
   "fields": [
@@ -127,7 +127,7 @@
     }
   ],
   "sampleData": {
-    "name": "陈道远",
+    "name": "李商隐",
     "email": "dao.yuan.chen@university.edu",
     "phone": "+86 139 5027 6814",
     "socials": [

@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_043",
-  "name": "张思睿 · 数字营销高级经理 · 简历",
+  "name": "李商隐 · 数字营销高级经理 · 简历",
   "sourceFile": "prompt_043.html",
   "renderMode": "static",
   "fields": [
@@ -90,7 +90,7 @@
     }
   ],
   "sampleData": {
-    "name": "张思睿",
+    "name": "李商隐",
     "title": "| 数字营销高级经理",
     "phone": "(86) 138-0000-1234",
     "email": "✉️ siray.zhang@digitalleap.cn",

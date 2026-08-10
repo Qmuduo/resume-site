@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_07",
-  "name": "林叙 · 创意总监 · 室内建筑设计简历",
+  "name": "辛弃疾 · 创意总监 · 室内建筑设计简历",
   "sourceFile": "prompt_07.html",
   "renderMode": "static",
   "fields": [
@@ -133,7 +133,7 @@
     }
   ],
   "sampleData": {
-    "name": "林叙",
+    "name": "辛弃疾",
     "title": "创意总监 · 空间设计策略",
     "phone": "✆ +86 138 1024 6789",
     "email": "✉ lin.xu@spacedesign.cn",

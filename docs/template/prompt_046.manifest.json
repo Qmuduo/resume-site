@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_046",
-  "name": "张明远 · 电商运营经理简历",
+  "name": "李清照 · 电商运营经理简历",
   "sourceFile": "prompt_046.html",
   "renderMode": "static",
   "fields": [
@@ -153,7 +153,7 @@
     }
   ],
   "sampleData": {
-    "name": "张明远",
+    "name": "李清照",
     "title": "| 电商运营经理",
     "phone": "(86) 138-5253-7890",
     "email": "✉️ mingyuan.zhang@电商运营.cn",

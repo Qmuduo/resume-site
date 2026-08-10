@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_006",
-  "name": "陈启明 · 财富管理总监 · 简历",
+  "name": "王维 · 财富管理总监 · 简历",
   "sourceFile": "prompt_006.html",
   "renderMode": "static",
   "fields": [
@@ -167,7 +167,7 @@
     }
   ],
   "sampleData": {
-    "name": "陈启明",
+    "name": "王维",
     "title": "| 执行董事 · 财富管理总监",
     "phone": "(86) 138-1025-7788",
     "email": "✉️ qiming.chen@wealthpro.com",

@@ -44,10 +44,23 @@ const previewHtml = computed(() => {
   if (manifest?.renderMode === 'static') {
     return renderStaticTemplate(tpl, store.commonData, store.extendedData)
   }
-  return renderTemplate(tpl, buildViewModel(store.commonData, store.extendedData, manifest), {
+  const viewModel = buildViewModel(store.commonData, store.extendedData, manifest)
+  // 新建且未填写任何数据时，用 manifest.sampleData 展示完整演示内容；一旦有数据即切换为真实数据
+  const hasUserData =
+    store.id !== null || Object.values(viewModel).some((value) => !isEmptyValue(value))
+  const data = hasUserData ? viewModel : (manifest?.sampleData ?? viewModel)
+  return renderTemplate(tpl, data as Record<string, unknown>, {
     resumeTitle: store.title
   })
 })
+
+function isEmptyValue(value: unknown): boolean {
+  if (value === undefined || value === null) return true
+  if (typeof value === 'string') return value.trim() === ''
+  if (Array.isArray(value)) return value.length === 0
+  if (typeof value === 'object') return Object.keys(value as object).length === 0
+  return false
+}
 
 const previewCss = computed(() => sanitizeCss(selectedTemplate.value?.css ?? ''))
 

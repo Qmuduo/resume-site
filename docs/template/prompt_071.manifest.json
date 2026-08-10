@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_071",
-  "name": "林悦 · 品牌设计师简历",
+  "name": "苏轼 · 品牌设计师简历",
   "sourceFile": "prompt_071.html",
   "renderMode": "static",
   "fields": [
@@ -103,7 +103,7 @@
     }
   ],
   "sampleData": {
-    "name": "林悦",
+    "name": "苏轼",
     "title": "品牌设计师",
     "email": "✉️ lin.yue@brand.studio",
     "phone": "+86 (010) 6723-8891",

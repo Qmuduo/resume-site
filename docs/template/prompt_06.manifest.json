@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_06",
-  "name": "简历 · 林清音 | 插画师与艺术指导",
+  "name": "简历 · 苏轼 | 插画师与艺术指导",
   "sourceFile": "prompt_06.html",
   "renderMode": "static",
   "fields": [
@@ -133,7 +133,7 @@
     }
   ],
   "sampleData": {
-    "name": "林清音",
+    "name": "苏轼",
     "title": "插画师 & 艺术指导",
     "phone": "✆ +86 139 5027 6814",
     "email": "✉ qing.lin@artstudio.cn",

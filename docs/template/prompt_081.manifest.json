@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_081",
-  "name": "林一舟 · 摄影师简历",
+  "name": "辛弃疾 · 摄影师简历",
   "sourceFile": "prompt_081.html",
   "renderMode": "static",
   "fields": [
@@ -113,7 +113,7 @@
     }
   ],
   "sampleData": {
-    "name": "林一舟",
+    "name": "辛弃疾",
     "phone": "☎ +86 139 5027 6841",
     "email": "✉ lin.yizhou@imagecraft.cn",
     "location": "上海 / 杭州",

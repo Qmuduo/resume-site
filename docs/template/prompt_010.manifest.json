@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_010",
-  "name": "张思睿 · 招聘专员简历",
+  "name": "屈原 · 招聘专员简历",
   "sourceFile": "prompt_010.html",
   "renderMode": "static",
   "fields": [
@@ -139,7 +139,7 @@
     }
   ],
   "sampleData": {
-    "name": "张思睿",
+    "name": "屈原",
     "title": "招聘专员 · 人力资源",
     "phone": "☎ (086) 139-1234-5678",
     "email": "✉ siray.zhang@hrcareer.cn",

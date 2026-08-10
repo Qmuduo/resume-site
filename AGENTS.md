@@ -107,8 +107,27 @@ node scripts/validate-template.js docs/template/prompt_101.html
 node scripts/validate-template.js --report
 # 重新生成内置占位符模板 manifest
 node scripts/generate-builtin-manifests.js
+# 为内置占位符模板（cv2/p03–p13）生成 sampleData（数据源 scripts/data/placeholder-sample-data.json）
+node scripts/build-placeholder-sample-data.js
+# 生成模板市场目录（中文名/分类/标签/主色，输出 backend resources/template-market-catalog.json）
+node scripts/build-market-catalog.js
+# 演示数据姓名随机化（写入 HTML/manifest/占位符演示数据源，并重新生成占位符 manifest）
+node scripts/randomize-demo-names.js
 ```
 
 ### 数据迁移
 - 结构变更：`docs/sql/schema-v2.sql`（幂等）。
 - 旧 `resume.data` 拆分：`docs/sql/migrate-resume-v2.sql`（必须先备份 `resume_backup_pre_v2`，迁移后跑脚本内校验 SQL，全部通过再删旧列）。
+- 模板市场 v3（分类/标签列 + 下架模板清理）：`docs/sql/template-market-v3.sql`（幂等，全新库与存量库均可执行）。
+
+### 模板市场与分类标签（v3）
+- `template` 表新增 `category VARCHAR(64)` 与 `tags JSON`（标签为字符串数组）。
+- 市场中文名/分类/标签/主色以 `backend/com.resume.api/src/main/resources/template-market-catalog.json` 为准，
+  后端启动种子时自动写入 template 表；前端市场页从模板 CSS 提取主色/字体/版式渲染风格化卡片，并按分类/标签筛选。
+- 已下架内置模板：`classic` / `minimal` / `modern`（编码见各服务 `RETIRED_BUILTIN_CODES`）。
+  启动种子后统一清理 builtin 记录与 template_config；存量简历仍指向下架模板时保留引用，
+  前端预览/编辑给出明确提示"模板已下架，请重新选择模板"，数据不丢失。
+- 内置占位符模板（cv2/p03–p13）的 `manifest.sampleData` 来自对应静态 HTML 的示例数据；
+  市场预览与编辑器空数据预览直接可见完整演示内容。
+- 演示数据姓名一律取自名单：屈原、陶渊明、李白、杜甫、白居易、王维、李商隐、苏轼、辛弃疾、李清照
+  （同一模板内保持一致；`scripts/randomize-demo-names.js` 负责批量替换）。

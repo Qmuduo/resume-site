@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_029",
-  "name": "张逸凡 · 供应链高级经理简历",
+  "name": "屈原 · 供应链高级经理简历",
   "sourceFile": "prompt_029.html",
   "renderMode": "static",
   "fields": [
@@ -90,7 +90,7 @@
     }
   ],
   "sampleData": {
-    "name": "张逸凡",
+    "name": "屈原",
     "title": "| 供应链高级经理",
     "phone": "(86) 138-0013-8000",
     "email": "✉️ yifan.zhang@supplypro.com",

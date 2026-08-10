@@ -17,22 +17,35 @@ const templates = ref<ResumeTemplate[]>([])
 const loading = ref(false)
 const keyword = ref('')
 const category = ref('')
+const selectedTags = ref<string[]>([])
 
 const previewVisible = ref(false)
 const previewTpl = ref<ResumeTemplate | null>(null)
 const previewRef = ref<HTMLElement | null>(null)
 let previewStyleEl: HTMLStyleElement | null = null
 
-const categories = [
-  { label: '全部', value: '' },
-  { label: '现代', value: 'modern' },
-  { label: '经典', value: 'classic' },
-  { label: '极简', value: 'minimal' }
-]
+const NEUTRAL_COLORS = new Set([
+  '#ffffff', '#fff', '#000000', '#000', '#f7f8fa', '#f5f7fa', '#fafafa', '#f8f9fa',
+  '#eef2f5', '#eef2f6', '#f2f4f6', '#e5e7eb', '#f5f5f5', '#f9fafb', '#f3f4f6',
+  '#e2e8f0', '#f1f5f9', '#f8fafc', '#f6f7f9'
+])
+
+const CATEGORY_PALETTES: Record<string, [string, string]> = {
+  金融: ['#1e3a5f', '#c9a227'],
+  咨询: ['#1a3c34', '#b8864a'],
+  互联网技术: ['#0f172a', '#334155'],
+  设计创意: ['#7c3aed', '#f59e0b'],
+  学术科研: ['#0e7490', '#164e63'],
+  市场营销: ['#be123c', '#f97316'],
+  销售服务: ['#b45309', '#fcd34d'],
+  政府行政: ['#334155', '#64748b'],
+  法律合规: ['#1e293b', '#94a3b8'],
+  通用商务: ['#4f46e5', '#818cf8']
+}
 
 const KEY_SAMPLES: Record<string, string> = {
-  name: '张三',
-  email: 'zhangsan@example.com',
+  name: '李白',
+  email: 'libai@example.com',
   phone: '138-0000-0000',
   summary: '热爱技术的前端工程师，3 年 Vue 与全栈开发经验。',
   company: '示例科技',
@@ -50,15 +63,13 @@ const TYPE_SAMPLES: Record<string, string> = {
   boolean: 'true'
 }
 
-const COVER_GRADIENTS: Record<string, string> = {
-  modern: 'linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)',
-  classic: 'linear-gradient(135deg, #0F172A 0%, #334155 100%)',
-  minimal: 'linear-gradient(135deg, #E5E7EB 0%, #D1D5DB 100%)'
-}
-
 onMounted(async () => {
   keyword.value = typeof route.query.search === 'string' ? route.query.search : ''
   category.value = typeof route.query.category === 'string' ? route.query.category : ''
+  const tagsQuery = route.query.tags
+  if (typeof tagsQuery === 'string' && tagsQuery) {
+    selectedTags.value = tagsQuery.split(',').filter(Boolean)
+  }
   await loadTemplates()
 })
 
@@ -73,13 +84,38 @@ async function loadTemplates() {
   }
 }
 
+const categories = computed(() => {
+  const counts = new Map<string, number>()
+  for (const tpl of templates.value) {
+    const cat = tpl.category?.trim()
+    if (cat) counts.set(cat, (counts.get(cat) ?? 0) + 1)
+  }
+  return [...counts.entries()].sort((a, b) => b[1] - a[1])
+})
+
+const allTags = computed(() => {
+  const counts = new Map<string, number>()
+  for (const tpl of templates.value) {
+    for (const tag of tpl.tags ?? []) {
+      const t = tag.trim()
+      if (t) counts.set(t, (counts.get(t) ?? 0) + 1)
+    }
+  }
+  return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+})
+
 const filteredTemplates = computed(() => {
   const kw = keyword.value.trim().toLowerCase()
+  const activeTags = selectedTags.value.filter(Boolean)
   return templates.value.filter((tpl) => {
-    if (category.value && tpl.code !== category.value) return false
+    if (category.value && tpl.category !== category.value) return false
+    if (activeTags.length > 0) {
+      const tplTags = tpl.tags ?? []
+      if (!activeTags.some((tag) => tplTags.includes(tag))) return false
+    }
     if (!kw) return true
-    return [tpl.name, tpl.code, tpl.description].some((text) =>
-      text.toLowerCase().includes(kw)
+    return [tpl.name, tpl.code, tpl.description, tpl.category, ...(tpl.tags ?? [])].some((text) =>
+      (text ?? '').toLowerCase().includes(kw)
     )
   })
 })
@@ -88,11 +124,22 @@ function syncFiltersToUrl() {
   const query: Record<string, string> = {}
   if (keyword.value.trim()) query.search = keyword.value.trim()
   if (category.value) query.category = category.value
+  if (selectedTags.value.length) query.tags = selectedTags.value.join(',')
   router.replace({ path: '/templates', query })
 }
 
 function pickCategory(value: string) {
   category.value = value
+  syncFiltersToUrl()
+}
+
+function toggleTag(tag: string) {
+  const index = selectedTags.value.indexOf(tag)
+  if (index >= 0) {
+    selectedTags.value.splice(index, 1)
+  } else {
+    selectedTags.value.push(tag)
+  }
   syncFiltersToUrl()
 }
 
@@ -105,8 +152,42 @@ function useTemplate(tpl: ResumeTemplate) {
   }
 }
 
+/** 从模板 CSS 中提取 2-3 个非中性主色，用于卡片封面 */
+function templateColors(css: string): string[] {
+  const re = /#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b/g
+  const colors: string[] = []
+  for (const match of css.matchAll(re)) {
+    const color = match[0]
+    if (NEUTRAL_COLORS.has(color.toLowerCase())) continue
+    if (!colors.includes(color)) colors.push(color)
+    if (colors.length >= 3) break
+  }
+  return colors
+}
+
 function coverStyle(tpl: ResumeTemplate) {
-  return { background: COVER_GRADIENTS[tpl.code] ?? COVER_GRADIENTS.modern }
+  const colors = templateColors(tpl.css ?? '')
+  const palette = CATEGORY_PALETTES[tpl.category ?? ''] ?? CATEGORY_PALETTES['通用商务']
+  const [c0, c1] = colors.length >= 2 ? colors : colors.length === 1 ? [colors[0], palette[1]] : palette
+  return { background: `linear-gradient(135deg, ${c0} 0%, ${c1} 100%)` }
+}
+
+function layoutVibe(tpl: ResumeTemplate): 'split' | 'terminal' | 'single' {
+  const css = (tpl.css ?? '').toLowerCase()
+  if (/grid-template-columns\s*:\s*[^;]*\b2\b|\bfloat\s*:\s*left\b|sidebar|aside/.test(css)) {
+    return 'split'
+  }
+  if (/monospace|consolas|menlo|jetbrains|courier/.test(css)) {
+    return 'terminal'
+  }
+  return 'single'
+}
+
+function fontVibe(tpl: ResumeTemplate): 'mono' | 'serif' | 'sans' {
+  const css = (tpl.css ?? '').toLowerCase()
+  if (/monospace|consolas|menlo|jetbrains|courier/.test(css)) return 'mono'
+  if (/georgia|times new roman|serif|宋体|songti|楷体/.test(css)) return 'serif'
+  return 'sans'
 }
 
 function openPreview(tpl: ResumeTemplate) {
@@ -133,11 +214,19 @@ function onPreviewClosed() {
   previewStyleEl = null
 }
 
+function sampleDataFor(tpl: ResumeTemplate): Record<string, unknown> {
+  const sample = tpl.manifest?.sampleData
+  if (sample && Object.keys(sample).length > 0) {
+    return sample as Record<string, unknown>
+  }
+  return buildSampleData(tpl.schema ?? {})
+}
+
 const previewHtml = computed(() =>
   previewTpl.value
     ? previewTpl.value.manifest?.renderMode === 'static'
       ? renderStaticTemplate(previewTpl.value, emptyCommonData(), {})
-      : renderTemplate(previewTpl.value, buildSampleData(previewTpl.value.schema ?? {}))
+      : renderTemplate(previewTpl.value, sampleDataFor(previewTpl.value))
     : ''
 )
 
@@ -172,7 +261,7 @@ function buildSample(schema: SchemaNode, key?: string): unknown {
     <header class="page-header market-header">
       <div>
         <h1 class="page-title">模板市场</h1>
-        <p class="page-subtitle">公开模板浏览，选择喜欢的模板创建你的简历</p>
+        <p class="page-subtitle">按行业与风格筛选模板，选择喜欢的模板创建你的简历</p>
       </div>
       <div class="market-filters">
         <el-input
@@ -183,19 +272,50 @@ function buildSample(schema: SchemaNode, key?: string): unknown {
           @keyup.enter="syncFiltersToUrl"
           @clear="syncFiltersToUrl"
         />
-        <div class="chips">
-          <button
-            v-for="c in categories"
-            :key="c.value"
-            type="button"
-            :class="['chip', { 'chip-active': category === c.value }]"
-            @click="pickCategory(c.value)"
-          >
-            {{ c.label }}
-          </button>
-        </div>
       </div>
     </header>
+
+    <div class="filter-panels">
+      <div class="filter-row">
+        <span class="filter-label">分类</span>
+        <button
+          type="button"
+          :class="['chip', { 'chip-active': category === '' }]"
+          @click="pickCategory('')"
+        >
+          全部
+        </button>
+        <button
+          v-for="[cat, count] in categories"
+          :key="cat"
+          type="button"
+          :class="['chip', { 'chip-active': category === cat }]"
+          @click="pickCategory(cat)"
+        >
+          {{ cat }}<span class="chip-count">{{ count }}</span>
+        </button>
+      </div>
+      <div v-if="allTags.length" class="filter-row tag-row">
+        <span class="filter-label">标签</span>
+        <button
+          v-for="[tag, count] in allTags"
+          :key="tag"
+          type="button"
+          :class="['chip', 'chip-tag', { 'chip-active': selectedTags.includes(tag) }]"
+          @click="toggleTag(tag)"
+        >
+          {{ tag }}<span class="chip-count">{{ count }}</span>
+        </button>
+        <button
+          v-if="selectedTags.length"
+          type="button"
+          class="chip chip-clear"
+          @click="selectedTags = []; syncFiltersToUrl()"
+        >
+          清空标签
+        </button>
+      </div>
+    </div>
 
     <div v-loading="loading" class="market-grid">
       <p v-if="!loading && filteredTemplates.length === 0" class="empty">没有匹配的模板</p>
@@ -205,13 +325,22 @@ function buildSample(schema: SchemaNode, key?: string): unknown {
         class="market-card hover-lift"
         @click="useTemplate(tpl)"
       >
-        <div class="market-cover" :style="coverStyle(tpl)">
+        <div
+          class="market-cover"
+          :class="[`vibe-${layoutVibe(tpl)}`, `font-${fontVibe(tpl)}`]"
+          :style="coverStyle(tpl)"
+        >
+          <div class="cover-shade"></div>
           <span class="market-cover-name">{{ tpl.name }}</span>
+          <span v-if="tpl.category" class="cover-category">{{ tpl.category }}</span>
         </div>
         <div class="market-body">
           <div class="market-title-row">
             <h3 class="market-title">{{ tpl.name }}</h3>
             <span class="market-tag">{{ tpl.code }}</span>
+          </div>
+          <div v-if="tpl.tags?.length" class="market-tags">
+            <span v-for="tag in tpl.tags.slice(0, 4)" :key="tag" class="card-tag">{{ tag }}</span>
           </div>
           <p class="market-desc">{{ tpl.description }}</p>
         </div>
@@ -250,12 +379,28 @@ function buildSample(schema: SchemaNode, key?: string): unknown {
 }
 
 .filter-search {
-  width: 220px;
+  width: 240px;
 }
 
-.chips {
+.filter-panels {
+  margin: 4px 0 20px;
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-right: 4px;
+  flex-shrink: 0;
 }
 
 .chip {
@@ -263,9 +408,10 @@ function buildSample(schema: SchemaNode, key?: string): unknown {
   background: var(--color-surface);
   color: var(--color-text-secondary);
   border-radius: var(--radius-full);
-  padding: 6px 16px;
+  padding: 5px 14px;
   font-size: 13px;
   cursor: pointer;
+  transition: all 0.2s ease-out;
 }
 
 .chip:hover {
@@ -277,6 +423,17 @@ function buildSample(schema: SchemaNode, key?: string): unknown {
   background: var(--color-accent);
   border-color: var(--color-accent);
   color: #fff;
+}
+
+.chip-count {
+  margin-left: 4px;
+  font-size: 11px;
+  opacity: 0.75;
+}
+
+.chip-clear {
+  color: var(--color-accent);
+  border-style: dashed;
 }
 
 .market-grid {
@@ -304,17 +461,67 @@ function buildSample(schema: SchemaNode, key?: string): unknown {
 
 .market-cover {
   aspect-ratio: 16 / 9;
+  position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .market-cover-name {
+  position: relative;
+  z-index: 2;
   color: #fff;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.01em;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+  padding: 0 16px;
+  text-align: center;
+}
+
+.cover-category {
+  position: relative;
+  z-index: 2;
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 2px 12px;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(2px);
+}
+
+/* 双栏版式：右侧半透明栏 */
+.vibe-split .cover-shade {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 34%;
+  background: rgba(255, 255, 255, 0.16);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 终端/等宽风格：底部提示符条 */
+.vibe-terminal .cover-shade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22%;
+  background: rgba(0, 0, 0, 0.35);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.font-mono .market-cover-name {
+  font-family: 'Consolas', 'Menlo', monospace;
+  letter-spacing: 0.02em;
+}
+
+.font-serif .market-cover-name {
+  font-family: 'Georgia', 'Times New Roman', 'Songti SC', serif;
+  font-weight: 600;
 }
 
 .market-body {
@@ -326,7 +533,7 @@ function buildSample(schema: SchemaNode, key?: string): unknown {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .market-title {
@@ -341,6 +548,22 @@ function buildSample(schema: SchemaNode, key?: string): unknown {
   color: var(--color-accent);
   background: var(--color-accent-soft);
   padding: 2px 10px;
+  border-radius: var(--radius-full);
+}
+
+.market-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.card-tag {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
+  padding: 2px 8px;
   border-radius: var(--radius-full);
 }
 

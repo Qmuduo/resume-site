@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_080",
-  "name": "林觉·影视美术指导 · 简历",
+  "name": "苏轼·影视美术指导 · 简历",
   "sourceFile": "prompt_080.html",
   "renderMode": "static",
   "fields": [
@@ -119,7 +119,7 @@
     }
   ],
   "sampleData": {
-    "name": "林觉",
+    "name": "苏轼",
     "title": "影视美术指导 · 高级",
     "phone": "✆ +86 139 5027 1846",
     "email": "✉ lin.jue@frame.studio",

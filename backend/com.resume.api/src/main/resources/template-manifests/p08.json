@@ -126,6 +126,102 @@
     }
   ],
   "mappings": [],
-  "sampleData": {},
+  "sampleData": {
+    "name": "李清照",
+    "title": "资深时尚买手",
+    "phone": "+86 138 2080 4572",
+    "email": "yirou.xu@fashionbuyer.cn",
+    "location": "上海 / 米兰",
+    "linkedin": "linkedin.com/in/yirouxu",
+    "website": "",
+    "summary": "拥有5年国际轻奢与设计师品牌买手经验，擅长潮流趋势预测、OTB采买规划及商品组合策略。曾主导米兰/巴黎时装周选品，推动季度售罄率提升22%，兼具数据敏感度与审美直觉。",
+    "tags": [
+      "时尚买手",
+      "黑白杂志",
+      "高对比度"
+    ],
+    "experiences": [
+      {
+        "company": "MUSE ATELIER",
+        "role": "高级买手",
+        "date": "2022.09 – 至今",
+        "location": "米兰/巴黎",
+        "bullets": [
+          "负责女装与配饰品类全年采买计划，管理年采购预算超2800万元，协调米兰、巴黎showroom选品。",
+          "引入3个北欧新锐设计师品牌，首季贡献销售额占比18%，并推动品牌联名快闪活动。",
+          "搭建周度销售-库存分析模型，将季末折扣率降低9%，毛利率同比提升5个百分点。"
+        ]
+      },
+      {
+        "company": "LAN YU STUDIO",
+        "role": "买手 & 商品专员",
+        "date": "2019.06 – 2022.07",
+        "location": "上海",
+        "bullets": [
+          "协助首席买手完成每季200+ SKU的采买组合，覆盖成衣、鞋履及珠宝线。",
+          "通过历史数据分析与流行要素提炼，使当季滞销款占比从15%压缩至6%。",
+          "维护与意大利、韩国及本土供应商关系，参与价格谈判与交货周期优化。"
+        ]
+      },
+      {
+        "company": "ICY 设计师平台",
+        "role": "助理买手",
+        "date": "2018.02 – 2019.04",
+        "location": "杭州",
+        "bullets": [
+          "跟踪小众设计师品牌动态，撰写趋势月报并辅助选品决策。",
+          "协助线上商品上架及描述优化，监测点击转化数据。"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "马兰欧尼学院 (Istituto Marangoni)",
+        "degree": "时尚营销与管理 硕士",
+        "date": "2016 – 2017",
+        "location": "米兰"
+      },
+      {
+        "school": "东华大学",
+        "degree": "服装与服饰设计 文学学士",
+        "date": "2012 – 2016",
+        "location": "上海"
+      }
+    ],
+    "languages": [
+      "英语 IELTS 7.5（专业工作语言）",
+      "意大利语 B1（商务沟通）",
+      "中文（母语）"
+    ],
+    "certifications": [
+      {
+        "certName": "国际买手协会 (CIPS) 认证",
+        "certDate": ""
+      },
+      {
+        "certName": "工具：ERP / JDA / Excel 高级分析",
+        "certDate": ""
+      }
+    ],
+    "projects": [
+      {
+        "projectName": "巴黎时装周 · 定向选品企划",
+        "projectDate": "2024.03",
+        "bullets": [
+          "带领3人团队完成8个品牌Showroom拜访，筛选出22款当季核心单品，采买金额达420万。",
+          "其中5款成为店铺周销量TOP10，平均售罄周期缩短至4周。"
+        ]
+      },
+      {
+        "projectName": "可持续时尚胶囊系列",
+        "projectDate": "2023.09",
+        "bullets": [
+          "联合环保面料供应商推出限量系列，通过买手店渠道发售，首月售罄率91%。"
+        ]
+      }
+    ],
+    "awards": [],
+    "interests": ""
+  },
   "pendingManual": []
 }

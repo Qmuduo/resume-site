@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_08",
-  "name": "徐亦柔 · 时尚买手简历",
+  "name": "李清照 · 时尚买手简历",
   "sourceFile": "prompt_08.html",
   "renderMode": "static",
   "fields": [
@@ -76,7 +76,7 @@
     }
   ],
   "sampleData": {
-    "name": "徐亦柔",
+    "name": "李清照",
     "title": "资深时尚买手",
     "phone": "✆ +86 138 2080 4572",
     "email": "✉ yirou.xu@fashionbuyer.cn",

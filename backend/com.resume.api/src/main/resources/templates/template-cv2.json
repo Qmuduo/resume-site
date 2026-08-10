@@ -1,7 +1,7 @@
 {
   "code": "cv2",
   "name": "学术简历",
-  "description": "Times New Roman 单栏学术简历：居中姓名与联系方式，教育/经历/活动三段式，适合学术与金融岗位投递。",
+  "description": "Times New Roman 单栏简历：居中姓名与联系方式，教育/经历/活动三段式，适合金融与学术岗位投递。",
   "schema": {
     "type": "object",
     "required": ["name"],

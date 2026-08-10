@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_049",
-  "name": "张逸凡 · 医疗器械销售代表简历",
+  "name": "李白 · 医疗器械销售代表简历",
   "sourceFile": "prompt_049.html",
   "renderMode": "static",
   "fields": [
@@ -90,7 +90,7 @@
     }
   ],
   "sampleData": {
-    "name": "张逸凡",
+    "name": "李白",
     "title": "医疗器械销售代表 · 外科耗材与设备",
     "phone": "138-1025-6732",
     "email": "✉️ yifan.zhang@medicare.cn",

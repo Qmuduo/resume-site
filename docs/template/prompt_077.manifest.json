@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_077",
-  "name": "林清野 · 时尚买手简历",
+  "name": "杜甫 · 时尚买手简历",
   "sourceFile": "prompt_077.html",
   "renderMode": "static",
   "fields": [
@@ -112,7 +112,7 @@
     }
   ],
   "sampleData": {
-    "name": "林清野",
+    "name": "杜甫",
     "title": "资深时尚买手",
     "phone": "+86 139 5027 3841",
     "email": "✉️ qingye.lin@buyer.cn",

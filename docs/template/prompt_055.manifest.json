@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_055",
-  "name": "林清怡 · 记者/编辑简历",
+  "name": "李清照 · 记者/编辑简历",
   "sourceFile": "prompt_055.html",
   "renderMode": "static",
   "fields": [
@@ -119,7 +119,7 @@
     }
   ],
   "sampleData": {
-    "name": "林清怡",
+    "name": "李清照",
     "title": "资深记者 / 特稿编辑 · 非虚构写作",
     "email": "📧 qingyi.lin@media.me",
     "phone": "(86) 139-5027-6814",

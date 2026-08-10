@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_019",
-  "name": "张知行 · 政府事务专员简历",
+  "name": "李清照 · 政府事务专员简历",
   "sourceFile": "prompt_019.html",
   "renderMode": "static",
   "fields": [
@@ -145,7 +145,7 @@
     }
   ],
   "sampleData": {
-    "name": "张知行",
+    "name": "李清照",
     "title": "政府事务专员 · 公共政策研究方向",
     "phone": "138-1023-4567",
     "email": "✉️ zhixing.zhang@policy.cn",

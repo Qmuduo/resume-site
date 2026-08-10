@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_069",
-  "name": "UI/UX设计师简历 - 陈逸凡",
+  "name": "UI/UX设计师简历 - 白居易",
   "sourceFile": "prompt_069.html",
   "renderMode": "static",
   "fields": [
@@ -71,7 +71,7 @@
     }
   ],
   "sampleData": {
-    "name": "陈逸凡",
+    "name": "白居易",
     "experiences": [
       {
         "position": "UI/UX设计师",

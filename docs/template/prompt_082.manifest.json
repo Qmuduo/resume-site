@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_082",
-  "name": "林清音 · 花艺师简历",
+  "name": "李清照 · 花艺师简历",
   "sourceFile": "prompt_082.html",
   "renderMode": "static",
   "fields": [
@@ -126,7 +126,7 @@
     }
   ],
   "sampleData": {
-    "name": "林清音",
+    "name": "李清照",
     "title": "花艺师 · 植物造型设计师",
     "phone": "(86) 139-5027-6814",
     "email": "✉️ qingyin.lin@flora.studio",

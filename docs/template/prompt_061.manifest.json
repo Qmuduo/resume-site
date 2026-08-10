@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_061",
-  "name": "张振宇 · 体育营销高级经理",
+  "name": "李商隐 · 体育营销高级经理",
   "sourceFile": "prompt_061.html",
   "renderMode": "static",
   "fields": [
@@ -141,7 +141,7 @@
     }
   ],
   "sampleData": {
-    "name": "张振宇",
+    "name": "李商隐",
     "phone": "+86 139 8888 5678",
     "email": "✉️ zhenyuzhang@sportmkt.cn",
     "location": "上海 / 北京",

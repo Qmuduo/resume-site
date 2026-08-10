@@ -30,7 +30,7 @@ export function renderTemplate(
   if (context.resumeTitle !== undefined) {
     root.resumeTitle = context.resumeTitle
   }
-  const rendered = renderSegment(template.html, root, root, [], template.schema ?? {})
+  const rendered = renderSegment(template.html ?? '', root, root, [], template.schema ?? {})
   return sanitizeHtml(rendered)
 }
 
@@ -294,15 +294,15 @@ export function renderStaticTemplate(
 ): string {
   const manifest = template.manifest
   if (!manifest) {
-    return sanitizeHtml(template.html)
+    return sanitizeHtml(template.html ?? '')
   }
   if (typeof DOMParser === 'undefined') {
     return ''
   }
-  const doc = new DOMParser().parseFromString(`<div id="__resume_static">${template.html}</div>`, 'text/html')
+  const doc = new DOMParser().parseFromString(`<div id="__resume_static">${template.html ?? ''}</div>`, 'text/html')
   const root = doc.getElementById('__resume_static')
   if (!root) {
-    return sanitizeHtml(template.html)
+    return sanitizeHtml(template.html ?? '')
   }
   applyMappings(doc, manifest, commonData, extendedData)
   return sanitizeHtml(root.innerHTML)
@@ -314,6 +314,10 @@ function applyMappings(
   commonData: ResumeCommonData,
   extendedData: ResumeExtendedData
 ) {
+  // 兼容历史/损坏 manifest：mappings 缺失时保持原 HTML，不抛错
+  if (!Array.isArray(manifest.mappings)) {
+    return
+  }
   for (const mapping of manifest.mappings) {
     const value = mapping.commonPath
       ? getPath(commonData as unknown as Record<string, unknown>, mapping.commonPath)
@@ -331,7 +335,12 @@ function applyMappings(
 
 function resolveTargets(doc: Document, mapping: TemplateMapping): Element[] {
   if (mapping.selector) {
-    return Array.from(doc.querySelectorAll(mapping.selector))
+    try {
+      return Array.from(doc.querySelectorAll(mapping.selector))
+    } catch {
+      // 非法选择器来自损坏的 manifest：跳过该映射，避免整个预览崩溃
+      return []
+    }
   }
   if (mapping.sectionTitle) {
     const titleEl = Array.from(
@@ -361,15 +370,19 @@ function collectSectionItems(titleEl: Element, itemSelector: string): Element[] 
     if (isSectionHeading(node)) {
       break
     }
-    if (node.matches(itemSelector)) {
-      items.push(node)
-    }
-    if (node.querySelectorAll) {
-      node.querySelectorAll(itemSelector).forEach((el) => {
-        if (!items.includes(el)) {
-          items.push(el)
-        }
-      })
+    try {
+      if (node.matches(itemSelector)) {
+        items.push(node)
+      }
+      if (node.querySelectorAll) {
+        node.querySelectorAll(itemSelector).forEach((el) => {
+          if (!items.includes(el)) {
+            items.push(el)
+          }
+        })
+      }
+    } catch {
+      // itemSelector 不是合法 CSS 时跳过该节点
     }
     node = node.nextElementSibling
   }
@@ -415,9 +428,18 @@ function resolveArrayItem(value: unknown[], index: number, attribute: string): u
 }
 
 function fillList(container: Element, mapping: TemplateMapping, value: unknown[]) {
-  const firstChild = mapping.itemSelector
-    ? container.querySelector(mapping.itemSelector)
-    : firstElementChild(container)
+  let firstChild: Element | null = null
+  if (mapping.itemSelector) {
+    try {
+      firstChild =
+        (container.matches(mapping.itemSelector) ? container : container.querySelector(mapping.itemSelector)) ??
+        null
+    } catch {
+      firstChild = null
+    }
+  } else {
+    firstChild = firstElementChild(container)
+  }
   if (!firstChild) {
     return
   }

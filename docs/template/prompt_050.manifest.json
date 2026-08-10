@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_050",
-  "name": "林清怡 · 教育培训讲师简历",
+  "name": "白居易 · 教育培训讲师简历",
   "sourceFile": "prompt_050.html",
   "renderMode": "static",
   "fields": [
@@ -90,7 +90,7 @@
     }
   ],
   "sampleData": {
-    "name": "林清怡",
+    "name": "白居易",
     "title": "教育培训讲师 · 课程设计师",
     "email": "✉️ qingyi.lin@edumail.com",
     "phone": "(86) 139-5027-6814",

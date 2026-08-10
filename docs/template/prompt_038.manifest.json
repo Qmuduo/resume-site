@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_038",
-  "name": "张禾丰 · 农技推广员简历",
+  "name": "屈原 · 农技推广员简历",
   "sourceFile": "prompt_038.html",
   "renderMode": "static",
   "fields": [
@@ -126,7 +126,7 @@
     }
   ],
   "sampleData": {
-    "name": "张禾丰",
+    "name": "屈原",
     "title": "农业技术推广员 · 植保与土壤管理方向",
     "phone": "138-8250-1736",
     "email": "hefeng.zhang@agri.cn",

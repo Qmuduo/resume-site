@@ -47,6 +47,8 @@ CREATE TABLE IF NOT EXISTS template (
     code        VARCHAR(64)  NOT NULL COMMENT '模板编码',
     name        VARCHAR(64)  NOT NULL COMMENT '模板名称',
     description VARCHAR(512) NULL COMMENT '模板描述',
+    category    VARCHAR(64)  NULL COMMENT '模板分类（如：金融/咨询/互联网技术）',
+    tags        JSON         NULL COMMENT '模板标签（JSON 字符串数组）',
     schema_json JSON         NULL COMMENT '简历数据 JSON Schema',
     html        MEDIUMTEXT   NULL COMMENT '模板 HTML 描述',
     css         MEDIUMTEXT   NULL COMMENT '模板 CSS 描述',

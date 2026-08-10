@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_059",
-  "name": "陈知远 · NGO项目官员简历",
+  "name": "杜甫 · NGO项目官员简历",
   "sourceFile": "prompt_059.html",
   "renderMode": "static",
   "fields": [
@@ -133,7 +133,7 @@
     }
   ],
   "sampleData": {
-    "name": "陈知远",
+    "name": "杜甫",
     "title": "NGO项目官员 · 社区发展与青年赋能",
     "email": "✉ zhiyuan.chen@ngomail.org",
     "phone": "+86 (010) 6723-8845",

@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_045",
-  "name": "陈知远 · 公关高级经理简历",
+  "name": "辛弃疾 · 公关高级经理简历",
   "sourceFile": "prompt_045.html",
   "renderMode": "static",
   "fields": [
@@ -132,7 +132,7 @@
     }
   ],
   "sampleData": {
-    "name": "陈知远",
+    "name": "辛弃疾",
     "title": "公关高级经理 | 企业传播与品牌策略",
     "phone": "+86 139 5027 6814",
     "email": "✉️ zhiyuan.chen@prlab.cn",

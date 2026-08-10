@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_032",
-  "name": "张振华 · 物业总经理简历",
+  "name": "白居易 · 物业总经理简历",
   "sourceFile": "prompt_032.html",
   "renderMode": "static",
   "fields": [
@@ -146,7 +146,7 @@
     }
   ],
   "sampleData": {
-    "name": "张振华",
+    "name": "白居易",
     "title": "物业总经理 · 商业运营管理",
     "phone": "(86) 138-0000-1234",
     "email": "✉️ zhang.zhenhua@pmpro.com",

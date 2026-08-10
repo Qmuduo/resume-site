@@ -57,7 +57,16 @@ function main() {
     const source = JSON.parse(fs.readFileSync(path.join(SRC_DIR, file), 'utf8'))
     if (!source.code) continue
     const manifest = buildManifest(source)
-    fs.writeFileSync(path.join(OUT_DIR, `${manifest.templateId}.json`), JSON.stringify(manifest, null, 2), 'utf8')
+    // 保留已有 manifest 中的 sampleData（演示数据由 build-placeholder-sample-data.js 维护），
+    // 避免重新生成时清空已填充的示例内容。
+    const outFile = path.join(OUT_DIR, `${manifest.templateId}.json`)
+    if (fs.existsSync(outFile)) {
+      const existing = JSON.parse(fs.readFileSync(outFile, 'utf8'))
+      if (existing.sampleData && Object.keys(existing.sampleData).length > 0) {
+        manifest.sampleData = existing.sampleData
+      }
+    }
+    fs.writeFileSync(outFile, JSON.stringify(manifest, null, 2), 'utf8')
     count++
   }
   console.log(`generated ${count} builtin manifests -> ${OUT_DIR}`)

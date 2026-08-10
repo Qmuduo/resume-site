@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_058",
-  "name": "陈知远 · ESG分析师简历",
+  "name": "李白 · ESG分析师简历",
   "sourceFile": "prompt_058.html",
   "renderMode": "static",
   "fields": [
@@ -145,7 +145,7 @@
     }
   ],
   "sampleData": {
-    "name": "陈知远",
+    "name": "李白",
     "title": "| ESG分析师",
     "email": "✉️ zhiyuan.chen@esgfocus.cn",
     "phone": "+86 138 8217 3042",

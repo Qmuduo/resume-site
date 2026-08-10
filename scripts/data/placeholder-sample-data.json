@@ -1,0 +1,1380 @@
+{
+  "cv2": {
+    "name": "陶渊明",
+    "email": "qiming.chen@pevc.com",
+    "phone": "+86 139 1028 5742",
+    "linkedin": "linkedin.com/in/qimingchen",
+    "summary": "拥有8年私募股权与风险投资经验，主导完成超过12笔交易，累计管理资产规模超45亿人民币。专注于科技、先进制造及医疗健康领域，具备从项目寻源、尽职调查到投后管理的完整闭环能力。",
+    "education": [
+      {
+        "school": "北京大学光华管理学院",
+        "location": "北京",
+        "degree": "金融学硕士",
+        "date": "2013 – 2015",
+        "bullets": []
+      },
+      {
+        "school": "复旦大学",
+        "location": "上海",
+        "degree": "经济学学士",
+        "date": "2009 – 2013",
+        "bullets": []
+      }
+    ],
+    "experience": [
+      {
+        "company": "鼎晖投资",
+        "location": "北京",
+        "role": "投资副总裁",
+        "date": "2020.06 – 至今",
+        "bullets": [
+          "主导科技与企业服务赛道投资，完成4笔成长期项目投资，总金额超18亿人民币，其中2家已申报IPO。",
+          "带领5人投资团队进行行业扫描、财务模型搭建及交易谈判，实现组合IRR 27%。",
+          "深度参与被投企业战略梳理，协助两家被投公司完成后续融资及并购退出。"
+        ]
+      },
+      {
+        "company": "高瓴资本",
+        "location": "上海",
+        "role": "高级投资经理 / 副总裁（早期）",
+        "date": "2017.03 – 2020.05",
+        "bullets": [
+          "负责医疗健康和智能制造领域投资，主导及参与交易金额合计22亿元，覆盖B轮至Pre-IPO轮次。",
+          "完成对某医疗器械龙头企业的独家投资，投后估值增长3.2倍，并于2021年成功登陆科创板。",
+          "建立行业研究框架，定期向投委会汇报细分赛道机会，累计评估项目超过200个。"
+        ]
+      },
+      {
+        "company": "麦肯锡公司",
+        "location": "上海",
+        "role": "商业分析师 / 咨询经理",
+        "date": "2015.08 – 2017.02",
+        "bullets": [
+          "为私募基金客户提供商业尽职调查服务，覆盖TMT及消费品行业，识别关键增长驱动因素。",
+          "搭建市场预测模型，协助客户完成对某连锁消费品牌5亿人民币的收购案。"
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "organization": "清华五道口金融CEO班",
+        "location": "北京",
+        "role": "在读学员",
+        "date": "2024 – 至今",
+        "bullets": []
+      },
+      {
+        "organization": "中国证券投资基金业协会",
+        "location": "北京",
+        "role": "会员",
+        "date": "2018 – 至今",
+        "bullets": []
+      },
+      {
+        "organization": "北京大学校友会PE/VC分会",
+        "location": "北京",
+        "role": "理事",
+        "date": "2021 – 至今",
+        "bullets": [
+          "获评2023年度“35位35岁以下投资人”。"
+        ]
+      }
+    ]
+  },
+  "p03": {
+    "name": "白居易",
+    "title": "战略咨询总监",
+    "phone": "+86 138 1098 7654",
+    "email": "yuanzhou.chen@stratex.com",
+    "location": "上海 · 中国",
+    "linkedin": "linkedin.com/in/chenyuanzhou",
+    "summary": "12年战略咨询与商业分析经验，主导过60+企业增长战略项目，涵盖消费品、科技与工业领域。前麦肯锡项目经理，现带领12人分析团队。擅长以数据驱动决策，实现平均客户营收提升22%。",
+    "experiences": [
+      {
+        "company": "源策咨询 (Stratex Partners)",
+        "role": "战略咨询总监",
+        "date": "2022.04 – 至今",
+        "location": "上海",
+        "bullets": [
+          "领导零售与消费品行业战略业务，年度营收贡献超3800万元，客户续约率91%。",
+          "为某头部乳制品集团制定全渠道增长战略，推动数字化中台落地，实现18个月营收增长34%。",
+          "搭建商业智能分析框架，引入预测性模型将项目交付周期缩短20%，团队人效提升25%。"
+        ]
+      },
+      {
+        "company": "麦肯锡公司",
+        "role": "项目经理 / 商业分析顾问",
+        "date": "2016.08 – 2022.02",
+        "location": "上海/新加坡",
+        "bullets": [
+          "主导亚太区科技与工业4.0战略项目，为两家全球500强企业设计海外市场进入模式。",
+          "领导8人顾问团队完成某新能源企业运营转型，优化供应链成本结构，释放2.3亿现金流。",
+          "开发行业对标分析工具，应用于15+项目，被纳入麦肯锡内部知识库。"
+        ]
+      },
+      {
+        "company": "波士顿咨询 (BCG)",
+        "role": "高级商业分析师",
+        "date": "2013.09 – 2016.07",
+        "location": "北京",
+        "bullets": [
+          "参与消费品与医疗健康领域战略项目，完成市场进入可行性分析与竞品深度扫描。",
+          "搭建动态定价模型，为客户提升毛利率4.2个百分点。"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "中欧国际工商学院 (CEIBS)",
+        "degree": "工商管理硕士 (MBA)",
+        "date": "2011 – 2013",
+        "location": "上海"
+      },
+      {
+        "school": "复旦大学",
+        "degree": "经济学学士",
+        "date": "2007 – 2011",
+        "location": "上海"
+      }
+    ],
+    "skills": [
+      {
+        "category": "战略规划",
+        "items": [
+          "企业增长战略",
+          "市场进入",
+          "数字化转型",
+          "并购后整合"
+        ]
+      },
+      {
+        "category": "商业分析",
+        "items": [
+          "高级Excel建模",
+          "SQL/Python",
+          "Tableau",
+          "预测分析",
+          "消费者洞察"
+        ]
+      },
+      {
+        "category": "领导力",
+        "items": [
+          "团队管理(12人)",
+          "客户关系",
+          "董事会汇报",
+          "跨职能协作"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "projectName": "某跨国科技公司亚太区重组",
+        "projectRole": "项目负责人",
+        "projectDate": "2023",
+        "bullets": [
+          "设计区域组织架构重组方案，识别2.8亿美元协同效应，方案被全球董事会采纳。"
+        ]
+      },
+      {
+        "projectName": "新消费品牌DTC战略",
+        "projectRole": "项目总监",
+        "projectDate": "2021",
+        "bullets": [
+          "帮助客户建立数据中台与私域运营体系，首年线上销售增长210%。"
+        ]
+      }
+    ],
+    "certifications": [
+      {
+        "certName": "CFA Level II",
+        "certDate": ""
+      },
+      {
+        "certName": "PMP",
+        "certDate": ""
+      }
+    ],
+    "languages": [
+      "中文（母语）",
+      "英语（专业工作语言，IELTS 8.0）"
+    ],
+    "awards": [],
+    "tags": [
+      "战略咨询",
+      "管理咨询",
+      "深墨绿商务风"
+    ],
+    "interests": ""
+  },
+  "p04": {
+    "name": "王维",
+    "title": "UI/UX 设计师 · 数字体验塑造者",
+    "phone": "+86 139 5028 7614",
+    "email": "lin.qing@ux.studio",
+    "location": "北京 · 朝阳",
+    "linkedin": "",
+    "website": "portfolio.com/linqing",
+    "summary": "2年UI/UX设计经验，专注以用户为中心的界面设计与交互逻辑。擅长将复杂流程转化为简洁优雅的视觉语言。曾参与企业级SaaS产品与消费端App设计，具备从原型到高保真交付的全链路能力。",
+    "experiences": [
+      {
+        "company": "星核科技",
+        "role": "UI/UX设计师",
+        "date": "2024.03 – 至今",
+        "location": "北京",
+        "bullets": [
+          "主导“智联运维平台”移动端与Web端界面改版，优化信息架构，使核心任务完成率提升23%。",
+          "建立组件库与设计规范，协同前端团队实现像素级还原，减少设计-开发沟通成本约30%。",
+          "基于用户旅程图重构关键流程，设计高保真交互原型并主持可用性测试，迭代3个版本。"
+        ]
+      },
+      {
+        "company": "云雀设计工作室",
+        "role": "初级UI设计师",
+        "date": "2022.07 – 2024.01",
+        "location": "北京",
+        "bullets": [
+          "为教育类App“墨典”设计核心页面与图标系统，上线后获得App Store多次推荐。",
+          "参与B端数据看板设计，运用色彩编码与信息层级优化数据展示，获得客户认可。",
+          "协助资深设计师完成用户访谈整理与情绪板，输出交互文档及视觉稿。"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "projectName": "「FlowMark」协作白板工具",
+        "projectRole": "UX设计",
+        "bullets": [
+          "从0到1设计实时协作工具，聚焦非对称画布布局与手势交互，通过A/B测试优化工具栏位置，用户效率提升18%。"
+        ]
+      },
+      {
+        "projectName": "「植觉」植物识别App",
+        "projectRole": "视觉与动效",
+        "bullets": [
+          "负责整体视觉风格定义，采用有机线条与低饱和自然色系，设计微交互与加载动画，项目入选国内设计灵感平台周榜。"
+        ]
+      }
+    ],
+    "skills": [
+      {
+        "category": "设计工具",
+        "items": [
+          "Figma",
+          "Sketch",
+          "Adobe XD",
+          "Illustrator",
+          "Photoshop"
+        ]
+      },
+      {
+        "category": "核心能力",
+        "items": [
+          "用户研究",
+          "线框图",
+          "原型设计",
+          "设计系统",
+          "可用性测试",
+          "信息架构"
+        ]
+      },
+      {
+        "category": "前端基础",
+        "items": [
+          "HTML5",
+          "CSS3",
+          "基础JavaScript",
+          "响应式设计"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "江南大学",
+        "degree": "数字媒体艺术 本科",
+        "date": "2018 – 2022",
+        "location": "无锡"
+      }
+    ],
+    "languages": [
+      "中文（母语）",
+      "英文（流利，作品集双语）"
+    ],
+    "certifications": [],
+    "awards": [],
+    "tags": [
+      "UI/UX",
+      "设计",
+      "简约侧栏"
+    ],
+    "interests": "字体排印 · generative art · 摄影"
+  },
+  "p05": {
+    "name": "李商隐",
+    "title": "品牌视觉设计师",
+    "phone": "+86 139 5027 6841",
+    "email": "yian.chen@creativelab.cn",
+    "location": "上海 · 黄浦区",
+    "linkedin": "",
+    "website": "dribbble.com/yianchen",
+    "summary": "拥有5年品牌视觉与数字设计经验，曾主导多个新消费品牌从0到1的视觉体系搭建。擅长通过大胆的色彩叙事与几何构成传递品牌精神，同时确保设计系统在多触点的可执行性。",
+    "experiences": [
+      {
+        "company": "望山创意咨询",
+        "role": "资深品牌设计师",
+        "date": "2021.09 – 至今",
+        "location": "上海",
+        "bullets": [
+          "主导「椿风茶饮」品牌全案视觉升级，重新定义色彩系统与图形语言，门店应用后季度营收提升27%。",
+          "为科技品牌「星络」设计动态标志及延展，建立几何化的视觉识别手册，获2023红点品牌设计奖。",
+          "管理3人设计小组，制定设计规范与质量审核流程，确保数字与印刷端输出一致性。"
+        ]
+      },
+      {
+        "company": "未墨设计工作室",
+        "role": "视觉设计师",
+        "date": "2019.04 – 2021.08",
+        "location": "上海",
+        "bullets": [
+          "负责生活方式品牌「山赴」的包装与线上视觉，运用高饱和自然色系与几何切割构图，使社交媒体互动率提升65%。",
+          "参与文化展览“瓷的边界”主视觉设计，海报获东京TDC提名。"
+        ]
+      },
+      {
+        "company": "蓝狮广告",
+        "role": "初级设计师",
+        "date": "2017.07 – 2019.02",
+        "location": "广州",
+        "bullets": [
+          "协助资深团队为快消品牌创作电商视觉物料，强调几何秩序与色彩对比。",
+          "设计内部创意工具包，优化设计资源库，提升团队效率约30%。"
+        ]
+      }
+    ],
+    "skills": [
+      {
+        "category": "品牌设计",
+        "items": [
+          "视觉识别系统",
+          "标志设计",
+          "色彩策略",
+          "包装设计"
+        ]
+      },
+      {
+        "category": "数字设计",
+        "items": [
+          "UI/UX界面",
+          "动效原型",
+          "社交媒体视觉"
+        ]
+      },
+      {
+        "category": "软件工具",
+        "items": [
+          "Figma",
+          "Adobe Illustrator",
+          "Photoshop",
+          "After Effects",
+          "Blender"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "中国美术学院",
+        "degree": "视觉传达设计 本科",
+        "date": "2013 – 2017",
+        "location": "杭州"
+      },
+      {
+        "school": "丹麦设计学院",
+        "degree": "交换项目 · 品牌与叙事",
+        "date": "2016春",
+        "location": "丹麦"
+      }
+    ],
+    "languages": [
+      "中文（母语）",
+      "英语（流利，作品集交流）"
+    ],
+    "certifications": [],
+    "awards": [],
+    "tags": [
+      "品牌设计",
+      "几何构成",
+      "高饱和撞色"
+    ],
+    "interests": "抽象摄影 · 陶艺 · 几何建筑"
+  },
+  "p06": {
+    "name": "苏轼",
+    "title": "插画师 & 艺术指导",
+    "phone": "+86 139 5027 6814",
+    "email": "qing.lin@artstudio.cn",
+    "location": "上海 / 远程",
+    "linkedin": "",
+    "website": "qinglin-illustration.com",
+    "summary": "拥有8年经验的插画师与视觉叙事者，擅长将手绘质感与数字媒介融合。曾任多家独立杂志艺术指导，主导品牌视觉重塑项目，追求留白中的情绪张力，以有机线条构建现代叙事。",
+    "experiences": [
+      {
+        "company": "云雀文化",
+        "role": "艺术指导 / 插画总监",
+        "date": "2020 – 至今",
+        "location": "上海",
+        "bullets": [
+          "主导《栖地》独立杂志全系列视觉风格，手绘插画覆盖率达70%，发行量提升45%。",
+          "管理4人插画团队，为品牌客户（包括例外、素然）提供艺术方向，项目续约率超90%。",
+          "建立手绘素材库与数字笔刷系统，将传统水墨纹理融入商业插画，获得2023年Hiii Illustration评审奖。"
+        ]
+      },
+      {
+        "company": "之间设计",
+        "role": "高级插画师",
+        "date": "2017 – 2020",
+        "location": "杭州",
+        "bullets": [
+          "为“木墨”、“失物招领”等家居品牌创作系列叙事插画，应用于产品包装与展览视觉。",
+          "独立完成“城市的诗”绘本项目，融合拼贴与淡彩，入选博洛尼亚插画展长名单。",
+          "与文案团队协作，通过视觉草图推动创意概念，提案通过率提高30%。"
+        ]
+      },
+      {
+        "company": "自由插画师",
+        "role": "合作艺术家",
+        "date": "2015 – 2017",
+        "location": "远程",
+        "bullets": [
+          "为多家独立出版物及品牌提供编辑插画，客户包括《生活月刊》、单向空间等。",
+          "发展个人手绘风格，以炭笔与数字上色结合，作品被多个线上艺术平台收录。"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "中国美术学院",
+        "degree": "插画与漫画 本科",
+        "date": "2011 – 2015",
+        "location": "杭州"
+      }
+    ],
+    "skills": [
+      {
+        "category": "媒介",
+        "items": [
+          "手绘",
+          "数字插画",
+          "水墨"
+        ]
+      },
+      {
+        "category": "风格",
+        "items": [
+          "留白叙事",
+          "有机线条",
+          "拼贴"
+        ]
+      },
+      {
+        "category": "软件",
+        "items": [
+          "Procreate",
+          "Photoshop",
+          "Fresco"
+        ]
+      },
+      {
+        "category": "艺术指导",
+        "items": [
+          "概念开发",
+          "色彩脚本"
+        ]
+      }
+    ],
+    "tags": [
+      "插画",
+      "手绘",
+      "艺术指导",
+      "留白"
+    ],
+    "projects": [
+      {
+        "projectName": "《栖地 Vol.5》",
+        "projectRole": "艺术指导/封面插画",
+        "bullets": [
+          "独立杂志全系列视觉风格，手绘插画覆盖率70%。"
+        ]
+      },
+      {
+        "projectName": "《慢漫》绘本",
+        "projectRole": "作者",
+        "bullets": [
+          "融合拼贴与淡彩的绘本项目。"
+        ]
+      }
+    ],
+    "awards": [
+      {
+        "awardName": "2023 Hiii Illustration 评审奖",
+        "awardDate": "2023"
+      },
+      {
+        "awardName": "3x3 Illustration 优秀奖",
+        "awardDate": "2022"
+      }
+    ],
+    "languages": [
+      "中文（母语）",
+      "英语（专业）"
+    ],
+    "certifications": [],
+    "interests": "展览与艺术书展 · 拼贴实验"
+  },
+  "p07": {
+    "name": "辛弃疾",
+    "title": "创意总监 · 空间设计策略",
+    "phone": "+86 138 1024 6789",
+    "email": "lin.xu@spacedesign.cn",
+    "location": "北京 · 上海",
+    "linkedin": "",
+    "website": "linxu-portfolio.com",
+    "summary": "拥有12年室内建筑与商业空间设计经验，主导超50个大型文化/酒店/总部办公项目。擅长以线条叙事与材质层次构建空间精神，红点设计奖、IIDA亚太最佳设计奖得主。",
+    "experiences": [
+      {
+        "company": "梁志天设计集团",
+        "role": "创意总监",
+        "date": "2020.04 – 至今",
+        "location": "香港",
+        "bullets": [
+          "领导12人设计团队完成深圳湾1号私人美术馆、杭州云栖酒店等标杆项目，总设计面积超8万㎡。",
+          "建立“线性空间”设计体系，以克制线条与光影层次定义项目调性，客户满意度连续三年98%。",
+          "负责设计策略与甲级客户提案，成功签约安缦、瑰丽等国际酒店品牌合作。"
+        ]
+      },
+      {
+        "company": "CCD香港郑中设计事务所",
+        "role": "高级室内设计师 / 设计副总监",
+        "date": "2016.08 – 2020.02",
+        "location": "香港",
+        "bullets": [
+          "主导成都华尔道夫酒店公共区域及客房设计，项目获2020年A' Design Award室内空间金奖。",
+          "深化“建筑线条延伸”概念，将建筑外立面的几何元素转化为室内隔断与天花节点。",
+          "协同建筑与软装团队，确保从概念到施工图的空间层次零误差落地。"
+        ]
+      },
+      {
+        "company": "如恩设计研究室",
+        "role": "室内设计师",
+        "date": "2013.09 – 2016.07",
+        "location": "上海",
+        "bullets": [
+          "参与上海艾迪逊酒店、余杭融设计图书馆等文化项目，负责室内概念深化与材料研究。",
+          "运用回收木、锈钢板与原石等材质，通过线性分割创造新旧对话的空间体验。"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "清华大学",
+        "degree": "建筑学硕士",
+        "date": "2011 – 2013",
+        "location": "北京"
+      },
+      {
+        "school": "中央美术学院",
+        "degree": "室内设计学士",
+        "date": "2007 – 2011",
+        "location": "北京"
+      }
+    ],
+    "awards": [
+      {
+        "awardName": "红点设计奖 · 室内设计类别",
+        "awardDate": "2022"
+      },
+      {
+        "awardName": "IIDA 亚太最佳设计奖 · 酒店空间",
+        "awardDate": "2021"
+      },
+      {
+        "awardName": "Dezeen Awards 入围 · 大型室内",
+        "awardDate": "2023"
+      }
+    ],
+    "skills": [
+      {
+        "category": "设计能力",
+        "items": [
+          "概念构思与空间叙事",
+          "材质与线条构成",
+          "设计团队领导力",
+          "高端客户提案",
+          "建筑规范与深化"
+        ]
+      },
+      {
+        "category": "技术工具",
+        "items": [
+          "CAD/Revit/BIM协同",
+          "AutoCAD",
+          "SketchUp Pro",
+          "Rhino 3D",
+          "Revit",
+          "Enscape",
+          "Adobe Creative Suite",
+          "手绘概念图",
+          "材料样板"
+        ]
+      }
+    ],
+    "tags": [
+      "室内建筑",
+      "空间设计",
+      "线条金棕"
+    ],
+    "languages": [
+      "中文（母语）",
+      "英语（商务流利）",
+      "粤语"
+    ],
+    "certifications": [
+      {
+        "certName": "NCIDQ 认证室内设计师",
+        "certDate": ""
+      },
+      {
+        "certName": "LEED AP",
+        "certDate": ""
+      }
+    ],
+    "interests": ""
+  },
+  "p08": {
+    "name": "李清照",
+    "title": "资深时尚买手",
+    "phone": "+86 138 2080 4572",
+    "email": "yirou.xu@fashionbuyer.cn",
+    "location": "上海 / 米兰",
+    "linkedin": "linkedin.com/in/yirouxu",
+    "website": "",
+    "summary": "拥有5年国际轻奢与设计师品牌买手经验，擅长潮流趋势预测、OTB采买规划及商品组合策略。曾主导米兰/巴黎时装周选品，推动季度售罄率提升22%，兼具数据敏感度与审美直觉。",
+    "tags": [
+      "时尚买手",
+      "黑白杂志",
+      "高对比度"
+    ],
+    "experiences": [
+      {
+        "company": "MUSE ATELIER",
+        "role": "高级买手",
+        "date": "2022.09 – 至今",
+        "location": "米兰/巴黎",
+        "bullets": [
+          "负责女装与配饰品类全年采买计划，管理年采购预算超2800万元，协调米兰、巴黎showroom选品。",
+          "引入3个北欧新锐设计师品牌，首季贡献销售额占比18%，并推动品牌联名快闪活动。",
+          "搭建周度销售-库存分析模型，将季末折扣率降低9%，毛利率同比提升5个百分点。"
+        ]
+      },
+      {
+        "company": "LAN YU STUDIO",
+        "role": "买手 & 商品专员",
+        "date": "2019.06 – 2022.07",
+        "location": "上海",
+        "bullets": [
+          "协助首席买手完成每季200+ SKU的采买组合，覆盖成衣、鞋履及珠宝线。",
+          "通过历史数据分析与流行要素提炼，使当季滞销款占比从15%压缩至6%。",
+          "维护与意大利、韩国及本土供应商关系，参与价格谈判与交货周期优化。"
+        ]
+      },
+      {
+        "company": "ICY 设计师平台",
+        "role": "助理买手",
+        "date": "2018.02 – 2019.04",
+        "location": "杭州",
+        "bullets": [
+          "跟踪小众设计师品牌动态，撰写趋势月报并辅助选品决策。",
+          "协助线上商品上架及描述优化，监测点击转化数据。"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "马兰欧尼学院 (Istituto Marangoni)",
+        "degree": "时尚营销与管理 硕士",
+        "date": "2016 – 2017",
+        "location": "米兰"
+      },
+      {
+        "school": "东华大学",
+        "degree": "服装与服饰设计 文学学士",
+        "date": "2012 – 2016",
+        "location": "上海"
+      }
+    ],
+    "languages": [
+      "英语 IELTS 7.5（专业工作语言）",
+      "意大利语 B1（商务沟通）",
+      "中文（母语）"
+    ],
+    "certifications": [
+      {
+        "certName": "国际买手协会 (CIPS) 认证",
+        "certDate": ""
+      },
+      {
+        "certName": "工具：ERP / JDA / Excel 高级分析",
+        "certDate": ""
+      }
+    ],
+    "projects": [
+      {
+        "projectName": "巴黎时装周 · 定向选品企划",
+        "projectDate": "2024.03",
+        "bullets": [
+          "带领3人团队完成8个品牌Showroom拜访，筛选出22款当季核心单品，采买金额达420万。",
+          "其中5款成为店铺周销量TOP10，平均售罄周期缩短至4周。"
+        ]
+      },
+      {
+        "projectName": "可持续时尚胶囊系列",
+        "projectDate": "2023.09",
+        "bullets": [
+          "联合环保面料供应商推出限量系列，通过买手店渠道发售，首月售罄率91%。"
+        ]
+      }
+    ],
+    "awards": [],
+    "interests": ""
+  },
+  "p09": {
+    "name": "屈原",
+    "title": "后端开发工程师",
+    "phone": "+86 139 5028 7614",
+    "email": "yifan.lin@dev.me",
+    "location": "杭州 · 中国",
+    "linkedin": "",
+    "website": "github.com/yifan-lin",
+    "summary": "",
+    "skills": [
+      {
+        "category": "主力语言",
+        "items": [
+          "Go / Python"
+        ]
+      },
+      {
+        "category": "框架",
+        "items": [
+          "Gin",
+          "FastAPI"
+        ]
+      },
+      {
+        "category": "数据与中间件",
+        "items": [
+          "PostgreSQL",
+          "Redis",
+          "Docker",
+          "gRPC"
+        ]
+      },
+      {
+        "category": "工程实践",
+        "items": [
+          "RESTful API",
+          "Git",
+          "Linux",
+          "CI/CD",
+          "消息队列 (Kafka)",
+          "单元测试"
+        ]
+      }
+    ],
+    "tags": [
+      "后端开发",
+      "代码风",
+      "等宽字体"
+    ],
+    "experiences": [
+      {
+        "company": "星云数据",
+        "role": "后端开发工程师",
+        "date": "2024.03 – 至今",
+        "location": "杭州",
+        "bullets": [
+          "参与实时数据管道重构，使用 Go + Kafka 优化吞吐量，峰值处理能力提升约35%。",
+          "设计并实现内部配置中心API，基于 Gin 框架，支持动态刷新与版本回滚。",
+          "维护 PostgreSQL 核心表结构，编写复杂查询与索引优化，慢查询减少40%。"
+        ]
+      },
+      {
+        "company": "青橙科技",
+        "role": "初级后端开发",
+        "date": "2022.07 – 2024.02",
+        "location": "上海",
+        "bullets": [
+          "负责订单系统微服务模块开发，采用 Python FastAPI 与 Redis 缓存方案。",
+          "编写自动化测试用例覆盖核心业务逻辑，接口回归测试覆盖率提升至85%。",
+          "参与容器化迁移，将遗留服务打包为 Docker 镜像，部署至K8s集群。"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "projectName": "lightcache · 轻量级缓存库",
+        "projectRole": "作者",
+        "projectDate": "⭐ 120+ on GitHub",
+        "bullets": [
+          "使用 Go 实现的支持LRU/LFU策略的内存缓存，提供类似Redis的简单接口。",
+          "集成过期淘汰与并发安全机制，benchmark显示读性能达到12k QPS。"
+        ]
+      },
+      {
+        "projectName": "devlog-cli · 开发者日志工具",
+        "projectRole": "作者",
+        "projectDate": "Python · 终端应用",
+        "bullets": [
+          "基于Python的命令行工具，将Markdown开发日志自动同步至GitHub Gist。"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "杭州电子科技大学",
+        "degree": "计算机科学与技术 工学学士",
+        "date": "2018.09 – 2022.06",
+        "location": "杭州"
+      }
+    ],
+    "languages": [
+      "英语 CET-6 · 技术文档阅读"
+    ],
+    "certifications": [
+      {
+        "certName": "AWS Certified Cloud Practitioner",
+        "certDate": "2023"
+      },
+      {
+        "certName": "Linux Foundation LFCA",
+        "certDate": "2024"
+      }
+    ],
+    "awards": [],
+    "interests": ""
+  },
+  "p10": {
+    "name": "李白",
+    "title": "全栈前端开发 · 中级工程师",
+    "phone": "+86 139 5027 3142",
+    "email": "chenwei.dev@pm.me",
+    "location": "上海 · 中国",
+    "linkedin": "",
+    "website": "github.com/chenwei-frontend",
+    "summary": "",
+    "skills": [
+      {
+        "category": "前端",
+        "items": [
+          "JS/TS ES6+",
+          "React 18",
+          "Vue 3",
+          "Next.js 14"
+        ]
+      },
+      {
+        "category": "后端",
+        "items": [
+          "Node.js Express",
+          "Python FastAPI"
+        ]
+      },
+      {
+        "category": "基础设施",
+        "items": [
+          "Docker",
+          "CI/CD",
+          "PostgreSQL",
+          "Redis"
+        ]
+      },
+      {
+        "category": "工具链",
+        "items": [
+          "Git",
+          "Webpack",
+          "Vite",
+          "Tailwind",
+          "GraphQL",
+          "REST",
+          "AWS (EC2/S3)"
+        ]
+      }
+    ],
+    "tags": [
+      "前端开发",
+      "终端暗色",
+      "命令行"
+    ],
+    "experiences": [
+      {
+        "company": "Nexus Digital",
+        "role": "全栈开发工程师",
+        "date": "2022.04 – 至今",
+        "location": "上海",
+        "bullets": [
+          "主导电商后台管理系统前端重构，使用React + TypeScript + GraphQL，首屏加载优化37%。",
+          "设计并实现Node.js微服务订单模块，日均处理10万+请求，错误率低于0.2%。",
+          "搭建基于Docker的CI/CD流水线，配合GitHub Actions实现自动化测试与部署。",
+          "与UX团队协作建立组件库，覆盖20+业务组件，提升跨团队开发效率。"
+        ]
+      },
+      {
+        "company": "CloudBase Studio",
+        "role": "前端开发工程师",
+        "date": "2020.07 – 2022.02",
+        "location": "北京",
+        "bullets": [
+          "负责SaaS监控平台前端，基于Vue3 + Pinia + ECharts实现实时数据可视化大屏。",
+          "优化Webpack打包体积，通过代码分割与Tree-shaking减少45%构建产物。",
+          "编写单元测试与E2E测试（Jest/Cypress），将关键业务流程覆盖率提升至90%。"
+        ]
+      },
+      {
+        "company": "InnoTech Solutions",
+        "role": "初级全栈开发",
+        "date": "2019.03 – 2020.06",
+        "location": "深圳",
+        "bullets": [
+          "参与内部ERP系统开发，使用React + Ant Design，完成库存管理模块前端实现。",
+          "搭建Express后端API，连接MySQL数据库，支持CRUD操作及权限校验。"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "projectName": "DevTerminal Portfolio",
+        "projectRole": "个人作品",
+        "projectDate": "2023.08",
+        "bullets": [
+          "纯终端风格个人网站，基于Next.js + MDX，模拟bash交互，支持命令自动补全。",
+          "实现WebSocket实时预览，集成GitHub Contributions热力图，访问量月均3k+。"
+        ]
+      },
+      {
+        "projectName": "QuickPoll（开源）",
+        "projectRole": "全栈应用",
+        "projectDate": "2022.11",
+        "bullets": [
+          "实时投票系统，技术栈：Next.js + tRPC + Prisma + PostgreSQL，支持匿名投票与结果统计。",
+          "在GitHub获得850+ stars，被Vercel模板收录，贡献者来自6个国家。"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "上海理工大学",
+        "degree": "计算机科学与技术 本科",
+        "date": "2015 – 2019",
+        "location": "上海"
+      }
+    ],
+    "languages": [
+      "英语 CET-6 · 技术文档读写流畅",
+      "日语基础会话"
+    ],
+    "certifications": [
+      {
+        "certName": "AWS Certified Cloud Practitioner",
+        "certDate": ""
+      }
+    ],
+    "awards": [],
+    "interests": ""
+  },
+  "p11": {
+    "name": "杜甫",
+    "title": "高级数据科学家 · 算法专家",
+    "phone": "+86 139 5027 6814",
+    "email": "zhiyuan.chen@datascience.me",
+    "location": "上海",
+    "linkedin": "linkedin.com/in/zhiyuan-chen",
+    "website": "github.com/zyquant",
+    "summary": "7年数据科学与机器学习经验，聚焦推荐系统与时间序列预测。Kaggle竞赛大师（2x金牌），擅长端到端算法落地与模型优化。在电商与金融科技领域推动增长实验，实现千万级收益提升。",
+    "tags": [
+      "数据科学",
+      "极简灰度",
+      "Kaggle"
+    ],
+    "experiences": [
+      {
+        "company": "数元科技",
+        "role": "高级数据科学家",
+        "date": "2022.04 – 至今",
+        "location": "上海",
+        "bullets": [
+          "主导电商推荐系统重构，设计双塔召回+深度排序模型，线上CTR提升19%，人均GMV增长12%。",
+          "搭建全链路特征平台，处理日均50亿行为日志，模型推理延迟降低40%。",
+          "带领3人小组获得Kaggle“OTTO推荐”赛题银牌，方案被整合进公司内部框架。"
+        ]
+      },
+      {
+        "company": "融信数据",
+        "role": "算法工程师（时序预测）",
+        "date": "2019.08 – 2022.02",
+        "location": "北京",
+        "bullets": [
+          "开发多变量时间序列异常检测系统，基于LSTM-Autoencoder，误报率降低至0.3%，挽回潜在损失约800万元/年。",
+          "构建信贷违约预测集成模型（XGBoost+LightGBM），AUC达到0.91，部署于实时决策引擎。",
+          "与风控业务紧密协作，将模型解释性（SHAP）融入报告，获得监管合规认可。"
+        ]
+      },
+      {
+        "company": "星云智能",
+        "role": "初级数据科学家",
+        "date": "2017.06 – 2019.07",
+        "location": "深圳",
+        "bullets": [
+          "参与用户画像与lookalike建模，通过无监督聚类优化广告投放，ROI提升25%。",
+          "维护自动化报表与数据管道（Python+Airflow），减少分析师手动取数时间70%。"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "projectName": "Kaggle · Google Brain – Ventilator Pressure Prediction",
+        "projectRole": "金牌 (Top 1%)",
+        "bullets": [
+          "设计基于Transformer的时序模型，融合呼吸物理学特征。在6000+队伍中排名第22。",
+          "使用PyTorch实现，推理时间优化至20ms内。"
+        ]
+      },
+      {
+        "projectName": "智能供应链需求预测系统",
+        "projectRole": "内部项目 · 专利",
+        "bullets": [
+          "结合外部指数与促销因子，建立分层预测模型（Prophet + TFT），预测准确度（WAPE）达到0.12，减少库存积压21%。"
+        ]
+      },
+      {
+        "projectName": "实时反欺诈图算法引擎",
+        "projectRole": "开源贡献",
+        "bullets": [
+          "基于GraphSAGE与随机游走，识别团伙欺诈。毫秒级响应，在金融数据集上F1-score 0.87，GitHub获得340+ stars。"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "复旦大学",
+        "degree": "应用统计硕士 · 数据科学方向",
+        "date": "2015.09 – 2017.06",
+        "location": "上海"
+      },
+      {
+        "school": "浙江大学",
+        "degree": "数学与应用数学 学士",
+        "date": "2011.09 – 2015.06",
+        "location": "杭州"
+      }
+    ],
+    "languages": [
+      "英语 IELTS 7.5（专业工作水平）",
+      "中文（母语）"
+    ],
+    "certifications": [
+      {
+        "certName": "AWS 机器学习专项",
+        "certDate": "2022"
+      },
+      {
+        "certName": "TensorFlow 开发者证书",
+        "certDate": "2021"
+      }
+    ],
+    "awards": [],
+    "interests": ""
+  },
+  "p12": {
+    "name": "白居易",
+    "title": "高级DevOps/SRE架构师 · 开源贡献者",
+    "phone": "+86 139 5027 6814",
+    "email": "qiming.chen@devops.tech",
+    "location": "上海 / 远程",
+    "linkedin": "",
+    "website": "github.com/qiming-chen",
+    "summary": "深耕云原生基础设施、可观测性及自动化交付。主导过日活千万级系统的SRE改造，将部署频率提升40倍，事故恢复时间缩短75%。活跃于CNCF开源社区，Kubernetes贡献者。",
+    "skills": [
+      {
+        "category": "平台与编排",
+        "items": [
+          "Kubernetes",
+          "Docker",
+          "Helm",
+          "Istio",
+          "ArgoCD",
+          "Terraform"
+        ]
+      },
+      {
+        "category": "可观测性",
+        "items": [
+          "Prometheus",
+          "Grafana",
+          "OpenTelemetry",
+          "ELK Stack",
+          "Thanos"
+        ]
+      },
+      {
+        "category": "语言与脚本",
+        "items": [
+          "Go",
+          "Python",
+          "Bash",
+          "Rust (工具开发)"
+        ]
+      },
+      {
+        "category": "CI/CD & GitOps",
+        "items": [
+          "GitHub Actions",
+          "Jenkins X",
+          "Tekton",
+          "Flux"
+        ]
+      }
+    ],
+    "experiences": [
+      {
+        "company": "星云科技",
+        "role": "首席SRE架构师",
+        "date": "2021.09 – 至今",
+        "location": "上海",
+        "bullets": [
+          "设计并落地多集群服务网格，管理30+ Kubernetes集群，支撑日均20亿次请求，可用性达99.99%。",
+          "主导可观测性体系重构，基于OpenTelemetry统一链路、指标与日志，MTTR从45分钟降至8分钟。",
+          "推动GitOps交付模型，实现生产环境零手动变更，部署频率从周级提升至每日35+次。",
+          "带领5人SRE团队，制定错误预算策略及on-call流程，季度事故数下降62%。"
+        ]
+      },
+      {
+        "company": "云迹网络",
+        "role": "高级DevOps工程师",
+        "date": "2018.03 – 2021.08",
+        "location": "北京",
+        "bullets": [
+          "构建混合云基础设施即代码平台，采用Terraform + Packer，环境交付时间从2天缩短至40分钟。",
+          "开发内部Chaos Engineering框架，模拟区域级故障，验证系统韧性，成功避免3次大规模服务中断。",
+          "维护开源项目“Kube-Lens”，用于集群资源优化，GitHub 1.2k stars，被CNCF沙盒接纳。"
+        ]
+      },
+      {
+        "company": "迅达数据",
+        "role": "系统工程师 (SRE)",
+        "date": "2016.07 – 2018.02",
+        "location": "深圳",
+        "bullets": [
+          "从0搭建容器化平台，迁移80+微服务至Kubernetes，资源利用率提升45%。",
+          "设计集中化日志与监控方案（ELK+Prometheus），为开发团队提供实时仪表盘。"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "projectName": "Kubernetes 贡献者",
+        "projectRole": "sig-instrumentation / sig-scheduling",
+        "bullets": [
+          "提交15+ PR被合并，改进调度器指标暴露及日志结构化。"
+        ]
+      },
+      {
+        "projectName": "OpenTelemetry Collector 贡献者",
+        "projectRole": "processor / exporter 组件",
+        "bullets": [
+          "实现自定义处理器用于尾部采样优化，被多个企业采用。"
+        ]
+      },
+      {
+        "projectName": "技术演讲/文章",
+        "projectRole": "KubeCon China 2023 · DevOpsDays Shanghai",
+        "bullets": [
+          "分享《大规模集群的GitOps实践》及《SRE错误预算自动化》。"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "华中科技大学",
+        "degree": "计算机科学与技术 硕士",
+        "date": "2014 – 2016",
+        "location": "武汉"
+      }
+    ],
+    "certifications": [
+      {
+        "certName": "CKA (Certified Kubernetes Administrator)",
+        "certDate": ""
+      },
+      {
+        "certName": "AWS Certified DevOps Engineer – Professional",
+        "certDate": ""
+      },
+      {
+        "certName": "HashiCorp Terraform Associate",
+        "certDate": ""
+      }
+    ],
+    "languages": [
+      "中文（母语）",
+      "英文（流利，技术文档/演讲）"
+    ],
+    "awards": [],
+    "tags": [
+      "DevOps",
+      "SRE",
+      "技术文档风"
+    ],
+    "interests": "持续交付 · 韧性工程 · 开源协作"
+  },
+  "p13": {
+    "name": "王维",
+    "title": "高级网络安全工程师 · 渗透测试专家",
+    "phone": "+86 139 5027 6814",
+    "email": "chen.mo@defsec.cn",
+    "location": "北京 · 朝阳",
+    "linkedin": "",
+    "website": "github.com/0xChenMo",
+    "summary": "6年网络安全与渗透测试经验，擅长Web/内网/移动端渗透与红队演练，具备APT追踪、日志取证与恶意软件逆向能力。多次带队进入国家级CTF线下决赛。",
+    "skills": [
+      {
+        "category": "渗透测试",
+        "items": [
+          "Web/内网/移动端",
+          "红队演练"
+        ]
+      },
+      {
+        "category": "威胁分析",
+        "items": [
+          "APT追踪",
+          "日志取证",
+          "恶意软件逆向"
+        ]
+      },
+      {
+        "category": "安全开发",
+        "items": [
+          "Python",
+          "C",
+          "Rust",
+          "漏洞利用编写"
+        ]
+      },
+      {
+        "category": "防御体系",
+        "items": [
+          "EDR/SIEM调优",
+          "零信任架构"
+        ]
+      },
+      {
+        "category": "云安全",
+        "items": [
+          "AWS/Azure安全",
+          "容器K8s加固"
+        ]
+      },
+      {
+        "category": "CTF专长",
+        "items": [
+          "Pwn/Reverse",
+          "多次全国线下决赛"
+        ]
+      }
+    ],
+    "experiences": [
+      {
+        "company": "奇盾安全实验室",
+        "role": "高级安全研究员",
+        "date": "2022.09 – 至今",
+        "location": "北京",
+        "bullets": [
+          "主导针对金融行业客户的深度渗透测试项目，发现高危漏洞140+，协助修复关键业务系统风险。",
+          "研发自动化漏洞扫描平台，集成Nuclei模板与自研POC，提升团队测试效率40%。",
+          "追踪多个APT组织攻击链，还原入侵路径并输出威胁情报报告，获得CNVD原创漏洞证书。",
+          "作为红队核心参与国家级攻防演练，成功突破多个目标边界并获取核心权限。"
+        ]
+      },
+      {
+        "company": "青藤云安全",
+        "role": "安全工程师",
+        "date": "2019.07 – 2022.08",
+        "location": "上海",
+        "bullets": [
+          "负责Web应用及API安全测试，累计完成200+个系统渗透，编写详细修复方案。",
+          "维护内部知识库与漏洞利用库，开发基于Flask的漏洞复现环境，用于新人培训。",
+          "参与某大型电商双十一重保，实时分析攻击流量并拦截恶意请求，零安全事故。",
+          "联合开发基于ATT&CK框架的检测规则，提升SOC告警准确率22%。"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "projectName": "CVE-2023-4412 · 远程代码执行",
+        "projectRole": "IoT设备固件分析",
+        "projectDate": "2023",
+        "bullets": [
+          "独立挖掘某主流NAS设备未授权RCE漏洞，获CVE编号及厂商致谢。",
+          "编写Metasploit利用模块并发布详细技术分析，被安全社区广泛引用。"
+        ]
+      },
+      {
+        "projectName": "强网杯/网鼎杯 决赛战队",
+        "projectRole": "Pwn & Reverse 主力",
+        "projectDate": "2021–2024",
+        "bullets": [
+          "连续四年带队进入全国网络安全大赛线下决赛，最佳排名全国第9。",
+          "擅长二进制漏洞利用与逆向工程，多次在CTF中解出高难度Pwn题。"
+        ]
+      },
+      {
+        "projectName": "开源工具：NetGhost",
+        "projectRole": "内网穿透与隐匿隧道",
+        "projectDate": "GitHub 1.2k stars",
+        "bullets": [
+          "使用Rust开发轻量级内网代理工具，支持ICMP/DNS隧道，用于合法渗透测试。",
+          "项目被多个红队工具集收录，注重内存安全与免杀特性。"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "北京邮电大学",
+        "degree": "信息安全 学士",
+        "date": "2015 – 2019",
+        "location": "北京"
+      }
+    ],
+    "certifications": [
+      {
+        "certName": "OSCP (Offensive Security Certified Professional)",
+        "certDate": "2022"
+      },
+      {
+        "certName": "CISSP (Certified Information Systems Security Professional)",
+        "certDate": "2023"
+      },
+      {
+        "certName": "CNVD 原创漏洞证书 (编号2023-xxxx)",
+        "certDate": "2023"
+      }
+    ],
+    "awards": [],
+    "tags": [
+      "网络安全",
+      "渗透测试",
+      "低调硬核"
+    ],
+    "interests": ""
+  }
+}

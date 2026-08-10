@@ -1,6 +1,6 @@
 {
   "templateId": "prompt_031",
-  "name": "张正源 · 工程造价师简历",
+  "name": "杜甫 · 工程造价师简历",
   "sourceFile": "prompt_031.html",
   "renderMode": "static",
   "fields": [
@@ -141,7 +141,7 @@
     }
   ],
   "sampleData": {
-    "name": "张正源",
+    "name": "杜甫",
     "phone": "(086) 139-5027-6814",
     "email": "✉️ zhang.zy@costengineer.cn",
     "location": "上海市浦东新区",
