@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-color-adjust: exact;">
+  <title>张振宇 · 体育营销高级经理</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eef2f5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Calibri', 'Arial', 'Helvetica', '思源黑体', 'Source Han Sans SC', 'Noto Sans SC', sans-serif;
+    }
+
+    /* 简历卡片：A4尺寸，纯白背景，模拟纸张 */
+    .resume {
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      margin: 0 auto;
+      padding: 0.75in 0.8in 0.8in 0.8in;
+      color: #1e2b3c;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s;
+    }
+
+    /* 主色调：深蓝灰，强调色：琥珀金，仅用于点缀 */
+    h1, h2, h3, .company, .position-title {
+      font-weight: 600;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 1.8rem;
+    }
+    .name {
+      font-size: 32pt;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #0f2b3f;
+      line-height: 1.2;
+      margin-bottom: 0.2rem;
+    }
+    .title-line {
+      font-size: 13pt;
+      color: #2d4b65;
+      font-weight: 400;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.4px;
+    }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 10pt;
+      color: #33495e;
+      margin-bottom: 0.5rem;
+      align-items: center;
+    }
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .contact-icon {
+      font-size: 10.5pt;
+      color: #1f4b6e;
+      display: inline-block;
+      width: 1.1rem;
+      text-align: left;
+    }
+    hr {
+      border: none;
+      border-top: 1.5px solid #cbd5e1;
+      margin: 0.8rem 0 1.5rem 0;
+      opacity: 0.7;
+    }
+    .section-divider {
+      border-top: 1.2px solid #d1dbe6;
+      margin: 1.6rem 0 1.2rem 0;
+    }
+
+    /* 版块标题 */
+    .section-title {
+      font-size: 13pt;
+      font-weight: 700;
+      color: #0f2b3f;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #cdd9e6;
+      margin-left: 0.5rem;
+    }
+
+    /* 时间轴样式 - 左侧细线装饰 (ATS安全，纯色条) */
+    .timeline-block {
+      position: relative;
+      padding-left: 1.6rem;
+      margin-bottom: 1.3rem;
+      border-left: 1.8px solid #bdd3e8;
+    }
+
+    /* 工作经历条目 */
+    .experience-item {
+      margin-bottom: 1.25rem;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.2rem;
+    }
+    .company {
+      font-size: 12.5pt;
+      font-weight: 700;
+      color: #0b2b44;
+    }
+    .dates {
+      font-size: 10pt;
+      font-weight: 400;
+      color: #4a627a;
+      white-space: nowrap;
+      margin-left: 0.5rem;
+    }
+    .position {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #2d4b65;
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+    .desc-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.4rem;
+    }
+    .desc-list li {
+      font-size: 10.2pt;
+      color: #2d3a4a;
+      margin-bottom: 0.35rem;
+      display: flex;
+      gap: 0.5rem;
+      line-height: 1.45;
+    }
+    .desc-list li::before {
+      content: "•";
+      color: #1d4e6e;
+      font-weight: bold;
+      display: inline-block;
+      width: 0.9rem;
+      font-size: 11pt;
+      margin-right: 0.15rem;
+      flex-shrink: 0;
+    }
+
+    /* 教育经历简化版时间轴 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.7rem;
+      font-size: 10.5pt;
+    }
+    .edu-school {
+      font-weight: 700;
+      color: #0f2b3f;
+    }
+    .edu-degree {
+      font-weight: 500;
+      color: #2d4b65;
+    }
+
+    /* 技能标签 - 行内标签，纯文本 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1.8rem;
+      font-size: 10.5pt;
+      color: #1e2f40;
+    }
+    .skill-category {
+      font-weight: 700;
+      margin-right: 0.3rem;
+      color: #0f2b3f;
+    }
+    .skill-list {
+      color: #2c3e50;
+    }
+
+    /* 项目亮点 - 同样使用左侧细线 */
+    .project-item {
+      margin-bottom: 0.9rem;
+    }
+    .project-name {
+      font-weight: 700;
+      font-size: 11pt;
+      color: #0b2b44;
+    }
+    .project-desc {
+      font-size: 10pt;
+      color: #2d3a4a;
+      margin-top: 0.2rem;
+      padding-left: 0.2rem;
+    }
+
+    /* 页脚或额外信息 */
+    .cert-row {
+      font-size: 10pt;
+      color: #2d3a4a;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    /* 打印样式：去除背景，保持干净，隐藏交互元素 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        margin: 0 auto;
+        width: 210mm;
+        min-height: 297mm;
+        padding: 0.7in 0.75in 0.75in 0.75in;
+        page-break-after: avoid;
+      }
+      hr, .section-divider {
+        border-color: #b0c0d0;
+      }
+      .contact-icon {
+        color: #1f4b6e;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+
+    <!-- 姓名与抬头 -->
+    <div class="name-section">
+      <div class="name">张振宇</div>
+      <div class="title-line">体育营销高级经理 | 赛事赞助策略 · 品牌激活</div>
+      <div class="contact-row">
+        <span class="contact-item"><span class="contact-icon">📞</span> +86 139 8888 5678</span>
+        <span class="contact-item"><span class="contact-icon">✉️</span> zhenyuzhang@sportmkt.cn</span>
+        <span class="contact-item"><span class="contact-icon">📍</span> 上海 / 北京</span>
+        <span class="contact-item"><span class="contact-icon">🔗</span> linkedin.com/in/zhenyuzhang</span>
+      </div>
+      <hr>
+    </div>
+
+    <!-- 核心优势 / 个人简述 (ATS友好纯文本) -->
+    <div style="margin-bottom: 1.2rem; font-size: 10.5pt; color: #2a3b4c; line-height: 1.5;">
+      8年体育营销与品牌合作经验，主导过奥运会、马拉松及电竞领域千万级赞助项目。擅长权益谈判、整合激活与ROI衡量，具备丰富的猎头级行业资源与跨国品牌合作视野。
+    </div>
+
+    <!-- 工作经历：时间轴排版 -->
+    <div>
+      <div class="section-title">职业经历</div>
+      
+      <div class="timeline-block">
+        <!-- 经历1 -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <span class="company">动力体育营销集团</span>
+            <span class="dates">2021.09 – 至今</span>
+          </div>
+          <span class="position">体育营销高级经理</span>
+          <ul class="desc-list">
+            <li>统筹某国际马拉松赛事冠名赞助项目（总价值¥4200万），管理跨品牌、媒体及赛事方多方沟通，权益激活率提升32%。</li>
+            <li>带领6人团队制定年度体育赞助策略，签约3家头部运动品牌及汽车客户，实现部门营收年增长27%。</li>
+            <li>构建赞助效果评估模型，结合社交媒体声量与现场曝光，为客户提供季度ROI报告，续约率达85%。</li>
+          </ul>
+        </div>
+
+        <!-- 经历2 -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <span class="company">跃野品牌咨询 (红杉资本被投)</span>
+            <span class="dates">2018.04 – 2021.08</span>
+          </div>
+          <span class="position">体育营销经理</span>
+          <ul class="desc-list">
+            <li>负责某知名饮料品牌电竞世界杯赞助激活，策划线上互动及线下观赛活动，品牌年轻化指数提升41%。</li>
+            <li>拓展体育IP资源库，与NBA中国、西甲联盟及国内顶级电竞俱乐部建立深度合作，降低采购成本15%。</li>
+            <li>主导“城市运动嘉年华”IP孵化，整合篮球、滑板与街舞元素，吸引超过12万人次参与，获得行业金奖。</li>
+          </ul>
+        </div>
+
+        <!-- 经历3 -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <span class="company">盛力文化体育发展有限公司</span>
+            <span class="dates">2016.07 – 2018.02</span>
+          </div>
+          <span class="position">赞助合作主管</span>
+          <ul class="desc-list">
+            <li>协助完成两个省级运动会赞助方案，对接快消及金融客户，累计合同额超¥1800万。</li>
+            <li>参与运动员经纪与品牌代言匹配，成功促成3位奥运选手与运动品牌代言合作。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 重点项目精选（强化时间轴感） -->
+    <div style="margin-top: 0.3rem;">
+      <div class="section-title">代表项目</div>
+      <div class="timeline-block" style="margin-bottom: 0.8rem;">
+        <div class="project-item">
+          <span class="project-name">▪ 国际女子网球公开赛赞助激活</span> <span style="font-size:9.5pt; color:#4a627a; margin-left:0.5rem;">2023</span>
+          <div class="project-desc">领导跨部门团队设计沉浸式品牌体验区，联动社交媒体挑战赛，话题阅读量超2.3亿，赞助商品牌认知度提升27%。</div>
+        </div>
+        <div class="project-item">
+          <span class="project-name">▪ 头部运动品牌×城市夜跑联赛</span> <span style="font-size:9.5pt; color:#4a627a; margin-left:0.5rem;">2022</span>
+          <div class="project-desc">策划“发光跑道”概念，整合线下赛事与线上直播，吸引8000+跑者参与，直接带动产品季度销量增长19%。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 教育背景 -->
+    <div>
+      <div class="section-title">教育背景</div>
+      <div style="margin-bottom: 0.5rem;">
+        <div class="edu-item">
+          <span><span class="edu-school">上海体育大学</span> · <span class="edu-degree">体育管理硕士</span></span>
+          <span class="dates">2014 – 2016</span>
+        </div>
+        <div class="edu-item">
+          <span><span class="edu-school">复旦大学</span> · <span class="edu-degree">市场营销学士</span></span>
+          <span class="dates">2010 – 2014</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 技能与专业能力 (标签式，纯文本) -->
+    <div>
+      <div class="section-title">核心能力</div>
+      <div class="skills-container">
+        <div><span class="skill-category">赞助策略：</span><span class="skill-list">权益设计 · 资产评估 · 谈判管理</span></div>
+        <div><span class="skill-category">数字营销：</span><span class="skill-list">社媒激活 · 内容营销 · KOL矩阵</span></div>
+        <div><span class="skill-category">数据分析：</span><span class="skill-list">Tableau · Excel建模 · ROI追踪</span></div>
+        <div><span class="skill-category">语言能力：</span><span class="skill-list">中文(母语) · 英语(商务流利) · 基础西班牙语</span></div>
+      </div>
+    </div>
+
+    <!-- 行业认证与荣誉 -->
+    <div style="margin-top: 1.2rem;">
+      <div class="section-title">资质与行业参与</div>
+      <div class="cert-row">
+        <span>🏅 国际体育营销协会 (ISMA) 认证专家</span>
+        <span>📘 体育经纪人资格证 (国家体育总局)</span>
+        <span>🏆 2023 中国体育营销奖 · 最佳赞助激活案例</span>
+      </div>
+    </div>
+
+    <!-- 极简分割线，增加呼吸感 -->
+    <div style="margin-top: 1.4rem; font-size: 9pt; color: #6b7c8b; border-top: 1px solid #e1e8f0; padding-top: 0.6rem; text-align: left;">
+      持续学习者 · 行业峰会演讲嘉宾 · 猎头与行业资源网络活跃
+    </div>
+
+  </div>
+</body>
+</html>

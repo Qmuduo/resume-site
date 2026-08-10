@@ -1,0 +1,277 @@
+{
+  "templateId": "prompt_002",
+  "name": "陈启明 · 副总裁 · PE/VC 投资简历",
+  "sourceFile": "prompt_002.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "个人简介",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "代表交易",
+      "label": "代表交易",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-sub",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "summary",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "sectionTitle": "专业摘要"
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".edu-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "edu-item"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    }
+  ],
+  "sampleData": {
+    "name": "陈启明",
+    "title": "副总裁 / 董事 · PE & VC 投资 8年经验",
+    "phone": "+86 139 1028 5742",
+    "email": "✉️ qiming.chen@pevc.com",
+    "location": "北京 · 上海",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "🔗 linkedin.com/in/qimingchen"
+      }
+    ],
+    "summary": "拥有8年私募股权与风险投资经验，主导完成超过12笔交易，累计管理资产规模超45亿人民币。专注于科技、先进制造及医疗健康领域。具备从项目寻源、尽职调查到投后管理的完整闭环能力，曾任董事总经理特别助理。猎头直推目标：副总裁/董事层级。",
+    "代表交易": "领投 · 星环半导体B轮融资 2022.03 主导3.2亿元投资，投后估值18亿元；负责商业谈判及条款清单设计，目前项目已进入上市辅导期。 独家投资 · 安和医疗C轮 2019.09 作为项目负责人完成2.5亿元独家投资，协助企业引入战略资源，三年内营收增长4.8倍。 并购退出 · 云智科技 2021.12 管理被投企业出售给上市公司，实现3.1倍回报，内部收益率达41%。",
+    "experiences": [
+      {
+        "position": "| 投资副总裁",
+        "date": "2020.06 – 至今 | 北京"
+      },
+      {
+        "position": "| 高级投资经理 / 副总裁（早期）",
+        "date": "2017.03 – 2020.05 | 上海"
+      },
+      {
+        "position": "| 商业分析师 / 咨询经理",
+        "date": "2015.08 – 2017.02 | 上海"
+      }
+    ],
+    "education": [
+      {
+        "school": "| 北京大学光华管理学院",
+        "date": "2013 – 2015"
+      },
+      {
+        "school": "| 复旦大学",
+        "date": "2009 – 2013"
+      }
+    ],
+    "skills": [
+      {
+        "name": "尽职调查",
+        "level": ""
+      },
+      {
+        "name": "交易结构设计",
+        "level": ""
+      },
+      {
+        "name": "投后管理",
+        "level": ""
+      },
+      {
+        "name": "退出策略",
+        "level": ""
+      },
+      {
+        "name": "估值分析",
+        "level": ""
+      },
+      {
+        "name": "先进制造",
+        "level": ""
+      },
+      {
+        "name": "医疗器械",
+        "level": ""
+      },
+      {
+        "name": "半导体",
+        "level": ""
+      },
+      {
+        "name": "新能源",
+        "level": ""
+      },
+      {
+        "name": "CPA（非执业）",
+        "level": ""
+      },
+      {
+        "name": "英语专业八级",
+        "level": ""
+      },
+      {
+        "name": "普通话母语",
+        "level": ""
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "代表交易",
+      "label": "代表交易",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "summary",
+      "label": "专业摘要",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

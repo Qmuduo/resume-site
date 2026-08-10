@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>航天器控制系统工程师 · 高级技术专家简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      background: #eef2f6;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', 'Noto Sans SC', '思源黑体', sans-serif;
+      line-height: 1.5;
+      color: #1e2b3c;
+    }
+
+    /* A4尺寸卡片，模拟纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 内边距控制：确保呼吸感，页边距≥0.5英寸 */
+    .resume-inner {
+      padding: 1.8cm 1.8cm 1.6cm 1.8cm;
+    }
+
+    /* 所有文字均为纯文本，无图形遮挡 */
+    h1, h2, h3, p, li, div, span {
+      font-weight: normal;
+    }
+
+    /* 标题区域 */
+    .header {
+      margin-bottom: 1.4rem;
+    }
+
+    .name {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #0a2c3e;
+      line-height: 1.2;
+      margin-bottom: 0.25rem;
+      font-family: 'Helvetica Neue', 'Arial', 'Noto Sans SC', '思源黑体', sans-serif;
+    }
+
+    .title-tagline {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #2c4b6b;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+    }
+
+    .title-badge {
+      background: transparent;
+      color: #1e3b5a;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid #cbd5e0;
+      padding: 0.2rem 0.9rem;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+      display: inline-block;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.85rem;
+      color: #2d3e50;
+      margin-top: 0.5rem;
+      border-top: 1px solid #dce3ea;
+      padding-top: 0.9rem;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      white-space: nowrap;
+    }
+
+    /* 简单线性图标使用unicode字符，ATS完全可读 */
+    .icon {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-right: 0.1rem;
+    }
+
+    /* 分割线风格：细线，深色商务调 */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: #cbd5e0;
+      margin: 1rem 0 1.2rem 0;
+    }
+
+    .section {
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #1e3b5a;
+      margin-bottom: 0.6rem;
+      border-bottom: 2px solid #d0d9e4;
+      padding-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .section-title::before {
+      content: "▹";
+      font-size: 1rem;
+      color: #2c6280;
+      font-weight: normal;
+      margin-right: 0.2rem;
+    }
+
+    /* 工作经历条目 */
+    .experience-item {
+      margin-bottom: 1rem;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.2rem;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #0b2b44;
+      letter-spacing: 0.2px;
+    }
+
+    .job-title {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #2c3e50;
+      margin-left: 0.5rem;
+    }
+
+    .date-location {
+      font-size: 0.8rem;
+      color: #4a6279;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .exp-details {
+      margin-top: 0.35rem;
+      padding-left: 1.2rem;
+      list-style-type: none;
+    }
+
+    .exp-details li {
+      font-size: 0.85rem;
+      color: #2d3a4a;
+      margin-bottom: 0.35rem;
+      position: relative;
+      line-height: 1.5;
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .exp-details li::before {
+      content: "•";
+      color: #1f4b6e;
+      font-weight: bold;
+      font-size: 1rem;
+      display: inline-block;
+      width: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* 技能标签区域：标签化设计 */
+    .skills-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+    }
+
+    .skill-tag {
+      background: #f0f4fa;
+      color: #1e3349;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.25rem 0.9rem;
+      border-radius: 16px;
+      border: 1px solid #d0dceb;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+
+    /* 教育及证书简单列表 */
+    .edu-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 0.9rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .edu-degree {
+      font-weight: 600;
+      color: #1e2f40;
+    }
+
+    .edu-school {
+      font-weight: 400;
+      color: #2e4055;
+    }
+
+    .edu-date {
+      font-size: 0.8rem;
+      color: #4a6279;
+      margin-left: 0.5rem;
+    }
+
+    .project-highlight {
+      margin-top: 0.3rem;
+      font-size: 0.85rem;
+      color: #2d3e50;
+    }
+
+    /* 涉密/猎头渠道暗示：干净无图形，强调专业性 */
+    .clearance-note {
+      font-size: 0.75rem;
+      color: #3f5569;
+      margin-top: 0.4rem;
+      font-style: italic;
+      letter-spacing: 0.2px;
+    }
+
+    /* 双栏技能区采用纯文本 flex 布局，无浮动定位，ATS可顺序读取 */
+    .two-col-skills {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .col {
+      flex: 1 1 180px;
+    }
+
+    .col p {
+      font-size: 0.85rem;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+
+    /* 打印样式：去除背景，保留结构，隐藏交互元素 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+      .resume {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+        width: 100%;
+      }
+      .resume-inner {
+        padding: 1.2cm 1.2cm 1cm 1.2cm;
+      }
+      .skill-tag {
+        background: none;
+        border: 1px solid #aaa;
+        color: black;
+      }
+      .section-title::before {
+        color: black;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .contact-item, .icon {
+        color: black;
+      }
+    }
+
+    /* 响应式调整 */
+    @media screen and (max-width: 700px) {
+      .resume-inner {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      
+      <!-- 头部：姓名 + 定位 -->
+      <div class="header">
+        <h1 class="name">陈牧远</h1>
+        <div class="title-tagline">
+          <span class="title-badge">航天器控制系统总师 · 高级工程师</span>
+          <span style="color:#2c4b6b;">GNC / 姿轨控</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="icon">📧</span> chen.muyuan@aerospace.cn</span>
+          <span class="contact-item"><span class="icon">📞</span> +86 138 0000 6721</span>
+          <span class="contact-item"><span class="icon">📍</span> 北京 · 海淀</span>
+          <span class="contact-item"><span class="icon">🔗</span> linkedin.com/in/muyuan-chen</span>
+        </div>
+        <div class="clearance-note">
+          ▪ 保密资质完备 · 涉密项目经历可应猎头要求提供脱敏摘要
+        </div>
+      </div>
+
+      <!-- 核心能力板块：标签化技术文档风格 -->
+      <div class="section">
+        <div class="section-title">核心技术领域</div>
+        <div class="skills-cloud">
+          <span class="skill-tag">航天器GNC系统设计</span>
+          <span class="skill-tag">姿轨控算法</span>
+          <span class="skill-tag">星敏感器/陀螺融合</span>
+          <span class="skill-tag">MATLAB/Simulink</span>
+          <span class="skill-tag">C++实时仿真</span>
+          <span class="skill-tag">故障诊断与重构</span>
+          <span class="skill-tag">深空探测制导</span>
+          <span class="skill-tag">推进系统耦合</span>
+          <span class="skill-tag">半物理仿真</span>
+          <span class="skill-tag">DO-178C</span>
+          <span class="skill-tag">ECSS标准</span>
+          <span class="skill-tag">鲁棒控制</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 工作经历：突出高级/总师层级 -->
+      <div class="section">
+        <div class="section-title">专业经历</div>
+        
+        <div class="experience-item">
+          <div class="exp-header">
+            <span>
+              <span class="company-name">星河动力航天科技</span>
+              <span class="job-title">· 姿轨控系统副主任设计师</span>
+            </span>
+            <span class="date-location">2022.09 – 至今 | 北京</span>
+          </div>
+          <ul class="exp-details">
+            <li>负责某中型可回收运载火箭姿控系统总体设计，提出自适应增益调度算法，提升上升段抗干扰能力23%。</li>
+            <li>主导控制系统与推进、结构专业耦合分析，制定故障模式与重构策略，通过全任务仿真验证。</li>
+            <li>带领5人团队完成控制系统半物理仿真平台升级，支持硬件在回路测试，缩短迭代周期30%。</li>
+            <li>参与火箭垂直回收段GNC算法开发，实现着陆精度优于15米（3σ）。</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <span>
+              <span class="company-name">中国空间技术研究院</span>
+              <span class="job-title">· 控制系统工程师 / 高级工程师</span>
+            </span>
+            <span class="date-location">2019.04 – 2022.08 | 北京</span>
+          </div>
+          <ul class="exp-details">
+            <li>某高轨遥感卫星控制系统主管，设计高精度指向与稳定度控制方案，在轨指向精度优于0.02°。</li>
+            <li>开发基于星敏感器+光纤陀螺的复合滤波算法，有效抑制微振动对载荷的影响。</li>
+            <li>编写控制系统技术规格书及接口控制文件，支持整星AIT及在轨测试全过程。</li>
+            <li>参与深空探测预研项目，完成地月转移轨道中途修正策略设计与仿真验证。</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <span>
+              <span class="company-name">北京控制工程研究所</span>
+              <span class="job-title">· 制导导航与控制工程师</span>
+            </span>
+            <span class="date-location">2017.07 – 2019.03 | 北京</span>
+          </div>
+          <ul class="exp-details">
+            <li>参与某低轨星座卫星推进系统故障诊断与重构算法设计，保障卫星任务连续性。</li>
+            <li>开发姿态机动路径规划模块，应用于多颗小卫星快速重定向任务。</li>
+            <li>维护GNC算法库及自动化测试脚本，提高仿真效率。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="divider" style="margin: 0.8rem 0 1rem 0;"></div>
+
+      <!-- 教育背景 + 专业技能双列展示（纯文本flex） -->
+      <div class="section">
+        <div class="section-title">教育背景</div>
+        <div class="edu-entry">
+          <span class="edu-degree">飞行器设计 硕士</span>
+          <span class="edu-school">北京航空航天大学</span>
+          <span class="edu-date">2015 – 2017</span>
+        </div>
+        <div class="edu-entry">
+          <span class="edu-degree">自动化 学士</span>
+          <span class="edu-school">哈尔滨工业大学</span>
+          <span class="edu-date">2011 – 2015</span>
+        </div>
+      </div>
+
+      <!-- 专业技能与工具 两栏布局，纯文本，无浮动 -->
+      <div class="section">
+        <div class="section-title">工具与标准</div>
+        <div class="two-col-skills">
+          <div class="col">
+            <p><strong>仿真/建模：</strong>MATLAB, Simulink, STK</p>
+            <p><strong>编程语言：</strong>C/C++, Python, Ada</p>
+            <p><strong>实时系统：</strong>VxWorks, RTEMS</p>
+          </div>
+          <div class="col">
+            <p><strong>行业标准：</strong>ECSS-E-ST-60, GJB</p>
+            <p><strong>版本管理：</strong>Git, SVN, Jenkins</p>
+            <p><strong>文档工具：</strong>LaTeX, DOORS</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 项目亮点 / 涉密脱敏说明 -->
+      <div class="section">
+        <div class="section-title">关键项目摘要</div>
+        <div class="project-highlight">
+          <span style="font-weight:600;">▪ 可回收火箭GNC验证项目：</span>设计再入制导律与着陆段控制分配，完成蒙特卡洛仿真2000次，成功率99.4%。<br>
+          <span style="font-weight:600;">▪ 高轨光学卫星高稳定控制：</span>在轨扰动抑制带宽提升40%，指向稳定度达0.0005°/s，满足成像要求。<br>
+          <span style="font-weight:600;">▪ 深空撞击器制导方案：</span>提出预测校正制导算法，支持自主末端修正，已通过方案评审。
+        </div>
+        <div class="clearance-note" style="margin-top:0.5rem;">
+          * 因涉密要求，部分项目细节隐去。详细技术贡献可通过猎头渠道提供脱敏版履历。
+        </div>
+      </div>
+
+      <!-- 底部：证书与语言，无多余装饰 -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; font-size:0.8rem; color:#3a4e62; border-top: 1px solid #dce3ea; padding-top:0.7rem;">
+        <span>▪ 中国航天科技集团高级工程师职称</span>
+        <span>▪ 英语 CET-6 · 技术文档读写</span>
+        <span>▪ 涉密人员资格</span>
+      </div>
+
+    </div><!-- end resume-inner -->
+  </div><!-- end resume -->
+</body>
+</html>

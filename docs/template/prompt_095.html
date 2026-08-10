@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>高级数据库管理员 · 简历</title>
+  <style>
+    /* 全局重置与系统安全字体 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eef2f5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: Calibri, Arial, "思源黑体", "Noto Sans SC", "Helvetica Neue", sans-serif;
+      color: #2D2D2D;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* 简历卡片：模拟A4比例，固定宽度，真实纸张效果 */
+    .resume {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+      padding: 2.2rem 2.5rem;
+      margin: 0 auto;
+      /* 页面比例对应A4舒适阅读区 */
+      min-height: 29.7cm;
+      background: #ffffff;
+    }
+
+    /* 全局排版元素 */
+    h1, h2, h3, p, ul, li, div, span {
+      margin: 0;
+      padding: 0;
+      font-weight: normal;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 0.8rem;
+    }
+
+    .name {
+      font-size: 26px;
+      font-weight: 700;
+      color: #1A2B3C;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.15rem;
+      font-family: Calibri, Arial, "思源黑体", "Noto Sans SC", sans-serif;
+    }
+
+    .title-sub {
+      font-size: 13px;
+      color: #2B6F7C;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      font-size: 10.5px;
+      color: #4a4a4a;
+      margin-top: 0.25rem;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .contact-icon {
+      font-size: 11px;
+      color: #2B6F7C;
+      font-weight: 500;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #1A2B3C;
+      margin: 0.7rem 0 1rem 0;
+      opacity: 0.9;
+    }
+
+    /* 板块标题通用样式 */
+    .section-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: #1A2B3C;
+      margin: 1.5rem 0 0.7rem 0;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid #d0d7de;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-title::after {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 2px;
+      background: #2B6F7C;
+      margin-left: 0.5rem;
+      margin-bottom: 2px;
+    }
+
+    /* 摘要文本 */
+    .summary-text {
+      font-size: 10.8px;
+      line-height: 1.6;
+      color: #2D2D2D;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 技能标签容器 - 全部文本流，无浮动 */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-tag {
+      background: #F0F3F6;
+      color: #1A2B3C;
+      font-size: 10.5px;
+      font-weight: 500;
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      letter-spacing: 0.2px;
+      border: 0.5px solid #d9e0e8;
+      display: inline-block;
+      line-height: 1.4;
+    }
+
+    .skill-tag.strong {
+      background: #e3edf0;
+      border-color: #b6cfd6;
+      color: #1a3b42;
+      font-weight: 600;
+    }
+
+    /* 经历条目 */
+    .experience-item {
+      margin-bottom: 1rem;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.15rem;
+    }
+
+    .company {
+      font-weight: 700;
+      font-size: 12px;
+      color: #1A2B3C;
+    }
+
+    .job-title {
+      font-weight: 500;
+      font-size: 11px;
+      color: #2B6F7C;
+      margin-left: 0.4rem;
+    }
+
+    .date-range {
+      font-size: 10.5px;
+      color: #60666b;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .exp-details {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 0.2rem;
+    }
+
+    .exp-details li {
+      font-size: 10.5px;
+      color: #2D2D2D;
+      line-height: 1.55;
+      margin-bottom: 0.25rem;
+      padding-left: 1.1rem;
+      position: relative;
+      text-indent: 0;
+    }
+
+    .exp-details li::before {
+      content: "•";
+      color: #2B6F7C;
+      font-weight: bold;
+      position: absolute;
+      left: 0.2rem;
+      font-size: 11px;
+    }
+
+    /* 教育/证书 行样式 */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 10.8px;
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      color: #1A2B3C;
+    }
+
+    .edu-school {
+      font-weight: 500;
+      color: #2D2D2D;
+    }
+
+    .edu-date {
+      color: #60666b;
+      font-size: 10.5px;
+    }
+
+    .cert-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1.2rem;
+      margin-top: 0.2rem;
+      font-size: 10.5px;
+      color: #2D2D2D;
+    }
+
+    .cert-item {
+      background: #F5F7FA;
+      padding: 0.2rem 0.8rem;
+      border-radius: 4px;
+      border-left: 3px solid #2B6F7C;
+      font-weight: 500;
+    }
+
+    /* 打印样式：完全去除背景、保留清晰文字 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0.6in 0.75in;
+        max-width: 100%;
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+      }
+      .skill-tag, .cert-item {
+        background: none !important;
+        border: 0.5px solid #aaa;
+        color: #1A2B3C;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .section-title::after {
+        background: #1A2B3C;
+      }
+      hr {
+        border-top: 1.5px solid #1A2B3C;
+      }
+      a {
+        text-decoration: none;
+        color: #2D2D2D;
+      }
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 700px) {
+      .resume {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- 姓名与抬头 -->
+    <div class="name-section">
+      <div class="name">陈亦凡</div>
+      <div class="title-sub">高级数据库管理员 (Senior DBA)</div>
+      <div class="contact-row">
+        <span class="contact-item"><span class="contact-icon">📧</span> yifan.chen@dataengineer.cn</span>
+        <span class="contact-item"><span class="contact-icon">📞</span> +86 (010) 6723-8845</span>
+        <span class="contact-item"><span class="contact-icon">📍</span> 北京 · 海淀</span>
+        <span class="contact-item"><span class="contact-icon">🔗</span> linkedin.com/in/yifan-dba</span>
+      </div>
+    </div>
+    <hr>
+
+    <!-- 专业摘要 -->
+    <div class="section-title">专业摘要</div>
+    <div class="summary-text">
+      8年数据库架构与管理经验，专注MySQL、PostgreSQL及TiDB分布式数据库。主导过日均千万级交易系统的数据库高可用设计与性能调优。持有Oracle OCP、AWS数据库专项认证。习惯以技术文档标准沉淀运维手册与故障复盘。
+    </div>
+
+    <!-- 技术技能 (标签化) -->
+    <div class="section-title">核心技术</div>
+    <div class="tags-container">
+      <span class="skill-tag strong">MySQL 8.0</span>
+      <span class="skill-tag strong">PostgreSQL 15</span>
+      <span class="skill-tag">TiDB</span>
+      <span class="skill-tag">MongoDB</span>
+      <span class="skill-tag">Redis Cluster</span>
+      <span class="skill-tag">Oracle 19c</span>
+      <span class="skill-tag">Shell/Python</span>
+      <span class="skill-tag">Ansible</span>
+      <span class="skill-tag">Prometheus+Grafana</span>
+      <span class="skill-tag">Percona Toolkit</span>
+      <span class="skill-tag">备份恢复策略</span>
+      <span class="skill-tag">SQL优化</span>
+      <span class="skill-tag">高可用架构</span>
+      <span class="skill-tag">数据迁移</span>
+    </div>
+
+    <!-- 工作经历 -->
+    <div class="section-title">工作经历</div>
+    
+    <div class="experience-item">
+      <div class="exp-header">
+        <span><span class="company">云擎数据科技</span><span class="job-title"> | 高级数据库管理员</span></span>
+        <span class="date-range">2021.04 – 至今</span>
+      </div>
+      <ul class="exp-details">
+        <li>负责核心交易库集群(MySQL+TiDB)架构设计，支撑日均8000万次查询，全年可用性99.995%</li>
+        <li>主导从Oracle至PostgreSQL的迁移项目，涉及2.3TB数据，停机窗口控制在12分钟内</li>
+        <li>建立慢查询监控与自动化索引建议系统，平均查询响应时间降低42%</li>
+        <li>编写数据库运维规范与故障手册，通过技术文档评审成为团队标准</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="exp-header">
+        <span><span class="company">凡普互金</span><span class="job-title"> | 数据库工程师</span></span>
+        <span class="date-range">2018.07 – 2021.02</span>
+      </div>
+      <ul class="exp-details">
+        <li>维护300+ MySQL实例，设计MHA+ProxySQL高可用方案，故障自动切换<30秒</li>
+        <li>实施分库分表策略与冷热数据分离，降低主库存储压力60%</li>
+        <li>搭建Prometheus+Grafana监控体系，实现数据库层全链路告警</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="exp-header">
+        <span><span class="company">华信技术</span><span class="job-title"> | 初级DBA</span></span>
+        <span class="date-range">2016.09 – 2018.06</span>
+      </div>
+      <ul class="exp-details">
+        <li>负责日常SQL审核、备份恢复演练及线上故障处理，累计处理紧急故障47起</li>
+        <li>参与MySQL 5.7到8.0的版本升级与性能基准测试</li>
+      </ul>
+    </div>
+
+    <!-- 教育背景 -->
+    <div class="section-title">教育背景</div>
+    <div class="edu-row">
+      <span class="edu-degree">计算机科学与技术 硕士</span>
+      <span class="edu-school">北京邮电大学</span>
+      <span class="edu-date">2014 – 2017</span>
+    </div>
+    <div class="edu-row" style="margin-top:0.1rem;">
+      <span class="edu-degree">信息管理与信息系统 学士</span>
+      <span class="edu-school">西安电子科技大学</span>
+      <span class="edu-date">2010 – 2014</span>
+    </div>
+
+    <!-- 认证与资质 (标签化) -->
+    <div class="section-title">认证与资质</div>
+    <div class="cert-list">
+      <span class="cert-item">Oracle OCP 12c</span>
+      <span class="cert-item">AWS Database Specialty</span>
+      <span class="cert-item">PingCAP TiDB 高级认证</span>
+      <span class="cert-item">CKA (Kubernetes管理员)</span>
+      <span class="cert-item">ITIL Foundation</span>
+    </div>
+
+    <!-- 附加信息：技术文档/社区贡献 -->
+    <div class="section-title">技术沉淀</div>
+    <div class="summary-text" style="margin-bottom:0.2rem;">
+      · 维护内部DBA技术Wiki，撰写《MySQL紧急救援手册》《TiDB运维踩坑集》等文档28篇。<br>
+      · 开源社区贡献：提交MySQL bug报告3次，参与PostgreSQL中文手册翻译。
+    </div>
+    <div style="height: 0.2rem;"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>飞行员简历 · 严谨稳重版</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Arial', 'Helvetica Neue', 'Calibri', '思源黑体', 'Noto Sans SC', sans-serif;
+    }
+
+    /* 简历卡片容器 - 模拟A4尺寸 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      margin: 0 auto;
+      padding: 0.7in 0.75in 0.8in 0.75in;  /* 页边距呼吸感 */
+      color: #1F2937; /* 正深灰色 */
+      line-height: 1.5;
+      font-size: 10.5pt;
+    }
+
+    /* 打印样式：去除背景、阴影，保留清晰文字 */
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+      .resume {
+        box-shadow: none;
+        max-width: 100%;
+        width: 100%;
+        padding: 0.6in 0.7in;
+        margin: 0;
+        page-break-after: avoid;
+        color: #1F2937;
+      }
+      /* 隐藏所有交互相关元素 */
+      .no-print, button, a[href]:not([href*="mailto"]):not([href*="tel"]) {
+        text-decoration: none;
+        color: #1F2937;
+      }
+      /* 确保链接下划线隐藏，保留纯文本感 */
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      /* 分割线保留细线 */
+      .divider-light, .section-divider {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    /* ----- 版式核心：左对齐为主，模块清晰 ----- */
+    h1, h2, h3, p, ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 0.25rem;
+    }
+    .name {
+      font-size: 26pt;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #111827; /* 接近黑色，稳重 */
+      text-transform: uppercase;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      line-height: 1.2;
+    }
+    .title-sub {
+      font-size: 12pt;
+      font-weight: 400;
+      color: #4B5563;
+      margin-top: 0.1rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #9CA3AF; /* 灰色分割线，沉稳 */
+      padding-bottom: 0.45rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 联系方式栏：纯文本行，左对齐，图标用字符代替保证ATS */
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin: 0.7rem 0 0.6rem 0;
+      font-size: 10pt;
+      color: #2D3748;
+      border-bottom: 1px solid #D1D5DB;
+      padding-bottom: 0.55rem;
+    }
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .contact-icon {
+      font-weight: 600;
+      color: #374151;
+      margin-right: 0.1rem;
+      font-size: 10pt;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #1F2937;
+      margin: 1rem 0 0.5rem 0;
+      border-bottom: 1.2px solid #9CA3AF;
+      padding-bottom: 0.2rem;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    /* 经历条目布局 */
+    .experience-item {
+      margin-bottom: 0.7rem;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.15rem;
+    }
+    .company-name {
+      font-weight: 700;
+      font-size: 11pt;
+      color: #111827;
+    }
+    .job-title {
+      font-weight: 600;
+      font-size: 10.5pt;
+      color: #374151;
+      margin-left: 0.3rem;
+    }
+    .date-location {
+      font-size: 10pt;
+      color: #4B5563;
+      font-weight: 400;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+    /* 描述要点：标准圆点 */
+    .bullet-list {
+      margin-top: 0.2rem;
+      padding-left: 1.2rem;
+    }
+    .bullet-list li {
+      list-style-type: disc;
+      margin-bottom: 0.2rem;
+      font-size: 10pt;
+      color: #2D3748;
+      line-height: 1.45;
+      position: relative;
+    }
+    /* 确保圆点标准可见 */
+    .bullet-list li::marker {
+      color: #374151;
+      font-size: 10pt;
+    }
+
+    /* 技能标签式排列 - 左对齐文本流 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.5rem;
+      margin-top: 0.2rem;
+    }
+    .skill-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+    .skill-category {
+      font-weight: 700;
+      font-size: 10pt;
+      color: #1F2937;
+      margin-right: 0.2rem;
+    }
+    .skill-text {
+      font-size: 10pt;
+      color: #2D3748;
+    }
+
+    /* 教育及其他简单条目 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.3rem;
+    }
+    .edu-degree {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: #111827;
+    }
+    .edu-school {
+      font-weight: 600;
+      color: #374151;
+    }
+    .edu-date {
+      font-size: 10pt;
+      color: #4B5563;
+    }
+
+    /* 证书列表 */
+    .cert-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 2rem;
+      margin-top: 0.1rem;
+    }
+    .cert-item {
+      font-size: 10pt;
+      color: #2D3748;
+      display: flex;
+      align-items: baseline;
+    }
+    .cert-item::before {
+      content: "•";
+      margin-right: 0.35rem;
+      color: #374151;
+      font-weight: 600;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #D1D5DB;
+      margin: 0.5rem 0 0.3rem 0;
+    }
+
+    /* 低风险装饰：左侧窄色条（不重叠文字） */
+    .left-accent {
+      position: relative;
+      padding-left: 0;
+    }
+    /* 用极简方式：在姓名区域体现严谨感，不加多余色块 */
+    .accent-line {
+      height: 2px;
+      background: #374151;
+      width: 2.5rem;
+      margin: 0.2rem 0 0.1rem 0;
+    }
+
+    /* 确保所有文字可选、可复制 */
+    .resume, .resume * {
+      user-select: text;
+      -webkit-user-select: text;
+    }
+
+    /* 个人概要简短 */
+    .summary-text {
+      font-size: 10pt;
+      color: #2D3748;
+      margin: 0.2rem 0 0.5rem 0;
+      line-height: 1.5;
+    }
+
+    /* 飞行时间强调数据 */
+    .flight-stats {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin: 0.4rem 0 0.3rem;
+      font-weight: 500;
+    }
+    .stat-highlight {
+      font-weight: 700;
+      color: #111827;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    
+    <!-- 姓名与职位 -->
+    <div class="name-section">
+      <div class="name">陈 远 航</div>
+      <div class="title-sub">商用飞行员 · 航线运输驾驶员</div>
+      <!-- 极简灰色线条装饰，低风险 -->
+      <div class="accent-line"></div>
+    </div>
+
+    <!-- 联系方式：纯文本，标准符号替代图标 -->
+    <div class="contact-bar">
+      <div class="contact-item"><span class="contact-icon">📞</span> +86 138 7251 6094</div>
+      <div class="contact-item"><span class="contact-icon">✉️</span> yh.chen@aviation.pro</div>
+      <div class="contact-item"><span class="contact-icon">📍</span> 上海 · 中国</div>
+      <div class="contact-item"><span class="contact-icon">🛩️</span> 执照编号: CAAC-ATP-20230921</div>
+    </div>
+
+    <!-- 专业概要 (ATS友好纯文本) -->
+    <div class="summary-text">
+      具备国际视野的商用飞行员，总飞行时间2100小时，其中多发涡轮飞机机长时间850小时。持有ICAO英语等级5级，熟悉国内外航司SOP与CRM管理。严谨自律，适应高压力运行环境。
+    </div>
+
+    <!-- 核心资质 / 飞行数据 (用文本突出) -->
+    <div class="flight-stats">
+      <div><span class="stat-highlight">总飞行时间：</span>2,100h</div>
+      <div><span class="stat-highlight">机长经历：</span>620h</div>
+      <div><span class="stat-highlight">多发时间：</span>1,150h</div>
+      <div><span class="stat-highlight">仪表时间：</span>380h</div>
+      <div><span class="stat-highlight">ICAO英语：</span>等级5</div>
+    </div>
+
+    <!-- 工作经历板块 -->
+    <div class="section-title">飞行经历</div>
+    
+    <div class="experience-item">
+      <div class="exp-header">
+        <span class="company-name">东方航空 · 上海基地</span>
+        <span class="job-title">副驾驶 | Boeing 737-800</span>
+        <span class="date-location">2023.09 – 至今</span>
+      </div>
+      <ul class="bullet-list">
+        <li>执行国内及周边国际航线航班，累计安全运行逾900小时，无差错记录。</li>
+        <li>配合机长完成飞行计划制定、燃油计算与气象分析，确保航班准点率98.5%。</li>
+        <li>参与CRM训练与LOFT模拟机强化，两次获得季度安全奖。</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="exp-header">
+        <span class="company-name">春秋航空</span>
+        <span class="job-title">副驾驶 | Airbus A320</span>
+        <span class="date-location">2021.06 – 2023.07</span>
+      </div>
+      <ul class="bullet-list">
+        <li>执行高密度国内航线，熟练掌握A320标准操作程序及非精密进近程序。</li>
+        <li>协助处理空中特情模拟与快速检查单执行，通过局方航线检查考核。</li>
+        <li>总飞行时间约800小时，其中A320机型时间650小时。</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="exp-header">
+        <span class="company-name">中国飞龙通用航空</span>
+        <span class="job-title">飞行学员/初级副驾驶 | Cessna 208B</span>
+        <span class="date-location">2019.08 – 2021.05</span>
+      </div>
+      <ul class="bullet-list">
+        <li>完成商用驾驶员执照训练并取得多发仪表等级，累积通用航空飞行450小时。</li>
+        <li>执行通勤运输与航测任务，熟悉短跑道及非管制机场运行程序。</li>
+      </ul>
+    </div>
+
+    <!-- 教育背景 -->
+    <div class="section-title">教育背景</div>
+    <div class="edu-item">
+      <span class="edu-degree">中国民用航空飞行学院</span>
+      <span class="edu-school">飞行技术专业 · 工学学士</span>
+      <span class="edu-date">2015.09 – 2019.06</span>
+    </div>
+    <div style="font-size:10pt; color:#2D3748; margin-left:0.2rem;">航空理论、飞机系统、航空气象、飞行性能与计划等课程</div>
+
+    <!-- 执照与证书 -->
+    <div class="section-title">执照与认证</div>
+    <div class="cert-list">
+      <div class="cert-item">CAAC 商用驾驶员执照 (CPL)</div>
+      <div class="cert-item">仪表等级 (IR) 多发</div>
+      <div class="cert-item">ICAO 英语等级 5</div>
+      <div class="cert-item">B737/A320 型别等级</div>
+      <div class="cert-item">航空人员体检合格证 (一类)</div>
+      <div class="cert-item">危险品运输培训合格证</div>
+    </div>
+
+    <!-- 核心技能：标签式排列，纯文本 -->
+    <div class="section-title">核心能力</div>
+    <div class="skills-container">
+      <div class="skill-group">
+        <span class="skill-category">机型资质：</span>
+        <span class="skill-text">B737NG, A320, C208B, DA42</span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-category">运行标准：</span>
+        <span class="skill-text">CAT II/III 仪表进近, RVSM, PBN, RNAV</span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-category">专业软件：</span>
+        <span class="skill-text">Jeppesen FD Pro, Lido mPilot, AeroData</span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-category">语言能力：</span>
+        <span class="skill-text">中文(母语), 英语(ICAO5, 工作流利)</span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-category">安全理念：</span>
+        <span class="skill-text">SMS安全管理, CRM机组资源管理, TEM威胁与差错管理</span>
+      </div>
+    </div>
+
+    <!-- 额外培训 / 推荐信区域(猎头友好) -->
+    <div class="section-title">专业发展</div>
+    <ul class="bullet-list" style="margin-top:0.1rem;">
+      <li>2024 东航高级复训 · 低能见度运行与风切变改出 (模拟机评估优异)</li>
+      <li>2023 国际航空运输协会(IATA)安全管理体系(SMS)研讨</li>
+      <li>2022 机组资源管理(CRM)教员引导技巧培训</li>
+    </ul>
+
+    <!-- 细微分割线，强调严谨感 -->
+    <hr>
+    <div style="font-size:9pt; color:#6B7280; text-align:left; margin-top:0.3rem;">
+      推荐信及飞行记录本可应要求提供 · 随时可飞
+    </div>
+
+    <!-- 完全无背景色块、无图形文字叠加，纯文本结构 -->
+  </div>
+</body>
+</html>

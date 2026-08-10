@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>林清怡 · 教育培训讲师简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* 莫兰迪配色方案：温和、知性、年轻活力 */
+      --primary-morandi: #7B8D7A;   /* 灰绿主色，用于标题、分割线 */
+      --accent-warm: #C4A484;      /* 暖灰褐，用于点缀、小图标 */
+      --bg-soft: #F5F2EB;          /* 米白基底，呼吸感 */
+      --text-primary: #2E382E;     /* 深绿灰正文 */
+      --text-secondary: #5A645A;   /* 次级文字 */
+      --divider-light: #D9D4CC;    /* 浅分割线 */
+      --tag-bg: #E9E4DA;           /* 标签背景 */
+      --white-pure: #FFFFFF;
+      
+      --font-title: '思源黑体', 'Source Han Sans SC', 'Helvetica Neue', 'Arial', sans-serif;
+      --font-body: '思源黑体', 'Source Han Sans SC', 'Arial', 'Calibri', 'Helvetica', sans-serif;
+      --font-en: 'Helvetica Neue', 'Arial', 'Calibri', sans-serif;
+      
+      --page-width: 210mm;
+      --page-min-height: 297mm;
+    }
+
+    body {
+      background-color: #E5DFD5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 简历卡片主体 - 固定A4比例，模拟纸张 */
+    .resume {
+      width: var(--page-width);
+      min-height: var(--page-min-height);
+      background: var(--white-pure);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      margin: 0 auto;
+      padding: 0.9in 0.85in 0.8in 0.85in; /* 上下0.9英寸，左右0.85英寸，留白充足 */
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border-radius: 2px;
+      page-break-after: auto;
+    }
+
+    /* 确保所有文字可选、可复制 */
+    .resume, .resume * {
+      user-select: text;
+      -webkit-user-select: text;
+    }
+
+    /* 排版层级 */
+    h1, h2, h3, p, ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /* 姓名区域 */
+    .header {
+      margin-bottom: 0.25in;
+      padding-bottom: 0.15in;
+      border-bottom: 2px solid var(--primary-morandi);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .name {
+      font-family: var(--font-title);
+      font-size: 32pt;
+      font-weight: 700;
+      color: #2E382E;
+      letter-spacing: 1.5px;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-family: var(--font-en);
+      font-size: 13pt;
+      font-weight: 400;
+      color: var(--text-secondary);
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      font-size: 10.5pt;
+      color: var(--text-primary);
+      margin-top: 4px;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    /* 简单线性图标 (行内文字符号，安全) */
+    .icon {
+      font-size: 11pt;
+      color: var(--accent-warm);
+      font-weight: 400;
+      display: inline;
+      margin-right: 2px;
+    }
+
+    /* 主内容区域 - 纯文本列布局，无浮动 */
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.22in;
+      margin-top: 0.15in;
+    }
+
+    /* 板块通用样式 */
+    .section {
+      margin-bottom: 0.05in;
+    }
+
+    .section-title {
+      font-family: var(--font-title);
+      font-size: 13pt;
+      font-weight: 700;
+      color: var(--primary-morandi);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 0.1in;
+      padding-bottom: 3px;
+      border-bottom: 1.5px solid var(--divider-light);
+      display: flex;
+      align-items: center;
+    }
+
+    /* 工作经历条目 - 完全ATS友好结构 */
+    .entry {
+      margin-bottom: 0.18in;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 2px;
+    }
+
+    .entry-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .institution {
+      font-family: var(--font-title);
+      font-size: 12pt;
+      font-weight: 700;
+      color: #2E382E;
+      letter-spacing: 0.2px;
+    }
+
+    .role {
+      font-family: var(--font-body);
+      font-size: 11pt;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-top: 1px;
+    }
+
+    .date-location {
+      font-family: var(--font-en);
+      font-size: 10pt;
+      font-weight: 400;
+      color: var(--text-secondary);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .description {
+      margin-top: 6px;
+      padding-left: 2px;
+    }
+
+    .description ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .description li {
+      font-size: 10.5pt;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: flex-start;
+      line-height: 1.5;
+    }
+
+    /* 标准圆点符号 - ATS安全 */
+    .bullet {
+      display: inline-block;
+      margin-right: 8px;
+      color: var(--accent-warm);
+      font-weight: 600;
+      font-size: 11pt;
+      flex-shrink: 0;
+    }
+
+    /* 技能标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      margin-top: 4px;
+    }
+
+    .skill-tag {
+      background-color: var(--tag-bg);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 10.5pt;
+      font-weight: 500;
+      color: var(--text-primary);
+      letter-spacing: 0.3px;
+      border: 0.5px solid #D9D4CC;
+      background: #F5F2EB;
+    }
+
+    /* 教育经历简单列表 */
+    .edu-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.1in;
+    }
+
+    .edu-left {
+      font-weight: 700;
+      font-size: 11.5pt;
+      color: #2E382E;
+    }
+
+    .edu-detail {
+      font-size: 10.5pt;
+      color: var(--text-secondary);
+    }
+
+    /* 证书与培训两栏列表 (纯文本列) */
+    .two-column-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 28px;
+    }
+
+    .list-item {
+      font-size: 10.5pt;
+      display: flex;
+      align-items: baseline;
+      width: calc(50% - 28px);
+      min-width: 140px;
+    }
+
+    .list-item .bullet {
+      margin-right: 6px;
+      font-size: 10pt;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--divider-light);
+      margin: 0.12in 0 0.05in 0;
+    }
+
+    /* 打印样式规则 */
+    @media print {
+      body {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        width: 100%;
+        min-height: auto;
+        padding: 0.7in 0.7in 0.7in 0.7in;
+        margin: 0 auto;
+        page-break-after: avoid;
+        border-radius: 0;
+      }
+      /* 确保所有背景透明，颜色正常 */
+      .skill-tag {
+        background: #F5F2EB !important;
+        border: 0.5px solid #D9D4CC;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .section-title {
+        color: #7B8D7A !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .bullet {
+        color: #C4A484 !important;
+      }
+      .contact-item, .date-location {
+        color: #2E382E;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    /* 响应式微调 */
+    @media screen and (max-width: 700px) {
+      .resume {
+        width: 100%;
+        padding: 0.5in;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    
+    <!-- 头部：姓名、标题、联系方式 -->
+    <div class="header">
+      <h1 class="name">林清怡</h1>
+      <div class="subtitle">教育培训讲师 · 课程设计师</div>
+      <div class="contact-row">
+        <span class="contact-item"><span class="icon">✉️</span> qingyi.lin@edumail.com</span>
+        <span class="contact-item"><span class="icon">📞</span> (86) 139-5027-6814</span>
+        <span class="contact-item"><span class="icon">📍</span> 中国 · 杭州</span>
+        <span class="contact-item"><span class="icon">🔗</span> linkedin.com/in/qingyilin</span>
+      </div>
+    </div>
+
+    <!-- 主要内容区域：全部左对齐，时间右对齐 -->
+    <div class="content">
+      
+      <!-- 专业概述 -->
+      <div class="section">
+        <div class="section-title">专业概述</div>
+        <p style="font-size: 10.5pt; color: var(--text-primary); margin-top: 2px; line-height: 1.6;">
+          3年青少年素质教育及成人软技能培训经验，擅长互动式教学与课程开发。累计授课超过1200课时，学员满意度达98.6%。具备优秀的课堂引导能力与跨学科整合思维，致力于以学习者为中心的教学设计。
+        </p>
+      </div>
+
+      <!-- 核心技能 - 标签式排列 -->
+      <div class="section">
+        <div class="section-title">核心技能</div>
+        <div class="skills-container">
+          <span class="skill-tag">课程开发与设计</span>
+          <span class="skill-tag">互动式教学法</span>
+          <span class="skill-tag">课堂管理与激励</span>
+          <span class="skill-tag">学习评估与反馈</span>
+          <span class="skill-tag">公共演讲与表达</span>
+          <span class="skill-tag">青少年心理发展</span>
+          <span class="skill-tag">PPT/Keynote</span>
+          <span class="skill-tag">在线教学平台</span>
+          <span class="skill-tag">中英双语授课</span>
+        </div>
+      </div>
+
+      <!-- 工作经历 -->
+      <div class="section">
+        <div class="section-title">教学经历</div>
+        
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-left">
+              <span class="institution">知行素质教育中心</span>
+              <span class="role">高级培训讲师 | 课程研发组</span>
+            </div>
+            <div class="date-location">2023.09 – 至今 | 杭州</div>
+          </div>
+          <div class="description">
+            <ul>
+              <li><span class="bullet">•</span>主导设计「批判性思维与表达」系列课程，覆盖12-16岁学员，累计迭代6个模块，学员续报率提升35%。</li>
+              <li><span class="bullet">•</span>每学期承担8个班级教学任务，运用项目式学习(PBL)与戏剧教学法，课堂活跃度评分年级第一。</li>
+              <li><span class="bullet">•</span>培训新入职讲师5名，开发标准化教学指南与评估工具，缩短新人上手周期约40%。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-left">
+              <span class="institution">新芽语言工作室</span>
+              <span class="role">少儿口才与表达讲师</span>
+            </div>
+            <div class="date-location">2021.08 – 2023.07 | 上海</div>
+          </div>
+          <div class="description">
+            <ul>
+              <li><span class="bullet">•</span>独立负责4-6岁幼儿表达启蒙课程，融合绘本戏剧与游戏化练习，家长满意度达99%。</li>
+              <li><span class="bullet">•</span>策划并执行两届“小小演说家”成果展演，参与学员120人，获得本地教育媒体报道。</li>
+              <li><span class="bullet">•</span>搭建线上复习资源库，包含短视频微课及互动练习，学生课后参与度提高50%。</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-left">
+              <span class="institution">华东师范大学附属实验学校</span>
+              <span class="role">实习语文教师 / 社团指导</span>
+            </div>
+            <div class="date-location">2020.09 – 2021.06 | 上海</div>
+          </div>
+          <div class="description">
+            <ul>
+              <li><span class="bullet">•</span>协助语文教研组完成七年级两个班级的日常教学，设计单元整合教案获校级优秀实习成果。</li>
+              <li><span class="bullet">•</span>创办“辩论与公共演讲”社团，带领学生参加区级辩论赛并获团体亚军。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div class="section">
+        <div class="section-title">教育背景</div>
+        <div class="edu-entry">
+          <span class="edu-left">华东师范大学</span>
+          <span class="edu-detail">教育学学士 · 汉语言文学方向</span>
+          <span class="date-location">2017.09 – 2021.06</span>
+        </div>
+        <div style="font-size: 10pt; color: var(--text-secondary); margin-top: 2px; padding-left: 2px;">
+          主修课程：教育心理学、课程与教学论、教育传播学、儿童文学
+        </div>
+      </div>
+
+      <!-- 资格认证 与 项目/试讲亮点 (结合网申+试讲场景) -->
+      <div class="section">
+        <div class="section-title">资格证书与培训</div>
+        <div class="two-column-list">
+          <div class="list-item"><span class="bullet">•</span> 国家教师资格证（高中语文）</div>
+          <div class="list-item"><span class="bullet">•</span> 普通话一级乙等证书</div>
+          <div class="list-item"><span class="bullet">•</span> 国际认证正面管教讲师</div>
+          <div class="list-item"><span class="bullet">•</span> 剑桥TKT教学能力证书</div>
+          <div class="list-item"><span class="bullet">•</span> 青少年营地教育指导师</div>
+          <div class="list-item"><span class="bullet">•</span> 急救员证书 (红十字会)</div>
+        </div>
+      </div>
+
+      <!-- 试讲/教学展示特色 (贴合求职渠道：网申+试讲) -->
+      <div class="section">
+        <div class="section-title">试讲与教学展示</div>
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-left">
+              <span class="institution">示范课例：《如何提出一个好问题》</span>
+            </div>
+            <div class="date-location">2025 春季试讲</div>
+          </div>
+          <div class="description">
+            <ul>
+              <li><span class="bullet">•</span>面向初中生设计的45分钟批判性思维入门课，包含情境导入、小组探究与反思环节。</li>
+              <li><span class="bullet">•</span>运用“问题墙”与“苏格拉底圈”策略，试讲现场互动率达90%，获得评委“教学设计严谨且极具感染力”评价。</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 10.5pt; color: var(--text-primary);">
+          <span style="font-weight: 600; color: #7B8D7A;">📹 试讲视频片段</span> 及完整教案可应要求提供，适配网申附件上传。
+        </div>
+      </div>
+      
+      <!-- 个性化元素：左侧窄色条 (低风险装饰) 通过阴影或边框实现，无文字重叠 -->
+      <div style="margin-top: 0.1in; border-left: 4px solid #C4A484; padding-left: 12px; color: #5A645A; font-size: 10pt;">
+        持续学习 · 以学生为中心 · 创造有温度的课堂
+      </div>
+    </div>
+  </div>
+</body>
+</html>

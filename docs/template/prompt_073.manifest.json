@@ -1,0 +1,199 @@
+{
+  "templateId": "prompt_073",
+  "name": "林语·插画师简历 | 手绘留白风格",
+  "sourceFile": "prompt_073.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "social_3",
+      "label": "个人网站",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": false
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-sub",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".education-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "education-item"
+    }
+  ],
+  "sampleData": {
+    "name": "林语",
+    "title": "插画师 · 视觉叙事",
+    "phone": "✆ +86 139 5027 6314",
+    "email": "✉ yu.lin@creativemail.com",
+    "socials": [],
+    "experiences": [
+      {
+        "position": "| 插画师",
+        "date": "2023.04 – 至今",
+        "description": "主导《山海异闻》系列绘本插画创作，负责从草图到成稿全流程，印量超5万册"
+      },
+      {
+        "position": "| 初级插画师",
+        "date": "2021.08 – 2023.02",
+        "description": "参与“城市漫步”系列文创产品插画，负责线稿绘制与色稿调整，产品上线后月销2000+"
+      }
+    ],
+    "skills": [
+      {
+        "name": "Photoshop",
+        "level": ""
+      },
+      {
+        "name": "Illustrator",
+        "level": ""
+      },
+      {
+        "name": "手绘水彩",
+        "level": ""
+      },
+      {
+        "name": "色粉/彩铅",
+        "level": ""
+      },
+      {
+        "name": "InDesign",
+        "level": ""
+      },
+      {
+        "name": "数字版画",
+        "level": ""
+      },
+      {
+        "name": "构图叙事",
+        "level": ""
+      },
+      {
+        "name": "印刷工艺基础",
+        "level": ""
+      }
+    ],
+    "education": [
+      {
+        "description": "插画与漫画 本科 | 2017 – 2021"
+      },
+      {
+        "description": "博洛尼亚童书展插画工作坊 (2022)"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

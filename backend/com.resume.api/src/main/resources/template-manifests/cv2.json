@@ -1,0 +1,67 @@
+{
+  "templateId": "cv2",
+  "name": "学术简历",
+  "sourceFile": "template-cv2.json",
+  "renderMode": "placeholder",
+  "fields": [
+    {
+      "name": "name",
+      "label": "name",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "email",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "phone",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "linkedin",
+      "label": "linkedin",
+      "type": "string",
+      "commonPath": null,
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "summary",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "education",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "experience",
+      "label": "experience",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "activities",
+      "label": "activities",
+      "type": "array",
+      "commonPath": "interests",
+      "autoDetected": true
+    }
+  ],
+  "mappings": [],
+  "sampleData": {},
+  "pendingManual": []
+}

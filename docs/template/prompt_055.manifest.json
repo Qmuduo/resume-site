@@ -1,0 +1,175 @@
+{
+  "templateId": "prompt_055",
+  "name": "林清怡 · 记者/编辑简历",
+  "sourceFile": "prompt_055.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "个人网站",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-sub",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "education",
+      "selector": ".edu-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "edu-item"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    }
+  ],
+  "sampleData": {
+    "name": "林清怡",
+    "title": "资深记者 / 特稿编辑 · 非虚构写作",
+    "email": "📧 qingyi.lin@media.me",
+    "phone": "(86) 139-5027-6814",
+    "location": "上海 / 北京",
+    "socials": [
+      {
+        "platform": "website",
+        "url": "🔗 qingyi.portfolios.cn"
+      }
+    ],
+    "education": [
+      {
+        "school": "复旦大学 · 新闻学院",
+        "date": "2018.09 – 2020.06"
+      },
+      {
+        "school": "南京大学",
+        "date": "2014.09 – 2018.06"
+      }
+    ],
+    "skills": [
+      {
+        "name": "事实核查",
+        "level": ""
+      },
+      {
+        "name": "非虚构写作",
+        "level": ""
+      },
+      {
+        "name": "数据新闻 (Flourish/Datawrapper)",
+        "level": ""
+      },
+      {
+        "name": "多媒体编辑 (Premiere/Canva)",
+        "level": ""
+      },
+      {
+        "name": "中英双语采编",
+        "level": ""
+      },
+      {
+        "name": "SEO内容策略",
+        "level": ""
+      },
+      {
+        "name": "社交媒体运营",
+        "level": ""
+      }
+    ]
+  },
+  "pendingManual": []
+}

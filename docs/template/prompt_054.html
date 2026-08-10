@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>张明远 · 房地产招商高级经理简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      background-color: #eef2f5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica', '思源黑体', 'Noto Sans SC', system-ui, sans-serif;
+      color: #2D3748;
+      line-height: 1.5;
+    }
+
+    /* A4尺寸卡片，模拟纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 内边距舒适，符合呼吸感 */
+    .resume-inner {
+      padding: 1.8cm 1.8cm 1.8cm 1.8cm;
+    }
+
+    /* 排版基础样式 */
+    h1, h2, h3, p, ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /* 姓名大标题 */
+    .name {
+      font-size: 32pt;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      color: #0B2B4A;
+      line-height: 1.2;
+      margin-bottom: 6px;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    .title-tagline {
+      font-size: 13pt;
+      font-weight: 400;
+      color: #4A5C6C;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .title-divider {
+      color: #C0843C;
+      font-weight: 300;
+      margin: 0 4px;
+    }
+
+    /* 分割线 */
+    .divider {
+      height: 2px;
+      background: #DFE5EB;
+      margin: 18px 0 20px 0;
+      border: none;
+      position: relative;
+    }
+
+    .divider.accent {
+      background: linear-gradient(to right, #0B2B4A 0%, #C0843C 80px, #DFE5EB 80px);
+      height: 2.5px;
+    }
+
+    /* 联系信息行 (纯文本，ATS友好) */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 10.5pt;
+      color: #2D3748;
+      margin-bottom: 6px;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .contact-icon {
+      font-weight: 400;
+      color: #0B2B4A;
+      font-size: 11pt;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 13pt;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      color: #0B2B4A;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      border-bottom: 1.5px solid #DFE5EB;
+      padding-bottom: 6px;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-title::after {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 3px;
+      background-color: #C0843C;
+      margin-left: 10px;
+      border-radius: 2px;
+    }
+
+    /* 工作经历卡片 */
+    .experience-item {
+      margin-bottom: 18px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 12.5pt;
+      color: #0B2B4A;
+      letter-spacing: 0.3px;
+    }
+
+    .job-title {
+      font-weight: 500;
+      font-size: 11.5pt;
+      color: #2D3748;
+      margin-left: 6px;
+    }
+
+    .date-location {
+      font-weight: 400;
+      font-size: 10.5pt;
+      color: #4A5C6C;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* 描述要点 */
+    .bullet-list {
+      margin-top: 6px;
+      padding-left: 0;
+    }
+
+    .bullet-list li {
+      font-size: 10.5pt;
+      color: #2D3748;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: baseline;
+      line-height: 1.5;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      color: #C0843C;
+      font-weight: 700;
+      font-size: 12pt;
+      margin-right: 10px;
+      display: inline-block;
+      width: 12px;
+      flex-shrink: 0;
+    }
+
+    /* 数据高亮 */
+    .highlight-number {
+      font-weight: 700;
+      color: #0B2B4A;
+      background: #F4F6F9;
+      padding: 0 3px;
+      border-radius: 2px;
+      margin: 0 2px;
+    }
+
+    .accent-text {
+      color: #C0843C;
+      font-weight: 600;
+    }
+
+    /* 技能标签式排列 */
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .skill-tag {
+      font-size: 10pt;
+      background: #F4F6F9;
+      color: #1A2E45;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      border: 1px solid #E2E8F0;
+    }
+
+    /* 教育背景简洁 */
+    .education-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      font-size: 11.5pt;
+      color: #0B2B4A;
+    }
+
+    .edu-school {
+      font-weight: 500;
+      color: #2D3748;
+      margin-left: 8px;
+    }
+
+    .edu-date {
+      color: #4A5C6C;
+      font-size: 10.5pt;
+    }
+
+    /* 双栏纯文本区域 (用于技能/语言等，但避免复杂浮动) 使用flex简单布局，ATS可读 */
+    .two-column-light {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 4px;
+    }
+
+    .column {
+      flex: 1 1 180px;
+    }
+
+    .column p {
+      font-size: 10.5pt;
+      margin-bottom: 4px;
+    }
+
+    hr {
+      border: 0.5px solid #E2E8F0;
+      margin: 16px 0 12px 0;
+    }
+
+    /* 打印样式 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        max-width: 100%;
+        border-radius: 0;
+      }
+      .resume-inner {
+        padding: 1.5cm 1.5cm 1.5cm 1.5cm;
+      }
+      .divider.accent {
+        background: linear-gradient(to right, #0B2B4A 0%, #C0843C 80px, #DFE5EB 80px);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .section-title::after {
+        background-color: #C0843C;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .bullet-list li::before {
+        color: #C0843C;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    @media screen and (max-width: 700px) {
+      .resume-inner {
+        padding: 1.2cm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      
+      <!-- 姓名与抬头 -->
+      <h1 class="name">张明远</h1>
+      <div class="title-tagline">
+        高级招商经理 · 商业地产与产业园区
+        <span class="title-divider">|</span>
+        <span style="color:#2D3748;">10年经验 · 数据驱动增长</span>
+      </div>
+      
+      <!-- 联系方式 (纯文本，无图形背景) -->
+      <div class="contact-row">
+        <span class="contact-item"><span class="contact-icon">📞</span> (86) 138-1025-7789</span>
+        <span class="contact-item"><span class="contact-icon">✉️</span> mingyuan.zhang@realestate.cn</span>
+        <span class="contact-item"><span class="contact-icon">📍</span> 上海市浦东新区</span>
+        <span class="contact-item"><span class="contact-icon">🔗</span> linkedin.com/in/mingyuanzhang</span>
+      </div>
+      
+      <div class="divider accent"></div>
+      
+      <!-- 专业摘要 (数据导向) -->
+      <div class="section-title">专业摘要</div>
+      <p style="font-size: 10.8pt; color: #2D3748; margin-bottom: 16px; line-height: 1.6;">
+        资深商业地产招商专家，聚焦<span class="accent-text">大型购物中心与甲级写字楼</span>全周期招商运营。曾主导累计<span class="highlight-number">38万㎡</span>商业面积招商，实现平均出租率<span class="highlight-number">94%</span>，引入首进品牌占比超<span class="highlight-number">25%</span>。擅长通过市场数据分析制定租金策略，为资产增值提供决策支持。
+      </p>
+      
+      <!-- 核心能力 - 标签式排列，无表格 -->
+      <div class="section-title">核心能力</div>
+      <div class="skill-tags">
+        <span class="skill-tag">商业市场研究</span>
+        <span class="skill-tag">租户组合策略</span>
+        <span class="skill-tag">租金测算模型</span>
+        <span class="skill-tag">主力店招商</span>
+        <span class="skill-tag">租赁谈判</span>
+        <span class="skill-tag">资产提升计划</span>
+        <span class="skill-tag">租户关系管理</span>
+        <span class="skill-tag">财务回报分析</span>
+        <span class="skill-tag">团队领导</span>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <!-- 工作经历 -->
+      <div class="section-title">工作经历</div>
+      
+      <div class="experience-item">
+        <div class="exp-header">
+          <div>
+            <span class="company-name">恒隆地产 · 上海</span>
+            <span class="job-title">| 高级招商经理</span>
+          </div>
+          <div class="date-location">2020.06 – 至今</div>
+        </div>
+        <ul class="bullet-list">
+          <li>负责浦东核心商圈<span class="highlight-number">12万㎡</span>高端购物中心招商，管理零售及餐饮业态，任期内出租率从88%提升至<span class="highlight-number">97%</span>。</li>
+          <li>主导引进国际一线品牌及区域首店<span class="highlight-number">14家</span>，包括某奢侈品集合店及米其林餐厅，带动项目年销售额增长<span class="highlight-number">22%</span>。</li>
+          <li>搭建租金定价模型，基于客流热力图与竞品对标，优化楼层租金策略，实现年租金收入提升<span class="highlight-number">1800万元</span>。</li>
+          <li>管理6人招商团队，建立标准化招商流程与租户评估体系，缩短平均签约周期至<span class="highlight-number">28天</span>。</li>
+        </ul>
+      </div>
+      
+      <div class="experience-item">
+        <div class="exp-header">
+          <div>
+            <span class="company-name">凯德集团 · 上海</span>
+            <span class="job-title">| 招商经理</span>
+          </div>
+          <div class="date-location">2016.03 – 2020.05</div>
+        </div>
+        <ul class="bullet-list">
+          <li>负责两个社区商业项目（合计<span class="highlight-number">8.5万㎡</span>）的招商及业态调整，连续三年达成租金预算<span class="highlight-number">105%</span>以上。</li>
+          <li>重新规划B1层美食广场与儿童业态，引入亲子体验品牌，带动区域客流环比增长<span class="highlight-number">31%</span>。</li>
+          <li>参与项目资产升级计划，通过招商组合优化使项目估值提升约<span class="highlight-number">12%</span>。</li>
+        </ul>
+      </div>
+      
+      <div class="experience-item">
+        <div class="exp-header">
+          <div>
+            <span class="company-name">万达商业管理 · 南京</span>
+            <span class="job-title">| 招商主管</span>
+          </div>
+          <div class="date-location">2014.07 – 2016.02</div>
+        </div>
+        <ul class="bullet-list">
+          <li>参与南京万达茂前期招商筹备，完成服装及配套业态<span class="highlight-number">2.3万㎡</span>招商任务，开业率达<span class="highlight-number">92%</span>。</li>
+          <li>建立本地品牌资源库，拓展长三角区域商户<span class="highlight-number">200+</span>，有效支撑项目快速落地。</li>
+        </ul>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <!-- 教育背景 -->
+      <div class="section-title">教育背景</div>
+      <div class="education-row">
+        <div>
+          <span class="edu-degree">管理学硕士</span>
+          <span class="edu-school">复旦大学 · 管理学院</span>
+        </div>
+        <div class="edu-date">2012 – 2014</div>
+      </div>
+      <div class="education-row" style="margin-top: 2px;">
+        <div>
+          <span class="edu-degree">经济学学士</span>
+          <span class="edu-school">上海财经大学 · 房地产管理</span>
+        </div>
+        <div class="edu-date">2008 – 2012</div>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <!-- 专业资质与语言 (采用轻量双栏纯文本) -->
+      <div class="section-title">专业资质 & 语言</div>
+      <div class="two-column-light">
+        <div class="column">
+          <p><span style="font-weight:600; color:#0B2B4A;">CRX 认证零售专家</span> (2021)</p>
+          <p><span style="font-weight:600; color:#0B2B4A;">CCIM 候选成员</span> (国际注册商业地产投资师)</p>
+        </div>
+        <div class="column">
+          <p><span style="font-weight:600; color:#0B2B4A;">中文</span> 母语 · <span style="font-weight:600; color:#0B2B4A;">英语</span> 商务流利 (谈判级别)</p>
+          <p><span style="font-weight:600; color:#0B2B4A;">数据分析工具</span> Excel高级建模, Tableau基础</p>
+        </div>
+      </div>
+      
+      <!-- 极简分割线，下方可补充关键交易记录（猎头关注点） -->
+      <hr>
+      <p style="font-size: 9.5pt; color: #4A5C6C; text-align: left; margin-top: 8px;">
+        <span style="font-weight:700; color:#0B2B4A;">代表性交易：</span> 成功引入%Arabica区域首店、特斯拉体验中心、蔚来中心 | 累计签约年租金贡献超<span class="highlight-number">1.2亿</span>元。
+      </p>
+      
+    </div><!-- end resume-inner -->
+  </div><!-- end resume -->
+</body>
+</html>

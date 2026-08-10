@@ -1,0 +1,210 @@
+{
+  "templateId": "prompt_079",
+  "name": "林墨 · 游戏原画师简历",
+  "sourceFile": "prompt_079.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "个人简介",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "summary",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "sectionTitle": "专业概述"
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    },
+    {
+      "commonPath": "projects",
+      "selector": ".project-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "project-item"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".education-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "education-item"
+    }
+  ],
+  "sampleData": {
+    "name": "林墨",
+    "phone": "✆ (86) 139-5027-6814",
+    "email": "✉ lin.mo.art@creature.studio",
+    "summary": "专注于黑暗奇幻与东方志怪风格的角色概念设计。3年游戏原画经验，参与两款上线项目。擅长通过高对比度光影与手绘质感塑造叙事性角色。具备从草图迭代到三视图规范的全流程能力。",
+    "experiences": [
+      {
+        "position": "· 角色原画师",
+        "date": "2023.04 – 至今"
+      },
+      {
+        "position": "· 初级原画师",
+        "date": "2021.07 – 2023.02"
+      }
+    ],
+    "projects": [
+      {
+        "description": "•"
+      },
+      {
+        "description": "•"
+      }
+    ],
+    "skills": [
+      {
+        "name": "黑暗奇幻/志怪",
+        "level": ""
+      },
+      {
+        "name": "高对比度光影",
+        "level": ""
+      },
+      {
+        "name": "三视图规范",
+        "level": ""
+      },
+      {
+        "name": "剪影节奏",
+        "level": ""
+      },
+      {
+        "name": "色彩脚本",
+        "level": ""
+      },
+      {
+        "name": "生物设计",
+        "level": ""
+      },
+      {
+        "name": "武器道具",
+        "level": ""
+      },
+      {
+        "name": "Procreate",
+        "level": ""
+      },
+      {
+        "name": "Blender",
+        "level": ""
+      },
+      {
+        "name": "Clip Studio",
+        "level": ""
+      },
+      {
+        "name": "ZBrush",
+        "level": ""
+      },
+      {
+        "name": "Substance",
+        "level": ""
+      }
+    ],
+    "education": [
+      {
+        "date": "2017 – 2021"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "summary",
+      "label": "专业概述",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

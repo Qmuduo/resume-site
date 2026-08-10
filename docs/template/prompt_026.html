@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>学术简历 · 张知行 · 研究员</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2C3E50;      /* 深蓝灰，作为主标题与分割线色 */
+      --accent: #4A6A8A;       /* 辅色，用于板块标题与点缀 */
+      --body-text: #1E2B38;    /* 正文深灰，保证可读性 */
+      --light-bg: #F8F9FA;     /* 极浅灰背景，仅用于左侧安全色条 */
+      --line: #D0D7DE;         /* 浅灰分割线 */
+      --white: #FFFFFF;
+    }
+
+    body {
+      font-family: 'Arial', 'Helvetica', '思源黑体', 'Source Han Sans SC', 'Noto Sans SC', sans-serif;
+      background: #E9ECEF;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      margin: 0;
+      color: var(--body-text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 简历卡片：固定A4尺寸，模拟纸张 */
+    .resume {
+      width: 210mm;
+      min-height: 297mm;
+      background: var(--white);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #E1E4E8;
+    }
+
+    /* 左侧装饰窄色条（ATS低风险：纯背景色，不与文字重叠） */
+    .resume::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 0.75cm; /* 约28px，安全窄条 */
+      background: #F0F3F5;  /* 非常浅的灰，类似light-bg */
+      z-index: 0;
+    }
+
+    /* 主内容区，向右偏移避开左侧色条 */
+    .main-content {
+      position: relative;
+      z-index: 2;
+      margin-left: 0.75cm;
+      padding: 1.2cm 0.8cm 1cm 0.6cm;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45cm;
+    }
+
+    /* 打印样式：去除背景色、保留清晰文本 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        border: none;
+        width: 100%;
+        min-height: auto;
+        margin: 0 auto;
+      }
+      .resume::before {
+        background: #F0F3F5; /* 保留浅色条，但打印时通常可见 */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .main-content {
+        margin-left: 0.75cm;
+        padding: 1.2cm 0.8cm 0.8cm 0.6cm;
+      }
+      /* 隐藏交互元素，这里没有按钮，但去除可能的下划线 */
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .contact-item, .skill-tag {
+        color: var(--body-text);
+      }
+    }
+
+    /* 姓名区域 */
+    .header-section {
+      margin-bottom: 0.2cm;
+    }
+    .name {
+      font-size: 28pt;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      margin-bottom: 0.15cm;
+      line-height: 1.2;
+      font-family: 'Helvetica Neue', 'Helvetica', 'Arial', '思源黑体', sans-serif;
+    }
+    .subhead {
+      font-size: 11.5pt;
+      font-weight: 400;
+      color: #4B5C6B;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25cm 0.6cm;
+      margin-bottom: 0.25cm;
+      align-items: center;
+    }
+    .subhead span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .separator-line {
+      height: 1.8px;
+      background: var(--primary);
+      width: 100%;
+      margin-top: 0.15cm;
+      margin-bottom: 0.1cm;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 13pt;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      color: var(--primary);
+      text-transform: uppercase;
+      border-bottom: 1.2px solid var(--line);
+      padding-bottom: 0.12cm;
+      margin-bottom: 0.3cm;
+      margin-top: 0.1cm;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    /* 条目通用 */
+    .entry {
+      margin-bottom: 0.3cm;
+    }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.05cm;
+    }
+    .institution {
+      font-weight: 700;
+      font-size: 12pt;
+      color: #1E2B38;
+    }
+    .role {
+      font-weight: 600;
+      font-size: 11.5pt;
+      color: #2D3F50;
+      margin-left: 0.15cm;
+    }
+    .date {
+      font-size: 10.5pt;
+      font-weight: 400;
+      color: #5A6C7D;
+      white-space: nowrap;
+    }
+    .desc-list {
+      list-style-type: none;
+      padding-left: 0.15cm;
+      margin-top: 0.1cm;
+    }
+    .desc-list li {
+      font-size: 10.5pt;
+      line-height: 1.5;
+      margin-bottom: 0.07cm;
+      position: relative;
+      padding-left: 0.45cm;
+      color: var(--body-text);
+    }
+    /* 使用标准圆点符号，ATS可读 */
+    .desc-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.1cm;
+      color: #4A6A8A;
+      font-weight: bold;
+      font-size: 10pt;
+    }
+
+    /* 技能标签式排列（纯文本，无图形） */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2cm 0.3cm;
+      margin-top: 0.1cm;
+    }
+    .skill-tag {
+      background: transparent;
+      border: 0.8px solid #B0BEC5;
+      color: #1E2B38;
+      padding: 0.08cm 0.3cm;
+      border-radius: 3px;
+      font-size: 10pt;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      background: #FAFBFC; /* 极浅背景，但不依赖背景色传达信息 */
+    }
+
+    /* 两栏列表用于教育细节或出版物简列 */
+    .two-col-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.1cm 0.8cm;
+      margin-top: 0.1cm;
+    }
+    .two-col-list .list-item {
+      width: calc(50% - 0.4cm);
+      font-size: 10.5pt;
+      display: flex;
+      align-items: baseline;
+    }
+    .list-item .bullet {
+      margin-right: 0.2cm;
+      color: #4A6A8A;
+      font-weight: bold;
+    }
+
+    /* 联系信息行内图标使用文本符号 */
+    .contact-icon {
+      font-weight: 500;
+      color: #4A6A8A;
+      margin-right: 2px;
+    }
+
+    hr {
+      border: none;
+      border-top: 0.8px solid #D0D7DE;
+      margin: 0.2cm 0 0.25cm 0;
+    }
+
+    .publication-item {
+      font-size: 10.5pt;
+      margin-bottom: 0.08cm;
+      padding-left: 0.1cm;
+    }
+
+    /* 确保所有文本可选 */
+    .resume, .main-content, p, li, span, div {
+      user-select: text;
+      -webkit-user-select: text;
+    }
+
+    /* 小号字体用于细节 */
+    .small-note {
+      font-size: 10pt;
+      color: #4B5C6B;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="main-content">
+      
+      <!-- 姓名与基础信息 -->
+      <div class="header-section">
+        <div class="name">张知行</div>
+        <div class="subhead">
+          <span><span class="contact-icon">✉</span> zhangzhixing@research.cn</span>
+          <span><span class="contact-icon">📞</span> +86 (010) 5623-7890</span>
+          <span><span class="contact-icon">🌐</span> scholar.harvard.edu/zhixing</span>
+          <span>北京市海淀区中关村</span>
+        </div>
+        <div class="separator-line"></div>
+      </div>
+
+      <!-- 研究兴趣 / 专业概述 -->
+      <div>
+        <div class="section-title">研究领域</div>
+        <p style="font-size: 10.5pt; line-height: 1.5; margin-bottom: 0.1cm;">
+          量子信息与量子光学 · 超导量子比特调控 · 拓扑量子计算 · 量子纠错码理论。致力于可扩展量子处理器架构及噪声中等规模量子算法实现。
+        </p>
+      </div>
+
+      <!-- 教育经历 -->
+      <div>
+        <div class="section-title">教育背景</div>
+        
+        <div class="entry">
+          <div class="entry-header">
+            <span class="institution">清华大学</span>
+            <span class="date">2019.09 – 2024.07</span>
+          </div>
+          <div style="font-weight: 600; font-size: 11pt; color: #2D3F50;">物理学博士 · 量子信息方向</div>
+          <ul class="desc-list">
+            <li>导师：李崇光教授（中国科学院院士）</li>
+            <li>博士论文：《基于超导电路的量子纠错与逻辑量子比特实现》</li>
+            <li>获清华大学优秀博士论文、国家奖学金（2022）</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <span class="institution">中国科学技术大学</span>
+            <span class="date">2015.09 – 2019.06</span>
+          </div>
+          <div style="font-weight: 600; font-size: 11pt; color: #2D3F50;">理学学士 · 应用物理学</div>
+          <ul class="desc-list">
+            <li>毕业论文：《拓扑绝缘体表面态输运性质研究》获校级优秀</li>
+            <li>GPA: 3.92/4.0 · 严济慈物理科技英才班</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 研究经历 -->
+      <div>
+        <div class="section-title">研究经历</div>
+        
+        <div class="entry">
+          <div class="entry-header">
+            <span class="institution">清华大学量子信息中心</span>
+            <span class="date">2020.03 – 2024.06</span>
+          </div>
+          <div><span class="role">博士研究员</span> · 超导量子计算实验室</div>
+          <ul class="desc-list">
+            <li>设计并实现基于表面码的17量子比特超导芯片，逻辑错误率降低至0.03%以下。</li>
+            <li>开发实时量子纠错反馈系统，延时控制在150ns内，相关成果发表于《Nature Physics》。</li>
+            <li>指导2名硕士生完成量子门保真度优化课题。</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <span class="institution">麻省理工学院 (MIT)</span>
+            <span class="date">2022.10 – 2023.09</span>
+          </div>
+          <div><span class="role">访问学者</span> · 工程量子系统组 (EQuS)</div>
+          <ul class="desc-list">
+            <li>参与超导量子比特耦合噪声谱研究，合作导师：Prof. William D. Oliver。</li>
+            <li>利用机器学习优化量子门参数，将单比特门保真度提升至99.95%。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 学术成果（精选出版物） -->
+      <div>
+        <div class="section-title">代表性论文</div>
+        <div class="publication-item" style="margin-top: 0.1cm;">
+          <strong>Zhang Z.</strong>, Li C., et al. “Real-time quantum error correction beyond break-even.” <em>Nature Physics</em>, 2024. (已接收)
+        </div>
+        <div class="publication-item">
+          <strong>Zhang Z.</strong>, Wang Y., Chen L. “Surface code implementation with high-fidelity stabilizer measurements.” <em>Physical Review Letters</em>, 131, 150601 (2023).
+        </div>
+        <div class="publication-item">
+          Oliver W.D., <strong>Zhang Z.</strong> (co-first). “Machine learning assisted calibration of superconducting qubits.” <em>npj Quantum Information</em>, 9, 45 (2023).
+        </div>
+        <div style="font-size: 10pt; color: #4B5C6B; margin-top: 0.08cm;">* 共发表SCI论文12篇，其中第一/通讯作者5篇，总引用380+。</div>
+      </div>
+
+      <!-- 教学与学术服务 -->
+      <div>
+        <div class="section-title">教学与学术服务</div>
+        <div class="entry" style="margin-bottom: 0.1cm;">
+          <div class="entry-header">
+            <span class="institution">清华大学物理系</span>
+            <span class="date">2021 – 2023</span>
+          </div>
+          <div><span class="role">助教</span> · 《量子力学II》《固体物理》</div>
+          <ul class="desc-list">
+            <li>主持习题课与答疑，设计量子模拟数值实验。</li>
+          </ul>
+        </div>
+        <div class="entry">
+          <div class="entry-header">
+            <span class="institution">期刊审稿人</span>
+            <span class="date">2022 – 至今</span>
+          </div>
+          <div>Physical Review A, Quantum Science and Technology 审稿</div>
+        </div>
+      </div>
+
+      <!-- 技能与标签 -->
+      <div>
+        <div class="section-title">专业技能</div>
+        <div class="skills-container">
+          <span class="skill-tag">量子线路设计 (Qiskit/Cirq)</span>
+          <span class="skill-tag">超导量子测量</span>
+          <span class="skill-tag">Python/MATLAB</span>
+          <span class="skill-tag">低温电子学</span>
+          <span class="skill-tag">量子纠错码</span>
+          <span class="skill-tag">COMSOL仿真</span>
+          <span class="skill-tag">FPGA时序控制</span>
+          <span class="skill-tag">科技论文写作</span>
+        </div>
+      </div>
+
+      <!-- 荣誉与奖项 使用两栏简洁列表 -->
+      <div>
+        <div class="section-title">荣誉与奖项</div>
+        <div class="two-col-list">
+          <div class="list-item"><span class="bullet">•</span> 清华大学优秀博士论文 (2024)</div>
+          <div class="list-item"><span class="bullet">•</span> 国家奖学金 (2022)</div>
+          <div class="list-item"><span class="bullet">•</span> 量子信息青年学者奖 (2023)</div>
+          <div class="list-item"><span class="bullet">•</span> 中科大郭沫若奖学金 (2019)</div>
+          <div class="list-item"><span class="bullet">•</span> 北京市优秀毕业生 (2024)</div>
+          <div class="list-item"><span class="bullet">•</span> MIT EQuS 访问学者基金</div>
+        </div>
+      </div>
+
+      <!-- 推荐人信息（学术招聘常见） -->
+      <div style="margin-top: 0.1cm;">
+        <div class="section-title">推荐人</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.3cm 0.6cm; font-size: 10.5pt;">
+          <div><strong>李崇光 教授</strong> · 清华大学 · lichg@tsinghua.edu.cn</div>
+          <div><strong>Prof. William D. Oliver</strong> · MIT · oliver@mit.edu</div>
+          <div><strong>陈澜 研究员</strong> · 中科院物理所 · chenlan@iphy.ac.cn</div>
+        </div>
+        <div class="small-note" style="margin-top: 0.15cm;">* 导师推荐信已备，可根据要求直接发送。</div>
+      </div>
+      
+      <!-- 底部微小留白，不添加多余装饰 -->
+    </div>
+  </div>
+</body>
+</html>

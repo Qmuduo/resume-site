@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>林墨 · 游戏原画师简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #FDF8F0;
+      --paper: #FFFEF7;
+      --ink: #2B2B28;
+      --ink-light: #4A4A44;
+      --accent: #C44B3C;  /* 砖红/朱砂色，手绘感强调 */
+      --accent-soft: #E07A5F;
+      --divider: #D9D0C0;
+      --tag-bg: #F2EBE1;
+      --skill-border: #BCA98B;
+      --text-on-dark: #FDF8F0;
+      --shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    body {
+      background: #EAE5DB;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', '思源黑体', 'Source Han Sans SC', sans-serif;
+      color: var(--ink);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* 简历卡片容器 - A4比例约束 */
+    .resume {
+      max-width: 800px;
+      width: 100%;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      border-radius: 4px;
+      padding: 2.2rem 2.4rem;
+      position: relative;
+      margin-bottom: 2rem;
+      /* 模拟手绘纸张边缘 - 细微肌理 */
+      background-image: radial-gradient(circle at 20% 30%, rgba(180,160,130,0.06) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    /* 左侧手绘装饰线条 - 低风险ATS友好，纯装饰不压文字 */
+    .hand-drawn-accent {
+      position: absolute;
+      left: 0.9rem;
+      top: 2.2rem;
+      bottom: 2.2rem;
+      width: 4px;
+      background: repeating-linear-gradient(
+        180deg,
+        var(--accent) 0px,
+        var(--accent) 6px,
+        transparent 6px,
+        transparent 12px
+      );
+      border-radius: 2px;
+      opacity: 0.8;
+      /* 确保不遮挡任何文字区域 */
+      pointer-events: none;
+    }
+
+    /* 所有内容靠左对齐，留出呼吸感 */
+    .content {
+      position: relative;
+      z-index: 2;
+      margin-left: 0.2rem;
+    }
+
+    /* 姓名区域 + 手绘风格下划线 */
+    .name-section {
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 2px dashed var(--accent);
+      padding-bottom: 0.75rem;
+    }
+
+    .name {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--ink);
+      line-height: 1.1;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
+    }
+    /* 手绘下划线强调 */
+    .name::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 110%;
+      height: 6px;
+      background: var(--accent);
+      opacity: 0.5;
+      border-radius: 2px;
+      transform: rotate(-0.5deg);
+    }
+
+    .title {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--accent);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      padding: 0.2rem 1rem;
+      border-radius: 20px;
+      font-weight: 500;
+      margin-left: 0.5rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      align-items: center;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    /* 简单线性图标替代方案 - 纯文本符号，ATS完全识别 */
+    .icon {
+      font-weight: 300;
+      color: var(--accent);
+      font-size: 1rem;
+      margin-right: 0.2rem;
+    }
+
+    /* 板块标题 - 全部大写 + 手绘点缀 */
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 1.8rem 0 0.8rem 0;
+      border-bottom: 1.5px solid var(--divider);
+      padding-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-title::before {
+      content: "//";
+      font-weight: 400;
+      color: var(--accent);
+      font-size: 0.9rem;
+      letter-spacing: 0;
+    }
+
+    /* 工作经历条目 */
+    .experience-item {
+      margin-bottom: 1.2rem;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.2rem;
+    }
+    .company {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+    .role {
+      font-weight: 500;
+      color: var(--ink-light);
+      margin-left: 0.5rem;
+      font-style: italic;
+    }
+    .date {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 500;
+      background: var(--tag-bg);
+      padding: 0.1rem 0.6rem;
+      border-radius: 12px;
+      letter-spacing: 0.3px;
+    }
+    .exp-desc {
+      margin-top: 0.3rem;
+      padding-left: 0.2rem;
+    }
+    .desc-item {
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+    .desc-item::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    /* 项目经历 (游戏项目) */
+    .project-item {
+      margin-bottom: 0.9rem;
+    }
+    .project-name {
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+    }
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      margin-top: 0.2rem;
+      padding-left: 0.2rem;
+    }
+
+    /* 技能标签 - 手绘风格边框 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+    .skill-tag {
+      background: transparent;
+      border: 1.2px solid var(--skill-border);
+      color: var(--ink);
+      padding: 0.2rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      background: var(--tag-bg);
+      transition: all 0.1s;
+    }
+
+    .education-item {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 500;
+    }
+    .edu-major {
+      font-weight: 700;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed var(--divider);
+      margin: 1rem 0 0.5rem 0;
+    }
+
+    /* 打印样式 - 完全去除背景色块、保留高对比度文本 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 1.8rem 2rem;
+        max-width: 100%;
+        background-image: none;
+        background-color: white;
+      }
+      .hand-drawn-accent {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background: repeating-linear-gradient(180deg, #C44B3C 0px, #C44B3C 6px, transparent 6px, transparent 12px);
+      }
+      .name::after, .section-title::before, .desc-item::before {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        color: #C44B3C;
+      }
+      .date, .skill-tag, .title {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background: #F2EBE1;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      button, .no-print {
+        display: none;
+      }
+    }
+
+    /* 链接样式去除下划线，保持干净 */
+    a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .portfolio-link {
+      color: var(--accent);
+      font-weight: 500;
+      border-bottom: 1px dotted var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- 左侧手绘装饰条，完全在留白区域，不与文字重叠 -->
+    <div class="hand-drawn-accent"></div>
+    
+    <div class="content">
+      <!-- 姓名与标题 -->
+      <div class="name-section">
+        <div style="display: flex; align-items: baseline; flex-wrap: wrap;">
+          <span class="name">林墨</span>
+          <span class="title">概念原画师</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="icon">✆</span> (86) 139-5027-6814</span>
+          <span class="contact-item"><span class="icon">✉</span> lin.mo.art@creature.studio</span>
+          <span class="contact-item"><span class="icon">☍</span> <span class="portfolio-link">artstation.com/linmo-drak</span></span>
+          <span class="contact-item"><span class="icon">⌖</span> 上海 · 中国</span>
+        </div>
+      </div>
+
+      <!-- 专业总结 -->
+      <div>
+        <div class="section-title">专业概述</div>
+        <p style="font-size: 0.9rem; color: var(--ink-light); margin-top: 0.4rem;">
+          专注于黑暗奇幻与东方志怪风格的角色概念设计。3年游戏原画经验，参与两款上线项目。擅长通过高对比度光影与手绘质感塑造叙事性角色。具备从草图迭代到三视图规范的全流程能力。
+        </p>
+      </div>
+
+      <!-- 工作经历 -->
+      <div>
+        <div class="section-title">工作经历</div>
+        
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company">烛龙工作室</span> <span class="role">· 角色原画师</span></span>
+            <span class="date">2023.04 – 至今</span>
+          </div>
+          <div class="exp-desc">
+            <div class="desc-item">主导《代号：山海烬》中30+神话角色概念设计，从文献考据到最终高模参考图。</div>
+            <div class="desc-item">与3D团队协作优化拓扑友好设计，角色还原度达92%，迭代周期缩短20%。</div>
+            <div class="desc-item">绘制关键剧情插画与宣传立绘，用于Steam页面及海外展会，点击转化提升18%。</div>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company">星尘互娱</span> <span class="role">· 初级原画师</span></span>
+            <span class="date">2021.07 – 2023.02</span>
+          </div>
+          <div class="exp-desc">
+            <div class="desc-item">参与二次元项目《绯色纪元》角色皮肤与怪物设计，独立完成12套角色方案。</div>
+            <div class="desc-item">协助主美建立风格指南，统一材质刻画与笔触标准，团队产出效率提升15%。</div>
+            <div class="desc-item">快速输出动态草图用于内部评审，平均每角色提供4-6种剪影变体。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 项目亮点 (作品集相关) -->
+      <div>
+        <div class="section-title">代表项目</div>
+        <div class="project-item">
+          <div class="project-name"><span>《烬渊行者》· 个人世界观企划</span> <span style="font-weight:400; font-size:0.8rem; color:var(--accent);">2024</span></div>
+          <div class="project-desc">
+            <span style="display:flex; gap:0.3rem;"><span style="color:var(--accent);">•</span>构建黑暗奇幻IP视觉体系，包含12个阵营角色及场景气氛图，在Artstation获5.2k点赞。</span>
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-name"><span>《山海烬》DLC · 刑天概念重塑</span> <span style="font-weight:400; font-size:0.8rem; color:var(--accent);">2023</span></div>
+          <div class="project-desc">
+            <span style="display:flex; gap:0.3rem;"><span style="color:var(--accent);">•</span>基于《山海经》重构战神形象，融合青铜纹样与生物机械，被选为项目主视觉。</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 技能 + 工具 -->
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 0.2rem;">
+        <div style="flex: 2; min-width: 200px;">
+          <div class="section-title">核心能力</div>
+          <div class="skills-container">
+            <span class="skill-tag">角色概念设计</span>
+            <span class="skill-tag">黑暗奇幻/志怪</span>
+            <span class="skill-tag">高对比度光影</span>
+            <span class="skill-tag">三视图规范</span>
+            <span class="skill-tag">剪影节奏</span>
+            <span class="skill-tag">色彩脚本</span>
+            <span class="skill-tag">生物设计</span>
+            <span class="skill-tag">武器道具</span>
+          </div>
+        </div>
+        <div style="flex: 1.5; min-width: 180px;">
+          <div class="section-title">软件掌握</div>
+          <div class="skills-container">
+            <span class="skill-tag">Photoshop</span>
+            <span class="skill-tag">Procreate</span>
+            <span class="skill-tag">Blender</span>
+            <span class="skill-tag">Clip Studio</span>
+            <span class="skill-tag">ZBrush</span>
+            <span class="skill-tag">Substance</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div>
+        <div class="section-title">教育</div>
+        <div class="education-item">
+          <span><span class="edu-major">数字媒体艺术 · 学士</span> | 中国美术学院</span>
+          <span class="date">2017 – 2021</span>
+        </div>
+        <div style="font-size:0.85rem; color: var(--ink-light); margin-top: 0.2rem;">毕业创作《混沌志》获学院奖 · 游戏原画方向</div>
+      </div>
+      
+      <!-- 额外手绘感元素：一条轻微的分割线 -->
+      <hr>
+      <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--ink-light); margin-top: 0.3rem;">
+        <span>作品集链接 · 即时更新</span>
+        <span>风格关键词：高对比度 · 手绘质感 · 叙事驱动</span>
+      </div>
+    </div><!-- end content -->
+  </div><!-- end resume -->
+</body>
+</html>

@@ -1,0 +1,176 @@
+{
+  "templateId": "prompt_075",
+  "name": "建筑设计师 · 简历视觉方案",
+  "sourceFile": "prompt_075.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name"
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".subtitle",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".edu-entry",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "edu-entry"
+    }
+  ],
+  "sampleData": {
+    "name": "林 逸 凡",
+    "title": "注册建筑师 · 中级设计主管",
+    "phone": "☏ (086) 139-5027-6814",
+    "email": "✉ yifan.lin@archstudio.cn",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "🔗 linkedin.com/in/yifanarch"
+      }
+    ],
+    "experiences": [
+      {
+        "position": "| 项目建筑师 / 中级设计主管",
+        "date": "2021.04 – 至今 | 上海"
+      },
+      {
+        "position": "| 建筑师",
+        "date": "2018.07 – 2021.03 | 上海"
+      },
+      {
+        "position": "| 助理建筑师",
+        "date": "2017.02 – 2018.06 | 上海"
+      }
+    ],
+    "education": [
+      {
+        "degree": "| 建筑学硕士",
+        "date": "2014.09 – 2017.03"
+      },
+      {
+        "degree": "| 建筑学学士",
+        "date": "2009.09 – 2014.06"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name",
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

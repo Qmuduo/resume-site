@@ -1,0 +1,213 @@
+{
+  "templateId": "prompt_061",
+  "name": "张振宇 · 体育营销高级经理",
+  "sourceFile": "prompt_061.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    },
+    {
+      "commonPath": "projects",
+      "selector": ".project-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "project-item"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".edu-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "edu-item"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-list",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-list"
+    }
+  ],
+  "sampleData": {
+    "name": "张振宇",
+    "phone": "+86 139 8888 5678",
+    "email": "✉️ zhenyuzhang@sportmkt.cn",
+    "location": "上海 / 北京",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "🔗 linkedin.com/in/zhenyuzhang"
+      }
+    ],
+    "experiences": [
+      {
+        "position": "体育营销高级经理",
+        "description": "统筹某国际马拉松赛事冠名赞助项目（总价值¥4200万），管理跨品牌、媒体及赛事方多方沟通，权益激活率提升32%。"
+      },
+      {
+        "position": "体育营销经理",
+        "description": "负责某知名饮料品牌电竞世界杯赞助激活，策划线上互动及线下观赛活动，品牌年轻化指数提升41%。"
+      },
+      {
+        "position": "赞助合作主管",
+        "description": "协助完成两个省级运动会赞助方案，对接快消及金融客户，累计合同额超¥1800万。"
+      }
+    ],
+    "projects": [
+      {
+        "description": "领导跨部门团队设计沉浸式品牌体验区，联动社交媒体挑战赛，话题阅读量超2.3亿，赞助商品牌认知度提升27%。"
+      },
+      {
+        "description": "策划“发光跑道”概念，整合线下赛事与线上直播，吸引8000+跑者参与，直接带动产品季度销量增长19%。"
+      }
+    ],
+    "education": [
+      {
+        "degree": "体育管理硕士"
+      },
+      {
+        "degree": "市场营销学士"
+      }
+    ],
+    "skills": [
+      {
+        "name": "权益设计 · 资产评估 · 谈判管理",
+        "level": ""
+      },
+      {
+        "name": "社媒激活 · 内容营销 · KOL矩阵",
+        "level": ""
+      },
+      {
+        "name": "Tableau · Excel建模 · ROI追踪",
+        "level": ""
+      },
+      {
+        "name": "中文(母语) · 英语(商务流利) · 基础西班牙语",
+        "level": ""
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

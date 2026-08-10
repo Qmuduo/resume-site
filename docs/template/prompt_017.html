@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>MBB项目经理 · 简历视觉方案</title>
+  <style>
+    /* ----- 全局重置与打印优化 ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      /* 系统安全字体栈 */
+      font-family: 'Helvetica Neue', Helvetica, Arial, '思源黑体', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #2D3748; /* 正文深灰 */
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      background: #E2E8F0; /* 外部浅灰背景，便于预览 */
+      padding: 2rem 1rem;
+      margin: 0;
+    }
+
+    /* 简历卡片：严格A4比例，模拟纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      page-break-after: auto;
+    }
+
+    /* 内边距：遵循不小于0.5英寸（约12.7mm），此处使用0.7英寸 (17.7mm) 提供呼吸感 */
+    .resume-inner {
+      padding: 0.7in 0.7in 0.7in 0.7in;
+    }
+
+    /* ----- 排版元素 ----- */
+    h1, h2, h3, p, ul, li {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 0.25rem;
+    }
+    .name {
+      font-family: 'Helvetica Neue', Helvetica, Arial, '思源黑体', 'Noto Sans SC', sans-serif;
+      font-weight: 700;
+      font-size: 2.4rem;
+      letter-spacing: 0.5px;
+      color: #1A202C; /* 几近黑色，保持严肃 */
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 0.2rem;
+    }
+    .title-role {
+      font-family: 'Helvetica Neue', Helvetica, Arial, '思源黑体', sans-serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: #4A5568; /* 稳重灰色 */
+      letter-spacing: 0.3px;
+      margin-bottom: 0.6rem;
+    }
+
+    /* 分割线：克制细线，强调色点缀 */
+    .divider {
+      width: 100%;
+      height: 1.5px;
+      background: #CBD5E0; /* 浅灰线 */
+      margin: 0.5rem 0 0.85rem 0;
+      border: none;
+    }
+    .divider.thin {
+      height: 0.5px;
+      background: #E2E8F0;
+      margin: 0.6rem 0 0.7rem;
+    }
+    .divider.accent {
+      height: 2px;
+      background: #2C5282; /* 深蓝强调色，仅用于标题装饰 */
+      width: 100%;
+      margin-top: 0.15rem;
+      margin-bottom: 0.6rem;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, '思源黑体', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #1A202C;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-title span {
+      background: transparent;
+      color: inherit;
+    }
+
+    /* 标题下的深蓝细线装饰 (ATS安全，纯border-bottom) */
+    .title-underline {
+      display: block;
+      width: 100%;
+      border-bottom: 1.8px solid #2C5282;
+      margin-bottom: 0.75rem;
+    }
+
+    /* 联系信息行 (低风险图标使用纯文本符号) */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.8rem;
+      color: #4A5568;
+      margin-bottom: 0.25rem;
+      align-items: center;
+    }
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      white-space: nowrap;
+    }
+    .contact-item .icon {
+      font-weight: 500;
+      color: #2C5282; /* 图标色仅用于点缀 */
+      font-size: 0.85rem;
+      width: 1.1rem;
+      display: inline-block;
+    }
+
+    /* 两栏布局仅用于技能或教育细节，采用纯文本列，无浮动定位 */
+    .two-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 0.2rem;
+    }
+    .col {
+      flex: 1 1 180px;
+      min-width: 140px;
+    }
+
+    /* 工作经历条目 */
+    .experience-item {
+      margin-bottom: 0.75rem;
+    }
+    .exp-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.15rem;
+    }
+    .company-position {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1A202C;
+    }
+    .company-name {
+      font-weight: 700;
+      color: #1A202C;
+    }
+    .position-title {
+      font-weight: 500;
+      color: #2D3748;
+      margin-left: 0.3rem;
+    }
+    .date-location {
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: #718096;
+      text-align: right;
+      white-space: nowrap;
+    }
+    /* 描述要点 */
+    .bullet-list {
+      list-style: none;
+      padding-left: 0.2rem;
+      margin-top: 0.2rem;
+      color: #2D3748;
+    }
+    .bullet-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.25rem;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: #4A5568;
+    }
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.1rem;
+      color: #2C5282; /* 强调色圆点，ATS可读 */
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    /* 教育 & 证书 */
+    .edu-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+    }
+    .edu-detail {
+      font-weight: 600;
+      color: #1A202C;
+      font-size: 0.9rem;
+    }
+    .edu-date {
+      font-size: 0.8rem;
+      color: #718096;
+    }
+    .edu-desc {
+      font-size: 0.8rem;
+      color: #4A5568;
+      margin-top: 0.1rem;
+    }
+
+    /* 技能标签 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.8rem;
+      margin-top: 0.2rem;
+    }
+    .skill-tag {
+      font-size: 0.8rem;
+      background: transparent;
+      color: #2D3748;
+      font-weight: 500;
+      padding: 0.1rem 0;
+      border-bottom: 1px solid #E2E8F0;
+      letter-spacing: 0.2px;
+    }
+
+    /* 项目经验部分 */
+    .project-item {
+      margin-bottom: 0.5rem;
+    }
+    .project-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #1A202C;
+    }
+    .project-meta {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-left: 0.5rem;
+      font-weight: 400;
+    }
+
+    /* 打印优化：移除背景、保留清晰文字 */
+    @media print {
+      html, body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        display: block;
+      }
+      .resume {
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0 auto;
+      }
+      .resume-inner {
+        padding: 0.5in 0.55in;
+      }
+      .contact-item .icon {
+        color: #1A202C !important; /* 打印时保持可见 */
+      }
+      .bullet-list li::before {
+        color: #1A202C !important;
+      }
+      .divider.accent, .title-underline {
+        border-color: #1A202C !important;
+      }
+      a, button {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      
+      <!-- 姓名与目标岗位 -->
+      <div class="name-section">
+        <h1 class="name">张亦驰</h1>
+        <div class="title-role">项目经理 · MBB战略咨询</div>
+      </div>
+      
+      <!-- 联系方式 (纯文本，低风险图标) -->
+      <div class="contact-row">
+        <span class="contact-item"><span class="icon">📞</span> +86 139 1024 5872</span>
+        <span class="contact-item"><span class="icon">✉️</span> yichi.zhang@consulting.com</span>
+        <span class="contact-item"><span class="icon">📍</span> 上海 / 北京</span>
+        <span class="contact-item"><span class="icon">🔗</span> linkedin.com/in/yichizhang</span>
+      </div>
+      
+      <div class="divider"></div>
+
+      <!-- 核心优势 / 简介 (ATS安全纯文本) -->
+      <div style="margin-bottom: 0.7rem;">
+        <div class="section-title">
+          <span>专业概要</span>
+        </div>
+        <div class="title-underline"></div>
+        <p style="font-size:0.85rem; color:#4A5568; line-height:1.6;">
+          7年管理咨询与项目交付经验，聚焦消费品与科技战略。曾主导多个千万级企业转型项目，具备跨国团队协调与C-level汇报能力。MBA(欧洲顶尖商学院)毕业，PMP认证，擅长在模糊环境中驱动结果。
+        </p>
+      </div>
+
+      <!-- 工作经历 -->
+      <div>
+        <div class="section-title">
+          <span>工作经历</span>
+        </div>
+        <div class="title-underline"></div>
+        
+        <!-- 经历1 -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <div class="company-position">
+              <span class="company-name">麦肯锡咨询</span><span class="position-title"> | 项目经理</span>
+            </div>
+            <div class="date-location">2022.06 – 至今 | 上海</div>
+          </div>
+          <ul class="bullet-list">
+            <li>领导8人团队为某头部零售企业制定全渠道增长战略，识别12亿增量收入机会，方案被董事会全盘采纳。</li>
+            <li>管理项目预算逾2000万人民币，通过敏捷迭代将交付周期缩短20%，客户满意度评分达98%。</li>
+            <li>主导汽车行业数字化转型诊断，协调德国与中国工程团队，6个月内落地智能工厂蓝图。</li>
+          </ul>
+        </div>
+        
+        <!-- 经历2 -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <div class="company-position">
+              <span class="company-name">波士顿咨询</span><span class="position-title"> | 高级咨询顾问</span>
+            </div>
+            <div class="date-location">2019.08 – 2022.05 | 北京</div>
+          </div>
+          <ul class="bullet-list">
+            <li>参与某万亿市值科技企业的组织重构项目，设计新事业群架构，直接支持合伙人完成董事会汇报。</li>
+            <li>搭建市场进入模型，为一家欧洲奢侈品品牌量化中国二线城市潜力，推动新增15家门店决策。</li>
+            <li>指导2名初级顾问并主导内部培训，连续两季度获评“杰出贡献顾问”。</li>
+          </ul>
+        </div>
+        
+        <!-- 经历3 (早期经历，保持连贯) -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <div class="company-position">
+              <span class="company-name">埃森哲战略</span><span class="position-title"> | 咨询分析师</span>
+            </div>
+            <div class="date-location">2017.09 – 2019.07 | 深圳</div>
+          </div>
+          <ul class="bullet-list">
+            <li>完成3个大型IT战略项目的数据分析与竞品研究，支撑客户价值5亿美金的并购后整合规划。</li>
+            <li>开发自动化报告工具，减少团队手动处理时间约30%。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 教育背景 (MBA突出) -->
+      <div style="margin-top: 0.8rem;">
+        <div class="section-title">
+          <span>教育背景</span>
+        </div>
+        <div class="title-underline"></div>
+        <div class="edu-item">
+          <span class="edu-detail">欧洲工商管理学院 (INSEAD)</span>
+          <span class="edu-date">2020.09 – 2021.07</span>
+        </div>
+        <div class="edu-desc" style="margin-bottom:0.3rem;">工商管理硕士 (MBA) · 战略与金融方向 · 院长荣誉名单</div>
+        
+        <div class="edu-item">
+          <span class="edu-detail">复旦大学</span>
+          <span class="edu-date">2013.09 – 2017.06</span>
+        </div>
+        <div class="edu-desc">经济学学士 · 国际经济与贸易</div>
+      </div>
+
+      <!-- 项目精选 (强化MBB项目经理特质) -->
+      <div style="margin-top: 0.8rem;">
+        <div class="section-title">
+          <span>核心项目</span>
+        </div>
+        <div class="title-underline"></div>
+        <div class="project-item">
+          <span class="project-name">全球化供应链韧性提升</span><span class="project-meta">麦肯锡 · 2023</span>
+          <div style="font-size:0.82rem; color:#4A5568; margin-top:0.1rem;">领导跨国调研，识别关键风险节点，为客户节省潜在损失1.2亿美元，方案被纳入全球COO手册。</div>
+        </div>
+        <div class="project-item">
+          <span class="project-name">新消费品牌DTC转型</span><span class="project-meta">BCG · 2021</span>
+          <div style="font-size:0.82rem; color:#4A5568; margin-top:0.1rem;">从0到1设计数字化消费者旅程，实现线上营收占比从15%提升至45%，项目获亚太区创新奖。</div>
+        </div>
+      </div>
+
+      <!-- 技能与证书 (采用标签式排列 + 两栏纯文本) -->
+      <div style="margin-top: 0.8rem;">
+        <div class="section-title">
+          <span>核心能力与认证</span>
+        </div>
+        <div class="title-underline"></div>
+        <div class="two-columns">
+          <div class="col">
+            <div style="font-weight:700; font-size:0.8rem; color:#1A202C; margin-bottom:0.2rem;">专业技能</div>
+            <div class="skills-container">
+              <span class="skill-tag">战略规划</span>
+              <span class="skill-tag">运营模型</span>
+              <span class="skill-tag">尽职调查</span>
+              <span class="skill-tag">敏捷管理</span>
+              <span class="skill-tag">财务建模</span>
+              <span class="skill-tag">变革管理</span>
+            </div>
+          </div>
+          <div class="col">
+            <div style="font-weight:700; font-size:0.8rem; color:#1A202C; margin-bottom:0.2rem;">证书与工具</div>
+            <div class="skills-container">
+              <span class="skill-tag">PMP® 认证</span>
+              <span class="skill-tag">Scrum Master</span>
+              <span class="skill-tag">Tableau</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">Python (基础)</span>
+              <span class="skill-tag">英语专业级</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 额外信息：语言与兴趣，保持简洁 -->
+      <div style="margin-top: 0.7rem; font-size:0.8rem; color:#4A5568; display:flex; flex-wrap:wrap; gap:1.5rem;">
+        <span>🇨🇳 中文 (母语) </span>
+        <span>🇬🇧 英文 (商务谈判级) </span>
+        <span>🇩🇪 德语 (基础) </span>
+        <span>📋 猎头推荐 · MBA校友网络</span>
+      </div>
+      
+      <!-- 底部极简分割，无多余装饰 -->
+      <div class="divider thin" style="margin-top:0.75rem;"></div>
+      <div style="font-size:0.7rem; color:#A0AEC0; text-align:right; margin-top:0.2rem;">严谨 · 结果导向 · 全球视野</div>
+    </div>
+  </div>
+</body>
+</html>

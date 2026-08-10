@@ -1,0 +1,204 @@
+{
+  "templateId": "prompt_080",
+  "name": "林觉·影视美术指导 · 简历",
+  "sourceFile": "prompt_080.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "个人网站",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "视觉叙事_专业轮廓",
+      "label": "视觉叙事 · 专业轮廓",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "创作轨迹",
+      "label": "创作轨迹",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "学院积淀",
+      "label": "学院积淀",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": false
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-role",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    }
+  ],
+  "sampleData": {
+    "name": "林觉",
+    "title": "影视美术指导 · 高级",
+    "phone": "✆ +86 139 5027 1846",
+    "email": "✉ lin.jue@frame.studio",
+    "socials": [
+      {
+        "platform": "website",
+        "url": "▣ portfolio-frame.cc"
+      }
+    ],
+    "视觉叙事_专业轮廓": "8年影视美术指导经验，主导《夜航船》《锈色黎明》等长片与剧集的美术构建。擅长通过非对称空间、光影材质叙事，融合东方美学与当代电影感。与导演、摄影指导深度协作，从概念图到置景落地全程把控。",
+    "创作轨迹": "帧格影业 | 高级美术指导 2021.03 – 至今 主导奇幻电影《夜航船》整体美术设计，构建七个非对称船舱场景，入围金马最佳美术设计。 与导演及视效团队合作，将实景搭设与LED虚拟制片结合，成本降低22%。 带领5人美术团队，完成从概念草图、气氛图到施工图监制，项目周期平均缩短18%。 青墨影视 | 美术指导 2018.05 – 2021.02 负责悬疑剧《锈色黎明》美术风格确立，利用工业废墟与",
+    "学院积淀": "中央戏剧学院 · 舞台美术设计 本科 2012 – 2016 毕业设计《非对称戏剧空间》获学院奖，伦敦艺术大学短期置景工作坊。 作品集与完整项目案例 · 人脉内推可见 www.frame-linjue.com",
+    "skills": [
+      {
+        "name": "SketchUp/Rhino",
+        "level": ""
+      },
+      {
+        "name": "CAD施工图",
+        "level": ""
+      },
+      {
+        "name": "数字绘景",
+        "level": ""
+      },
+      {
+        "name": "色彩脚本",
+        "level": ""
+      },
+      {
+        "name": "场景模型",
+        "level": ""
+      },
+      {
+        "name": "预算统筹",
+        "level": ""
+      },
+      {
+        "name": "虚拟制片",
+        "level": ""
+      },
+      {
+        "name": "陈设叙事",
+        "level": ""
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "视觉叙事_专业轮廓",
+      "label": "视觉叙事 · 专业轮廓",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "创作轨迹",
+      "label": "创作轨迹",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "学院积淀",
+      "label": "学院积淀",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

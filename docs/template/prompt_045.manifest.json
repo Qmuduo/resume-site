@@ -1,0 +1,212 @@
+{
+  "templateId": "prompt_045",
+  "name": "陈知远 · 公关高级经理简历",
+  "sourceFile": "prompt_045.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "个人简介",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": false
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".job-title",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "summary",
+      "selector": ".summary-text",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    }
+  ],
+  "sampleData": {
+    "name": "陈知远",
+    "title": "公关高级经理 | 企业传播与品牌策略",
+    "phone": "+86 139 5027 6814",
+    "email": "✉️ zhiyuan.chen@prlab.cn",
+    "location": "上海 · 中国",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "🔗 linkedin.com/in/zhiyuanchen"
+      }
+    ],
+    "summary": "资深公关传播专家，8年跨国企业及头部公关公司经验。擅长企业声誉管理、危机公关、媒体关系与CEO品牌塑造。主导过多个千万级整合传播项目，服务科技、金融及消费领域客户。具备猎头及行业人脉深度链接，善于以数据驱动传播策略。",
+    "skills": [
+      {
+        "name": "危机公关与舆情分析",
+        "level": ""
+      },
+      {
+        "name": "媒体关系与KOL策略",
+        "level": ""
+      },
+      {
+        "name": "CEO品牌塑造",
+        "level": ""
+      },
+      {
+        "name": "整合营销传播",
+        "level": ""
+      },
+      {
+        "name": "内容战略与故事线",
+        "level": ""
+      },
+      {
+        "name": "数据驱动传播",
+        "level": ""
+      },
+      {
+        "name": "跨文化沟通",
+        "level": ""
+      },
+      {
+        "name": "Meltwater/Cision",
+        "level": ""
+      },
+      {
+        "name": "项目管理 (PMP)",
+        "level": ""
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "summary",
+      "label": "专业摘要",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

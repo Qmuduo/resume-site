@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.time.LocalDateTime;
 
 /**
- * 简历实体，data 为 MySQL JSON 列。
+ * 简历实体：公共数据（common_data）与模板专属数据（extended_data）分离存储。
  */
 @TableName("resume")
 public class Resume {
@@ -22,10 +22,16 @@ public class Resume {
     /** 使用的内置模板编码（对应 resources/templates/*.json 的 code） */
     private String templateCode;
 
+    /** 当前使用的模板ID（template.code） */
+    private String currentTemplateId;
+
     private String title;
 
-    /** 简历内容 JSON */
-    private String data;
+    /** 公共数据（ResumeCommonData 结构，JSON） */
+    private String commonData;
+
+    /** 模板专属数据（key-value，JSON） */
+    private String extendedData;
 
     private Integer status;
 
@@ -65,6 +71,14 @@ public class Resume {
         this.templateCode = templateCode;
     }
 
+    public String getCurrentTemplateId() {
+        return currentTemplateId;
+    }
+
+    public void setCurrentTemplateId(String currentTemplateId) {
+        this.currentTemplateId = currentTemplateId;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -73,12 +87,20 @@ public class Resume {
         this.title = title;
     }
 
-    public String getData() {
-        return data;
+    public String getCommonData() {
+        return commonData;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setCommonData(String commonData) {
+        this.commonData = commonData;
+    }
+
+    public String getExtendedData() {
+        return extendedData;
+    }
+
+    public void setExtendedData(String extendedData) {
+        this.extendedData = extendedData;
     }
 
     public Integer getStatus() {

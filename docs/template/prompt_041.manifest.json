@@ -1,0 +1,164 @@
+{
+  "templateId": "prompt_041",
+  "name": "高级产品总监 · 简历",
+  "sourceFile": "prompt_041.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "专业摘要",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": false
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".role-title",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "education",
+      "selector": ".edu-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "edu-item"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    }
+  ],
+  "sampleData": {
+    "name": "陈逸凡",
+    "title": "· 高级产品总监",
+    "education": [
+      {
+        "school": "清华大学经济管理学院",
+        "date": "2013 – 2015"
+      },
+      {
+        "school": "复旦大学",
+        "date": "2009 – 2013"
+      }
+    ],
+    "skills": [
+      {
+        "name": "增长与商业化",
+        "level": ""
+      },
+      {
+        "name": "AI/ML产品化",
+        "level": ""
+      },
+      {
+        "name": "跨职能团队领导",
+        "level": ""
+      },
+      {
+        "name": "企业SaaS架构",
+        "level": ""
+      },
+      {
+        "name": "数据分析驱动决策",
+        "level": ""
+      },
+      {
+        "name": "用户研究体系",
+        "level": ""
+      },
+      {
+        "name": "敏捷/规模化敏捷",
+        "level": ""
+      },
+      {
+        "name": "董事会沟通",
+        "level": ""
+      },
+      {
+        "name": "GTM策略",
+        "level": ""
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "summary",
+      "label": "专业摘要",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

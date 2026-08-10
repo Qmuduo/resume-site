@@ -5,18 +5,25 @@ import { ElMessage } from 'element-plus'
 import type { AxiosError } from 'axios'
 import { fetchResume } from '@/api/resume'
 import { fetchTemplates } from '@/api/template'
-import { renderTemplate, sanitizeCss } from '@/template-engine'
+import {
+  buildViewModel,
+  renderStaticTemplate,
+  renderTemplate,
+  sanitizeCss
+} from '@/template-engine'
 import { usePageScale } from '@/composables/usePageScale'
-import type { ResumeRecord, ResumeTemplate } from '@/types'
+import { emptyCommonData } from '@/stores/resumeStore'
+import type { ResumeCommonData, ResumeExtendedData, ResumeTemplate, ResumeVO } from '@/types'
 
 const route = useRoute()
 const router = useRouter()
 
 const resumeId = computed(() => (typeof route.params.id === 'string' ? route.params.id : ''))
-const resume = ref<ResumeRecord | null>(null)
+const resume = ref<ResumeVO | null>(null)
 const template = ref<ResumeTemplate | null>(null)
+const commonData = ref<ResumeCommonData>(emptyCommonData())
+const extendedData = ref<ResumeExtendedData>({})
 const loading = ref(true)
-/** 加载出错时的错误信息，非空表示请求层面失败（区别于"无模板"场景） */
 const loadError = ref('')
 const stageRef = ref<HTMLElement | null>(null)
 const contentRef = ref<HTMLElement | null>(null)
@@ -26,9 +33,15 @@ const { viewportStyle, scalerStyle } = usePageScale(stageRef, contentRef)
 
 const previewHtml = computed(() => {
   if (!resume.value || !template.value) return ''
-  return renderTemplate(template.value, parseData(resume.value.data), {
-    resumeTitle: resume.value.title
-  })
+  const manifest = template.value.manifest
+  if (manifest?.renderMode === 'static') {
+    return renderStaticTemplate(template.value, commonData.value, extendedData.value)
+  }
+  return renderTemplate(
+    template.value,
+    buildViewModel(commonData.value, extendedData.value, manifest),
+    { resumeTitle: resume.value.title }
+  )
 })
 
 onMounted(async () => {
@@ -46,16 +59,14 @@ async function load() {
   loading.value = true
   loadError.value = ''
   try {
-    // 分开请求，方便定位是简历接口还是模板接口失败
-    let res: ResumeRecord
+    let res: ResumeVO
     try {
       res = await fetchResume(resumeId.value)
     } catch (e) {
       const status = (e as AxiosError)?.response?.status
       if (status === 403 || status === 404) {
-        loadError.value = '简历不存在或无权访问'
+        loadError.value = '简历不存在或无权限访问'
       } else if (status === 401) {
-        // 401 由 http 拦截器处理刷新/跳登录，这里只提示
         loadError.value = '登录已过期，请重新登录'
       } else {
         loadError.value = '简历数据加载失败，请稍后重试'
@@ -63,7 +74,6 @@ async function load() {
       return
     }
 
-    // 模板接口失败时用空数组兜底，不阻断预览
     let templates: ResumeTemplate[] = []
     try {
       templates = await fetchTemplates()
@@ -72,15 +82,17 @@ async function load() {
     }
 
     resume.value = res
+    commonData.value = normalizeCommon(res.commonData)
+    extendedData.value = normalizeExtended(res.extendedData)
 
-    // 优先按 templateCode 精确匹配；找不到时回退到第一个可用模板
-    const matched = res.templateCode
-      ? (templates.find((tpl) => tpl.code === res.templateCode) ?? null)
+    const templateId = res.currentTemplateId ?? res.templateCode ?? ''
+    const matched = templateId
+      ? (templates.find((tpl) => tpl.code === templateId) ?? null)
       : null
     template.value = matched ?? templates[0] ?? null
 
     if (!matched && template.value) {
-      ElMessage.warning(`该简历未保存模板信息，已自动使用「${template.value.name}」预览，如需修正请点击编辑`)
+      ElMessage.warning(`该简历未保存模板信息，已自动使用「${template.value.name}」预览`)
     }
 
     document.title = `${res.title} - 简历预览`
@@ -94,13 +106,7 @@ async function load() {
   }
 }
 
-/**
- * 将简历 data 字段转为对象。
- * 兼容两种情况：
- *   1. 后端返回字符串（正常情况）→ JSON.parse
- *   2. 后端直接返回反序列化后的 Object（Jackson 把 MySQL JSON 列解成 Map）→ 直接用
- */
-function parseData(raw: unknown): Record<string, unknown> {
+function parseObject(raw: unknown): Record<string, unknown> {
   if (raw !== null && typeof raw === 'object' && !Array.isArray(raw)) {
     return raw as Record<string, unknown>
   }
@@ -115,6 +121,32 @@ function parseData(raw: unknown): Record<string, unknown> {
     }
   }
   return {}
+}
+
+function normalizeCommon(raw: unknown): ResumeCommonData {
+  const parsed = parseObject(raw)
+  const base = emptyCommonData()
+  return {
+    basic: { ...base.basic, ...(isObject(parsed.basic) ? parsed.basic : {}) },
+    summary: typeof parsed.summary === 'string' ? parsed.summary : '',
+    experiences: Array.isArray(parsed.experiences) ? parsed.experiences : [],
+    education: Array.isArray(parsed.education) ? parsed.education : [],
+    skills: Array.isArray(parsed.skills) ? parsed.skills : [],
+    socials: Array.isArray(parsed.socials) ? parsed.socials : [],
+    projects: Array.isArray(parsed.projects) ? parsed.projects : [],
+    certifications: Array.isArray(parsed.certifications) ? parsed.certifications : [],
+    languages: Array.isArray(parsed.languages) ? parsed.languages : [],
+    awards: Array.isArray(parsed.awards) ? parsed.awards : [],
+    interests: Array.isArray(parsed.interests) ? parsed.interests : []
+  }
+}
+
+function normalizeExtended(raw: unknown): ResumeExtendedData {
+  return parseObject(raw)
+}
+
+function isObject(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === 'object' && !Array.isArray(value)
 }
 
 function saveAsPdf() {

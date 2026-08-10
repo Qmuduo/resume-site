@@ -1,0 +1,210 @@
+{
+  "templateId": "prompt_074",
+  "name": "动画师简历 · 动态非对称设计",
+  "sourceFile": "prompt_074.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "social_3",
+      "label": "个人网站",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".job-title",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    },
+    {
+      "commonPath": "projects",
+      "selector": ".project-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "project-item"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".education-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "education-item"
+    }
+  ],
+  "sampleData": {
+    "name": "林 一 晨",
+    "title": "| 中级动画师",
+    "phone": "138-0000-1234",
+    "email": "✉️ lin.yichen@motion.cn",
+    "socials": [
+      {
+        "platform": "website",
+        "url": "🔗 portfolio.com/lin"
+      }
+    ],
+    "experiences": [
+      {
+        "position": "| 中级动画师",
+        "date": "2023.04 – 至今",
+        "description": "主导角色动画预演与关键帧设计，应用于腾讯视频动画番剧《星海之旅》，单集播放量超800万。"
+      },
+      {
+        "position": "| 初级动画师",
+        "date": "2021.07 – 2023.02",
+        "description": "参与B站国创动画《云中曲》的角色动画制作，负责配角表演与循环动画，作品累计追番超50万。"
+      }
+    ],
+    "projects": [
+      {
+        "date": "2024.02",
+        "description": "实验性混合媒介动画，结合二维手绘与三维渲染，入选“奇点动画节”展映单元。"
+      },
+      {
+        "date": "2023.09",
+        "description": "为科技品牌“Nexa”设计动态Logo演绎，应用于官网及发布会开场，强调流动与变形动画。"
+      }
+    ],
+    "skills": [
+      {
+        "name": "Blender",
+        "level": ""
+      },
+      {
+        "name": "After Effects",
+        "level": ""
+      },
+      {
+        "name": "角色动画",
+        "level": ""
+      },
+      {
+        "name": "运动规律",
+        "level": ""
+      },
+      {
+        "name": "动态分镜",
+        "level": ""
+      },
+      {
+        "name": "Premiere",
+        "level": ""
+      },
+      {
+        "name": "Toon Boom",
+        "level": ""
+      },
+      {
+        "name": "绑定基础",
+        "level": ""
+      }
+    ],
+    "education": [
+      {
+        "school": "中国传媒大学",
+        "date": "2017 – 2021"
+      }
+    ]
+  },
+  "pendingManual": []
+}

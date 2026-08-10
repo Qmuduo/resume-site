@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>服装设计师简历 · 几何撞色版</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-deep: #1A3C40;    /* 深绿墨色，沉稳基底 */
+      --accent-bold: #E76F51;    /* 陶土橙红，大胆强调 */
+      --accent-soft: #F4A261;    /* 暖沙色，几何装饰 */
+      --bg-light: #FDF8F0;       /* 暖白底色，呼吸感 */
+      --text-primary: #2C3E50;   /* 深灰蓝，正文 */
+      --text-secondary: #4A5C6C; /* 辅助灰 */
+      --border-light: #E5D9CC;   /* 柔和分割线 */
+      --geometric-shape: #E9C9A0; /* 几何装饰色块 */
+      --white: #FFFFFF;
+    }
+
+    body {
+      background-color: #EAE5DE;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica', '思源黑体', 'Noto Sans SC', sans-serif;
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 简历卡片 — A4比例固定宽度 */
+    .resume {
+      max-width: 800px;
+      width: 100%;
+      background: var(--white);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 6px 12px rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      page-break-after: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* 几何装饰头部 - 采用安全色块拼接，无文字覆盖风险 */
+    .geometric-header {
+      background: var(--primary-deep);
+      padding: 2.2rem 2.5rem 1.8rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 4px solid var(--accent-bold);
+    }
+
+    /* 几何图形装饰：纯CSS形状，不干扰文字流，且文字完全在色块上方独立区域 */
+    .geo-shapes {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 200px;
+      height: 200px;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .geo-circle {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      width: 120px;
+      height: 120px;
+      border: 3px solid var(--accent-soft);
+      border-radius: 50%;
+      background: transparent;
+    }
+
+    .geo-triangle {
+      position: absolute;
+      bottom: 10px;
+      right: 0px;
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 80px solid var(--accent-bold);
+      opacity: 0.25;
+      transform: rotate(15deg);
+    }
+
+    .geo-square {
+      position: absolute;
+      top: 70px;
+      right: 100px;
+      width: 45px;
+      height: 45px;
+      background: var(--accent-soft);
+      opacity: 0.4;
+      transform: rotate(25deg);
+    }
+
+    /* 头部文字区域，与几何装饰分离 */
+    .header-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .name {
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      text-transform: uppercase;
+      word-break: break-word;
+    }
+
+    .title-sub {
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--accent-soft);
+      margin-bottom: 1.2rem;
+      letter-spacing: 1.5px;
+      border-left: 4px solid var(--accent-bold);
+      padding-left: 1rem;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #F0E5D8;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+    }
+
+    /* 简单线性图标 - 使用HTML实体/文本，ATS完全可读 */
+    .icon {
+      font-size: 1rem;
+      margin-right: 0.2rem;
+      color: var(--accent-soft);
+    }
+
+    /* 主体内容区域 */
+    .main-content {
+      padding: 2rem 2.5rem 2.2rem 2.5rem;
+      background: var(--white);
+    }
+
+    /* 板块样式 */
+    .section {
+      margin-bottom: 1.8rem;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      color: var(--primary-deep);
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--accent-bold);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* 左侧色条装饰（低风险，纯装饰且不重叠文字） */
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 18px;
+      background-color: var(--accent-bold);
+      margin-right: 0.4rem;
+    }
+
+    /* 工作经历条目 */
+    .experience-item {
+      margin-bottom: 1.4rem;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.2rem;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      letter-spacing: 0.3px;
+    }
+
+    .job-title {
+      font-weight: 600;
+      color: var(--primary-deep);
+      margin-left: 0.3rem;
+      font-size: 0.98rem;
+    }
+
+    .date-location {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .description {
+      margin-top: 0.4rem;
+      padding-left: 0.2rem;
+      color: var(--text-primary);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .description ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .description li {
+      position: relative;
+      padding-left: 1.3rem;
+      margin-bottom: 0.35rem;
+    }
+
+    /* 标准圆点符号，ATS安全 */
+    .description li::before {
+      content: "•";
+      color: var(--accent-bold);
+      font-weight: bold;
+      position: absolute;
+      left: 0.2rem;
+      font-size: 1.1rem;
+    }
+
+    /* 技能标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.3rem;
+    }
+
+    .skill-tag {
+      background: #F4F1EA;
+      color: var(--primary-deep);
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      border: 1px solid var(--border-light);
+      white-space: nowrap;
+    }
+
+    .skill-tag strong {
+      color: var(--accent-bold);
+      margin-right: 0.2rem;
+    }
+
+    /* 教育背景简洁样式 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.4rem;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .edu-school {
+      font-weight: 600;
+      color: var(--primary-deep);
+      margin-left: 0.5rem;
+    }
+
+    .edu-date {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .project-item {
+      margin-bottom: 1rem;
+    }
+
+    .project-name {
+      font-weight: 700;
+      color: var(--primary-deep);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid var(--border-light);
+      margin: 0.8rem 0 1.2rem;
+      opacity: 0.7;
+    }
+
+    /* 打印样式优化 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+      }
+      .geometric-header {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background: var(--primary-deep) !important;
+        border-bottom: 4px solid var(--accent-bold) !important;
+      }
+      .geo-shapes {
+        opacity: 0.25;
+      }
+      .section-title::before {
+        background-color: var(--accent-bold) !important;
+      }
+      .skill-tag {
+        border: 1px solid #ccc;
+        background: #F9F7F3 !important;
+      }
+      a, button {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 650px) {
+      .geometric-header {
+        padding: 1.8rem 1.5rem;
+      }
+      .main-content {
+        padding: 1.5rem;
+      }
+      .name {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- 头部：几何撞色装饰 + 个人信息 -->
+    <header class="geometric-header">
+      <div class="geo-shapes" aria-hidden="true">
+        <div class="geo-circle"></div>
+        <div class="geo-triangle"></div>
+        <div class="geo-square"></div>
+      </div>
+      <div class="header-content">
+        <h1 class="name">林清怡</h1>
+        <div class="title-sub">服装设计师 · 梭织与针织方向</div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="icon">✆</span> +86 139 5027 3841</span>
+          <span class="contact-item"><span class="icon">✉</span> qingyi.lin@design.me</span>
+          <span class="contact-item"><span class="icon">🔗</span> portfolio.cn/qingyi</span>
+          <span class="contact-item"><span class="icon">📍</span> 上海 / 杭州</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 主体内容：严格左对齐，时间右对齐，无表格 -->
+    <div class="main-content">
+      
+      <!-- 专业简介 -->
+      <div class="section">
+        <div class="section-title">专业概述</div>
+        <p style="font-size: 0.95rem; color: #2C3E50; margin-top: 0.2rem;">
+          拥有3年女装设计经验，擅长将建筑几何线条与手工染色工艺融合。曾主导两个季度胶囊系列，从概念图到产前样全程跟进。熟练运用CLO 3D、Adobe Illustrator及手工立裁。
+        </p>
+      </div>
+
+      <!-- 工作经历 -->
+      <div class="section">
+        <div class="section-title">工作经历</div>
+        
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company-name">织序时装工作室</span> <span class="job-title">| 服装设计师</span></span>
+            <span class="date-location">2024.03 – 至今 | 上海</span>
+          </div>
+          <div class="description">
+            <ul>
+              <li>主导2025春夏“折纸光影”系列，完成12套成衣设计，其中3款入选上海时装周LAB展厅。</li>
+              <li>运用几何分割版型与不对称结构，将废料率降低18%，并与版师协同优化落肩袖工艺。</li>
+              <li>制作详细技术包（Tech Pack），包含缝制说明、面料小样及Pantone色号，确保与工厂无缝对接。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company-name">帛逸服饰有限公司</span> <span class="job-title">| 助理设计师</span></span>
+            <span class="date-location">2022.07 – 2024.02 | 杭州</span>
+          </div>
+          <div class="description">
+            <ul>
+              <li>协助主设计师开发季节性趋势板，完成辅料搭配与数字化印花图案绘制。</li>
+              <li>参与2023秋冬系列开发，负责样衣试穿记录与修改意见，跟进3家供应商打样进度。</li>
+              <li>使用CLO 3D进行虚拟试衣，减少实物样衣修改次数约25%。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 项目精选（作品集相关） -->
+      <div class="section">
+        <div class="section-title">设计项目</div>
+        <div class="project-item">
+          <div class="project-name">
+            <span>《叠构》· 胶囊系列</span>
+            <span style="font-weight: 400; font-size:0.85rem; color:#4A5C6C;">个人创作 / 2024</span>
+          </div>
+          <div class="description" style="margin-top: 0.25rem;">
+            <ul>
+              <li>灵感源自蒙德里安构图与建筑解构，采用重磅亚麻与环保天丝混纺，探索平面与立体转换。</li>
+              <li>独立完成8套造型，从调研、草图、立体裁剪到成品拍摄，作品获“艺裳新锐”入围奖。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-name">
+            <span>“流动的边界”联合展览</span>
+            <span style="font-weight: 400; font-size:0.85rem; color:#4A5C6C;">合作项目 / 2023</span>
+          </div>
+          <div class="description">
+            <ul>
+              <li>与装置艺术家合作，设计可变形服装结构，通过抽绳与几何裁片实现一衣多穿。</li>
+              <li>负责所有服装技术图纸与面料染整实验，展览期间社交媒体曝光超5万次。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 技能与工具 -->
+      <div class="section">
+        <div class="section-title">核心能力</div>
+        <div class="skills-container">
+          <span class="skill-tag"><strong>▻</strong> 女装设计</span>
+          <span class="skill-tag"><strong>▻</strong> 趋势调研</span>
+          <span class="skill-tag"><strong>▻</strong> 立体裁剪</span>
+          <span class="skill-tag"><strong>▻</strong> Adobe Illustrator</span>
+          <span class="skill-tag"><strong>▻</strong> Photoshop</span>
+          <span class="skill-tag"><strong>▻</strong> CLO 3D</span>
+          <span class="skill-tag"><strong>▻</strong> 技术包绘制</span>
+          <span class="skill-tag"><strong>▻</strong> 手工扎染</span>
+          <span class="skill-tag"><strong>▻</strong> 面料改造</span>
+          <span class="skill-tag"><strong>▻</strong> 版型沟通</span>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div class="section">
+        <div class="section-title">教育背景</div>
+        <div class="edu-item">
+          <span><span class="edu-degree">文学学士 · 服装与服饰设计</span> <span class="edu-school">中国美术学院</span></span>
+          <span class="edu-date">2018.09 – 2022.06</span>
+        </div>
+        <div style="font-size:0.9rem; color:#4A5C6C; margin-top:0.2rem;">主修课程：立体裁剪、服装材料学、数字化设计表达、品牌策划</div>
+      </div>
+
+      <!-- 语言与额外信息 -->
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 0.8rem; font-size:0.9rem; color:#2C3E50;">
+        <div><strong style="color:#1A3C40;">语言：</strong>中文 (母语) · 英语 (雅思6.5，可进行工作沟通)</div>
+        <div><strong style="color:#1A3C40;">兴趣：</strong>几何抽象画、手工造纸、可持续时尚</div>
+      </div>
+      
+      <!-- 细微几何装饰线，安全且不干扰文字 -->
+      <hr style="margin-top: 1.5rem; border-color: #E76F51; opacity:0.5;">
+      <div style="text-align: right; font-size: 0.7rem; color: #B0A89C; letter-spacing: 0.5px;">
+        作品集链接 · 完整版可见于个人网站
+      </div>
+    </div>
+  </div>
+</body>
+</html>

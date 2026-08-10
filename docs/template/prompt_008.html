@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
+  <title>张正源 · 财务总监简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      background: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      margin: 0;
+      font-family: 'Arial', 'Helvetica', '思源黑体', 'Noto Sans SC', 'Calibri', sans-serif;
+      color: #2D3748;
+      line-height: 1.5;
+    }
+
+    /* A4尺寸简历卡片 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+      margin: 0 auto;
+    }
+
+    /* 内边距：确保呼吸感，上下0.7inch，左右0.75inch */
+    .resume-inner {
+      padding: 0.7in 0.75in;
+      position: relative;
+    }
+
+    /* 所有文本直接可选中，无复杂图形覆盖 */
+    h1, h2, h3, p, li, div, span {
+      color: #2D3748;
+      font-weight: normal;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 0.25rem;
+    }
+    .name {
+      font-size: 28pt;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      color: #1A202C;
+      line-height: 1.2;
+      margin-bottom: 0.1rem;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+    .title-line {
+      font-size: 12.5pt;
+      font-weight: 400;
+      color: #4A5568;
+      letter-spacing: 0.8px;
+      margin-bottom: 0.65rem;
+      border-bottom: 1.8px solid #CBD5E0;
+      padding-bottom: 0.55rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    .target-role {
+      font-weight: 600;
+      color: #2D3748;
+    }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 0.2rem;
+      font-size: 10pt;
+      color: #4A5568;
+      align-items: center;
+    }
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      white-space: nowrap;
+    }
+    .contact-item span {
+      font-weight: 400;
+      color: #2D3748;
+    }
+    /* 简单线性图标用unicode字符代替，ATS完全友好 */
+    .icon-char {
+      font-size: 10.5pt;
+      margin-right: 0.15rem;
+      color: #4A5568;
+    }
+
+    /* 全局区块标题 */
+    .section-title {
+      font-size: 11.5pt;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #1A202C;
+      border-bottom: 1.2px solid #CBD5E0;
+      padding-bottom: 0.25rem;
+      margin-top: 1.2rem;
+      margin-bottom: 0.55rem;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    /* 工作经历条目 */
+    .experience-item {
+      margin-bottom: 0.7rem;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.15rem;
+    }
+    .company-name {
+      font-weight: 700;
+      font-size: 12pt;
+      color: #1A202C;
+    }
+    .job-title {
+      font-weight: 600;
+      font-size: 11pt;
+      color: #2D3748;
+      margin-left: 0.3rem;
+    }
+    .date-location {
+      font-size: 10pt;
+      font-weight: 400;
+      color: #4A5568;
+      white-space: nowrap;
+      text-align: right;
+    }
+    .exp-details {
+      margin-top: 0.25rem;
+      padding-left: 1.2rem;
+      list-style-type: none;
+    }
+    .exp-details li {
+      font-size: 10.2pt;
+      color: #2D3748;
+      margin-bottom: 0.3rem;
+      position: relative;
+      padding-left: 0.9rem;
+      line-height: 1.45;
+    }
+    /* 使用标准圆点符号，ATS安全 */
+    .exp-details li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #4A5568;
+      font-weight: bold;
+    }
+
+    /* 教育经历 */
+    .education-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.3rem;
+    }
+    .edu-school {
+      font-weight: 700;
+      font-size: 11pt;
+      color: #1A202C;
+    }
+    .edu-degree {
+      font-weight: 500;
+      color: #2D3748;
+      margin-left: 0.3rem;
+    }
+    .edu-date {
+      font-size: 10pt;
+      color: #4A5568;
+    }
+
+    /* 技能标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.2rem;
+      margin-top: 0.2rem;
+    }
+    .skill-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+    .skill-label {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: #1A202C;
+      margin-right: 0.15rem;
+    }
+    .skill-item {
+      font-size: 10pt;
+      background: #F7FAFC;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      color: #2D3748;
+      border: 0.5px solid #E2E8F0;
+      white-space: nowrap;
+    }
+    .cert-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      font-size: 10.2pt;
+      color: #2D3748;
+      margin-top: 0.15rem;
+    }
+    .cert-item {
+      font-weight: 500;
+    }
+
+    /* 左侧装饰色条：低风险，纯色条不重叠文字，位于左侧边缘 */
+    .resume-inner {
+      position: relative;
+    }
+    .resume-inner::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7in;
+      bottom: 0.7in;
+      width: 4px;
+      background: #2C3E50; /* 深灰蓝，克制稳重 */
+      border-radius: 0 2px 2px 0;
+      display: block;
+    }
+
+    /* 确保内容不被色条遮挡 */
+    .resume-inner {
+      padding-left: calc(0.75in + 10px);
+    }
+
+    hr {
+      border: none;
+      border-top: 0.8px solid #CBD5E0;
+      margin: 0.5rem 0 0.3rem;
+    }
+
+    /* 打印样式规则 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+      .resume {
+        max-width: 100%;
+        box-shadow: none;
+        border: none;
+        margin: 0;
+        width: 100%;
+      }
+      .resume-inner {
+        padding: 0.7in 0.75in 0.7in calc(0.75in + 10px);
+      }
+      /* 保留色条但确保打印清晰 */
+      .resume-inner::before {
+        background: #2C3E50;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      /* 隐藏链接下划线，保留纯文本 */
+      a, .contact-item {
+        text-decoration: none;
+        color: #2D3748;
+      }
+      .skill-item {
+        background: #F7FAFC;
+        border: 0.5px solid #CBD5E0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    /* 针对小屏适配，但不影响打印 */
+    @media screen and (max-width: 700px) {
+      .resume-inner {
+        padding: 1.2rem;
+      }
+      .name {
+        font-size: 24pt;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      
+      <!-- 姓名与标题区域 -->
+      <div class="name-section">
+        <h1 class="name">张正源</h1>
+        <div class="title-line">
+          <span class="target-role">财务总监 · CPA</span>
+          <span>企业财务战略 | 上市公司合规</span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-item"><span class="icon-char">📞</span> <span>(86) 138-1025-7789</span></div>
+          <div class="contact-item"><span class="icon-char">✉️</span> <span>zzyuan.cfo@finance.cn</span></div>
+          <div class="contact-item"><span class="icon-char">📍</span> <span>北京 · 朝阳</span></div>
+          <div class="contact-item"><span class="icon-char">🔗</span> <span>linkedin.com/in/zzyuan</span></div>
+        </div>
+      </div>
+
+      <!-- 专业摘要 -->
+      <div class="section-title">专业摘要</div>
+      <div style="font-size: 10.2pt; color: #2D3748; margin-bottom: 0.2rem; line-height: 1.5;">
+        资深财务管理者，10年+企业财务与审计经验，持有中国注册会计师（CPA）。主导过B轮科技公司财务体系搭建及上市公司年报审计。擅长资金管理、税务筹划与经营分析，具备猎头评价的“严谨商业伙伴”口碑。
+      </div>
+
+      <!-- 核心能力 -->
+      <div class="section-title">核心能力</div>
+      <div class="skills-container">
+        <div class="skill-group"><span class="skill-label">财务战略</span><span class="skill-item">全面预算</span><span class="skill-item">财务建模</span><span class="skill-item">现金流管理</span></div>
+        <div class="skill-group"><span class="skill-label">合规风控</span><span class="skill-item">SOX内控</span><span class="skill-item">审计对接</span><span class="skill-item">税务筹划</span></div>
+        <div class="skill-group"><span class="skill-label">工具系统</span><span class="skill-item">SAP FICO</span><span class="skill-item">用友NCC</span><span class="skill-item">Excel/Power BI</span></div>
+      </div>
+
+      <!-- 职业经历 -->
+      <div class="section-title">工作经历</div>
+      
+      <div class="experience-item">
+        <div class="exp-header">
+          <div>
+            <span class="company-name">云翼科技有限公司</span><span class="job-title"> | 财务总监</span>
+          </div>
+          <div class="date-location">2021.04 – 至今 | 北京</div>
+        </div>
+        <ul class="exp-details">
+          <li>主导B轮1.2亿融资财务尽调，搭建财务模型与估值分析，成功完成交割并优化资本结构。</li>
+          <li>从0到1搭建集团财务共享中心，统一6家子公司核算流程，月度关账缩短至5天。</li>
+          <li>推动税务筹划方案落地，通过研发加计扣除及高新资质维护，年度节税超800万元。</li>
+          <li>管理10人财务团队，建立经营分析体系，为CEO提供月度滚动预测与成本控制策略。</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div>
+            <span class="company-name">致同会计师事务所</span><span class="job-title"> | 审计经理</span>
+          </div>
+          <div class="date-location">2016.08 – 2021.03 | 北京</div>
+        </div>
+        <ul class="exp-details">
+          <li>带队完成多家上市/拟上市公司年报审计，涉及制造业、TMT行业，资产规模超50亿。</li>
+          <li>识别重大内控缺陷并提出整改建议，协助客户优化采购与销售循环流程，降低舞弊风险。</li>
+          <li>复核合并报表及附注披露，确保符合CAS/IFRS准则，连续三年获得“优秀项目负责人”。</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div>
+            <span class="company-name">中瑞诚会计师事务所</span><span class="job-title"> | 高级审计员</span>
+          </div>
+          <div class="date-location">2014.09 – 2016.07 | 上海</div>
+        </div>
+        <ul class="exp-details">
+          <li>参与IPO申报审计及年度审计，执行实质性程序与内控测试，覆盖收入、成本及货币资金科目。</li>
+          <li>协助项目经理完成审计报告撰写及证监会反馈回复，积累扎实的资本市场合规经验。</li>
+        </ul>
+      </div>
+
+      <!-- 教育背景 -->
+      <div class="section-title">教育背景</div>
+      <div class="education-item">
+        <div>
+          <span class="edu-school">上海财经大学</span><span class="edu-degree"> | 会计学硕士</span>
+        </div>
+        <div class="edu-date">2012.09 – 2014.06</div>
+      </div>
+      <div class="education-item">
+        <div>
+          <span class="edu-school">中央财经大学</span><span class="edu-degree"> | 管理学学士 (财务管理)</span>
+        </div>
+        <div class="edu-date">2008.09 – 2012.06</div>
+      </div>
+
+      <!-- 资质与证书 -->
+      <div class="section-title">专业资质</div>
+      <div class="cert-list">
+        <span class="cert-item">中国注册会计师 (CPA)</span>
+        <span class="cert-item">•</span>
+        <span class="cert-item">中级会计师</span>
+        <span class="cert-item">•</span>
+        <span class="cert-item">基金从业资格</span>
+        <span class="cert-item">•</span>
+        <span class="cert-item">英语六级 (CET-6)</span>
+      </div>
+      
+      <!-- 语言能力与附加信息，简洁呈现 -->
+      <div style="margin-top: 0.9rem; font-size: 10pt; color: #4A5568; display: flex; flex-wrap: wrap; gap: 1.5rem;">
+        <div><strong style="color:#1A202C;">语言：</strong>中文 (母语) · 英文 (商务流利)</div>
+        <div><strong style="color:#1A202C;">荣誉：</strong>2023年度公司杰出管理者</div>
+      </div>
+      
+      <!-- 极简分割线表明结束，无额外装饰 -->
+      <hr style="margin-top: 0.8rem; opacity: 0.5;">
+      <div style="font-size: 8.5pt; color: #A0AEC0; text-align: right; margin-top: 0.15rem;">张正源 · 财务总监 · 更新: 2026.08</div>
+    </div>
+  </div>
+</body>
+</html>

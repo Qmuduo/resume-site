@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>临床研究协调员 · 简历设计</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1e3a5f;    /* 深海蓝，主色用于标题、分割线 */
+      --accent: #2c5f8a;     /* 中蓝，用于次要强调 */
+      --body-text: #2d3748;  /* 深灰正文 */
+      --light-bg: #f7f9fc;   /* 极浅蓝灰背景，仅用于细微分区 */
+      --divider: #cbd5e0;    /* 浅灰分割线 */
+      --white: #ffffff;
+      --tag-bg: #edf2f7;     /* 技能标签底色 */
+    }
+
+    body {
+      font-family: 'Arial', 'Helvetica', '思源黑体', 'Source Han Sans CN', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background-color: #e2e8f0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      margin: 0;
+      color: var(--body-text);
+      line-height: 1.5;
+    }
+
+    /* A4尺寸卡片，模拟纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: var(--white);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 内边距严格控制，保证呼吸感 */
+    .resume-inner {
+      padding: 1.8cm 1.5cm 1.5cm 1.5cm; /* 上下左大约0.7英寸，右稍宽保持平衡 */
+    }
+
+    /* 所有文字均为纯文本，无图形遮挡 */
+    h1, h2, h3, p, li, div, span {
+      font-weight: normal;
+      color: var(--body-text);
+    }
+
+    /* ----- 姓名区域 ----- */
+    .name-section {
+      margin-bottom: 1.2rem;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.8rem;
+    }
+
+    .name {
+      font-size: 32pt;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 1px;
+      line-height: 1.2;
+      margin-bottom: 0.15rem;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    .title-sub {
+      font-size: 12pt;
+      color: #4a5568;
+      font-weight: 400;
+      margin-top: 0.2rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .title-sub span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* 联系方式行内图标（低风险：纯文本符号代替图标） */
+    .contact-badge {
+      font-size: 10.5pt;
+      color: #2d3748;
+    }
+
+    .contact-badge i.emoji {
+      font-style: normal;
+      margin-right: 0.2rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--divider);
+      margin: 0.9rem 0 1rem 0;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 13pt;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 0.7rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1.5px solid var(--primary);
+      display: flex;
+      align-items: center;
+    }
+
+    /* 条目通用样式 */
+    .entry {
+      margin-bottom: 1rem;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.15rem;
+    }
+
+    .entry-left {
+      font-weight: 700;
+      font-size: 12pt;
+      color: #1a202c;
+    }
+
+    .entry-right {
+      font-weight: 400;
+      font-size: 10.5pt;
+      color: #4a5568;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .entry-sub {
+      font-weight: 500;
+      font-size: 11pt;
+      color: #2d3748;
+      margin-bottom: 0.25rem;
+    }
+
+    .desc-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.3rem;
+    }
+
+    .desc-list li {
+      font-size: 10.5pt;
+      line-height: 1.55;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: baseline;
+      color: #2d3748;
+    }
+
+    .desc-list li::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: bold;
+      display: inline-block;
+      width: 1.1em;
+      margin-left: 0.2rem;
+      margin-right: 0.4rem;
+      font-size: 11pt;
+    }
+
+    /* 技能标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+    }
+
+    .skill-tag {
+      background: var(--tag-bg);
+      color: #2d3748;
+      font-size: 10pt;
+      padding: 0.2rem 0.9rem;
+      border-radius: 20px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* 双栏技能区（纯文本两列，ATS安全） */
+    .two-col-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 2rem;
+      margin-top: 0.2rem;
+    }
+
+    .two-col-list span {
+      font-size: 10.5pt;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      width: calc(50% - 2rem);
+      min-width: 140px;
+    }
+
+    .two-col-list span::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: bold;
+      margin-right: 0.3rem;
+    }
+
+    /* 教育经历与证书 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-detail {
+      font-weight: 600;
+      font-size: 11pt;
+    }
+
+    .edu-date {
+      font-size: 10.5pt;
+      color: #4a5568;
+    }
+
+    /* 打印优化 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+      }
+      .resume-inner {
+        padding: 1.5cm 1.5cm 1.5cm 1.5cm;
+      }
+      .skill-tag {
+        background: #f1f5f9;
+        border: 0.5px solid #cbd5e0;
+      }
+      a, button {
+        display: none;
+      }
+      /* 确保颜色正常，无背景色块反白问题 */
+      .name, .section-title {
+        color: #1e3a5f !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    /* 小屏适配 */
+    @media screen and (max-width: 700px) {
+      .resume-inner {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      
+      <!-- 姓名与职位 -->
+      <div class="name-section">
+        <h1 class="name">陈知远</h1>
+        <div class="title-sub">
+          <span>临床研究协调员 (CRC)</span>
+          <span class="contact-badge"><i class="emoji">📞</i> (86) 139-5027-6814</span>
+          <span class="contact-badge"><i class="emoji">✉️</i> zhiyuan.chen@medmail.com</span>
+          <span class="contact-badge"><i class="emoji">📍</i> 上海 · 徐汇</span>
+        </div>
+      </div>
+
+      <!-- 专业概要（简洁陈述） -->
+      <div style="margin-bottom: 0.9rem;">
+        <div class="section-title">专业概要</div>
+        <p style="font-size: 10.5pt; color: #2d3748; margin-top: 0.2rem;">
+          3年+临床研究协调经验，熟悉GCP及ICH指南，主导过肿瘤与内分泌领域II-III期项目。擅长受试者访视管理、EDC数据录入与溯源，协调研究中心与申办方高效沟通。具备研究者会议支持及SAE上报实操经历。
+        </p>
+      </div>
+
+      <!-- 核心能力 使用两栏纯文本列表 -->
+      <div style="margin-bottom: 1rem;">
+        <div class="section-title">核心能力</div>
+        <div class="two-col-list">
+          <span>GCP/ICH合规</span>
+          <span>受试者招募与保留</span>
+          <span>EDC系统 (Medidata Rave)</span>
+          <span>原始数据核查 (SDV)</span>
+          <span>伦理委员会沟通</span>
+          <span>生物样本管理</span>
+          <span>SAE快速上报</span>
+          <span>中心文档管理</span>
+        </div>
+      </div>
+
+      <!-- 工作经历 -->
+      <div style="margin-bottom: 0.8rem;">
+        <div class="section-title">工作经历</div>
+        
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-left">上海明德医疗中心 (GCP机构)</span>
+            <span class="entry-right">2022.04 – 至今</span>
+          </div>
+          <div class="entry-sub">临床研究协调员 (CRC)</div>
+          <ul class="desc-list">
+            <li>协助主要研究者开展2项非小细胞肺癌III期试验，管理近60名受试者访视排程，脱落率控制在5%以下。</li>
+            <li>负责EDC数据录入与质疑解答，平均数据清理周期缩短15%；完成多次远程及现场监查访视支持。</li>
+            <li>协调伦理委员会年度审查与修正案递交，确保所有文件版本及时更新并归档于研究者文件夹。</li>
+            <li>处理5例严重不良事件(SAE)初始及随访报告，均在24小时内完成上报。</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-left">康华临床研究服务有限公司</span>
+            <span class="entry-right">2020.07 – 2022.02</span>
+          </div>
+          <div class="entry-sub">助理临床研究协调员 (aCRC)</div>
+          <ul class="desc-list">
+            <li>支持糖尿病II期项目，完成知情同意过程见证及文件签署核对，覆盖120+受试者筛选。</li>
+            <li>维护受试者日志与问卷，协助实验室样本离心、分装及运送，样本合格率99%。</li>
+            <li>参与研究者会议筹备，整理会议纪要并追踪行动项，获得项目经理书面认可。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div style="margin-bottom: 0.9rem;">
+        <div class="section-title">教育背景</div>
+        <div class="edu-item">
+          <span class="edu-detail">复旦大学 · 药学学士</span>
+          <span class="edu-date">2016.09 – 2020.06</span>
+        </div>
+        <div style="font-size:10pt; color:#4a5568; margin-top:0.1rem;">主修课程：临床药理学、药代动力学、生物统计学、医学伦理学</div>
+      </div>
+
+      <!-- 证书与培训 + 技能标签混合展示 -->
+      <div style="display: flex; flex-wrap: wrap; gap: 1.5rem;">
+        <div style="flex: 2; min-width: 220px;">
+          <div class="section-title">证书与培训</div>
+          <div style="display: flex; flex-direction: column; gap: 0.25rem; font-size:10.5pt;">
+            <span>• NMPA药物临床试验质量管理规范(GCP)证书 (2022)</span>
+            <span>• ICH-GCP E6(R2) 培训证书 (2023)</span>
+            <span>• 临床研究协调员(CRC)高级研修班 (2024)</span>
+            <span>• 基础生命支持(BLS) 认证</span>
+          </div>
+        </div>
+        <div style="flex: 1.8; min-width: 200px;">
+          <div class="section-title">语言 & 工具</div>
+          <div class="skills-container">
+            <span class="skill-tag">英语CET-6 (医疗文档阅读)</span>
+            <span class="skill-tag">Medidata Rave</span>
+            <span class="skill-tag">CTMS</span>
+            <span class="skill-tag">Excel 数据透视</span>
+            <span class="skill-tag">电子CRF</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 极简分割线表示结束，无额外装饰 -->
+      <hr style="margin-top: 1.2rem; margin-bottom: 0.2rem; border-color: #e2e8f0;">
+      <div style="font-size: 9pt; color: #a0aec0; text-align: right; letter-spacing: 0.3px;">
+        持续学习 · 专注临床研究质量
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+{
+  "templateId": "prompt_091",
+  "name": "资深DevOps/SRE架构师 · 简历",
+  "sourceFile": "prompt_091.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "social_3",
+      "label": "GitHub",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "开源与社区影响",
+      "label": "开源与社区影响",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 5
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    },
+    {
+      "commonPath": "experiences",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "专业经历",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "education",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "教育",
+      "itemSelector": "entry"
+    }
+  ],
+  "sampleData": {
+    "name": "陈聿铭",
+    "email": "✉ chen.yuming@sre.dev",
+    "phone": "✆ +86 (010) 6723-8845",
+    "socials": [
+      {
+        "platform": "github",
+        "url": "🔗 github.com/ymchen-sre"
+      }
+    ],
+    "location": "北京 / 远程",
+    "开源与社区影响": "CNCF 项目贡献 KubeVela / ChaosMesh 2020 – 至今 KubeVela 核心维护者之一，提交50+ PR，主要涉及应用交付工作流与多集群部署特性。 ChaosMesh 文档与测试贡献者，编写中英文技术博客，组织线下Meetup。",
+    "skills": [
+      {
+        "name": "Kubernetes",
+        "level": ""
+      },
+      {
+        "name": "Terraform",
+        "level": ""
+      },
+      {
+        "name": "AWS/GCP",
+        "level": ""
+      },
+      {
+        "name": "ArgoCD",
+        "level": ""
+      },
+      {
+        "name": "Prometheus",
+        "level": ""
+      },
+      {
+        "name": "Grafana",
+        "level": ""
+      },
+      {
+        "name": "ELK Stack",
+        "level": ""
+      },
+      {
+        "name": "Go",
+        "level": ""
+      },
+      {
+        "name": "Python",
+        "level": ""
+      },
+      {
+        "name": "Bash",
+        "level": ""
+      },
+      {
+        "name": "Rust (工具开发)",
+        "level": ""
+      },
+      {
+        "name": "SLI/SLO",
+        "level": ""
+      },
+      {
+        "name": "Chaos Engineering",
+        "level": ""
+      },
+      {
+        "name": "GitOps",
+        "level": ""
+      }
+    ],
+    "experiences": [
+      {
+        "position": "高级SRE架构师",
+        "date": "2022.04 – 至今",
+        "description": "设计并落地基于Kubernetes的多集群服务网格可靠性架构，管理200+节点，将部署故障恢复时间缩短60%。"
+      },
+      {
+        "position": "DevOps 技术负责人",
+        "date": "2019.08 – 2022.02",
+        "description": "从零搭建混合云基础设施，采用Terraform + Packer实现不可变基础设施，支撑日均500万请求。"
+      },
+      {
+        "position": "SRE 工程师",
+        "date": "2017.07 – 2019.06",
+        "description": "维护核心搜索服务的SLO达99.95%，设计自动化扩容策略，节省约35%云成本。"
+      }
+    ],
+    "education": [
+      {
+        "degree": "计算机科学与技术 · 硕士",
+        "date": "2015 – 2017"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "开源与社区影响",
+      "label": "开源与社区影响",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

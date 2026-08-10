@@ -5,10 +5,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.resume.api.common.exception.BusinessException;
 import com.resume.api.common.exception.ErrorCode;
 import com.resume.api.dto.TemplateRequest;
 import com.resume.api.entity.Template;
+import com.resume.api.model.TemplateManifest;
 import com.resume.api.repository.TemplateMapper;
 import com.resume.api.vo.TemplateVO;
 import jakarta.annotation.PostConstruct;
@@ -20,16 +22,23 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
- * 模板服务：内置模板在启动时从 classpath 的 resources/templates/*.json 种子进数据库，
- * 之后统一从数据库读取（含用户自定义模板）。列表带内存缓存，写操作后失效重建；
- * 后续做模板市场/版本管理时只需扩展该存储模型。
+ * 模板服务：内置模板在启动时种子进数据库——
+ * 1. classpath 的 resources/templates/*.json（占位符模板）；
+ * 2. resume.manifest-dir 下的 *.html + *.manifest.json（存量静态模板）。
+ * 之后统一从数据库读取（含用户自定义模板）。列表带内存缓存，写操作后失效重建。
  */
 @Service
 public class TemplateService {
@@ -39,16 +48,25 @@ public class TemplateService {
     private final TemplateMapper templateMapper;
     private final ObjectMapper objectMapper;
     private final Resource[] builtinTemplateResources;
+    private final TemplateConfigService templateConfigService;
+    private final String manifestDir;
+
+    private static final Pattern BODY_PATTERN = Pattern.compile("(?is)<body[^>]*>(.*)</body>");
+    private static final Pattern STYLE_PATTERN = Pattern.compile("(?is)<style[^>]*>(.*?)</style>");
 
     /** 全部模板快照缓存；写操作后置空重建 */
     private volatile List<TemplateVO> cache;
 
     public TemplateService(TemplateMapper templateMapper,
                            ObjectMapper objectMapper,
-                           @Value("classpath*:templates/template-*.json") Resource[] builtinTemplateResources) {
+                           @Value("classpath*:templates/template-*.json") Resource[] builtinTemplateResources,
+                           TemplateConfigService templateConfigService,
+                           @Value("${resume.manifest-dir:../docs/template}") String manifestDir) {
         this.templateMapper = templateMapper;
         this.objectMapper = objectMapper;
         this.builtinTemplateResources = builtinTemplateResources;
+        this.templateConfigService = templateConfigService;
+        this.manifestDir = manifestDir;
     }
 
     /**
@@ -77,7 +95,162 @@ public class TemplateService {
                 log.warn("Skip builtin template '{}': code already used by a custom template", code);
             }
         }
+        seedLegacyHtmlTemplates();
+        templateConfigService.syncTemplateIds();
         invalidateCache();
+    }
+
+    /**
+     * 存量静态模板：扫描 manifest-dir 下的 *.html，配套 *.manifest.json 存在时注册为内置模板。
+     * HTML 拆分为 css（<style> 内容）与 html（<body> 内容），schema 由 manifest 字段推导。
+     */
+    private void seedLegacyHtmlTemplates() {
+        Path dir = resolveManifestDir();
+        if (dir == null || !Files.isDirectory(dir)) {
+            log.info("legacy template dir not found, skip: {}", manifestDir);
+            return;
+        }
+        int count = 0;
+        try (var stream = Files.list(dir)) {
+            List<Path> htmlFiles = stream
+                    .filter(p -> p.getFileName().toString().endsWith(".html"))
+                    .sorted()
+                    .toList();
+            for (Path htmlFile : htmlFiles) {
+                String base = stripSuffix(htmlFile.getFileName().toString(), ".html");
+                Path manifestFile = dir.resolve(base + ".manifest.json");
+                if (!Files.isRegularFile(manifestFile)) {
+                    continue;
+                }
+                TemplateManifest manifest;
+                try {
+                    manifest = objectMapper.readValue(Files.readAllBytes(manifestFile), TemplateManifest.class);
+                } catch (IOException e) {
+                    log.warn("skip legacy template {}: invalid manifest", htmlFile.getFileName(), e);
+                    continue;
+                }
+                String code = manifest.getTemplateId() == null || manifest.getTemplateId().isBlank()
+                        ? base
+                        : manifest.getTemplateId();
+                String name = manifest.getName() == null || manifest.getName().isBlank()
+                        ? base
+                        : manifest.getName();
+                String html = extractBody(htmlFile);
+                String css = extractStyles(htmlFile);
+                if (html == null || html.isBlank()) {
+                    log.warn("skip legacy template {}: empty body", htmlFile.getFileName());
+                    continue;
+                }
+                upsertLegacyTemplate(code, name, html, css, manifest);
+                count++;
+            }
+        } catch (IOException e) {
+            log.warn("scan legacy template dir failed: {}", manifestDir, e);
+        }
+        log.info("seeded {} legacy static templates from {}", count, manifestDir);
+    }
+
+    /** 解析 manifest 目录：兼容不同启动目录（项目根/backend/模块目录） */
+    private Path resolveManifestDir() {
+        Path direct = Paths.get(manifestDir);
+        if (Files.isDirectory(direct)) {
+            return direct;
+        }
+        for (String prefix : new String[]{"..", "../.."}) {
+            Path candidate = Paths.get(prefix, manifestDir);
+            if (Files.isDirectory(candidate)) {
+                return candidate;
+            }
+        }
+        return direct;
+    }
+
+    private void upsertLegacyTemplate(String code, String name, String html, String css,
+                                      TemplateManifest manifest) {
+        Template existing = templateMapper.selectOne(
+                new LambdaQueryWrapper<Template>().eq(Template::getCode, code));
+        if (existing == null) {
+            Template template = new Template();
+            template.setCode(code);
+            template.setName(name);
+            template.setDescription("存量静态模板：" + code + "（manifest 自动生成，待人工确认字段见 manifest.pendingManual）");
+            template.setSchemaJson(jsonString(buildSchemaFromManifest(manifest)));
+            template.setHtml(html);
+            template.setCss(css);
+            template.setBuiltin(1);
+            template.setUserId(null);
+            templateMapper.insert(template);
+        } else if (Integer.valueOf(1).equals(existing.getBuiltin())) {
+            existing.setName(name);
+            existing.setDescription("存量静态模板：" + code + "（manifest 自动生成，待人工确认字段见 manifest.pendingManual）");
+            existing.setSchemaJson(jsonString(buildSchemaFromManifest(manifest)));
+            existing.setHtml(html);
+            existing.setCss(css);
+            existing.setBuiltin(1);
+            existing.setUserId(null);
+            templateMapper.updateById(existing);
+        } else {
+            log.warn("Skip legacy template '{}': code already used by a custom template", code);
+        }
+    }
+
+    private String extractBody(Path htmlFile) {
+        try {
+            String content = Files.readString(htmlFile, StandardCharsets.UTF_8);
+            Matcher matcher = BODY_PATTERN.matcher(content);
+            return matcher.find() ? matcher.group(1) : null;
+        } catch (IOException e) {
+            log.warn("read html failed: {}", htmlFile.getFileName(), e);
+            return null;
+        }
+    }
+
+    private String extractStyles(Path htmlFile) {
+        try {
+            String content = Files.readString(htmlFile, StandardCharsets.UTF_8);
+            Matcher matcher = STYLE_PATTERN.matcher(content);
+            StringBuilder css = new StringBuilder();
+            while (matcher.find()) {
+                css.append(matcher.group(1)).append('\n');
+            }
+            return css.toString();
+        } catch (IOException e) {
+            log.warn("read html styles failed: {}", htmlFile.getFileName(), e);
+            return "";
+        }
+    }
+
+    /** 由 manifest 字段列表推导 JSON Schema（静态模板的表单/预览兼容旧渲染器） */
+    private JsonNode buildSchemaFromManifest(TemplateManifest manifest) {
+        ObjectNode schema = objectMapper.createObjectNode();
+        schema.put("type", "object");
+        ObjectNode properties = schema.putObject("properties");
+        for (TemplateManifest.FieldDef field : manifest.getFields()) {
+            properties.set(field.getName(), fieldSchemaNode(field));
+        }
+        return schema;
+    }
+
+    private JsonNode fieldSchemaNode(TemplateManifest.FieldDef field) {
+        ObjectNode node = objectMapper.createObjectNode();
+        String type = field.getType() == null ? "string" : field.getType();
+        if ("array".equals(type)) {
+            node.put("type", "array");
+            node.set("items", objectMapper.createObjectNode().put("type", "string"));
+        } else if ("object".equals(type)) {
+            node.put("type", "object");
+            node.set("properties", objectMapper.createObjectNode());
+        } else {
+            node.put("type", type);
+        }
+        return node;
+    }
+
+    private static String stripSuffix(String name, String suffix) {
+        if (name.endsWith(suffix)) {
+            return name.substring(0, name.length() - suffix.length());
+        }
+        return name;
     }
 
     /**
@@ -188,6 +361,7 @@ public class TemplateService {
         vo.setHtml(template.getHtml());
         vo.setCss(template.getCss());
         vo.setBuiltin(template.getBuiltin());
+        vo.setManifest(templateConfigService.getManifestByCode(template.getCode()));
         vo.setCreatedAt(template.getCreatedAt());
         return vo;
     }

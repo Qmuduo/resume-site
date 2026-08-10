@@ -1,0 +1,213 @@
+{
+  "templateId": "prompt_010",
+  "name": "张思睿 · 招聘专员简历",
+  "sourceFile": "prompt_010.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "个人简介",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": true
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-sub",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "summary",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "sectionTitle": "专业概述"
+    },
+    {
+      "commonPath": "experiences",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "工作经历",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    },
+    {
+      "commonPath": "projects",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "项目经验",
+      "itemSelector": "entry"
+    }
+  ],
+  "sampleData": {
+    "name": "张思睿",
+    "title": "招聘专员 · 人力资源",
+    "phone": "☎ (086) 139-1234-5678",
+    "email": "✉ siray.zhang@hrcareer.cn",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "🔗 linkedin.com/in/sirayzh"
+      }
+    ],
+    "summary": "3年招聘经验，专注互联网与金融行业中高端岗位交付。曾主导批量招聘项目，月均offer量8+，擅长人才Mapping与雇主品牌传播。熟悉Workday、北森系统，具备猎头+RPO复合背景。",
+    "experiences": [
+      {
+        "date": "2023.04 – 至今",
+        "company": "云鲸科技 · 上海 | 互联网/人工智能"
+      },
+      {
+        "date": "2021.07 – 2023.02",
+        "company": "锐思咨询 · 上海 | 人力资源服务"
+      }
+    ],
+    "skills": [
+      {
+        "name": "行为面试法",
+        "level": ""
+      },
+      {
+        "name": "薪酬谈判",
+        "level": ""
+      },
+      {
+        "name": "ATS管理",
+        "level": ""
+      },
+      {
+        "name": "LinkedIn Recruiter",
+        "level": ""
+      },
+      {
+        "name": "企业人力资源管理师(三级)",
+        "level": ""
+      },
+      {
+        "name": "英语专业八级",
+        "level": ""
+      }
+    ],
+    "projects": [
+      {
+        "date": "2024.01 – 2024.04"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "summary",
+      "label": "专业概述",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

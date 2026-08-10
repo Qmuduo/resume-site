@@ -1,0 +1,1072 @@
+{
+  "generatedAt": "2026-08-10T11:23:02.516Z",
+  "summary": {
+    "total": 110,
+    "valid": 110,
+    "invalid": 0,
+    "errors": 0,
+    "warnings": 117
+  },
+  "results": [
+    {
+      "file": "prompt_001.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 学生活动与领导力 未映射公共模型（模板专属字段，需人工确认）",
+        "mapping education 缺少 selector，预览无法回填",
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping projects 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_002.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 代表交易 未映射公共模型（模板专属字段，需人工确认）",
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 12,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_003.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 代表性交易 未映射公共模型（模板专属字段，需人工确认）",
+        "mapping summary 缺少 selector，预览无法回填",
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 12,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_004.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 专业发展 未映射公共模型（模板专属字段，需人工确认）",
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 12,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_005.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 6,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_006.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填",
+        "mapping languages 缺少 selector，预览无法回填"
+      ],
+      "fields": 12,
+      "mappings": 11
+    },
+    {
+      "file": "prompt_007.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 6,
+      "mappings": 5
+    },
+    {
+      "file": "prompt_008.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_009.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 5,
+      "mappings": 5
+    },
+    {
+      "file": "prompt_010.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填",
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping projects 缺少 selector，预览无法回填"
+      ],
+      "fields": 10,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_011.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_012.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 行业影响力 未映射公共模型（模板专属字段，需人工确认）"
+      ],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_013.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填",
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_014.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 核心领域 未映射公共模型（模板专属字段，需人工确认）",
+        "字段 代表交易 未映射公共模型（模板专属字段，需人工确认）"
+      ],
+      "fields": 10,
+      "mappings": 7
+    },
+    {
+      "file": "prompt_015.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 10,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_016.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping education 缺少 selector，预览无法回填",
+        "mapping projects 缺少 selector，预览无法回填",
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 10,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_017.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_018.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 10,
+      "mappings": 7
+    },
+    {
+      "file": "prompt_019.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_020.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 5,
+      "mappings": 5
+    },
+    {
+      "file": "prompt_021.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 核心优势 未映射公共模型（模板专属字段，需人工确认）"
+      ],
+      "fields": 6,
+      "mappings": 2
+    },
+    {
+      "file": "prompt_022.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 核心胜任力 未映射公共模型（模板专属字段，需人工确认）",
+        "mapping languages 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_023.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填",
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 8,
+      "mappings": 5
+    },
+    {
+      "file": "prompt_024.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping languages 缺少 selector，预览无法回填",
+        "mapping projects 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 11
+    },
+    {
+      "file": "prompt_025.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 研究领域 未映射公共模型（模板专属字段，需人工确认）",
+        "字段 代表性论著 未映射公共模型（模板专属字段，需人工确认）",
+        "mapping education 缺少 selector，预览无法回填",
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 10,
+      "mappings": 7
+    },
+    {
+      "file": "prompt_026.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 研究领域 未映射公共模型（模板专属字段，需人工确认）",
+        "字段 代表性论文 未映射公共模型（模板专属字段，需人工确认）",
+        "字段 教学与学术服务 未映射公共模型（模板专属字段，需人工确认）",
+        "字段 推荐人 未映射公共模型（模板专属字段，需人工确认）",
+        "mapping education 缺少 selector，预览无法回填",
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 9,
+      "mappings": 4
+    },
+    {
+      "file": "prompt_027.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_028.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 6,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_029.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 6,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_03.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 核心优势 未映射公共模型（模板专属字段，需人工确认）"
+      ],
+      "fields": 11,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_030.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 5,
+      "mappings": 2
+    },
+    {
+      "file": "prompt_031.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping projects 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_032.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_033.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 专业发展 未映射公共模型（模板专属字段，需人工确认）"
+      ],
+      "fields": 10,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_034.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 6,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_035.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填",
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 9,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_036.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 11,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_037.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 核心优势 未映射公共模型（模板专属字段，需人工确认）"
+      ],
+      "fields": 9,
+      "mappings": 5
+    },
+    {
+      "file": "prompt_038.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping projects 缺少 selector，预览无法回填",
+        "mapping languages 缺少 selector，预览无法回填"
+      ],
+      "fields": 9,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_039.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_04.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 11
+    },
+    {
+      "file": "prompt_040.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 1,
+      "mappings": 1
+    },
+    {
+      "file": "prompt_041.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 7,
+      "mappings": 4
+    },
+    {
+      "file": "prompt_042.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_043.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 6,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_044.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_045.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 10,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_046.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 11,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_047.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 6,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_048.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 12,
+      "mappings": 11
+    },
+    {
+      "file": "prompt_049.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 6,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_05.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 7,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_050.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 6,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_051.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 10,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_052.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填",
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping projects 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_053.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 7,
+      "mappings": 3
+    },
+    {
+      "file": "prompt_054.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_055.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 8,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_056.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 专业速览 未映射公共模型（模板专属字段，需人工确认）",
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping projects 缺少 selector，预览无法回填",
+        "mapping education 缺少 selector，预览无法回填"
+      ],
+      "fields": 12,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_057.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping education 缺少 selector，预览无法回填"
+      ],
+      "fields": 12,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_058.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping projects 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_059.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping education 缺少 selector，预览无法回填"
+      ],
+      "fields": 9,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_06.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping education 缺少 selector，预览无法回填"
+      ],
+      "fields": 10,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_060.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 12,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_061.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 10,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_062.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填",
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 10,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_063.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 9,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_064.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 晋升与成就亮点 未映射公共模型（模板专属字段，需人工确认）",
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 12,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_065.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_066.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 12,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_067.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_068.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 行业会议与演讲 未映射公共模型（模板专属字段，需人工确认）",
+        "字段 专业发展 未映射公共模型（模板专属字段，需人工确认）"
+      ],
+      "fields": 11,
+      "mappings": 7
+    },
+    {
+      "file": "prompt_069.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 5,
+      "mappings": 4
+    },
+    {
+      "file": "prompt_07.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 10,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_070.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 9,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_071.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 7,
+      "mappings": 7
+    },
+    {
+      "file": "prompt_072.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 10,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_073.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 9,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_074.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 9,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_075.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 9,
+      "mappings": 7
+    },
+    {
+      "file": "prompt_076.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 2,
+      "mappings": 2
+    },
+    {
+      "file": "prompt_077.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 9,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_078.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 6,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_079.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 8,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_08.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 5,
+      "mappings": 5
+    },
+    {
+      "file": "prompt_080.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 视觉叙事_专业轮廓 未映射公共模型（模板专属字段，需人工确认）",
+        "字段 创作轨迹 未映射公共模型（模板专属字段，需人工确认）",
+        "字段 学院积淀 未映射公共模型（模板专属字段，需人工确认）"
+      ],
+      "fields": 10,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_081.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping projects 缺少 selector，预览无法回填"
+      ],
+      "fields": 8,
+      "mappings": 7
+    },
+    {
+      "file": "prompt_082.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 9,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_083.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 9,
+      "mappings": 7
+    },
+    {
+      "file": "prompt_084.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 行业展会_猎头关注 未映射公共模型（模板专属字段，需人工确认）"
+      ],
+      "fields": 10,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_085.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping projects 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_086.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_087.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 5,
+      "mappings": 4
+    },
+    {
+      "file": "prompt_088.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_089.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping projects 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_09.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 10,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_090.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 1,
+      "mappings": 1
+    },
+    {
+      "file": "prompt_091.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 开源与社区影响 未映射公共模型（模板专属字段，需人工确认）",
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping education 缺少 selector，预览无法回填"
+      ],
+      "fields": 10,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_092.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 专业背景 未映射公共模型（模板专属字段，需人工确认）"
+      ],
+      "fields": 11,
+      "mappings": 7
+    },
+    {
+      "file": "prompt_093.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_094.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 6,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_095.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 11,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_096.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 研究领域 未映射公共模型（模板专属字段，需人工确认）",
+        "字段 代表论文 未映射公共模型（模板专属字段，需人工确认）",
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 12,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_097.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 10,
+      "mappings": 10
+    },
+    {
+      "file": "prompt_098.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping experiences 缺少 selector，预览无法回填",
+        "mapping projects 缺少 selector，预览无法回填"
+      ],
+      "fields": 7,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_099.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 6,
+      "mappings": 6
+    },
+    {
+      "file": "prompt_10.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "fields": 11,
+      "mappings": 8
+    },
+    {
+      "file": "prompt_11.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填",
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_12.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "mapping summary 缺少 selector，预览无法回填"
+      ],
+      "fields": 11,
+      "mappings": 9
+    },
+    {
+      "file": "prompt_13.html",
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        "字段 安全研究与ctf成就 未映射公共模型（模板专属字段，需人工确认）",
+        "mapping experiences 缺少 selector，预览无法回填"
+      ],
+      "fields": 9,
+      "mappings": 7
+    }
+  ]
+}

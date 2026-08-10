@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>张明远 · 电商运营经理简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', '思源黑体', 'Noto Sans SC', sans-serif;
+      background: #eef2f6;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      margin: 0;
+      color: #2D3748;
+      line-height: 1.5;
+    }
+
+    /* A4尺寸卡片，模拟纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      page-break-after: auto;
+    }
+
+    /* 内边距确保呼吸感，不小于0.5英寸 */
+    .resume-inner {
+      padding: 1.8cm 1.8cm 1.8cm 2.2cm; /* 上下1.8cm 左右稍不对称，左侧略宽给装饰条留空间 */
+      position: relative;
+    }
+
+    /* 左侧极细强调色条 (低风险装饰) */
+    .left-accent-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 0.35cm;
+      background: #0F4C5C; /* 主色墨绿 */
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* 所有文本为纯HTML文本，无图形重叠 */
+    h1, h2, h3, p, li, div, span {
+      color: #2D3748;
+      font-weight: normal;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 1.2rem;
+    }
+    .name {
+      font-size: 32pt;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #0F4C5C;
+      line-height: 1.2;
+      margin-bottom: 0.1rem;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+    .title-line {
+      font-size: 12pt;
+      font-weight: 500;
+      color: #4A5568;
+      letter-spacing: 0.8px;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .title-tag {
+      background: transparent;
+      border-left: 3px solid #ED8936; /* 强调色点缀 */
+      padding-left: 0.7rem;
+      font-weight: 600;
+      color: #2D3748;
+    }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      font-size: 10pt;
+      color: #4A5568;
+      margin-top: 0.3rem;
+      align-items: center;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .contact-icon {
+      font-size: 11pt;
+      color: #0F4C5C;
+      font-weight: 500;
+      display: inline-block;
+      width: 1.2rem;
+    }
+    hr {
+      border: none;
+      border-bottom: 1.5px solid #CBD5E0;
+      margin: 1rem 0 1.1rem 0;
+      opacity: 0.7;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 13pt;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #0F4C5C;
+      margin-bottom: 0.7rem;
+      padding-bottom: 0.25rem;
+      border-bottom: 2px solid #ED8936; /* 强调色细线 */
+      display: inline-block;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    /* 工作经历条目布局 */
+    .experience-item {
+      margin-bottom: 1.15rem;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.2rem;
+    }
+    .company-name {
+      font-weight: 700;
+      font-size: 12pt;
+      color: #1A202C;
+    }
+    .job-title {
+      font-weight: 600;
+      font-size: 11pt;
+      color: #2D3748;
+      margin-left: 0.3rem;
+      font-style: normal;
+    }
+    .date-location {
+      font-size: 10pt;
+      color: #4A5568;
+      font-weight: 400;
+      white-space: nowrap;
+      text-align: right;
+    }
+    .description-list {
+      margin-top: 0.25rem;
+      padding-left: 1.2rem;
+      list-style-type: none;
+    }
+    .description-list li {
+      font-size: 10.5pt;
+      color: #2D3748;
+      margin-bottom: 0.25rem;
+      position: relative;
+      padding-left: 1rem;
+      text-indent: -0.2rem;
+      line-height: 1.5;
+    }
+    .description-list li::before {
+      content: "•";
+      color: #0F4C5C;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 12pt;
+    }
+
+    /* 技能标签样式 - 纯文本标签，无背景块 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1.8rem;
+      margin-top: 0.3rem;
+    }
+    .skill-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+    .skill-category {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: #0F4C5C;
+      margin-right: 0.3rem;
+    }
+    .skill-item {
+      font-size: 10pt;
+      color: #2D3748;
+      background: transparent;
+      padding: 0 0.2rem;
+    }
+    .skill-separator {
+      color: #A0AEC0;
+      margin: 0 0.1rem;
+    }
+
+    /* 教育背景简单排列 */
+    .education-item {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+    .school-name {
+      font-weight: 700;
+      font-size: 11pt;
+    }
+    .degree {
+      font-weight: 500;
+      font-size: 10.5pt;
+      color: #2D3748;
+    }
+
+    /* 数据指标加粗强调 (使用强调色文字) */
+    .metric-highlight {
+      font-weight: 700;
+      color: #C05621; /* 深橙色，与强调色同系，但保证正文可读 */
+      background: transparent;
+    }
+    strong {
+      color: #1A202C;
+    }
+
+    /* 项目或补充信息 */
+    .project-item {
+      margin-bottom: 0.7rem;
+    }
+    .project-name {
+      font-weight: 700;
+      font-size: 11pt;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* 打印样式：移除背景、保留纯文本、隐藏交互元素 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        max-width: 100%;
+        width: 100%;
+        border-radius: 0;
+      }
+      .left-accent-bar {
+        background: #0F4C5C; /* 打印时保留色条，纯色块安全 */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .section-title {
+        border-bottom: 2px solid #ED8936;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      hr {
+        border-bottom: 1.5px solid #CBD5E0;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .contact-icon, .description-list li::before {
+        color: #0F4C5C;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      <!-- 左侧极细装饰条，不与文字重叠 -->
+      <div class="left-accent-bar"></div>
+
+      <!-- 姓名与标题 -->
+      <div class="name-section">
+        <h1 class="name">张明远</h1>
+        <div class="title-line">
+          <span class="title-tag">电商运营经理</span>
+          <span style="color:#4A5568;">· 数据驱动增长</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="contact-icon">📞</span> (86) 138-5253-7890</span>
+          <span class="contact-item"><span class="contact-icon">✉️</span> mingyuan.zhang@电商运营.cn</span>
+          <span class="contact-item"><span class="contact-icon">📍</span> 杭州 · 中国</span>
+          <span class="contact-item"><span class="contact-icon">🔗</span> linkedin.com/in/mingyuan</span>
+        </div>
+      </div>
+      <hr>
+
+      <!-- 专业总结 (简明数据导向) -->
+      <div style="margin-bottom: 1.2rem;">
+        <div class="section-title">专业概述</div>
+        <p style="font-size: 10.5pt; color: #2D3748; line-height: 1.6;">
+          4年电商运营经验，专注于天猫/京东平台增长。通过数据建模优化投放，曾实现<span class="metric-highlight">单季GMV增长47%</span>，<span class="metric-highlight">ROAS提升2.3倍</span>。擅长流量结构化分析与自动化报表体系搭建。
+        </p>
+      </div>
+
+      <!-- 核心能力 / 技能 (标签式排列，纯文本) -->
+      <div style="margin-bottom: 1.2rem;">
+        <div class="section-title">核心能力</div>
+        <div class="skills-container">
+          <div class="skill-group">
+            <span class="skill-category">平台运营</span>
+            <span class="skill-item">天猫旗舰店</span><span class="skill-separator">·</span>
+            <span class="skill-item">京东自营</span><span class="skill-separator">·</span>
+            <span class="skill-item">抖音电商</span><span class="skill-separator">·</span>
+            <span class="skill-item">拼多多</span>
+          </div>
+          <div class="skill-group">
+            <span class="skill-category">数据分析</span>
+            <span class="skill-item">Excel高级建模</span><span class="skill-separator">·</span>
+            <span class="skill-item">SQL</span><span class="skill-separator">·</span>
+            <span class="skill-item">Tableau</span><span class="skill-separator">·</span>
+            <span class="skill-item">生意参谋</span>
+          </div>
+          <div class="skill-group">
+            <span class="skill-category">营销工具</span>
+            <span class="skill-item">直通车</span><span class="skill-separator">·</span>
+            <span class="skill-item">引力魔方</span><span class="skill-separator">·</span>
+            <span class="skill-item">千川投放</span><span class="skill-separator">·</span>
+            <span class="skill-item">数据银行</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 工作经历 -->
+      <div style="margin-bottom: 1rem;">
+        <div class="section-title">工作经历</div>
+        
+        <div class="experience-item">
+          <div class="exp-header">
+            <div>
+              <span class="company-name">云翼电子商务有限公司</span>
+              <span class="job-title">| 电商运营经理</span>
+            </div>
+            <div class="date-location">2024.03 – 至今 | 杭州</div>
+          </div>
+          <ul class="description-list">
+            <li>统筹天猫旗舰店年度运营策略，管理5人团队，通过人货场重构实现<span class="metric-highlight">GMV同比增长62%</span>，客单价提升18%。</li>
+            <li>搭建自动化数据看板（Excel+SQL），将日报生成时间从2小时压缩至15分钟，并输出周度流量分析报告。</li>
+            <li>主导“超级品牌日”活动，整合站内站外资源，单日销售额突破<span class="metric-highlight">860万</span>，ROI达到1:5.8。</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <div>
+              <span class="company-name">星选网络科技</span>
+              <span class="job-title">| 电商运营主管</span>
+            </div>
+            <div class="date-location">2022.07 – 2024.02 | 上海</div>
+          </div>
+          <ul class="description-list">
+            <li>负责京东自营店铺整体运营，通过搜索优化与快车投放，季度访客量提升<span class="metric-highlight">135%</span>，转化率稳定在8.2%。</li>
+            <li>建立竞品价格监控模型，动态调整定价策略，使毛利额提升<span class="metric-highlight">21%</span>同时维持价格竞争力。</li>
+            <li>策划“新品尝鲜节”营销活动，结合数据银行人群洞察，拉新成本降低32%，活动期间ROAS达4.1。</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <div>
+              <span class="company-name">跃动品牌管理有限公司</span>
+              <span class="job-title">| 电商运营专员</span>
+            </div>
+            <div class="date-location">2020.09 – 2022.06 | 杭州</div>
+          </div>
+          <ul class="description-list">
+            <li>协助运营经理管理3家天猫专营店，日常监控流量、转化、客单数据，使用Excel制作月度经营分析报告。</li>
+            <li>执行直通车推广计划，通过关键词优化将平均点击成本降低<span class="metric-highlight">27%</span>，点击率提升至行业均值1.5倍。</li>
+            <li>参与618大促项目，负责商品报名与库存协调，大促期间店铺销售额同比增长<span class="metric-highlight">88%</span>。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 数据报告专项 (突出数据导向) -->
+      <div style="margin-bottom: 1.1rem;">
+        <div class="section-title">数据报告与项目亮点</div>
+        <div class="project-item">
+          <div class="project-name">
+            <span style="font-weight: 700;">· 电商流量诊断模型</span>
+            <span style="font-size: 10pt; color:#4A5568;">2024.05 – 2024.06</span>
+          </div>
+          <p style="font-size: 10.5pt; margin-left: 0.8rem; color:#2D3748;">基于RFM模型与渠道归因，识别高价值用户群，推动复购率提升22%。输出数据报告被纳入公司月度经营会议模板。</p>
+        </div>
+        <div class="project-item">
+          <div class="project-name">
+            <span style="font-weight: 700;">· 竞品动态数据追踪系统</span>
+            <span style="font-size: 10pt; color:#4A5568;">2023.09 – 2023.12</span>
+          </div>
+          <p style="font-size: 10.5pt; margin-left: 0.8rem; color:#2D3748;">使用Python爬虫+Excel自动化生成竞品价格、促销频次周报，辅助运营决策，成功规避两次价格战风险。</p>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div style="margin-bottom: 0.8rem;">
+        <div class="section-title">教育背景</div>
+        <div class="education-item">
+          <div>
+            <span class="school-name">浙江工商大学</span>
+            <span class="degree"> · 电子商务 本科</span>
+          </div>
+          <div class="date-location">2016.09 – 2020.06</div>
+        </div>
+        <div style="font-size: 10pt; color: #4A5568; margin-top: 0.1rem;">主修课程：数据化运营、供应链管理、市场营销</div>
+      </div>
+
+      <!-- 语言与工具 (轻量) -->
+      <div style="display: flex; gap: 2.5rem; font-size: 10pt; color: #2D3748; border-top: 1px solid #E2E8F0; padding-top: 0.8rem; margin-top: 0.3rem;">
+        <span><strong style="color:#0F4C5C;">语言:</strong> 中文(母语) · 英语(商务读写)</span>
+        <span><strong style="color:#0F4C5C;">证书:</strong> 天猫运营专员认证 · Google Analytics</span>
+      </div>
+    </div><!-- end resume-inner -->
+  </div><!-- end resume -->
+</body>
+</html>

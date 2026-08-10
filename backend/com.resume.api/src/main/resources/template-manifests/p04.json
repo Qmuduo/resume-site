@@ -1,0 +1,131 @@
+{
+  "templateId": "p04",
+  "name": "极简侧栏 UI 设计",
+  "sourceFile": "template-p04.json",
+  "renderMode": "placeholder",
+  "fields": [
+    {
+      "name": "name",
+      "label": "name",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "title",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "phone",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "email",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "location",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "linkedin",
+      "label": "linkedin",
+      "type": "string",
+      "commonPath": null,
+      "autoDetected": true
+    },
+    {
+      "name": "website",
+      "label": "website",
+      "type": "string",
+      "commonPath": null,
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "summary",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "experiences",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "education",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "skills",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "projects",
+      "label": "projects",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": true
+    },
+    {
+      "name": "certifications",
+      "label": "certifications",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": true
+    },
+    {
+      "name": "languages",
+      "label": "languages",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": true
+    },
+    {
+      "name": "awards",
+      "label": "awards",
+      "type": "array",
+      "commonPath": "awards",
+      "autoDetected": true
+    },
+    {
+      "name": "tags",
+      "label": "tags",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": true
+    },
+    {
+      "name": "interests",
+      "label": "interests",
+      "type": "string",
+      "commonPath": "interests",
+      "autoDetected": true
+    }
+  ],
+  "mappings": [],
+  "sampleData": {},
+  "pendingManual": []
+}

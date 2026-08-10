@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
+  <title>陈远舟 · 战略咨询总监简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --deep-teal: #1A3C34;    /* 深墨绿主色 */
+      --navy-shadow: #0F2A3F;  /* 藏青暗部，用于强调文字 */
+      --soft-slate: #F5F7FA;   /* 极浅灰背景，仅用于细微分割 */
+      --accent-bronze: #B8864A; /* 古铜金点缀，用于标题线、关键数据 */
+      --text-primary: #1E2B32;  /* 深灰正文，接近黑色 */
+      --text-secondary: #3A4952; /* 次要文字 */
+      --divider: #DCE3E8;       /* 分割线灰 */
+      --white-pure: #FFFFFF;
+      --page-width: 210mm;
+      --page-height: 297mm;
+      --margin-h: 0.7in;
+      --margin-v: 0.7in;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: #E9EDF0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px 0;
+    }
+
+    /* 简历卡片主体，模拟A4 */
+    .resume {
+      width: var(--page-width);
+      min-height: var(--page-height);
+      background: var(--white-pure);
+      margin: 0 auto;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      padding: var(--margin-v) var(--margin-h);
+      font-family: 'Arial', 'Helvetica Neue', 'Calibri', '思源黑体', 'Source Han Sans SC', sans-serif;
+      color: var(--text-primary);
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      page-break-after: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* 打印样式：去除背景，保留纯文字结构 */
+    @media print {
+      html {
+        background: white;
+        padding: 0;
+      }
+      .resume {
+        box-shadow: none;
+        margin: 0 auto;
+        width: 100%;
+        padding: 0.7in 0.7in;
+        min-height: auto;
+      }
+      /* 隐藏交互元素（无按钮链接，仅处理下划线） */
+      a {
+        text-decoration: none;
+        color: var(--text-primary);
+      }
+      /* 确保分割线保留 */
+      .section-divider, .title-divider {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      body {
+        background: white;
+      }
+    }
+
+    /* 字体方案 */
+    h1, h2, h3, .section-title, .name {
+      font-family: 'Arial', 'Helvetica Neue', 'Calibri', '思源黑体', 'Source Han Sans SC', sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+
+    /* 姓名区域 */
+    .header {
+      margin-bottom: 0.45in;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .name {
+      font-size: 28pt;
+      font-weight: 700;
+      color: var(--deep-teal);
+      letter-spacing: 0.8px;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .title-tagline {
+      font-size: 11.5pt;
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .title-tagline span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #2E4A42;
+    }
+
+    /* 联系方式行 - 纯文本，ATS完美识别 */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 10.5pt;
+      color: var(--text-secondary);
+      margin-top: 10px;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    /* 简单线性图标用unicode字符替代，ATS安全 */
+    .icon-phone::before {
+      content: "📞";
+      font-size: 10pt;
+      margin-right: 2px;
+      color: #3A5A4E;
+    }
+    .icon-email::before {
+      content: "✉️";
+      font-size: 10pt;
+      margin-right: 2px;
+      color: #3A5A4E;
+    }
+    .icon-location::before {
+      content: "📍";
+      font-size: 10pt;
+      margin-right: 2px;
+      color: #3A5A4E;
+    }
+
+    /* 装饰分割线：左侧窄色条 + 底部细线 */
+    .title-divider {
+      height: 2px;
+      background: var(--divider);
+      margin-top: 10px;
+      position: relative;
+      width: 100%;
+    }
+    .title-divider::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -2px;
+      width: 0.55in;
+      height: 4px;
+      background: var(--deep-teal);
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 11.5pt;
+      font-weight: 700;
+      color: var(--deep-teal);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin: 0.35in 0 0.15in 0;
+      padding-bottom: 5px;
+      border-bottom: 1.5px solid var(--divider);
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .section-title::after {
+      content: '';
+      display: inline-block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--accent-bronze);
+      margin-left: 10px;
+    }
+
+    /* 工作经历卡片 */
+    .experience-item {
+      margin-bottom: 0.22in;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 12pt;
+      color: var(--navy-shadow);
+    }
+
+    .job-title {
+      font-weight: 600;
+      font-size: 11pt;
+      color: var(--text-primary);
+      margin-left: 8px;
+      font-style: normal;
+    }
+
+    .date-location {
+      font-size: 10pt;
+      color: var(--text-secondary);
+      font-weight: 400;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    /* 描述要点 */
+    .bullet-list {
+      list-style: none;
+      margin-top: 6px;
+      padding-left: 0;
+    }
+
+    .bullet-list li {
+      font-size: 10.5pt;
+      color: var(--text-primary);
+      margin-bottom: 5px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      line-height: 1.45;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      color: var(--deep-teal);
+      font-weight: 700;
+      font-size: 13pt;
+      display: inline-block;
+      width: 16px;
+      flex-shrink: 0;
+    }
+
+    /* 技能标签式排列 */
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      margin-top: 8px;
+    }
+
+    .skill-category {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: var(--navy-shadow);
+      margin-right: 6px;
+    }
+
+    .skill-list {
+      font-size: 10.5pt;
+      color: var(--text-primary);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      align-items: center;
+    }
+
+    .skill-item {
+      background: transparent;
+      padding: 2px 0;
+      border-bottom: 1px dotted var(--divider);
+      white-space: nowrap;
+    }
+
+    /* 教育背景简单排列 */
+    .education-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 10.5pt;
+      margin-bottom: 6px;
+    }
+    .edu-degree {
+      font-weight: 700;
+      color: var(--navy-shadow);
+    }
+    .edu-school {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .edu-date {
+      color: var(--text-secondary);
+      margin-left: auto;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid var(--divider);
+      margin: 8px 0 12px;
+    }
+
+    /* 左侧装饰窄条（不重叠文字，位于padding区域） */
+    .resume {
+      position: relative;
+      border-left: 5px solid var(--deep-teal);
+    }
+
+    /* 所有文本可选 */
+    p, li, span, div {
+      user-select: text;
+    }
+
+    /* 第二页适应 */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- 头部：姓名与联系方式 -->
+    <div class="header">
+      <h1 class="name">陈远舟</h1>
+      <div class="title-tagline">
+        <span>战略咨询总监 · 商业分析负责人</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-item icon-phone">+86 138 1098 7654</span>
+        <span class="contact-item icon-email">yuanzhou.chen@stratex.com</span>
+        <span class="contact-item icon-location">上海 · 中国</span>
+        <span class="contact-item" style="margin-left:auto;">linkedin.com/in/chenyuanzhou</span>
+      </div>
+      <div class="title-divider"></div>
+    </div>
+
+    <!-- 专业摘要 -->
+    <div>
+      <div class="section-title">核心优势</div>
+      <p style="font-size:10.5pt; color:#2E3B3A; margin:6px 0 10px;">
+        12年战略咨询与商业分析经验，主导过60+企业增长战略项目，涵盖消费品、科技与工业领域。前麦肯锡项目经理，现带领12人分析团队。擅长以数据驱动决策，实现平均客户营收提升22%。
+      </p>
+    </div>
+
+    <!-- 工作经历 -->
+    <div>
+      <div class="section-title">专业经历</div>
+      
+      <div class="experience-item">
+        <div class="exp-header">
+          <span>
+            <span class="company-name">源策咨询 (Stratex Partners)</span>
+            <span class="job-title">｜ 战略咨询总监</span>
+          </span>
+          <span class="date-location">2022.04 – 至今 | 上海</span>
+        </div>
+        <ul class="bullet-list">
+          <li>领导零售与消费品行业战略业务，年度营收贡献超3800万元，客户续约率91%。</li>
+          <li>为某头部乳制品集团制定全渠道增长战略，推动数字化中台落地，实现18个月营收增长34%。</li>
+          <li>搭建商业智能分析框架，引入预测性模型将项目交付周期缩短20%，团队人效提升25%。</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <span>
+            <span class="company-name">麦肯锡公司</span>
+            <span class="job-title">｜ 项目经理 / 商业分析顾问</span>
+          </span>
+          <span class="date-location">2016.08 – 2022.02 | 上海/新加坡</span>
+        </div>
+        <ul class="bullet-list">
+          <li>主导亚太区科技与工业4.0战略项目，为两家全球500强企业设计海外市场进入模式。</li>
+          <li>领导8人顾问团队完成某新能源企业运营转型，优化供应链成本结构，释放2.3亿现金流。</li>
+          <li>开发行业对标分析工具，应用于15+项目，被纳入麦肯锡内部知识库。</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <span>
+            <span class="company-name">波士顿咨询 (BCG)</span>
+            <span class="job-title">｜ 高级商业分析师</span>
+          </span>
+          <span class="date-location">2013.09 – 2016.07 | 北京</span>
+        </div>
+        <ul class="bullet-list">
+          <li>参与消费品与医疗健康领域战略项目，完成市场进入可行性分析与竞品深度扫描。</li>
+          <li>搭建动态定价模型，为客户提升毛利率4.2个百分点。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 教育背景 -->
+    <div>
+      <div class="section-title">教育背景</div>
+      <div class="education-row">
+        <span class="edu-degree">工商管理硕士 (MBA)</span>
+        <span class="edu-school">中欧国际工商学院 (CEIBS)</span>
+        <span class="edu-date">2011 – 2013</span>
+      </div>
+      <div class="education-row">
+        <span class="edu-degree">经济学学士</span>
+        <span class="edu-school">复旦大学</span>
+        <span class="edu-date">2007 – 2011</span>
+      </div>
+    </div>
+
+    <!-- 核心能力 + 技能标签 -->
+    <div>
+      <div class="section-title">核心能力</div>
+      <div class="skill-tags">
+        <div style="display:flex; flex-wrap:wrap; width:100%;">
+          <span class="skill-category">战略规划：</span>
+          <span class="skill-list">
+            <span class="skill-item">企业增长战略</span>
+            <span class="skill-item">市场进入</span>
+            <span class="skill-item">数字化转型</span>
+            <span class="skill-item">并购后整合</span>
+          </span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; width:100%; margin-top:6px;">
+          <span class="skill-category">商业分析：</span>
+          <span class="skill-list">
+            <span class="skill-item">高级Excel建模</span>
+            <span class="skill-item">SQL/Python</span>
+            <span class="skill-item">Tableau</span>
+            <span class="skill-item">预测分析</span>
+            <span class="skill-item">消费者洞察</span>
+          </span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; width:100%; margin-top:6px;">
+          <span class="skill-category">领导力：</span>
+          <span class="skill-list">
+            <span class="skill-item">团队管理(12人)</span>
+            <span class="skill-item">客户关系</span>
+            <span class="skill-item">董事会汇报</span>
+            <span class="skill-item">跨职能协作</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 重点项目精选 (无多余装饰) -->
+    <div style="margin-top:0.25in;">
+      <div class="section-title">代表项目</div>
+      <div style="font-size:10.5pt; margin-bottom:8px;">
+        <span style="font-weight:700; color:#0F2A3F;">某跨国科技公司亚太区重组</span>
+        <span style="color:#3A4952; margin-left:12px;">项目负责人</span>
+        <span style="float:right; color:#3A4952;">2023</span>
+      </div>
+      <ul class="bullet-list" style="margin-top:2px;">
+        <li>设计区域组织架构重组方案，识别2.8亿美元协同效应，方案被全球董事会采纳。</li>
+      </ul>
+      
+      <div style="font-size:10.5pt; margin-bottom:8px; margin-top:14px;">
+        <span style="font-weight:700; color:#0F2A3F;">新消费品牌DTC战略</span>
+        <span style="color:#3A4952; margin-left:12px;">项目总监</span>
+        <span style="float:right; color:#3A4952;">2021</span>
+      </div>
+      <ul class="bullet-list" style="margin-top:2px;">
+        <li>帮助客户建立数据中台与私域运营体系，首年线上销售增长210%。</li>
+      </ul>
+    </div>
+
+    <!-- 语言与认证，极简展示 -->
+    <div style="margin-top:0.25in; display:flex; gap:30px; font-size:10pt; color:#2E3B3A; border-top:1px solid #DCE3E8; padding-top:12px;">
+      <span><strong style="color:#1A3C34;">语言：</strong>中文(母语) · 英语(专业工作语言，IELTS 8.0)</span>
+      <span><strong style="color:#1A3C34;">认证：</strong>CFA Level II · PMP</span>
+    </div>
+
+    <!-- 注：所有文字均为纯文本，无图片、无表格、无canvas，符合ATS安全标准 -->
+  </div>
+</body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
+  <title>林悦 · 旅游策划师简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #e8edf2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem;
+      font-family: 'Arial', 'Helvetica', 'Calibri', '思源黑体', 'Source Han Sans CN', sans-serif;
+    }
+
+    /* A4尺寸卡片，模拟简历页面 */
+    .resume {
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 左侧装饰条 - 年轻活力的橙色点缀，纯色块不压文字 */
+    .accent-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 6mm;
+      height: 100%;
+      background: #FF7F50; /* 珊瑚橙，活力强调色 */
+      z-index: 0;
+    }
+
+    /* 主内容区域，避开装饰条，确保文字清晰 */
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 14mm 14mm 14mm 22mm; /* 左上右下，左侧留出装饰条空间 */
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ----- 字体与颜色变量 ----- */
+    h1, h2, h3, p, li, span, div {
+      color: #2D3748; /* 正文深灰色 */
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 4mm;
+    }
+    .name {
+      font-size: 38pt;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #1E2B3C; /* 深蓝黑，稳重 */
+      line-height: 1.1;
+      font-family: 'Helvetica Neue', 'Helvetica', 'Arial', '思源黑体', sans-serif;
+    }
+    .title {
+      font-size: 14pt;
+      font-weight: 400;
+      color: #4A5568;
+      margin-top: 2mm;
+      letter-spacing: 0.8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .title-accent {
+      color: #FF7F50;
+      font-weight: 600;
+    }
+
+    /* 分割线：使用底部边框，简洁安全 */
+    .divider {
+      width: 100%;
+      height: 1.5px;
+      background: #E2E8F0;
+      margin: 6mm 0 7mm 0;
+    }
+    .divider.thin {
+      height: 1px;
+      background: #EDF2F7;
+      margin: 5mm 0 5mm 0;
+    }
+
+    /* 联系行 - 图标用纯文本字符替代，ATS完美识别 */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6mm;
+      font-size: 10pt;
+      color: #4A5568;
+      margin-bottom: 2mm;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .contact-icon {
+      color: #FF7F50;
+      font-weight: 500;
+      font-size: 11pt;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 12pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #1A365D; /* 深蓝主色 */
+      margin-bottom: 4mm;
+      border-bottom: 2px solid #FF7F50;
+      padding-bottom: 2mm;
+      display: inline-block;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    /* 工作经历卡片 */
+    .experience-item {
+      margin-bottom: 5mm;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 1.5mm;
+    }
+    .company {
+      font-weight: 700;
+      font-size: 12pt;
+      color: #1E2B3C;
+    }
+    .job-title {
+      font-weight: 500;
+      font-size: 11pt;
+      color: #2D3748;
+      margin-left: 4px;
+    }
+    .date {
+      font-size: 10pt;
+      color: #718096;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+    .description {
+      margin-top: 1mm;
+      padding-left: 3mm;
+      list-style-type: none;
+    }
+    .description li {
+      font-size: 10pt;
+      line-height: 1.5;
+      color: #4A5568;
+      margin-bottom: 1.5mm;
+      position: relative;
+      padding-left: 5mm;
+    }
+    /* 标准圆点符号，ATS安全 */
+    .description li::before {
+      content: "•";
+      color: #FF7F50;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* 技能标签 - 行内标签，清晰可读 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3mm;
+      margin-top: 1mm;
+    }
+    .skill-tag {
+      background: #F7FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 2mm 4mm;
+      font-size: 9.5pt;
+      font-weight: 500;
+      color: #2D3748;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+    .skill-tag strong {
+      color: #FF7F50;
+      font-weight: 600;
+    }
+
+    /* 教育经历简单样式 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2mm;
+    }
+    .edu-school {
+      font-weight: 700;
+      font-size: 11pt;
+      color: #1E2B3C;
+    }
+    .edu-major {
+      font-weight: 400;
+      font-size: 10pt;
+      color: #4A5568;
+    }
+
+    /* 两栏布局用于技能或语言（纯文本列，无浮动定位问题） */
+    .two-col {
+      display: flex;
+      gap: 8mm;
+    }
+    .col {
+      flex: 1;
+    }
+
+    /* 项目经验简洁样式 */
+    .project-item {
+      margin-bottom: 4mm;
+    }
+    .project-name {
+      font-weight: 700;
+      font-size: 11pt;
+      color: #1E2B3C;
+    }
+    .project-desc {
+      font-size: 10pt;
+      color: #4A5568;
+      margin-top: 1mm;
+      padding-left: 3mm;
+      list-style-type: none;
+    }
+    .project-desc li::before {
+      content: "•";
+      color: #FF7F50;
+      font-weight: bold;
+      display: inline-block;
+      width: 4mm;
+      margin-left: -4mm;
+    }
+
+    /* 打印样式：去除背景，保留清晰文本，隐藏不需要的装饰 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+      .resume {
+        box-shadow: none;
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        page-break-after: auto;
+      }
+      .accent-bar {
+        background: #FF7F50 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .skill-tag {
+        background: #F7FAFC !important;
+        border: 1px solid #E2E8F0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .section-title {
+        border-bottom: 2px solid #FF7F50 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .divider {
+        background: #E2E8F0 !important;
+      }
+      /* 确保所有文字颜色为深色 */
+      * {
+        color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+    }
+
+    /* 响应式调整：小屏幕滚动 */
+    @media screen and (max-width: 700px) {
+      .resume {
+        width: 100%;
+        min-height: auto;
+      }
+      .content {
+        padding: 10mm 10mm 10mm 18mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- 左侧活力珊瑚橙装饰条，不干扰文字 -->
+    <div class="accent-bar"></div>
+    
+    <div class="content">
+      <!-- 姓名与标题 -->
+      <div class="name-section">
+        <h1 class="name">林悦</h1>
+        <div class="title">
+          <span class="title-accent">旅游策划师</span>  ·  体验设计 · 目的地灵感
+        </div>
+      </div>
+      
+      <!-- 联系方式（纯文本+符号，ATS完全识别） -->
+      <div class="contact-row">
+        <span class="contact-item"><span class="contact-icon">✉</span> yue.lin@travelcreate.com</span>
+        <span class="contact-item"><span class="contact-icon">📞</span> (86) 139-5027-6814</span>
+        <span class="contact-item"><span class="contact-icon">📍</span> 成都 · 中国</span>
+        <span class="contact-item"><span class="contact-icon">🔗</span> linkedin.com/in/linyue-travel</span>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <!-- 个人概述（简洁，不设板块标题，直接以文字呈现） -->
+      <p style="font-size: 10.5pt; color: #4A5568; line-height: 1.6; margin-bottom: 6mm;">
+        3年旅游策划经验，擅长沉浸式行程设计与在地文化挖掘。曾主导15+条小众深度游线路，客户满意度98%。<br>
+        善于将年轻旅行者洞察转化为具有社交传播力的创意体验。
+      </p>
+      
+      <!-- 工作经验 -->
+      <div>
+        <div class="section-title">工作经历</div>
+        
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company">野趣旅行工作室</span> <span class="job-title">· 旅游策划师</span></span>
+            <span class="date">2023.04 - 至今</span>
+          </div>
+          <ul class="description">
+            <li>策划并落地“川西秘境·星空露营”等8条年轻化主题线路，平均成团率提升40%</li>
+            <li>负责目的地调研与供应商谈判，优化成本结构，单团毛利率提高12%</li>
+            <li>撰写社交媒体文案与视觉素材，小红书笔记曝光量累计超80万</li>
+          </ul>
+        </div>
+        
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company">云游文化传播</span> <span class="job-title">· 助理策划师</span></span>
+            <span class="date">2021.07 - 2023.02</span>
+          </div>
+          <ul class="description">
+            <li>协助主策划完成云南、贵州区域12条精品线路的行程编排与资源对接</li>
+            <li>收集客户反馈并分析数据，优化3条低评分线路，好评率回升至96%</li>
+            <li>参与设计“非遗手作之旅”产品手册，直接带来30+企业团建订单</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="divider thin"></div>
+      
+      <!-- 项目亮点（突出年轻活力与创意） -->
+      <div>
+        <div class="section-title">代表项目</div>
+        <div class="project-item">
+          <div class="exp-header">
+            <span class="project-name">「城市出逃计划」· 周边微度假系列</span>
+            <span class="date">2024</span>
+          </div>
+          <ul class="project-desc" style="list-style: none; padding-left: 0;">
+            <li>针对25-35岁都市人群设计2天1夜轻户外产品，融入荒野咖啡、晨间瑜伽等体验模块</li>
+            <li>上线3个月售出240+套，复购率32%，成为工作室季度爆款</li>
+          </ul>
+        </div>
+        <div class="project-item">
+          <div class="exp-header">
+            <span class="project-name">「跟着美食去旅行」· 潮汕文化深潜</span>
+            <span class="date">2023</span>
+          </div>
+          <ul class="project-desc" style="list-style: none; padding-left: 0;">
+            <li>联合本地美食KOL设计寻味路线，包含私厨拜访、菜市场探索等互动环节</li>
+            <li>获携程社区“创意行程奖”，吸引合作品牌赞助体验名额</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="divider thin"></div>
+      
+      <!-- 技能与工具 (两栏纯文本布局，安全) -->
+      <div class="two-col">
+        <div class="col">
+          <div class="section-title" style="margin-bottom: 3mm;">核心能力</div>
+          <div class="skills-container" style="flex-direction: column; gap: 2mm;">
+            <span class="skill-tag">📋 行程规划与资源整合</span>
+            <span class="skill-tag">📊 客户需求分析与产品迭代</span>
+            <span class="skill-tag">🎨 体验设计 & 在地文化挖掘</span>
+            <span class="skill-tag">📱 社交媒体内容策划</span>
+          </div>
+        </div>
+        <div class="col">
+          <div class="section-title" style="margin-bottom: 3mm;">工具 & 语言</div>
+          <div class="skills-container" style="flex-direction: column; gap: 2mm;">
+            <span class="skill-tag"><strong>行程工具：</strong>Excel高级, TripIt, 谷歌地图</span>
+            <span class="skill-tag"><strong>设计协作：</strong>Canva, Figma, Notion</span>
+            <span class="skill-tag"><strong>语言：</strong>中文(母语), 英语(流利), 基础日语</span>
+            <span class="skill-tag"><strong>证书：</strong>导游资格证, 急救员</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="divider thin"></div>
+      
+      <!-- 教育背景 -->
+      <div>
+        <div class="section-title">教育</div>
+        <div class="edu-item">
+          <span><span class="edu-school">四川旅游学院</span> <span class="edu-major">· 旅游管理 本科</span></span>
+          <span class="date">2017 - 2021</span>
+        </div>
+        <div style="font-size: 10pt; color: #4A5568; margin-top: 1mm;">
+          主修课程：旅游消费者行为、目的地营销、活动策划与管理
+        </div>
+      </div>
+      
+      <!-- 底部细微装饰线，年轻活力不浮夸 -->
+      <div style="margin-top: auto; padding-top: 5mm;">
+        <div style="height: 2px; background: linear-gradient(to right, #FF7F50 20%, #E2E8F0 20%); width: 100%;"></div>
+        <p style="font-size: 8pt; color: #A0AEC0; text-align: right; margin-top: 2mm;">林悦 · 旅游策划师 · 更新: 2026.08</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,202 @@
+{
+  "templateId": "prompt_068",
+  "name": "张静仪 · 筹款与传播高级经理 · 简历",
+  "sourceFile": "prompt_068.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "行业会议与演讲",
+      "label": "行业会议与演讲",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "专业发展",
+      "label": "专业发展",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": "h1",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".job-title",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    }
+  ],
+  "sampleData": {
+    "name": "张静仪",
+    "title": "| 筹款与传播总监",
+    "email": "📧 jingyi.zhang@impact.org",
+    "phone": "+86 138 8210 4572",
+    "location": "上海 / 北京",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "🔗 linkedin.com/in/jingyizhang"
+      }
+    ],
+    "行业会议与演讲": "中国公益传播年会 | 演讲嘉宾 2023.09 主题：“从情感共鸣到数据驱动——月捐传播的迭代路径”，面向300+公益机构代表分享案例。 亚太非营利筹款峰会 (AFP Asia) | 圆桌嘉宾 2022.11 参与“后疫情时代的高净值捐赠人关系”讨论，分享本土实践与数字化工具应用。",
+    "专业发展": "🌐 筹款专业人士认证 (CFRE) 📘 哈佛肯尼迪学院 · 非营利领导力 (在线) 🗣️ 中英文双语工作 工具：Salesforce NPSP, Classy, Canva, 微信公众号后台 语言：中文(母语) · 英文(专业工作水平)",
+    "experiences": [
+      {
+        "position": "| 筹款与传播总监",
+        "date": "2020.05 – 至今 | 上海",
+        "description": "统筹年度筹款策略与品牌传播，管理8人团队，年度捐赠收入从4200万增长至7000万人民币。"
+      },
+      {
+        "position": "| 高级传播经理",
+        "date": "2017.08 – 2020.03 | 北京",
+        "description": "负责中国大陆区数字传播与公众筹款，管理微信、微博及支付宝公益平台，粉丝总量提升至45万。"
+      },
+      {
+        "position": "| 传播与筹款专员",
+        "date": "2015.06 – 2017.07 | 广州",
+        "description": "协助筹款经理执行企业合作项目，参与策划“全球村庄共建”徒步筹款活动，影响1,200+参与者。"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "行业会议与演讲",
+      "label": "行业会议与演讲",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "专业发展",
+      "label": "专业发展",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name",
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

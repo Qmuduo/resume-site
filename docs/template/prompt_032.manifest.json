@@ -1,0 +1,213 @@
+{
+  "templateId": "prompt_032",
+  "name": "张振华 · 物业总经理简历",
+  "sourceFile": "prompt_032.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "个人简介",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": false
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name"
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": "h1",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-sub",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "summary",
+      "selector": ".accent-highlight",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".education-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "education-item"
+    }
+  ],
+  "sampleData": {
+    "name": "张振华",
+    "title": "物业总经理 · 商业运营管理",
+    "phone": "(86) 138-0000-1234",
+    "email": "✉️ zhang.zhenhua@pmpro.com",
+    "location": "上海市浦东新区",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "🔗 linkedin.com/in/zhenhuazhang"
+      }
+    ],
+    "summary": "资深物业管理领导者， 12年 高端商业综合体及甲级写字楼管理经验。 主导过 3个 超10万平米项目的全周期运营，年均客户满意度 96% 以上。 擅长通过精细化运营与成本管控实现资产价值提升，具备PMP及注册物业管理师认证。",
+    "experiences": [
+      {
+        "position": "物业总经理",
+        "date": "2019.04 – 至今"
+      },
+      {
+        "position": "高级物业经理",
+        "date": "2015.02 – 2019.03"
+      },
+      {
+        "position": "物业经理",
+        "date": "2012.07 – 2015.01"
+      }
+    ],
+    "education": [
+      {
+        "degree": "工商管理硕士（MBA）",
+        "date": "2018.09 – 2021.06"
+      },
+      {
+        "degree": "工学学士 · 建筑环境与设备工程",
+        "date": "2008.09 – 2012.06"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "summary",
+      "label": "专业摘要",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name",
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

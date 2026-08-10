@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>简历 · 国企行政管理 · 正式庄重</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --page-width: 210mm;
+      --page-bg: #ffffff;
+      --text-primary: #1e1e1e;
+      --text-secondary: #2d2d2d;
+      --text-muted: #4a4a4a;
+      --border-light: #d0d0d0;
+      --divider: #9aa9b9;
+      --accent-line: #2b4b6f; /* 深蓝灰，仅用于分割线与点缀 */
+      --tag-bg: #f2f4f7;
+      --tag-text: #2d3a4a;
+      --white: #ffffff;
+    }
+
+    body {
+      background: #eef1f5;
+      font-family: 'Source Han Sans SC', '思源黑体', 'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      margin: 0;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    /* 简历卡片 - 精确A4尺寸，模拟纸张 */
+    .resume {
+      width: var(--page-width);
+      min-height: 297mm;
+      background: var(--page-bg);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      padding: 0.8in 0.8in 0.7in 0.8in; /* 上下0.8in 左右0.8in 保证呼吸感 */
+      display: flex;
+      flex-direction: column;
+      font-size: 10.5pt;
+      color: var(--text-primary);
+      border: 1px solid #d9dde3;
+      position: relative;
+      page-break-after: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* 所有文本均为标准HTML文本，无canvas/svg渲染文字 */
+    /* 禁止复杂图形遮挡，完全符合ATS解析 */
+
+    /* 姓名区域 */
+    .header {
+      margin-bottom: 0.25rem;
+    }
+
+    .name {
+      font-size: 26pt;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: #1a1f26;
+      line-height: 1.2;
+      margin-bottom: 0.1rem;
+      font-family: 'Source Han Sans SC', '思源黑体', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    .subtitle {
+      font-size: 11pt;
+      color: #3f4a54;
+      font-weight: 400;
+      letter-spacing: 0.8px;
+      margin-top: 0.1rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1.5px solid var(--accent-line);
+      padding-bottom: 0.55rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 0.25rem;
+      font-size: 10pt;
+      color: #2d3742;
+      border-bottom: 1px solid #dce1e8;
+      padding-bottom: 0.5rem;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      white-space: nowrap;
+    }
+
+    /* 简单线性图标 (纯文本字符替代，ATS安全) */
+    .icon-phone::before {
+      content: "☎";
+      font-size: 10pt;
+      margin-right: 0.15rem;
+      color: #4a5568;
+    }
+    .icon-email::before {
+      content: "✉";
+      font-size: 10pt;
+      margin-right: 0.15rem;
+      color: #4a5568;
+    }
+    .icon-location::before {
+      content: "⌂";
+      font-size: 10.5pt;
+      margin-right: 0.15rem;
+      color: #4a5568;
+    }
+
+    /* 板块通用样式 */
+    .section {
+      margin-top: 0.55rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-size: 11.5pt;
+      font-weight: 600;
+      color: #1e2b3a;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      border-bottom: 1px solid var(--accent-line);
+      padding-bottom: 0.2rem;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* 标题装饰小色块 (极简线条，无背景色块反白) */
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background-color: var(--accent-line);
+      margin-right: 0.35rem;
+      border-radius: 1px;
+    }
+
+    /* 条目布局 */
+    .entry {
+      margin-bottom: 0.45rem;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.1rem;
+    }
+
+    .left-group {
+      font-weight: 600;
+      font-size: 11pt;
+      color: #1e1e1e;
+    }
+
+    .right-time {
+      font-weight: 400;
+      font-size: 10pt;
+      color: #4a5560;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .position {
+      font-weight: 500;
+      font-size: 10.5pt;
+      color: #2c3a47;
+      margin-bottom: 0.15rem;
+    }
+
+    .desc-list {
+      list-style: none;
+      padding-left: 0.15rem;
+      margin-top: 0.2rem;
+    }
+
+    .desc-list li {
+      font-size: 10pt;
+      line-height: 1.5;
+      color: #2d2d2d;
+      margin-bottom: 0.15rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.35rem;
+    }
+
+    /* 使用标准圆点符号 · (ATS完全兼容) */
+    .desc-list li::before {
+      content: "•";
+      color: #2b4b6f;
+      font-weight: 600;
+      font-size: 11pt;
+      display: inline-block;
+      width: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    /* 技能标签 - 纯文本排列，无浮动/图形 */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.2rem;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 0.2rem 0.7rem;
+      border-radius: 14px;
+      font-size: 9.5pt;
+      font-weight: 450;
+      letter-spacing: 0.3px;
+      border: 1px solid #d0d7e0;
+      white-space: nowrap;
+    }
+
+    /* 教育背景简单布局 */
+    .edu-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-left {
+      font-weight: 600;
+      font-size: 10.5pt;
+    }
+
+    .edu-right {
+      font-size: 10pt;
+      color: #4a5560;
+    }
+
+    .degree {
+      font-size: 10pt;
+      color: #3a4552;
+      margin-top: 0.05rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #d0d7e0;
+      margin: 0.25rem 0 0.4rem 0;
+    }
+
+    /* 无任何背景色块反白，无文字置于图形之上 */
+    /* 所有彩色仅用于线条与点缀 */
+
+    /* 打印优化 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin: 0 auto;
+        page-break-after: avoid;
+        width: 210mm;
+        min-height: 297mm;
+        padding: 0.8in 0.8in 0.7in 0.8in;
+      }
+      /* 隐藏所有交互元素 (本简历无按钮/链接下划线，但确保) */
+      a, button, .no-print {
+        display: none;
+      }
+      /* 链接保留下划线移除，仅文本 */
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    /* 响应式微调，但保持A4宽度 */
+    @media screen and (max-width: 800px) {
+      body {
+        padding: 0.5rem;
+      }
+      .resume {
+        width: 100%;
+        min-height: auto;
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- 姓名与标题 -->
+    <div class="header">
+      <div class="name">周 明 远</div>
+      <div class="subtitle">
+        <span>行政管理 · 国企方向</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-item icon-phone">138-8216-9075</span>
+        <span class="contact-item icon-email">zhou.mingyuan@example.com</span>
+        <span class="contact-item icon-location">北京市朝阳区</span>
+        <span style="margin-left: auto; color:#3f4a54;">中共党员 · 1998年出生</span>
+      </div>
+    </div>
+
+    <!-- 教育背景 -->
+    <div class="section">
+      <div class="section-title">教育背景</div>
+      <div class="edu-entry">
+        <span class="edu-left">中国人民大学</span>
+        <span class="edu-right">2020.09 – 2024.06</span>
+      </div>
+      <div class="degree">行政管理 · 本科 | 管理学学士</div>
+      <div style="font-size:9.5pt; color:#4a5560; margin-top:0.1rem;">主修课程：公共政策分析、行政法学、组织行为学、公文写作与处理</div>
+    </div>
+
+    <!-- 实习/工作经历（模拟1-3年经验） -->
+    <div class="section">
+      <div class="section-title">相关经历</div>
+      
+      <div class="entry">
+        <div class="entry-header">
+          <span class="left-group">北京城建集团 · 行政专员</span>
+          <span class="right-time">2024.07 – 至今</span>
+        </div>
+        <div class="position">综合办公室 | 国企一级子公司</div>
+        <ul class="desc-list">
+          <li>负责公司级公文流转与归档，月均处理收发文120+件，确保零遗失、零泄密，并优化登记流程使效率提升25%</li>
+          <li>统筹安排领导班子会议及中层例会，撰写会议纪要40余篇，督办决议事项完成率超95%</li>
+          <li>协助完成年度固定资产盘点与办公用品采购，通过供应商比价降低行政成本约12%</li>
+          <li>参与修订《行政管理制度汇编》，规范用印、车辆及接待流程，顺利通过集团合规检查</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="left-group">海淀区人民政府办公室 · 行政实习生</span>
+          <span class="right-time">2023.07 – 2023.10</span>
+        </div>
+        <div class="position">综合科 | 政府机关实习</div>
+        <ul class="desc-list">
+          <li>协助起草通知、函件等公文初稿12份，严格按照《党政机关公文格式》排版校对</li>
+          <li>参与组织全区防汛应急会议，负责参会人员联络与席卡布置，保障会议顺利进行</li>
+          <li>整理归档近三年文件2000余份，建立电子索引目录，使检索时间平均缩短40%</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 项目/校园经历 (突出行政能力) -->
+    <div class="section">
+      <div class="section-title">项目与实践</div>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="left-group">校园疫情防控志愿服务队 · 协调组长</span>
+          <span class="right-time">2022.05 – 2022.12</span>
+        </div>
+        <ul class="desc-list">
+          <li>统筹30人志愿者团队排班与物资分发，制定标准化工作指引，服务师生超5000人次</li>
+          <li>建立信息日报机制，汇总数据并向校办报送，获“优秀防疫志愿者”称号</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="left-group">行政能力大赛 · 团队负责人</span>
+          <span class="right-time">2022.03 – 2022.05</span>
+        </div>
+        <ul class="desc-list">
+          <li>带领4人小组完成模拟机关办公情景演练，获得校级一等奖，方案被推荐至学院学工办参考</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 技能与证书 -->
+    <div class="section">
+      <div class="section-title">专业技能与证书</div>
+      <div class="tags">
+        <span class="tag">公文写作</span>
+        <span class="tag">档案管理</span>
+        <span class="tag">会议组织</span>
+        <span class="tag">办公软件(Word/Excel/PPT)</span>
+        <span class="tag">OA系统(泛微/致远)</span>
+        <span class="tag">保密意识</span>
+        <span class="tag">C1驾驶证</span>
+        <span class="tag">普通话一级乙等</span>
+      </div>
+      <div style="margin-top:0.4rem; font-size:10pt; color:#2d3742; display:flex; gap:1.5rem; flex-wrap:wrap;">
+        <span>📜 企业人力资源管理师(四级)</span>
+        <span>📜 全国计算机等级考试二级(MS Office)</span>
+        <span>📜 英语六级(CET-6) · 读写熟练</span>
+      </div>
+    </div>
+
+    <!-- 个人特质/补充信息 (低风险个性化) -->
+    <div class="section" style="margin-top:0.5rem;">
+      <div class="section-title">自我评价</div>
+      <div style="font-size:10pt; color:#2d2d2d; line-height:1.6; margin-top:0.1rem;">
+        具备国企行政岗位所需的严谨细致与政治素养，熟悉公文规范与办事流程。善于跨部门沟通，注重程序合规与执行效率。
+        性格沉稳，抗压能力强，坚持“文经我手无差错，事交我办请放心”的工作信条。
+      </div>
+    </div>
+    
+    <!-- 极简分割线，无多余装饰 -->
+    <div style="margin-top: 0.45rem; border-top: 1px solid #d0d7e0; padding-top: 0.25rem; font-size: 9pt; color: #6b7a8a; text-align: right; letter-spacing: 0.4px;">
+      更新：2026年8月 · 随时到岗
+    </div>
+  </div>
+</body>
+</html>

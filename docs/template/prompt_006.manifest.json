@@ -1,0 +1,276 @@
+{
+  "templateId": "prompt_006",
+  "name": "陈启明 · 财富管理总监 · 简历",
+  "sourceFile": "prompt_006.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "个人简介",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": false
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": true
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".job-title",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "summary",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "sectionTitle": "专业摘要"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".education-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "education-item"
+    },
+    {
+      "commonPath": "languages",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "语言与附加",
+      "itemSelector": "entry"
+    }
+  ],
+  "sampleData": {
+    "name": "陈启明",
+    "title": "| 执行董事 · 财富管理总监",
+    "phone": "(86) 138-1025-7788",
+    "email": "✉️ qiming.chen@wealthpro.com",
+    "location": "上海 · 浦东",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "🔗 linkedin.com/in/qimingchen"
+      }
+    ],
+    "summary": "拥有超过12年财富管理及私人银行经验，管理资产规模逾80亿人民币。专注于为超高净值家族提供资产配置、税务筹划与传承规划。 曾任瑞银集团中国区执行董事，具备国际视野与本土洞察。擅长通过猎头渠道及行业人脉推动战略合作。",
+    "skills": [
+      {
+        "name": "全球资产配置",
+        "level": ""
+      },
+      {
+        "name": "信托与遗产规划",
+        "level": ""
+      },
+      {
+        "name": "另类投资",
+        "level": ""
+      },
+      {
+        "name": "CRS合规",
+        "level": ""
+      },
+      {
+        "name": "客户关系管理",
+        "level": ""
+      },
+      {
+        "name": "团队领导力",
+        "level": ""
+      },
+      {
+        "name": "投资组合策略",
+        "level": ""
+      },
+      {
+        "name": "私募股权",
+        "level": ""
+      },
+      {
+        "name": "跨境财富",
+        "level": ""
+      }
+    ],
+    "experiences": [
+      {
+        "position": "| 执行董事 · 财富管理总监",
+        "date": "2019 – 至今 | 上海",
+        "description": "领导12人顾问团队，为35个超高净值家族提供全权委托及咨询管理，AUM年增长22%，连续三年客户留存率98%。"
+      },
+      {
+        "position": "| 副总裁 · 私人财富顾问",
+        "date": "2015 – 2019 | 北京",
+        "description": "管理资产组合规模达25亿人民币，覆盖30余位企业家及高管，年化收益率超越基准180个基点。"
+      },
+      {
+        "position": "| 资深客户经理 · 投资顾问",
+        "date": "2011 – 2015 | 深圳",
+        "description": "服务华南地区高净值个人，负责投资组合设计与执行，期间个人AUM突破8亿元，获总行“金牌顾问”称号。"
+      }
+    ],
+    "education": [
+      {
+        "school": "北京大学光华管理学院",
+        "date": "2009 – 2011"
+      },
+      {
+        "school": "复旦大学经济学院",
+        "date": "2005 – 2009"
+      }
+    ],
+    "languages": [
+      {
+        "name": "中文",
+        "level": "母语"
+      },
+      {
+        "name": "英语",
+        "level": "专业工作水平"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "summary",
+      "label": "专业摘要",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

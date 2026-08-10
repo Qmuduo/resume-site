@@ -3,22 +3,21 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch, watchEffect
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 
-import SchemaForm from '@/components/SchemaForm.vue'
+import CommonForm from '@/components/CommonForm.vue'
+import TemplateFieldsForm from '@/components/TemplateFieldsForm.vue'
+import TemplateSwitcher from '@/components/TemplateSwitcher.vue'
 import { fetchTemplates } from '@/api/template'
-import { createResume, fetchResume, updateResume } from '@/api/resume'
-import { renderTemplate, sanitizeCss } from '@/template-engine'
+import { buildViewModel, renderStaticTemplate, renderTemplate, sanitizeCss } from '@/template-engine'
 import { usePageScale } from '@/composables/usePageScale'
-import type { ResumeTemplate, SchemaNode } from '@/types'
+import { useResumeStore } from '@/stores/resumeStore'
+import type { ResumeTemplate } from '@/types'
 
 const route = useRoute()
 const router = useRouter()
+const store = useResumeStore()
 
 const templates = ref<ResumeTemplate[]>([])
-const selectedCode = ref('')
-const title = ref('')
-const form = ref<Record<string, unknown>>({})
 const loading = ref(false)
-const saving = ref(false)
 const previewRef = ref<HTMLElement | null>(null)
 const previewContentRef = ref<HTMLElement | null>(null)
 let previewStyleEl: HTMLStyleElement | null = null
@@ -28,14 +27,27 @@ const { viewportStyle, scalerStyle } = usePageScale(previewRef, previewContentRe
 const editId = computed(() => (typeof route.params.id === 'string' ? route.params.id : undefined))
 
 const selectedTemplate = computed(
-  () => templates.value.find((tpl) => tpl.code === selectedCode.value) ?? null
+  () => templates.value.find((tpl) => tpl.code === store.currentTemplateId) ?? null
 )
 
-const previewHtml = computed(() =>
-  selectedTemplate.value
-    ? renderTemplate(selectedTemplate.value, form.value, { resumeTitle: title.value })
-    : ''
-)
+const currentTemplateId = computed({
+  get: () => store.currentTemplateId ?? '',
+  set: () => {
+    // 切换经 TemplateSwitcher 的确认流程处理
+  }
+})
+
+const previewHtml = computed(() => {
+  const tpl = selectedTemplate.value
+  if (!tpl) return ''
+  const manifest = tpl.manifest
+  if (manifest?.renderMode === 'static') {
+    return renderStaticTemplate(tpl, store.commonData, store.extendedData)
+  }
+  return renderTemplate(tpl, buildViewModel(store.commonData, store.extendedData, manifest), {
+    resumeTitle: store.title
+  })
+})
 
 const previewCss = computed(() => sanitizeCss(selectedTemplate.value?.css ?? ''))
 
@@ -44,9 +56,9 @@ watchEffect(syncPreviewStyle)
 onMounted(() => {
   previewStyleEl = document.createElement('style')
   syncPreviewStyle()
+  init()
 })
 
-// 预览容器是异步加载后才渲染的，等它出现再把模板样式元素挂进去
 watch(previewRef, async (el) => {
   if (el && previewStyleEl && !previewStyleEl.isConnected) {
     el.appendChild(previewStyleEl)
@@ -60,8 +72,6 @@ onBeforeUnmount(() => {
   previewStyleEl = null
 })
 
-onMounted(init)
-
 function syncPreviewStyle() {
   if (previewStyleEl) {
     previewStyleEl.textContent = previewCss.value
@@ -72,22 +82,19 @@ async function init() {
   loading.value = true
   try {
     templates.value = await fetchTemplates()
-    if (templates.value.length > 0 && !selectedCode.value) {
-      selectedCode.value = templates.value[0].code
-    }
     if (editId.value) {
-      const resume = await fetchResume(editId.value)
-      title.value = resume.title
-      if (resume.templateCode) {
-        selectedCode.value = resume.templateCode
+      await store.load(editId.value)
+      if (!store.currentTemplateId && templates.value.length > 0) {
+        store.currentTemplateId = templates.value[0].code
       }
-      form.value = mergeDefaults(selectedTemplate.value?.schema ?? {}, parseData(resume.data))
     } else {
       const fromQuery = typeof route.query.template === 'string' ? route.query.template : ''
-      if (fromQuery && templates.value.some((tpl) => tpl.code === fromQuery)) {
-        selectedCode.value = fromQuery
-      }
-      form.value = mergeDefaults(selectedTemplate.value?.schema ?? {}, {})
+      const initial = templates.value.some((tpl) => tpl.code === fromQuery)
+        ? fromQuery
+        : templates.value[0]?.code ?? ''
+      store.reset()
+      store.title = ''
+      store.currentTemplateId = initial
     }
   } catch {
     ElMessage.error('加载失败')
@@ -96,78 +103,31 @@ async function init() {
   }
 }
 
-function onTemplateChange() {
-  const tpl = selectedTemplate.value
-  if (tpl) {
-    form.value = mergeDefaults(tpl.schema, form.value)
+async function onSwitchTemplate(newTemplateId: string) {
+  try {
+    await store.switchTemplate(newTemplateId)
+    ElMessage.success('已切换模板，数据已保留')
+  } catch (error) {
+    ElMessage.error('切换模板失败')
   }
 }
 
 async function save() {
-  if (!title.value.trim()) {
+  if (!store.title.trim()) {
     ElMessage.warning('请填写简历标题')
     return
   }
-  if (!selectedCode.value) {
+  if (!store.currentTemplateId) {
     ElMessage.warning('请先选择模板')
     return
   }
-  saving.value = true
   try {
-    const payload = {
-      title: title.value.trim(),
-      templateCode: selectedCode.value,
-      data: JSON.stringify(form.value)
-    }
-    if (editId.value) {
-      await updateResume(editId.value, payload)
-      ElMessage.success('已保存')
-    } else {
-      await createResume(payload)
-      ElMessage.success('已保存')
-    }
+    await store.save()
+    ElMessage.success('已保存')
     await router.replace('/resumes')
   } catch {
     ElMessage.error('保存失败')
-  } finally {
-    saving.value = false
   }
-}
-
-function parseData(raw: unknown): Record<string, unknown> {
-  if (raw !== null && typeof raw === 'object' && !Array.isArray(raw)) {
-    return raw as Record<string, unknown>
-  }
-  if (typeof raw === 'string') {
-    try {
-      const parsed = JSON.parse(raw)
-      return parsed !== null && typeof parsed === 'object' && !Array.isArray(parsed)
-        ? (parsed as Record<string, unknown>)
-        : {}
-    } catch {
-      return {}
-    }
-  }
-  return {}
-}
-
-function mergeDefaults(schema: SchemaNode, base: Record<string, unknown>): Record<string, unknown> {
-  const result: Record<string, unknown> = {}
-  for (const [key, sub] of Object.entries(schema.properties ?? {})) {
-    const current = base[key]
-    if (sub.type === 'object') {
-      const nested =
-        current !== null && typeof current === 'object' && !Array.isArray(current)
-          ? (current as Record<string, unknown>)
-          : {}
-      result[key] = mergeDefaults(sub, nested)
-    } else if (sub.type === 'array') {
-      result[key] = Array.isArray(current) ? current : []
-    } else {
-      result[key] = typeof current === 'string' ? current : ''
-    }
-  }
-  return result
 }
 </script>
 
@@ -177,21 +137,23 @@ function mergeDefaults(schema: SchemaNode, base: Record<string, unknown>): Recor
     <template v-else>
       <header class="editor-header">
         <h1>{{ editId ? '编辑简历' : '新建简历' }}</h1>
-        <el-select
-          v-model="selectedCode"
-          class="template-select"
-          placeholder="选择模板"
-          @change="onTemplateChange"
-        >
-          <el-option v-for="tpl in templates" :key="tpl.code" :label="tpl.name" :value="tpl.code" />
-        </el-select>
-        <el-input v-model="title" class="title-input" placeholder="简历标题" />
-        <el-button type="primary" :loading="saving" @click="save">保存</el-button>
+        <TemplateSwitcher
+          v-model="currentTemplateId"
+          :templates="templates"
+          :loading="store.switching"
+          @switch="onSwitchTemplate"
+        />
+        <el-input v-model="store.title" class="title-input" placeholder="简历标题" />
+        <el-button type="primary" :loading="store.saving" @click="save">保存</el-button>
         <el-button @click="router.push('/resumes')">返回列表</el-button>
       </header>
       <div v-if="selectedTemplate" class="editor-body">
         <section class="editor-form">
-          <SchemaForm :schema="selectedTemplate.schema" :model="form" />
+          <CommonForm :model="store.commonData" />
+          <TemplateFieldsForm
+            :manifest="selectedTemplate.manifest ?? null"
+            :model="store.extendedData"
+          />
         </section>
         <section ref="previewRef" class="editor-preview">
           <div class="preview-viewport" :style="viewportStyle">
@@ -201,7 +163,7 @@ function mergeDefaults(schema: SchemaNode, base: Record<string, unknown>): Recor
           </div>
         </section>
       </div>
-      <p v-else>暂无可用模板</p>
+      <p v-else>暂无可选模板</p>
     </template>
   </main>
 </template>
@@ -222,10 +184,7 @@ function mergeDefaults(schema: SchemaNode, base: Record<string, unknown>): Recor
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
-}
-
-.template-select {
-  width: 180px;
+  flex-wrap: wrap;
 }
 
 .title-input {
@@ -234,7 +193,7 @@ function mergeDefaults(schema: SchemaNode, base: Record<string, unknown>): Recor
 
 .editor-body {
   display: grid;
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: 440px 1fr;
   gap: 16px;
   align-items: start;
 }
@@ -244,6 +203,8 @@ function mergeDefaults(schema: SchemaNode, base: Record<string, unknown>): Recor
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 16px;
+  max-height: calc(100vh - 140px);
+  overflow: auto;
 }
 
 .editor-preview {

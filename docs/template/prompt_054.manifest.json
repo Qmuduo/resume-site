@@ -1,0 +1,236 @@
+{
+  "templateId": "prompt_054",
+  "name": "张明远 · 房地产招商高级经理简历",
+  "sourceFile": "prompt_054.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "个人简介",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".job-title",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "summary",
+      "selector": ".accent-text",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    }
+  ],
+  "sampleData": {
+    "name": "张明远",
+    "title": "| 高级招商经理",
+    "phone": "(86) 138-1025-7789",
+    "email": "✉️ mingyuan.zhang@realestate.cn",
+    "location": "上海市浦东新区",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "🔗 linkedin.com/in/mingyuanzhang"
+      }
+    ],
+    "summary": "资深商业地产招商专家，聚焦 大型购物中心与甲级写字楼 全周期招商运营。曾主导累计 38万㎡ 商业面积招商，实现平均出租率 94% ，引入首进品牌占比超 25% 。擅长通过市场数据分析制定租金策略，为资产增值提供决策支持。",
+    "skills": [
+      {
+        "name": "租户组合策略",
+        "level": ""
+      },
+      {
+        "name": "租金测算模型",
+        "level": ""
+      },
+      {
+        "name": "主力店招商",
+        "level": ""
+      },
+      {
+        "name": "租赁谈判",
+        "level": ""
+      },
+      {
+        "name": "资产提升计划",
+        "level": ""
+      },
+      {
+        "name": "租户关系管理",
+        "level": ""
+      },
+      {
+        "name": "财务回报分析",
+        "level": ""
+      },
+      {
+        "name": "团队领导",
+        "level": ""
+      }
+    ],
+    "experiences": [
+      {
+        "position": "| 高级招商经理",
+        "date": "2020.06 – 至今"
+      },
+      {
+        "position": "| 招商经理",
+        "date": "2016.03 – 2020.05"
+      },
+      {
+        "position": "| 招商主管",
+        "date": "2014.07 – 2016.02"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "summary",
+      "label": "专业摘要",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

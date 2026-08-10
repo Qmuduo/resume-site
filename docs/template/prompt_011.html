@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-color-adjust: exact;">
+  <title>张正阳 · 人力资源总监 HRBP</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eef2f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', '思源黑体', 'Noto Sans SC', sans-serif;
+    }
+
+    /* A4尺寸卡片，模拟简历纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .page {
+      width: 100%;
+      padding: 1.2in 1in 1in 1in; /* 上下1.2英寸，左右1英寸，呼吸感充足 */
+      background: #ffffff;
+      color: #2d3748;
+      line-height: 1.5;
+      font-size: 10.5pt;
+      position: relative;
+    }
+
+    /* 排版核心：左对齐为主，清晰的信息层级 */
+    h1, h2, h3, p, ul, li, div {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 28px;
+    }
+
+    .name {
+      font-size: 28pt;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #1a2b4c; /* 深蓝主色 */
+      line-height: 1.2;
+      margin-bottom: 6px;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    .title-line {
+      font-size: 13pt;
+      font-weight: 500;
+      color: #2d3748;
+      margin-bottom: 16px;
+      letter-spacing: 0.3px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      font-size: 10pt;
+      color: #4a5568;
+      margin-top: 14px;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* 图标使用简单字符，行内展示，无图形干扰 */
+    .icon {
+      font-size: 11pt;
+      color: #1a2b4c;
+      font-weight: 400;
+      width: 18px;
+      display: inline-block;
+    }
+
+    /* 分割线 - 纯css边框，安全 */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: #cbd5e0;
+      margin: 22px 0 20px 0;
+      border: none;
+    }
+
+    .accent-line {
+      width: 50px;
+      height: 2.5px;
+      background: #1a2b4c;
+      margin-top: 6px;
+      margin-bottom: 18px;
+      border: none;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 12pt;
+      font-weight: 700;
+      color: #1a2b4c;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    /* 工作经历条目 - 严格左对齐，时间右对齐 */
+    .experience-item {
+      margin-bottom: 20px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 11pt;
+      color: #1a202c;
+    }
+
+    .job-title {
+      font-weight: 600;
+      font-size: 10.5pt;
+      color: #2d3748;
+      margin-left: 8px;
+    }
+
+    .date-range {
+      font-size: 10pt;
+      color: #4a5568;
+      font-weight: 400;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    /* 描述列表 - 使用标准圆点 */
+    .bullet-list {
+      margin-top: 8px;
+      padding-left: 18px;
+    }
+
+    .bullet-list li {
+      list-style-type: disc;
+      margin-bottom: 6px;
+      color: #2d3748;
+      font-size: 10pt;
+      line-height: 1.5;
+      padding-left: 2px;
+    }
+
+    /* 技能标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      margin-top: 6px;
+    }
+
+    .skill-group {
+      margin-bottom: 8px;
+      min-width: 160px;
+    }
+
+    .skill-label {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: #1a2b4c;
+      margin-bottom: 6px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: #f1f5f9;
+      color: #1a202c;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 9.5pt;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* 教育/认证区块 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: #1a202c;
+    }
+
+    .edu-school {
+      font-weight: 500;
+      color: #2d3748;
+      margin-left: 6px;
+    }
+
+    .edu-date {
+      font-size: 10pt;
+      color: #4a5568;
+      margin-left: auto;
+    }
+
+    /* 专业认证单独样式 */
+    .cert-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    .cert-item {
+      font-size: 10pt;
+      color: #2d3748;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .cert-item strong {
+      color: #1a2b4c;
+      margin-right: 6px;
+      font-weight: 700;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 18px 0 16px 0;
+    }
+
+    /* 打印样式：确保无背景、边距正常、颜色保留 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        max-width: 100%;
+        width: 100%;
+        border-radius: 0;
+      }
+      .page {
+        padding: 0.9in 0.8in 0.9in 0.8in;
+        box-shadow: none;
+      }
+      .tag {
+        background: #f1f5f9;
+        border: 1px solid #cbd5e0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .accent-line {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    /* 针对小屏幕适配 */
+    @media screen and (max-width: 700px) {
+      .page {
+        padding: 1in 0.6in;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="page">
+      
+      <!-- 姓名与标题区域 -->
+      <div class="name-section">
+        <h1 class="name">张正阳</h1>
+        <div class="title-line">人力资源总监 | HRBP 负责人</div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="icon">📞</span> (86) 138-0000-1234</span>
+          <span class="contact-item"><span class="icon">✉️</span> zhangzy@hrbp.pro</span>
+          <span class="contact-item"><span class="icon">📍</span> 上海 · 中国</span>
+          <span class="contact-item"><span class="icon">🔗</span> linkedin.com/in/zheng yang</span>
+        </div>
+      </div>
+      
+      <div class="accent-line"></div>
+
+      <!-- 专业摘要 -->
+      <div style="margin-bottom: 22px;">
+        <div class="section-title">专业摘要</div>
+        <p style="font-size: 10pt; color: #2d3748; line-height: 1.6;">
+          10年人力资源全盘管理经验，其中5年HRBP总监经验。曾主导组织变革、人才梯队搭建及并购后文化融合。
+          擅长通过人力数据分析驱动业务决策，累计支持过2000+人规模企业。持有SHRM-SCP及中级经济师（人力资源）认证。
+        </p>
+      </div>
+
+      <!-- 核心经验 -->
+      <div>
+        <div class="section-title">核心经验</div>
+        <div class="experience-item">
+          <div class="exp-header">
+            <span class="company-name">云帆科技集团</span>
+            <span class="job-title">人力资源总监 / HRBP Head</span>
+            <span class="date-range">2020.04 – 至今</span>
+          </div>
+          <ul class="bullet-list">
+            <li>领导8人HRBP团队，支持集团3大事业群（研发、营销、职能），覆盖员工1200+人。</li>
+            <li>主导组织架构扁平化调整，推动关键人才盘点与继任计划，高管岗位内部填充率提升35%。</li>
+            <li>设计并落地“领航者”中层管理者发展项目，一年内晋升合格率92%，获CEO特别奖。</li>
+            <li>搭建人力数据看板，将离职率从18%降至11.5%，关键人才保留率提高至89%。</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <span class="company-name">智维咨询</span>
+            <span class="job-title">高级人力资源业务伙伴</span>
+            <span class="date-range">2017.09 – 2020.03</span>
+          </div>
+          <ul class="bullet-list">
+            <li>对接金融科技与数字化业务线，为300+人团队提供全方位HR解决方案。</li>
+            <li>配合业务并购整合，完成2家被投企业的人力资源体系迁移与文化融合，员工满意度维持82%以上。</li>
+            <li>重塑绩效管理体系，从KPI转向OKR+360评估，推动业务部门季度目标达成率提高22%。</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <span class="company-name">华瑞集团</span>
+            <span class="job-title">人力资源经理（HRBP）</span>
+            <span class="date-range">2014.06 – 2017.08</span>
+          </div>
+          <ul class="bullet-list">
+            <li>负责制造与供应链部门HRBP工作，管理员工关系、招聘及培训模块。</li>
+            <li>推行技能矩阵与多能工培养计划，关键岗位备份覆盖率从45%提升至78%。</li>
+            <li>年度人力成本预算管控偏差控制在±3%以内，通过优化排班节省人力成本约120万/年。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div style="margin-top: 24px;">
+        <div class="section-title">教育背景</div>
+        <div class="edu-item">
+          <span class="edu-degree">MBA · 人力资源管理方向</span>
+          <span class="edu-school">复旦大学管理学院</span>
+          <span class="edu-date">2012 – 2014</span>
+        </div>
+        <div class="edu-item">
+          <span class="edu-degree">文学学士 · 心理学</span>
+          <span class="edu-school">华东师范大学</span>
+          <span class="edu-date">2008 – 2012</span>
+        </div>
+      </div>
+
+      <!-- 专业认证与技能组合 -->
+      <div style="margin-top: 22px;">
+        <div class="section-title">专业认证</div>
+        <div class="cert-list">
+          <div class="cert-item"><strong>SHRM-SCP</strong> (美国人力资源管理协会高级认证)</div>
+          <div class="cert-item"><strong>中级经济师</strong> (人力资源方向)</div>
+          <div class="cert-item"><strong>DDI 认证讲师</strong> · 领导力发展</div>
+          <div class="cert-item"><strong>Hogan 测评认证</strong></div>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- 技能专长 - 标签式排列，清晰可读 -->
+      <div>
+        <div class="section-title">核心能力</div>
+        <div class="skills-container">
+          <div class="skill-group">
+            <div class="skill-label">战略伙伴</div>
+            <div class="skill-tags">
+              <span class="tag">组织设计</span>
+              <span class="tag">人才规划</span>
+              <span class="tag">变革管理</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">HR 专业</div>
+            <div class="skill-tags">
+              <span class="tag">绩效体系</span>
+              <span class="tag">薪酬策略</span>
+              <span class="tag">员工关系</span>
+              <span class="tag">人力分析</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">工具与系统</div>
+            <div class="skill-tags">
+              <span class="tag">Workday</span>
+              <span class="tag">SAP HR</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">飞书/钉钉</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 语言能力与其他 (简洁处理) -->
+      <div style="margin-top: 20px; display: flex; gap: 40px; flex-wrap: wrap; font-size: 10pt; color: #2d3748;">
+        <div><strong style="color:#1a2b4c;">语言：</strong>中文(母语) · 英语(商务流利)</div>
+        <div><strong style="color:#1a2b4c;">行业聚焦：</strong>科技/互联网 · 金融科技 · 专业服务</div>
+      </div>
+
+      <!-- 极简装饰性元素：底部细线，无干扰 -->
+      <div style="margin-top: 30px; border-top: 1px solid #e2e8f0; padding-top: 8px; font-size: 8.5pt; color: #a0aec0; text-align: left;">
+        持续学习者 · 数据驱动决策 · 业务导向思维
+      </div>
+    </div>
+  </div>
+</body>
+</html>

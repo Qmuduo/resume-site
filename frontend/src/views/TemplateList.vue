@@ -4,8 +4,9 @@ import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 
 import { fetchTemplates } from '@/api/template'
-import { renderTemplate, sanitizeCss } from '@/template-engine'
+import { renderStaticTemplate, renderTemplate, sanitizeCss } from '@/template-engine'
 import { useUserStore } from '@/stores/userStore'
+import { emptyCommonData } from '@/stores/resumeStore'
 import type { ResumeTemplate, SchemaNode } from '@/types'
 
 const route = useRoute()
@@ -133,7 +134,11 @@ function onPreviewClosed() {
 }
 
 const previewHtml = computed(() =>
-  previewTpl.value ? renderTemplate(previewTpl.value, buildSampleData(previewTpl.value.schema)) : ''
+  previewTpl.value
+    ? previewTpl.value.manifest?.renderMode === 'static'
+      ? renderStaticTemplate(previewTpl.value, emptyCommonData(), {})
+      : renderTemplate(previewTpl.value, buildSampleData(previewTpl.value.schema ?? {}))
+    : ''
 )
 
 function buildSampleData(schema: SchemaNode): Record<string, unknown> {

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>陈恪 · 薪酬绩效高级经理简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --page-width: 210mm;
+      --page-bg: #ffffff;
+      --text-primary: #1e1e1e;
+      --text-secondary: #2d2d2d;
+      --text-muted: #4a4a4a;
+      --border-light: #d0d0d0;
+      --accent-dark: #1a1a1a;
+      --accent-soft: #5a5a5a;
+      --rule-color: #2c2c2c;
+      --tag-bg: #f3f3f3;
+      --white: #ffffff;
+    }
+
+    body {
+      background: #e5e5e5;
+      font-family: 'Arial', 'Helvetica', '思源黑体', 'Noto Sans SC', system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      margin: 0;
+      line-height: 1.5;
+      color: var(--text-primary);
+    }
+
+    /* 简历卡片：模拟A4纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: var(--white);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      margin: 0 auto;
+      padding: 19mm 18mm 18mm 18mm;  /* 舒适页边距，上下左右均不小于0.5英寸 */
+      position: relative;
+      page-break-after: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* 纯文本排版，无浮动多栏，完全线性结构 */
+    .resume-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ----- 姓名区域：严谨稳重，黑灰调 ----- */
+    .name-section {
+      margin-bottom: 10px;
+    }
+
+    .name {
+      font-size: 32pt;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #1a1a1a;
+      line-height: 1.1;
+      font-family: 'Arial', 'Helvetica', '思源黑体', sans-serif;
+      margin-bottom: 4px;
+    }
+
+    .title-line {
+      font-size: 13pt;
+      font-weight: 400;
+      color: #3d3d3d;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #2c2c2c;
+      padding-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .title-text {
+      font-weight: 500;
+      color: #1f1f1f;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 10.5pt;
+      color: #2d2d2d;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      font-weight: 400;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    /* 简单线性图标，纯文本符号替代 */
+    .icon-symbol {
+      font-weight: 500;
+      color: #3a3a3a;
+      margin-right: 2px;
+    }
+
+    /* 全局分割线 */
+    .section-divider {
+      border: none;
+      border-top: 1.5px solid #b0b0b0;
+      margin: 20px 0 16px 0;
+      opacity: 0.9;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 13pt;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #1a1a1a;
+      margin-bottom: 14px;
+      border-bottom: 1px solid #9e9e9e;
+      padding-bottom: 5px;
+      font-family: 'Arial', 'Helvetica', '思源黑体', sans-serif;
+    }
+
+    /* 工作经历条目 - 完全左对齐，时间右对齐通过flex实现 */
+    .experience-item {
+      margin-bottom: 18px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 5px;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 12.5pt;
+      color: #1a1a1a;
+      letter-spacing: 0.3px;
+    }
+
+    .job-title {
+      font-weight: 600;
+      font-size: 11.5pt;
+      color: #2d2d2d;
+      margin-left: 8px;
+    }
+
+    .date-range {
+      font-weight: 400;
+      font-size: 10.5pt;
+      color: #4a4a4a;
+      white-space: nowrap;
+      margin-left: auto;
+      text-align: right;
+    }
+
+    /* 描述要点：标准圆点符号 */
+    .bullet-list {
+      list-style: none;
+      margin-top: 6px;
+      padding-left: 0;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 5px;
+      font-size: 10.5pt;
+      color: #2d2d2d;
+      line-height: 1.6;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #2c2c2c;
+      font-weight: 600;
+      font-size: 11pt;
+    }
+
+    /* 技能标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .skill-tag {
+      background: #f0f0f0;
+      color: #1e1e1e;
+      padding: 5px 14px;
+      font-size: 10.5pt;
+      border: 1px solid #c6c6c6;
+      letter-spacing: 0.3px;
+      font-weight: 500;
+      background: #f5f5f5;
+    }
+
+    /* 教育经历简单排列 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 11pt;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .edu-school {
+      font-weight: 500;
+      color: #2d2d2d;
+    }
+
+    .edu-date {
+      color: #4a4a4a;
+      font-weight: 400;
+    }
+
+    /* 证书与语言两栏纯文本列表（不使用浮动，用flex列） */
+    .two-column-text {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 6px;
+    }
+
+    .column {
+      flex: 1 1 180px;
+      list-style: none;
+    }
+
+    .column li {
+      margin-bottom: 7px;
+      font-size: 10.5pt;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .column li::before {
+      content: "•";
+      margin-right: 8px;
+      color: #2c2c2c;
+      font-weight: 600;
+    }
+
+    /* 项目经历样式与工作经历保持一致 */
+    .project-item {
+      margin-bottom: 16px;
+    }
+
+    /* 打印样式：完全隐藏背景，保留纯文本清晰度 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        margin: 0 auto;
+        padding: 18mm 18mm 18mm 18mm;
+        width: 100%;
+        max-width: 100%;
+      }
+      .skill-tag {
+        background: none;
+        border: 1px solid #aaa;
+      }
+      .section-divider {
+        border-color: #666;
+      }
+      /* 隐藏交互元素（无按钮链接等） */
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .contact-item {
+        color: #1e1e1e;
+      }
+    }
+
+    /* 保持所有文本可选 */
+    .resume, .resume * {
+      user-select: text;
+    }
+
+    .inline-highlight {
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-content">
+      
+      <!-- 姓名与头衔区域 -->
+      <div class="name-section">
+        <div class="name">陈 恪</div>
+        <div class="title-line">
+          <span class="title-text">薪酬绩效高级经理</span>
+          <span style="font-weight:400; color:#3d3d3d;">10+年经验</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="icon-symbol">✆</span> (86) 139-1028-4572</span>
+          <span class="contact-item"><span class="icon-symbol">✉</span> chen.ke@comp-strategy.cn</span>
+          <span class="contact-item"><span class="icon-symbol">⌂</span> 北京 · 朝阳</span>
+          <span class="contact-item"><span class="icon-symbol">🔗</span> linkedin.com/in/chenke-comp</span>
+        </div>
+      </div>
+      
+      <hr class="section-divider">
+
+      <!-- 核心优势 / 专业摘要 -->
+      <div>
+        <div class="section-title">专业摘要</div>
+        <div style="font-size: 10.5pt; color: #2d2d2d; margin-bottom: 8px; line-height: 1.7;">
+          资深薪酬绩效专家，8年上市集团与独角兽企业薪酬体系搭建经验。擅长长期激励设计、人力成本效能分析及绩效变革落地。曾主导万人规模薪酬重构，实现人效提升<span class="inline-highlight">22%</span>。猎头推荐率行业前5%，多次受邀为红杉被投企业提供薪酬诊断。
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 工作经历 -->
+      <div>
+        <div class="section-title">工作经历</div>
+        
+        <!-- 经历1 -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company-name">华瑞资本控股集团</span> <span class="job-title">| 薪酬绩效高级经理</span></span>
+            <span class="date-range">2022.04 – 至今</span>
+          </div>
+          <ul class="bullet-list">
+            <li>从0到1搭建集团及3家子公司薪酬职级体系，覆盖员工1200+人，引入宽带薪酬与岗位价值评估，内部公平性提升35%。</li>
+            <li>设计合伙人长期激励计划（虚拟股权+递延分红），关键人才保留率同比提高28%。</li>
+            <li>主导绩效变革，落地OKR+KPI混合模式，联动薪酬调整与晋升，年度人力成本有效性提升18%。</li>
+            <li>搭建人力数据看板，实现薪酬成本、人效、离职率的动态监控，为高管层提供月度决策建议。</li>
+          </ul>
+        </div>
+        
+        <!-- 经历2 -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company-name">智达咨询（麦肯锡合作伙伴）</span> <span class="job-title">| 薪酬绩效经理</span></span>
+            <span class="date-range">2019.08 – 2022.02</span>
+          </div>
+          <ul class="bullet-list">
+            <li>为7家高成长企业（含红杉被投项目）提供薪酬诊断与绩效重构，客户续约率92%。</li>
+            <li>设计销售团队阶梯提成+目标奖金方案，某客户年度营收增长41%，销售离职率下降20%。</li>
+            <li>撰写行业薪酬白皮书，建立岗位对标数据库，应用于互联网、智能制造等行业。</li>
+            <li>领导4人分析团队，交付周期缩短30%，获内部卓越顾问奖。</li>
+          </ul>
+        </div>
+
+        <!-- 经历3 -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company-name">蓝海科技集团</span> <span class="job-title">| 薪酬福利主管</span></span>
+            <span class="date-range">2016.07 – 2019.07</span>
+          </div>
+          <ul class="bullet-list">
+            <li>管理月度薪酬核算与发放，准确率100%，并优化流程使发放周期缩短2个工作日。</li>
+            <li>参与年度调薪与奖金分配，基于绩效矩阵与Compa-Ratio分析，预算偏差控制在3%以内。</li>
+            <li>引入弹性福利平台，员工满意度提升至87分，同时福利成本下降6%。</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 项目亮点（强化猎头关注点） -->
+      <div>
+        <div class="section-title">核心项目</div>
+        <div class="project-item">
+          <div class="exp-header">
+            <span><span class="company-name">集团薪酬重构与长期激励</span> <span class="job-title">| 项目负责人</span></span>
+            <span class="date-range">2023.01 – 2023.09</span>
+          </div>
+          <ul class="bullet-list">
+            <li>对标行业75分位，重新设计24级薪酬带宽，推动全员薪酬套改，零劳动纠纷完成过渡。</li>
+            <li>设计高管递延支付与任期激励，直接关联战略里程碑，首年核心高管零流失。</li>
+          </ul>
+        </div>
+        <div class="project-item">
+          <div class="exp-header">
+            <span><span class="company-name">人效提升专项</span> <span class="job-title">| 变革推动者</span></span>
+            <span class="date-range">2022.09 – 2022.12</span>
+          </div>
+          <ul class="bullet-list">
+            <li>通过岗位整合与绩效校准，识别低效单元，优化人力配置，年度人力成本节省约2100万。</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 教育背景 -->
+      <div>
+        <div class="section-title">教育背景</div>
+        <div class="edu-item">
+          <span><span class="edu-degree">中国人民大学</span> · <span class="edu-school">劳动经济学 硕士</span></span>
+          <span class="edu-date">2014 – 2016</span>
+        </div>
+        <div class="edu-item">
+          <span><span class="edu-degree">北京工商大学</span> · <span class="edu-school">人力资源管理 学士</span></span>
+          <span class="edu-date">2010 – 2014</span>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 技能与资质：使用标签式 + 部分双栏文本列表 -->
+      <div>
+        <div class="section-title">专业能力</div>
+        <div class="skills-container">
+          <span class="skill-tag">薪酬体系搭建</span>
+          <span class="skill-tag">长期激励设计</span>
+          <span class="skill-tag">绩效变革(KPI/OKR)</span>
+          <span class="skill-tag">人力成本分析</span>
+          <span class="skill-tag">岗位价值评估</span>
+          <span class="skill-tag">HR数据分析</span>
+          <span class="skill-tag">薪酬套改</span>
+          <span class="skill-tag">股权激励</span>
+        </div>
+        <div style="margin-top: 18px; display: flex; flex-wrap: wrap; gap: 40px;">
+          <div style="flex:1;">
+            <div style="font-weight:700; font-size:11pt; color:#1a1a1a; margin-bottom:6px;">工具 & 系统</div>
+            <ul class="bullet-list" style="margin-top:0;">
+              <li>SAP SuccessFactors / 用友DHR</li>
+              <li>Advanced Excel (建模与仪表板)</li>
+              <li>Tableau / Power BI 数据可视化</li>
+            </ul>
+          </div>
+          <div style="flex:1;">
+            <div style="font-weight:700; font-size:11pt; color:#1a1a1a; margin-bottom:6px;">认证与语言</div>
+            <ul class="bullet-list" style="margin-top:0;">
+              <li>CCP（注册薪酬专家）</li>
+              <li>GRP（全球薪酬专家）在读</li>
+              <li>英语 CET-6 · 商务沟通流利</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 猎头关注：关键数据与影响力 -->
+      <div style="margin-top: 6px;">
+        <div class="section-title">行业影响力</div>
+        <div style="font-size: 10.5pt; color: #2d2d2d; display: flex; flex-wrap: wrap; gap: 28px;">
+          <span>📊 主导薪酬调研报告3份</span>
+          <span>🎤 薪酬趋势分享嘉宾 (2024)</span>
+          <span>🤝 红杉/高瓴被投企业顾问</span>
+        </div>
+        <div style="margin-top: 12px; font-size: 10pt; color: #4a4a4a; border-top: 1px dashed #b0b0b0; padding-top: 10px;">
+          持续通过猎头与行业人脉关注高级管理机会，偏好成长期与变革型企业。
+        </div>
+      </div>
+      
+      <!-- 没有任何图形叠加，纯文本线性结构，完全符合ATS安全标准 -->
+    </div>
+  </div>
+</body>
+</html>

@@ -29,8 +29,11 @@ CREATE TABLE IF NOT EXISTS resume (
     user_id     BIGINT       NOT NULL COMMENT '所属用户',
     template_id BIGINT       NULL COMMENT '使用的模板',
     template_code VARCHAR(64) NULL COMMENT '内置模板编码（resources/templates/*.json 的 code）',
+    current_template_id VARCHAR(64) NULL COMMENT '当前模板ID（template.code）',
     title       VARCHAR(128) NOT NULL COMMENT '简历标题',
-    data        JSON         NOT NULL COMMENT '简历内容（JSON）',
+    data        JSON         NULL COMMENT '旧版单列数据（v2 后建议用 common_data / extended_data 代替）',
+    common_data JSON         NULL COMMENT '公共数据（ResumeCommonData 结构）',
+    extended_data JSON       NULL COMMENT '模板专属数据（key-value）',
     status      TINYINT      NOT NULL DEFAULT 0 COMMENT '状态：0 草稿 / 1 已发布',
     created_at  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     updated_at  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
@@ -53,6 +56,18 @@ CREATE TABLE IF NOT EXISTS template (
     PRIMARY KEY (id),
     UNIQUE KEY uk_template_code (code)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = '简历模板表';
+
+CREATE TABLE IF NOT EXISTS template_config (
+    id            BIGINT      NOT NULL COMMENT '主键（MyBatis-Plus ASSIGN_ID 生成）',
+    template_id   BIGINT      NULL COMMENT '关联 template.id',
+    template_code VARCHAR(64) NOT NULL COMMENT '模板编码（template.code）',
+    manifest      JSON        NOT NULL COMMENT 'manifest：字段定义、映射关系、示例数据',
+    status        TINYINT     NOT NULL DEFAULT 0 COMMENT '状态：0 待人工确认 / 1 已确认 / 2 停用',
+    created_at    DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    updated_at    DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    PRIMARY KEY (id),
+    UNIQUE KEY uk_template_config_code (template_code)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = '简历模板配置表（manifest）';
 
 CREATE TABLE IF NOT EXISTS ai_session (
     id            BIGINT      NOT NULL COMMENT '主键',

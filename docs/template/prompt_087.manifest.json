@@ -1,0 +1,148 @@
+{
+  "templateId": "prompt_087",
+  "name": "前端开发工程师 · 简历",
+  "sourceFile": "prompt_087.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": "h1",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-item"
+    },
+    {
+      "commonPath": "experiences",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "工作经历",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "projects",
+      "selector": ".project-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "project-item"
+    }
+  ],
+  "sampleData": {
+    "name": "❯ 陈亦凡",
+    "skills": [
+      {
+        "name": "TypeScript",
+        "level": ""
+      },
+      {
+        "name": "React 18",
+        "level": ""
+      },
+      {
+        "name": "Next.js",
+        "level": ""
+      },
+      {
+        "name": "Vue3",
+        "level": ""
+      },
+      {
+        "name": "Tailwind CSS",
+        "level": ""
+      },
+      {
+        "name": "Node.js",
+        "level": ""
+      },
+      {
+        "name": "GraphQL",
+        "level": ""
+      },
+      {
+        "name": "Jest/Cypress",
+        "level": ""
+      },
+      {
+        "name": "Webpack/Vite",
+        "level": ""
+      },
+      {
+        "name": "Git/GitHub Actions",
+        "level": ""
+      },
+      {
+        "name": "Docker(基础)",
+        "level": ""
+      }
+    ],
+    "experiences": [
+      {
+        "description": "主导开发公司核心SaaS面板，基于React+TypeScript重构模块，首屏加载时间减少32%。"
+      },
+      {
+        "description": "参与电商中台项目，使用Vue3+Pinia搭建商品管理模块，完成动态表单与权限控制。"
+      }
+    ],
+    "projects": [
+      {
+        "description": "终端风格个人主页，基于Next.js与MDX，支持命令行交互。GitHub Stars 240+，被Awesome列表收录。"
+      },
+      {
+        "description": "轻量级代码预览组件，支持语法高亮与差异对比。npm周下载量1.2k，用于技术博客与文档站。"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

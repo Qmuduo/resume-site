@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-color-adjust: exact;">
+  <title>陈思远 · 课程产品经理简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #E5E7EB;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Arial', 'Helvetica Neue', 'Calibri', '思源黑体', 'Noto Sans SC', system-ui, sans-serif;
+      color: #1E293B;
+      line-height: 1.5;
+    }
+
+    /* 简历卡片 - 固定A4尺寸，模拟纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #FFFFFF;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      page-break-after: avoid;
+    }
+
+    /* 内边距遵循呼吸感原则 */
+    .resume-inner {
+      padding: 1.8cm 1.8cm 1.5cm 1.8cm;
+      position: relative;
+    }
+
+    /* 左侧装饰色条 - 低风险ATS友好，不遮挡文字 */
+    .accent-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 0.65cm;
+      background: #0F3B5C; /* 深蓝主色 */
+      z-index: 0;
+    }
+
+    /* 所有主要内容区域确保位于色条上方且不被遮挡 */
+    .content-area {
+      position: relative;
+      z-index: 2;
+      margin-left: 0;
+    }
+
+    /* ---------- 字体与排版细节 ---------- */
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      font-size: 32pt;
+      color: #0A1E32;
+      margin-bottom: 0.15cm;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .subhead {
+      font-size: 12pt;
+      color: #475569;
+      margin-bottom: 0.75cm;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.4cm;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      font-size: 11pt;
+      font-weight: 700;
+      color: #0F3B5C;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: 1.1cm;
+      margin-bottom: 0.45cm;
+      padding-bottom: 0.15cm;
+      border-bottom: 2px solid #E2E8F0;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 2.8cm;
+      height: 2px;
+      background: #0F3B5C;
+    }
+
+    /* 时间轴样式布局 (时间左，内容右，或采用混合左对齐) */
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.7cm;
+      gap: 0.7cm;
+      position: relative;
+    }
+
+    /* 时间轴左侧日期区域 */
+    .timeline-date {
+      width: 3.4cm;
+      flex-shrink: 0;
+      font-size: 10pt;
+      font-weight: 500;
+      color: #475569;
+      text-align: right;
+      padding-top: 0.1cm;
+      font-family: 'Arial', 'Helvetica Neue', sans-serif;
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }
+
+    /* 时间轴竖线装饰 (纯CSS线条，无图形) */
+    .timeline-connector {
+      position: relative;
+    }
+    .timeline-connector::before {
+      content: '';
+      position: absolute;
+      left: -0.35cm;
+      top: 0.15cm;
+      width: 1px;
+      height: calc(100% + 0.4cm);
+      background: #CBD5E1;
+    }
+
+    .timeline-content {
+      flex: 1;
+      position: relative;
+    }
+
+    /* 公司/机构名称 */
+    .entity-name {
+      font-weight: 700;
+      font-size: 12.5pt;
+      color: #0F172A;
+      margin-bottom: 0.05cm;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .entity-name .role {
+      font-weight: 600;
+      font-size: 11.5pt;
+      color: #1E293B;
+      margin-left: 0.2cm;
+    }
+
+    .entity-name .location {
+      font-size: 9.5pt;
+      color: #64748B;
+      font-weight: 400;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    /* 职位或学位描述 */
+    .position-title {
+      font-weight: 500;
+      color: #334155;
+      margin-bottom: 0.15cm;
+      font-size: 11pt;
+    }
+
+    /* 描述要点 - 标准圆点符号，ATS完美解析 */
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.15cm;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 0.5cm;
+      margin-bottom: 0.12cm;
+      font-size: 10pt;
+      color: #1E293B;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.1cm;
+      color: #0F3B5C;
+      font-weight: bold;
+    }
+
+    /* 技能标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3cm;
+      margin-top: 0.2cm;
+    }
+
+    .skill-tag {
+      background: #F1F5F9;
+      color: #0F172A;
+      font-size: 9.5pt;
+      padding: 0.15cm 0.5cm;
+      border-radius: 20px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      border: 1px solid #E2E8F0;
+      line-height: 1.4;
+    }
+
+    /* 联系方式行内图标风格 - 纯文本+符号模拟，安全 */
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.15cm;
+      font-size: 10pt;
+      color: #334155;
+    }
+
+    .contact-icon {
+      font-weight: 700;
+      color: #0F3B5C;
+      margin-right: 0.05cm;
+    }
+
+    /* 链接样式移除装饰，打印时隐藏下划线 */
+    a {
+      color: #1E293B;
+      text-decoration: none;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #E2E8F0;
+      margin: 0.3cm 0 0.5cm 0;
+    }
+
+    /* 两栏技能区域（低风险，使用flex文本流） */
+    .two-column-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2cm 1.2cm;
+      margin-top: 0.1cm;
+    }
+    .two-column-list span {
+      font-size: 10pt;
+      width: calc(50% - 0.6cm);
+      display: inline-block;
+    }
+
+    /* 打印样式规则 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+      }
+      .resume-inner {
+        padding: 1.5cm 1.5cm 1.2cm 1.5cm;
+      }
+      .accent-bar {
+        background: #0F3B5C !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .section-title::after {
+        background: #0F3B5C !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .skill-tag {
+        background: #F1F5F9 !important;
+        border: 1px solid #CBD5E1 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      a {
+        text-decoration: none;
+        color: #1E293B;
+      }
+      .bullet-list li::before {
+        color: #0F3B5C !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      <!-- 左侧装饰色条，ATS安全：纯色块无文字叠加 -->
+      <div class="accent-bar"></div>
+
+      <div class="content-area">
+        <!-- 姓名与标题区域 -->
+        <h1>陈思远</h1>
+        <div class="subhead">
+          <span>高级课程产品经理</span>
+          <span class="contact-item"><span class="contact-icon">📞</span> (86) 139-5027-6814</span>
+          <span class="contact-item"><span class="contact-icon">✉️</span> siyuan.chen@edupm.cn</span>
+          <span class="contact-item"><span class="contact-icon">🔗</span> edsiyuan.com/portfolio</span>
+        </div>
+
+        <!-- 核心优势 / 专业摘要 (使用板块标题) -->
+        <div class="section-title">专业摘要</div>
+        <div style="font-size: 10.5pt; color: #1E293B; margin-bottom: 0.1cm; line-height: 1.6;">
+          8年课程设计与产品管理经验，主导过3个千万级用户在线教育产品线。擅长从0到1构建课程体系，结合学习数据与用户洞察驱动迭代。具备跨职能团队领导力，曾与Google教育、红杉被投企业合作开发领导力课程。
+        </div>
+
+        <!-- 工作经历 - 时间轴排版 -->
+        <div class="section-title">工作经历</div>
+        
+        <div class="timeline-item timeline-connector">
+          <div class="timeline-date">2021.06 – 至今<br><span style="font-size:9pt; color:#64748B;">北京</span></div>
+          <div class="timeline-content">
+            <div class="entity-name">
+              智学未来科技
+              <span class="role">高级课程产品经理</span>
+              <span class="location">课程与内容中心</span>
+            </div>
+            <div class="position-title">K12 素养与成人职业赛道</div>
+            <ul class="bullet-list">
+              <li>统筹“思辨读写”产品线，从市场调研到课程大纲、脚本审核与迭代，覆盖用户120万，完课率提升22%。</li>
+              <li>搭建课程质量评估模型，引入NPS与学习留存指标，推动教研团队优化32个关键知识点模块。</li>
+              <li>管理7人产品小组，协调设计、技术、运营部门，在6个月内上线AI互动课程，获公司年度创新奖。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-connector">
+          <div class="timeline-date">2019.03 – 2021.05<br><span style="font-size:9pt; color:#64748B;">上海</span></div>
+          <div class="timeline-content">
+            <div class="entity-name">
+              知微学堂 (红杉资本被投)
+              <span class="role">课程产品经理</span>
+              <span class="location">素质教育事业部</span>
+            </div>
+            <div class="position-title">STEAM 与项目式学习课程设计</div>
+            <ul class="bullet-list">
+              <li>主导设计“未来工程师”系列课程，与MIT媒体实验室合作引入设计思维框架，付费转化率达18%。</li>
+              <li>通过用户分层与A/B测试优化课程路径，将平均学习时长从14分钟提升至27分钟。</li>
+              <li>建立课程迭代SOP，联合5位学科专家产出超过200个教学视频及互动课件。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-connector">
+          <div class="timeline-date">2017.08 – 2019.02<br><span style="font-size:9pt; color:#64748B;">杭州</span></div>
+          <div class="timeline-content">
+            <div class="entity-name">
+              网易有道
+              <span class="role">助理课程产品经理</span>
+              <span class="location">在线教育部</span>
+            </div>
+            <div class="position-title">语言学习与轻课程孵化</div>
+            <ul class="bullet-list">
+              <li>参与“有道精品课”雅思口语项目，负责竞品分析与内容框架搭建，协助上线后首月营收破200万。</li>
+              <li>收集并分析5000+用户反馈，提炼出12个核心痛点并转化为产品需求，缩短课程制作周期15%。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 教育背景 - 同样采用时间轴风格 -->
+        <div class="section-title">教育背景</div>
+        <div class="timeline-item">
+          <div class="timeline-date">2015.09 – 2017.06<br><span style="font-size:9pt; color:#64748B;">硕士</span></div>
+          <div class="timeline-content">
+            <div class="entity-name">
+              北京师范大学
+              <span class="role">教育技术学 硕士</span>
+              <span class="location">北京</span>
+            </div>
+            <div class="position-title">研究方向：在线学习行为与课程设计</div>
+            <ul class="bullet-list">
+              <li>毕业论文《游戏化元素对成人学习动机的影响》获校级优秀论文。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item" style="margin-bottom:0.2cm;">
+          <div class="timeline-date">2011.09 – 2015.06<br><span style="font-size:9pt; color:#64748B;">本科</span></div>
+          <div class="timeline-content">
+            <div class="entity-name">
+              华中师范大学
+              <span class="role">教育学 学士</span>
+              <span class="location">武汉</span>
+            </div>
+            <div class="position-title">辅修心理学</div>
+          </div>
+        </div>
+
+        <!-- 技能与工具 -->
+        <div class="section-title">核心能力</div>
+        <div class="skills-container">
+          <span class="skill-tag">课程体系架构</span>
+          <span class="skill-tag">学习数据分析 (SQL/Excel)</span>
+          <span class="skill-tag">用户调研与画像</span>
+          <span class="skill-tag">敏捷开发 (Scrum)</span>
+          <span class="skill-tag">Figma/Sketch</span>
+          <span class="skill-tag">A/B测试</span>
+          <span class="skill-tag">视频脚本撰写</span>
+          <span class="skill-tag">Notion/Confluence</span>
+          <span class="skill-tag">跨部门协作</span>
+          <span class="skill-tag">教学设计 (ADDIE)</span>
+        </div>
+
+        <!-- 项目亮点 / 作品集关联 (猎头+作品集渠道强调) -->
+        <div class="section-title">精选项目</div>
+        <div class="timeline-item" style="margin-bottom:0.3cm;">
+          <div class="timeline-date">2023.08 – 2024.01</div>
+          <div class="timeline-content">
+            <div class="entity-name">
+              “领航者”管理者课程 <span style="font-weight:400; font-size:10pt; margin-left:0.3cm;">(与麦肯锡顾问合作)</span>
+            </div>
+            <ul class="bullet-list">
+              <li>设计案例教学与行动学习工作坊，企业端NPS达到82，复购率45%。作品集链接：edpm.cc/leader</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item" style="margin-bottom:0;">
+          <div class="timeline-date">2022.03 – 2022.09</div>
+          <div class="timeline-content">
+            <div class="entity-name">
+              AI自适应学习系统 <span style="font-weight:400; font-size:10pt; margin-left:0.3cm;">(内部孵化产品)</span>
+            </div>
+            <ul class="bullet-list">
+              <li>主导知识图谱构建与推荐逻辑，使薄弱知识点攻克效率提升31%。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 语言与认证，低调处理 -->
+        <div style="margin-top: 0.9cm; display: flex; gap: 1.5cm; font-size: 10pt; color: #334155; border-top: 1px solid #E2E8F0; padding-top: 0.4cm;">
+          <span><strong>语言:</strong> 中文 (母语) · 英文 (专业工作水平, IELTS 7.5)</span>
+          <span><strong>认证:</strong> PMP · 谷歌数据分析专业证书</span>
+        </div>
+      </div><!-- end content-area -->
+    </div><!-- end resume-inner -->
+  </div><!-- end resume -->
+</body>
+</html>

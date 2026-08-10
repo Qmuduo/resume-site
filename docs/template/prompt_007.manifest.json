@@ -1,0 +1,159 @@
+{
+  "templateId": "prompt_007",
+  "name": "简历 · 审计助理 · 四大校招",
+  "sourceFile": "prompt_007.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": true
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": true
+    },
+    {
+      "name": "awards",
+      "label": "荣誉奖项",
+      "type": "array",
+      "commonPath": "awards",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "education",
+      "selector": ".education-entry",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "education-entry"
+    },
+    {
+      "commonPath": "experiences",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "实习经历",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "projects",
+      "selector": ".project-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "project-item"
+    },
+    {
+      "commonPath": "certifications",
+      "selector": ".skill-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-item"
+    }
+  ],
+  "sampleData": {
+    "name": "张 逸 凡",
+    "education": [
+      {
+        "school": "中央财经大学",
+        "date": "2022.09 – 2026.06"
+      }
+    ],
+    "experiences": [
+      {
+        "company": "| 普华永道中天会计师事务所 · 北京分所",
+        "date": "2025.01 – 2025.03",
+        "description": "参与某大型制造业企业年审项目，协助完成货币资金、应收账款、应付账款等6个科目的底稿编制，覆盖超过200笔抽样测试"
+      },
+      {
+        "company": "| 立信会计师事务所 · 上海总所",
+        "date": "2024.07 – 2024.08",
+        "description": "协助项目组对某零售企业进行半年度审阅，独立完成固定资产与长期待摊费用科目的底稿"
+      }
+    ],
+    "projects": [
+      {
+        "date": "2025.03 – 2025.06",
+        "description": "选取沪深300指数中3家制造业公司，运用审计分析程序识别收入确认、存货计价等关键风险领域；完成财务比率分析与杜邦分析，撰写风险评估报告获课程最高分。"
+      },
+      {
+        "date": "2024.10 – 2024.12",
+        "description": "基于模拟企业采购与付款循环，设计穿行测试与控制测试程序，识别出3项内部控制缺陷并提出改进建议，最终报告被纳入教学案例库。"
+      }
+    ],
+    "certifications": [
+      {
+        "name": "用友审计软件"
+      },
+      {
+        "name": "Aura"
+      },
+      {
+        "name": "IDEA"
+      },
+      {
+        "name": "Excel(高级)"
+      },
+      {
+        "name": "CICPA全科通过(专业阶段)"
+      },
+      {
+        "name": "初级会计职称"
+      },
+      {
+        "name": "ACCA F1-F4"
+      },
+      {
+        "name": "英语CET-6 (580)"
+      },
+      {
+        "name": "Microsoft Office专家级"
+      },
+      {
+        "name": "Python基础"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "awards",
+      "label": "荣誉奖项",
+      "type": "array",
+      "commonPath": "awards",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

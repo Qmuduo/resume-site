@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>张振华 · 农业企业总经理</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 系统安全字体：中文思源黑体，英文Arial / Helvetica */
+    body {
+      font-family: 'Arial', 'Helvetica Neue', '思源黑体', 'Source Han Sans SC', 'Noto Sans SC', sans-serif;
+      background: #eef2f5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 20px;
+      margin: 0;
+      line-height: 1.5;
+      color: #2D3748;
+    }
+
+    /* 简历卡片：模拟A4尺寸，固定宽度，自动分页 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      page-break-after: auto;
+    }
+
+    /* 内边距：上下0.7英寸，左右0.8英寸，保证呼吸感 */
+    .resume-inner {
+      padding: 0.7in 0.8in;
+      position: relative;
+    }
+
+    /* 所有文本直接可选、可复制，无图形遮挡 */
+    h1, h2, h3, p, li, div, span {
+      color: #2D3748;
+      font-weight: normal;
+    }
+
+    /* 深蓝主色定义 */
+    :root {
+      --primary: #1A365D;   /* 深邃商务蓝 */
+      --accent: #2B6CB0;    /* 强调蓝，用于分割线或点缀 */
+      --light-bg: #F7FAFC;  /* 极浅灰背景，仅用于极低风险装饰 */
+      --text-primary: #1A202C;
+      --text-secondary: #2D3748;
+      --divider: #CBD5E0;
+    }
+
+    /* ----- 姓名区域：左对齐，下方深蓝分割线 ----- */
+    .name-section {
+      margin-bottom: 20px;
+    }
+
+    .name {
+      font-size: 32pt;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 1px;
+      line-height: 1.2;
+      margin-bottom: 4px;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    .title {
+      font-size: 14pt;
+      color: #4A5568;
+      font-weight: 400;
+      margin-bottom: 16px;
+      letter-spacing: 0.3px;
+    }
+
+    .name-divider {
+      width: 100%;
+      height: 2px;
+      background: var(--primary);
+      margin-bottom: 18px;
+      border: none;
+    }
+
+    /* 联系信息：纯文本行内排列，使用简单线性图标（字符安全） */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      font-size: 10.5pt;
+      color: var(--text-secondary);
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .contact-icon {
+      font-size: 11pt;
+      color: var(--primary);
+      font-weight: 500;
+      width: 18px;
+      display: inline-block;
+      text-align: left;
+    }
+
+    /* 板块标题通用样式：全部大写（英文环境）/ 中文加粗，底部细线 */
+    .section-title {
+      font-size: 13pt;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-top: 28px;
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid var(--primary);
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    /* 工作经历条目布局：使用纯文本流，时间右对齐通过flex实现，无浮动 */
+    .experience-item {
+      margin-bottom: 18px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 12pt;
+      color: #1A202C;
+    }
+
+    .job-title {
+      font-weight: 600;
+      font-size: 11.5pt;
+      color: var(--text-secondary);
+      margin-left: 8px;
+    }
+
+    .date-range {
+      font-size: 10.5pt;
+      color: #4A5568;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    /* 描述要点：标准圆点符号，无自定义图形 */
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 6px;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 16px;
+      font-size: 10.5pt;
+      color: var(--text-secondary);
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 11pt;
+    }
+
+    /* 教育背景与证书采用类似结构 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .school-name {
+      font-weight: 700;
+      font-size: 11.5pt;
+      color: #1A202C;
+    }
+
+    .degree {
+      font-weight: 500;
+      font-size: 11pt;
+      color: var(--text-secondary);
+      margin-left: 6px;
+    }
+
+    /* 技能标签式排列：纯文本，低风险 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      margin-top: 6px;
+    }
+
+    .skill-category {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: var(--primary);
+      margin-right: 4px;
+    }
+
+    .skill-list {
+      font-size: 10.5pt;
+      color: var(--text-secondary);
+      display: inline;
+    }
+
+    /* 左侧装饰色条：低风险，不重叠文字，纯border实现 */
+    .resume-inner {
+      border-left: 4px solid var(--primary);
+      padding-left: calc(0.8in - 4px); /* 保持内部边距一致 */
+    }
+
+    /* 分割线使用纯border，无图形 */
+    hr {
+      border: 0;
+      border-top: 1px solid var(--divider);
+      margin: 16px 0 12px;
+    }
+
+    /* 打印样式：移除背景、阴影，保留结构，隐藏交互元素 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        border-left: none; /* 打印时保留左侧色条？保留低风险装饰，但颜色可能变淡，可接受 */
+      }
+      .resume-inner {
+        border-left: 4px solid #1A365D; /* 打印时色条仍然可见，纯黑或深灰也可 */
+        padding: 0.7in 0.8in;
+      }
+      /* 确保文本颜色清晰 */
+      .name, .section-title, .company-name, .contact-icon {
+        color: #1A365D;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      /* 隐藏任何可能残留的交互元素，这里没有按钮，但移除下划线 */
+      .contact-item, .date-range {
+        color: #2D3748;
+      }
+    }
+
+    /* 响应式微调：小屏幕适当缩小字号 */
+    @media screen and (max-width: 700px) {
+      .resume-inner {
+        padding: 0.5in 0.6in;
+      }
+      .name {
+        font-size: 26pt;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      
+      <!-- 姓名与标题 -->
+      <div class="name-section">
+        <h1 class="name">张振华</h1>
+        <div class="title">农业企业总经理 · 全产业链运营管理</div>
+        <div class="name-divider"></div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="contact-icon">📞</span> (010) 6832-7592</span>
+          <span class="contact-item"><span class="contact-icon">✉️</span> zhang.zhenhua@agripro.cn</span>
+          <span class="contact-item"><span class="contact-icon">📍</span> 北京市朝阳区</span>
+          <span class="contact-item"><span class="contact-icon">🔗</span> linkedin.com/in/zhenhuazhang</span>
+        </div>
+      </div>
+
+      <!-- 核心优势 / 高管摘要 (无单独标题，用简短介绍体现) -->
+      <div style="margin-bottom: 6px; font-size: 11pt; color: #2D3748; line-height: 1.6;">
+        深耕现代农业领域<span style="font-weight:600; color:#1A365D;">12年</span>，具备从种植基地管理到农产品品牌化的全链路经验。曾主导3个国家级现代农业产业园项目，累计管理团队超500人，擅长战略规划、供应链优化及政企合作。
+      </div>
+
+      <!-- 工作经历 -->
+      <h2 class="section-title">专业经验</h2>
+      
+      <div class="experience-item">
+        <div class="exp-header">
+          <span><span class="company-name">中地种业集团</span><span class="job-title"> | 总经理</span></span>
+          <span class="date-range">2019.04 – 至今</span>
+        </div>
+        <ul class="bullet-list">
+          <li>全面负责集团旗下3家子公司运营，年营收规模12.8亿元，实现连续三年复合增长率18%</li>
+          <li>主导建设华北地区最大的智慧农业示范基地，引入精准灌溉与无人机植保技术，降低生产成本23%</li>
+          <li>推动与农业农村部合作项目“优质强筋小麦产业化开发”，带动周边3.6万户农民增收</li>
+          <li>重组销售团队及渠道策略，拓展商超及电商平台，品牌大米市场占有率提升至区域前三</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <span><span class="company-name">绿野现代农业集团</span><span class="job-title"> | 副总经理（运营）</span></span>
+          <span class="date-range">2015.02 – 2019.02</span>
+        </div>
+        <ul class="bullet-list">
+          <li>分管种植事业部与加工物流中心，管理8个自有农场及合作基地，总面积超4.2万亩</li>
+          <li>搭建数字化农业管理平台，实现从播种到仓储的全程可追溯，获得GLOBALG.A.P.认证</li>
+          <li>优化冷链物流体系，果蔬损耗率从18%降至7%，每年节省成本逾1200万元</li>
+          <li>主导完成1.2亿元B轮融资，用于建设有机肥生产车间及种苗研发中心</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <span><span class="company-name">金穗农业科技公司</span><span class="job-title"> | 运营总监</span></span>
+          <span class="date-range">2012.07 – 2015.01</span>
+        </div>
+        <ul class="bullet-list">
+          <li>负责公司日常运营及政府项目申报，成功申报国家级农业产业化重点龙头企业</li>
+          <li>建立“公司+合作社+农户”模式，签约农户超过2000户，稳定原料供应渠道</li>
+          <li>管理年度采购预算1.5亿元，通过集中采购与供应商战略合作降低农资成本11%</li>
+        </ul>
+      </div>
+
+      <!-- 教育背景 -->
+      <h2 class="section-title">教育背景</h2>
+      <div class="edu-item">
+        <span><span class="school-name">中国农业大学</span><span class="degree"> | 农业经济管理 硕士</span></span>
+        <span class="date-range">2010.09 – 2012.06</span>
+      </div>
+      <div class="edu-item">
+        <span><span class="school-name">西北农林科技大学</span><span class="degree"> | 农学 学士</span></span>
+        <span class="date-range">2006.09 – 2010.06</span>
+      </div>
+
+      <!-- 核心能力 / 技能标签式 -->
+      <h2 class="section-title">核心能力</h2>
+      <div class="skills-container">
+        <div><span class="skill-category">战略管理：</span><span class="skill-list">农业产业化规划、企业战略制定、P&L管理、投融资对接</span></div>
+        <div><span class="skill-category">运营专长：</span><span class="skill-list">种植基地管理、供应链优化、智慧农业、质量追溯体系</span></div>
+        <div><span class="skill-category">市场与品牌：</span><span class="skill-list">农产品品牌建设、渠道拓展、大宗贸易、政府关系</span></div>
+        <div><span class="skill-category">行业认证：</span><span class="skill-list">高级农艺师、农业职业经理人（二级）、GAP内审员</span></div>
+      </div>
+
+      <!-- 重要项目 / 成就（可选模块，进一步突出管理层业绩） -->
+      <h2 class="section-title">代表性项目</h2>
+      <div class="experience-item">
+        <div class="exp-header">
+          <span class="company-name">国家现代农业产业园创建</span>
+          <span class="date-range">2020 – 2022</span>
+        </div>
+        <ul class="bullet-list">
+          <li>作为项目总负责人，统筹规划3.2万亩核心区，争取中央财政资金1.8亿元</li>
+          <li>引入物联网环境监测系统与智能灌溉，园区亩均产值提升至1.6万元，成为省级示范标杆</li>
+        </ul>
+      </div>
+      <div class="experience-item">
+        <div class="exp-header">
+          <span class="company-name">“华北粮仓”品牌化战略</span>
+          <span class="date-range">2021 – 至今</span>
+        </div>
+        <ul class="bullet-list">
+          <li>从零建立高端大米品牌，完成绿色食品及有机认证，进入盒马、京东自营等渠道</li>
+          <li>首年销售额突破4800万元，复购率达35%，带动集团毛利率提升5个百分点</li>
+        </ul>
+      </div>
+
+      <!-- 附加信息：语言及资质，保持简洁 -->
+      <h2 class="section-title">专业资质与语言</h2>
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; font-size: 10.5pt; margin-top: 6px;">
+        <span><span style="font-weight:600; color:#1A365D;">语言能力：</span>中文（母语）、英语（商务流利，可作为工作语言）</span>
+        <span><span style="font-weight:600; color:#1A365D;">行业会员：</span>中国农业产业化龙头企业协会理事</span>
+      </div>
+
+      <!-- 极简分割线作为视觉收尾，无风险 -->
+      <hr style="margin-top: 22px; border-color: #E2E8F0;">
+      <div style="font-size: 9pt; color: #A0AEC0; text-align: right; margin-top: 4px;">
+        持续更新 · 专注农业价值创造
+      </div>
+
+    </div> <!-- end resume-inner -->
+  </div> <!-- end resume -->
+</body>
+</html>

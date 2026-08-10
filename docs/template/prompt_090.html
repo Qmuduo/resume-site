@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
+  <title>张逸凡 · 高级算法工程师简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1a365d;
+      --accent: #2b6cb0;
+      --text-main: #1e293b;
+      --text-muted: #475569;
+      --bg-page: #ffffff;
+      --border-light: #e2e8f0;
+      --code-bg: #f1f5f9;
+      --inline-code: #0f172a;
+      --markdown-marker: #64748b;
+      --font-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Liberation Mono', monospace;
+      --font-sans: 'Inter', 'Helvetica Neue', 'Arial', 'Segoe UI', sans-serif;
+      --font-mixed: 'Segoe UI', 'Arial', 'Helvetica', '思源黑体', 'Noto Sans SC', sans-serif;
+    }
+
+    body {
+      background: #f8fafc;
+      font-family: var(--font-mixed);
+      color: var(--text-main);
+      line-height: 1.5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      margin: 0;
+    }
+
+    /* 简历卡片容器 —— 严格A4尺寸，模拟纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: white;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      page-break-after: auto;
+    }
+
+    .resume-page {
+      width: 100%;
+      background: white;
+      padding: 0.75in 0.8in 0.7in 0.8in;
+      box-sizing: border-box;
+    }
+
+    /* ----- 文字层级与Markdown风格装饰 ----- */
+    h1 {
+      font-family: var(--font-mono);
+      font-size: 28pt;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.15rem;
+      letter-spacing: -0.5px;
+      border-bottom: 2px solid var(--border-light);
+      padding-bottom: 0.25rem;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .subhead {
+      font-family: var(--font-mono);
+      font-size: 11pt;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      border-bottom: 1px dashed var(--border-light);
+      padding-bottom: 0.6rem;
+    }
+
+    .subhead span, .subhead a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 400;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .subhead a {
+      color: var(--accent);
+      border-bottom: 1px dotted var(--accent);
+    }
+
+    .subhead a:hover {
+      color: var(--primary);
+    }
+
+    /* 板块标题 —— Markdown ## 风格 */
+    h2 {
+      font-family: var(--font-mono);
+      font-size: 13pt;
+      font-weight: 600;
+      color: var(--primary);
+      margin: 1.8rem 0 0.8rem 0;
+      text-transform: none;
+      letter-spacing: 0.3px;
+      position: relative;
+      padding-left: 0.2rem;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 0.2rem;
+    }
+
+    /* 模拟 ## 标记 */
+    h2::before {
+      content: "## ";
+      color: var(--markdown-marker);
+      font-weight: 400;
+      font-family: var(--font-mono);
+      margin-right: 0.15rem;
+    }
+
+    /* 经历条目容器 */
+    .experience-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.15rem;
+    }
+
+    .company-title {
+      font-weight: 700;
+      font-size: 12.5pt;
+      color: var(--text-main);
+      font-family: var(--font-mixed);
+    }
+
+    .job-role {
+      font-weight: 500;
+      font-size: 11.5pt;
+      color: var(--text-main);
+      margin-left: 0.3rem;
+      font-style: normal;
+    }
+
+    .date-location {
+      font-family: var(--font-mono);
+      font-size: 10pt;
+      color: var(--text-muted);
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    /* 描述列表 —— 使用标准圆点，模拟Markdown无序列表 */
+    .desc-list {
+      list-style: none;
+      margin-top: 0.25rem;
+      padding-left: 0.2rem;
+      color: var(--text-main);
+      font-size: 10.8pt;
+      line-height: 1.55;
+    }
+
+    .desc-list li {
+      position: relative;
+      padding-left: 1.3rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .desc-list li::before {
+      content: "-";
+      position: absolute;
+      left: 0.2rem;
+      color: var(--markdown-marker);
+      font-weight: 400;
+      font-family: var(--font-mono);
+    }
+
+    /* 技能标签 —— 内联代码风格 */
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      background: var(--code-bg);
+      font-family: var(--font-mono);
+      font-size: 10pt;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      color: var(--inline-code);
+      border: 1px solid var(--border-light);
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+
+    .two-col-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 0.2rem;
+    }
+
+    .skill-column {
+      flex: 1 1 180px;
+    }
+
+    .skill-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.8pt;
+      margin-bottom: 0.25rem;
+      border-bottom: 1px dotted var(--border-light);
+      padding-bottom: 0.15rem;
+    }
+
+    .skill-name {
+      font-weight: 500;
+      font-family: var(--font-mono);
+      color: var(--text-main);
+    }
+
+    .skill-level {
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* 教育区块 */
+    .edu-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.3rem;
+    }
+
+    .school-name {
+      font-weight: 700;
+      font-size: 12pt;
+    }
+
+    .degree {
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border-light);
+      margin: 0.8rem 0 0.5rem 0;
+    }
+
+    /* 项目或竞赛强调 */
+    .project-highlight {
+      font-family: var(--font-mono);
+      background: #f8fafc;
+      padding: 0.3rem 0.5rem;
+      border-left: 3px solid var(--accent);
+      margin: 0.5rem 0 0.3rem 0;
+      font-size: 10.5pt;
+      color: var(--text-main);
+    }
+
+    /* 打印优化：去除背景色，保留结构 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        max-width: 100%;
+        border-radius: 0;
+      }
+      .resume-page {
+        padding: 0.6in 0.7in;
+        width: 100%;
+      }
+      .tag {
+        background: none;
+        border: 1px solid #cbd5e1;
+        color: #0f172a;
+      }
+      a {
+        text-decoration: none;
+        color: #1e293b;
+        border-bottom: none;
+      }
+      .subhead a {
+        border-bottom: none;
+      }
+      h2::before {
+        color: #4a5568;
+      }
+    }
+
+    /* 小图标行内处理（纯文本符号） */
+    .icon-symbol {
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      margin-right: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-page">
+      
+      <!-- 姓名与标题（Markdown风格 # ） -->
+      <h1>张逸凡</h1>
+      <div class="subhead">
+        <span>🔬 高级算法工程师 · 机器学习/推荐系统</span>
+        <span>📧 yifan.zhang@algo.me</span>
+        <span>📱 +86 138 0000 1234</span>
+        <a href="#">🔗 github.com/yifan-algo</a>
+        <span>📍 北京 / 远程</span>
+      </div>
+
+      <!-- 专业总结（使用代码注释风格暗示） -->
+      <div style="font-family: var(--font-mono); font-size: 10.5pt; color: #334155; margin-bottom: 0.2rem; background: #f9fafb; padding: 0.5rem; border-radius: 0px; border-left: 4px solid var(--primary);">
+        <span style="color: #64748b;"># 摘要</span><br>
+        6年算法研发经验，深耕推荐系统与大规模机器学习。Kaggle Competitions Master (1x金牌, 3x银牌)，曾主导千万级DAU推荐引擎迭代，线上CTR提升19%。善于通过代码与数学优雅地解决复杂问题。
+      </div>
+
+      <!-- 技能板块 —— 代码标签风格 -->
+      <h2>技术栈</h2>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">C++</span><span class="tag">PyTorch</span><span class="tag">TensorFlow</span>
+        <span class="tag">Scikit-learn</span><span class="tag">XGBoost</span><span class="tag">Spark MLlib</span>
+        <span class="tag">SQL</span><span class="tag">DeepCTR</span><span class="tag">Transformers</span>
+        <span class="tag">A/B测试</span><span class="tag">特征工程</span><span class="tag">模型部署</span>
+      </div>
+      <div class="two-col-skills" style="margin-top: 0.8rem;">
+        <div class="skill-column">
+          <div class="skill-item"><span class="skill-name">推荐算法</span><span class="skill-level">●●●●○</span></div>
+          <div class="skill-item"><span class="skill-name">NLP/LLM</span><span class="skill-level">●●●○○</span></div>
+        </div>
+        <div class="skill-column">
+          <div class="skill-item"><span class="skill-name">计算机视觉</span><span class="skill-level">●●○○○</span></div>
+          <div class="skill-item"><span class="skill-name">工程架构</span><span class="skill-level">●●●●○</span></div>
+        </div>
+      </div>
+
+      <!-- 工作经历 —— 严格按照 Markdown 列表风格 -->
+      <h2>专业经历</h2>
+      
+      <div class="experience-item">
+        <div class="exp-header">
+          <span class="company-title">智源科技</span><span class="job-role"> · 高级算法工程师</span>
+          <span class="date-location">2022.04 – 至今 | 北京</span>
+        </div>
+        <ul class="desc-list">
+          <li>主导短视频推荐系统精排模型升级，设计多任务学习框架(MMOE+ESMM)，线上人均观看时长提升14.2%。</li>
+          <li>构建实时特征平台，将特征更新延迟从小时级降至分钟级，支撑在线模型增量训练。</li>
+          <li>带领3人小组获得Kaggle推荐大赛金牌(Top 1%)，方案被公司内部复用为baseline。</li>
+        </ul>
+        <div class="project-highlight">
+          > <strong>核心项目：</strong>大规模召回优化 · 基于向量检索(FAISS)与图神经网络，召回率提升21%。
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <span class="company-title">锐天数据</span><span class="job-role"> · 算法工程师</span>
+          <span class="date-location">2019.07 – 2022.02 | 上海</span>
+        </div>
+        <ul class="desc-list">
+          <li>参与广告点击率预估模型开发，使用DeepFM/DIEN等结构，离线AUC提升0.8%，线上CPM提高9%。</li>
+          <li>开发自动化模型训练流水线，集成特征重要性分析与超参搜索，实验迭代效率提升40%。</li>
+          <li>维护算法技术博客与内部wiki，撰写10+篇模型解析文档。</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <span class="company-title">星环科技</span><span class="job-role"> · 初级算法研发</span>
+          <span class="date-location">2017.08 – 2019.06 | 杭州</span>
+        </div>
+        <ul class="desc-list">
+          <li>负责知识图谱实体对齐算法，设计基于图卷积网络的匹配模型，准确率提升6个百分点。</li>
+          <li>参与分布式机器学习平台部分模块开发，优化数据加载pipeline。</li>
+        </ul>
+      </div>
+
+      <!-- Kaggle 与竞赛经历（猎头渠道重点） -->
+      <h2>Kaggle 与竞赛成就</h2>
+      <div class="experience-item">
+        <div class="exp-header">
+          <span class="company-title">Kaggle Competitions Master</span>
+          <span class="date-location">2020 – 至今</span>
+        </div>
+        <ul class="desc-list">
+          <li>🏅 H&M Personalized Fashion Recommendations (Top 1% , 金牌) - 设计双塔召回+序列特征。</li>
+          <li>🥈 OTTO – Multi-Objective Recommender System (银牌, Top 3%) - 多目标排序方案。</li>
+          <li>🥈 Google Brain - Ventilator Pressure Prediction (银牌) - 时序模型融合。</li>
+          <li>📊 累计获得1金3银2铜，最高全球排名前150。</li>
+        </ul>
+      </div>
+
+      <!-- 教育背景 -->
+      <h2>教育</h2>
+      <div class="edu-line">
+        <span class="school-name">复旦大学</span>
+        <span class="date-location">2015.09 – 2017.06</span>
+      </div>
+      <div style="margin-bottom: 0.3rem;"><span class="degree">计算机科学与技术 · 硕士</span> <span style="color:#475569; font-size:10pt;">(GPA: 3.8/4.0)</span></div>
+      <div class="edu-line" style="margin-top:0.4rem;">
+        <span class="school-name">华中科技大学</span>
+        <span class="date-location">2011.09 – 2015.06</span>
+      </div>
+      <div><span class="degree">软件工程 · 学士</span></div>
+
+      <!-- 额外信息：论文或开源贡献（Markdown风格） -->
+      <h2>开源与演讲</h2>
+      <ul class="desc-list">
+        <li><strong>Recommenders-tf</strong> 核心贡献者，GitHub star 2.3k，提交PR 15+。</li>
+        <li>在QCon/Local meetup分享《大规模召回系统设计》，Slideshare阅读量1.2w。</li>
+      </ul>
+
+      <!-- 极简分割线，表示结束 -->
+      <div style="margin-top: 1.5rem; border-top: 1px solid #e2e8f0; padding-top: 0.3rem; font-family: var(--font-mono); font-size: 9pt; color: #94a3b8; text-align: right;">
+        > 简历由代码生成 · 适合ATS解析
+      </div>
+    </div>
+  </div>
+</body>
+</html>

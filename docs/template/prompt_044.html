@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>林清怡 · 新媒体运营简历</title>
+  <style>
+    /* 全局重置与打印优先 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #e9e5df; /* 莫兰迪暖灰背景，预览舒适 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      font-family: 'Calibri', 'Arial', 'Helvetica', '思源黑体', 'Source Han Sans SC', 'Noto Sans SC', sans-serif;
+    }
+
+    /* 简历卡片 - 严格A4尺寸，适合打印与预览 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.02);
+      border-radius: 4px;
+      overflow: hidden;
+      page-break-after: avoid;
+      page-break-inside: avoid;
+      color: #2d3748;
+    }
+
+    /* 内边距保证呼吸感：左右0.9英寸，上下0.8英寸 */
+    .resume-inner {
+      padding: 0.8in 0.9in;
+    }
+
+    /* 所有文本均使用纯文本标签，无canvas/svg */
+    h1, h2, h3, p, li, span, div {
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    /* 色彩定义：莫兰迪色系，主色深灰绿，辅色柔和沙粉，强调色灰珊瑚 */
+    :root {
+      --primary: #3e5a4b;      /* 深苔绿，用于姓名标题与板块线 */
+      --accent: #b5826b;       /* 灰珊瑚，用于点缀图标、数据强调 */
+      --soft-bg: #f7f5f0;     /* 极浅米灰，用于轻量分割背景 */
+      --text-primary: #2d3748;
+      --text-secondary: #4a5568;
+      --divider: #d9d2c5;      /* 莫兰迪米灰线 */
+      --tag-bg: #f0ede6;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 0.25rem;
+    }
+
+    .name {
+      font-family: 'Helvetica Neue', 'Helvetica', 'Arial', '思源黑体', sans-serif;
+      font-weight: 700;
+      font-size: 36pt;
+      letter-spacing: 1.2px;
+      color: var(--primary);
+      line-height: 1.1;
+      margin-bottom: 0.1rem;
+      text-align: left;
+    }
+
+    .title-sub {
+      font-size: 13pt;
+      font-weight: 400;
+      color: #4a5b4f;
+      letter-spacing: 0.4px;
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+
+    /* 分割线：纯css border-bottom，ATS安全 */
+    .divider-line {
+      border-bottom: 1.8px solid var(--divider);
+      margin: 0.5rem 0 0.8rem 0;
+    }
+
+    .divider-accent {
+      border-bottom: 1.2px solid var(--primary);
+      width: 45px;
+      margin: 0.25rem 0 0.65rem 0;
+    }
+
+    /* 联系信息行：左对齐，图标为纯文本符号，ATS可读 */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      font-size: 10.5pt;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .contact-icon {
+      color: var(--accent);
+      font-weight: 500;
+      font-size: 11pt;
+      display: inline; /* 纯文本符号，无图标字体依赖 */
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-family: 'Helvetica Neue', 'Helvetica', 'Arial', '思源黑体', sans-serif;
+      font-weight: 700;
+      font-size: 13pt;
+      letter-spacing: 1.2px;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin: 1.2rem 0 0.4rem 0;
+      text-align: left;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 2px;
+      background-color: var(--primary);
+      margin-top: 0.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 条目布局：完全避免表格与浮动，使用flex或block */
+    .experience-item, .education-item {
+      margin-bottom: 0.7rem;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.1rem;
+    }
+
+    .item-left {
+      font-weight: 700;
+      font-size: 12pt;
+      color: #1e2b24;
+    }
+
+    .item-right {
+      font-weight: 400;
+      font-size: 10.5pt;
+      color: #5f6b5c;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .item-sub {
+      font-weight: 400;
+      font-size: 11pt;
+      color: #4a5b4f;
+      margin-bottom: 0.15rem;
+      font-style: normal;
+    }
+
+    .desc-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.2rem 0 0.4rem 0;
+    }
+
+    .desc-list li {
+      font-size: 10.5pt;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+      line-height: 1.5;
+      padding-left: 1rem;
+      text-indent: -1rem;
+      position: relative;
+    }
+
+    .desc-list li::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: 600;
+      display: inline-block;
+      width: 1rem;
+      text-indent: 0;
+      margin-right: 0.15rem;
+    }
+
+    /* 技能标签式排列，纯文本列表 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.8rem;
+      margin-top: 0.2rem;
+    }
+
+    .skill-tag {
+      background: var(--tag-bg);
+      color: #2d3b2f;
+      font-size: 10pt;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+
+    /* 双栏技能区使用flex，保证左栏不截断右栏文字，无浮动 */
+    .two-column-skill {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 0.1rem;
+    }
+
+    .skill-col {
+      flex: 1 1 180px;
+    }
+
+    .skill-col p {
+      font-size: 10.5pt;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .skill-name {
+      font-weight: 600;
+      color: #2d3b2f;
+      width: 90px;
+      display: inline-block;
+    }
+
+    /* 项目或补充 */
+    .project-title {
+      font-weight: 700;
+      font-size: 11pt;
+      color: #1e2b24;
+    }
+
+    /* 左侧装饰窄色条（安全，无文字重叠） */
+    .resume {
+      position: relative;
+    }
+
+    .left-accent-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(180deg, #b8a99a 0%, #d9c7b2 70%, #f0e6da 100%);
+      opacity: 0.7;
+      z-index: 0;
+    }
+
+    .resume-inner {
+      position: relative;
+      z-index: 2;
+      background: white;
+    }
+
+    /* 打印样式：隐藏背景装饰，保持纯净文本 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+
+      .resume {
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+      }
+
+      .left-accent-bar {
+        display: none; /* 打印时移除侧边装饰，完全保留文字结构 */
+      }
+
+      .resume-inner {
+        padding: 0.7in 0.8in;
+      }
+
+      .skill-tag {
+        background: none;
+        border: 0.5px solid #aaa;
+        padding: 0.1rem 0.6rem;
+        border-radius: 12px;
+        color: black;
+      }
+
+      .divider-line, .section-title::after {
+        border-color: #aaa;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    /* 链接样式去除下划线，保留颜色 */
+    a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- 极细左侧装饰条，ATS安全且不与文字重叠 -->
+    <div class="left-accent-bar"></div>
+    <div class="resume-inner">
+      
+      <!-- 姓名与标题 -->
+      <div class="name-section">
+        <h1 class="name">林清怡</h1>
+        <div class="title-sub">新媒体运营 · 内容策划</div>
+      </div>
+      
+      <!-- 联系方式：纯文本符号，无图标字体 -->
+      <div class="contact-row">
+        <span class="contact-item"><span class="contact-icon">✉</span> qingyi.lin@digital.cn</span>
+        <span class="contact-item"><span class="contact-icon">📞</span> (86) 139-5027-6814</span>
+        <span class="contact-item"><span class="contact-icon">🔗</span> linkedin.com/in/qingyilin</span>
+        <span class="contact-item"><span class="contact-icon">📍</span> 杭州 · 中国</span>
+      </div>
+      <div class="divider-line"></div>
+
+      <!-- 专业总结 -->
+      <div>
+        <div class="section-title">专业概述</div>
+        <p style="font-size: 10.5pt; color: #2d3748; margin: 0.2rem 0 0.2rem 0; line-height: 1.55;">
+          应届新媒体运营实践者，擅长以数据驱动内容策略。在校园IP孵化与品牌社交传播中累计增粉3.2万，具备短视频脚本、图文排版及社群活跃管理经验。追求莫兰迪美学的视觉叙事，致力于创造有温度的连接。
+        </p>
+      </div>
+
+      <!-- 实习经历 -->
+      <div>
+        <div class="section-title">相关经历</div>
+        
+        <div class="experience-item">
+          <div class="item-header">
+            <span class="item-left">初新文化传媒</span>
+            <span class="item-right">2025.03 – 2025.08</span>
+          </div>
+          <div class="item-sub">新媒体运营实习生 · 杭州</div>
+          <ul class="desc-list">
+            <li>运营小红书与抖音账号，策划“莫兰迪生活美学”系列笔记，单篇最高曝光12w+，月均涨粉2500+。</li>
+            <li>使用Canva与醒图制作图文内容，统一视觉调性，笔记互动率提升45%。</li>
+            <li>协助执行社群快闪活动，通过话题引导与用户激励，3天内社群活跃度提升28%。</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="item-header">
+            <span class="item-left">青芒校园工作室</span>
+            <span class="item-right">2024.09 – 2025.01</span>
+          </div>
+          <div class="item-sub">内容运营助理（校园项目）</div>
+          <ul class="desc-list">
+            <li>参与校园公众号“青芒里”的日常推文排版与选题，平均阅读量由400提升至1100+。</li>
+            <li>策划“学长学姐说”短视频系列，负责脚本撰写与拍摄协调，抖音合集播放量24w。</li>
+            <li>整理后台数据并输出周报，利用热点词优化标题，搜索曝光占比提高22%。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div>
+        <div class="section-title">教育</div>
+        <div class="experience-item">
+          <div class="item-header">
+            <span class="item-left">浙江传媒学院</span>
+            <span class="item-right">2022.09 – 2026.06</span>
+          </div>
+          <div class="item-sub">网络与新媒体 本科 · 预计GPA 3.7/4.0</div>
+          <ul class="desc-list">
+            <li>主修课程：新媒体概论、内容营销、数字视听制作、传播心理学。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 技能板块：混合标签与双栏列表，保持ATS可读 -->
+      <div>
+        <div class="section-title">核心能力</div>
+        <div class="skills-container">
+          <span class="skill-tag">内容策划</span>
+          <span class="skill-tag">短视频脚本</span>
+          <span class="skill-tag">小红书运营</span>
+          <span class="skill-tag">Canva/醒图</span>
+          <span class="skill-tag">剪映</span>
+          <span class="skill-tag">数据分析(Excel)</span>
+          <span class="skill-tag">社群运营</span>
+          <span class="skill-tag">热点追踪</span>
+        </div>
+        
+        <div class="two-column-skill" style="margin-top: 0.6rem;">
+          <div class="skill-col">
+            <p><span class="skill-name">语言能力</span> 中文母语 · 英语CET-6</p>
+            <p><span class="skill-name">工具生态</span> 微信公众号、抖音创作者平台</p>
+          </div>
+          <div class="skill-col">
+            <p><span class="skill-name">软技能</span> 共情沟通 · 快速学习 · 审美敏锐</p>
+            <p><span class="skill-name">数据思维</span> 基础SQL · 新榜/飞瓜数据</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 项目/校园实践突出年轻活力 -->
+      <div>
+        <div class="section-title">项目实践</div>
+        <div class="experience-item">
+          <div class="item-header">
+            <span class="project-title">“莫兰迪青年”播客企划</span>
+            <span class="item-right">2024.10 – 至今</span>
+          </div>
+          <div class="item-sub">发起人 & 内容主理</div>
+          <ul class="desc-list">
+            <li>独立策划泛文化播客，完成从选题、录制到小宇宙上线的全流程，已发布8期。</li>
+            <li>通过小红书图文引流，播客首月订阅量突破600，获校园创新实践基金支持。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 个性化元素：低风险社交链接与简单线性图标风格均使用文本 -->
+      <div style="margin-top: 0.6rem;">
+        <div class="divider-line" style="margin-bottom: 0.3rem;"></div>
+        <p style="font-size: 9.5pt; color: #6b7b6f; text-align: left; display: flex; gap: 1.5rem; flex-wrap: wrap;">
+          <span>📷 小红书：@清怡的莫兰迪笔记</span>
+          <span>🎥 抖音：@Qingyi_Media</span>
+          <span>🌐 作品集：qingyi.pro/folio</span>
+        </p>
+        <p style="font-size: 9pt; color: #9a9e95; margin-top: 0.15rem;">更新于2026年8月 · 适配网申与社交传播</p>
+      </div>
+    </div><!-- end resume-inner -->
+  </div><!-- end resume -->
+</body>
+</html>

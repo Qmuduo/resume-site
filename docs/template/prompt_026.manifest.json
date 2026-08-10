@@ -1,0 +1,200 @@
+{
+  "templateId": "prompt_026",
+  "name": "学术简历 · 张知行 · 研究员",
+  "sourceFile": "prompt_026.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "研究领域",
+      "label": "研究领域",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "代表性论文",
+      "label": "代表性论文",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "教学与学术服务",
+      "label": "教学与学术服务",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "推荐人",
+      "label": "推荐人",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "awards",
+      "label": "荣誉奖项",
+      "type": "array",
+      "commonPath": "awards",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "education",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "教育背景",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "experiences",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "研究经历",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    }
+  ],
+  "sampleData": {
+    "name": "张知行",
+    "研究领域": "量子信息与量子光学 · 超导量子比特调控 · 拓扑量子计算 · 量子纠错码理论。致力于可扩展量子处理器架构及噪声中等规模量子算法实现。",
+    "代表性论文": "Zhang Z. , Li C., et al. “Real-time quantum error correction beyond break-even.” Nature Physics , 2024. (已接收) Zhang Z. , Wang Y., Chen L. “Surface code implementation with high-fidelity stabilizer mea",
+    "教学与学术服务": "清华大学物理系 2021 – 2023 助教 · 《量子力学II》《固体物理》 主持习题课与答疑，设计量子模拟数值实验。 期刊审稿人 2022 – 至今 Physical Review A, Quantum Science and Technology 审稿",
+    "推荐人": "李崇光 教授 · 清华大学 · lichg@tsinghua.edu.cn Prof. William D. Oliver · MIT · oliver@mit.edu 陈澜 研究员 · 中科院物理所 · chenlan@iphy.ac.cn * 导师推荐信已备，可根据要求直接发送。",
+    "education": [
+      {
+        "date": "2019.09 – 2024.07"
+      },
+      {
+        "date": "2015.09 – 2019.06"
+      }
+    ],
+    "experiences": [
+      {
+        "date": "2020.03 – 2024.06",
+        "position": "博士研究员",
+        "description": "设计并实现基于表面码的17量子比特超导芯片，逻辑错误率降低至0.03%以下。"
+      },
+      {
+        "date": "2022.10 – 2023.09",
+        "position": "访问学者",
+        "description": "参与超导量子比特耦合噪声谱研究，合作导师：Prof. William D. Oliver。"
+      }
+    ],
+    "skills": [
+      {
+        "name": "超导量子测量",
+        "level": ""
+      },
+      {
+        "name": "Python/MATLAB",
+        "level": ""
+      },
+      {
+        "name": "低温电子学",
+        "level": ""
+      },
+      {
+        "name": "量子纠错码",
+        "level": ""
+      },
+      {
+        "name": "COMSOL仿真",
+        "level": ""
+      },
+      {
+        "name": "FPGA时序控制",
+        "level": ""
+      },
+      {
+        "name": "科技论文写作",
+        "level": ""
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "研究领域",
+      "label": "研究领域",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "代表性论文",
+      "label": "代表性论文",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "教学与学术服务",
+      "label": "教学与学术服务",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "推荐人",
+      "label": "推荐人",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "awards",
+      "label": "荣誉奖项",
+      "type": "array",
+      "commonPath": "awards",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

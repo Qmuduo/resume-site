@@ -16,6 +16,8 @@ public class TemplateVO {
     private String html;
     private String css;
     private Integer builtin;
+    /** 模板 manifest（字段定义与映射关系），无 manifest 时为 null */
+    private Object manifest;
     private LocalDateTime createdAt;
 
     public Long getId() {
@@ -88,6 +90,14 @@ public class TemplateVO {
 
     public void setBuiltin(Integer builtin) {
         this.builtin = builtin;
+    }
+
+    public Object getManifest() {
+        return manifest;
+    }
+
+    public void setManifest(Object manifest) {
+        this.manifest = manifest;
     }
 
     public LocalDateTime getCreatedAt() {

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
+  <title>林清悦 · 餐厅店长简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* 暖色调商务配色方案 */
+      --primary: #4A3B32;      /* 深褐棕 - 主文字与标题 */
+      --warm-accent: #C87A4A; /* 暖陶橘 - 强调色，用于分割线与点缀 */
+      --bg-warm: #FDF8F5;     /* 浅奶油色背景 - 温暖且护眼 */
+      --text-primary: #2E241E; /* 深咖啡 - 正文 */
+      --text-secondary: #6B5D55; /* 灰褐 - 辅助文字 */
+      --divider: #E7D7CC;     /* 浅米色分割线 */
+      --tag-bg: #F7EDE4;      /* 标签背景 */
+      --tag-text: #5C4A3D;    /* 标签文字 */
+      --white: #FFFFFF;
+      
+      --font-heading: 'Helvetica Neue', 'Arial', '思源黑体', 'Noto Sans SC', sans-serif;
+      --font-body: 'Calibri', 'Arial', 'Helvetica', '思源黑体', 'Noto Sans SC', sans-serif;
+    }
+
+    body {
+      background-color: #EAE0D5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    /* A4尺寸简历卡片 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: var(--white);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      padding: 0;
+      margin: 0 auto;
+      page-break-after: always;
+      background-color: var(--white);
+    }
+
+    /* 主内容区 - 清爽留白，页边距0.8英寸 */
+    .resume-inner {
+      padding: 0.8in 0.8in 0.7in 0.8in;
+      position: relative;
+    }
+
+    /* 左侧装饰色条 - 低风险ATS友好，纯色块不遮挡文字 */
+    .left-accent-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background-color: var(--warm-accent);
+      opacity: 0.8;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 0.15in;
+    }
+
+    .name {
+      font-family: var(--font-heading);
+      font-size: 28pt;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 1.5px;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .title-sub {
+      font-family: var(--font-body);
+      font-size: 13pt;
+      font-weight: 400;
+      color: var(--warm-accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    /* 联系信息行 - 纯文本，线性图标作为字符 */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 10.5pt;
+      color: var(--text-secondary);
+      margin-bottom: 0.2in;
+      align-items: center;
+      border-bottom: 1.5px solid var(--divider);
+      padding-bottom: 14px;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .contact-icon {
+      color: var(--warm-accent);
+      font-weight: 400;
+      margin-right: 2px;
+    }
+
+    /* 板块标题样式 */
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 11.5pt;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      margin-top: 0.25in;
+      margin-bottom: 0.12in;
+      padding-bottom: 5px;
+      border-bottom: 1.5px solid var(--warm-accent);
+      display: flex;
+      align-items: center;
+    }
+
+    /* 工作经历条目 */
+    .experience-item {
+      margin-bottom: 0.18in;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 2px;
+    }
+
+    .company-position {
+      font-weight: 700;
+      font-size: 11pt;
+      color: var(--primary);
+    }
+
+    .company-name {
+      font-weight: 700;
+    }
+
+    .position-title {
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-left: 6px;
+    }
+
+    .date-location {
+      font-size: 10pt;
+      color: var(--text-secondary);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .exp-description {
+      margin-top: 4px;
+      padding-left: 2px;
+    }
+
+    .exp-description ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 0;
+    }
+
+    .exp-description li {
+      font-size: 10.5pt;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+      display: flex;
+      align-items: baseline;
+      line-height: 1.45;
+    }
+
+    /* 标准圆点符号 - ATS安全 */
+    .exp-description li::before {
+      content: "•";
+      color: var(--warm-accent);
+      font-weight: 700;
+      font-size: 12pt;
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+
+    /* 技能标签 - 纯文本排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .skill-tag {
+      background-color: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 10pt;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      border: 0.5px solid #EAD9CC;
+    }
+
+    /* 教育背景简单列表 */
+    .education-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5pt;
+      margin-bottom: 4px;
+    }
+
+    .edu-school {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .edu-major {
+      color: var(--text-secondary);
+      margin-left: 8px;
+    }
+
+    .edu-date {
+      color: var(--text-secondary);
+      text-align: right;
+    }
+
+    /* 双栏技能区域 - 使用纯文本两列，无浮动陷阱 */
+    .two-columns {
+      display: flex;
+      gap: 30px;
+      margin-top: 4px;
+    }
+
+    .column {
+      flex: 1;
+    }
+
+    .column p {
+      font-size: 10.5pt;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .column p::before {
+      content: "•";
+      color: var(--warm-accent);
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    /* 打印样式优化 */
+    @media print {
+      body {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+      }
+
+      .resume {
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+        page-break-after: always;
+      }
+
+      .resume-inner {
+        padding: 0.7in 0.8in;
+      }
+
+      .left-accent-bar {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background-color: #C87A4A !important;
+      }
+
+      .skill-tag {
+        background-color: #F7EDE4 !important;
+        border: 0.5px solid #EAD9CC;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .contact-icon, .exp-description li::before, .section-title {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        color: #C87A4A !important;
+      }
+
+      a, button, .link {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    /* 小屏适配 */
+    @media screen and (max-width: 700px) {
+      .resume-inner {
+        padding: 0.5in;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      <!-- 低风险左侧装饰色条 -->
+      <div class="left-accent-bar"></div>
+
+      <!-- 姓名与标题 -->
+      <div class="name-section">
+        <div class="name">林清悦</div>
+        <div class="title-sub">餐厅店长 · 营运经理</div>
+      </div>
+
+      <!-- 联系方式 - 纯文本，线性图标字符 -->
+      <div class="contact-row">
+        <span class="contact-item"><span class="contact-icon">📞</span> (021) 3856-7924</span>
+        <span class="contact-item"><span class="contact-icon">✉️</span> qingyue.lin@foodiecareer.cn</span>
+        <span class="contact-item"><span class="contact-icon">📍</span> 上海市徐汇区</span>
+        <span class="contact-item"><span class="contact-icon">🔗</span> linkedin.com/in/qingyuelin</span>
+      </div>
+
+      <!-- 专业摘要 -->
+      <div>
+        <div class="section-title">专业摘要</div>
+        <p style="font-size: 10.5pt; color: #2E241E; margin-top: 4px; line-height: 1.5;">
+          5年连锁餐饮管理经验，曾任新元素品牌旗舰店副店长，带领32人团队实现连续两年营收增长超15%。 
+          擅长标准化运营、成本控制与顾客体验优化，成功推动内部晋升培养计划，猎头评价为“高潜力店长继任者”。
+        </p>
+      </div>
+
+      <!-- 核心能力 - 双栏列表 (ATS安全纯文本) -->
+      <div>
+        <div class="section-title">核心能力</div>
+        <div class="two-columns">
+          <div class="column">
+            <p>门店营运与排班管理</p>
+            <p>人力成本与食材成本控制</p>
+            <p>QSC标准落地与稽核</p>
+          </div>
+          <div class="column">
+            <p>团队招募与人才梯队建设</p>
+            <p>外卖平台运营与私域流量</p>
+            <p>顾客满意度与客诉处理</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 工作经历 -->
+      <div>
+        <div class="section-title">工作经历</div>
+        
+        <div class="experience-item">
+          <div class="exp-header">
+            <span class="company-position">
+              <span class="company-name">Garden Bistro 花园餐厅</span>
+              <span class="position-title">| 副店长 / 代理店长</span>
+            </span>
+            <span class="date-location">2022.09 – 至今 | 上海</span>
+          </div>
+          <div class="exp-description">
+            <ul>
+              <li>协助店长管理年均营收980万的西式融合餐厅，直接汇报员工18人，整体团队30+人。</li>
+              <li>主导引入数字化排班系统，人力成本占比从22%降至19.5%，员工满意度提升12%。</li>
+              <li>策划季度限定菜单与会员日活动，会员复购率提升至48%，大众点评评分稳定4.7星。</li>
+              <li>代理店长期间统筹食品安全审计，连续两个季度获得集团A级评分。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <span class="company-position">
+              <span class="company-name">新元素 Element Fresh</span>
+              <span class="position-title">| 前场主管 / 值班经理</span>
+            </span>
+            <span class="date-location">2019.07 – 2022.08 | 上海</span>
+          </div>
+          <div class="exp-description">
+            <ul>
+              <li>从管培生晋升为前场主管，负责高峰时段现场协调与顾客体验管理。</li>
+              <li>设计并执行“服务之星”激励方案，大众点评服务分项从4.3提升至4.8。</li>
+              <li>管理外卖平台日常运营，优化出餐动线使外卖差评率降低30%。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div>
+        <div class="section-title">教育背景</div>
+        <div class="education-item">
+          <span><span class="edu-school">上海商学院</span><span class="edu-major">酒店管理 本科</span></span>
+          <span class="edu-date">2015.09 – 2019.06</span>
+        </div>
+        <div style="font-size: 10pt; color: #6B5D55; margin-top: 2px;">主修课程：餐饮管理、食品成本控制、消费者行为学</div>
+      </div>
+
+      <!-- 专业技能与证书 -->
+      <div>
+        <div class="section-title">技能与认证</div>
+        <div class="skills-container">
+          <span class="skill-tag">食品安全管理员 (高级)</span>
+          <span class="skill-tag">WSET 葡萄酒二级</span>
+          <span class="skill-tag">餐饮ERP (银豹/客如云)</span>
+          <span class="skill-tag">ServSafe 认证</span>
+          <span class="skill-tag">团队培训体系搭建</span>
+          <span class="skill-tag">英语工作沟通 (CET-6)</span>
+          <span class="skill-tag">成本分析报表</span>
+        </div>
+      </div>
+
+      <!-- 内部晋升亮点 / 猎头关注 -->
+      <div style="margin-top: 0.2in;">
+        <div class="section-title">晋升与成就亮点</div>
+        <div style="display: flex; gap: 24px; font-size: 10.5pt; margin-top: 4px; flex-wrap: wrap;">
+          <span style="display: flex; align-items: center;"><span style="color:#C87A4A; font-weight:700; margin-right:6px;">●</span> 2023 集团“明日店长”储备计划成员</span>
+          <span style="display: flex; align-items: center;"><span style="color:#C87A4A; font-weight:700; margin-right:6px;">●</span> 年度最佳值班经理 (2021)</span>
+          <span style="display: flex; align-items: center;"><span style="color:#C87A4A; font-weight:700; margin-right:6px;">●</span> 猎头推荐：高潜店长继任者</span>
+        </div>
+      </div>
+      
+      <!-- 底部微小留白，无多余装饰 -->
+    </div>
+  </div>
+</body>
+</html>

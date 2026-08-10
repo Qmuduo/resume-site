@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>简历 · 高级后端架构师 · 极简灰调等宽</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 系统安全字体：等宽优先，兼顾中文思源黑体 */
+    body {
+      font-family: 'Source Code Pro', 'Cascadia Code', 'JetBrains Mono', 'Courier New', '思源黑体', 'Source Han Sans SC', Arial, Helvetica, monospace;
+      background: #e4e8ec;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      margin: 0;
+      color: #1e1e1e;
+    }
+
+    /* A4尺寸卡片，模拟纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    /* 内边距遵循呼吸感，上下左右均不小于0.5英寸 (约12.7mm) */
+    .resume-content {
+      padding: 16mm 14mm 14mm 14mm;
+      background: white;
+    }
+
+    /* 主要排版样式 */
+    h1, h2, h3, p, ul, li, div, span {
+      font-weight: 400;
+      line-height: 1.5;
+      color: #2d2d2d;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 1.8rem;
+      border-bottom: 1.5px solid #4a4a4a;
+      padding-bottom: 0.9rem;
+    }
+
+    .name {
+      font-size: 28pt;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #1a1a1a;
+      text-transform: uppercase;
+      font-family: 'Source Code Pro', 'Cascadia Code', 'JetBrains Mono', 'Courier New', '思源黑体', monospace;
+      margin-bottom: 0.2rem;
+    }
+
+    .title-sub {
+      font-size: 11pt;
+      font-weight: 400;
+      color: #4f4f4f;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-top: 0.1rem;
+    }
+
+    /* 联系行：纯文本，无图标依赖，但保留低风险符号 */
+    .contact-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 0.7rem;
+      font-size: 9.5pt;
+      color: #3a3a3a;
+      font-family: 'Source Code Pro', 'Cascadia Code', 'Courier New', monospace;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* 使用低风险文本符号代替图标，完全ATS安全 */
+    .contact-symbol {
+      font-weight: 400;
+      color: #5c5c5c;
+      margin-right: 0.15rem;
+    }
+
+    a {
+      color: #2c2c2c;
+      text-decoration: none;
+      border-bottom: 1px dotted #9a9a9a;
+    }
+
+    a:hover {
+      color: #000;
+      border-bottom: 1px solid #333;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 11.5pt;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #2b2b2b;
+      margin: 1.6rem 0 0.8rem 0;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid #bcbcbc;
+      font-family: 'Source Code Pro', 'Cascadia Code', 'Courier New', '思源黑体', monospace;
+    }
+
+    /* 经历条目容器 */
+    .entry {
+      margin-bottom: 1.2rem;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.15rem;
+    }
+
+    .entry-left {
+      font-weight: 500;
+      font-size: 11pt;
+      color: #1f1f1f;
+      letter-spacing: 0.2px;
+    }
+
+    .company {
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    .position {
+      font-weight: 400;
+      color: #3d3d3d;
+      margin-left: 0.3rem;
+    }
+
+    .entry-right {
+      font-size: 9.5pt;
+      color: #4f4f4f;
+      font-family: 'Source Code Pro', 'Cascadia Code', 'Courier New', monospace;
+      white-space: nowrap;
+      margin-left: 0.5rem;
+    }
+
+    .description {
+      margin-top: 0.35rem;
+      font-size: 9.8pt;
+      color: #3a3a3a;
+      line-height: 1.6;
+      padding-left: 0.2rem;
+    }
+
+    /* 标准圆点列表，完全ATS可解析 */
+    .bullet-list {
+      list-style: none;
+      margin-top: 0.3rem;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 1.15rem;
+      margin-bottom: 0.25rem;
+      font-size: 9.8pt;
+      color: #3a3a3a;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.2rem;
+      color: #4a4a4a;
+      font-weight: 400;
+      font-size: 10pt;
+    }
+
+    /* 技能标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.2rem;
+      margin-top: 0.3rem;
+    }
+
+    .skill-tag {
+      font-size: 9.8pt;
+      color: #2d2d2d;
+      background: transparent;
+      border-bottom: 1px solid #c4c4c4;
+      padding-bottom: 0.1rem;
+      font-family: 'Source Code Pro', 'Cascadia Code', 'Courier New', monospace;
+      letter-spacing: 0.2px;
+    }
+
+    /* 项目经历/开源贡献部分 */
+    .project-item {
+      margin-bottom: 0.9rem;
+    }
+
+    .project-name {
+      font-weight: 500;
+      font-size: 10.2pt;
+      color: #1f1f1f;
+    }
+
+    .project-desc {
+      font-size: 9.8pt;
+      color: #3a3a3a;
+      margin-top: 0.15rem;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #d4d4d4;
+      margin: 0.8rem 0 1.2rem 0;
+      opacity: 0.7;
+    }
+
+    /* 低风险左侧色条：极细灰色竖线，不承载文字，仅装饰 */
+    .left-accent {
+      border-left: 3px solid #8b8b8b;
+      padding-left: 1.2rem;
+      margin-left: 0;
+    }
+
+    /* 打印样式：去除背景、保持灰度、隐藏链接修饰 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        display: block;
+      }
+      .resume {
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0 auto;
+      }
+      .resume-content {
+        padding: 14mm 12mm 12mm 12mm;
+      }
+      a {
+        text-decoration: none;
+        color: #1e1e1e;
+        border-bottom: none;
+      }
+      .contact-symbol {
+        color: #1e1e1e;
+      }
+      /* 确保所有文字清晰，无背景色块 */
+      * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+      }
+      .left-accent {
+        border-left: 3px solid #000;
+      }
+      .section-title {
+        border-bottom: 1px solid #000;
+      }
+      .skill-tag {
+        border-bottom: 1px solid #000;
+      }
+    }
+
+    /* 响应式微调 */
+    @media screen and (max-width: 700px) {
+      .resume-content {
+        padding: 10mm 8mm;
+      }
+      .entry-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .entry-right {
+        margin-left: 0;
+        margin-top: 0.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-content">
+      
+      <!-- 姓名与标题区域 -->
+      <div class="name-section">
+        <div class="name">WEI CHEN</div>
+        <div class="title-sub">高级后端架构师 · 分布式系统</div>
+        <div class="contact-line">
+          <span class="contact-item"><span class="contact-symbol">☎</span> +86 139 5027 6814</span>
+          <span class="contact-item"><span class="contact-symbol">✉</span> wei.chen@architect.dev</span>
+          <span class="contact-item"><span class="contact-symbol">🌐</span> github.com/weichen-arch</span>
+          <span class="contact-item"><span class="contact-symbol">📍</span> 北京 / 远程</span>
+        </div>
+      </div>
+
+      <!-- 专业摘要（极简风格，直接作为引导） -->
+      <div style="margin-bottom: 0.2rem;">
+        <div style="font-size: 10pt; color: #383838; line-height: 1.6; font-family: 'Source Code Pro', 'Cascadia Code', monospace;">
+          拥有8年+后端架构设计经验，专注高并发分布式系统、领域驱动设计及云原生基础设施。Apache 开源项目 Committer，善于通过技术演进推动业务增长。
+        </div>
+      </div>
+
+      <!-- 核心技术能力 -->
+      <div class="section-title">核心技术</div>
+      <div class="skills-container">
+        <span class="skill-tag">Java / Kotlin</span>
+        <span class="skill-tag">Go</span>
+        <span class="skill-tag">Rust</span>
+        <span class="skill-tag">Spring Ecosystem</span>
+        <span class="skill-tag">Kubernetes</span>
+        <span class="skill-tag">Istio</span>
+        <span class="skill-tag">Kafka</span>
+        <span class="skill-tag">Flink</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">Redis</span>
+        <span class="skill-tag">gRPC</span>
+        <span class="skill-tag">DDD</span>
+        <span class="skill-tag">事件溯源</span>
+        <span class="skill-tag">系统性能调优</span>
+      </div>
+
+      <!-- 工作经历 - 架构师级别 -->
+      <div class="section-title">专业经历</div>
+      
+      <div class="entry left-accent">
+        <div class="entry-header">
+          <div class="entry-left">
+            <span class="company">星穹数据</span><span class="position"> · 首席架构师</span>
+          </div>
+          <div class="entry-right">2021.09 – 至今</div>
+        </div>
+        <ul class="bullet-list">
+          <li>主导实时数据平台架构重构，支撑日均百亿级事件处理，延迟降低至 P99 < 15ms。</li>
+          <li>设计多数据中心异步同步方案，采用 CRDT 与 WAL 日志合并，实现跨区域最终一致性。</li>
+          <li>带领8人架构小组制定技术蓝图，引入 OpenTelemetry 全链路追踪与混沌工程实践。</li>
+          <li>推动自研消息中间件开源，Apache 孵化器项目，社区贡献者超120人。</li>
+        </ul>
+      </div>
+
+      <div class="entry left-accent">
+        <div class="entry-header">
+          <div class="entry-left">
+            <span class="company">云迹科技</span><span class="position"> · 高级后端架构师</span>
+          </div>
+          <div class="entry-right">2018.04 – 2021.08</div>
+        </div>
+        <ul class="bullet-list">
+          <li>设计电商核心交易链路异步化方案，通过 Saga 模式与事件表实现最终一致，吞吐提升3倍。</li>
+          <li>构建基于 Kubernetes 的弹性混合云部署，降低基础设施成本约35%。</li>
+          <li>为团队引入 DDD 战术设计，重构订单与支付有界上下文，显著降低模块耦合。</li>
+          <li>维护内部 Rust 网络代理组件，用于边缘网关，处理每秒超50万连接。</li>
+        </ul>
+      </div>
+
+      <div class="entry left-accent">
+        <div class="entry-header">
+          <div class="entry-left">
+            <span class="company">数聚工场</span><span class="position"> · 后端技术专家</span>
+          </div>
+          <div class="entry-right">2015.07 – 2018.02</div>
+        </div>
+        <ul class="bullet-list">
+          <li>参与实时分析引擎开发，基于 Apache Flink 实现复杂事件处理，服务金融风控场景。</li>
+          <li>优化分布式缓存层，自研一致性哈希代理，Redis 集群故障转移时间缩短至秒级。</li>
+          <li>编写内部技术规范与代码评审准则，覆盖微服务治理与 API 版本策略。</li>
+        </ul>
+      </div>
+
+      <!-- 开源与社区影响力 (猎头+开源渠道关注) -->
+      <div class="section-title">开源项目 & 技术影响</div>
+      
+      <div class="project-item left-accent">
+        <div class="project-name">▸ Bifrost-Stream (Apache 孵化器)</div>
+        <div class="project-desc">高性能流式数据总线，支持多协议适配。个人为 PMC 成员，主导内核重构，GitHub 2.4k ⭐。</div>
+      </div>
+      <div class="project-item left-accent">
+        <div class="project-name">▸ RustKv — 嵌入式 KV 存储</div>
+        <div class="project-desc">使用 Rust 实现的 LSM-tree 存储引擎，适用于边缘节点。个人维护，被多个 IoT 平台集成。</div>
+      </div>
+      <div class="project-item left-accent">
+        <div class="project-name">▸ 技术演讲 / 文章</div>
+        <div class="project-desc">QCon、ArchSummit 讲师；《高可用架构设计精要》专栏作者；InfoQ 编辑推荐作者。</div>
+      </div>
+
+      <!-- 教育背景 简洁呈现 -->
+      <div class="section-title">教育背景</div>
+      <div class="entry-header" style="margin-bottom: 0.2rem;">
+        <div class="entry-left">
+          <span class="company">北京大学</span><span class="position"> · 计算机科学与技术 硕士</span>
+        </div>
+        <div class="entry-right">2013 – 2015</div>
+      </div>
+      <div class="entry-header" style="margin-top: 0.2rem;">
+        <div class="entry-left">
+          <span class="company">华中科技大学</span><span class="position"> · 软件工程 学士</span>
+        </div>
+        <div class="entry-right">2009 – 2013</div>
+      </div>
+
+      <!-- 语言与附加信息，极简处理 -->
+      <div class="section-title">语言 & 证书</div>
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap; font-size: 9.8pt; color: #3a3a3a;">
+        <span>中文 (母语)  ·  英文 (专业工作水平, IELTS 7.5)</span>
+        <span>AWS Solutions Architect Professional</span>
+        <span>CNCF CKA 认证</span>
+      </div>
+      
+      <!-- 细微装饰分割线，仅视觉呼吸 -->
+      <div style="margin-top: 1.2rem; border-top: 1px solid #e2e2e2; padding-top: 0.5rem; font-size: 8.5pt; color: #7a7a7a; text-align: right; letter-spacing: 0.4px;">
+        架构演进 · 开源共建 · 系统韧性
+      </div>
+    </div>
+  </div>
+</body>
+</html>

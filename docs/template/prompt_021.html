@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>公务员简历 · 庄重正式版</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica', '思源黑体', 'Noto Sans SC', system-ui, sans-serif;
+      line-height: 1.5;
+      color: #1e293b;
+    }
+
+    /* 简历卡片：A4比例，纯白背景，无图形背景块 */
+    .resume {
+      max-width: 800px;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+      padding: 52px 56px 48px 56px; /* 上下边距舒适，左右足够 */
+      margin: 0 auto;
+      position: relative;
+      page-break-after: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* 确保纯文本可复制，无任何浮动/绝对定位干扰内容流 */
+    .resume * {
+      position: static;
+      float: none;
+    }
+
+    /* 主色调：深蓝灰，正式庄重，无彩色倾向 */
+    :root {
+      --primary: #1e3a5f;   /* 深海蓝灰，代替黑色，更稳重 */
+      --accent: #2c5282;    /* 稍亮蓝，用于极简点缀 */
+      --divider: #cbd5e0;   /* 浅灰分割线 */
+      --text-main: #1e293b; /* 正文深灰 */
+      --text-secondary: #475569; /* 次级文字 */
+      --bg-light: #f8fafc;  /* 极浅背景，仅用于技能标签，不影响ATS */
+    }
+
+    /* 所有文字黑色或深灰，无浅色反白文字 */
+    h1, h2, h3, p, li, div, span {
+      color: var(--text-main);
+    }
+
+    /* ----- 姓名区域 ----- */
+    .name-section {
+      margin-bottom: 28px;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 18px;
+    }
+
+    .name {
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #0f172a; /* 最深色仅用于姓名 */
+      margin-bottom: 6px;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', 'Noto Sans SC', sans-serif;
+    }
+
+    .subhead {
+      font-size: 15px;
+      color: #334155;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .subhead-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 450;
+      color: #2d3a4a;
+    }
+
+    /* 简单线性图标使用文本符号，ATS完美识别 */
+    .icon-text {
+      font-size: 15px;
+      margin-right: 2px;
+      color: #2c5282;
+      font-weight: 400;
+    }
+
+    /* ----- 板块标题 ----- */
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--primary);
+      margin: 32px 0 14px 0;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--divider);
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', 'Noto Sans SC', sans-serif;
+    }
+
+    /* 工作经历条目 */
+    .entry {
+      margin-bottom: 20px;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .entry-left {
+      font-weight: 700;
+      font-size: 15px;
+      color: #0f172a;
+    }
+
+    .entry-right {
+      font-size: 14px;
+      font-weight: 450;
+      color: #334155;
+      white-space: nowrap;
+    }
+
+    .entry-sub {
+      font-size: 14px;
+      color: #2d3a4a;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .entry-desc {
+      margin-top: 6px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .entry-desc li {
+      font-size: 14px;
+      color: #1e293b;
+      margin-bottom: 6px;
+      line-height: 1.6;
+      padding-left: 18px;
+      position: relative;
+      list-style: none;
+    }
+
+    /* 标准圆点符号，不使用自定义图形 */
+    .entry-desc li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #1e3a5f;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* 技能标签：两栏纯文本列表，无背景块遮挡 */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-top: 6px;
+    }
+
+    .skill-category {
+      flex: 1 1 180px;
+    }
+
+    .skill-category h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .skill-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skill-list li {
+      font-size: 14px;
+      color: #1e293b;
+      margin-bottom: 4px;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .skill-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #2c5282;
+      font-weight: 600;
+    }
+
+    /* 教育经历简洁样式 */
+    .education-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .edu-left {
+      font-weight: 700;
+      font-size: 15px;
+      color: #0f172a;
+    }
+
+    .edu-right {
+      font-size: 14px;
+      color: #334155;
+    }
+
+    .edu-detail {
+      font-size: 14px;
+      color: #2d3a4a;
+      margin-bottom: 6px;
+    }
+
+    /* 分割线统一细线 */
+    hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 18px 0 10px 0;
+    }
+
+    /* 打印样式：隐藏背景，保留文本清晰，无页边距溢出 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        border: none;
+        padding: 40px 48px 40px 48px;
+        max-width: 100%;
+        width: 100%;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+      }
+      /* 确保颜色正常，无背景色块影响 */
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .section-title {
+        color: #1e3a5f !important;
+      }
+      .entry-desc li::before {
+        color: #1e3a5f !important;
+      }
+    }
+
+    /* 响应式调整，但保持A4风格 */
+    @media screen and (max-width: 700px) {
+      .resume {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    
+    <!-- 姓名区域：左对齐，稳重 -->
+    <div class="name-section">
+      <h1 class="name">陈思远</h1>
+      <div class="subhead">
+        <span class="subhead-item"><span class="icon-text">📞</span> 138-1025-6782</span>
+        <span class="subhead-item"><span class="icon-text">✉️</span> chensiyuan@zhaolu.gov.cn</span>
+        <span class="subhead-item"><span class="icon-text">📍</span> 北京市东城区</span>
+      </div>
+      <div style="font-size: 14px; color: #334155; margin-top: 10px; display: flex; gap: 24px;">
+        <span>男 · 1990.08</span>
+        <span>中共党员</span>
+        <span>现任职务：四级主任科员</span>
+      </div>
+    </div>
+
+    <!-- 报考/遴选意向 (符合公考+遴选场景) -->
+    <div style="margin-bottom: 20px;">
+      <div style="font-size: 15px; font-weight: 600; color: #0f172a;">报考职位：办公厅综合管理岗（一级主任科员及以下）</div>
+      <div style="font-size: 14px; color: #334155; margin-top: 2px;">遴选方向：中央机关公开遴选 · 综合文字与政策研究</div>
+    </div>
+
+    <!-- 核心优势 / 职业概要 (纯文本，无背景块) -->
+    <div class="section-title">核心优势</div>
+    <div style="font-size: 14px; color: #1e293b; line-height: 1.7; margin-bottom: 6px;">
+      8年党政机关综合工作经验，长期负责政策调研、公文撰写与跨部门协调。熟悉行政决策流程，具备较强政治素养与保密意识。连续三年年度考核优秀，多次参与市级重点改革课题。
+    </div>
+
+    <!-- 工作经历 (模拟科员到科长层级) -->
+    <div class="section-title">工作经历</div>
+    
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-left">北京市朝阳区发展和改革委员会</span>
+        <span class="entry-right">2020.09 – 至今</span>
+      </div>
+      <div class="entry-sub">综合规划科 · 四级主任科员 / 三级主任科员</div>
+      <ul class="entry-desc">
+        <li>牵头起草全区国民经济和社会发展计划草案，连续三年通过区人大审议，采纳率100%。</li>
+        <li>主笔《朝阳区“十四五”现代服务业发展规划》等5份政策性文件，获区委主要领导批示。</li>
+        <li>协调财政、统计等8个部门建立经济运行监测机制，撰写季度分析报告12篇，为领导决策提供数据支撑。</li>
+        <li>负责科室公文流转与保密管理，全年处理上级来文300余件，零差错、零泄密。</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-left">北京市朝阳区人民政府办公室</span>
+        <span class="entry-right">2016.08 – 2020.08</span>
+      </div>
+      <div class="entry-sub">信息科 · 科员</div>
+      <ul class="entry-desc">
+        <li>编发《朝阳政务信息》200余期，上报市委办公厅信息采用率位居全市前列。</li>
+        <li>参与组织区政府常务会议、专题会议50余次，撰写会议纪要及督查报告，推动重点事项落实。</li>
+        <li>独立完成全区政务公开第三方评估整改，推动区政府门户网站优化，群众满意度提升12%。</li>
+      </ul>
+    </div>
+
+    <!-- 挂职/基层经历 (体现遴选常见要求) -->
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-left">朝阳区朝外街道办事处（基层锻炼）</span>
+        <span class="entry-right">2015.09 – 2016.07</span>
+      </div>
+      <div class="entry-sub">社区建设办公室 · 试用期干部</div>
+      <ul class="entry-desc">
+        <li>参与老旧小区改造居民协调工作，走访居民230户，化解矛盾17起，保障工程顺利推进。</li>
+        <li>撰写民情调研报告3篇，其中《关于推进街区更新的建议》被街道工委采纳实施。</li>
+      </ul>
+    </div>
+
+    <!-- 教育背景 -->
+    <div class="section-title">教育背景</div>
+    <div class="education-entry">
+      <span class="edu-left">中国人民大学</span>
+      <span class="edu-right">2013.09 – 2015.07</span>
+    </div>
+    <div class="edu-detail">公共管理硕士（MPA） · 行政管理方向 · 校级优秀毕业生</div>
+    
+    <div class="education-entry" style="margin-top: 10px;">
+      <span class="edu-left">北京科技大学</span>
+      <span class="edu-right">2009.09 – 2013.07</span>
+    </div>
+    <div class="edu-detail">法学学士 · 主修宪法与行政法 · 连续三年获得国家奖学金</div>
+
+    <!-- 资格证书与技能 (采用标签式纯文本排列，无背景块) -->
+    <div class="section-title">专业能力与技能</div>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4>公文写作</h4>
+        <ul class="skill-list">
+          <li>党政机关公文格式 (GB/T 9704)</li>
+          <li>调研报告 / 领导讲话稿</li>
+          <li>政策解读与政务信息</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h4>政策研究</h4>
+        <ul class="skill-list">
+          <li>宏观经济分析</li>
+          <li>数据可视化 (Excel高级)</li>
+          <li>课题项目管理</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h4>职业资格</h4>
+        <ul class="skill-list">
+          <li>法律职业资格 (A证)</li>
+          <li>英语六级 (CET-6)</li>
+          <li>计算机二级 (MS Office)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 重要培训与表彰 (使用低风险分割线) -->
+    <div class="section-title">培训与表彰</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 28px; font-size: 14px;">
+      <div style="flex: 1;">
+        <span style="font-weight: 700; color: #0f172a;">2022.06</span> 北京市公务员初任培训优秀学员<br>
+        <span style="font-weight: 700; color: #0f172a;">2021.12</span> 朝阳区优秀公务员（嘉奖）<br>
+        <span style="font-weight: 700; color: #0f172a;">2019.05</span> 全市党委信息工作先进个人
+      </div>
+      <div style="flex: 1;">
+        <span style="font-weight: 700; color: #0f172a;">2023.03</span> 中央党校（国家行政学院）青年干部培训班<br>
+        <span style="font-weight: 700; color: #0f172a;">2018.09</span> 北京市委党校公文写作专题研修班
+      </div>
+    </div>
+
+    <!-- 政治面貌等附加信息（纯文本） -->
+    <div style="margin-top: 24px; font-size: 13px; color: #475569; border-top: 1px solid #e2e8f0; padding-top: 16px;">
+      政治面貌：中共党员（2012年入党） · 现任支部组织委员 · 无任何违纪违规记录。
+    </div>
+
+    <!-- 所有内容均为纯HTML文本，无canvas/svg，无文本框，无背景色块反白文字 -->
+  </div>
+</body>
+</html>

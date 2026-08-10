@@ -1,0 +1,199 @@
+{
+  "templateId": "prompt_082",
+  "name": "林清音 · 花艺师简历",
+  "sourceFile": "prompt_082.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".subtitle",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".edu-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "edu-item"
+    }
+  ],
+  "sampleData": {
+    "name": "林清音",
+    "title": "花艺师 · 植物造型设计师",
+    "phone": "(86) 139-5027-6814",
+    "email": "✉️ qingyin.lin@flora.studio",
+    "location": "上海 · 徐汇区",
+    "experiences": [
+      {
+        "position": "· 高级花艺师",
+        "date": "2023.03 – 至今 | 上海"
+      },
+      {
+        "position": "· 花艺设计师",
+        "date": "2021.06 – 2023.02 | 杭州"
+      },
+      {
+        "position": "· 助理花艺师",
+        "date": "2020.08 – 2021.05 | 苏州"
+      }
+    ],
+    "skills": [
+      {
+        "name": "手绘花稿设计",
+        "level": ""
+      },
+      {
+        "name": "色彩构成",
+        "level": ""
+      },
+      {
+        "name": "空间花艺装置",
+        "level": ""
+      },
+      {
+        "name": "花材养护",
+        "level": ""
+      },
+      {
+        "name": "社交媒体视觉",
+        "level": ""
+      },
+      {
+        "name": "Adobe Lightroom",
+        "level": ""
+      },
+      {
+        "name": "Procreate 手绘",
+        "level": ""
+      },
+      {
+        "name": "客户提案",
+        "level": ""
+      }
+    ],
+    "education": [
+      {
+        "school": "南京农业大学",
+        "date": "2016 – 2020"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

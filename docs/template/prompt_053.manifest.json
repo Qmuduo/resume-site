@@ -1,0 +1,134 @@
+{
+  "templateId": "prompt_053",
+  "name": "工业设计师简历 · 简约现代 · 时间轴排版",
+  "sourceFile": "prompt_053.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "个人简介",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": false
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name"
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": true
+    },
+    {
+      "name": "awards",
+      "label": "荣誉奖项",
+      "type": "array",
+      "commonPath": "awards",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": "h1",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "summary",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "sectionTitle": "专业概述"
+    },
+    {
+      "commonPath": "projects",
+      "selector": ".project-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "project-item"
+    }
+  ],
+  "sampleData": {
+    "name": "陈知远",
+    "summary": "拥有3年工业设计经验，擅长从用户洞察到量产落地的全链路设计。主导过消费电子、智能家居类项目，熟练运用Rhino/Keyshot及设计思维驱动创新。作品曾获iF概念奖，注重CMF与可持续设计。",
+    "projects": [
+      {
+        "description": "针对小户型场景设计可替换滤芯模块，结合织物与木纹CMF，获红点概念奖入围。"
+      },
+      {
+        "description": "整合转向灯与刹车感应功能，优化风道结构，外观专利已受理。"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "summary",
+      "label": "专业概述",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name",
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "awards",
+      "label": "荣誉奖项",
+      "type": "array",
+      "commonPath": "awards",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

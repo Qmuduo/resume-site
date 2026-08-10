@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
+  <title>陈知远 · 公关高级经理简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      background: #eef2f5;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', '思源黑体', 'Noto Sans SC', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      margin: 0;
+    }
+
+    /* A4尺寸卡片，模拟打印页面 */
+    .resume {
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      page-break-after: auto;
+    }
+
+    /* 内部内容区域，确保呼吸感 */
+    .resume-inner {
+      padding: 1.6cm 1.8cm 1.8cm 1.8cm; /* 上下左右足够留白 */
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 打印样式：去除背景、按钮、链接下划线，保留纯净文本 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+      .resume {
+        box-shadow: none;
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        page-break-after: auto;
+      }
+      .resume-inner {
+        padding: 1.2cm 1.5cm;
+      }
+      /* 隐藏可能出现的交互元素（本设计无按钮，确保链接不显示下划线） */
+      a, .link {
+        text-decoration: none;
+        color: inherit;
+      }
+      /* 确保彩色分割线打印时保留 */
+      .divider, .timeline-dot, .section-title-line {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    }
+
+    /* ----- 字体与色彩变量 ----- */
+    :root {
+      --primary: #1A365D;      /* 深蓝，主色，用于姓名、板块标题、时间轴节点 */
+      --accent: #C44536;       /* 砖红暖调，强调色，用于关键数据、装饰线 */
+      --body-text: #2D3748;    /* 深灰正文 */
+      --light-bg: #F7FAFC;     /* 极浅背景，仅用于技能标签背景 */
+      --line-light: #E2E8F0;   /* 分割线浅灰 */
+      --white: #FFFFFF;
+    }
+
+    /* 全局文字样式 */
+    h1, h2, h3, p, li, div, span {
+      color: var(--body-text);
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    /* ----- 姓名区域（左对齐，体现现代简约）----- */
+    .name-section {
+      margin-bottom: 1.6rem;
+    }
+    .name {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--primary);
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体 Bold', sans-serif;
+      line-height: 1.2;
+      margin-bottom: 0.25rem;
+    }
+    .title {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #4A5568;
+      letter-spacing: 0.03em;
+      margin-bottom: 1rem;
+      font-family: 'Arial', '思源黑体 Regular', sans-serif;
+    }
+    /* 姓名下方分割线（强调色） */
+    .name-divider {
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      margin-top: 0.5rem;
+      margin-bottom: 0.2rem;
+      border: none;
+    }
+
+    /* 联系信息行：左对齐，使用简单线性图标（文本符号） */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 0.9rem;
+      font-size: 0.9rem;
+      color: #4A5568;
+      font-family: 'Arial', '思源黑体 Regular', sans-serif;
+    }
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+    .contact-icon {
+      font-weight: 500;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    /* ----- 板块标题样式 ----- */
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 1.8rem;
+      margin-bottom: 0.7rem;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体 Bold', sans-serif;
+      display: flex;
+      align-items: center;
+    }
+    .section-title-text {
+      position: relative;
+      padding-right: 1rem;
+      background: white; /* 遮盖线条 */
+    }
+    /* 板块标题底部的细线 (装饰) */
+    .section-title-line {
+      flex: 1;
+      height: 1px;
+      background: var(--line-light);
+      margin-left: 0.8rem;
+    }
+
+    /* ----- 时间轴布局核心 (工作经历/教育) ----- */
+    .timeline-item {
+      display: flex;
+      margin-bottom: 1.3rem;
+      position: relative;
+    }
+    /* 左侧时间轴装饰：细竖线 + 圆点 */
+    .timeline-left {
+      width: 6.5rem;  /* 固定宽度放置时间 */
+      flex-shrink: 0;
+      text-align: right;
+      padding-right: 1.4rem;
+      position: relative;
+      font-family: 'Arial', 'Helvetica Neue', sans-serif;
+      color: #4A5568;
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.5;
+      padding-top: 0.15rem;
+    }
+    /* 时间轴圆点 (强调色) */
+    .timeline-left::before {
+      content: '';
+      position: absolute;
+      right: -0.35rem;
+      top: 0.45rem;
+      width: 0.7rem;
+      height: 0.7rem;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 0 0 2px var(--accent);
+      z-index: 2;
+    }
+    /* 竖线连接 */
+    .timeline-left::after {
+      content: '';
+      position: absolute;
+      right: -0.08rem;
+      top: 1.3rem;
+      bottom: -0.8rem;
+      width: 1.8px;
+      background: var(--line-light);
+      z-index: 1;
+    }
+    /* 最后一个条目不显示延伸的竖线 */
+    .timeline-item:last-child .timeline-left::after {
+      display: none;
+    }
+
+    .timeline-content {
+      flex: 1;
+      padding-left: 1.5rem;
+      border-left: 1px solid transparent; /* 保持结构 */
+    }
+    .company-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--primary);
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体 Bold', sans-serif;
+      margin-bottom: 0.1rem;
+    }
+    .job-title {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #2D3748;
+      margin-bottom: 0.35rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+    .job-title span {
+      font-weight: 400;
+      color: #4A5568;
+      font-size: 0.8rem;
+    }
+    /* 描述要点使用标准圆点 */
+    .desc-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.4rem;
+    }
+    .desc-list li {
+      font-size: 0.85rem;
+      color: var(--body-text);
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      line-height: 1.55;
+    }
+    .desc-list li::before {
+      content: '•';
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    /* 教育经历同样采用时间轴，但简化 */
+    .education-item {
+      display: flex;
+      margin-bottom: 0.8rem;
+    }
+    .edu-left {
+      width: 6.5rem;
+      flex-shrink: 0;
+      text-align: right;
+      padding-right: 1.4rem;
+      font-size: 0.8rem;
+      color: #4A5568;
+      position: relative;
+    }
+    .edu-left::before {
+      content: '';
+      position: absolute;
+      right: -0.35rem;
+      top: 0.3rem;
+      width: 0.7rem;
+      height: 0.7rem;
+      background: var(--primary);
+      border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    .edu-content {
+      padding-left: 1.5rem;
+    }
+    .school-name {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* 技能标签样式（纯文本标签，ATS安全） */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1.2rem;
+      margin-top: 0.2rem;
+    }
+    .skill-tag {
+      font-size: 0.85rem;
+      background: var(--light-bg);
+      padding: 0.25rem 0.9rem;
+      border-radius: 20px;
+      color: #2D3748;
+      font-weight: 450;
+      letter-spacing: 0.02em;
+      border: 1px solid #E2E8F0;
+    }
+
+    /* 语言及证书采用简单列表 */
+    .lang-item {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+    .lang-name {
+      font-weight: 600;
+      width: 5rem;
+      color: var(--primary);
+    }
+
+    /* 分割线 */
+    .divider-light {
+      height: 1px;
+      background: var(--line-light);
+      margin: 1rem 0 1.2rem 0;
+    }
+
+    /* 调整部分模块边距 */
+    .summary-text {
+      font-size: 0.9rem;
+      color: var(--body-text);
+      line-height: 1.6;
+      margin-bottom: 0.3rem;
+    }
+
+    /* 确保没有任何复杂图形或文本重叠 */
+    .no-overlap {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      
+      <!-- 姓名 + 职位 -->
+      <div class="name-section">
+        <h1 class="name">陈知远</h1>
+        <div class="title">公关与品牌传播高级经理 | 企业声誉 · 媒体策略</div>
+        <div class="name-divider"></div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="contact-icon">📞</span> +86 139 5027 6814</span>
+          <span class="contact-item"><span class="contact-icon">✉️</span> zhiyuan.chen@prlab.cn</span>
+          <span class="contact-item"><span class="contact-icon">📍</span> 上海 · 中国</span>
+          <span class="contact-item"><span class="contact-icon">🔗</span> linkedin.com/in/zhiyuanchen</span>
+        </div>
+      </div>
+
+      <!-- 专业摘要 (纯文本，无图形) -->
+      <div class="section-title">
+        <span class="section-title-text">专业摘要</span>
+        <span class="section-title-line"></span>
+      </div>
+      <p class="summary-text">
+        资深公关传播专家，8年跨国企业及头部公关公司经验。擅长企业声誉管理、危机公关、媒体关系与CEO品牌塑造。主导过多个千万级整合传播项目，服务科技、金融及消费领域客户。具备猎头及行业人脉深度链接，善于以数据驱动传播策略。
+      </p>
+
+      <!-- 核心经验 (时间轴布局) -->
+      <div class="section-title">
+        <span class="section-title-text">工作经验</span>
+        <span class="section-title-line"></span>
+      </div>
+
+      <!-- 经历1 -->
+      <div class="timeline-item">
+        <div class="timeline-left">2021.05 – 至今</div>
+        <div class="timeline-content">
+          <div class="company-name">维景国际公关顾问有限公司 · 上海</div>
+          <div class="job-title">公关高级经理 <span>| 企业传播与品牌策略</span></div>
+          <ul class="desc-list">
+            <li>领导7人团队，为金融科技及高端制造客户提供战略公关，年度客户留存率92%。</li>
+            <li>策划并执行某跨国并购案全球传播，覆盖彭博、路透等顶级媒体，正面声量提升47%。</li>
+            <li>构建CEO个人品牌体系，一年内高层演讲邀约增长3倍，行业白皮书下载量破10万。</li>
+            <li>管理年度预算超800万，通过精准媒体投放与KOL合作实现传播成本降低18%。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 经历2 -->
+      <div class="timeline-item">
+        <div class="timeline-left">2018.08 – 2021.03</div>
+        <div class="timeline-content">
+          <div class="company-name">明思力集团 (MSL) · 北京</div>
+          <div class="job-title">公关经理 <span>| 科技与消费电子</span></div>
+          <ul class="desc-list">
+            <li>服务华为、戴森等品牌，主导产品上市传播战役，平均媒体价值产出超1200万/项目。</li>
+            <li>搭建危机监测与响应机制，成功处理3起重大产品舆情，24小时内负面声量降低62%。</li>
+            <li>建立媒体与KOL资源库，维护核心记者关系超200人，关键信息首发率行业领先。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 经历3 -->
+      <div class="timeline-item">
+        <div class="timeline-left">2016.09 – 2018.07</div>
+        <div class="timeline-content">
+          <div class="company-name">博雅公共关系有限公司 · 上海</div>
+          <div class="job-title">高级客户主任 → 客户经理</div>
+          <ul class="desc-list">
+            <li>参与宝马、耐克等品牌大型活动传播，负责媒体邀请及内容管理，到场媒体超150家。</li>
+            <li>撰写新闻稿、高管致辞等核心内容，被主流商业媒体采用率超80%。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 教育背景 同样时间轴风格 -->
+      <div class="section-title">
+        <span class="section-title-text">教育背景</span>
+        <span class="section-title-line"></span>
+      </div>
+      <div class="education-item">
+        <div class="edu-left">2014.09 – 2016.06</div>
+        <div class="edu-content">
+          <span class="school-name">复旦大学 · 新闻学院</span>   传播学硕士 (公共关系方向)
+        </div>
+      </div>
+      <div class="education-item">
+        <div class="edu-left">2010.09 – 2014.06</div>
+        <div class="edu-content">
+          <span class="school-name">上海外国语大学</span>   新闻学学士 · 英语专业八级
+        </div>
+      </div>
+
+      <!-- 专业技能 + 语言能力 使用两栏纯文本列表（无浮动风险） -->
+      <div class="section-title">
+        <span class="section-title-text">核心能力</span>
+        <span class="section-title-line"></span>
+      </div>
+      <div class="skills-container">
+        <span class="skill-tag">企业声誉管理</span>
+        <span class="skill-tag">危机公关与舆情分析</span>
+        <span class="skill-tag">媒体关系与KOL策略</span>
+        <span class="skill-tag">CEO品牌塑造</span>
+        <span class="skill-tag">整合营销传播</span>
+        <span class="skill-tag">内容战略与故事线</span>
+        <span class="skill-tag">数据驱动传播</span>
+        <span class="skill-tag">跨文化沟通</span>
+        <span class="skill-tag">Meltwater/Cision</span>
+        <span class="skill-tag">项目管理 (PMP)</span>
+      </div>
+
+      <div class="divider-light"></div>
+
+      <!-- 语言与证书，采用行内列表，安全无表格 -->
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start;">
+        <div>
+          <div style="font-weight: 600; color: var(--primary); margin-bottom: 0.3rem;">语言能力</div>
+          <div class="lang-item"><span class="lang-name">中文</span> 母语</div>
+          <div class="lang-item"><span class="lang-name">英语</span> 专业八级 · 商务流利</div>
+          <div class="lang-item"><span class="lang-name">法语</span> 基础工作交流</div>
+        </div>
+        <div>
+          <div style="font-weight: 600; color: var(--primary); margin-bottom: 0.3rem;">专业证书</div>
+          <div style="font-size:0.9rem;">国际商业传播师 (ABC) · 危机管理认证 (IPR)</div>
+          <div style="font-size:0.9rem; margin-top:0.2rem;">数字化传播策略 (HubSpot 认证)</div>
+        </div>
+      </div>
+
+      <!-- 底部留白自然存在，无额外装饰 -->
+    </div>
+  </div>
+</body>
+</html>

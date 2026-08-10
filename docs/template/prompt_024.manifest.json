@@ -1,0 +1,241 @@
+{
+  "templateId": "prompt_024",
+  "name": "简历 · 药企注册专员 · 保守专业深灰基调",
+  "sourceFile": "prompt_024.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": true
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-sub",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    },
+    {
+      "commonPath": "experiences",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "工作经历",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".edu-entry",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "edu-entry"
+    },
+    {
+      "commonPath": "languages",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "证书·语言",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "projects",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "注册项目",
+      "itemSelector": "entry"
+    }
+  ],
+  "sampleData": {
+    "name": "陈知行",
+    "title": "药品注册专员 · 初级/中级",
+    "phone": "(86) 138-1023-4567",
+    "email": "✉️ zhixing.chen@regpharma.com",
+    "location": "上海 · 浦东",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "🔗 linkedin.com/in/chen-zhixing"
+      }
+    ],
+    "skills": [
+      {
+        "name": "NMPA法规",
+        "level": ""
+      },
+      {
+        "name": "ANDA申报",
+        "level": ""
+      },
+      {
+        "name": "药品注册检验",
+        "level": ""
+      },
+      {
+        "name": "补充申请",
+        "level": ""
+      },
+      {
+        "name": "CDE沟通交流",
+        "level": ""
+      },
+      {
+        "name": "SOP合规",
+        "level": ""
+      },
+      {
+        "name": "项目管理",
+        "level": ""
+      },
+      {
+        "name": "英文文献检索",
+        "level": ""
+      }
+    ],
+    "experiences": [
+      {
+        "position": "| 药品注册专员",
+        "date": "2024.01 – 至今 | 上海"
+      },
+      {
+        "position": "| 注册助理",
+        "date": "2022.07 – 2023.12 | 南京"
+      }
+    ],
+    "education": [
+      {
+        "degree": "| 药学 学士",
+        "date": "2018.09 – 2022.06"
+      }
+    ],
+    "languages": [
+      {
+        "name": "RAC证书",
+        "level": "药品注册专员认证"
+      }
+    ],
+    "projects": [
+      {
+        "date": "2024.03 – 2024.11"
+      },
+      {
+        "date": "2023.05 – 2023.10"
+      }
+    ]
+  },
+  "pendingManual": []
+}

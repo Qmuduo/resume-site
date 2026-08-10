@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>酒店大堂经理 · 简历视觉方案</title>
+  <style>
+    /* ===== 全局重置与A4打印核心 ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #e9e4dd; /* 暖灰基底，模拟纸张环境 */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 0;
+      font-family: 'Arial', 'Helvetica', 'Calibri', '思源黑体', 'Noto Sans SC', sans-serif;
+      color: #2b3a3f; /* 正文深灰绿 */
+      line-height: 1.5;
+    }
+
+    /* 简历卡片：A4比例，纯白背景，安全文本流 */
+    .resume {
+      width: 210mm;
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      page-break-after: auto;
+    }
+
+    /* 内边距：呼吸感，不小于0.5英寸(约12.7mm) */
+    .resume-inner {
+      padding: 15mm 18mm 12mm 18mm; /* 上下15mm左右18mm，视觉舒适 */
+    }
+
+    /* ===== 莫兰迪色系定义 ===== */
+    /* 主色：灰橄榄绿 / 辅色：暖灰 / 强调：陶土粉 */
+    .text-primary { color: #4a5b5e; } /* 深灰绿，标题 */
+    .text-body { color: #2b3a3f; }
+    .text-soft { color: #5e6b6f; } /* 辅助文字 */
+    .accent-line { border-color: #c2a598; } /* 陶土粉点缀线条 */
+    .accent-bullet { color: #b7927e; } /* 项目符号柔和棕粉 */
+    .bg-soft { background-color: #f7f5f2; } /* 极浅米灰，仅用于分割区域(无文字反白) */
+
+    /* 字体与字号体系 */
+    h1, h2, h3, p, ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /* 姓名大标题 */
+    .name {
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      font-weight: 700;
+      font-size: 28pt;
+      letter-spacing: 1.2px;
+      color: #3f4a4a;
+      margin-bottom: 4px;
+    }
+
+    /* 目标/副标题 */
+    .subhead {
+      font-size: 11pt;
+      font-weight: 400;
+      color: #5e6b6f;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+    }
+
+    /* 分割线 - 纯CSS边框，ATS安全 */
+    .divider {
+      width: 100%;
+      height: 2px;
+      background: #d9cfc4; /* 莫兰迪浅陶色 */
+      margin: 12px 0 16px 0;
+      border: none;
+    }
+
+    .thin-divider {
+      width: 100%;
+      height: 1px;
+      background: #e0d9d2;
+      margin: 10px 0 12px 0;
+      border: none;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      font-weight: 700;
+      font-size: 11pt;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: #4a5b5e;
+      margin: 18px 0 8px 0;
+      padding-bottom: 4px;
+      border-bottom: 2px solid #c2a598; /* 强调色底线 */
+      display: inline-block;
+    }
+
+    /* 工作经历条目布局 - 纯文本流，无浮动陷阱 */
+    .entry {
+      margin-bottom: 14px;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 2px;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 11.5pt;
+      color: #2b3a3f;
+      letter-spacing: 0.3px;
+    }
+
+    .job-title {
+      font-weight: 500;
+      font-size: 10.5pt;
+      color: #4a5b5e;
+      margin-left: 6px;
+    }
+
+    .date-range {
+      font-size: 10pt;
+      font-weight: 400;
+      color: #5e6b6f;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    /* 描述要点：标准圆点符号，安全 */
+    .description {
+      margin-top: 4px;
+      padding-left: 16px;
+    }
+
+    .description li {
+      font-size: 10pt;
+      line-height: 1.6;
+      color: #2b3a3f;
+      margin-bottom: 4px;
+      position: relative;
+      padding-left: 12px;
+      list-style-type: none;
+    }
+
+    .description li::before {
+      content: "•";
+      color: #b7927e; /* 柔和陶土色项目符号 */
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* 技能标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 6px;
+    }
+
+    .skill-item {
+      font-size: 10pt;
+      font-weight: 500;
+      color: #2b3a3f;
+      background: #f7f5f2; /* 极浅暖灰，无文字反白 */
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.2px;
+      border: 1px solid #e0d9d2;
+    }
+
+    /* 教育背景简洁排列 */
+    .edu-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .edu-school {
+      font-weight: 700;
+      font-size: 11pt;
+      color: #2b3a3f;
+    }
+
+    .edu-degree {
+      font-weight: 400;
+      font-size: 10.5pt;
+      color: #4a5b5e;
+      margin-left: 6px;
+    }
+
+    .edu-date {
+      font-size: 10pt;
+      color: #5e6b6f;
+    }
+
+    /* 联系方式行 - 左对齐纯文本 */
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      font-size: 10pt;
+      color: #4a5b5e;
+      margin: 8px 0 2px 0;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* 简单线性图标（内联Unicode，ATS视为文本） */
+    .icon {
+      font-size: 11pt;
+      color: #b7927e;
+      margin-right: 2px;
+    }
+
+    /* 左侧装饰窄色条（不重叠文字） */
+    .left-accent-bar {
+      position: relative;
+      padding-left: 14px;
+      margin-left: 0;
+    }
+    .left-accent-bar::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      bottom: 2px;
+      width: 3px;
+      background: #c2a598;
+      border-radius: 2px;
+    }
+
+    /* 打印优化规则 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        width: 100%;
+        border-radius: 0;
+      }
+      .resume-inner {
+        padding: 12mm 15mm 10mm 15mm;
+      }
+      /* 确保背景透明，颜色正常 */
+      .skill-item {
+        background: #f7f5f2 !important;
+        border: 1px solid #ccc;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      .accent-line, .thin-divider, .divider {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      .section-title {
+        border-bottom-color: #c2a598;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      a, button {
+        display: none;
+      }
+      /* 移除链接下划线等交互样式 */
+      .contact-item {
+        text-decoration: none;
+      }
+    }
+
+    /* 响应式微调，保证小屏查看 */
+    @media screen and (max-width: 700px) {
+      .resume {
+        width: 100%;
+        margin: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      
+      <!-- 姓名 + 目标职位 -->
+      <h1 class="name">陆 思 宁</h1>
+      <div class="subhead">酒店大堂经理 · 款待业管理硕士</div>
+      
+      <!-- 联系方式：纯文本，图标为Unicode字符，ATS完全可读 -->
+      <div class="contact-info">
+        <span class="contact-item"><span class="icon">📞</span> +86 139 5027 1846</span>
+        <span class="contact-item"><span class="icon">✉️</span> sining.lu@hospitality.cn</span>
+        <span class="contact-item"><span class="icon">📍</span> 上海市静安区</span>
+        <span class="contact-item"><span class="icon">🔗</span> linkedin.com/in/sininglu</span>
+      </div>
+      
+      <div class="divider"></div>
+
+      <!-- 专业摘要 (左对齐，无额外图形) -->
+      <div style="margin-bottom: 6px;">
+        <span class="section-title">专业摘要</span>
+      </div>
+      <p style="font-size:10pt; color:#2b3a3f; margin: 4px 0 8px 0; line-height:1.6;">
+        4年国际连锁酒店前厅运营经验，持有CHT认证。擅长高净值客户关系维护、团队调度及突发事件处理。致力于通过细腻的服务设计与莫兰迪美学标准提升宾客体验，曾主导VIP接待流程优化使满意度提升22%。
+      </p>
+
+      <!-- 工作经历模块 -->
+      <div style="margin-top: 10px;">
+        <span class="section-title">工作经历</span>
+      </div>
+
+      <!-- 经历1 -->
+      <div class="entry left-accent-bar">
+        <div class="entry-header">
+          <span>
+            <span class="company-name">璞隐酒店集团 · 上海璞丽分号</span>
+            <span class="job-title">| 大堂副理</span>
+          </span>
+          <span class="date-range">2023.04 – 至今</span>
+        </div>
+        <ul class="description">
+          <li>统筹每日大堂运营，管理12人前台及礼宾团队，确保高峰时段入住/退房效率提升18%。</li>
+          <li>建立个性化宾客档案系统，为长住客及VIP提供定制欢迎礼遇，直接推动TripAdvisor评分由4.3升至4.7。</li>
+          <li>处理现场客诉及紧急事件（平均每周5起），维持98%的即时解决率，未发生舆情升级。</li>
+        </ul>
+      </div>
+
+      <!-- 经历2 -->
+      <div class="entry left-accent-bar">
+        <div class="entry-header">
+          <span>
+            <span class="company-name">洲际酒店集团 · 南京华邑酒店</span>
+            <span class="job-title">| 前台主管</span>
+          </span>
+          <span class="date-range">2021.08 – 2023.02</span>
+        </div>
+        <ul class="description">
+          <li>带领7人前台班组，执行洲际品牌挚友标准，月度upselling收入超额完成15%。</li>
+          <li>协助前厅经理优化“快速通道”流程，将行政楼层客人办理时间缩短至3分钟内。</li>
+          <li>培训新员工服务礼仪与Opera系统操作，通过神秘访客考核成绩位列区域前三。</li>
+        </ul>
+      </div>
+
+      <!-- 经历3 (初级岗经历) -->
+      <div class="entry left-accent-bar">
+        <div class="entry-header">
+          <span>
+            <span class="company-name">万豪国际 · 苏州湾艾美酒店</span>
+            <span class="job-title">| 前台接待 & 实习生</span>
+          </span>
+          <span class="date-range">2020.06 – 2021.07</span>
+        </div>
+        <ul class="description">
+          <li>负责宾客入住、退房及外币兑换，日均处理60+笔交易，准确率100%。</li>
+          <li>协助大堂经理协调会议团队签到，获“月度服务之星”两次。</li>
+        </ul>
+      </div>
+
+      <!-- 教育背景 -->
+      <div style="margin-top: 16px;">
+        <span class="section-title">教育背景</span>
+      </div>
+      <div class="edu-entry">
+        <span>
+          <span class="edu-school">瑞士酒店管理学院 (SHMS)</span>
+          <span class="edu-degree">| 国际款待业管理硕士</span>
+        </span>
+        <span class="edu-date">2019 – 2020</span>
+      </div>
+      <div class="edu-entry">
+        <span>
+          <span class="edu-school">上海商学院</span>
+          <span class="edu-degree">| 酒店管理 学士</span>
+        </span>
+        <span class="edu-date">2015 – 2019</span>
+      </div>
+
+      <!-- 技能与证书 (标签式 + 双栏纯文本列表) -->
+      <div style="margin-top: 18px;">
+        <span class="section-title">核心能力</span>
+      </div>
+      <div class="skills-container">
+        <span class="skill-item">Opera PMS</span>
+        <span class="skill-item">宾客关系管理</span>
+        <span class="skill-item">团队培训</span>
+        <span class="skill-item">收益管理基础</span>
+        <span class="skill-item">中英文流利</span>
+        <span class="skill-item">冲突调解</span>
+        <span class="skill-item">Microsoft 365</span>
+        <span class="skill-item">奢华品牌标准</span>
+        <span class="skill-item">活动统筹</span>
+      </div>
+
+      <div style="margin-top: 14px; display: flex; gap: 30px; flex-wrap: wrap;">
+        <div style="min-width: 140px;">
+          <span style="font-weight:700; font-size:10.5pt; color:#4a5b5e; border-bottom:1px solid #d9cfc4; padding-bottom:2px; display:inline-block; margin-bottom:6px;">资格证书</span>
+          <ul style="font-size:10pt; color:#2b3a3f; list-style-type: none; padding-left:0;">
+            <li style="margin-bottom:4px;">• 酒店管理师 (CHT)</li>
+            <li style="margin-bottom:4px;">• 红酒品鉴 WSET 2级</li>
+            <li style="margin-bottom:4px;">• 急救员认证</li>
+          </ul>
+        </div>
+        <div style="min-width: 140px;">
+          <span style="font-weight:700; font-size:10.5pt; color:#4a5b5e; border-bottom:1px solid #d9cfc4; padding-bottom:2px; display:inline-block; margin-bottom:6px;">语言能力</span>
+          <ul style="font-size:10pt; color:#2b3a3f; list-style-type: none; padding-left:0;">
+            <li style="margin-bottom:4px;">• 中文 (母语)</li>
+            <li style="margin-bottom:4px;">• 英语 (IELTS 7.5)</li>
+            <li style="margin-bottom:4px;">• 基础法语</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 低风险个性化元素：细分割线作为视觉呼吸 -->
+      <div class="thin-divider" style="margin-top: 18px;"></div>
+      <p style="font-size:9pt; color:#7e8a8c; text-align: right; letter-spacing:0.3px;"># 服务即艺术 · 细节塑造奢华</p>
+
+    </div> <!-- end resume-inner -->
+  </div> <!-- end resume -->
+</body>
+</html>

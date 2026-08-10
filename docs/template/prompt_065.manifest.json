@@ -1,0 +1,216 @@
+{
+  "templateId": "prompt_065",
+  "name": "张振宇 · 零售区域经理简历",
+  "sourceFile": "prompt_065.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "个人简介",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".job-title",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "summary",
+      "selector": ".highlight-number",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".edu-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "edu-item"
+    }
+  ],
+  "sampleData": {
+    "name": "张振宇",
+    "title": "| 华东区域经理",
+    "phone": "(86) 139-8215-6037",
+    "email": "✉️ zhenyu.zhang@retail.pro",
+    "location": "上海，中国",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "🔗 linkedin.com/in/zhenyuzhang"
+      }
+    ],
+    "summary": "8年零售管理经验，专注区域业绩增长与多店运营。曾管理 27家 直营门店，带领团队实现年营收 2.4亿 人民币，同比提升 18.5% 。擅长数据驱动决策、人才梯队搭建及渠道拓展。具备猎头推荐及内部晋升至区域总监的扎实履历。",
+    "experiences": [
+      {
+        "position": "| 华东区域经理",
+        "date": "2020.08 – 至今 | 上海",
+        "description": "全面负责上海、江苏、浙江区域 19家"
+      },
+      {
+        "position": "| 区域销售经理",
+        "date": "2017.03 – 2020.06 | 杭州",
+        "description": "管理浙江区域 8家"
+      },
+      {
+        "position": "| 门店经理 / 副店长",
+        "date": "2014.07 – 2017.02 | 宁波",
+        "description": "管理年营收 2800万"
+      }
+    ],
+    "education": [
+      {
+        "school": "浙江大学管理学院",
+        "date": "2019 – 2021"
+      },
+      {
+        "school": "上海对外经贸大学",
+        "date": "2010 – 2014"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "summary",
+      "label": "专业摘要",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name",
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

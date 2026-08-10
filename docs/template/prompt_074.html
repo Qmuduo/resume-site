@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>动画师简历 · 动态非对称设计</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eef2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', '思源黑体', 'Noto Sans SC', sans-serif;
+      color: #2D3748;
+      line-height: 1.5;
+    }
+
+    /* 简历卡片：A4比例固定宽度，模拟纸张 */
+    .resume {
+      max-width: 780px;
+      width: 100%;
+      background: white;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s;
+    }
+
+    /* 内边距精确控制，呼吸感 */
+    .resume-inner {
+      padding: 1.8rem 2.2rem 2rem 2.2rem;
+    }
+
+    /* 非对称动态布局：左侧留出视觉动线，整体左对齐为主 */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #1B5A4A;
+      padding-bottom: 1.2rem;
+      position: relative;
+    }
+
+    /* 左侧姓名区占主要位置，右侧留白给动态色块与联系信息 */
+    .name-section {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .name {
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #1A2E2C;
+      line-height: 1.1;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      margin-bottom: 0.2rem;
+    }
+
+    .title {
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: #2D6A5C;
+      background: transparent;
+      margin-top: 0.2rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* 右侧动态元素：非对称色块与联系信息 */
+    .contact-dynamic {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.5rem;
+    }
+
+    .dynamic-accent {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .accent-bar {
+      width: 45px;
+      height: 8px;
+      background: #C44F3D;
+      border-radius: 4px;
+      transform: skewX(-15deg);
+    }
+
+    .accent-bar.short {
+      width: 28px;
+      background: #D98C5F;
+      transform: skewX(-15deg);
+    }
+
+    .accent-bar.thin {
+      width: 35px;
+      height: 5px;
+      background: #2D6A5C;
+      transform: skewX(-15deg);
+    }
+
+    .contact-info {
+      font-size: 0.9rem;
+      color: #2D3748;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      white-space: nowrap;
+    }
+
+    /* 简单线性图标（文本符号，ATS完全安全） */
+    .icon {
+      display: inline-block;
+      font-weight: 300;
+      color: #2D6A5C;
+      margin-right: 2px;
+    }
+
+    /* 主内容区域：左对齐单列为主，非对称通过缩进和色条体现 */
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    /* 通用板块标题样式 */
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #1B5A4A;
+      margin-bottom: 0.9rem;
+      border-bottom: 2px solid #DCE5E0;
+      padding-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* 动态点缀：标题左侧小方块 */
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #C44F3D;
+      transform: rotate(45deg);
+      margin-right: 4px;
+    }
+
+    /* 工作经历条目：非对称缩进，左侧留出空间但不使用表格 */
+    .experience-item {
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.25rem;
+    }
+
+    .company {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #1A2E2C;
+    }
+
+    .job-title {
+      font-weight: 600;
+      color: #2D6A5C;
+      font-size: 0.98rem;
+      margin-left: 0.25rem;
+    }
+
+    .date {
+      font-size: 0.85rem;
+      color: #5A6B6A;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    /* 描述要点：标准圆点，左对齐，左侧增加微小动态边距 */
+    .desc-list {
+      list-style: none;
+      margin-top: 0.4rem;
+      padding-left: 0.6rem;
+      border-left: 2px solid #E5D9D0;
+      margin-left: 0.25rem;
+    }
+
+    .desc-list li {
+      font-size: 0.9rem;
+      color: #2D3748;
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .desc-list li::before {
+      content: "•";
+      color: #C44F3D;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: inline-block;
+      width: 16px;
+      text-align: center;
+    }
+
+    /* 项目经历类似样式，但增加斜体动态感 */
+    .project-item {
+      margin-bottom: 1.3rem;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      font-weight: 600;
+    }
+
+    .project-name {
+      font-weight: 700;
+      color: #1A2E2C;
+      font-size: 0.98rem;
+    }
+
+    .project-role {
+      color: #2D6A5C;
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    /* 技能标签：行内流动布局，非表格 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      margin-top: 0.2rem;
+    }
+
+    .skill-tag {
+      background: transparent;
+      border: 1.5px solid #C5D5CE;
+      color: #1B3A32;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      background: #F8FAF9;
+      transition: 0.1s;
+    }
+
+    /* 教育背景简洁处理 */
+    .education-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      color: #1A2E2C;
+    }
+
+    .edu-school {
+      font-weight: 500;
+      color: #2D6A5C;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #DCE5E0;
+      margin: 0.5rem 0 0.2rem 0;
+    }
+
+    /* 链接样式去除，打印友好 */
+    a, .link-like {
+      text-decoration: none;
+      color: #2D3748;
+    }
+
+    /* 打印优化 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        max-width: 100%;
+        border-radius: 0;
+      }
+      .resume-inner {
+        padding: 1.4rem 1.8rem;
+      }
+      .dynamic-accent, .accent-bar {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background: #C44F3D !important;
+      }
+      .section-title::before {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background: #C44F3D !important;
+      }
+      .skill-tag {
+        border: 1px solid #A0B5AB;
+      }
+    }
+
+    /* 移动端适应 */
+    @media (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .contact-dynamic {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      <!-- 头部：非对称构图，左侧姓名，右侧动态色条+联系方式 -->
+      <header class="header">
+        <div class="name-section">
+          <div class="name">林 一 晨</div>
+          <div class="title">动态设计师 / 动画师</div>
+        </div>
+        <div class="contact-dynamic">
+          <div class="dynamic-accent">
+            <span class="accent-bar"></span>
+            <span class="accent-bar short"></span>
+            <span class="accent-bar thin"></span>
+          </div>
+          <div class="contact-info">
+            <span class="contact-item"><span class="icon">📞</span> 138-0000-1234</span>
+            <span class="contact-item"><span class="icon">✉️</span> lin.yichen@motion.cn</span>
+            <span class="contact-item"><span class="icon">🔗</span> portfolio.com/lin</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- 主要内容区：严格左对齐，单列布局，无复杂多栏 -->
+      <div class="content">
+        <!-- 专业摘要：简短动态介绍 -->
+        <div>
+          <div class="section-title">专业摘要</div>
+          <p style="font-size:0.92rem; color:#2D3748; margin-top:0.2rem; line-height:1.6;">
+            3年动画设计经验，擅长角色动画与动态图形。曾参与多部网络剧集及品牌宣传片制作，注重节奏感与叙事表达。熟练运用Maya, Blender, After Effects，追求视觉冲击与细腻表演的平衡。
+          </p>
+        </div>
+
+        <!-- 工作经历 -->
+        <div>
+          <div class="section-title">工作经验</div>
+          
+          <div class="experience-item">
+            <div class="exp-header">
+              <span><span class="company">星尘动画工作室</span> <span class="job-title">| 中级动画师</span></span>
+              <span class="date">2023.04 – 至今</span>
+            </div>
+            <ul class="desc-list">
+              <li>主导角色动画预演与关键帧设计，应用于腾讯视频动画番剧《星海之旅》，单集播放量超800万。</li>
+              <li>优化动画流程，引入动态分镜预览工具，使团队制作效率提升约20%。</li>
+              <li>与绑定及特效组协作，完成高难度打斗场景的动作捕捉数据修复与艺术化处理。</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="exp-header">
+              <span><span class="company">光影数字艺术</span> <span class="job-title">| 初级动画师</span></span>
+              <span class="date">2021.07 – 2023.02</span>
+            </div>
+            <ul class="desc-list">
+              <li>参与B站国创动画《云中曲》的角色动画制作，负责配角表演与循环动画，作品累计追番超50万。</li>
+              <li>使用Maya与Blender完成日常镜头制作，确保动画风格统一并按时交付。</li>
+              <li>协助资深动画师进行运动规律校准及口型同步调整。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 项目精选（体现动态与节奏） -->
+        <div>
+          <div class="section-title">项目精选</div>
+          
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-name">《霓虹浪潮》独立短片</span>
+              <span class="date">2024.02</span>
+            </div>
+            <div style="font-size:0.9rem; margin:0.2rem 0 0.3rem 0; color:#2D6A5C;"><span class="project-role">动画导演 / 角色动画</span></div>
+            <ul class="desc-list" style="border-left-color:#C44F3D40;">
+              <li>实验性混合媒介动画，结合二维手绘与三维渲染，入选“奇点动画节”展映单元。</li>
+              <li>负责全片角色动态设计，利用非对称构图与快切节奏强化视觉张力。</li>
+            </ul>
+          </div>
+
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-name">品牌动态标识系列</span>
+              <span class="date">2023.09</span>
+            </div>
+            <div style="font-size:0.9rem; margin:0.2rem 0 0.3rem 0; color:#2D6A5C;"><span class="project-role">动态图形设计</span></div>
+            <ul class="desc-list" style="border-left-color:#C44F3D40;">
+              <li>为科技品牌“Nexa”设计动态Logo演绎，应用于官网及发布会开场，强调流动与变形动画。</li>
+              <li>使用After Effects与Cinema 4D协作，交付10套动态方案。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 技能板块：标签式排列，完全ATS安全 -->
+        <div>
+          <div class="section-title">核心技能</div>
+          <div class="skills-container">
+            <span class="skill-tag">Maya</span>
+            <span class="skill-tag">Blender</span>
+            <span class="skill-tag">After Effects</span>
+            <span class="skill-tag">角色动画</span>
+            <span class="skill-tag">运动规律</span>
+            <span class="skill-tag">动态分镜</span>
+            <span class="skill-tag">Premiere</span>
+            <span class="skill-tag">Toon Boom</span>
+            <span class="skill-tag">绑定基础</span>
+          </div>
+        </div>
+
+        <!-- 教育背景 -->
+        <div>
+          <div class="section-title">教育背景</div>
+          <div class="education-item">
+            <span><span class="edu-degree">数字媒体艺术 本科</span> · <span class="edu-school">中国传媒大学</span></span>
+            <span class="date">2017 – 2021</span>
+          </div>
+          <div style="font-size:0.85rem; color:#5A6B6A; margin-top:0.2rem;">主修动画与数字影像，毕业作品获学院奖最佳动画提名。</div>
+        </div>
+
+        <!-- 额外信息：语言与软件，低风险简洁展示 -->
+        <div style="display: flex; flex-wrap: wrap; gap: 2.5rem; margin-top: 0.2rem; font-size:0.9rem; color:#2D3748; border-top: 1px solid #E5EBE8; padding-top: 0.9rem;">
+          <div><span style="font-weight:600; color:#1B5A4A;">语言：</span>中文 (母语) / 英语 (工作流)</div>
+          <div><span style="font-weight:600; color:#1B5A4A;">软件：</span>Maya, Blender, AE, PS, Procreate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

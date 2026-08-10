@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>林亦凡 · 后端开发工程师简历</title>
+  <style>
+    /* 全局重置与字体设定 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #eef2f5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', 'Noto Sans SC', '思源黑体', system-ui, sans-serif;
+    }
+
+    /* A4尺寸卡片，模拟纸张 */
+    .resume {
+      max-width: 800px;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+      padding: 2.2rem 2.5rem;
+      color: #1e2b3c;
+      line-height: 1.5;
+      font-size: 10.5pt;
+      transition: all 0.2s;
+    }
+
+    /* 主要使用无衬线字体，代码相关部分用等宽字体 */
+    .resume {
+      font-family: 'Calibri', 'Arial', 'Helvetica Neue', 'Noto Sans SC', '思源黑体', sans-serif;
+    }
+
+    /* 所有文本均为纯文本，无图形渲染 */
+    h1, h2, h3, p, li, div, span {
+      color: #1e2b3c;
+    }
+
+    /* 头部样式：姓名 + 联系信息，采用Markdown风格分隔 */
+    .header {
+      margin-bottom: 1.8rem;
+    }
+
+    .name {
+      font-size: 28pt;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #0b2b44;
+      line-height: 1.2;
+      margin-bottom: 0.2rem;
+      font-family: 'Calibri', 'Helvetica Neue', 'Noto Sans SC', '思源黑体', sans-serif;
+    }
+
+    .title-tag {
+      font-size: 12pt;
+      font-weight: 400;
+      color: #2c3e50;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .title-tag::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #cbd5e0;
+      margin-left: 0.75rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 9.5pt;
+      color: #2d3a4a;
+      margin-top: 0.3rem;
+      font-family: 'Calibri', 'Arial', 'Helvetica Neue', 'Noto Sans SC', sans-serif;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* 简单线性图标使用unicode字符，ATS可读 */
+    .contact-icon {
+      font-size: 10pt;
+      color: #2c5282;
+      font-weight: 500;
+    }
+
+    /* 分割线风格 - 细线 */
+    .divider {
+      border: none;
+      border-top: 1.5px solid #dce3ea;
+      margin: 1.2rem 0 1.5rem 0;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #0b2b44;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Calibri', 'Helvetica Neue', 'Noto Sans SC', '思源黑体', sans-serif;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #cbd5e0;
+      margin-left: 0.5rem;
+    }
+
+    /* 条目通用布局 */
+    .item {
+      margin-bottom: 1.1rem;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.15rem;
+    }
+
+    .item-left {
+      font-weight: 700;
+      font-size: 11pt;
+      color: #0b2b44;
+    }
+
+    .item-left .company {
+      font-weight: 700;
+    }
+
+    .item-left .role {
+      font-weight: 500;
+      color: #2c3e50;
+      margin-left: 0.3rem;
+      font-size: 10.5pt;
+    }
+
+    .item-right {
+      font-weight: 400;
+      font-size: 9.5pt;
+      color: #4a5c6c;
+      white-space: nowrap;
+    }
+
+    .item-sub {
+      font-weight: 400;
+      color: #3c4f62;
+      font-size: 10pt;
+      margin-bottom: 0.3rem;
+    }
+
+    .desc-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.3rem;
+    }
+
+    .desc-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.25rem;
+      font-size: 10pt;
+      color: #2d3a4a;
+      line-height: 1.5;
+    }
+
+    /* 使用标准圆点符号，ATS兼容 */
+    .desc-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.1rem;
+      color: #2c5282;
+      font-weight: 600;
+    }
+
+    /* 技能标签采用纯文本标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      margin-top: 0.4rem;
+    }
+
+    .skill-tag {
+      font-family: 'Cascadia Code', 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+      background: #f0f4f8;
+      padding: 0.15rem 0.7rem;
+      border-radius: 3px;
+      font-size: 9.5pt;
+      color: #1e2b3c;
+      letter-spacing: 0.2px;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* 项目或教育模块中代码风格突出 */
+    .code-font {
+      font-family: 'Cascadia Code', 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+      background: #f7f9fc;
+      padding: 0.1rem 0.3rem;
+      border-radius: 2px;
+      font-size: 9.5pt;
+      color: #0b2b44;
+    }
+
+    .inline-code {
+      font-family: 'Cascadia Code', 'Fira Code', 'Consolas', 'Monaco', monospace;
+      font-size: 9.5pt;
+      color: #2c5282;
+      background: #f0f4f8;
+      padding: 0 0.2rem;
+    }
+
+    /* 两栏技能区域 (低风险，纯文本列) */
+    .two-col-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .col {
+      flex: 1 1 200px;
+    }
+
+    .col ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .col li {
+      margin-bottom: 0.25rem;
+      font-size: 10pt;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .col li::before {
+      content: "•";
+      color: #2c5282;
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+
+    /* 教育部分简洁 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+      font-size: 10pt;
+    }
+
+    .edu-left {
+      font-weight: 700;
+      color: #0b2b44;
+    }
+
+    .edu-right {
+      color: #4a5c6c;
+      font-size: 9.5pt;
+    }
+
+    /* 打印样式 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+      .resume {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 1.8rem 2rem;
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto;
+        background: white;
+      }
+      /* 确保颜色正常，无背景干扰 */
+      .skill-tag {
+        background: #f0f4f8 !important;
+        border: 1px solid #d0d7de;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .divider, .section-title::after, .title-tag::after {
+        border-color: #cbd5e0;
+      }
+      /* 隐藏交互元素 (本简历无按钮/链接下划线，保留纯文本) */
+    }
+
+    /* 小屏幕调整 */
+    @media (max-width: 600px) {
+      .resume {
+        padding: 1.5rem;
+      }
+      .contact-row {
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    
+    <!-- 头部：姓名 + 标题，Markdown风格极简 -->
+    <div class="header">
+      <h1 class="name">林亦凡</h1>
+      <div class="title-tag">后端开发工程师</div>
+      <div class="contact-row">
+        <span class="contact-item"><span class="contact-icon">📧</span> yifan.lin@dev.me</span>
+        <span class="contact-item"><span class="contact-icon">📱</span> +86 139 5028 7614</span>
+        <span class="contact-item"><span class="contact-icon">🐙</span> github.com/yifan-lin</span>
+        <span class="contact-item"><span class="contact-icon">📍</span> 杭州 · 中国</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 专业技能板块：使用两栏列表 + 标签式，体现代码风格 -->
+    <div class="section">
+      <h2 class="section-title">技术能力</h2>
+      <div class="two-col-list">
+        <div class="col">
+          <ul>
+            <li><span class="code-font">Go</span> / <span class="code-font">Python</span> · 主力语言</li>
+            <li><span class="code-font">Gin</span> / <span class="code-font">FastAPI</span> · 框架</li>
+            <li><span class="code-font">PostgreSQL</span> · 数据库设计</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul>
+            <li><span class="code-font">Redis</span> · 缓存与队列</li>
+            <li><span class="code-font">Docker</span> · 容器化部署</li>
+            <li><span class="code-font">gRPC</span> · 微服务通信</li>
+          </ul>
+        </div>
+      </div>
+      <div class="skills-container" style="margin-top: 0.7rem;">
+        <span class="skill-tag">RESTful API</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">CI/CD</span>
+        <span class="skill-tag">消息队列 (Kafka)</span>
+        <span class="skill-tag">单元测试</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 工作经历 · 初级岗位体现1-3年经验 -->
+    <div class="section">
+      <h2 class="section-title">工作经历</h2>
+      
+      <div class="item">
+        <div class="item-header">
+          <div class="item-left">
+            <span class="company">星云数据</span><span class="role"> · 后端开发工程师</span>
+          </div>
+          <div class="item-right">2024.03 – 至今</div>
+        </div>
+        <div class="item-sub" style="font-style: italic; color: #4a5c6c;">杭州 · 数据平台部</div>
+        <ul class="desc-list">
+          <li>参与实时数据管道重构，使用 <span class="inline-code">Go</span> + <span class="inline-code">Kafka</span> 优化吞吐量，峰值处理能力提升约35%。</li>
+          <li>设计并实现内部配置中心API，基于 <span class="inline-code">Gin</span> 框架，支持动态刷新与版本回滚。</li>
+          <li>维护 <span class="inline-code">PostgreSQL</span> 核心表结构，编写复杂查询与索引优化，慢查询减少40%。</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div class="item-left">
+            <span class="company">青橙科技</span><span class="role"> · 初级后端开发</span>
+          </div>
+          <div class="item-right">2022.07 – 2024.02</div>
+        </div>
+        <div class="item-sub" style="font-style: italic; color: #4a5c6c;">上海 · 电商中台</div>
+        <ul class="desc-list">
+          <li>负责订单系统微服务模块开发，采用 <span class="inline-code">Python FastAPI</span> 与 <span class="inline-code">Redis</span> 缓存方案。</li>
+          <li>编写自动化测试用例覆盖核心业务逻辑，接口回归测试覆盖率提升至85%。</li>
+          <li>参与容器化迁移，将遗留服务打包为 <span class="inline-code">Docker</span> 镜像，部署至K8s集群。</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 项目经历：突出后端技术栈，Markdown风格描述 -->
+    <div class="section">
+      <h2 class="section-title">开源项目</h2>
+      
+      <div class="item">
+        <div class="item-header">
+          <div class="item-left">
+            <span class="company">lightcache</span><span class="role"> · 轻量级缓存库</span>
+          </div>
+          <div class="item-right">⭐ 120+ on GitHub</div>
+        </div>
+        <ul class="desc-list">
+          <li>使用 <span class="inline-code">Go</span> 实现的支持LRU/LFU策略的内存缓存，提供类似Redis的简单接口。</li>
+          <li>集成过期淘汰与并发安全机制，benchmark显示读性能达到 12k QPS。</li>
+          <li>文档采用Markdown编写，包含完整示例与API参考。</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div class="item-left">
+            <span class="company">devlog-cli</span><span class="role"> · 开发者日志工具</span>
+          </div>
+          <div class="item-right">Python · 终端应用</div>
+        </div>
+        <ul class="desc-list">
+          <li>基于 <span class="inline-code">Python</span> 的命令行工具，将Markdown开发日志自动同步至GitHub Gist。</li>
+          <li>利用 <span class="inline-code">cron</span> 表达式实现定时提交，支持模板自定义。</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 教育背景 -->
+    <div class="section">
+      <h2 class="section-title">教育背景</h2>
+      <div class="edu-item">
+        <span class="edu-left">杭州电子科技大学 · 计算机科学与技术</span>
+        <span class="edu-right">2018.09 – 2022.06</span>
+      </div>
+      <div style="font-size: 9.5pt; color: #4a5c6c; margin-top: 0.2rem;">工学学士 · 主修课程：数据结构、操作系统、计算机网络</div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 附加信息：语言与证书，极简展示 -->
+    <div class="section">
+      <h2 class="section-title">语言与证书</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; font-size: 10pt;">
+        <div><span style="font-weight:600; color:#0b2b44;">英语</span> · CET-6 · 技术文档阅读</div>
+        <div><span style="font-weight:600; color:#0b2b44;">AWS Certified Cloud Practitioner</span> (2023)</div>
+        <div><span style="font-weight:600; color:#0b2b44;">Linux Foundation LFCA</span> (2024)</div>
+      </div>
+    </div>
+
+    <!-- 底部留白，无多余装饰 -->
+  </div>
+</body>
+</html>

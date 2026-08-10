@@ -1,0 +1,206 @@
+{
+  "templateId": "prompt_059",
+  "name": "陈知远 · NGO项目官员简历",
+  "sourceFile": "prompt_059.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".subtitle",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "experiences",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "工作经历",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "education",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "教育背景",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    }
+  ],
+  "sampleData": {
+    "name": "陈知远",
+    "title": "NGO项目官员 · 社区发展与青年赋能",
+    "email": "✉ zhiyuan.chen@ngomail.org",
+    "phone": "+86 (010) 6723-8845",
+    "location": "北京 · 朝阳",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "🔗 linkedin.com/in/zhiyuanchan"
+      }
+    ],
+    "experiences": [
+      {
+        "position": "| 项目官员",
+        "date": "2023.04 – 至今 | 北京",
+        "description": "•"
+      },
+      {
+        "position": "| 项目助理",
+        "date": "2021.08 – 2023.02 | 线上/曼谷",
+        "description": "•"
+      },
+      {
+        "position": "| 项目实习生",
+        "date": "2020.09 – 2021.06 | 广州",
+        "description": "•"
+      }
+    ],
+    "education": [
+      {
+        "degree": "| 社会工作硕士",
+        "date": "2019.09 – 2021.07"
+      },
+      {
+        "degree": "| 人类学学士",
+        "date": "2015.09 – 2019.07"
+      }
+    ],
+    "skills": [
+      {
+        "name": "利益相关方分析",
+        "level": ""
+      },
+      {
+        "name": "逻辑模型",
+        "level": ""
+      },
+      {
+        "name": "青年领导力",
+        "level": ""
+      },
+      {
+        "name": "M&E框架",
+        "level": ""
+      },
+      {
+        "name": "提案撰写",
+        "level": ""
+      },
+      {
+        "name": "社区发展",
+        "level": ""
+      },
+      {
+        "name": "设计思维",
+        "level": ""
+      }
+    ]
+  },
+  "pendingManual": []
+}

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>张明远 · 商业分析师简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eef2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica', '思源黑体', 'Noto Sans SC', system-ui, sans-serif;
+      color: #2D3748;
+      line-height: 1.5;
+    }
+
+    /* 简历卡片容器 - 严格A4比例 */
+    .resume {
+      max-width: 800px;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      page-break-after: auto;
+      margin: 0 auto;
+    }
+
+    /* 内边距与呼吸感 */
+    .resume-inner {
+      padding: 48px 52px 40px 52px;
+    }
+
+    /* 字体与基础样式 */
+    h1, h2, h3, p, ul, li, span, div {
+      color: #2D3748;
+      font-weight: 400;
+    }
+
+    /* 姓名区块 */
+    .header {
+      margin-bottom: 28px;
+    }
+
+    .name {
+      font-size: 36pt;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #1A365D;
+      line-height: 1.2;
+      margin-bottom: 6px;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    .title-role {
+      font-size: 14pt;
+      font-weight: 400;
+      color: #4A5568;
+      margin-bottom: 16px;
+      letter-spacing: 0.3px;
+    }
+
+    /* 联系方式行 - 干净图标点缀 */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-size: 10.5pt;
+      color: #2D3748;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    /* 极简线性图标（纯文本/unicode） */
+    .icon {
+      font-size: 11pt;
+      color: #2B6CB0;
+      font-weight: 400;
+      margin-right: 2px;
+    }
+
+    /* 分割线 */
+    .divider {
+      border: none;
+      border-bottom: 1.5px solid #E2E8F0;
+      margin: 10px 0 24px 0;
+    }
+
+    .section-divider {
+      border: none;
+      border-bottom: 1px solid #CBD5E0;
+      margin: 18px 0 16px 0;
+      opacity: 0.7;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 13pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #1A365D;
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid #CBD5E0;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-title .accent-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #2B6CB0;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+    }
+
+    /* 工作经历条目 - 时间轴风格 */
+    .experience-item {
+      margin-bottom: 22px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 12.5pt;
+      color: #1A202C;
+      letter-spacing: 0.2px;
+    }
+
+    .job-title {
+      font-weight: 600;
+      font-size: 11.5pt;
+      color: #2D3748;
+      margin-left: 6px;
+      font-style: normal;
+    }
+
+    .date-location {
+      font-size: 10pt;
+      color: #4A5568;
+      font-weight: 400;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    .exp-details {
+      margin-top: 6px;
+      padding-left: 18px;
+      list-style-type: none;
+    }
+
+    .exp-details li {
+      font-size: 10.5pt;
+      color: #2D3748;
+      margin-bottom: 5px;
+      position: relative;
+      padding-left: 16px;
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    .exp-details li::before {
+      content: "•";
+      color: #2B6CB0;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 12pt;
+    }
+
+    /* 教育经历 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      font-size: 12pt;
+      color: #1A202C;
+    }
+
+    .edu-school {
+      font-weight: 500;
+      color: #2D3748;
+      margin-left: 8px;
+      font-size: 11pt;
+    }
+
+    .edu-date {
+      font-size: 10pt;
+      color: #4A5568;
+      margin-left: auto;
+    }
+
+    /* 技能标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      margin-top: 4px;
+    }
+
+    .skill-category {
+      margin-bottom: 6px;
+      width: 100%;
+    }
+
+    .skill-label {
+      font-weight: 600;
+      font-size: 11pt;
+      color: #1A365D;
+      display: inline-block;
+      width: 110px;
+    }
+
+    .skill-tags {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      background: #F7FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 3px;
+      padding: 2px 12px;
+      font-size: 10.5pt;
+      color: #2D3748;
+      white-space: nowrap;
+    }
+
+    /* 项目经历简洁样式 */
+    .project-item {
+      margin-bottom: 16px;
+    }
+
+    .project-title {
+      font-weight: 700;
+      font-size: 11.5pt;
+      color: #1A202C;
+      display: inline;
+    }
+
+    .project-desc {
+      font-size: 10.5pt;
+      color: #2D3748;
+      margin-top: 3px;
+      padding-left: 0;
+    }
+
+    .inline-date {
+      font-weight: 400;
+      font-size: 10pt;
+      color: #4A5568;
+      margin-left: 8px;
+    }
+
+    /* 低风险左侧色条装饰 - 完全不影响文字流 */
+    .left-accent-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background-color: #2B6CB0;
+      border-radius: 0 2px 2px 0;
+    }
+
+    .relative-container {
+      position: relative;
+      padding-left: 12px;
+      margin-left: -12px;
+    }
+
+    /* 打印样式 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+
+      .resume {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        page-break-after: avoid;
+      }
+
+      .resume-inner {
+        padding: 36px 40px 36px 40px;
+      }
+
+      /* 确保颜色正常，无背景色块干扰 */
+      * {
+        color: #1A202C !important;
+        background: transparent !important;
+      }
+
+      .skill-tag {
+        border: 1px solid #888;
+        background: transparent;
+      }
+
+      .divider, .section-divider {
+        border-color: #A0AEC0;
+      }
+
+      .section-title {
+        border-bottom-color: #A0AEC0;
+        color: #1A365D !important;
+      }
+
+      .accent-dot {
+        background-color: #1A365D !important;
+      }
+
+      .left-accent-bar {
+        background-color: #1A365D !important;
+      }
+
+      .exp-details li::before {
+        color: #1A365D !important;
+      }
+
+      .contact-item .icon {
+        color: #1A365D !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      
+      <!-- 姓名与标题区域 -->
+      <div class="header">
+        <h1 class="name">张明远</h1>
+        <div class="title-role">商业分析师 · 数据驱动决策</div>
+      </div>
+
+      <!-- 联系方式 (低风险线性图标) -->
+      <div class="contact-row">
+        <span class="contact-item"><span class="icon">📞</span> (86) 138-0000-1234</span>
+        <span class="contact-item"><span class="icon">✉️</span> mingyuan.zhang@analyst.cn</span>
+        <span class="contact-item"><span class="icon">📍</span> 北京 · 朝阳</span>
+        <span class="contact-item"><span class="icon">🔗</span> linkedin.com/in/mingyuan</span>
+      </div>
+      <hr class="divider">
+
+      <!-- 专业摘要 (简洁描述) -->
+      <div style="margin-bottom: 24px;">
+        <div class="section-title"><span class="accent-dot"></span>专业摘要</div>
+        <p style="font-size: 10.5pt; color: #2D3748; line-height: 1.6;">
+          3年商业分析经验，专注零售与科技行业。擅长通过SQL/Python进行数据挖掘，搭建可视化看板，驱动业务增长。曾主导用户分群模型，提升留存率12%。具备从数据洞察到策略落地的全流程能力。
+        </p>
+      </div>
+
+      <!-- 核心技能 - 标签式排列，ATS友好 -->
+      <div style="margin-bottom: 24px;">
+        <div class="section-title"><span class="accent-dot"></span>核心能力</div>
+        <div class="skills-container">
+          <div class="skill-category">
+            <span class="skill-label">数据分析</span>
+            <div class="skill-tags" style="display:inline-flex;">
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">Python (Pandas)</span>
+              <span class="skill-tag">Tableau</span>
+              <span class="skill-tag">Power BI</span>
+              <span class="skill-tag">Excel 高级</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <span class="skill-label">商业技能</span>
+            <div class="skill-tags" style="display:inline-flex;">
+              <span class="skill-tag">市场分析</span>
+              <span class="skill-tag">A/B测试</span>
+              <span class="skill-tag">预测建模</span>
+              <span class="skill-tag">KPI设计</span>
+              <span class="skill-tag">竞争情报</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <span class="skill-label">工具与语言</span>
+            <div class="skill-tags" style="display:inline-flex;">
+              <span class="skill-tag">JIRA</span>
+              <span class="skill-tag">Confluence</span>
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">英语 (流利)</span>
+              <span class="skill-tag">普通话</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 工作经历 - 时间轴排版，左对齐，时间右对齐 -->
+      <div style="margin-bottom: 24px;">
+        <div class="section-title"><span class="accent-dot"></span>工作经历</div>
+        
+        <!-- 经历1 -->
+        <div class="experience-item relative-container">
+          <div class="left-accent-bar"></div>
+          <div class="exp-header">
+            <span>
+              <span class="company-name">云策数据咨询</span>
+              <span class="job-title"> | 商业分析师</span>
+            </span>
+            <span class="date-location">2024.06 – 至今 | 北京</span>
+          </div>
+          <ul class="exp-details">
+            <li>为零售客户搭建客户生命周期分析体系，利用SQL提取交易数据，识别高价值客群，推动精准营销活动，季度营收提升8%。</li>
+            <li>设计自动化Tableau看板，监控核心业务指标，减少手工报表时间70%，支持管理层周度决策。</li>
+            <li>参与用户行为路径分析，通过漏斗模型定位流失环节，优化产品流程后转化率提升5%。</li>
+          </ul>
+        </div>
+
+        <!-- 经历2 -->
+        <div class="experience-item relative-container">
+          <div class="left-accent-bar"></div>
+          <div class="exp-header">
+            <span>
+              <span class="company-name">星辉科技</span>
+              <span class="job-title"> | 初级数据分析师</span>
+            </span>
+            <span class="date-location">2022.07 – 2024.04 | 上海</span>
+          </div>
+          <ul class="exp-details">
+            <li>负责电商平台日常数据追踪，编写Python脚本清洗多源数据，构建用户画像标签库，支持个性化推荐项目。</li>
+            <li>协同产品团队进行A/B测试设计与结果分析，成功验证新搜索算法，点击率提高3.2%。</li>
+            <li>撰写月度商业分析报告，向高级管理层汇报市场趋势与竞品动态，获得“最佳业务伙伴”奖。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 项目亮点 - 时间轴风格延续 -->
+      <div style="margin-bottom: 24px;">
+        <div class="section-title"><span class="accent-dot"></span>重点项目</div>
+        
+        <div class="project-item relative-container">
+          <div class="left-accent-bar"></div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <span class="project-title">会员流失预警模型</span>
+            <span class="inline-date">2025.02 – 2025.05</span>
+          </div>
+          <div class="project-desc" style="margin-top: 4px; padding-left: 0;">
+            基于历史行为数据，使用逻辑回归与随机森林构建预测模型，识别高流失风险用户。提前干预后，月度流失率降低11%。使用Python与Scikit-learn实现，并输出业务优化建议。
+          </div>
+        </div>
+
+        <div class="project-item relative-container">
+          <div class="left-accent-bar"></div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <span class="project-title">区域市场进入分析</span>
+            <span class="inline-date">2024.09 – 2024.12</span>
+          </div>
+          <div class="project-desc" style="margin-top: 4px; padding-left: 0;">
+            针对华南新市场进行宏观数据与竞品扫描，建立市场规模评估模型。输出可行性报告，协助管理层确定优先城市，预计首年GMV贡献2200万元。
+          </div>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div style="margin-bottom: 16px;">
+        <div class="section-title"><span class="accent-dot"></span>教育背景</div>
+        <div class="edu-item">
+          <span>
+            <span class="edu-degree">应用统计学硕士</span>
+            <span class="edu-school">复旦大学</span>
+          </span>
+          <span class="edu-date">2020.09 – 2022.06</span>
+        </div>
+        <div class="edu-item">
+          <span>
+            <span class="edu-degree">信息管理与信息系统学士</span>
+            <span class="edu-school">华中科技大学</span>
+          </span>
+          <span class="edu-date">2016.09 – 2020.06</span>
+        </div>
+      </div>
+
+      <!-- 证书与语言 简洁行内 -->
+      <div style="margin-top: 8px;">
+        <div class="section-title"><span class="accent-dot"></span>证书</div>
+        <div style="font-size: 10.5pt; display: flex; flex-wrap: wrap; gap: 24px;">
+          <span>📜 Google Data Analytics Professional</span>
+          <span>📜 Tableau Desktop Specialist</span>
+          <span>📜 商业分析师长 (CBAP) 在读</span>
+        </div>
+      </div>
+
+      <!-- 底部留白保证呼吸感 -->
+      <div style="height: 8px;"></div>
+    </div>
+  </div>
+</body>
+</html>

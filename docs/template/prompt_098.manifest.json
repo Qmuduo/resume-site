@@ -1,0 +1,186 @@
+{
+  "templateId": "prompt_098",
+  "name": "军工软件工程师 · 极简灰度简历",
+  "sourceFile": "prompt_098.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": true
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-role",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-item"
+    },
+    {
+      "commonPath": "experiences",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "专业经历",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "projects",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "涉密项目摘要",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "certifications",
+      "selector": ".skill-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-item"
+    }
+  ],
+  "sampleData": {
+    "name": "陈 砺 寒",
+    "title": "嵌入式军工软件工程师",
+    "skills": [
+      {
+        "name": "VxWorks",
+        "level": ""
+      },
+      {
+        "name": "RTEMS",
+        "level": ""
+      },
+      {
+        "name": "MISRA C:2012",
+        "level": ""
+      },
+      {
+        "name": "DO-178C",
+        "level": ""
+      },
+      {
+        "name": "安全关键软件",
+        "level": ""
+      },
+      {
+        "name": "UML/SysML",
+        "level": ""
+      },
+      {
+        "name": "军用通信协议",
+        "level": ""
+      },
+      {
+        "name": "Git/SVN",
+        "level": ""
+      },
+      {
+        "name": "Python(自动化)",
+        "level": ""
+      },
+      {
+        "name": "实时操作系统",
+        "level": ""
+      }
+    ],
+    "experiences": [
+      {
+        "description": "负责某型战术导弹飞控系统嵌入式软件开发，基于VxWorks 7实时系统，采用C语言遵循MISRA C规范，实现姿态解算与伺服控制模块。"
+      },
+      {
+        "description": "开发某雷达信号处理单元底层驱动，基于ARM Cortex-R5裸机与FreeRTOS，实现高速ADC数据采集与FFT预处理。"
+      }
+    ],
+    "projects": [
+      {
+        "description": "基于嵌入式Linux + Xenomai实时补丁，开发目标跟踪与弹道解算模块，采用多线程流水线架构。"
+      },
+      {
+        "description": "负责空时自适应处理(STAP)算法在DSP上的实现与优化，使用TI C66x DSP，汇编级优化关键循环。"
+      }
+    ],
+    "certifications": [
+      {
+        "name": "国防科技工业计算机及信息系统安全保密管理员"
+      },
+      {
+        "name": "嵌入式系统设计师 (中级)"
+      },
+      {
+        "name": "Certified Software Development Professional (IEEE)"
+      },
+      {
+        "name": "GJB 5000A 内部评估员"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

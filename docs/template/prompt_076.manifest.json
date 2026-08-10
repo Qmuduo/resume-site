@@ -1,0 +1,41 @@
+{
+  "templateId": "prompt_076",
+  "name": "林逸 · 室内设计师简历",
+  "sourceFile": "prompt_076.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": "h1",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".subtitle",
+      "attribute": "textContent",
+      "autoDetected": true
+    }
+  ],
+  "sampleData": {
+    "name": "林逸",
+    "title": "室内设计师 · 中级"
+  },
+  "pendingManual": []
+}

@@ -1,0 +1,218 @@
+{
+  "templateId": "prompt_084",
+  "name": "林清怡 · 商品企划高级经理 · 简历",
+  "sourceFile": "prompt_084.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "social_3",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "行业展会_猎头关注",
+      "label": "行业展会 & 猎头关注",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".job-title",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    }
+  ],
+  "sampleData": {
+    "name": "林清怡",
+    "title": "商品企划高级经理",
+    "phone": "+86 139 5028 7614",
+    "email": "qingyi.lin@trendforce.cn",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "linkedin.com/in/qingyilin"
+      }
+    ],
+    "location": "上海 / 杭州",
+    "行业展会_猎头关注": "连续3年参与上海MODE展趋势论坛 PV巴黎面料展(线上)趋势分析 中国国际时装周买手邀请嘉宾 合作猎头：CGP, Michael Page ★ 开放机会：商品总监 / 商品企划负责人",
+    "skills": [
+      {
+        "name": "商品组合规划(OTB)",
+        "level": ""
+      },
+      {
+        "name": "竞品与消费者洞察",
+        "level": ""
+      },
+      {
+        "name": "供应链协同",
+        "level": ""
+      },
+      {
+        "name": "价格带策略",
+        "level": ""
+      },
+      {
+        "name": "快反企划",
+        "level": ""
+      },
+      {
+        "name": "Lookbook/展会呈现",
+        "level": ""
+      },
+      {
+        "name": "PLM系统",
+        "level": ""
+      },
+      {
+        "name": "Tableau/Excel建模",
+        "level": ""
+      }
+    ],
+    "experiences": [
+      {
+        "position": "商品企划高级经理",
+        "date": "2021.04 – 至今 | 上海",
+        "description": "领导7人企划团队，制定年度商品战略与季度波段规划，管理SKU宽度超800+，年采购预算2.8亿。"
+      },
+      {
+        "position": "资深商品企划",
+        "date": "2018.07 – 2021.02 | 杭州",
+        "description": "负责女装核心品类企划，结合电商数据与线下买手反馈，滚动开发月度快反款式，平均缩短上市周期15天。"
+      },
+      {
+        "position": "商品专员 / 助理企划",
+        "date": "2016.09 – 2018.06 | 上海",
+        "description": "协助高级企划经理完成数据分析与样衣管理，维护商品主数据，参与订货会筹备与趋势看板制作。"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "行业展会_猎头关注",
+      "label": "行业展会 & 猎头关注",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

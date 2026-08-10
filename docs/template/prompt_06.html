@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>简历 · 林清音 | 插画师与艺术指导</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --page-width: 210mm;
+      --page-height: 297mm;
+      --bg-main: #FFFFFF;
+      --text-primary: #2E2E2C;
+      --text-secondary: #4B4B4B;
+      --text-muted: #5F5F5D;
+      --accent-burnt-orange: #C26A4B;
+      --accent-soft-terracotta: #D98C6B;
+      --line-light: #EAE6E1;
+      --line-soft: #D9D2C7;
+      --surface-warm: #FDF9F5;
+      --highlight-cream: #FEF7F2;
+      --shadow-subtle: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    html {
+      font-size: 15px;
+      background-color: #F5F2ED;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 0;
+      margin: 0;
+    }
+
+    body {
+      width: var(--page-width);
+      min-height: var(--page-height);
+      background: var(--bg-main);
+      margin: 0 auto;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      font-family: 'Arial', 'Helvetica Neue', '思源黑体', 'Source Han Sans SC', sans-serif;
+      color: var(--text-primary);
+      line-height: 1.5;
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* 手绘装饰：极简线条，完全不影响ATS文本解析 */
+    .hand-drawn-border {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      border: 1.2px solid #D8CFC4;
+      border-radius: 2px 80% 2px 80% / 2px 85% 2px 85%;
+      pointer-events: none;
+      opacity: 0.7;
+      z-index: 1;
+    }
+
+    .sketch-leaf {
+      position: absolute;
+      top: 28px;
+      right: 32px;
+      width: 52px;
+      height: 62px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 48" fill="none"><path d="M20 4 C12 8 4 18 8 32 C10 40 18 44 28 40 C34 37 36 28 32 22 C28 16 22 10 20 4Z" stroke="%23C26A4B" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/><path d="M20 8 C22 14 20 22 16 28" stroke="%23D98C6B" stroke-width="1.4" fill="none" opacity="0.5"/></svg>') no-repeat center;
+      background-size: contain;
+      opacity: 0.5;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .main-content {
+      position: relative;
+      z-index: 5;
+      padding: 2.2rem 2.4rem 2rem 2.4rem;
+      background: transparent;
+    }
+
+    /* 所有文字均为纯文本，无图形叠加 */
+    h1, h2, h3, p, span, li, div {
+      font-weight: normal;
+      color: inherit;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 1.5rem;
+      border-bottom: 1.8px dashed var(--accent-burnt-orange);
+      padding-bottom: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .name {
+      font-size: 2.8rem;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      font-weight: 350;
+      letter-spacing: 0.04em;
+      color: #2B2A28;
+      line-height: 1.1;
+      margin-right: 1rem;
+    }
+
+    .title-sub {
+      font-size: 1.1rem;
+      font-weight: 380;
+      color: var(--accent-burnt-orange);
+      letter-spacing: 0.5px;
+      font-family: 'Arial', 'Helvetica Neue', '思源黑体', sans-serif;
+      background: rgba(253, 249, 245, 0.9);
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px 4px 12px 4px;
+      white-space: nowrap;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .contact-icon {
+      font-size: 1rem;
+      display: inline;
+      margin-right: 0.15rem;
+      color: var(--accent-soft-terracotta);
+      font-weight: 400;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #3D3D3B;
+      margin: 1.8rem 0 0.9rem 0;
+      border-bottom: 1px solid var(--line-light);
+      padding-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    .section-title::after {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent-burnt-orange);
+      margin-left: 0.7rem;
+      opacity: 0.7;
+      transform: translateY(-1px);
+    }
+
+    /* 工作经历与教育条目 */
+    .entry {
+      margin-bottom: 1.2rem;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.2rem;
+    }
+
+    .institution {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #22211F;
+      letter-spacing: 0.01em;
+    }
+
+    .job-title {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-left: 0.3rem;
+    }
+
+    .date-location {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      font-weight: 400;
+    }
+
+    .description {
+      margin-top: 0.3rem;
+      padding-left: 0.2rem;
+    }
+
+    .desc-item {
+      font-size: 0.9rem;
+      color: #3E3E3C;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .desc-item::before {
+      content: "•";
+      color: var(--accent-burnt-orange);
+      font-weight: 500;
+      font-size: 1.1rem;
+      display: inline-block;
+      width: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    /* 技能标签式排列 */
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.8rem;
+      margin-top: 0.3rem;
+    }
+
+    .skill {
+      background: var(--surface-warm);
+      border: 1px solid #E8DDD2;
+      border-radius: 20px 4px 20px 4px;
+      padding: 0.25rem 1rem;
+      font-size: 0.85rem;
+      color: #3D3833;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    /* 双栏布局 (纯文本列，无浮动定位问题) 技能/语言/兴趣 */
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 1.8rem;
+      margin-top: 0.2rem;
+    }
+
+    .column-item {
+      font-size: 0.9rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+      color: #3E3E3C;
+    }
+
+    .column-item strong {
+      font-weight: 550;
+      color: #2B2A28;
+      min-width: 4.2rem;
+    }
+
+    .link-text {
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--accent-burnt-orange);
+      font-weight: 400;
+    }
+
+    /* 打印样式：保证无背景、边界清晰 */
+    @media print {
+      html {
+        background: white;
+        padding: 0;
+      }
+      body {
+        box-shadow: none;
+        width: 100%;
+        border-radius: 0;
+        margin: 0;
+      }
+      .hand-drawn-border, .sketch-leaf {
+        display: none; /* 打印时隐藏手绘装饰，保留干净文本 */
+      }
+      .main-content {
+        padding: 1.8cm 1.8cm 1.5cm 1.8cm;
+      }
+      .section-title::after {
+        background: #999;
+      }
+      .skill {
+        border: 0.5px solid #aaa;
+        background: none;
+      }
+      a, .link-text {
+        text-decoration: none;
+        border-bottom: none;
+        color: inherit;
+      }
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    @media screen and (max-width: 210mm) {
+      body {
+        width: 100%;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 极简手绘装饰层：完全不影响文字选中与复制 -->
+  <div class="hand-drawn-border" aria-hidden="true"></div>
+  <div class="sketch-leaf" aria-hidden="true"></div>
+
+  <div class="main-content">
+    
+    <!-- 姓名与标题 -->
+    <div class="name-section">
+      <div style="display: flex; align-items: baseline; flex-wrap: wrap;">
+        <h1 class="name">林清音</h1>
+        <span class="title-sub">插画师 & 艺术指导</span>
+      </div>
+      <div class="contact-row">
+        <div class="contact-item"><span class="contact-icon">✆</span> +86 139 5027 6814</div>
+        <div class="contact-item"><span class="contact-icon">✉</span> qing.lin@artstudio.cn</div>
+        <div class="contact-item"><span class="contact-icon">🌐</span> qinglin-illustration.com</div>
+        <div class="contact-item"><span class="contact-icon">📍</span> 上海 / 远程</div>
+      </div>
+    </div>
+
+    <!-- 专业摘要 -->
+    <div style="margin-bottom: 0.5rem;">
+      <p style="font-size: 0.92rem; color: #3E3E3C; line-height: 1.6; max-width: 95%;">
+        拥有8年经验的插画师与视觉叙事者，擅长将手绘质感与数字媒介融合。曾任多家独立杂志艺术指导，主导品牌视觉重塑项目。追求留白中的情绪张力，以有机线条构建现代叙事。
+      </p>
+    </div>
+
+    <!-- 工作经历 -->
+    <div>
+      <h2 class="section-title">专业经历</h2>
+      
+      <div class="entry">
+        <div class="entry-header">
+          <span><span class="institution">云雀文化 · 艺术指导</span> <span class="job-title">/ 插画总监</span></span>
+          <span class="date-location">2020 – 至今 | 上海</span>
+        </div>
+        <div class="description">
+          <div class="desc-item">主导《栖地》独立杂志全系列视觉风格，手绘插画覆盖率达70%，发行量提升45%</div>
+          <div class="desc-item">管理4人插画团队，为品牌客户(包括例外、素然)提供艺术方向，项目续约率超90%</div>
+          <div class="desc-item">建立手绘素材库与数字笔刷系统，将传统水墨纹理融入商业插画，获得2023年Hiii Illustration评审奖</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span><span class="institution">之间设计 · 高级插画师</span></span>
+          <span class="date-location">2017 – 2020 | 杭州</span>
+        </div>
+        <div class="description">
+          <div class="desc-item">为“木墨”、“失物招领”等家居品牌创作系列叙事插画，应用于产品包装与展览视觉</div>
+          <div class="desc-item">独立完成“城市的诗”绘本项目，融合拼贴与淡彩，入选博洛尼亚插画展长名单</div>
+          <div class="desc-item">与文案团队协作，通过视觉草图推动创意概念，提案通过率提高30%</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span><span class="institution">自由插画师</span> <span class="job-title">/ 合作艺术家</span></span>
+          <span class="date-location">2015 – 2017 | 远程</span>
+        </div>
+        <div class="description">
+          <div class="desc-item">为多家独立出版物及品牌提供编辑插画，客户包括《生活月刊》、单向空间等</div>
+          <div class="desc-item">发展个人手绘风格，以炭笔与数字上色结合，作品被多个线上艺术平台收录</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 教育背景 -->
+    <div>
+      <h2 class="section-title">教育</h2>
+      <div class="entry">
+        <div class="entry-header">
+          <span><span class="institution">中国美术学院</span> <span class="job-title">/ 插画与漫画 本科</span></span>
+          <span class="date-location">2011 – 2015 | 杭州</span>
+        </div>
+        <div class="description" style="margin-top:0.1rem;">
+          <div class="desc-item">毕业创作《游移的轮廓》获学院奖，并参与伦敦艺术书展</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 技能与工具 (两栏纯文本) -->
+    <div>
+      <h2 class="section-title">核心能力</h2>
+      <div class="two-columns">
+        <div class="column-item"><strong>媒介</strong> 手绘 / 数字插画 / 水墨</div>
+        <div class="column-item"><strong>风格</strong> 留白叙事 / 有机线条 / 拼贴</div>
+        <div class="column-item"><strong>软件</strong> Procreate, Photoshop, Fresco</div>
+        <div class="column-item"><strong>艺术指导</strong> 概念开发 / 色彩脚本</div>
+        <div class="column-item"><strong>语言</strong> 中文 (母语) / 英语 (专业)</div>
+        <div class="column-item"><strong>展览</strong>  abc art fair, 奇点艺术节</div>
+      </div>
+    </div>
+
+    <!-- 精选客户/合作与标签式呈现 -->
+    <div>
+      <h2 class="section-title">合作品牌 & 项目</h2>
+      <div class="skill-tags">
+        <span class="skill">例外 EXCEPTION</span>
+        <span class="skill">木墨 MUMO</span>
+        <span class="skill">《生活》月刊</span>
+        <span class="skill">单向空间</span>
+        <span class="skill">素然 ZUCZUG</span>
+        <span class="skill">失物招领</span>
+        <span class="skill">Hiii Illustration</span>
+        <span class="skill">abC艺术书展</span>
+      </div>
+    </div>
+
+    <!-- 个人项目/出版物 留白区域 -->
+    <div style="margin-top: 1.4rem;">
+      <h2 class="section-title">出版物 & 个人项目</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: baseline; font-size:0.9rem;">
+        <span><strong>《栖地 Vol.5》</strong> 艺术指导/封面插画</span>
+        <span><strong>《慢漫》绘本</strong> 作者</span>
+        <span><strong>“呼吸”系列</strong> 个人画展 · 杭州</span>
+      </div>
+      <div style="margin-top: 0.8rem; color: #5D5B58; font-size:0.85rem; display: flex; gap: 1.5rem;">
+        <span>🏆 2023 Hiii Illustration 评审奖</span>
+        <span>🏆 3x3 Illustration 优秀奖</span>
+      </div>
+    </div>
+
+    <!-- 极简备注：作品集链接，纯文本形式，无按钮干扰 -->
+    <div style="margin-top: 1.5rem; border-top: 1px dashed #D9D2C7; padding-top: 0.8rem; font-size:0.85rem; color:#5F5F5D; display: flex; justify-content: space-between;">
+      <span>作品集网站: <span class="link-text">qinglin-illustration.com</span></span>
+      <span>Behance: /qinglinart</span>
+      <span>更新: 2026.08</span>
+    </div>
+  </div>
+</body>
+</html>

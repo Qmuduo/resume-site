@@ -1,0 +1,206 @@
+{
+  "templateId": "prompt_070",
+  "name": "陈亦凡 · 高级UI/UX设计主管简历",
+  "sourceFile": "prompt_070.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "social_3",
+      "label": "个人网站",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "个人简介",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "interests",
+      "label": "兴趣爱好",
+      "type": "array",
+      "commonPath": "interests",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "summary",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "sectionTitle": "专业摘要"
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    }
+  ],
+  "sampleData": {
+    "name": "陈亦凡",
+    "phone": "+86 138 5124 6970",
+    "email": "✉️ yifan.chen@design.studio",
+    "socials": [],
+    "location": "上海 / 远程",
+    "summary": "8年数字产品设计经验，专注B2B SaaS与设计系统搭建。善于通过数据驱动与几何视觉语言，带领团队交付高影响力的端到端体验。曾主导3个0-1产品设计，服务红杉被投企业及跨国客户。",
+    "experiences": [
+      {
+        "position": "高级UI/UX设计主管",
+        "date": "2022.04 – 至今"
+      },
+      {
+        "position": "资深UI/UX设计师",
+        "date": "2019.08 – 2022.02"
+      },
+      {
+        "position": "高级产品设计师",
+        "date": "2017.03 – 2019.07"
+      }
+    ],
+    "skills": [
+      {
+        "name": "Figma 组件库",
+        "level": ""
+      },
+      {
+        "name": "用户研究",
+        "level": ""
+      },
+      {
+        "name": "交互原型",
+        "level": ""
+      },
+      {
+        "name": "视觉设计",
+        "level": ""
+      },
+      {
+        "name": "HTML/CSS 认知",
+        "level": ""
+      },
+      {
+        "name": "设计领导力",
+        "level": ""
+      },
+      {
+        "name": "A/B测试",
+        "level": ""
+      },
+      {
+        "name": "几何品牌语言",
+        "level": ""
+      },
+      {
+        "name": "Framer/Principle",
+        "level": ""
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "summary",
+      "label": "专业摘要",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "interests",
+      "label": "兴趣爱好",
+      "type": "array",
+      "commonPath": "interests",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

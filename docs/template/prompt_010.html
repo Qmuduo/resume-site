@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>张思睿 · 招聘专员简历</title>
+  <style>
+    /* ===== 全局重置与打印优化 ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #eef2f5;
+      font-family: 'Arial', 'Helvetica', '思源黑体', 'Source Han Sans SC', 'Noto Sans SC', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      margin: 0;
+      color: #2D3748;
+      line-height: 1.5;
+    }
+
+    /* 简历主容器：固定A4尺寸，模拟纸张 */
+    .resume {
+      width: 210mm;
+      min-height: 297mm;
+      background-color: #ffffff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      padding: 17mm 18mm 15mm 18mm; /* 上下左右边距约0.67-0.71英寸，保留呼吸感 */
+      position: relative;
+      page-break-after: avoid; /* 单页简历，避免内部意外分页 */
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 全局文本样式 */
+    h1, h2, h3, p, ul, li, span, div {
+      color: #2D3748;
+      font-weight: normal;
+    }
+
+    /* 链接去除装饰，保持纯文本样式 */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 板块标题通用样式 */
+    .section-title {
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      font-weight: 700;
+      font-size: 12pt;
+      letter-spacing: 0.6px;
+      color: #1E3A5F; /* 深蓝主色 */
+      text-transform: uppercase;
+      margin-bottom: 6mm;
+      padding-bottom: 2.5mm;
+      border-bottom: 1.2px solid #CBD5E0; /* 蓝灰色细线 */
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* 标题旁的小装饰点 (纯文本或极简符号，ATS安全) */
+    .section-title::before {
+      content: "●";
+      color: #2B6CB0; /* 强调蓝 */
+      font-size: 9pt;
+      margin-right: 2px;
+      display: inline-block;
+      line-height: 1;
+    }
+
+    /* 姓名区域 */
+    .name-header {
+      margin-bottom: 3mm;
+    }
+
+    .name {
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      font-weight: 700;
+      font-size: 28pt;
+      color: #1A365D; /* 深沉商务蓝 */
+      letter-spacing: 1px;
+      margin-bottom: 1mm;
+      line-height: 1.2;
+    }
+
+    .title-sub {
+      font-family: 'Arial', '思源黑体', sans-serif;
+      font-weight: 400;
+      font-size: 13pt;
+      color: #4A5568;
+      margin-bottom: 4mm;
+      letter-spacing: 0.3px;
+    }
+
+    /* 联系方式行 - 纯文本横排，使用简单符号 */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6mm;
+      font-family: 'Arial', '思源黑体', sans-serif;
+      font-size: 10pt;
+      color: #2D3748;
+      margin-bottom: 5mm;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 2.5mm;
+      white-space: nowrap;
+    }
+
+    .contact-icon {
+      font-weight: 400;
+      color: #2B6CB0;
+      font-size: 10.5pt;
+      display: inline-block;
+      width: 14px;
+      text-align: center;
+    }
+
+    /* 分割线 (纯CSS，绝对安全) */
+    .divider {
+      height: 1.2px;
+      background-color: #CBD5E0;
+      margin: 6mm 0 7mm 0;
+      width: 100%;
+    }
+
+    /* 两栏布局用于技能或其他区域 —— 但采用纯文本flex列，避免浮动问题 */
+    .two-column-text {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4mm 10mm;
+    }
+
+    .column {
+      flex: 1 1 45%;
+      min-width: 70mm;
+    }
+
+    /* 条目样式 */
+    .entry {
+      margin-bottom: 5mm;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 1.5mm;
+    }
+
+    .entry-title {
+      font-weight: 700;
+      font-size: 11.5pt;
+      color: #1A202C;
+      font-family: 'Arial', '思源黑体', sans-serif;
+    }
+
+    .entry-sub {
+      font-weight: 400;
+      font-size: 11pt;
+      color: #2D3748;
+      margin-left: 3mm;
+    }
+
+    .entry-date {
+      font-weight: 400;
+      font-size: 10.5pt;
+      color: #4A5568;
+      white-space: nowrap;
+      margin-left: auto;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .entry-org {
+      font-weight: 600;
+      font-size: 11pt;
+      color: #1E3A5F;
+      display: block;
+      margin-bottom: 0.5mm;
+    }
+
+    .bullet-list {
+      list-style-type: none;
+      margin-top: 2mm;
+      padding-left: 2mm;
+    }
+
+    .bullet-list li {
+      font-size: 10.5pt;
+      color: #2D3748;
+      margin-bottom: 1.2mm;
+      display: flex;
+      align-items: flex-start;
+      gap: 3mm;
+      line-height: 1.45;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      color: #2B6CB0;
+      font-weight: bold;
+      font-size: 12pt;
+      display: inline-block;
+      width: 12px;
+      flex-shrink: 0;
+    }
+
+    /* 技能标签式排列 (纯文本) */
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3mm 5mm;
+      margin-top: 1mm;
+    }
+
+    .skill-tag {
+      font-size: 10.5pt;
+      background: none;
+      color: #2D3748;
+      font-weight: 500;
+      padding: 0;
+      border-right: 1px solid #CBD5E0;
+      padding-right: 5mm;
+      margin-right: 0;
+      line-height: 1.3;
+    }
+
+    .skill-tag:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    /* 教育经历简洁样式 */
+    .edu-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2mm;
+    }
+
+    /* 确保打印时完全去除背景、保留文字 */
+    @media print {
+      body {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+
+      .resume {
+        box-shadow: none;
+        width: 100%;
+        min-height: auto;
+        padding: 12mm 15mm 12mm 15mm;
+        margin: 0 auto;
+        page-break-after: avoid;
+      }
+
+      .divider, .section-title {
+        border-bottom-color: #A0AEC0;
+      }
+
+      .bullet-list li::before {
+        color: #1E3A5F;
+      }
+
+      .contact-icon {
+        color: #1E3A5F;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    /* 小字号备注 */
+    .note {
+      font-size: 9.5pt;
+      color: #4A5568;
+    }
+
+    hr {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    
+    <!-- 姓名 & 标题 -->
+    <div class="name-header">
+      <div class="name">张思睿</div>
+      <div class="title-sub">招聘专员 · 人力资源</div>
+    </div>
+
+    <!-- 联系方式 (纯文本，使用安全符号) -->
+    <div class="contact-row">
+      <div class="contact-item"><span class="contact-icon">☎</span> (086) 139-1234-5678</div>
+      <div class="contact-item"><span class="contact-icon">✉</span> siray.zhang@hrcareer.cn</div>
+      <div class="contact-item"><span class="contact-icon">◉</span> 上海市静安区</div>
+      <div class="contact-item"><span class="contact-icon">🔗</span> linkedin.com/in/sirayzh</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 专业概述 (简洁，符合层级) -->
+    <div style="margin-bottom: 6mm;">
+      <div class="section-title">专业概述</div>
+      <p style="font-size: 10.5pt; color: #2D3748; line-height: 1.55;">
+        3年招聘经验，专注互联网与金融行业中高端岗位交付。曾主导批量招聘项目，月均offer量8+，擅长人才Mapping与雇主品牌传播。熟悉Workday、北森系统，具备猎头+RPO复合背景。
+      </p>
+    </div>
+
+    <!-- 工作经历 -->
+    <div style="margin-bottom: 5mm;">
+      <div class="section-title">工作经历</div>
+      
+      <!-- 条目1 -->
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">招聘专员</span>
+          <span class="entry-date">2023.04 – 至今</span>
+        </div>
+        <div class="entry-org">云鲸科技 · 上海  | 互联网/人工智能</div>
+        <ul class="bullet-list">
+          <li>负责技术序列（算法、后端、数据）招聘，年交付量45+，平均招聘周期32天。</li>
+          <li>搭建并运营内部人才库，激活被动候选人转化率达18%，有效降低猎头成本。</li>
+          <li>参与2024届校招项目，统筹线上宣讲与面试流程，最终发放offer 28份。</li>
+        </ul>
+      </div>
+
+      <!-- 条目2 -->
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">招聘助理</span>
+          <span class="entry-date">2021.07 – 2023.02</span>
+        </div>
+        <div class="entry-org">锐思咨询 · 上海  | 人力资源服务</div>
+        <ul class="bullet-list">
+          <li>支持金融科技领域客户招聘，独立寻源与筛选简历，周均推送合格候选人12份。</li>
+          <li>维护ATS系统数据，优化职位描述模板，提升岗位点击率约22%。</li>
+          <li>协助组织线下招聘会及Open Day，累计到场候选人超200人。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 教育背景 -->
+    <div style="margin-bottom: 5mm;">
+      <div class="section-title">教育背景</div>
+      <div class="edu-entry">
+        <span style="font-weight: 700; font-size: 11pt; color: #1A202C;">上海外国语大学</span>
+        <span style="font-weight: 400; font-size: 10.5pt; color: #4A5568;">2017.09 – 2021.06</span>
+      </div>
+      <div style="font-size: 10.5pt; color: #2D3748; margin-bottom: 2mm;">文学学士 · 英语专业 (人力资源辅修)</div>
+      <div style="font-size: 10pt; color: #4A5568;">GPA: 3.6/4.0 · 校级优秀毕业生</div>
+    </div>
+
+    <!-- 技能与证书 (采用两栏纯文本布局，保证ATS可读) -->
+    <div style="margin-bottom: 5mm;">
+      <div class="section-title">核心能力</div>
+      <div class="two-column-text">
+        <div class="column">
+          <div style="font-weight: 600; font-size: 10.5pt; margin-bottom: 1.5mm;">招聘技术</div>
+          <div class="skill-tags">
+            <span class="skill-tag">人才Mapping</span>
+            <span class="skill-tag">行为面试法</span>
+            <span class="skill-tag">薪酬谈判</span>
+            <span class="skill-tag">ATS管理</span>
+          </div>
+        </div>
+        <div class="column">
+          <div style="font-weight: 600; font-size: 10.5pt; margin-bottom: 1.5mm;">工具与证书</div>
+          <div class="skill-tags">
+            <span class="skill-tag">北森/Workday</span>
+            <span class="skill-tag">LinkedIn Recruiter</span>
+            <span class="skill-tag">企业人力资源管理师(三级)</span>
+            <span class="skill-tag">英语专业八级</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 项目经历 (可选，展示招聘相关项目) -->
+    <div style="margin-bottom: 4mm;">
+      <div class="section-title">项目经验</div>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">雇主品牌短视频企划</span>
+          <span class="entry-date">2024.01 – 2024.04</span>
+        </div>
+        <div style="font-size: 10.5pt; color: #2D3748; margin-top: 1mm;">
+          策划“工程师的一天”系列短视频，联动技术部门产出5期内容，各平台累计曝光12w+，简历投递量环比提升35%。
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部留白与分割线保持呼吸感，不加多余装饰 -->
+    <div style="margin-top: auto; height: 2mm;"></div>
+    <!-- 极简脚注，仅用于视觉平衡，无额外信息干扰 -->
+    <div style="font-size: 8pt; color: #A0AEC0; text-align: right; margin-top: 2mm; letter-spacing: 0.3px;">Zhang Sirui · HR Specialist</div>
+  </div>
+</body>
+</html>

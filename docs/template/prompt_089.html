@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
+  <title>数据科学家简历 · 极简灰度等宽</title>
+  <style>
+    /* 全局重置与A4尺寸定义 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #e5e7eb; /* 外部背景仅用于预览，打印时隐藏 */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Courier New', 'Source Code Pro', 'Roboto Mono', '思源黑体', monospace;
+      line-height: 1.5;
+      color: #1f2937;
+    }
+
+    /* 简历卡片：严格A4尺寸，模拟纸张 */
+    .resume {
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      padding: 0.7in 0.7in 0.7in 0.7in;  /* 上下左右页边距约0.7英寸，保证呼吸感 */
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      page-break-after: avoid; /* 尽量单页，超出自动分页 */
+    }
+
+    /* 所有文本均为纯HTML文本，无canvas/svg渲染 */
+    /* 使用系统等宽字体：Courier New 或思源黑体作为中文等宽替代感觉，但保留统一灰度气质 */
+    /* 实际使用：英文等宽优先，中文回退到思源黑体保持极简 */
+    body, .resume, p, li, span, div, h1, h2, h3, h4 {
+      font-family: 'Courier New', 'Source Code Pro', 'Roboto Mono', '思源黑体', 'Noto Sans SC', monospace;
+    }
+
+    /* 标题类使用稍粗的等宽或保留Courier New Bold */
+    h1, h2, .section-title, .name {
+      font-weight: 700;
+    }
+
+    /* 分割线与装饰元素 */
+    hr {
+      border: none;
+      border-top: 1px solid #9ca3af; /* 灰色分割线 */
+      margin: 0.15rem 0 0.35rem 0;
+      opacity: 0.7;
+    }
+
+    .thin-line {
+      border-top: 0.5px solid #6b7280;
+      margin: 0.1rem 0 0.3rem 0;
+      opacity: 0.6;
+    }
+
+    /* 标题样式：姓名 */
+    .name {
+      font-size: 28pt;
+      letter-spacing: 1.2px;
+      color: #111827;
+      text-transform: uppercase;
+      margin-bottom: 0.05rem;
+      line-height: 1.2;
+    }
+
+    .title-sub {
+      font-size: 12pt;
+      color: #4b5563;
+      letter-spacing: 0.6px;
+      margin-bottom: 0.25rem;
+      font-weight: 400;
+      text-transform: none;
+    }
+
+    /* 联系信息行 */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 9.5pt;
+      color: #374151;
+      margin: 0.15rem 0 0.2rem 0;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      white-space: nowrap;
+    }
+
+    /* 简单的线性图标（使用字符或unicode，避免图片） */
+    .icon-char {
+      font-size: 10pt;
+      color: #4b5563;
+      margin-right: 0.1rem;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 13pt;
+      letter-spacing: 1.8px;
+      color: #1f2937;
+      text-transform: uppercase;
+      margin: 0.55rem 0 0.1rem 0;
+      font-weight: 700;
+      border-bottom: 1px solid #9ca3af;
+      padding-bottom: 0.08rem;
+    }
+
+    /* 工作经历条目等 */
+    .entry {
+      margin-bottom: 0.45rem;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.08rem;
+    }
+
+    .company-position {
+      font-weight: 700;
+      font-size: 11.5pt;
+      color: #111827;
+    }
+
+    .position-title {
+      font-weight: 400;
+      color: #2d3748;
+      margin-left: 0.3rem;
+      font-size: 11pt;
+    }
+
+    .date-location {
+      font-size: 10pt;
+      color: #4b5563;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    /* 描述要点：标准圆点符号，不使用自定义图形 */
+    .bullet-list {
+      list-style-type: disc;
+      padding-left: 1.3rem;
+      margin-top: 0.1rem;
+      color: #2d3748;
+      font-size: 10.5pt;
+      line-height: 1.5;
+    }
+
+    .bullet-list li {
+      margin-bottom: 0.1rem;
+    }
+
+    /* 技能标签式排列（ATS友好纯文本） */
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.2rem;
+      font-size: 10.5pt;
+      color: #1f2937;
+      margin-top: 0.15rem;
+    }
+
+    .skill-category {
+      font-weight: 700;
+      margin-right: 0.3rem;
+      color: #111827;
+    }
+
+    /* 两栏技能区域（纯文本列，不使用浮动定位导致错位） */
+    .two-col-skills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3rem 1.8rem;
+      margin-top: 0.15rem;
+      font-size: 10.5pt;
+    }
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    /* 项目或教育 */
+    .edu-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.25rem;
+    }
+
+    .school-name {
+      font-weight: 700;
+      font-size: 11pt;
+      color: #111827;
+    }
+
+    .degree {
+      font-weight: 400;
+      color: #2d3748;
+    }
+
+    /* ATS 安全：无背景色块、无浮动、无反白文字、无文字置于图形上 */
+    /* 所有文字颜色为深灰或黑色，背景保持白色 */
+    .no-bg-block {
+      background: transparent;
+    }
+
+    /* 个性化低风险元素：左侧窄色条（极细竖线，但不与文字重叠） */
+    .left-accent {
+      border-left: 3px solid #4b5563;
+      padding-left: 0.55rem;
+      margin-left: 0;
+    }
+
+    /* 打印样式：去除背景、保留纯内容，隐藏交互元素 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+      .resume {
+        box-shadow: none;
+        width: 100%;
+        min-height: auto;
+        padding: 0.6in 0.6in 0.6in 0.6in;
+        margin: 0 auto;
+        page-break-after: avoid;
+      }
+      /* 隐藏链接下划线，但保留文字 */
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      /* 所有颜色保持深色打印 */
+      .contact-item, .date-location, .bullet-list {
+        color: #1f2937;
+      }
+      hr {
+        border-color: #6b7280;
+      }
+    }
+
+    /* 链接样式去除下划线，保持文本颜色 */
+    a {
+      text-decoration: none;
+      color: #374151;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: #111827;
+    }
+
+    /* 等宽数字与时间对齐 */
+    .mono-num {
+      font-feature-settings: "tnum";
+      letter-spacing: 0.3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    
+    <!-- 姓名与标题区域 -->
+    <div>
+      <h1 class="name">陈一宁</h1>
+      <div class="title-sub">数据科学家 | 机器学习 · 因果推断</div>
+      <div class="contact-row">
+        <span class="contact-item"><span class="icon-char">☎</span> +86 139 5027 6140</span>
+        <span class="contact-item"><span class="icon-char">✉</span> yining.chen@data.me</span>
+        <span class="contact-item"><span class="icon-char">🌐</span> github.com/yining-c</span>
+        <span class="contact-item"><span class="icon-char">📍</span> 北京 / 远程</span>
+      </div>
+      <div class="contact-row" style="margin-top: 0.05rem; font-size: 9.5pt; color: #4b5563;">
+        <span>Kaggle Master · 竞赛排名前2%</span>
+        <span>|</span>
+        <span>3年数据科学经验 · 专注预测建模与实验设计</span>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- 专业技能板块 (两栏列表，ATS安全纯文本) -->
+    <div>
+      <h2 class="section-title">技术能力</h2>
+      <div class="two-col-skills">
+        <div class="col">
+          <div><span class="skill-category">语言：</span>Python, R, SQL, Scala</div>
+          <div><span class="skill-category">框架：</span>PyTorch, TensorFlow, XGBoost, LightGBM</div>
+          <div><span class="skill-category">数据工程：</span>Spark, Airflow, dbt, Snowflake</div>
+        </div>
+        <div class="col">
+          <div><span class="skill-category">统计建模：</span>贝叶斯推断, 因果森林, 混合效应模型</div>
+          <div><span class="skill-category">可视化：</span>Matplotlib, Seaborn, Tableau</div>
+          <div><span class="skill-category">MLOps：</span>MLflow, Docker, AWS SageMaker</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 工作经历板块 -->
+    <div>
+      <h2 class="section-title">专业经历</h2>
+      
+      <div class="entry left-accent">
+        <div class="entry-header">
+          <span class="company-position">星云数据 <span class="position-title">| 数据科学家</span></span>
+          <span class="date-location mono-num">2023.04 – 至今 | 北京</span>
+        </div>
+        <ul class="bullet-list">
+          <li>设计并落地用户生命周期价值预测模型，基于XGBoost与生存分析，将高价值用户识别准确率提升27%，直接优化营销预算分配。</li>
+          <li>主导A/B测试平台数据分析模块，引入方差缩减与序贯检验，使实验灵敏度提高35%，支持每月40+在线实验。</li>
+          <li>构建自动化特征工程流水线，整合点击流与交易数据，每日处理TB级日志，模型训练效率提高50%。</li>
+        </ul>
+      </div>
+
+      <div class="entry left-accent">
+        <div class="entry-header">
+          <span class="company-position">量子科技 <span class="position-title">| 初级数据科学家</span></span>
+          <span class="date-location mono-num">2021.07 – 2023.02 | 上海</span>
+        </div>
+        <ul class="bullet-list">
+          <li>参与智能推荐系统迭代，开发协同过滤与深度兴趣网络混合模型，线上点击率提升19%。</li>
+          <li>负责Kaggle竞赛驱动的内部创新项目：在“OTTO – 多目标推荐”竞赛中获银牌，方案被团队采纳用于多任务学习框架。</li>
+          <li>使用因果影响分析评估促销活动效果，识别增量收入驱动因素，为业务团队提供数据决策依据。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Kaggle 与项目亮点（突出Kaggle+猎头渠道偏好） -->
+    <div>
+      <h2 class="section-title">Kaggle 竞赛与开源项目</h2>
+      
+      <div class="entry">
+        <div class="entry-header">
+          <span class="company-position">Kaggle 竞赛 | <span class="position-title">Master (Top 2%)</span></span>
+          <span class="date-location mono-num">2021 – 至今</span>
+        </div>
+        <ul class="bullet-list">
+          <li><strong>OTTO – 多目标推荐系统</strong> (银牌, Top 4%): 设计基于Transformer的序列模型，融合点击、购物车与订单目标，单一模型排名117/2587。</li>
+          <li><strong>ASHRAE – 能源预测</strong> (铜牌): 构建时序特征与LightGBM集成，处理缺失值与异常值，最终RMSE位列前8%。</li>
+          <li>维护开源项目“kaggle-utils”，包含自动特征工程与模型堆叠工具，GitHub 380+ stars。</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="company-position">个人研究项目 <span class="position-title">| 因果推断与定价</span></span>
+          <span class="date-location mono-num">2024.02 – 2024.05</span>
+        </div>
+        <ul class="bullet-list">
+          <li>基于双重机器学习与元学习器，估计动态定价对用户转化的处理效应，使用合成控制法验证稳健性。</li>
+          <li>成果撰写为技术博客并发表于Towards Data Science，获得1200+次点赞。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 教育背景 -->
+    <div>
+      <h2 class="section-title">教育背景</h2>
+      <div class="edu-entry">
+        <span class="school-name">复旦大学 <span class="degree">| 统计学 硕士</span></span>
+        <span class="date-location mono-num">2019.09 – 2022.06</span>
+      </div>
+      <div class="edu-entry" style="margin-top: 0.1rem;">
+        <span class="school-name">浙江大学 <span class="degree">| 数学与应用数学 学士</span></span>
+        <span class="date-location mono-num">2015.09 – 2019.06</span>
+      </div>
+    </div>
+
+    <!-- 附加信息：语言/证书等，使用标签式排列 -->
+    <div>
+      <h2 class="section-title">语言与证书</h2>
+      <div class="skill-tags">
+        <span><span class="skill-category">英语：</span>IELTS 7.5 (工作语言)</span>
+        <span><span class="skill-category">中文：</span>母语</span>
+        <span><span class="skill-category">认证：</span>AWS Certified Machine Learning – Specialty</span>
+        <span><span class="skill-category">证书：</span>DeepLearning.AI TensorFlow 开发者</span>
+      </div>
+    </div>
+
+    <!-- 极简脚注：声明ATS友好与隐私（不出现图形） -->
+    <div style="margin-top: 0.4rem; font-size: 8pt; color: #9ca3af; border-top: 0.5px solid #d1d5db; padding-top: 0.2rem; text-align: left;">
+      <span># 极简灰度 · 等宽字体 · 数据科学简历 · ATS优化</span>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
+  <title>林觉·影视美术指导 · 简历</title>
+  <style>
+    /* ===== 全局重置与打印优化 ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #e8ecf1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      font-family: 'Arial', 'Helvetica Neue', '思源黑体', 'Calibri', sans-serif;
+      color: #1e1e1e;
+    }
+
+    /* 简历卡片：固定A4宽度，模拟纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(0, 0, 0, 0.06);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s;
+    }
+
+    /* 非对称核心：左侧细条装饰 + 右侧主体 */
+    .resume-layout {
+      display: flex;
+      flex: 1;
+    }
+
+    /* 左侧电影感色条 —— 完全无文字，纯视觉装饰 */
+    .film-strip {
+      width: 10mm;
+      background: #1a2e1f; /* 深墨绿基调 */
+      flex-shrink: 0;
+      position: relative;
+      border-right: 2px solid #c49a2c; /* 暗金色细线，呼应电影质感 */
+      background-image: repeating-linear-gradient(
+        180deg,
+        transparent,
+        transparent 8px,
+        rgba(196, 154, 44, 0.25) 8px,
+        rgba(196, 154, 44, 0.25) 10px
+      );
+    }
+
+    /* 主体内容区域 */
+    .main-content {
+      flex: 1;
+      padding: 1.8rem 2.2rem 1.8rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    /* ===== 字体与文字样式 ===== */
+    h1, h2, h3, p, li, div, span {
+      color: #2d3748; /* 正文深灰 */
+      line-height: 1.5;
+    }
+
+    /* 姓名区域 —— 左对齐，强存在感 */
+    .name-section {
+      margin-bottom: 0.2rem;
+    }
+
+    .name {
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      font-weight: 700;
+      font-size: 2.8rem;
+      letter-spacing: 1.5px;
+      color: #1a2e1f; /* 主色墨绿，姓名稳重 */
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 0.2rem;
+    }
+
+    .title-role {
+      font-family: 'Arial', '思源黑体', sans-serif;
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: #4a5c4a;
+      letter-spacing: 0.8px;
+      border-bottom: 2px solid #c49a2c; /* 金色分割线 */
+      padding-bottom: 0.7rem;
+      margin-top: 0.1rem;
+      display: inline-block;
+      text-transform: uppercase;
+    }
+
+    /* 联系方式行 —— 极简图标风格 */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #3a4a3a;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* 线性图标替代自定义符号，完全ATS安全 */
+    .icon-symbol {
+      font-weight: 400;
+      color: #5a6b5a;
+      font-size: 1rem;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #1a2e1f;
+      margin-bottom: 0.8rem;
+      border-bottom: 1.5px solid #d9d9d9;
+      padding-bottom: 0.3rem;
+      position: relative;
+    }
+
+    /* 细微金色点缀 —— 仅用于标题左侧小标记 */
+    .section-title::before {
+      content: "—";
+      color: #c49a2c;
+      margin-right: 0.6rem;
+      font-weight: 400;
+    }
+
+    /* 经历条目 */
+    .experience-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.25rem;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #1e1e1e;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    .job-title {
+      font-weight: 500;
+      color: #2d3748;
+      margin-left: 0.5rem;
+      font-style: normal;
+    }
+
+    .date-range {
+      font-weight: 400;
+      color: #5a6b5a;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .description-list {
+      list-style: none;
+      margin-top: 0.5rem;
+      padding-left: 0.2rem;
+    }
+
+    .description-list li {
+      position: relative;
+      padding-left: 1.3rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      color: #2d3748;
+      line-height: 1.5;
+    }
+
+    /* 标准圆点符号，ATS可读 */
+    .description-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.2rem;
+      color: #c49a2c; /* 强调色仅用于项目符号 */
+      font-weight: bold;
+    }
+
+    /* 技能标签区域 —— 行内标签，纯文本 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.2rem;
+      margin-top: 0.3rem;
+    }
+
+    .skill-tag {
+      font-size: 0.9rem;
+      color: #2d3748;
+      background: transparent;
+      border-bottom: 1px solid #d9d9d9;
+      padding-bottom: 0.1rem;
+      white-space: nowrap;
+    }
+
+    /* 两栏布局用于教育、奖项等（纯文本流，无浮动风险） */
+    .two-column-text {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .column {
+      flex: 1 1 180px;
+    }
+
+    .project-highlight {
+      margin-top: 0.6rem;
+    }
+
+    .project-title {
+      font-weight: 600;
+      color: #1a2e1f;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e2e2e2;
+      margin: 0.8rem 0 0.5rem;
+    }
+
+    /* ===== 打印样式 ===== */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+
+      .resume {
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+      }
+
+      .film-strip {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background-color: #1a2e1f !important;
+        border-right-color: #c49a2c !important;
+      }
+
+      .section-title::before,
+      .description-list li::before {
+        color: #c49a2c !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      a, button {
+        display: none;
+      }
+
+      .contact-item, .skill-tag, .name, .company-name {
+        color: #1e1e1e !important;
+      }
+    }
+
+    /* 小屏幕适配 */
+    @media (max-width: 700px) {
+      .main-content {
+        padding: 1.2rem;
+      }
+      .name {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- 非对称布局：左侧电影色条 + 右侧内容 -->
+    <div class="resume-layout">
+      <!-- 左侧装饰带，完全无文字，ATS忽略 -->
+      <div class="film-strip" aria-hidden="true"></div>
+
+      <!-- 主内容区 -->
+      <div class="main-content">
+        
+        <!-- 姓名与头衔 -->
+        <div class="name-section">
+          <h1 class="name">林觉</h1>
+          <div class="title-role">影视美术指导 · 高级</div>
+        </div>
+
+        <!-- 联系方式：行内图标文字，纯文本可解析 -->
+        <div class="contact-row">
+          <span class="contact-item"><span class="icon-symbol">✆</span> +86 139 5027 1846</span>
+          <span class="contact-item"><span class="icon-symbol">✉</span> lin.jue@frame.studio</span>
+          <span class="contact-item"><span class="icon-symbol">◈</span> 北京 · 朝阳</span>
+          <span class="contact-item"><span class="icon-symbol">▣</span> portfolio-frame.cc</span>
+        </div>
+
+        <!-- 专业概述 -->
+        <div>
+          <div class="section-title">视觉叙事 · 专业轮廓</div>
+          <p style="font-size:0.92rem; color:#2d3748; margin-top:0.2rem;">
+            8年影视美术指导经验，主导《夜航船》《锈色黎明》等长片与剧集的美术构建。擅长通过非对称空间、光影材质叙事，融合东方美学与当代电影感。与导演、摄影指导深度协作，从概念图到置景落地全程把控。
+          </p>
+        </div>
+
+        <!-- 工作经历 —— 核心模块 -->
+        <div>
+          <div class="section-title">创作轨迹</div>
+          
+          <div class="experience-item">
+            <div class="exp-header">
+              <span><span class="company-name">帧格影业</span> <span class="job-title">| 高级美术指导</span></span>
+              <span class="date-range">2021.03 – 至今</span>
+            </div>
+            <ul class="description-list">
+              <li>主导奇幻电影《夜航船》整体美术设计，构建七个非对称船舱场景，入围金马最佳美术设计。</li>
+              <li>与导演及视效团队合作，将实景搭设与LED虚拟制片结合，成本降低22%。</li>
+              <li>带领5人美术团队，完成从概念草图、气氛图到施工图监制，项目周期平均缩短18%。</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="exp-header">
+              <span><span class="company-name">青墨影视</span> <span class="job-title">| 美术指导</span></span>
+              <span class="date-range">2018.05 – 2021.02</span>
+            </div>
+            <ul class="description-list">
+              <li>负责悬疑剧《锈色黎明》美术风格确立，利用工业废墟与冷调金属营造心理压迫感。</li>
+              <li>设计标志性“倾斜审讯室”场景，成为剧集视觉符号，社交媒体传播量超300万。</li>
+              <li>统筹美术预算与置景日程，单集场景复用率达40%且保持视觉新鲜感。</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="exp-header">
+              <span><span class="company-name">独立美术工作室</span> <span class="job-title">| 美术师 / 助理美术指导</span></span>
+              <span class="date-range">2016.09 – 2018.03</span>
+            </div>
+            <ul class="description-list">
+              <li>参与多部独立电影与广告美术制作，负责道具设计及场景氛围深化。</li>
+              <li>协助完成短片《回音》的极简场景，获FIRST青年影展最佳美术提名。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 代表项目精选 -->
+        <div>
+          <div class="section-title">电影感项目切片</div>
+          <div style="display: flex; flex-direction: column; gap: 0.7rem;">
+            <div class="project-highlight">
+              <span class="project-title">《夜航船》· 2023</span> — 美术指导<br>
+              <span style="font-size:0.9rem; color:#2d3748;">非对称船舱结构，清代商船与超现实元素融合，全片手工做旧质感。</span>
+            </div>
+            <div class="project-highlight">
+              <span class="project-title">《锈色黎明》· 2020</span> — 美术指导<br>
+              <span style="font-size:0.9rem; color:#2d3748;">废弃化工厂改造，倾斜墙体与锈蚀色彩体系，获亚洲电视大奖最佳美术。</span>
+            </div>
+            <div class="project-highlight">
+              <span class="project-title">《水面的褶皱》· 2019</span> — 美术设计<br>
+              <span style="font-size:0.9rem; color:#2d3748;">实验短片，利用投影与半透明材质创造流动记忆空间。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 技能与教育 两列文本流 -->
+        <div>
+          <div class="section-title">工具 · 材质 · 素养</div>
+          <div class="two-column-text">
+            <div class="column">
+              <p style="font-weight:700; margin-bottom:0.3rem;">视觉构建</p>
+              <div class="skills-container">
+                <span class="skill-tag">概念气氛图</span>
+                <span class="skill-tag">SketchUp/Rhino</span>
+                <span class="skill-tag">CAD施工图</span>
+                <span class="skill-tag">数字绘景</span>
+                <span class="skill-tag">色彩脚本</span>
+              </div>
+            </div>
+            <div class="column">
+              <p style="font-weight:700; margin-bottom:0.3rem;">材质与执行</p>
+              <div class="skills-container">
+                <span class="skill-tag">做旧工艺</span>
+                <span class="skill-tag">场景模型</span>
+                <span class="skill-tag">预算统筹</span>
+                <span class="skill-tag">虚拟制片</span>
+                <span class="skill-tag">陈设叙事</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 教育背景 -->
+        <div style="margin-top: 0.2rem;">
+          <div class="section-title">学院积淀</div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+            <span><span style="font-weight:700;">中央戏剧学院</span> · 舞台美术设计 本科</span>
+            <span style="color:#5a6b5a;">2012 – 2016</span>
+          </div>
+          <div style="margin-top: 0.3rem; font-size:0.9rem; color:#2d3748;">
+            毕业设计《非对称戏剧空间》获学院奖，伦敦艺术大学短期置景工作坊。
+          </div>
+        </div>
+
+        <!-- 底部极简分割，作品集提示 -->
+        <hr>
+        <div style="font-size:0.8rem; color:#5a6b5a; display: flex; justify-content: space-between; align-items: center;">
+          <span>作品集与完整项目案例 · 人脉内推可见</span>
+          <span>www.frame-linjue.com</span>
+        </div>
+
+      </div><!-- end main-content -->
+    </div><!-- end resume-layout -->
+  </div><!-- end resume -->
+</body>
+</html>

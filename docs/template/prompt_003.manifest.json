@@ -1,0 +1,261 @@
+{
+  "templateId": "prompt_003",
+  "name": "张维明 · 商业银行对公客户经理 · 简历",
+  "sourceFile": "prompt_003.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "个人简介",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "代表性交易",
+      "label": "代表性交易",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-sub",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "summary",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "sectionTitle": "专业概要"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-item"
+    },
+    {
+      "commonPath": "experiences",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "工作经历",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".edu-entry",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "edu-entry"
+    }
+  ],
+  "sampleData": {
+    "name": "张维明",
+    "title": "商业银行对公客户经理 · 中级经理",
+    "phone": "138-2157-8932",
+    "email": "✉️ weiming.zhang@finmail.com",
+    "location": "上海市浦东新区",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "🔗 linkedin.com/in/weimingzhang"
+      }
+    ],
+    "summary": "4年商业银行对公业务经验，管理信贷资产超8亿元，擅长制造业、贸易融资及中型企业客群拓展。具备扎实的财务分析能力与跨部门协作经验，累计落地银团贷款、供应链金融项目20+，曾获分行“对公业务标兵”。CFA二级候选人，FRM持证。",
+    "代表性交易": "跨境并购融资项目 核心执行成员 2023.03 – 2023.09 为某上市制造企业收购德国标的提供1.2亿美元跨境贷款方案，协调总行离岸部及境外律所。 完成标的公司EBITDA调整分析及汇率风险对冲建议，审批通过后实现年化综合收益约680万元。 绿色供应链金融计划 产品牵头人 2024.01 – 2024.06 针对光伏行业核心企业设计“应收账款池+绿色再贴现”模式，带动上游8家供应商融资落地。",
+    "skills": [
+      {
+        "name": "贸易融资",
+        "level": ""
+      },
+      {
+        "name": "银团贷款",
+        "level": ""
+      },
+      {
+        "name": "供应链金融",
+        "level": ""
+      },
+      {
+        "name": "财务建模",
+        "level": ""
+      },
+      {
+        "name": "KYC/AML合规",
+        "level": ""
+      },
+      {
+        "name": "客户关系管理",
+        "level": ""
+      },
+      {
+        "name": "授信报告撰写",
+        "level": ""
+      },
+      {
+        "name": "中级风险定价",
+        "level": ""
+      },
+      {
+        "name": "彭博/万得",
+        "level": ""
+      }
+    ],
+    "experiences": [
+      {
+        "date": "2022.06 – 至今 | 上海",
+        "description": "管理27家对公授信客户，总敞口额度6.2亿元，涵盖高端制造、医药流通行业，年度存款沉淀增长23%。"
+      },
+      {
+        "date": "2020.08 – 2022.05 | 苏州",
+        "description": "协助维护35+中小企业客户，完成贷前调查、报表分析及授信报告，独立上报金额累计4.5亿元。"
+      }
+    ],
+    "education": [
+      {
+        "degree": "金融学 硕士",
+        "date": "2018.09 – 2020.06"
+      },
+      {
+        "degree": "经济学 学士",
+        "date": "2014.09 – 2018.06"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "代表性交易",
+      "label": "代表性交易",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "summary",
+      "label": "专业概要",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "certifications",
+      "label": "证书",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

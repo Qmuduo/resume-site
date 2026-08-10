@@ -1,0 +1,251 @@
+{
+  "templateId": "prompt_11",
+  "name": "简历 · 数据科学家 · 极简灰度",
+  "sourceFile": "prompt_11.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "social_3",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "GitHub",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "个人简介",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "summary",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "sectionTitle": "专业摘要"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    },
+    {
+      "commonPath": "experiences",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "工作经历",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "projects",
+      "selector": ".project-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "project-item"
+    }
+  ],
+  "sampleData": {
+    "name": "陈知远",
+    "phone": "☎ +86 139 5027 6814",
+    "email": "✉ zhiyuan.chen@datascience.me",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "⛓ linkedin.com/in/zhiyuan-chen"
+      },
+      {
+        "platform": "github",
+        "url": "⌘ github.com/zyquant"
+      }
+    ],
+    "summary": "7年数据科学与机器学习经验，聚焦推荐系统与时间序列预测。Kaggle 竞赛大师 (2x金牌)，擅长端到端算法落地与模型优化。在电商与金融科技领域推动增长实验，实现千万级收益提升。",
+    "skills": [
+      {
+        "name": "TensorFlow · Keras",
+        "level": ""
+      },
+      {
+        "name": "Scikit-learn · XGBoost",
+        "level": ""
+      },
+      {
+        "name": "SQL · Spark",
+        "level": ""
+      },
+      {
+        "name": "推荐系统 · 排序模型",
+        "level": ""
+      },
+      {
+        "name": "时间序列 (Prophet/DeepAR)",
+        "level": ""
+      },
+      {
+        "name": "NLP · Transformers",
+        "level": ""
+      },
+      {
+        "name": "A/B测试 · 因果推断",
+        "level": ""
+      },
+      {
+        "name": "MongoDB · Redis",
+        "level": ""
+      },
+      {
+        "name": "Docker · AWS SageMaker",
+        "level": ""
+      }
+    ],
+    "experiences": [
+      {
+        "description": "主导电商推荐系统重构，设计双塔召回+深度排序模型，线上CTR提升19%，人均GMV增长12%。"
+      },
+      {
+        "description": "开发多变量时间序列异常检测系统，基于LSTM-Autoencoder，误报率降低至0.3%，挽回潜在损失约800万元/年。"
+      },
+      {
+        "description": "参与用户画像与lookalike建模，通过无监督聚类优化广告投放，ROI提升25%。"
+      }
+    ],
+    "projects": [
+      {
+        "description": "设计基于Transformer的时序模型，融合呼吸物理学特征。在6000+队伍中排名第22，方案被发表于Kaggle讨论区。使用PyTorch实现，推理时间优化至20ms内。"
+      },
+      {
+        "description": "结合外部指数与促销因子，建立分层预测模型(Prophet + TFT)。预测准确度(WAPE)达到0.12，减少库存积压21%。申请发明专利一项。"
+      },
+      {
+        "description": "基于GraphSAGE与随机游走，识别团伙欺诈。毫秒级响应，在金融数据集上F1-score 0.87。代码开源在GitHub获得340+ stars。"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "summary",
+      "label": "专业摘要",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

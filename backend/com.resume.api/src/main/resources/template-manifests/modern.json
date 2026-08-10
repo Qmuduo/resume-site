@@ -1,0 +1,103 @@
+{
+  "templateId": "modern",
+  "name": "现代双栏",
+  "sourceFile": "template-modern.json",
+  "renderMode": "placeholder",
+  "fields": [
+    {
+      "name": "name",
+      "label": "name",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "title",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "phone",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "email",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "location",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "linkedin",
+      "label": "linkedin",
+      "type": "string",
+      "commonPath": null,
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "summary",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "experiences",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "education",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "skills",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "languages",
+      "label": "languages",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": true
+    },
+    {
+      "name": "certifications",
+      "label": "certifications",
+      "type": "array",
+      "commonPath": "certifications",
+      "autoDetected": true
+    },
+    {
+      "name": "achievements",
+      "label": "achievements",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": true
+    }
+  ],
+  "mappings": [],
+  "sampleData": {},
+  "pendingManual": []
+}

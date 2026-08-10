@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>陈亦安 · 品牌视觉设计师简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --page-width: 210mm;
+      --page-height: 297mm;
+      --primary: #1A3B47;      /* 深墨绿-蓝调，商务但保留大胆底色 */
+      --accent: #D94F2B;      /* 陶土橙红，强调色，仅用于几何装饰/标题点缀 */
+      --body-text: #2E2E2C;
+      --muted: #5C5C5A;
+      --bg-light: #F9F7F4;
+      --divider: #D2CFC7;
+      --safe-white: #FFFFFF;
+      --geometric-light: #F0E9DF; /* 几何装饰块背景，不与文字重叠 */
+    }
+
+    body {
+      background: #E8E4DD;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Arial', 'Helvetica Neue', '思源黑体', 'Noto Sans SC', sans-serif;
+      margin: 0;
+      line-height: 1.5;
+      color: var(--body-text);
+    }
+
+    /* 简历卡片：A4尺寸，固定宽度，带安全背景 */
+    .resume {
+      width: var(--page-width);
+      min-height: var(--page-height);
+      background: var(--safe-white);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+
+    /* 几何装饰层：完全位于文字区域之外，不干扰ATS解析 */
+    .geometric-decor {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle at 100% 0%, rgba(217,79,43,0.18) 0%, rgba(26,59,71,0.06) 70%);
+      clip-path: polygon(100% 0, 0% 0, 100% 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .geometric-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(217,79,43,0.05) 18px, rgba(217,79,43,0.05) 20px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* 左下角装饰块：颜色与文字分离，不使用反白文字 */
+    .accent-block {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 180px;
+      height: 12px;
+      background: var(--accent);
+      z-index: 0;
+    }
+
+    /* 主内容容器，确保文字层级高于装饰 */
+    .resume-content {
+      position: relative;
+      z-index: 2;
+      padding: 1.6cm 2cm 1.4cm 2cm;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      background: transparent;
+    }
+
+    /* 所有文字均为纯文本，可选中复制 */
+    h1, h2, h3, p, li, div, span {
+      font-weight: normal;
+    }
+
+    /* 头部区域：姓名+标题 */
+    .header {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .name {
+      font-size: 44pt;
+      font-family: 'Arial', 'Helvetica Neue', '思源黑体', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 1px;
+      line-height: 1.1;
+      margin-bottom: 0.2rem;
+    }
+
+    .title {
+      font-size: 14pt;
+      font-weight: 400;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: 'Arial', 'Helvetica Neue', sans-serif;
+      margin-top: 0.1rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 1rem;
+      font-size: 10.5pt;
+      color: var(--muted);
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* 简单线性图标，用字符表示，ATS完全识别为文本 */
+    .icon {
+      display: inline-block;
+      width: 16px;
+      text-align: center;
+      font-weight: 500;
+      color: var(--primary);
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 13pt;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      border-bottom: 1.8px solid var(--divider);
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.8rem;
+      margin-top: 0.3rem;
+      font-family: 'Arial', 'Helvetica Neue', sans-serif;
+    }
+
+    /* 经历条目布局 */
+    .experience-item {
+      margin-bottom: 1.1rem;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.25rem;
+    }
+
+    .company {
+      font-weight: 700;
+      font-size: 12pt;
+      color: var(--body-text);
+    }
+
+    .role {
+      font-weight: 600;
+      font-size: 11pt;
+      color: var(--primary);
+      margin-left: 0.5rem;
+      font-style: normal;
+    }
+
+    .date {
+      font-size: 10pt;
+      color: var(--muted);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .description {
+      margin-top: 0.25rem;
+      padding-left: 1.2rem;
+      list-style-type: none;
+    }
+
+    .description li {
+      font-size: 10pt;
+      color: var(--body-text);
+      margin-bottom: 0.3rem;
+      position: relative;
+      padding-left: 0.8rem;
+    }
+
+    .description li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 10pt;
+    }
+
+    /* 技能标签式排列，纯文本 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.5rem;
+      margin-top: 0.3rem;
+    }
+
+    .skill-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .skill-label {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: var(--primary);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-size: 10pt;
+      background: transparent;
+      color: var(--body-text);
+      border: 1px solid var(--divider);
+      padding: 0.2rem 0.8rem;
+      border-radius: 2px;
+      font-weight: 400;
+      background: var(--bg-light);
+    }
+
+    /* 教育/其他简单两栏 */
+    .education-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.4rem;
+    }
+
+    .school {
+      font-weight: 700;
+      font-size: 11pt;
+    }
+
+    .degree {
+      font-weight: 400;
+      color: var(--muted);
+      margin-left: 0.5rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--divider);
+      margin: 0.5rem 0 0.8rem 0;
+    }
+
+    /* 打印样式：完全适配ATS和纸质输出 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+
+      .resume {
+        width: 100%;
+        box-shadow: none;
+        margin: 0 auto;
+        border-radius: 0;
+        min-height: auto;
+        page-break-after: avoid;
+        background: white;
+      }
+
+      .geometric-decor, .geometric-line, .accent-block {
+        opacity: 0.15; /* 保留极淡装饰，但不影响文字对比度 */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .contact-item, .tag, .description li {
+        color: black;
+      }
+
+      a, button {
+        display: none;
+      }
+
+      .resume-content {
+        padding: 1.2cm 1.8cm;
+      }
+
+      .section-title {
+        border-bottom-color: #aaa;
+      }
+    }
+
+    /* 响应式适配：小屏幕仍可滚动查看 */
+    @media screen and (max-width: 800px) {
+      .resume {
+        width: 100%;
+        min-height: auto;
+      }
+      .resume-content {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- 几何装饰层：不影响文本选择 -->
+    <div class="geometric-decor"></div>
+    <div class="geometric-line"></div>
+    <div class="accent-block"></div>
+
+    <!-- 纯文本内容区域，ATS完全友好 -->
+    <div class="resume-content">
+      
+      <!-- 头部：姓名+职位 -->
+      <div class="header">
+        <h1 class="name">陈亦安</h1>
+        <div class="title">品牌视觉设计师</div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="icon">✆</span> +86 139 5027 6841</span>
+          <span class="contact-item"><span class="icon">✉</span> yian.chen@creativelab.cn</span>
+          <span class="contact-item"><span class="icon">⌂</span> 上海 · 黄浦区</span>
+          <span class="contact-item"><span class="icon">🖵</span> dribbble.com/yianchen</span>
+        </div>
+      </div>
+
+      <!-- 专业概述 -->
+      <div>
+        <div class="section-title">专业概述</div>
+        <p style="font-size: 10.5pt; color: var(--body-text); line-height: 1.6;">
+          拥有5年品牌视觉与数字设计经验，曾主导多个新消费品牌从0到1的视觉体系搭建。擅长通过大胆的色彩叙事与几何构成传递品牌精神，同时确保设计系统在多触点的可执行性。服务客户涵盖科技、生活方式及文化机构。
+        </p>
+      </div>
+
+      <!-- 工作经历 -->
+      <div>
+        <div class="section-title">工作经历</div>
+        
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company">望山创意咨询</span> <span class="role">资深品牌设计师</span></span>
+            <span class="date">2021.09 – 至今</span>
+          </div>
+          <ul class="description">
+            <li>主导「椿风茶饮」品牌全案视觉升级，重新定义色彩系统与图形语言，门店应用后季度营收提升27%。</li>
+            <li>为科技品牌「星络」设计动态标志及延展，建立几何化的视觉识别手册，获2023红点品牌设计奖。</li>
+            <li>管理3人设计小组，制定设计规范与质量审核流程，确保数字与印刷端输出一致性。</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company">未墨设计工作室</span> <span class="role">视觉设计师</span></span>
+            <span class="date">2019.04 – 2021.08</span>
+          </div>
+          <ul class="description">
+            <li>负责生活方式品牌「山赴」的包装与线上视觉，运用高饱和自然色系与几何切割构图，使社交媒体互动率提升65%。</li>
+            <li>参与文化展览“瓷的边界”主视觉设计，大胆结合青花钴蓝与荧光橙，海报获东京TDC提名。</li>
+            <li>独立完成多个品牌在Dribbble及Behance上的亮相项目，吸引国际客户合作。</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company">蓝狮广告</span> <span class="role">初级设计师</span></span>
+            <span class="date">2017.07 – 2019.02</span>
+          </div>
+          <ul class="description">
+            <li>协助资深团队为快消品牌创作电商视觉物料，包括详情页、活动主KV，强调几何秩序与色彩对比。</li>
+            <li>设计内部创意工具包，优化设计资源库，提升团队效率约30%。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 技能与工具 -->
+      <div>
+        <div class="section-title">核心能力</div>
+        <div class="skills-container">
+          <div class="skill-group">
+            <span class="skill-label">品牌设计</span>
+            <div class="skill-tags">
+              <span class="tag">视觉识别系统</span><span class="tag">标志设计</span><span class="tag">色彩策略</span><span class="tag">包装设计</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <span class="skill-label">数字设计</span>
+            <div class="skill-tags">
+              <span class="tag">UI/UX界面</span><span class="tag">动效原型</span><span class="tag">社交媒体视觉</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <span class="skill-label">软件工具</span>
+            <div class="skill-tags">
+              <span class="tag">Figma</span><span class="tag">Adobe Illustrator</span><span class="tag">Photoshop</span><span class="tag">After Effects</span><span class="tag">Blender</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div>
+        <div class="section-title">教育</div>
+        <div class="education-item">
+          <span><span class="school">中国美术学院</span><span class="degree">视觉传达设计 本科</span></span>
+          <span class="date">2013 – 2017</span>
+        </div>
+        <div class="education-item" style="margin-top: 0.2rem;">
+          <span><span class="school">丹麦设计学院</span><span class="degree">交换项目 · 品牌与叙事</span></span>
+          <span class="date">2016春</span>
+        </div>
+      </div>
+
+      <!-- 额外信息：语言与兴趣，保持简洁 -->
+      <div style="display: flex; gap: 3rem; margin-top: 0.2rem;">
+        <div>
+          <span style="font-weight: 700; font-size: 10.5pt; color: var(--primary);">语言</span>
+          <span style="margin-left: 0.8rem; font-size: 10pt;">中文 (母语) · 英语 (流利, 作品集交流)</span>
+        </div>
+        <div>
+          <span style="font-weight: 700; font-size: 10.5pt; color: var(--primary);">兴趣</span>
+          <span style="margin-left: 0.8rem; font-size: 10pt;">抽象摄影 · 陶艺 · 几何建筑</span>
+        </div>
+      </div>
+
+      <!-- 微妙的装饰线，纯CSS，完全安全 -->
+      <div style="margin-top: 0.8rem; border-top: 2px dotted var(--divider); opacity: 0.5;"></div>
+      <div style="font-size: 8pt; color: var(--muted); text-align: right; margin-top: 0.2rem;">
+        作品集链接 · dribbble.com/yianchen · 在线作品集可应要求提供
+      </div>
+    </div>
+  </div>
+</body>
+</html>

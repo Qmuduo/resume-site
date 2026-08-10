@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
+  <title>简历 · 合规高级经理 · 严谨稳重黑白灰</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1e1e1e;      /* 深邃黑灰，用于姓名、板块标题 */
+      --secondary: #4a4a4a;    /* 正文深灰，保证阅读舒适度 */
+      --accent: #2c3e50;       /* 强调色：深蓝灰，仅用于分割线与点缀 */
+      --bg-light: #f8f9fa;    /* 极浅灰背景，仅用于极窄侧条，不与文字重叠 */
+      --text-main: #2d2d2d;
+      --text-soft: #4a4a4a;
+      --line-color: #d0d0d0;  /* 浅灰分割线 */
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Arial', 'Helvetica', '思源黑体', 'Noto Sans SC', 'Calibri', system-ui, -apple-system, sans-serif;
+      background-color: #e5e5e5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      color: var(--text-main);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 简历卡片：模拟A4纸效果，固定宽度，白色背景 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: var(--white);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      margin: 0 auto;
+      position: relative;
+      border-radius: 2px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 极窄左侧装饰条 —— 纯色块，不包含文字，ATS完全忽略 */
+    .resume::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background-color: var(--accent);
+      z-index: 2;
+    }
+
+    /* 主内容区域，确保左侧色条不遮挡文字 */
+    .resume-content {
+      padding: 1.6cm 1.8cm 1.6cm 2.2cm; /* 左侧额外留白避开色条 */
+      position: relative;
+      z-index: 3;
+      background: white;
+    }
+
+    /* 所有文本均为纯文本，无canvas/svg渲染 */
+    h1, h2, h3, p, li, div, span {
+      font-weight: normal;
+    }
+
+    /* ----- 姓名与标题区 ----- */
+    .header {
+      margin-bottom: 1.2cm;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.9cm;
+    }
+
+    .name {
+      font-size: 32pt;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      margin-bottom: 0.15cm;
+      line-height: 1.2;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    .title {
+      font-size: 14pt;
+      font-weight: 400;
+      color: var(--secondary);
+      letter-spacing: 0.8px;
+      margin-top: 0.1cm;
+      text-transform: uppercase;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8cm;
+      margin-top: 0.7cm;
+      font-size: 10.5pt;
+      color: var(--text-soft);
+      align-items: center;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    /* 极简线性图标（使用unicode字符，完全安全） */
+    .icon-phone::before {
+      content: "☎";
+      font-size: 11pt;
+      margin-right: 4px;
+      color: var(--accent);
+    }
+    .icon-email::before {
+      content: "✉";
+      font-size: 11pt;
+      margin-right: 4px;
+      color: var(--accent);
+    }
+    .icon-location::before {
+      content: "⌂";
+      font-size: 12pt;
+      margin-right: 4px;
+      color: var(--accent);
+    }
+
+    /* ----- 板块标题 ----- */
+    .section-title {
+      font-size: 13pt;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-top: 0.9cm;
+      margin-bottom: 0.45cm;
+      border-bottom: 1.2px solid var(--line-color);
+      padding-bottom: 0.18cm;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    /* 工作经历条目布局 */
+    .experience-item {
+      margin-bottom: 0.55cm;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.15cm;
+    }
+
+    .company-name {
+      font-size: 12.5pt;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.3px;
+    }
+
+    .job-title {
+      font-weight: 500;
+      color: var(--secondary);
+      margin-left: 0.2cm;
+      font-size: 11.5pt;
+    }
+
+    .date-range {
+      font-size: 10.5pt;
+      color: var(--text-soft);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .description-list {
+      margin-top: 0.2cm;
+      padding-left: 0.6cm;
+      list-style-type: none;
+    }
+
+    .description-list li {
+      font-size: 10.5pt;
+      color: var(--text-main);
+      margin-bottom: 0.12cm;
+      line-height: 1.5;
+      position: relative;
+      padding-left: 0.5cm;
+    }
+
+    /* 标准圆点符号，ATS安全 */
+    .description-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 12pt;
+      line-height: 1.4;
+    }
+
+    /* 教育背景 */
+    .education-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.25cm;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      font-size: 11.5pt;
+      color: var(--primary);
+    }
+
+    .edu-school {
+      font-weight: 500;
+      color: var(--secondary);
+      margin-left: 0.2cm;
+      font-size: 11pt;
+    }
+
+    .edu-date {
+      font-size: 10.5pt;
+      color: var(--text-soft);
+    }
+
+    /* 技能标签式排列（纯文本，无图形） */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4cm;
+      margin-top: 0.15cm;
+    }
+
+    .skill-category {
+      margin-bottom: 0.3cm;
+      flex: 1 1 45%;
+      min-width: 140px;
+    }
+
+    .skill-cat-title {
+      font-weight: 700;
+      font-size: 11pt;
+      color: var(--primary);
+      margin-bottom: 0.15cm;
+      border-left: 3px solid var(--accent);
+      padding-left: 0.25cm;
+    }
+
+    .skill-list {
+      font-size: 10.5pt;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* 认证与资质 */
+    .cert-item {
+      font-size: 10.5pt;
+      margin-bottom: 0.15cm;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .cert-name {
+      font-weight: 600;
+      color: var(--primary);
+      min-width: 140px;
+    }
+
+    .cert-desc {
+      color: var(--text-soft);
+    }
+
+    hr {
+      border: none;
+      border-top: 0.8px solid var(--line-color);
+      margin: 0.5cm 0 0.3cm;
+    }
+
+    /* 打印样式：完全隐藏背景色、保留清晰文本 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        max-width: 100%;
+        width: 100%;
+        border-radius: 0;
+      }
+      .resume::before {
+        background-color: var(--accent) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .resume-content {
+        padding: 1.2cm 1.5cm 1.2cm 2cm;
+      }
+      /* 确保彩色元素在打印时可见 */
+      .section-title {
+        border-bottom-color: var(--line-color);
+      }
+      .description-list li::before {
+        color: var(--accent) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .header {
+        border-bottom-color: var(--accent) !important;
+      }
+      a, button {
+        display: none;
+      }
+    }
+
+    /* 响应式微调 */
+    @media screen and (max-width: 700px) {
+      .resume-content {
+        padding: 1cm;
+      }
+      .name {
+        font-size: 26pt;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- 主内容区：所有文字皆为纯文本，无任何canvas/svg -->
+    <div class="resume-content">
+      
+      <!-- 头部：姓名 + 合规高级经理 -->
+      <div class="header">
+        <h1 class="name">陈 叙 然</h1>
+        <div class="title">合规高级经理 · 企业风险与内控</div>
+        <div class="contact-row">
+          <span class="contact-item icon-phone">+86 139 5028 7614</span>
+          <span class="contact-item icon-email">xuran.chen@compliance.cn</span>
+          <span class="contact-item icon-location">上海 · 中国</span>
+          <span style="color: var(--text-soft);">领英: linkedin.com/in/xuran-chen</span>
+        </div>
+      </div>
+
+      <!-- 核心能力 / 专业摘要 (符合猎头+认证渠道偏好) -->
+      <div class="section-title">专业摘要</div>
+      <p style="font-size: 10.5pt; color: var(--text-main); margin-bottom: 0.3cm; line-height: 1.6;">
+        8年跨国企业与金融科技合规管理经验，持有CAMS、CRCM国际认证。主导搭建亚太区反洗钱(AML)框架及GDPR合规体系，成功通过多国监管审计。擅长与猎头协作的高管级合规战略角色。
+      </p>
+
+      <!-- 工作经历 -->
+      <div class="section-title">工作经历</div>
+      
+      <div class="experience-item">
+        <div class="exp-header">
+          <div>
+            <span class="company-name">汇博金融科技集团</span>
+            <span class="job-title"> | 合规高级经理</span>
+          </div>
+          <div class="date-range">2021.04 – 至今</div>
+        </div>
+        <ul class="description-list">
+          <li>领导8人合规团队，重构KYC/AML流程，使高风险客户识别效率提升40%，并通过新加坡MAS现场检查。</li>
+          <li>设计并落地数据隐私合规框架（PDPA/GDPR），与法务及IT合作完成跨境数据传输影响评估。</li>
+          <li>为董事会提供季度合规风险报告，直接支持首席合规官，推动举报人保护机制及反腐败政策更新。</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div>
+            <span class="company-name">德勤华永会计师事务所</span>
+            <span class="job-title"> | 风险咨询经理 · 合规方向</span>
+          </div>
+          <div class="date-range">2018.07 – 2021.03</div>
+        </div>
+        <ul class="description-list">
+          <li>主导多家上市公司反贿赂与制裁合规审查项目，涉及美国FCPA及英国反贿赂法，识别关键控制缺陷并制定整改方案。</li>
+          <li>为某头部医药企业搭建第三方尽职调查体系，降低经销商合规风险，年度审计合规率提升至98%。</li>
+          <li>开发合规培训模块，覆盖亚太区600+员工，通过线上+线下工作坊强化道德规范意识。</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div>
+            <span class="company-name">渣打银行 (中国)</span>
+            <span class="job-title"> | 合规分析师 / 助理经理</span>
+          </div>
+          <div class="date-range">2016.09 – 2018.06</div>
+        </div>
+        <ul class="description-list">
+          <li>执行交易监控与制裁筛选警报调查，月均处理200+可疑交易报告，确保符合中国人民银行反洗钱规定。</li>
+          <li>协助维护监管报表及合规数据库，支持内外部审计及人行综合执法检查准备工作。</li>
+        </ul>
+      </div>
+
+      <!-- 教育背景 -->
+      <div class="section-title">教育背景</div>
+      <div class="education-item">
+        <div>
+          <span class="edu-degree">法学硕士 · 国际商法</span>
+          <span class="edu-school"> | 复旦大学法学院</span>
+        </div>
+        <div class="edu-date">2014.09 – 2016.06</div>
+      </div>
+      <div class="education-item">
+        <div>
+          <span class="edu-degree">法学学士</span>
+          <span class="edu-school"> | 华东政法大学</span>
+        </div>
+        <div class="edu-date">2010.09 – 2014.06</div>
+      </div>
+
+      <!-- 认证与资质 (猎头+认证渠道重点) -->
+      <div class="section-title">专业认证</div>
+      <div class="cert-item">
+        <span class="cert-name">CAMS</span>
+        <span class="cert-desc">国际反洗钱认证 (ACAMS) · 2019年获得</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-name">CRCM</span>
+        <span class="cert-desc">认证监管合规经理 (ABA) · 2020年获得</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-name">CIPP/E</span>
+        <span class="cert-desc">国际隐私专业人士认证 (IAPP) · 2022年获得</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-name">国家法律职业资格</span>
+        <span class="cert-desc">通过司法考试 · 2015年</span>
+      </div>
+
+      <!-- 核心技能：标签式排列，清晰可读 -->
+      <div class="section-title">核心合规技能</div>
+      <div class="skills-container">
+        <div class="skill-category">
+          <div class="skill-cat-title">法规框架</div>
+          <div class="skill-list">FCPA · UK Bribery Act · 反洗钱/反恐融资 · GDPR/PDPA · 制裁合规 (OFAC, EU)</div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-title">风险管理</div>
+          <div class="skill-list">企业风险评估 · 内部控制框架 · 第三方尽职调查 · 交易监控系统 (Actimize, Fircosoft)</div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-title">领导力与沟通</div>
+          <div class="skill-list">跨部门合规培训 · 董事会报告 · 监管机构对接 · 团队管理 (8人)</div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-title">语言能力</div>
+          <div class="skill-list">中文 (母语) · 英语 (专业工作语言, 托福110) · 基础粤语</div>
+        </div>
+      </div>
+      
+      <!-- 极简分割线，增强结构感 -->
+      <hr>
+      <div style="font-size: 9pt; color: #6b6b6b; text-align: right; letter-spacing: 0.5px;">
+        持续更新 · 参照全球合规标准
+      </div>
+    </div><!-- end resume-content -->
+  </div><!-- end resume -->
+</body>
+</html>

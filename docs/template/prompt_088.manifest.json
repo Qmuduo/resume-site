@@ -1,0 +1,253 @@
+{
+  "templateId": "prompt_088",
+  "name": "全栈工程师 · 高级简历",
+  "sourceFile": "prompt_088.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "social_3",
+      "label": "GitHub",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": false
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".job-title",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".edu-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "edu-item"
+    }
+  ],
+  "sampleData": {
+    "name": "Wei Chen",
+    "title": "· 高级全栈工程师",
+    "email": "📧 chen.wei@dev.me",
+    "phone": "+86 139 1018 2347",
+    "socials": [
+      {
+        "platform": "github",
+        "url": "🐙 github.com/weicheng"
+      }
+    ],
+    "location": "北京 · 中国",
+    "skills": [
+      {
+        "name": "React",
+        "level": ""
+      },
+      {
+        "name": "Next.js",
+        "level": ""
+      },
+      {
+        "name": "Node.js",
+        "level": ""
+      },
+      {
+        "name": "Python",
+        "level": ""
+      },
+      {
+        "name": "PostgreSQL",
+        "level": ""
+      },
+      {
+        "name": "MongoDB",
+        "level": ""
+      },
+      {
+        "name": "GraphQL",
+        "level": ""
+      },
+      {
+        "name": "Docker",
+        "level": ""
+      },
+      {
+        "name": "AWS",
+        "level": ""
+      },
+      {
+        "name": "Rust",
+        "level": ""
+      },
+      {
+        "name": "Redis",
+        "level": ""
+      }
+    ],
+    "experiences": [
+      {
+        "position": "· 高级全栈工程师",
+        "date": "2022.04 – 至今",
+        "description": "主导设计并开发了分布式任务调度平台，基于 React + GraphQL + Go 微服务，支撑日均 800 万次任务调度。"
+      },
+      {
+        "position": "· 全栈工程师",
+        "date": "2020.07 – 2022.02",
+        "description": "开发了视频协作 SaaS 平台的核心白板功能，使用 WebSocket + CRDT 算法保证多端实时同步。"
+      },
+      {
+        "position": "· 初级全栈开发者",
+        "date": "2018.09 – 2020.06",
+        "description": "负责电商后台管理系统的前端开发，基于 Vue.js 与 Element UI，对接 15 个后端微服务。"
+      }
+    ],
+    "education": [
+      {
+        "degree": "· 计算机科学与技术 硕士",
+        "date": "2016 – 2018"
+      },
+      {
+        "degree": "· 软件工程 学士",
+        "date": "2012 – 2016"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

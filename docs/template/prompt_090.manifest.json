@@ -1,0 +1,27 @@
+{
+  "templateId": "prompt_090",
+  "name": "张逸凡 · 高级算法工程师简历",
+  "sourceFile": "prompt_090.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": "h1",
+      "attribute": "textContent",
+      "autoDetected": true
+    }
+  ],
+  "sampleData": {
+    "name": "张逸凡"
+  },
+  "pendingManual": []
+}

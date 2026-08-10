@@ -36,6 +36,10 @@ jwt:
   refresh-ttl: 7d
   issuer: resume-api
 
+resume:
+  # 存量静态模板 manifest 目录（相对后端启动目录 backend/）；生产环境按部署路径覆盖
+  manifest-dir: ${RESUME_MANIFEST_DIR:../docs/template}
+
 security:
   login-fail:
     window: 10m

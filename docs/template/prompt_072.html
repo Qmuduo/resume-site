@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>视觉设计师简历 · 张知逸</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      background: #eef2f5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Arial', 'Helvetica Neue', '思源黑体', 'Source Han Sans SC', sans-serif;
+      color: #1e1e1e;
+      line-height: 1.5;
+    }
+
+    /* 简历卡片：固定A4比例，纯白背景，简洁几何装饰 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      min-height: 297mm;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 几何装饰：大胆但不干扰文字，位于页面上方角落 */
+    .geo-accent {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 180px;
+      height: 180px;
+      background: linear-gradient(135deg, #FF6B4A 0%, #FF8A6C 100%);
+      clip-path: polygon(100% 0, 0 0, 100% 100%);
+      opacity: 0.2;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .geo-secondary {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 140px;
+      height: 140px;
+      background: #2C3E50;
+      clip-path: polygon(0 100%, 0 40%, 60% 100%);
+      opacity: 0.1;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* 主要内容区域，保证层级高于几何装饰 */
+    .resume-content {
+      position: relative;
+      z-index: 2;
+      padding: 1.8cm 2cm 1.5cm 2cm;  /* 舒适页边距 */
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    /* 姓名与标题区域：大胆配色，几何感分割线 */
+    .header {
+      margin-bottom: 0.2rem;
+    }
+
+    .name {
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #1E2B3C;
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    .title-role {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #2C3E50;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .title-role span {
+      background: #FF6B4A;
+      color: white;
+      padding: 0.25rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      background: #1E2B3C;
+    }
+
+    /* 几何风格分割线：粗线与细线结合 */
+    .divider {
+      width: 100%;
+      height: 2px;
+      background: #E0E4E8;
+      margin: 0.8rem 0 1.4rem 0;
+      position: relative;
+    }
+
+    .divider::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -2px;
+      width: 70px;
+      height: 6px;
+      background: #FF6B4A;
+      border-radius: 2px;
+    }
+
+    /* 联系信息：行内简单图标，纯文本可复制 */
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      font-size: 0.9rem;
+      color: #3A4454;
+      margin-top: 0.25rem;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-item i.emoji {
+      font-style: normal;
+      font-size: 1.1rem;
+      color: #1E2B3C;
+    }
+
+    /* 板块标题：大胆色彩点缀，无背景色块 */
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #1E2B3C;
+      margin-bottom: 0.9rem;
+      border-bottom: 2px solid #FF6B4A;
+      padding-bottom: 0.35rem;
+      display: inline-block;
+      width: auto;
+    }
+
+    /* 工作经历卡片样式 */
+    .experience-item {
+      margin-bottom: 1.4rem;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.3rem;
+    }
+
+    .company {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #0F172A;
+    }
+
+    .job-title {
+      font-weight: 600;
+      color: #2C3E50;
+      margin-left: 0.3rem;
+      font-size: 0.95rem;
+    }
+
+    .date {
+      font-size: 0.85rem;
+      color: #5F6B7A;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .description {
+      margin-top: 0.4rem;
+      padding-left: 0.2rem;
+    }
+
+    .description ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .description li {
+      position: relative;
+      padding-left: 1.3rem;
+      margin-bottom: 0.35rem;
+      font-size: 0.9rem;
+      color: #2D3748;
+      line-height: 1.5;
+    }
+
+    .description li::before {
+      content: "•";
+      position: absolute;
+      left: 0.1rem;
+      color: #FF6B4A;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    /* 项目经历与教育样式 */
+    .project-item, .education-item {
+      margin-bottom: 1rem;
+    }
+
+    .project-header, .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .project-name, .school {
+      font-weight: 700;
+      color: #0F172A;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: #2D3748;
+      margin-top: 0.25rem;
+      padding-left: 0.2rem;
+    }
+
+    /* 技能标签：简洁几何风格，无背景色块，仅用边框和颜色 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.3rem;
+    }
+
+    .skill-tag {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1E2B3C;
+      border: 1.5px solid #CFD9E2;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      background: transparent;
+      letter-spacing: 0.3px;
+    }
+
+    .skill-tag.highlight {
+      border-color: #FF6B4A;
+      color: #C73E1F;
+      font-weight: 600;
+      background: rgba(255, 107, 74, 0.04);
+    }
+
+    /* 双栏布局用于技能/语言，纯文本流，确保ATS可读 */
+    .two-columns {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .col {
+      flex: 1 1 180px;
+    }
+
+    /* 链接样式去除下划线，打印友好 */
+    a {
+      color: #1E2B3C;
+      text-decoration: none;
+    }
+
+    /* 打印样式：确保无背景色溢出，颜色保留，隐藏几何装饰？保留但淡化 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        max-width: 100%;
+        width: 100%;
+        min-height: auto;
+        border-radius: 0;
+      }
+      .geo-accent, .geo-secondary {
+        opacity: 0.08; /* 极淡保留几何感，但不影响文字阅读 */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .contact-item i.emoji {
+        color: #1E2B3C !important;
+      }
+      .skill-tag {
+        border: 1px solid #888;
+        color: black;
+      }
+      .divider::before {
+        background: #FF6B4A !important;
+      }
+      a {
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- 几何装饰色块，完全不影响文字流 -->
+    <div class="geo-accent"></div>
+    <div class="geo-secondary"></div>
+
+    <div class="resume-content">
+      <!-- 头部区域 -->
+      <div class="header">
+        <h1 class="name">张知逸</h1>
+        <div class="title-role">
+          视觉设计师 <span>3年经验</span>
+        </div>
+        <div class="contact-info">
+          <div class="contact-item"><i class="emoji">📧</i> zhiyi.zhang@design.me</div>
+          <div class="contact-item"><i class="emoji">📱</i> +86 138 8210 4572</div>
+          <div class="contact-item"><i class="emoji">🌐</i> zhiyivisual.com</div>
+          <div class="contact-item"><i class="emoji">📍</i> 上海 · 中国</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 工作经历 -->
+      <div>
+        <div class="section-title">工作经验</div>
+        
+        <div class="experience-item">
+          <div class="exp-header">
+            <div>
+              <span class="company">基调网络</span>
+              <span class="job-title">· 视觉设计师</span>
+            </div>
+            <div class="date">2023.04 – 至今</div>
+          </div>
+          <div class="description">
+            <ul>
+              <li>主导品牌视觉升级项目，重新设计标志与色彩系统，使品牌识别度提升32%</li>
+              <li>为电商大促活动设计系列主视觉及数字物料，点击率高于行业基准18%</li>
+              <li>与产品团队协作建立组件化设计规范，减少设计-开发沟通成本25%</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <div>
+              <span class="company">锐意创意工作室</span>
+              <span class="job-title">· 初级视觉设计师</span>
+            </div>
+            <div class="date">2021.07 – 2023.02</div>
+          </div>
+          <div class="description">
+            <ul>
+              <li>负责社交平台视觉内容创作，单条视觉笔记最高获得12万次曝光</li>
+              <li>参与快消品牌包装设计提案，3个项目最终落地生产</li>
+              <li>使用After Effects制作动态海报，丰富品牌数字触点</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 项目经历 (与作品集呼应) -->
+      <div>
+        <div class="section-title">设计项目</div>
+        
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">「植愈力」植物基品牌全案设计</span>
+            <span class="date">2024.02 – 2024.06</span>
+          </div>
+          <div class="project-desc">
+            独立完成Logo、色彩策略及包装系统，采用大胆几何图形与自然色调，作品收录于Brand New。线上店铺转化率提升27%。
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">城市声景·互动展览视觉</span>
+            <span class="date">2023.09 – 2023.12</span>
+          </div>
+          <div class="project-desc">
+            为上海城市空间艺术季设计动态视觉识别，结合声音波纹与几何切割，应用于导视、海报及数字屏幕。
+          </div>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div>
+        <div class="section-title">教育</div>
+        <div class="education-item">
+          <div class="edu-header">
+            <span class="school">南京艺术学院</span>
+            <span class="date">2017.09 – 2021.06</span>
+          </div>
+          <div style="font-size:0.9rem; color:#2D3748;">视觉传达设计 · 本科</div>
+        </div>
+      </div>
+
+      <!-- 技能与工具：采用双栏+标签，ATS友好 -->
+      <div>
+        <div class="section-title">技能与工具</div>
+        <div class="two-columns">
+          <div class="col">
+            <div style="font-weight:600; margin-bottom:0.5rem; color:#1E2B3C;">设计软件</div>
+            <div class="skills-container">
+              <span class="skill-tag highlight">Figma</span>
+              <span class="skill-tag">Adobe Illustrator</span>
+              <span class="skill-tag">Photoshop</span>
+              <span class="skill-tag">After Effects</span>
+              <span class="skill-tag">Blender</span>
+            </div>
+          </div>
+          <div class="col">
+            <div style="font-weight:600; margin-bottom:0.5rem; color:#1E2B3C;">核心能力</div>
+            <div class="skills-container">
+              <span class="skill-tag">品牌识别设计</span>
+              <span class="skill-tag">排版与字体</span>
+              <span class="skill-tag">动态图形</span>
+              <span class="skill-tag">插画</span>
+              <span class="skill-tag">设计系统</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1rem; font-size:0.85rem; color:#4A5568;">
+          <span style="font-weight:600;">语言：</span>中文 (母语) · 英语 (专业工作水平)
+        </div>
+      </div>
+      
+      <!-- 作品集提示，符合网申+作品集渠道 -->
+      <div style="margin-top: 0.4rem; font-size:0.8rem; color:#5F6B7A; border-top: 1px dashed #CBD5E0; padding-top: 0.8rem; display: flex; justify-content: space-between;">
+        <span>🔗 在线作品集：zhiyivisual.com</span>
+        <span>Behance / Dribbble 同用户名</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

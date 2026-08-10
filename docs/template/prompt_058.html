@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>陈知远 · ESG分析师简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', 'Helvetica', '思源黑体', 'Source Han Sans CN', 'Noto Sans SC', sans-serif;
+      background: #eef3f0; /* 仅屏幕预览时的背景，打印时隐藏 */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+      margin: 0;
+      line-height: 1.5;
+      color: #2d3748;
+    }
+
+    /* 简历卡片：严格A4比例，白色背景，柔和阴影(仅屏幕) */
+    .resume {
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      box-shadow: 0 10px 30px rgba(0, 40, 30, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 内边距：确保充足留白，上下1.2英寸，左右0.9英寸，呼吸感 */
+    .resume-inner {
+      padding: 1.2in 0.9in 1.0in 0.9in;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 所有文本均为纯HTML文本，无canvas/svg渲染文字 */
+    /* 模块通用样式 */
+    h1, h2, h3, p, ul, li, span, div {
+      color: #2d3748;
+      font-weight: normal;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 28px;
+    }
+
+    .name {
+      font-size: 38pt;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #1e4a3b; /* 深绿色，稳重商务感 */
+      line-height: 1.1;
+      margin-bottom: 6px;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    .title-line {
+      font-size: 13pt;
+      font-weight: 400;
+      color: #3b5e4a;
+      letter-spacing: 0.8px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .title-text {
+      font-weight: 500;
+      background: #f0f7f3;
+      padding: 4px 14px;
+      border-radius: 20px;
+      color: #1e4a3b;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-size: 10.5pt;
+      color: #3d5a4b;
+      margin-top: 8px;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    /* 简单线性图标（纯文本符号，安全） */
+    .icon {
+      font-weight: 400;
+      font-size: 11pt;
+      color: #2d6a4f;
+      margin-right: 2px;
+    }
+
+    /* 全局分割线 */
+    .divider {
+      width: 100%;
+      height: 1.5px;
+      background: #d9e6dd;
+      margin: 18px 0 22px 0;
+      border: none;
+    }
+
+    .thin-divider {
+      height: 1px;
+      background: #e2ede5;
+      margin: 12px 0 16px 0;
+      border: none;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 11pt;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #1e4a3b;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #cbdcd2;
+      margin-left: 6px;
+    }
+
+    /* 两栏布局用于技能与教育 (纯文本列，无浮动定位) */
+    .two-col {
+      display: flex;
+      gap: 36px;
+      margin-top: 6px;
+    }
+
+    .col {
+      flex: 1;
+    }
+
+    /* 条目样式 */
+    .entry {
+      margin-bottom: 18px;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .org-name {
+      font-weight: 700;
+      font-size: 12pt;
+      color: #1a2e24;
+    }
+
+    .job-title {
+      font-weight: 500;
+      font-size: 11pt;
+      color: #2d4a3a;
+      margin-left: 6px;
+    }
+
+    .date-range {
+      font-size: 10pt;
+      font-weight: 400;
+      color: #5c6b62;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .desc-list {
+      list-style: none;
+      margin-top: 5px;
+      padding-left: 0;
+    }
+
+    .desc-list li {
+      font-size: 10.5pt;
+      line-height: 1.6;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      color: #2d3748;
+    }
+
+    /* 标准圆点符号，ATS安全 */
+    .bullet {
+      color: #2d6a4f;
+      font-weight: 700;
+      font-size: 10pt;
+      display: inline-block;
+      width: 12px;
+      flex-shrink: 0;
+    }
+
+    /* 技能标签式排列 */
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .skill-tag {
+      background: #f4f9f6;
+      color: #1e4a3b;
+      font-size: 10pt;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1px solid #d0e1d7;
+      letter-spacing: 0.4px;
+    }
+
+    .edu-detail {
+      font-size: 10.5pt;
+      margin-bottom: 12px;
+    }
+
+    .edu-school {
+      font-weight: 700;
+      color: #1a2e24;
+      display: block;
+    }
+
+    .edu-meta {
+      color: #4a5c52;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3px;
+    }
+
+    /* 个人小结 */
+    .summary-text {
+      font-size: 10.5pt;
+      line-height: 1.7;
+      color: #2d3748;
+      margin-bottom: 8px;
+    }
+
+    /* 打印样式：去除背景、阴影，保持纯黑白绿质感 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+
+      .resume {
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0 auto;
+        page-break-after: auto;
+      }
+
+      .resume-inner {
+        padding: 1.0in 0.8in 0.9in 0.8in;
+      }
+
+      .skill-tag {
+        background: #f4f9f6;
+        border: 1px solid #c0d6ca;
+        color: #1e4a3b;
+      }
+
+      .divider, .thin-divider {
+        background: #cbdcd2;
+      }
+
+      .name {
+        color: #1e4a3b;
+      }
+
+      /* 隐藏交互元素（本设计无按钮/链接下划线） */
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    /* 响应式屏幕适配，保持A4宽度 */
+    @media screen and (max-width: 700px) {
+      body {
+        padding: 10px;
+      }
+      .resume {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      
+      <!-- 姓名与标题 -->
+      <div class="name-section">
+        <h1 class="name">陈知远</h1>
+        <div class="title-line">
+          <span class="title-text">ESG分析师 · 可持续发展顾问</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="icon">✉️</span> zhiyuan.chen@esgfocus.cn</span>
+          <span class="contact-item"><span class="icon">📞</span> +86 138 8217 3042</span>
+          <span class="contact-item"><span class="icon">📍</span> 上海 · 浦东新区</span>
+          <span class="contact-item"><span class="icon">🔗</span> linkedin.com/in/zhiyuanesg</span>
+        </div>
+      </div>
+      
+      <div class="divider"></div>
+
+      <!-- 专业概述 -->
+      <div style="margin-bottom: 18px;">
+        <div class="section-title">专业概述</div>
+        <p class="summary-text">
+          3年ESG研究与数据分析经验，熟悉MSCI、Sustainalytics评级体系及GRI标准。主导过3家上市公司ESG报告编制与碳中和路径规划，擅长利用Python与SQL处理环境大数据，具备扎实的绿色金融产品分析能力。
+        </p>
+      </div>
+
+      <!-- 工作经历 -->
+      <div style="margin-bottom: 18px;">
+        <div class="section-title">工作经历</div>
+        
+        <div class="entry">
+          <div class="entry-header">
+            <span><span class="org-name">蔚然资本</span> <span class="job-title">| ESG分析师</span></span>
+            <span class="date-range">2023.04 – 至今</span>
+          </div>
+          <ul class="desc-list">
+            <li><span class="bullet">•</span>主导新能源与消费行业ESG尽职调查，完成12+标的公司的ESG风险图谱，支撑投资决策涉及金额超8亿元。</li>
+            <li><span class="bullet">•</span>搭建内部ESG评级数据库，整合MSCI、商道融绿等5个数据源，将分析效率提升40%。</li>
+            <li><span class="bullet">•</span>撰写季度《绿色投资趋势报告》，被3家行业媒体引用，协助被投企业制定碳减排路线图。</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <span><span class="org-name">绿点咨询</span> <span class="job-title">| 可持续发展助理顾问</span></span>
+            <span class="date-range">2021.08 – 2023.02</span>
+          </div>
+          <ul class="desc-list">
+            <li><span class="bullet">•</span>参与4家A股上市公司首份ESG报告编制，对标GRI及港交所ESG指引，确保合规披露。</li>
+            <li><span class="bullet">•</span>运用Excel及Python清洗碳排放数据，建立动态仪表板，为客户识别出平均12%的能耗优化空间。</li>
+            <li><span class="bullet">•</span>协助项目经理完成TCFD气候情景分析，支持某制造业企业获得绿色信贷利率优惠。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 两栏布局：教育背景 + 技能与认证 -->
+      <div class="two-col">
+        <div class="col">
+          <div class="section-title">教育背景</div>
+          <div class="edu-detail">
+            <span class="edu-school">复旦大学</span>
+            <div class="edu-meta">
+              <span>环境科学与工程 硕士</span>
+              <span>2019 – 2021</span>
+            </div>
+            <div style="font-size:10pt; color:#4a5c52; margin-top:2px;">GPA: 3.7/4.0 · 碳核算研究实验室</div>
+          </div>
+          <div class="edu-detail">
+            <span class="edu-school">浙江大学</span>
+            <div class="edu-meta">
+              <span>能源与环境系统工程 学士</span>
+              <span>2015 – 2019</span>
+            </div>
+            <div style="font-size:10pt; color:#4a5c52; margin-top:2px;">校级优秀毕业生 · 全国大学生节能减排竞赛二等奖</div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="section-title">核心能力</div>
+          <div class="tag-container">
+            <span class="skill-tag">ESG评级框架</span>
+            <span class="skill-tag">GRI / SASB</span>
+            <span class="skill-tag">碳核算 (GHG Protocol)</span>
+            <span class="skill-tag">Python数据分析</span>
+            <span class="skill-tag">SQL / Excel建模</span>
+            <span class="skill-tag">TCFD情景分析</span>
+            <span class="skill-tag">绿色金融产品</span>
+            <span class="skill-tag">尽职调查</span>
+            <span class="skill-tag">数据可视化 (Power BI)</span>
+          </div>
+          
+          <div style="margin-top: 22px;">
+            <div class="section-title">专业认证</div>
+            <ul class="desc-list" style="margin-top:8px;">
+              <li><span class="bullet">•</span>SASB FSA 认证 (2023)</li>
+              <li><span class="bullet">•</span>CFA ESG投资证书 (2024)</li>
+              <li><span class="bullet">•</span>GRI认证可持续发展专业人士</li>
+              <li><span class="bullet">•</span>注册碳排放管理员 (中级)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="thin-divider"></div>
+
+      <!-- 项目亮点 / 语言等 -->
+      <div style="display: flex; gap: 36px; margin-top: 6px;">
+        <div style="flex: 1;">
+          <div class="section-title">重点研究项目</div>
+          <div class="entry">
+            <div class="entry-header">
+              <span class="org-name">长三角制造业碳效率分析</span>
+              <span class="date-range">2022.05 – 2022.12</span>
+            </div>
+            <ul class="desc-list">
+              <li><span class="bullet">•</span>基于区域排放数据与财务指标，构建碳效率回归模型，成果发表于《可持续发展经济》期刊。</li>
+            </ul>
+          </div>
+        </div>
+        <div style="flex: 1;">
+          <div class="section-title">语言能力</div>
+          <div style="display: flex; gap: 18px; margin-top: 8px; font-size:10.5pt;">
+            <span><strong>中文</strong> 母语</span>
+            <span><strong>英语</strong> IELTS 7.5 (专业读写)</span>
+            <span><strong>德语</strong> 基础 (A2)</span>
+          </div>
+          <div style="margin-top: 20px;">
+            <span style="font-weight:700; color:#1e4a3b;">工具：</span>Bloomberg Terminal, Wind ESG, Python, Tableau
+          </div>
+        </div>
+      </div>
+      
+      <!-- 底部留白，保证呼吸感，无多余装饰 -->
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,254 @@
+{
+  "templateId": "prompt_096",
+  "name": "简历 · AI 研究员 · 极简灰度",
+  "sourceFile": "prompt_096.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "social_5",
+      "label": "GitHub",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "研究领域",
+      "label": "研究领域",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "代表论文",
+      "label": "代表论文",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "awards",
+      "label": "荣誉奖项",
+      "type": "array",
+      "commonPath": "awards",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": "h1",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-sub",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 5
+    },
+    {
+      "commonPath": "experiences",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "研究经历",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    }
+  ],
+  "sampleData": {
+    "name": "陈 知 远",
+    "title": "人工智能研究员 · 机器学习方向 博士毕业",
+    "email": "📧 chen.zhiyuan@research.ai",
+    "phone": "+86 138 0000 1234",
+    "location": "北京 / 上海",
+    "socials": [
+      {
+        "platform": "github",
+        "url": "🔗 github.com/zhiyuan-chen"
+      }
+    ],
+    "研究领域": "大语言模型对齐 · 多模态表征学习 · 强化学习与推理 · 神经符号系统。在ICLR/NeurIPS/ICML等会议发表论文15余篇，引用量800+。",
+    "代表论文": "[1] Structured World Models for Sample-Efficient Reinforcement Learning. Zhiyuan Chen, Ming Zhang, et al. NeurIPS 2023. [2] Sparse Attention with Dynamic Token Pruning for Efficient Transformers. Zhiy",
+    "experiences": [
+      {
+        "date": "2022.06 – 2023.09",
+        "description": "•"
+      },
+      {
+        "date": "2019.09 – 2024.07",
+        "description": "•"
+      }
+    ],
+    "skills": [
+      {
+        "name": "PyTorch",
+        "level": ""
+      },
+      {
+        "name": "JAX",
+        "level": ""
+      },
+      {
+        "name": "TensorFlow",
+        "level": ""
+      },
+      {
+        "name": "Transformer",
+        "level": ""
+      },
+      {
+        "name": "LLM 微调",
+        "level": ""
+      },
+      {
+        "name": "强化学习",
+        "level": ""
+      },
+      {
+        "name": "计算机视觉",
+        "level": ""
+      },
+      {
+        "name": "LaTeX",
+        "level": ""
+      },
+      {
+        "name": "Git",
+        "level": ""
+      },
+      {
+        "name": "Docker",
+        "level": ""
+      },
+      {
+        "name": "学术写作",
+        "level": ""
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "研究领域",
+      "label": "研究领域",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "代表论文",
+      "label": "代表论文",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "awards",
+      "label": "荣誉奖项",
+      "type": "array",
+      "commonPath": "awards",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

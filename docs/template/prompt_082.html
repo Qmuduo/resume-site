@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>林清音 · 花艺师简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #4A5D4E;    /* 苔藓墨绿，克制自然 */
+      --accent: #C07A4B;     /* 干枯玫瑰/陶土色，温暖点缀 */
+      --bg-cream: #FBF9F6;   /* 奶油白背景，模拟手绘纸张 */
+      --text-body: #2D3748;  /* 深灰正文，阅读舒适 */
+      --text-muted: #5A6B5E; /* 辅助灰绿 */
+      --line-light: #E0DCD3; /* 浅米色分割线 */
+      --white: #FFFFFF;
+      --border-radius: 2px;
+    }
+
+    body {
+      background: #EAE5DE;   /* 外层暖灰，衬托纸张 */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      margin: 0;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', 'Noto Sans SC', '思源黑体', sans-serif;
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+
+    /* 简历卡片容器：模拟A4纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: var(--bg-cream);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.02);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      /* 手绘质感：细微纹理背景（纯CSS线条） */
+      background-image: 
+        linear-gradient(rgba(160, 140, 110, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(160, 140, 110, 0.03) 1px, transparent 1px);
+      background-size: 20px 20px;
+      background-position: center center;
+    }
+
+    /* 内边距：符合呼吸感，上下0.7英寸，左右0.8英寸左右 */
+    .resume-inner {
+      padding: 1.8cm 2cm 1.5cm 2cm;
+    }
+
+    /* 排版元素 */
+    h1, h2, h3, p, ul, li {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 姓名区域：手绘风格下划线装饰 */
+    .name-section {
+      margin-bottom: 1.2rem;
+    }
+    .name {
+      font-size: 2.6rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: #2E3B2E;
+      line-height: 1.1;
+      margin-bottom: 0.1rem;
+      font-family: 'Times New Roman', 'Georgia', '思源宋体', 'Noto Serif SC', serif;
+      /* 优雅衬线体用于姓名，增加手绘温度 */
+    }
+    .subtitle {
+      font-size: 1rem;
+      font-weight: 350;
+      color: #5C6B5A;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      font-family: 'Arial', 'Helvetica Neue', '思源黑体', sans-serif;
+    }
+    /* 手绘风格分割线：双线细纹，类似钢笔轻画 */
+    .hand-drawn-line {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.8rem 0 1.2rem 0;
+    }
+    .hand-drawn-line .line {
+      flex: 1;
+      height: 1px;
+      background: var(--line-light);
+      position: relative;
+    }
+    .hand-drawn-line .line::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: rgba(192, 122, 75, 0.25);
+    }
+    .hand-drawn-line .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0.7;
+      margin: 0 2px;
+    }
+
+    /* 联系方式栏：行内图标+文字，保证ATS读取为纯文本 */
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      margin-bottom: 1.4rem;
+      font-size: 0.8rem;
+      color: #4A5D4E;
+      border-bottom: 1px dashed #CFC7B8;
+      padding-bottom: 0.9rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .contact-item i.emoji-icon {
+      font-style: normal;
+      font-size: 1rem;
+      color: #9B7B5C;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      color: #3F4A3C;
+      text-transform: uppercase;
+      margin: 1.5rem 0 0.7rem 0;
+      padding-bottom: 0.3rem;
+      border-bottom: 1.5px solid #D9CDB6;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Arial', 'Helvetica Neue', '思源黑体', sans-serif;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: rgba(192, 122, 75, 0.5);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(45deg);
+      margin-right: 6px;
+      /* 手绘感小叶子形状 */
+    }
+
+    /* 工作经历卡片 */
+    .experience-item {
+      margin-bottom: 1.1rem;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.2rem;
+    }
+    .company-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1E2B1C;
+      letter-spacing: 0.02em;
+    }
+    .job-title {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #4A5D4E;
+      margin-left: 0.25rem;
+    }
+    .date-location {
+      font-size: 0.8rem;
+      color: #7B8A7A;
+      white-space: nowrap;
+      font-weight: 400;
+    }
+    .exp-details {
+      margin-top: 0.3rem;
+      padding-left: 1.2rem;
+      list-style-type: none;
+    }
+    .exp-details li {
+      position: relative;
+      margin-bottom: 0.3rem;
+      font-size: 0.82rem;
+      color: #2D3748;
+      line-height: 1.5;
+    }
+    .exp-details li::before {
+      content: "•";
+      position: absolute;
+      left: -1rem;
+      color: #B2926A;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    /* 技能标签：标签式排列，自然风格 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+    }
+    .skill-tag {
+      background: rgba(192, 122, 75, 0.08);
+      border: 0.5px solid #D9C2A8;
+      color: #4A453A;
+      padding: 0.25rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      background: #FBF7F2;
+    }
+
+    /* 教育经历简单样式 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+      font-size: 0.88rem;
+    }
+    .edu-degree {
+      font-weight: 600;
+      color: #2E3B2E;
+    }
+    .edu-school {
+      font-weight: 400;
+      color: #4A5D4E;
+    }
+
+    /* 作品集/社交链接区域 */
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: #5C6B5A;
+    }
+    .social-item {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    /* 底部留白 */
+    .footer-note {
+      margin-top: 1.8rem;
+      font-size: 0.7rem;
+      color: #A9B0A3;
+      text-align: right;
+      border-top: 1px dotted #D9CDB6;
+      padding-top: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* 打印样式：完全符合ATS及打印友好 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+        background: white;
+        background-image: none; /* 去除纹理保证清晰 */
+      }
+      .resume-inner {
+        padding: 0.7in 0.8in;
+      }
+      .hand-drawn-line .line::after,
+      .section-title::before {
+        /* 保留简单线条，不依赖颜色渐变 */
+        opacity: 0.8;
+      }
+      .contact-bar, .section-title {
+        border-bottom: 1px solid #aaa;
+      }
+      .skill-tag {
+        border: 0.5px solid #999;
+        background: none;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      
+      <!-- 姓名与手绘风格区域 -->
+      <div class="name-section">
+        <h1 class="name">林清音</h1>
+        <div class="subtitle">花艺师 · 植物造型设计师</div>
+        <div class="hand-drawn-line">
+          <span class="line"></span>
+          <span class="dot"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+
+      <!-- 联系方式：纯文本，ATS友好，带简单emoji图标 -->
+      <div class="contact-bar">
+        <span class="contact-item"><i class="emoji-icon">📞</i> (86) 139-5027-6814</span>
+        <span class="contact-item"><i class="emoji-icon">✉️</i> qingyin.lin@flora.studio</span>
+        <span class="contact-item"><i class="emoji-icon">📍</i> 上海 · 徐汇区</span>
+        <span class="contact-item"><i class="emoji-icon">🖥️</i> flora-qingyin.com</span>
+      </div>
+
+      <!-- 个人简述（无标题，直接文字，保持自然） -->
+      <p style="font-size:0.85rem; color:#3D4A3C; margin: 0.5rem 0 0.2rem 0; line-height:1.6;">
+        拥有4年花艺创作经验，专注于自然风、法式田园及商业空间花艺设计。善于将手绘灵感融入植物造型，作品集于社交平台累计展示300+原创作品。
+      </p>
+
+      <!-- 工作经历模块 -->
+      <div>
+        <h2 class="section-title">经历</h2>
+        
+        <div class="experience-item">
+          <div class="exp-header">
+            <span>
+              <span class="company-name">Bloom Studio 野趣花艺</span>
+              <span class="job-title">· 高级花艺师</span>
+            </span>
+            <span class="date-location">2023.03 – 至今 | 上海</span>
+          </div>
+          <ul class="exp-details">
+            <li>主导奢侈品牌快闪店花艺装置设计，包括爱马仕、观夏等合作项目，单项目曝光超5万次</li>
+            <li>开发“四季手绘花束”产品线，结合水彩手稿与当季花材，成为社交媒体爆款</li>
+            <li>培训初级花艺师3名，建立花材养护与色彩搭配内部手册</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <span>
+              <span class="company-name">植愈研究所</span>
+              <span class="job-title">· 花艺设计师</span>
+            </span>
+            <span class="date-location">2021.06 – 2023.02 | 杭州</span>
+          </div>
+          <ul class="exp-details">
+            <li>负责每周主题花束创作，融合自然系与手绘风格，线上商城复购率提升25%</li>
+            <li>策划“花与画”线下工作坊12场，结合水彩教学与花艺体验，场均参与20人</li>
+            <li>管理工作室Instagram及小红书账号，通过视觉内容吸引1.2万精准粉丝</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <span>
+              <span class="company-name">花间集 Flora Gallery</span>
+              <span class="job-title">· 助理花艺师</span>
+            </span>
+            <span class="date-location">2020.08 – 2021.05 | 苏州</span>
+          </div>
+          <ul class="exp-details">
+            <li>协助主花艺师完成婚礼及宴会花艺布置，熟悉大型架构及色彩层次</li>
+            <li>负责日常花材处理与库存管理，建立供应商联系网络</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 技能与专业领域 -->
+      <div>
+        <h2 class="section-title">技能与专长</h2>
+        <div class="skills-container">
+          <span class="skill-tag">自然风花艺</span>
+          <span class="skill-tag">手绘花稿设计</span>
+          <span class="skill-tag">色彩构成</span>
+          <span class="skill-tag">空间花艺装置</span>
+          <span class="skill-tag">花材养护</span>
+          <span class="skill-tag">社交媒体视觉</span>
+          <span class="skill-tag">Adobe Lightroom</span>
+          <span class="skill-tag">Procreate 手绘</span>
+          <span class="skill-tag">客户提案</span>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div>
+        <h2 class="section-title">教育</h2>
+        <div class="edu-item">
+          <span class="edu-degree">园艺与景观设计 文学学士</span>
+          <span class="edu-school">南京农业大学</span>
+          <span class="date-location">2016 – 2020</span>
+        </div>
+        <div style="font-size:0.8rem; color:#5C6B5A; margin-top:0.2rem;">
+          辅修视觉艺术 · 法国凡尔赛花艺学校短期研修 (2019)
+        </div>
+      </div>
+
+      <!-- 作品集与社交链接 (符合渠道) -->
+      <div>
+        <h2 class="section-title">作品集 & 社交</h2>
+        <div class="social-links">
+          <span class="social-item">🌿 作品集网站: flora-qingyin.com</span>
+          <span class="social-item">📷 Instagram: @qingyin_blooms</span>
+          <span class="social-item">📕 小红书: 林清音花艺手绘</span>
+        </div>
+        <p style="font-size:0.78rem; color:#6B7A68; margin-top:0.4rem;">
+          · 在线作品集包含12个系列，涵盖商业空间、手绘花束及艺术装置。
+        </p>
+      </div>
+
+      <!-- 个性化手绘风格说明（低风险装饰） -->
+      <div class="footer-note">
+        ✦ 自然 · 手绘 · 呼吸感 ✦
+      </div>
+
+    </div> <!-- end resume-inner -->
+  </div> <!-- end resume -->
+</body>
+</html>

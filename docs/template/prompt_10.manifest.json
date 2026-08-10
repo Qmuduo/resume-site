@@ -1,0 +1,205 @@
+{
+  "templateId": "prompt_10",
+  "name": "终端暗色 · 前端开发简历",
+  "sourceFile": "prompt_10.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "social_3",
+      "label": "GitHub",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": false
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": "h1",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-sub",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".exp-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "exp-item"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".edu-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "edu-item"
+    }
+  ],
+  "sampleData": {
+    "name": "$ CHEN WEI _",
+    "title": "> 全栈前端开发 · 中级工程师",
+    "email": "📧 chenwei.dev@pm.me",
+    "phone": "+86 139 5027 3142",
+    "socials": [
+      {
+        "platform": "github",
+        "url": "🐙 github.com/chenwei-frontend"
+      }
+    ],
+    "location": "上海 · 中国",
+    "experiences": [
+      {
+        "position": "— 全栈开发工程师",
+        "date": "2022.04 – 至今",
+        "description": "主导电商后台管理系统前端重构，使用React + TypeScript + GraphQL，首屏加载优化37%。"
+      },
+      {
+        "position": "— 前端开发工程师",
+        "date": "2020.07 – 2022.02",
+        "description": "负责SaaS监控平台前端，基于Vue3 + Pinia + ECharts实现实时数据可视化大屏。"
+      },
+      {
+        "position": "— 初级全栈开发",
+        "date": "2019.03 – 2020.06",
+        "description": "参与内部ERP系统开发，使用React + Ant Design，完成库存管理模块前端实现。"
+      }
+    ],
+    "education": [
+      {
+        "degree": "· 计算机科学与技术 本科",
+        "date": "2015 – 2019"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name",
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "templateId": "prompt_05",
+  "name": "陈亦安 · 品牌视觉设计师简历",
+  "sourceFile": "prompt_05.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "summary",
+      "label": "个人简介",
+      "type": "string",
+      "commonPath": "summary",
+      "autoDetected": true
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name"
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "summary",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "sectionTitle": "专业概述"
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".education-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "education-item"
+    }
+  ],
+  "sampleData": {
+    "name": "陈亦安",
+    "phone": "✆ +86 139 5027 6841",
+    "email": "✉ yian.chen@creativelab.cn",
+    "summary": "拥有5年品牌视觉与数字设计经验，曾主导多个新消费品牌从0到1的视觉体系搭建。擅长通过大胆的色彩叙事与几何构成传递品牌精神，同时确保设计系统在多触点的可执行性。服务客户涵盖科技、生活方式及文化机构。",
+    "experiences": [
+      {
+        "position": "资深品牌设计师",
+        "date": "2021.09 – 至今"
+      },
+      {
+        "position": "视觉设计师",
+        "date": "2019.04 – 2021.08"
+      },
+      {
+        "position": "初级设计师",
+        "date": "2017.07 – 2019.02"
+      }
+    ],
+    "education": [
+      {
+        "degree": "视觉传达设计 本科",
+        "date": "2013 – 2017"
+      },
+      {
+        "degree": "交换项目 · 品牌与叙事",
+        "date": "2016春"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "summary",
+      "label": "专业概述",
+      "type": "array",
+      "commonPath": "summary",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name",
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

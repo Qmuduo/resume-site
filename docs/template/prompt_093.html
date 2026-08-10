@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-color-adjust: exact;">
+  <title>嵌入式开发工程师 · 简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #e4e8ec;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      font-family: 'Courier New', 'Source Code Pro', '思源黑体', 'Noto Sans SC', monospace;
+      margin: 0;
+    }
+
+    /* A4 尺寸卡片，模拟纸张 */
+    .resume {
+      width: 210mm;
+      min-height: 297mm;
+      background: white;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+      padding: 20mm 18mm 18mm 18mm;
+      color: #2d3748;
+      line-height: 1.5;
+      font-size: 10.5pt;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s;
+      page-break-after: avoid;
+    }
+
+    /* 确保所有文字都是纯文本形式，不使用图形 */
+    .resume * {
+      font-family: 'Courier New', 'Source Code Pro', '思源黑体', 'Noto Sans SC', monospace;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* 主要采用等宽字体风格，但中文回退到思源黑体保持可读性 */
+    h1, h2, h3, p, li, div, span, a {
+      color: #1a1a1a;
+    }
+
+    /* ----- 个性化极简元素：左侧窄色条（低风险ATS装饰）----- */
+    .resume {
+      position: relative;
+      background: #ffffff;
+    }
+
+    /* 左侧细线装饰，不使用背景块，仅边框，ATS完全忽略边框但人眼可见 */
+    .left-accent {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background-color: #4a5b6b; /* 深蓝灰，灰度感 */
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* 内容区域确保不与被色条重叠，左内边距已足够 */
+    .content-wrapper {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    /* 标题区域 */
+    .header {
+      margin-bottom: 1.2rem;
+      border-bottom: 1.5px solid #cbd5e0;
+      padding-bottom: 0.8rem;
+    }
+
+    .name {
+      font-size: 28pt;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #1e293b;
+      text-transform: uppercase;
+      font-family: 'Courier New', 'Source Code Pro', '思源黑体', monospace;
+      margin-bottom: 0.15rem;
+      line-height: 1.2;
+    }
+
+    .title-role {
+      font-size: 11.5pt;
+      font-weight: 500;
+      color: #4a5b6b;
+      letter-spacing: 0.3px;
+      margin-bottom: 0.5rem;
+      font-family: 'Courier New', '思源黑体', monospace;
+      text-transform: uppercase;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 0.5rem;
+      font-size: 9.5pt;
+      color: #2d3748;
+      font-family: 'Courier New', '思源黑体', monospace;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    /* 使用简单线性图标 (文本符号，ATS完全可读) */
+    .icon-symbol {
+      font-size: 10pt;
+      margin-right: 2px;
+      color: #4a5b6b;
+      font-weight: 400;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #1e293b;
+      text-transform: uppercase;
+      margin: 1.4rem 0 0.6rem 0;
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid #cbd5e0;
+      font-family: 'Courier New', '思源黑体', monospace;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-title::before {
+      content: "// ";
+      font-weight: 500;
+      color: #62748c;
+      font-size: 10pt;
+      margin-right: 2px;
+    }
+
+    /* 工作经历条目样式 */
+    .entry {
+      margin-bottom: 0.9rem;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.15rem;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 11pt;
+      color: #1e293b;
+      font-family: 'Courier New', '思源黑体', monospace;
+    }
+
+    .job-title {
+      font-weight: 500;
+      font-size: 10.5pt;
+      color: #2d3748;
+      margin-left: 0.3rem;
+      font-family: 'Courier New', '思源黑体', monospace;
+    }
+
+    .date-location {
+      font-size: 9.5pt;
+      color: #4a5568;
+      font-weight: 400;
+      white-space: nowrap;
+      font-family: 'Courier New', '思源黑体', monospace;
+      text-align: right;
+    }
+
+    .description {
+      margin-top: 0.25rem;
+      padding-left: 1.2rem;
+      list-style-type: none;
+    }
+
+    .description li {
+      position: relative;
+      margin-bottom: 0.25rem;
+      font-size: 10pt;
+      line-height: 1.5;
+      color: #2d3748;
+      font-family: 'Courier New', '思源黑体', monospace;
+    }
+
+    /* 标准圆点符号，ATS安全 */
+    .description li::before {
+      content: "•";
+      position: absolute;
+      left: -1rem;
+      color: #4a5b6b;
+      font-weight: 700;
+      font-size: 10pt;
+    }
+
+    /* 技能标签式排列 (纯文本列表) */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.8rem;
+      margin-top: 0.2rem;
+    }
+
+    .skill-category {
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-category strong {
+      font-weight: 700;
+      color: #1e293b;
+      font-size: 10pt;
+      margin-right: 0.5rem;
+      font-family: 'Courier New', '思源黑体', monospace;
+    }
+
+    .skill-list {
+      display: inline;
+      font-size: 10pt;
+      color: #2d3748;
+    }
+
+    .project-item {
+      margin-bottom: 0.7rem;
+    }
+
+    .project-name {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: #1e293b;
+      font-family: 'Courier New', '思源黑体', monospace;
+    }
+
+    .project-desc {
+      font-size: 10pt;
+      margin-top: 0.1rem;
+      padding-left: 1.2rem;
+      list-style: none;
+    }
+
+    .project-desc li::before {
+      content: "•";
+      position: absolute;
+      left: -1rem;
+      color: #4a5b6b;
+      font-weight: 700;
+    }
+
+    .project-desc li {
+      position: relative;
+      margin-bottom: 0.2rem;
+    }
+
+    .education-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: #1e293b;
+    }
+
+    .edu-school {
+      font-weight: 500;
+      color: #2d3748;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #cbd5e0;
+      margin: 0.8rem 0 0.5rem 0;
+    }
+
+    /* 打印样式：去除背景，确保黑白清晰，隐藏链接下划线 */
+    @media print {
+      body {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+
+      .resume {
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+        min-height: auto;
+        padding: 12mm 15mm 12mm 15mm;
+        margin: 0 auto;
+        page-break-after: avoid;
+        background: white;
+      }
+
+      .left-accent {
+        background-color: #4a5b6b !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      a {
+        text-decoration: none;
+        color: #1e293b;
+      }
+
+      .contact-item, .icon-symbol {
+        color: #1e293b;
+      }
+
+      /* 隐藏可能残留的交互样式 */
+      button, .no-print {
+        display: none;
+      }
+    }
+
+    /* 小屏适配 */
+    @media screen and (max-width: 700px) {
+      .resume {
+        width: 100%;
+        padding: 12mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- 左侧极细装饰条，纯CSS边框效果，ATS无视 -->
+    <div class="left-accent"></div>
+    <div class="content-wrapper">
+      
+      <!-- 头部：姓名 + 标题 -->
+      <div class="header">
+        <h1 class="name">Chen Wei</h1>
+        <div class="title-role">嵌入式系统开发工程师</div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="icon-symbol">📞</span> +86 139 5027 6814</span>
+          <span class="contact-item"><span class="icon-symbol">✉️</span> wei.chen@embedded.io</span>
+          <span class="contact-item"><span class="icon-symbol">🐙</span> github.com/wei-embedded</span>
+          <span class="contact-item"><span class="icon-symbol">📍</span> 深圳 · 中国</span>
+        </div>
+      </div>
+
+      <!-- 专业技能 -->
+      <div class="section-title">核心能力</div>
+      <div class="skills-container">
+        <div class="skill-category"><strong>语言/硬件:</strong> <span class="skill-list">C / C++ · Python · ARM Cortex-M · RISC-V · 嵌入式Linux</span></div>
+        <div class="skill-category"><strong>协议与接口:</strong> <span class="skill-list">I2C · SPI · UART · CAN · BLE · MQTT</span></div>
+        <div class="skill-category"><strong>工具链:</strong> <span class="skill-list">Keil · IAR · GCC · OpenOCD · Logic Analyzer · Altium Designer</span></div>
+        <div class="skill-category"><strong>实时系统:</strong> <span class="skill-list">FreeRTOS · Zephyr · 任务调度 · 低功耗设计</span></div>
+      </div>
+
+      <!-- 工作经历 -->
+      <div class="section-title">工作经历</div>
+      
+      <div class="entry">
+        <div class="entry-header">
+          <span class="company-name">ByteCraft 嵌入式实验室</span>
+          <span class="job-title">嵌入式固件工程师</span>
+          <span class="date-location">2023.08 – 至今 | 深圳</span>
+        </div>
+        <ul class="description">
+          <li>基于STM32L4系列与FreeRTOS开发低功耗环境传感器节点，功耗降低32%，通过MQTT协议上传至云端。</li>
+          <li>实现自定义bootloader支持固件OTA升级，覆盖10k+设备，使用AES-128加密保障传输安全。</li>
+          <li>维护嵌入式Linux平台(Yocto)的驱动移植，调试SPI/I2C设备树，优化启动时间至2.8秒。</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="company-name">创联智控科技</span>
+          <span class="job-title">初级嵌入式工程师</span>
+          <span class="date-location">2021.07 – 2023.06 | 广州</span>
+        </div>
+        <ul class="description">
+          <li>参与智能电表项目，负责RS-485/M-Bus通信协议栈开发，实现数据采集与DLMS协议解析。</li>
+          <li>使用C语言编写电机控制算法，在TI C2000平台上实现FOC控制，电流环响应时间小于50µs。</li>
+          <li>搭建基于Jenkins与OpenOCD的自动化测试环境，单元测试覆盖率提升至78%。</li>
+        </ul>
+      </div>
+
+      <!-- 项目经验（嵌入式重点） -->
+      <div class="section-title">核心项目</div>
+      
+      <div class="project-item">
+        <div class="project-name">开源RISC-V 调试器 | 个人项目 · GitHub 120+ ⭐</div>
+        <ul class="project-desc">
+          <li>设计基于FT2232H的RISC-V调试探针，支持JTAG与cJTAG协议，完全开源硬件与固件。</li>
+          <li>在Zephyr RTOS上实现自定义传输层，通过USB Bulk端点与OpenOCD通信，速率达15Mbps。</li>
+        </ul>
+      </div>
+      
+      <div class="project-item">
+        <div class="project-name">便携式光谱仪嵌入式系统 | 校企合作项目</div>
+        <ul class="project-desc">
+          <li>采用i.MX RT1062跨界MCU，实现CMOS传感器驱动与实时数据流处理，帧率达120fps。</li>
+          <li>开发基于emWin的图形界面，并移植TinyUSB协议栈实现与PC的高速数据传输。</li>
+        </ul>
+      </div>
+
+      <!-- 教育背景 -->
+      <div class="section-title">教育背景</div>
+      <div class="education-entry">
+        <span class="edu-degree">电子信息工程 工学学士</span>
+        <span class="edu-school">华南理工大学</span>
+        <span class="date-location">2017.09 – 2021.06</span>
+      </div>
+      <div style="font-size:9.5pt; color:#4a5568; margin-top:0.1rem;">主修课程：嵌入式系统设计 · 数字信号处理 · 微机原理 · 数据结构</div>
+
+      <!-- 额外信息：语言与证书，使用低风险线条分割 -->
+      <div class="section-title">证书与语言</div>
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; font-size:10pt;">
+        <span><strong>英语:</strong> CET-6 · 技术文档阅读/撰写</span>
+        <span><strong>证书:</strong> ARM Accredited Engineer · Linux Foundation LFCS</span>
+        <span><strong>社区:</strong> 深圳嵌入式开发者社区组织者</span>
+      </div>
+      
+      <!-- 极简分割线表示结束 -->
+      <hr style="margin-top:1.2rem; opacity:0.4;">
+      <div style="font-size:8.5pt; color:#62748c; text-align:right; margin-top:0.2rem;">// 持续更新 · 2026.08</div>
+    </div>
+  </div>
+</body>
+</html>

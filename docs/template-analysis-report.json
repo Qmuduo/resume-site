@@ -1,0 +1,7731 @@
+{
+  "generatedAt": "2026-08-10T11:22:58.221Z",
+  "tool": "scripts/analyze-templates.js",
+  "summary": {
+    "totalTemplates": 110,
+    "totalFields": 1012,
+    "autoDetectedFields": 837,
+    "pendingManualFields": 209,
+    "autoDetectionRate": 0.8271,
+    "commonPathUsage": {
+      "basic.name": 110,
+      "basic.title": 86,
+      "basic.phone": 97,
+      "basic.email": 97,
+      "basic.location": 78,
+      "socials": 86,
+      "education": 89,
+      "experiences": 89,
+      "projects": 51,
+      "certifications": 31,
+      "summary": 43,
+      "skills": 84,
+      "languages": 29,
+      "awards": 9,
+      "interests": 1
+    },
+    "autoDetectionPercent": "82.7%"
+  },
+  "templates": [
+    {
+      "file": "prompt_001.html",
+      "title": "投资银行分析师 · 简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "学生活动与领导力",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "学生活动与领导力"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_002.html",
+      "title": "陈启明 · 副总裁 · PE/VC 投资简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "代表交易",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "代表交易",
+        "summary",
+        "certifications"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_003.html",
+      "title": "张维明 · 商业银行对公客户经理 · 简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "代表性交易",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "代表性交易",
+        "summary",
+        "certifications"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_004.html",
+      "title": "张哲维 · 量化交易员简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "专业发展",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "专业发展",
+        "languages"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_005.html",
+      "title": "保险精算师 · 高级经理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_006.html",
+      "title": "陈启明 · 财富管理总监 · 简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "certifications"
+      ],
+      "mappings": 11
+    },
+    {
+      "file": "prompt_007.html",
+      "title": "简历 · 审计助理 · 四大校招",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": true
+        },
+        {
+          "name": "awards",
+          "commonPath": "awards",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "awards"
+      ],
+      "mappings": 5
+    },
+    {
+      "file": "prompt_008.html",
+      "title": "张正源 · 财务总监简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "certifications"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_009.html",
+      "title": "税务高级经理 · 简历设计",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 5
+    },
+    {
+      "file": "prompt_010.html",
+      "title": "张思睿 · 招聘专员简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "education"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_011.html",
+      "title": "张正阳 · 人力资源总监 HRBP",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "certifications",
+        "skills"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_012.html",
+      "title": "陈恪 · 薪酬绩效高级经理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "行业影响力",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "行业影响力",
+        "summary"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_013.html",
+      "title": "陈知远 · 法务顾问简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "certifications"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_014.html",
+      "title": "简历 · 律所合伙人 · 传统商务深蓝",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "核心领域",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "代表交易",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "awards",
+          "commonPath": "awards",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "核心领域",
+        "代表交易",
+        "awards"
+      ],
+      "mappings": 7
+    },
+    {
+      "file": "prompt_015.html",
+      "title": "简历 · 合规高级经理 · 严谨稳重黑白灰",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "certifications"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_016.html",
+      "title": "战略咨询顾问 · 简历模板",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_017.html",
+      "title": "MBB项目经理 · 简历视觉方案",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "projects"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_018.html",
+      "title": "陈远山 · 管理咨询总监",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "experiences",
+        "languages",
+        "projects"
+      ],
+      "mappings": 7
+    },
+    {
+      "file": "prompt_019.html",
+      "title": "张知行 · 政府事务专员简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": true
+        },
+        {
+          "name": "awards",
+          "commonPath": "awards",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "projects",
+        "awards"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_020.html",
+      "title": "简历 · 国企行政管理 · 正式庄重",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 5
+    },
+    {
+      "file": "prompt_021.html",
+      "title": "公务员简历 · 庄重正式版",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "核心优势",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "awards",
+          "commonPath": "awards",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "核心优势",
+        "experiences",
+        "education",
+        "awards"
+      ],
+      "mappings": 2
+    },
+    {
+      "file": "prompt_022.html",
+      "title": "陈启华 · 医院行政院长简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "核心胜任力",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "核心胜任力",
+        "certifications"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_023.html",
+      "title": "临床研究协调员 · 简历设计",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "skills",
+        "certifications",
+        "languages"
+      ],
+      "mappings": 5
+    },
+    {
+      "file": "prompt_024.html",
+      "title": "简历 · 药企注册专员 · 保守专业深灰基调",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 11
+    },
+    {
+      "file": "prompt_025.html",
+      "title": "陈道远 · 高校教师/副教授 简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "研究领域",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "代表性论著",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "awards",
+          "commonPath": "awards",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "研究领域",
+        "代表性论著",
+        "awards"
+      ],
+      "mappings": 7
+    },
+    {
+      "file": "prompt_026.html",
+      "title": "学术简历 · 张知行 · 研究员",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "研究领域",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "代表性论文",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "教学与学术服务",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "推荐人",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "awards",
+          "commonPath": "awards",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "研究领域",
+        "代表性论文",
+        "教学与学术服务",
+        "推荐人",
+        "awards"
+      ],
+      "mappings": 4
+    },
+    {
+      "file": "prompt_027.html",
+      "title": "张振华 · 生产厂长简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "certifications"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_028.html",
+      "title": "质量经理 · 严谨稳重简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_029.html",
+      "title": "张逸凡 · 供应链高级经理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_03.html",
+      "title": "陈远舟 · 战略咨询总监简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "核心优势",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "核心优势",
+        "education",
+        "projects"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_030.html",
+      "title": "张正言 · 工程项目经理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "certifications",
+        "experiences",
+        "education"
+      ],
+      "mappings": 2
+    },
+    {
+      "file": "prompt_031.html",
+      "title": "张正源 · 工程造价师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "education",
+        "certifications",
+        "languages"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_032.html",
+      "title": "张振华 · 物业总经理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "certifications",
+        "skills"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_033.html",
+      "title": "飞行员简历 · 严谨稳重版",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "专业发展",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "专业发展",
+        "certifications",
+        "skills"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_034.html",
+      "title": "张正源 · 物流调度高级经理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_035.html",
+      "title": "简历 · 奢侈品销售顾问 · 传统商务深蓝",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "languages"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_036.html",
+      "title": "林逸凡 · 翻译口译简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "languages",
+        "skills",
+        "projects"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_037.html",
+      "title": "军官转业 · 管理岗简历 | 庄重无彩色",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "核心优势",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "核心优势",
+        "experiences",
+        "skills",
+        "certifications"
+      ],
+      "mappings": 5
+    },
+    {
+      "file": "prompt_038.html",
+      "title": "张禾丰 · 农技推广员简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "skills"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_039.html",
+      "title": "张振华 · 农业企业总经理",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "projects",
+        "languages"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_04.html",
+      "title": "林清·UI/UX设计师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "summary"
+      ],
+      "mappings": 11
+    },
+    {
+      "file": "prompt_040.html",
+      "title": "林清怡 · 产品经理助理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 1
+    },
+    {
+      "file": "prompt_041.html",
+      "title": "高级产品总监 · 简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "experiences",
+        "languages"
+      ],
+      "mappings": 4
+    },
+    {
+      "file": "prompt_042.html",
+      "title": "林砚秋 · 品牌策划高级经理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "projects"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_043.html",
+      "title": "张思睿 · 数字营销高级经理 · 简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_044.html",
+      "title": "林清怡 · 新媒体运营简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "education",
+        "projects"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_045.html",
+      "title": "陈知远 · 公关高级经理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "experiences",
+        "education"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_046.html",
+      "title": "张明远 · 电商运营经理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "projects"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_047.html",
+      "title": "张瑞麒 · 增长与数据策略高级经理 · 简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_048.html",
+      "title": "张明远 · 商业分析师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "certifications"
+      ],
+      "mappings": 11
+    },
+    {
+      "file": "prompt_049.html",
+      "title": "张逸凡 · 医疗器械销售代表简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_05.html",
+      "title": "陈亦安 · 品牌视觉设计师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "skills"
+      ],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_050.html",
+      "title": "林清怡 · 教育培训讲师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_051.html",
+      "title": "陈思远 · 课程产品经理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "experiences",
+        "education",
+        "projects"
+      ],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_052.html",
+      "title": "陈知远 · 留学顾问简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "languages"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_053.html",
+      "title": "工业设计师简历 · 简约现代 · 时间轴排版",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "awards",
+          "commonPath": "awards",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "experiences",
+        "education",
+        "skills",
+        "awards"
+      ],
+      "mappings": 3
+    },
+    {
+      "file": "prompt_054.html",
+      "title": "张明远 · 房地产招商高级经理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "education",
+        "languages"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_055.html",
+      "title": "林清怡 · 记者/编辑简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_056.html",
+      "title": "游戏运营简历 · 年轻活力版",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "专业速览",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "专业速览",
+        "certifications"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_057.html",
+      "title": "张明远 · 新能源项目经理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "languages"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_058.html",
+      "title": "陈知远 · ESG分析师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "certifications",
+        "languages"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_059.html",
+      "title": "陈知远 · NGO项目官员简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_06.html",
+      "title": "简历 · 林清音 | 插画师与艺术指导",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "skills",
+        "projects"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_060.html",
+      "title": "运动员经纪人 · 简历视觉方案",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "languages",
+        "projects"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_061.html",
+      "title": "张振宇 · 体育营销高级经理",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "certifications"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_062.html",
+      "title": "酒店大堂经理 · 简历视觉方案",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "summary"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_063.html",
+      "title": "林悦 · 旅游策划师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_064.html",
+      "title": "林清悦 · 餐厅店长简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "晋升与成就亮点",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "晋升与成就亮点",
+        "summary",
+        "skills"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_065.html",
+      "title": "张振宇 · 零售区域经理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "skills",
+        "languages"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_066.html",
+      "title": "陈思远 · 培训发展高级经理简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "experiences",
+        "education",
+        "certifications",
+        "languages"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_067.html",
+      "title": "简历 · 本地化高级经理 · 清爽留白",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "education",
+        "certifications"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_068.html",
+      "title": "张静仪 · 筹款与传播高级经理 · 简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "行业会议与演讲",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "专业发展",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "行业会议与演讲",
+        "专业发展",
+        "skills",
+        "education"
+      ],
+      "mappings": 7
+    },
+    {
+      "file": "prompt_069.html",
+      "title": "UI/UX设计师简历 - 陈逸凡",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "skills"
+      ],
+      "mappings": 4
+    },
+    {
+      "file": "prompt_07.html",
+      "title": "林叙 · 创意总监 · 室内建筑设计简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "awards",
+          "commonPath": "awards",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "awards"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_070.html",
+      "title": "陈亦凡 · 高级UI/UX设计主管简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "interests",
+          "commonPath": "interests",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "interests"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_071.html",
+      "title": "林悦 · 品牌设计师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 7
+    },
+    {
+      "file": "prompt_072.html",
+      "title": "视觉设计师简历 · 张知逸",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_073.html",
+      "title": "林语·插画师简历 | 手绘留白风格",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "projects"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_074.html",
+      "title": "动画师简历 · 动态非对称设计",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_075.html",
+      "title": "建筑设计师 · 简历视觉方案",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "skills",
+        "certifications"
+      ],
+      "mappings": 7
+    },
+    {
+      "file": "prompt_076.html",
+      "title": "林逸 · 室内设计师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 2
+    },
+    {
+      "file": "prompt_077.html",
+      "title": "林清野 · 时尚买手简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "languages",
+        "education",
+        "certifications"
+      ],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_078.html",
+      "title": "服装设计师简历 · 几何撞色版",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_079.html",
+      "title": "林墨 · 游戏原画师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "summary"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_08.html",
+      "title": "徐亦柔 · 时尚买手简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 5
+    },
+    {
+      "file": "prompt_080.html",
+      "title": "林觉·影视美术指导 · 简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "视觉叙事_专业轮廓",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "创作轨迹",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "学院积淀",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "视觉叙事_专业轮廓",
+        "创作轨迹",
+        "学院积淀",
+        "projects"
+      ],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_081.html",
+      "title": "林一舟 · 摄影师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "education"
+      ],
+      "mappings": 7
+    },
+    {
+      "file": "prompt_082.html",
+      "title": "林清音 · 花艺师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "projects"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_083.html",
+      "title": "林棠·甜品主厨研发简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "projects",
+        "education"
+      ],
+      "mappings": 7
+    },
+    {
+      "file": "prompt_084.html",
+      "title": "林清怡 · 商品企划高级经理 · 简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "行业展会_猎头关注",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "行业展会_猎头关注",
+        "education"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_085.html",
+      "title": "简历 · 后端开发工程师 · 初级",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "education",
+        "languages"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_086.html",
+      "title": "简历 · 高级后端架构师 · 极简灰调等宽",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "education",
+        "languages"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_087.html",
+      "title": "前端开发工程师 · 简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "education"
+      ],
+      "mappings": 4
+    },
+    {
+      "file": "prompt_088.html",
+      "title": "全栈工程师 · 高级简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "projects",
+        "languages"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_089.html",
+      "title": "数据科学家简历 · 极简灰度等宽",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "skills",
+        "languages"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_09.html",
+      "title": "林亦凡 · 后端开发工程师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": false
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "experiences",
+        "projects",
+        "education",
+        "languages"
+      ],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_090.html",
+      "title": "张逸凡 · 高级算法工程师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 1
+    },
+    {
+      "file": "prompt_091.html",
+      "title": "资深DevOps/SRE架构师 · 简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "开源与社区影响",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "开源与社区影响",
+        "certifications"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_092.html",
+      "title": "网络安全工程师 · 低调硬核简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "专业背景",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": false
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "专业背景",
+        "experiences",
+        "projects",
+        "education"
+      ],
+      "mappings": 7
+    },
+    {
+      "file": "prompt_093.html",
+      "title": "嵌入式开发工程师 · 简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "languages"
+      ],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_094.html",
+      "title": "林一·测试开发工程师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_095.html",
+      "title": "高级数据库管理员 · 简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "education",
+        "certifications"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_096.html",
+      "title": "简历 · AI 研究员 · 极简灰度",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_5",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "研究领域",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "代表论文",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "awards",
+          "commonPath": "awards",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "研究领域",
+        "代表论文",
+        "education",
+        "awards"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_097.html",
+      "title": "张启明 · 量化开发工程师简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 10
+    },
+    {
+      "file": "prompt_098.html",
+      "title": "军工软件工程师 · 极简灰度简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "certifications",
+          "commonPath": "certifications",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "education"
+      ],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_099.html",
+      "title": "航天器控制系统工程师 · 高级技术专家简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [],
+      "mappings": 6
+    },
+    {
+      "file": "prompt_10.html",
+      "title": "终端暗色 · 前端开发简历",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": false
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "skills",
+        "projects",
+        "languages"
+      ],
+      "mappings": 8
+    },
+    {
+      "file": "prompt_11.html",
+      "title": "简历 · 数据科学家 · 极简灰度",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "social_4",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "projects",
+          "commonPath": "projects",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "education",
+        "languages"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_12.html",
+      "title": "简历 · 高级DevOps/SRE架构师",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "title",
+          "commonPath": "basic.title",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "summary",
+          "commonPath": "summary",
+          "autoDetected": true
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": true
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": false
+        },
+        {
+          "name": "languages",
+          "commonPath": "languages",
+          "autoDetected": false
+        }
+      ],
+      "pendingManual": [
+        "summary",
+        "education",
+        "languages"
+      ],
+      "mappings": 9
+    },
+    {
+      "file": "prompt_13.html",
+      "title": "网络安全工程师 · 简历 · 低调硬核",
+      "fields": [
+        {
+          "name": "name",
+          "commonPath": "basic.name",
+          "autoDetected": true
+        },
+        {
+          "name": "phone",
+          "commonPath": "basic.phone",
+          "autoDetected": true
+        },
+        {
+          "name": "email",
+          "commonPath": "basic.email",
+          "autoDetected": true
+        },
+        {
+          "name": "social_3",
+          "commonPath": "socials",
+          "autoDetected": true
+        },
+        {
+          "name": "location",
+          "commonPath": "basic.location",
+          "autoDetected": true
+        },
+        {
+          "name": "安全研究与ctf成就",
+          "commonPath": null,
+          "autoDetected": false
+        },
+        {
+          "name": "skills",
+          "commonPath": "skills",
+          "autoDetected": false
+        },
+        {
+          "name": "experiences",
+          "commonPath": "experiences",
+          "autoDetected": true
+        },
+        {
+          "name": "education",
+          "commonPath": "education",
+          "autoDetected": true
+        }
+      ],
+      "pendingManual": [
+        "安全研究与ctf成就",
+        "skills"
+      ],
+      "mappings": 7
+    }
+  ],
+  "manualReview": [
+    {
+      "file": "prompt_001.html",
+      "fields": [
+        {
+          "name": "学生活动与领导力",
+          "label": "学生活动与领导力",
+          "reason": "未识别的自定义区块"
+        }
+      ]
+    },
+    {
+      "file": "prompt_002.html",
+      "fields": [
+        {
+          "name": "代表交易",
+          "label": "代表交易",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_003.html",
+      "fields": [
+        {
+          "name": "代表性交易",
+          "label": "代表性交易",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "summary",
+          "label": "专业概要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_004.html",
+      "fields": [
+        {
+          "name": "专业发展",
+          "label": "专业发展",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_006.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_007.html",
+      "fields": [
+        {
+          "name": "awards",
+          "label": "荣誉奖项",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_008.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_010.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业概述",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_011.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_012.html",
+      "fields": [
+        {
+          "name": "行业影响力",
+          "label": "行业影响力",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_013.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_014.html",
+      "fields": [
+        {
+          "name": "核心领域",
+          "label": "核心领域",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "代表交易",
+          "label": "代表交易",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "awards",
+          "label": "荣誉奖项",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_015.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_017.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业概要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_018.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "experiences",
+          "label": "工作经历",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_019.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "职业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "awards",
+          "label": "荣誉奖项",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_021.html",
+      "fields": [
+        {
+          "name": "核心优势",
+          "label": "核心优势",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "experiences",
+          "label": "工作经历",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "awards",
+          "label": "荣誉奖项",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_022.html",
+      "fields": [
+        {
+          "name": "核心胜任力",
+          "label": "核心胜任力",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_023.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业概要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_025.html",
+      "fields": [
+        {
+          "name": "研究领域",
+          "label": "研究领域",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "代表性论著",
+          "label": "代表性论著",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "awards",
+          "label": "荣誉奖项",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_026.html",
+      "fields": [
+        {
+          "name": "研究领域",
+          "label": "研究领域",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "代表性论文",
+          "label": "代表性论文",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "教学与学术服务",
+          "label": "教学与学术服务",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "推荐人",
+          "label": "推荐人",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "awards",
+          "label": "荣誉奖项",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_027.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_03.html",
+      "fields": [
+        {
+          "name": "核心优势",
+          "label": "核心优势",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_030.html",
+      "fields": [
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "experiences",
+          "label": "工作经历",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_031.html",
+      "fields": [
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_032.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_033.html",
+      "fields": [
+        {
+          "name": "专业发展",
+          "label": "专业发展",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_035.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_036.html",
+      "fields": [
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_037.html",
+      "fields": [
+        {
+          "name": "核心优势",
+          "label": "核心优势",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "experiences",
+          "label": "工作经历",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_038.html",
+      "fields": [
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_039.html",
+      "fields": [
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_04.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业概述",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_041.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "experiences",
+          "label": "工作经历",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_042.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业概览",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_044.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业概述",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_045.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "experiences",
+          "label": "工作经历",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_046.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业概述",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_048.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_05.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业概述",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_051.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "experiences",
+          "label": "工作经历",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_052.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_053.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业概述",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "experiences",
+          "label": "工作经历",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "awards",
+          "label": "荣誉奖项",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_054.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_056.html",
+      "fields": [
+        {
+          "name": "专业速览",
+          "label": "专业速览",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_057.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业概述",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_058.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业概述",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_06.html",
+      "fields": [
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_060.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业概要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_061.html",
+      "fields": [
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_062.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_064.html",
+      "fields": [
+        {
+          "name": "晋升与成就亮点",
+          "label": "晋升与成就亮点",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_065.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_066.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "experiences",
+          "label": "工作经历",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_067.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_068.html",
+      "fields": [
+        {
+          "name": "行业会议与演讲",
+          "label": "行业会议与演讲",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "专业发展",
+          "label": "专业发展",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_069.html",
+      "fields": [
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_07.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "awards",
+          "label": "荣誉奖项",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_070.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "interests",
+          "label": "兴趣爱好",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_073.html",
+      "fields": [
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_075.html",
+      "fields": [
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_077.html",
+      "fields": [
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_079.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业概述",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_080.html",
+      "fields": [
+        {
+          "name": "视觉叙事_专业轮廓",
+          "label": "视觉叙事 · 专业轮廓",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "创作轨迹",
+          "label": "创作轨迹",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "学院积淀",
+          "label": "学院积淀",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_081.html",
+      "fields": [
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_082.html",
+      "fields": [
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_083.html",
+      "fields": [
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_084.html",
+      "fields": [
+        {
+          "name": "行业展会_猎头关注",
+          "label": "行业展会 & 猎头关注",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_085.html",
+      "fields": [
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_086.html",
+      "fields": [
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_087.html",
+      "fields": [
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_088.html",
+      "fields": [
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_089.html",
+      "fields": [
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_09.html",
+      "fields": [
+        {
+          "name": "experiences",
+          "label": "工作经历",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_091.html",
+      "fields": [
+        {
+          "name": "开源与社区影响",
+          "label": "开源与社区影响",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_092.html",
+      "fields": [
+        {
+          "name": "专业背景",
+          "label": "专业背景",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "experiences",
+          "label": "工作经历",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_093.html",
+      "fields": [
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_095.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "certifications",
+          "label": "证书",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_096.html",
+      "fields": [
+        {
+          "name": "研究领域",
+          "label": "研究领域",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "代表论文",
+          "label": "代表论文",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "awards",
+          "label": "荣誉奖项",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_098.html",
+      "fields": [
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_10.html",
+      "fields": [
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "projects",
+          "label": "项目经验",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_11.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业摘要",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_12.html",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "专业概览",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "education",
+          "label": "教育背景",
+          "reason": "区块存在但未提取到条目或选择器"
+        },
+        {
+          "name": "languages",
+          "label": "语言能力",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    },
+    {
+      "file": "prompt_13.html",
+      "fields": [
+        {
+          "name": "安全研究与ctf成就",
+          "label": "安全研究与CTF成就",
+          "reason": "未识别的自定义区块"
+        },
+        {
+          "name": "skills",
+          "label": "技能清单",
+          "reason": "区块存在但未提取到条目或选择器"
+        }
+      ]
+    }
+  ]
+}

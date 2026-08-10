@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>张明远 · 新能源项目经理简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #eef2f5;
+      font-family: 'Arial', 'Helvetica Neue', '思源黑体', 'Source Han Sans CN', 'Calibri', system-ui, -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      margin: 0;
+    }
+
+    /* 简历卡片：固定A4宽度，背景纯白，模拟纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.02);
+      border-radius: 0; /* 打印时完全直角 */
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+
+    /* 内边距采用A4舒适留白，上下左右均≥0.5英寸 */
+    .resume-inner {
+      padding: 1.2in 1in 1in 1in; /* 约上下1.2英寸，左右1英寸，呼吸感充足 */
+      position: relative;
+    }
+
+    /* 绿色系点缀 — 仅用于标题线与装饰细条，正文保持深灰/黑 */
+    :root {
+      --primary-deep: #1e3b2f;    /* 深墨绿，用于姓名及重要标题 */
+      --accent-green: #2c5e44;    /* 中绿，分割线、强调装饰 */
+      --soft-bg: #f4f9f4;        /* 极浅豆沙绿，仅用于低风险强调条（非常淡的背景） */
+      --text-main: #1f2a2e;       /* 主要文字黑灰 */
+      --text-secondary: #3a454a;  /* 次级文字 */
+      --border-light: #d0d9d4;    /* 浅灰绿边框 */
+      --tag-bg: #edf4ef;          /* 技能标签底色 */
+    }
+
+    /* 版式布局：单列为主，左对齐，保证ATS正确解析 */
+    h1, h2, h3, p, ul, li, div, span {
+      font-weight: normal;
+      line-height: 1.5;
+    }
+
+    /* 姓名区域：左对齐，带极简分割线 */
+    .name-section {
+      margin-bottom: 0.65rem;
+    }
+
+    .name {
+      font-size: 32pt;
+      font-weight: 700;
+      color: var(--primary-deep);
+      letter-spacing: 1.2px;
+      line-height: 1.2;
+      margin-bottom: 0.15rem;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    .title-sub {
+      font-size: 12.5pt;
+      font-weight: 400;
+      color: #2c4a38;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.4px;
+    }
+
+    /* 分割线：纯色细线，绿色 */
+    .divider {
+      width: 100%;
+      height: 1.8px;
+      background-color: var(--accent-green);
+      margin: 0.5rem 0 0.9rem 0;
+      border: none;
+      opacity: 0.8;
+    }
+
+    /* 联系信息 - 行内图标用文本符号，完全ATS安全 */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 10.5pt;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
+      font-weight: 400;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .contact-icon {
+      font-weight: 500;
+      color: #2c5e44;
+      margin-right: 2px;
+    }
+
+    /* 板块标题：大写形式，左对齐，底部细线 */
+    .section-title {
+      font-size: 13pt;
+      font-weight: 700;
+      color: var(--primary-deep);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-top: 1.15rem;
+      margin-bottom: 0.45rem;
+      padding-bottom: 0.2rem;
+      border-bottom: 1.5px solid var(--accent-green);
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    /* 工作经历条目 & 教育条目 */
+    .entry {
+      margin-bottom: 0.85rem;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.1rem;
+    }
+
+    .company-school {
+      font-weight: 700;
+      font-size: 12pt;
+      color: #111f1a;
+      letter-spacing: 0.2px;
+    }
+
+    .position-degree {
+      font-weight: 500;
+      font-size: 11pt;
+      color: #2a3a31;
+      margin-left: 0.3rem;
+      font-style: normal;
+    }
+
+    .date-location {
+      font-size: 10.5pt;
+      color: #4a5550;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    /* 描述要点：标准圆点符号，完全ATS可读 */
+    .bullet-list {
+      list-style: none;
+      margin-top: 0.25rem;
+      padding-left: 0.2rem;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.22rem;
+      font-size: 10.5pt;
+      color: var(--text-main);
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.1rem;
+      color: #2c5e44;
+      font-weight: 700;
+      font-size: 11pt;
+    }
+
+    /* 技能区域：标签式排列，简单灵活 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 0.3rem;
+    }
+
+    .skill-tag {
+      background-color: var(--tag-bg);
+      color: #1f3a2c;
+      font-size: 10.5pt;
+      padding: 0.25rem 0.9rem;
+      border-radius: 20px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      border: 0.5px solid #cbdcd0;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    /* 项目经历类似工作经历样式 */
+    .project-item {
+      margin-bottom: 0.7rem;
+    }
+
+    .project-title {
+      font-weight: 700;
+      font-size: 11.5pt;
+      color: #1f3529;
+      display: inline;
+    }
+
+    .project-desc {
+      font-size: 10.5pt;
+      color: var(--text-main);
+      margin-top: 0.15rem;
+    }
+
+    /* 左侧极细色条（低风险装饰，不与文字重叠，纯CSS实现） */
+    .resume-inner {
+      position: relative;
+    }
+
+    /* 使用极细的左边框条，但位于纸张边缘内部，不影响文本流 */
+    .resume-inner::before {
+      content: "";
+      position: absolute;
+      left: 0.45in;
+      top: 1.2in;
+      bottom: 1.1in;
+      width: 3px;
+      background-color: #cfe4d4;
+      border-radius: 2px;
+      opacity: 0.55;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* 确保所有文字内容都在色条上方，不被遮挡 */
+    .resume-inner > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 教育、证书等 */
+    .edu-detail {
+      font-size: 10.5pt;
+      color: var(--text-main);
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: #d8e2db;
+      margin: 0.7rem 0 0.5rem;
+    }
+
+    /* 打印样式：完全去除背景、阴影、保证黑色文字 */
+    @media print {
+      body {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+
+      .resume {
+        max-width: 100%;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        margin: 0;
+        border-radius: 0;
+      }
+
+      .resume-inner {
+        padding: 0.7in 0.7in 0.7in 0.7in;
+      }
+
+      .resume-inner::before {
+        opacity: 0.15; /* 打印时极浅，节省墨水且不干扰文字 */
+        background-color: #c8dbcf;
+      }
+
+      .skill-tag {
+        background-color: #f2f7f3;
+        border: 0.5px solid #aaa;
+      }
+
+      .divider, .section-title {
+        border-color: #2c5e44;
+      }
+
+      a, button {
+        display: none;
+      }
+
+      .contact-item {
+        color: black;
+      }
+    }
+
+    /* 针对小屏幕调整，但打印优先 */
+    @media screen and (max-width: 700px) {
+      .resume-inner {
+        padding: 1.8rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      
+      <!-- 姓名与标题 -->
+      <div class="name-section">
+        <h1 class="name">张明远</h1>
+        <div class="title-sub">新能源项目经理 · 光伏/储能方向</div>
+      </div>
+      <div class="divider"></div>
+      
+      <!-- 联系方式：纯文本，行内图标用符号表示 -->
+      <div class="contact-row">
+        <span class="contact-item"><span class="contact-icon">📞</span> +86 139 5027 3841</span>
+        <span class="contact-item"><span class="contact-icon">✉️</span> mingyuan.zhang@energypro.cn</span>
+        <span class="contact-item"><span class="contact-icon">📍</span> 上海 · 中国</span>
+        <span class="contact-item"><span class="contact-icon">🔗</span> linkedin.com/in/mingyuan-zhang</span>
+      </div>
+
+      <!-- 专业总结 (概述) -->
+      <div class="section-title">专业概述</div>
+      <div style="font-size: 10.5pt; color: #1f2a2e; margin-bottom: 0.2rem; line-height: 1.5;">
+        4年新能源领域项目管理经验，主导过总计120MW光伏电站及工商业储能项目。擅长跨部门协调、供应链管理与并网交付。持有PMP证书，熟悉国网并网流程及可再生能源政策。
+      </div>
+
+      <!-- 核心技能 -->
+      <div class="section-title">核心能力</div>
+      <div class="skills-container">
+        <span class="skill-tag">光伏电站EPC管理</span>
+        <span class="skill-tag">储能系统集成</span>
+        <span class="skill-tag">项目预算控制</span>
+        <span class="skill-tag">供应链采购</span>
+        <span class="skill-tag">并网调试</span>
+        <span class="skill-tag">AutoCAD / PVsyst</span>
+        <span class="skill-tag">MS Project</span>
+        <span class="skill-tag">PMP®认证</span>
+        <span class="skill-tag">跨职能团队领导</span>
+        <span class="skill-tag">可再生能源政策</span>
+      </div>
+
+      <!-- 工作经历 -->
+      <div class="section-title">工作经历</div>
+      
+      <div class="entry">
+        <div class="entry-header">
+          <span class="company-school">绿澜能源科技</span><span class="position-degree"> | 项目经理</span>
+          <span class="date-location">2022.04 – 至今 | 上海</span>
+        </div>
+        <ul class="bullet-list">
+          <li>负责长三角地区分布式光伏及用户侧储能项目交付，累计管理项目容量超45MW，全部按期并网。</li>
+          <li>统筹EPC总包、设备采购与施工团队，通过优化供应链将组件采购成本降低12%。</li>
+          <li>主导3个10MW/20MWh储能电站项目，协调电网接入与消防验收，实现零安全事故交付。</li>
+          <li>建立项目进度看板与风险登记册，提升跨部门透明度，项目整体偏差控制在5%以内。</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="company-school">正泰新能源</span><span class="position-degree"> | 助理项目经理</span>
+          <span class="date-location">2020.07 – 2022.02 | 杭州</span>
+        </div>
+        <ul class="bullet-list">
+          <li>协助管理大型地面光伏电站（80MW）建设，负责现场施工进度跟踪与质量检验。</li>
+          <li>协调设计院、供应商及施工方，解决技术变更问题20余项，保障项目按里程碑推进。</li>
+          <li>参与编制项目周报与并网资料，支持项目顺利通过国网验收。</li>
+          <li>使用PVsyst进行阴影模拟与发电量测算，为可研报告提供数据支撑。</li>
+        </ul>
+      </div>
+
+      <!-- 项目亮点 (突出新能源项目经理竞争力) -->
+      <div class="section-title">重点项目</div>
+      
+      <div class="project-item">
+        <span class="project-title">苏州工业园区12MW储能项目</span> <span style="color:#4a5550; font-size:10.5pt;">| 项目经理 | 2023.06 – 2024.01</span>
+        <div class="project-desc bullet-list" style="margin-top:0.1rem;">
+          <li>主导12MW/24MWh磷酸铁锂储能电站建设，从设备选型到并网投运全程管理。</li>
+          <li>通过分时电价策略与需量管理，为客户年节省电费约320万元，内部收益率达9.8%。</li>
+        </div>
+      </div>
+      
+      <div class="project-item">
+        <span class="project-title">安徽渔光互补光伏电站 (50MW)</span> <span style="color:#4a5550; font-size:10.5pt;">| 项目协调 | 2021.03 – 2021.12</span>
+        <div class="project-desc bullet-list" style="margin-top:0.1rem;">
+          <li>协助管理桩基施工与组件安装，协调水面作业安全方案，提前20天完成全容量并网。</li>
+          <li>参与编制水土保持方案及环保验收，确保项目符合生态红线要求。</li>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div class="section-title">教育背景</div>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="company-school">上海理工大学</span><span class="position-degree"> | 能源与动力工程 · 学士</span>
+          <span class="date-location">2016.09 – 2020.06</span>
+        </div>
+        <div class="edu-detail" style="margin-top: 0.15rem;">主修课程：光伏发电系统、储能原理、电力电子技术、项目管理</div>
+      </div>
+
+      <!-- 证书与语言 -->
+      <div class="section-title">证书与语言</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; font-size: 10.5pt; color: var(--text-main); margin-top: 0.2rem;">
+        <span>✅ PMP® 项目管理专业人士 (2023年获得)</span>
+        <span>✅ 高压电工操作证</span>
+        <span>✅ 英语 CET-6 · 商务沟通</span>
+        <span>✅ 注册咨询工程师 (备考中)</span>
+      </div>
+      
+      <!-- 极简装饰线，完全合规 -->
+      <div style="margin-top: 1rem; height: 2px; background: linear-gradient(to right, #2c5e44 20%, #d0dfd4 20%); opacity: 0.6;"></div>
+      <div style="font-size: 9pt; color: #6b7b71; text-align: right; margin-top: 0.3rem; letter-spacing: 0.3px;">
+        持续学习 · 驱动绿色能源转型
+      </div>
+    </div>
+  </div>
+</body>
+</html>

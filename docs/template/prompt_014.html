@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
+  <title>简历 · 律所合伙人 · 传统商务深蓝</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Arial', 'Helvetica', '思源黑体', 'Noto Sans SC', 'Calibri', sans-serif;
+    }
+
+    /* A4尺寸卡片，模拟纸张 */
+    .resume {
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+      padding: 0.75in 0.8in 0.7in 0.8in;
+      position: relative;
+      color: #2d3748;
+      line-height: 1.5;
+    }
+
+    /* 打印样式：去除背景、阴影，确保文字清晰 */
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+      .resume {
+        box-shadow: none;
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        padding: 0.7in 0.75in 0.65in 0.75in;
+        page-break-after: auto;
+      }
+      /* 隐藏交互元素 */
+      button, .no-print, a:link, a:visited {
+        text-decoration: none;
+        color: #2d3748;
+      }
+      a {
+        color: #2d3748;
+        text-decoration: none;
+      }
+      .link-underline {
+        text-decoration: none;
+        border-bottom: none;
+      }
+      /* 确保分割线颜色保留 */
+      .divider-light, .divider-thin, .section-header-line {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    /* 颜色与字体定义 */
+    :root {
+      --deep-blue: #1a365d;
+      --accent-blue: #2b4f7c;
+      --soft-gray: #f7fafc;
+      --text-dark: #2d3748;
+      --text-muted: #4a5568;
+      --border-light: #e2e8f0;
+      --divider: #cbd5e0;
+    }
+
+    h1, h2, h3, h4, p, li, div {
+      color: var(--text-dark);
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 1.2rem;
+      border-bottom: 2px solid var(--deep-blue);
+      padding-bottom: 0.5rem;
+    }
+
+    .name {
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', 'Noto Sans SC', sans-serif;
+      font-size: 28pt;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      color: var(--deep-blue);
+      line-height: 1.2;
+      margin-bottom: 0.15rem;
+    }
+
+    .title-sub {
+      font-size: 12.5pt;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+      letter-spacing: 0.4px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 0.6rem;
+      font-size: 10.5pt;
+      color: var(--text-dark);
+      align-items: center;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .contact-icon {
+      font-size: 11pt;
+      color: var(--deep-blue);
+      font-weight: 500;
+      margin-right: 2px;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      font-size: 13pt;
+      font-weight: 700;
+      color: var(--deep-blue);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin: 1.5rem 0 0.7rem 0;
+      border-bottom: 1.5px solid var(--divider);
+      padding-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 28px;
+      height: 2px;
+      background-color: var(--deep-blue);
+      margin-left: 0.5rem;
+      margin-top: 2px;
+    }
+
+    /* 工作经历条目 */
+    .exp-item {
+      margin-bottom: 1.1rem;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.15rem;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 12.5pt;
+      color: #1a202c;
+    }
+
+    .job-title {
+      font-weight: 600;
+      font-size: 11.5pt;
+      color: var(--text-dark);
+      margin-left: 0.3rem;
+    }
+
+    .date-location {
+      font-size: 10.5pt;
+      color: var(--text-muted);
+      font-weight: 400;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .exp-details {
+      margin-top: 0.25rem;
+      padding-left: 0.2rem;
+      font-size: 10.8pt;
+      color: var(--text-dark);
+      list-style-type: none;
+    }
+
+    .exp-details li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.3rem;
+      line-height: 1.45;
+    }
+
+    .exp-details li::before {
+      content: "•";
+      position: absolute;
+      left: 0.1rem;
+      color: var(--deep-blue);
+      font-weight: bold;
+      font-size: 11pt;
+    }
+
+    /* 教育背景与资质 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.5rem;
+      font-size: 11pt;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      color: #1a202c;
+    }
+
+    .edu-school {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .edu-date {
+      font-size: 10.5pt;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    /* 技能标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.2rem;
+      margin-top: 0.3rem;
+    }
+
+    .skill-tag {
+      font-size: 10.8pt;
+      background: transparent;
+      color: var(--text-dark);
+      font-weight: 500;
+      padding: 0.1rem 0;
+      border-bottom: 1px solid transparent;
+    }
+
+    .skill-category {
+      font-weight: 700;
+      color: var(--deep-blue);
+      margin-right: 0.3rem;
+    }
+
+    .two-col-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 2rem;
+      list-style: none;
+      margin-top: 0.2rem;
+    }
+
+    .two-col-list li {
+      font-size: 10.8pt;
+      width: calc(50% - 1rem);
+      display: flex;
+      align-items: baseline;
+    }
+
+    .two-col-list li::before {
+      content: "•";
+      color: var(--deep-blue);
+      font-weight: bold;
+      margin-right: 0.5rem;
+      font-size: 11pt;
+    }
+
+    /* 代表交易/项目 */
+    .deal-item {
+      margin-bottom: 0.6rem;
+    }
+
+    .deal-title {
+      font-weight: 700;
+      font-size: 11pt;
+      color: #1a202c;
+    }
+
+    .deal-desc {
+      font-size: 10.8pt;
+      margin-top: 0.1rem;
+      padding-left: 0.2rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border-light);
+      margin: 0.8rem 0 0.5rem 0;
+    }
+
+    /* 左侧窄色条装饰 (低风险ATS友好：纯border-left，不重叠文字) */
+    .left-accent-bar {
+      border-left: 4px solid var(--deep-blue);
+      padding-left: 1.2rem;
+      margin-left: 0;
+      margin-top: 0.5rem;
+    }
+
+    .compact-text {
+      font-size: 10.5pt;
+      color: var(--text-muted);
+    }
+
+    /* 确保所有文本可选中 */
+    .resume, .resume * {
+      user-select: text;
+    }
+
+    /* 链接样式仅视觉，无下划线装饰 */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    
+    <!-- 姓名与头衔 -->
+    <div class="name-section">
+      <div class="name">陈正言</div>
+      <div class="title-sub">公司并购与私募股权 · 权益合伙人</div>
+      <div class="contact-row">
+        <span class="contact-item"><span class="contact-icon">✆</span> +86 139 1012 8856</span>
+        <span class="contact-item"><span class="contact-icon">✉</span> zhengyan.chen@junduolaw.com</span>
+        <span class="contact-item"><span class="contact-icon">⛳</span> 北京 · 国贸</span>
+        <span class="contact-item"><span class="contact-icon">🖂</span> linkedin.com/in/zhengyanchen</span>
+      </div>
+    </div>
+
+    <!-- 专业概览（采用左侧窄色条风格，纯文本） -->
+    <div class="left-accent-bar">
+      <p style="font-size: 11pt; color: #2d3748; margin: 0.2rem 0 0.3rem 0; line-height: 1.5;">
+        拥有超过12年商事法律服务经验，专注于跨境并购、私募股权投融资及复杂公司重组。作为君道律师事务所最年轻的权益合伙人之一，主导超50起标的额逾10亿人民币的交易项目，长期服务于红杉资本、高盛及多家央企。擅长在监管框架下设计创新交易结构。
+      </p>
+    </div>
+
+    <!-- 核心执业领域 -->
+    <div class="section-title">核心领域</div>
+    <div class="skills-container" style="margin-bottom: 0.3rem;">
+      <span class="skill-tag"><span class="skill-category">并购</span> 跨境M&A</span>
+      <span class="skill-tag"><span class="skill-category">私募股权</span> 成长型投资</span>
+      <span class="skill-tag"><span class="skill-category">基金设立</span> QFLP/ODI</span>
+      <span class="skill-tag"><span class="skill-category">合规</span> 反垄断申报</span>
+      <span class="skill-tag"><span class="skill-category">行业</span> TMT/医疗/先进制造</span>
+    </div>
+
+    <!-- 职业经历 -->
+    <div class="section-title">职业经历</div>
+    
+    <div class="exp-item">
+      <div class="exp-header">
+        <span>
+          <span class="company-name">君道律师事务所</span>
+          <span class="job-title">· 权益合伙人 / 公司并购部联席负责人</span>
+        </span>
+        <span class="date-location">2019.04 – 至今 | 北京</span>
+      </div>
+      <ul class="exp-details">
+        <li>率领17人律师团队完成年度创收逾2.3亿人民币，连续三年部门业绩增长率超25%。</li>
+        <li>代表红杉资本中国基金完成对某人工智能芯片企业5亿美元C轮融资，设计VIE架构及员工股权激励方案。</li>
+        <li>主导某央企集团对德国智能制造标的4.8亿欧元收购，协调中、德、卢森堡三地法律及反垄断审查。</li>
+        <li>担任多家头部双币基金常年法律顾问，提供投后管理及退出路径设计（IPO/并购重组/回购）。</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span>
+          <span class="company-name">海问律师事务所</span>
+          <span class="job-title">· 资深律师 / 公司业务组</span>
+        </span>
+        <span class="date-location">2014.08 – 2019.03 | 北京</span>
+      </div>
+      <ul class="exp-details">
+        <li>作为核心经办律师参与华平投资、鼎晖投资多项境内医疗及消费领域并购，交易总额超120亿元。</li>
+        <li>协助小米集团早期生态链企业完成多轮融资及重组，搭建符合上市要求的公司治理结构。</li>
+        <li>为某知名地产基金设计类REITs交易架构，实现资产出表及税务优化。</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span>
+          <span class="company-name">美国凯易律师事务所 (Kirkland & Ellis)</span>
+          <span class="job-title">· 国际法律顾问 (纽约州执业)</span>
+        </span>
+        <span class="date-location">2011.09 – 2014.06 | 纽约/香港</span>
+      </span>
+      </div>
+      <ul class="exp-details">
+        <li>参与多起中美跨境并购及港股IPO项目，包括某新能源企业7.2亿美元香港首次公开发行。</li>
+        <li>协助中国主权基金完成对北美页岩气资产的联合收购，负责交易文件及美国CFIUS审查沟通。</li>
+      </ul>
+    </div>
+
+    <!-- 代表交易精选 (强化合伙人量级) -->
+    <div class="section-title">代表交易</div>
+    <div class="deal-item">
+      <span class="deal-title">· 某医药独角兽企业Pre-IPO轮融资</span>
+      <div class="deal-desc">代表高瓴资本领投3.5亿美元，设计优先清算权及反稀释条款，项目于2023年成功登陆港交所。</div>
+    </div>
+    <div class="deal-item">
+      <span class="deal-title">· 中国化工集团子公司剥离与合资</span>
+      <div class="deal-desc">主导与沙特基础工业公司的战略合资项目，涉及资产估值逾90亿人民币，完成多司法辖区经营者集中申报。</div>
+    </div>
+    <div class="deal-item">
+      <span class="deal-title">· 元生资本二期美元基金设立</span>
+      <div class="deal-desc">协助完成总规模8.5亿美元盲池基金募集，处理开曼豁免有限合伙架构及Side Letter谈判。</div>
+    </div>
+
+    <!-- 教育背景与资质 -->
+    <div class="section-title">教育背景与执业资格</div>
+    <div class="edu-item">
+      <span><span class="edu-degree">法学硕士 (LL.M.)</span> · <span class="edu-school">哥伦比亚大学法学院</span></span>
+      <span class="edu-date">2010 – 2011</span>
+    </div>
+    <div class="edu-item">
+      <span><span class="edu-degree">法学学士</span> · <span class="edu-school">北京大学法学院</span></span>
+      <span class="edu-date">2006 – 2010</span>
+    </div>
+    <div class="edu-item" style="margin-top: 0.2rem;">
+      <span><span class="edu-degree">中国律师执业资格</span> · 纽约州律师执业资格</span>
+      <span class="edu-date">2012 / 2013</span>
+    </div>
+
+    <!-- 专业任职与荣誉 -->
+    <div class="section-title">行业任职与荣誉</div>
+    <ul class="two-col-list">
+      <li>中华全国律师协会公司法专业委员会委员</li>
+      <li>Chambers 公司/并购领域 Band 3 (2025)</li>
+      <li>Legalband 私募股权与风险投资领先律师</li>
+      <li>北京市律师协会涉外律师人才库入选</li>
+      <li>ALB 中国十五佳并购律师 (2023)</li>
+      <li>钱伯斯大中华区指南推荐律师</li>
+    </ul>
+
+    <!-- 语言能力及其他 (简洁标签) -->
+    <div style="margin-top: 1.2rem; display: flex; gap: 2.5rem; font-size: 10.8pt; color: var(--text-dark); border-top: 1px solid var(--border-light); padding-top: 0.7rem;">
+      <span><strong style="color: var(--deep-blue);">语言：</strong>中文(母语) · 英文(商务谈判级) · 粤语(工作流利)</span>
+      <span><strong style="color: var(--deep-blue);">出版物：</strong>《跨境并购中的监管博弈》合著</span>
+    </div>
+
+    <!-- 极简脚注，仅用于视觉收尾，无额外装饰 -->
+    <div style="margin-top: 0.8rem; font-size: 9pt; color: #a0aec0; text-align: right; border-top: 1px solid #edf2f7; padding-top: 0.3rem;">
+      陈正言 · 权益合伙人 · 简历 · 第1页
+    </div>
+  </div>
+</body>
+</html>

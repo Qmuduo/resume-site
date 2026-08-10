@@ -1,0 +1,194 @@
+{
+  "templateId": "prompt_014",
+  "name": "简历 · 律所合伙人 · 传统商务深蓝",
+  "sourceFile": "prompt_014.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "核心领域",
+      "label": "核心领域",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "代表交易",
+      "label": "代表交易",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "awards",
+      "label": "荣誉奖项",
+      "type": "array",
+      "commonPath": "awards",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-sub",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".exp-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "exp-item"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".edu-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "edu-item"
+    }
+  ],
+  "sampleData": {
+    "name": "陈正言",
+    "title": "公司并购与私募股权 · 权益合伙人",
+    "phone": "✆ +86 139 1012 8856",
+    "email": "✉ zhengyan.chen@junduolaw.com",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "🖂 linkedin.com/in/zhengyanchen"
+      }
+    ],
+    "核心领域": "并购 跨境M&A 私募股权 成长型投资 基金设立 QFLP/ODI 合规 反垄断申报 行业 TMT/医疗/先进制造",
+    "代表交易": "· 某医药独角兽企业Pre-IPO轮融资 代表高瓴资本领投3.5亿美元，设计优先清算权及反稀释条款，项目于2023年成功登陆港交所。 · 中国化工集团子公司剥离与合资 主导与沙特基础工业公司的战略合资项目，涉及资产估值逾90亿人民币，完成多司法辖区经营者集中申报。 · 元生资本二期美元基金设立 协助完成总规模8.5亿美元盲池基金募集，处理开曼豁免有限合伙架构及Side Letter谈判。",
+    "experiences": [
+      {
+        "position": "· 权益合伙人 / 公司并购部联席负责人",
+        "date": "2019.04 – 至今 | 北京"
+      },
+      {
+        "position": "· 资深律师 / 公司业务组",
+        "date": "2014.08 – 2019.03 | 北京"
+      },
+      {
+        "position": "· 国际法律顾问 (纽约州执业)",
+        "date": "2011.09 – 2014.06 | 纽约/香港"
+      }
+    ],
+    "education": [
+      {
+        "school": "哥伦比亚大学法学院",
+        "date": "2010 – 2011"
+      },
+      {
+        "school": "北京大学法学院",
+        "date": "2006 – 2010"
+      },
+      {
+        "date": "2012 / 2013"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "核心领域",
+      "label": "核心领域",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "代表交易",
+      "label": "代表交易",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "awards",
+      "label": "荣誉奖项",
+      "type": "array",
+      "commonPath": "awards",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

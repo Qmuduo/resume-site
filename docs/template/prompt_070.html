@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>陈亦凡 · 高级UI/UX设计主管简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1B3A5C;      /* 深邃蓝灰，商务基调 */
+      --accent: #E07A3D;       /* 陶土橙，大胆点缀 */
+      --body-text: #2D3748;    /* 深灰正文 */
+      --light-bg: #F8FAFC;     /* 极浅背景，仅用于分割氛围 */
+      --border-light: #E2E8F0;
+      --white: #FFFFFF;
+      --geometric: #C44536;    /* 几何装饰块辅助色，低调砖红 */
+    }
+
+    body {
+      font-family: 'Arial', 'Helvetica Neue', 'Calibri', '思源黑体', 'Noto Sans SC', sans-serif;
+      background: #E9ECF2; /* 屏幕预览时的柔和底色 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      margin: 0;
+      color: var(--body-text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 简历卡片：A4比例固定宽度，模拟纸张 */
+    .resume {
+      width: 210mm;
+      background: var(--white);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* 几何装饰条：位于顶部，大胆但克制，完全不影响文本流 */
+    .geometric-header {
+      display: flex;
+      align-items: stretch;
+      height: 10px;
+      background: transparent;
+    }
+    .geo-block {
+      flex: 1;
+      height: 100%;
+    }
+    .geo-block:nth-child(1) { background: var(--primary); }
+    .geo-block:nth-child(2) { background: var(--accent); }
+    .geo-block:nth-child(3) { background: var(--geometric); }
+    .geo-block:nth-child(4) { background: #2C3E50; }
+    .geo-block:nth-child(5) { background: #D98C5F; }
+    .geo-block:nth-child(6) { background: #4A6B8A; }
+
+    /* 主要内容区域，留白充裕 */
+    .resume-inner {
+      padding: 1.8cm 2cm 1.5cm 2cm; /* 上下左右充足边距，符合0.5英寸以上要求 */
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    /* 姓名与标题区域 */
+    .name-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.2rem;
+    }
+    .name {
+      font-size: 38pt;
+      font-weight: 700;
+      font-family: 'Arial', 'Helvetica Neue', 'Calibri', '思源黑体', sans-serif;
+      color: var(--primary);
+      letter-spacing: 1.5px;
+      line-height: 1.1;
+    }
+    .title {
+      font-size: 16pt;
+      font-weight: 400;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-family: 'Helvetica Neue', 'Arial', sans-serif;
+      margin-top: 4px;
+    }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+      font-size: 10.5pt;
+      color: #4A5568;
+      align-items: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 1rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    /* 简单线性图标（文本符号，ATS完全友好） */
+    .icon {
+      display: inline-block;
+      width: 16px;
+      text-align: center;
+      font-weight: 500;
+      color: var(--accent);
+      margin-right: 2px;
+    }
+
+    /* 板块标题样式 */
+    .section-title {
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: var(--primary);
+      border-bottom: 2px solid var(--border-light);
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      transform: rotate(45deg);
+      margin-right: 0.3rem;
+    }
+
+    /* 经历条目布局：完全左对齐，时间右对齐（无浮动定位，用flex实现） */
+    .experience-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.9rem;
+    }
+    .exp-left {
+      display: flex;
+      flex-direction: column;
+    }
+    .company {
+      font-weight: 700;
+      font-size: 12pt;
+      color: #1A202C;
+    }
+    .role {
+      font-weight: 500;
+      font-size: 11pt;
+      color: #2D3748;
+      margin-top: 0.1rem;
+    }
+    .date {
+      font-size: 10pt;
+      color: #5A6B7F;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+    .description {
+      margin-top: 0.4rem;
+      font-size: 10.5pt;
+      color: #2D3748;
+      padding-left: 1.2rem;
+    }
+    .description ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .description li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+    .description li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 11pt;
+    }
+
+    /* 技能标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.2rem;
+    }
+    .skill-tag {
+      background: transparent;
+      border: 1px solid var(--border-light);
+      padding: 0.3rem 1rem;
+      font-size: 10pt;
+      font-weight: 500;
+      color: var(--body-text);
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+      transition: none;
+    }
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* 教育、证书等简单列表 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+      font-size: 10.5pt;
+    }
+    .edu-degree {
+      font-weight: 700;
+    }
+
+    /* 双栏布局用于语言/兴趣等（纯文本，无浮动） */
+    .two-columns {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .col {
+      flex: 1;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid var(--border-light);
+      margin: 0.2rem 0 0.8rem 0;
+    }
+
+    /* 打印样式：完全移除背景、阴影，保留结构，颜色正常 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+      .resume {
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+        page-break-after: avoid;
+      }
+      .geometric-header {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .section-title::before,
+      .description li::before {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .skill-tag {
+        border: 1px solid #A0AEC0;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    /* 响应式微调：小屏幕预览时仍保持A4宽度滚动 */
+    @media screen and (max-width: 800px) {
+      .resume {
+        width: 100%;
+      }
+      .resume-inner {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- 几何装饰条：大胆色块组合，无文字干扰 -->
+    <div class="geometric-header">
+      <div class="geo-block"></div>
+      <div class="geo-block"></div>
+      <div class="geo-block"></div>
+      <div class="geo-block"></div>
+      <div class="geo-block"></div>
+      <div class="geo-block"></div>
+    </div>
+
+    <div class="resume-inner">
+      <!-- 姓名与标题区域 -->
+      <div>
+        <div class="name-section">
+          <div>
+            <div class="name">陈亦凡</div>
+            <div class="title">高级UI/UX设计主管</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="icon">📞</span> +86 138 5124 6970</span>
+          <span class="contact-item"><span class="icon">✉️</span> yifan.chen@design.studio</span>
+          <span class="contact-item"><span class="icon">🌐</span> dribbble.com/yifanux</span>
+          <span class="contact-item"><span class="icon">📍</span> 上海 / 远程</span>
+        </div>
+      </div>
+
+      <!-- 专业摘要（简洁，体现层级） -->
+      <div>
+        <div class="section-title">专业摘要</div>
+        <p style="font-size: 10.5pt; color: #2D3748; margin-top: 0.2rem;">
+          8年数字产品设计经验，专注B2B SaaS与设计系统搭建。善于通过数据驱动与几何视觉语言，带领团队交付高影响力的端到端体验。曾主导3个0-1产品设计，服务红杉被投企业及跨国客户。
+        </p>
+      </div>
+
+      <!-- 工作经历 -->
+      <div>
+        <div class="section-title">工作经历</div>
+        
+        <div class="experience-item">
+          <div class="exp-left">
+            <span class="company">星瀚设计咨询 (红杉资本被投)</span>
+            <span class="role">高级UI/UX设计主管</span>
+          </div>
+          <div class="date">2022.04 – 至今</div>
+        </div>
+        <div class="description">
+          <ul>
+            <li>领导5人设计团队，重构企业级SaaS控制台，用户任务完成率提升27%</li>
+            <li>建立内部设计系统“Stellar DS”，统一23个产品线视觉语言，开发效率提升40%</li>
+            <li>与产品、工程协作制定OKR，推动设计评审与可用性测试流程，关键界面跳出率降低18%</li>
+          </ul>
+        </div>
+
+        <div class="experience-item" style="margin-top: 1rem;">
+          <div class="exp-left">
+            <span class="company">云际科技 (UI/UX 负责人)</span>
+            <span class="role">资深UI/UX设计师</span>
+          </div>
+          <div class="date">2019.08 – 2022.02</div>
+        </div>
+        <div class="description">
+          <ul>
+            <li>负责核心数据可视化平台改版，采用大胆几何元素与动态卡片，用户日活增长33%</li>
+            <li>从0搭建移动端组件库，落地跨平台一致体验，设计还原度达96%</li>
+            <li>主导用户访谈与A/B测试，迭代信息架构，将关键流程步骤从7步缩减至3步</li>
+          </ul>
+        </div>
+
+        <div class="experience-item" style="margin-top: 1rem;">
+          <div class="exp-left">
+            <span class="company">麦肯锡设计实验室 (合同项目)</span>
+            <span class="role">高级产品设计师</span>
+          </div>
+          <div class="date">2017.03 – 2019.07</div>
+        </div>
+        <div class="description">
+          <ul>
+            <li>为金融与医疗客户提供数字化转型设计策略，产出高保真交互原型与设计规范</li>
+            <li>设计语言强调几何秩序与橙色高亮，多个方案被纳入麦肯锡数字资产库</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 技能与工具 -->
+      <div>
+        <div class="section-title">核心能力</div>
+        <div class="skills-container">
+          <span class="skill-tag">设计系统</span>
+          <span class="skill-tag">Figma 组件库</span>
+          <span class="skill-tag">用户研究</span>
+          <span class="skill-tag">交互原型</span>
+          <span class="skill-tag">视觉设计</span>
+          <span class="skill-tag">HTML/CSS 认知</span>
+          <span class="skill-tag">设计领导力</span>
+          <span class="skill-tag">A/B测试</span>
+          <span class="skill-tag">几何品牌语言</span>
+          <span class="skill-tag">Framer/Principle</span>
+        </div>
+      </div>
+
+      <!-- 教育背景 + 语言/证书 (双栏纯文本) -->
+      <div class="two-columns" style="margin-top: 0.4rem;">
+        <div class="col">
+          <div class="section-title">教育</div>
+          <div class="edu-item">
+            <span class="edu-degree">同济大学 设计创意学院</span>
+            <span>2014 – 2017</span>
+          </div>
+          <div style="font-size:10pt; color:#4A5568;">交互设计 硕士</div>
+          <div class="edu-item" style="margin-top: 0.6rem;">
+            <span class="edu-degree">中国美术学院</span>
+            <span>2010 – 2014</span>
+          </div>
+          <div style="font-size:10pt; color:#4A5568;">视觉传达设计 学士</div>
+        </div>
+        <div class="col">
+          <div class="section-title">语言 & 认证</div>
+          <div style="font-size:10.5pt; display: flex; flex-direction: column; gap: 0.4rem;">
+            <span><strong>英语</strong> · 专业工作水平 (TOEFL 105)</span>
+            <span><strong>中文</strong> · 母语</span>
+            <span><strong>Nielsen Norman UX 认证</strong></span>
+            <span><strong>Figma 专家认证</strong></span>
+          </div>
+          <div style="margin-top: 1rem;">
+            <div class="section-title" style="margin-top:0.2rem;">兴趣</div>
+            <span style="font-size:10.5pt;">几何抽象画、数据雕塑、独立游戏视觉</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 底部装饰线（低调几何呼应） -->
+      <div style="display: flex; gap: 4px; margin-top: 1.2rem; opacity: 0.7;">
+        <div style="width: 40px; height: 4px; background: var(--accent);"></div>
+        <div style="width: 20px; height: 4px; background: var(--primary);"></div>
+        <div style="width: 15px; height: 4px; background: var(--geometric);"></div>
+      </div>
+      
+      <!-- 极简脚注：Dribbble与猎头渠道暗示，纯文本 -->
+      <div style="font-size: 8pt; color: #A0AEC0; margin-top: 0.5rem; text-align: right; letter-spacing: 0.5px;">
+        作品集 · dribbble.com/yifanux  |  推荐人信息备索
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
+  <title>张知行 · 政府事务专员简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica', '思源黑体', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      color: #2D3748;
+    }
+
+    /* A4尺寸卡片，模拟纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      page-break-after: avoid;
+    }
+
+    /* 内边距呼吸感，符合0.5英寸以上要求 */
+    .resume-inner {
+      padding: 1.6cm 1.8cm 1.6cm 1.8cm;
+    }
+
+    /* 所有文本均为纯HTML文本，无canvas/svg渲染文字 */
+    h1, h2, h3, p, li, div, span {
+      font-weight: normal;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 0.5cm;
+      border-bottom: 2px solid #2C3E50;
+      padding-bottom: 0.4cm;
+    }
+
+    .name {
+      font-size: 28pt;
+      font-weight: 700;
+      color: #1A252F;
+      letter-spacing: 1px;
+      margin-bottom: 0.15cm;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    .subtitle {
+      font-size: 11pt;
+      color: #4A5568;
+      font-weight: 400;
+      letter-spacing: 0.8px;
+      margin-top: 0.1cm;
+    }
+
+    .contact-row {
+      margin-top: 0.4cm;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4cm 1.2cm;
+      font-size: 10pt;
+      color: #2D3748;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    /* 简单线性图标作为行内字符，ATS友好（纯文本+符号） */
+    .contact-icon {
+      font-weight: 400;
+      color: #2C3E50;
+      margin-right: 2px;
+      font-size: 10.5pt;
+    }
+
+    /* 板块标题样式 */
+    .section-title {
+      font-size: 12pt;
+      font-weight: 700;
+      color: #1A252F;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      margin-top: 0.55cm;
+      margin-bottom: 0.25cm;
+      border-bottom: 1px solid #CBD5E0;
+      padding-bottom: 0.12cm;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    /* 工作经历条目 */
+    .experience-item {
+      margin-bottom: 0.4cm;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.08cm;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 11.5pt;
+      color: #1A202C;
+    }
+
+    .job-title {
+      font-weight: 500;
+      font-size: 11pt;
+      color: #2D3748;
+      margin-left: 0.15cm;
+      font-style: normal;
+    }
+
+    .date-right {
+      font-size: 10pt;
+      color: #4A5568;
+      font-weight: 400;
+      white-space: nowrap;
+      margin-left: auto;
+      padding-left: 0.3cm;
+    }
+
+    .exp-details {
+      margin-top: 0.1cm;
+      padding-left: 0.2cm;
+    }
+
+    .exp-details p {
+      font-size: 10pt;
+      color: #2D3748;
+      margin-bottom: 0.08cm;
+      display: flex;
+      align-items: baseline;
+      line-height: 1.55;
+    }
+
+    .bullet {
+      display: inline-block;
+      width: 0.25cm;
+      font-weight: 600;
+      color: #2C3E50;
+      margin-right: 0.1cm;
+    }
+
+    /* 教育经历简洁 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 0.12cm;
+      font-size: 10.5pt;
+    }
+
+    .edu-school {
+      font-weight: 700;
+      color: #1A202C;
+    }
+
+    .edu-degree {
+      color: #2D3748;
+      margin-left: 0.2cm;
+      font-weight: 500;
+    }
+
+    .edu-date {
+      color: #4A5568;
+      font-size: 10pt;
+      margin-left: auto;
+    }
+
+    /* 技能标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2cm 0.5cm;
+      margin-top: 0.15cm;
+    }
+
+    .skill-tag {
+      font-size: 10pt;
+      background: transparent;
+      color: #2D3748;
+      font-weight: 500;
+      padding: 0.05cm 0;
+      border-bottom: 1px solid #E2E8F0;
+      letter-spacing: 0.3px;
+    }
+
+    .two-column-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.1cm 0.8cm;
+      margin-top: 0.1cm;
+    }
+
+    .two-column-list span {
+      font-size: 10pt;
+      width: auto;
+      min-width: 45%;
+    }
+
+    /* 分割线仅用边框实现，无图形 */
+    hr {
+      border: 0;
+      border-top: 1px solid #CBD5E0;
+      margin: 0.3cm 0 0.2cm 0;
+    }
+
+    /* 左侧窄色条（低风险，仅装饰，不重叠文字） */
+    .left-accent {
+      position: relative;
+    }
+
+    /* 完全移除浮动和定位干扰，使用纯块级布局 */
+    @media print {
+      body {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+      }
+
+      .resume {
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+      }
+
+      .resume-inner {
+        padding: 1.2cm 1.5cm 1.2cm 1.5cm;
+      }
+
+      /* 确保颜色正常显示，无背景色块反白问题 */
+      * {
+        color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .name, .section-title, .company-name {
+        color: #1A252F !important;
+      }
+
+      .contact-row, .exp-details p, .skill-tag {
+        color: #2D3748 !important;
+      }
+
+      .section-title {
+        border-bottom-color: #A0AEC0 !important;
+      }
+
+      /* 隐藏交互元素（本页面无按钮/链接下划线，但确保链接样式） */
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .contact-item {
+        color: #2D3748;
+      }
+    }
+
+    /* 响应式备用 */
+    @media screen and (max-width: 700px) {
+      .resume-inner {
+        padding: 1cm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-inner">
+      
+      <!-- 姓名与头衔区域 -->
+      <div class="name-section">
+        <h1 class="name">张知行</h1>
+        <div class="subtitle">政府事务专员 · 公共政策研究方向</div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="contact-icon">📞</span> 138-1023-4567</span>
+          <span class="contact-item"><span class="contact-icon">✉️</span> zhixing.zhang@policy.cn</span>
+          <span class="contact-item"><span class="contact-icon">📍</span> 北京市西城区</span>
+          <span class="contact-item"><span class="contact-icon">🆔</span> 中共党员</span>
+        </div>
+      </div>
+
+      <!-- 职业目标 / 摘要 (符合政府事务风格，正式庄重) -->
+      <div>
+        <div class="section-title">职业摘要</div>
+        <p style="font-size: 10.5pt; color: #2D3748; margin-top: 0.1cm; line-height: 1.6;">
+          具备3年政府事务与公共政策协调经验，熟悉党政机关公文流转及项目申报流程。曾参与省级重点课题调研，擅长政策解读、公文写作及跨部门沟通。致力于在公共事务领域深化专业服务，现寻求更具挑战性的政府事务岗位或遴选发展机会。
+        </p>
+      </div>
+
+      <!-- 工作经历 -->
+      <div>
+        <div class="section-title">工作经历</div>
+        
+        <div class="experience-item">
+          <div class="exp-header">
+            <span>
+              <span class="company-name">华策公共政策研究院</span>
+              <span class="job-title"> | 政府事务专员</span>
+            </span>
+            <span class="date-right">2023.03 – 至今</span>
+          </div>
+          <div class="exp-details">
+            <p><span class="bullet">•</span>负责对接市发改委、工信局等政府部门，跟进数字经济扶持政策，完成申报材料12份，成功获批专项资金超800万元。</p>
+            <p><span class="bullet">•</span>撰写政务信息专报、调研报告及领导讲话稿20余篇，其中3篇获市级领导批示，推动两项惠企措施落地。</p>
+            <p><span class="bullet">•</span>组织筹备政企座谈会、政策解读会9场，协调参会单位40余家，有效维护政府关系网络。</p>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <span>
+              <span class="company-name">中江实业集团（办公室）</span>
+              <span class="job-title"> | 行政助理（政策方向）</span>
+            </span>
+            <span class="date-right">2021.07 – 2023.02</span>
+          </div>
+          <div class="exp-details">
+            <p><span class="bullet">•</span>协助处理集团与属地街道、区管委会的日常联络，办理各类资质年检及合规审查，零延误完成关键证照更新。</p>
+            <p><span class="bullet">•</span>收集整理行业政策动态，编制《政策简报》周刊，为管理层提供决策参考，预警潜在政策风险3次。</p>
+            <p><span class="bullet">•</span>参与集团内部公文流转系统优化，规范红头文件格式与归档流程，提升公文处理效率约30%。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 项目经验 / 遴选相关亮点 (突出公考遴选方向) -->
+      <div>
+        <div class="section-title">重点项目与遴选实践</div>
+        <div class="experience-item">
+          <div class="exp-header">
+            <span class="company-name">“长三角一体化”政策协同调研</span>
+            <span class="date-right">2024.04 – 2024.09</span>
+          </div>
+          <div class="exp-details">
+            <p><span class="bullet">•</span>作为核心成员参与跨省域政策比较研究，梳理产业转移、环保标准等差异条款，形成2.5万字调研报告，获省政策研究室采纳。</p>
+            <p><span class="bullet">•</span>独立设计企业问卷并回收有效样本152份，运用Excel及SPSS基础分析，为政策建议提供数据支撑。</p>
+          </div>
+        </div>
+        <div class="experience-item">
+          <div class="exp-header">
+            <span class="company-name">中央机关公开遴选备考与模拟实训</span>
+            <span class="date-right">2025.01 – 2025.06</span>
+          </div>
+          <div class="exp-details">
+            <p><span class="bullet">•</span>系统研习《党政机关公文处理工作条例》，完成案例分析、对策性论文写作训练32篇，熟悉遴选考试测评要素。</p>
+            <p><span class="bullet">•</span>组织线上政策研讨小组，围绕“放管服改革”“基层治理”等主题开展无领导小组讨论，强化综合分析能力。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div>
+        <div class="section-title">教育背景</div>
+        <div class="edu-item">
+          <span><span class="edu-school">中国人民大学</span><span class="edu-degree"> | 公共事业管理 本科</span></span>
+          <span class="edu-date">2017.09 – 2021.06</span>
+        </div>
+        <div style="font-size: 10pt; color: #4A5568; margin-top: 0.05cm; margin-left: 0.2cm;">
+          主修课程：公共政策导论、行政管理学、公文写作、社会学概论
+        </div>
+      </div>
+
+      <!-- 技能与证书 (标签式 + 两栏列表结合) -->
+      <div>
+        <div class="section-title">专业技能与资质</div>
+        <div class="skills-container">
+          <span class="skill-tag">政策研究与解读</span>
+          <span class="skill-tag">公文写作（通知/报告/函）</span>
+          <span class="skill-tag">政府关系维护</span>
+          <span class="skill-tag">项目申报管理</span>
+          <span class="skill-tag">数据分析（Excel/SPSS）</span>
+          <span class="skill-tag">保密意识与合规</span>
+        </div>
+        <div style="margin-top: 0.25cm;">
+          <div class="two-column-list">
+            <span>• 国家统一法律职业资格（客观题）</span>
+            <span>• 大学英语六级（CET-6）</span>
+            <span>• 计算机二级（MS Office高级应用）</span>
+            <span>• 党校青年干部培训结业证书</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 其他信息，体现公考遴选适配度 -->
+      <div style="margin-top: 0.1cm;">
+        <div class="section-title">政治素养与荣誉</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.15cm 1cm; font-size: 10pt; color: #2D3748; margin-top: 0.1cm;">
+          <span>• 中共党员，党龄4年</span>
+          <span>• 2024年度单位“优秀政务信息员”</span>
+          <span>• 2022年集团征文比赛一等奖（主题：新时代基层治理）</span>
+          <span>• 志愿服务：社区防疫先锋岗累计120小时</span>
+        </div>
+        <p style="font-size: 10pt; color: #4A5568; margin-top: 0.2cm; border-left: 3px solid #2C3E50; padding-left: 0.2cm;">
+          持续关注国务院政策文件库，定期撰写政策笔记。具备较强的保密意识与政治敏锐性，能适应高强度公文处理及遴选备考节奏。
+        </p>
+      </div>
+
+      <!-- 无背景色块，无图形叠加，所有文字可选中复制 -->
+    </div>
+  </div>
+</body>
+</html>

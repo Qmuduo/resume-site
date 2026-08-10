@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>张振华 · 生产厂长简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #eef2f6;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 32px 16px;
+      font-family: 'Arial', 'Helvetica Neue', '思源黑体', 'Noto Sans SC', sans-serif;
+      line-height: 1.5;
+      color: #2D3748;
+    }
+
+    /* 简历卡片容器 - 模拟A4尺寸 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 内边距呼吸感 */
+    .resume-content {
+      padding: 0.9in 0.85in 0.85in 0.85in;
+    }
+
+    /* 所有文字均为纯文本，无图形遮挡 */
+    h1, h2, h3, p, li, div, span {
+      color: #2D3748;
+      font-weight: normal;
+    }
+
+    /* ----- 配色方案定义 ----- */
+    .resume {
+      --primary-deep-blue: #1A365D;  /* 主色：深蓝 */
+      --accent-slate: #4A5568;       /* 辅助深灰 */
+      --border-light: #E2E8F0;       /* 浅灰分割线 */
+      --bg-soft: #F7FAFC;            /* 极浅背景（仅用于极低风险装饰） */
+      --text-body: #2D3748;          /* 正文深灰 */
+      --text-muted: #4A5568;         /* 次要文字 */
+      --white: #FFFFFF;
+    }
+
+    /* ----- 字体方案 ----- */
+    h1 {
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', 'Noto Sans SC', sans-serif;
+      font-weight: 700;
+      font-size: 32pt;
+      letter-spacing: 0.5px;
+      color: var(--primary-deep-blue);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .title-sub {
+      font-family: 'Arial', 'Helvetica Neue', '思源黑体', sans-serif;
+      font-weight: 400;
+      font-size: 14pt;
+      color: var(--accent-slate);
+      margin-bottom: 0;
+      letter-spacing: 0.4px;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', 'Noto Sans SC', sans-serif;
+      font-weight: 700;
+      font-size: 13pt;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--primary-deep-blue);
+      margin-top: 28px;
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid var(--border-light);
+      position: relative;
+    }
+    /* 左侧极细深蓝色条装饰（纯CSS边框，不重叠文字） */
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 38px;
+      height: 3px;
+      background-color: var(--primary-deep-blue);
+      margin-top: 6px;
+      border-radius: 0;
+    }
+
+    /* 姓名区域下方分割线 */
+    .header-line {
+      border: none;
+      border-top: 1px solid #CBD5E0;
+      margin: 16px 0 20px 0;
+      opacity: 0.7;
+    }
+
+    /* 工作经历条目布局（纯文本流） */
+    .exp-item {
+      margin-bottom: 20px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 13.5pt;
+      color: #1A202C;
+      font-family: 'Arial', 'Helvetica Neue', '思源黑体', sans-serif;
+    }
+
+    .job-title {
+      font-weight: 600;
+      font-size: 12pt;
+      color: var(--accent-slate);
+      margin-left: 8px;
+      font-style: normal;
+    }
+
+    .date-location {
+      font-weight: 400;
+      font-size: 11pt;
+      color: #5A6B7C;
+      text-align: right;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    /* 描述要点：使用标准圆点符号，无自定义图形 */
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 6px;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 5px;
+      font-size: 11pt;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: var(--primary-deep-blue);
+      font-weight: bold;
+      font-size: 12pt;
+    }
+
+    /* 技能标签式排列 (纯文本，无浮动干扰) */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      margin-top: 6px;
+    }
+
+    .skill-tag {
+      font-size: 11pt;
+      font-weight: 500;
+      color: var(--text-body);
+      background: transparent;
+      padding: 0;
+      border: none;
+      letter-spacing: 0.2px;
+      display: inline-block;
+    }
+
+    .skill-tag::before {
+      content: "▹ ";
+      color: var(--primary-deep-blue);
+      font-weight: 600;
+      font-size: 10pt;
+      margin-right: 2px;
+    }
+
+    /* 教育背景简洁样式 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      font-size: 12pt;
+      color: #1A202C;
+    }
+
+    .edu-school {
+      font-weight: 400;
+      font-size: 11pt;
+      color: var(--accent-slate);
+      margin-left: 6px;
+    }
+
+    .edu-date {
+      font-size: 11pt;
+      color: #5A6B7C;
+      margin-left: auto;
+    }
+
+    /* 联系方式行 (图标使用纯文本字符，无svg) */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-top: 10px;
+      font-size: 11pt;
+      color: var(--text-body);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .contact-icon {
+      font-weight: 500;
+      color: var(--primary-deep-blue);
+      font-size: 11pt;
+    }
+
+    /* 禁止任何浮动多栏布局，全部使用块级或flex流 */
+    hr {
+      border: 0;
+      border-top: 1px solid #E2E8F0;
+      margin: 16px 0 8px 0;
+    }
+
+    /* 打印样式：完全符合ATS及纸质标准 */
+    @media print {
+      body {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+
+      .resume {
+        max-width: 100%;
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0 auto;
+      }
+
+      .resume-content {
+        padding: 0.7in 0.7in 0.7in 0.7in;
+      }
+
+      /* 隐藏所有交互元素（无按钮链接等，但确保颜色正常） */
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* 去除背景色块和阴影，保证纯黑白可读 */
+      * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+      }
+
+      .section-title {
+        border-bottom: 1px solid #000;
+      }
+
+      .section-title::after {
+        background-color: #000;
+      }
+
+      .bullet-list li::before {
+        color: #000;
+      }
+
+      .skill-tag::before {
+        color: #000;
+      }
+
+      .header-line {
+        border-top: 1px solid #000;
+      }
+
+      /* 确保文字黑色显示 */
+      h1, .company-name, .job-title, .section-title {
+        color: #000;
+      }
+    }
+
+    /* 小屏适配 */
+    @media screen and (max-width: 700px) {
+      .resume-content {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="resume-content">
+      
+      <!-- 姓名与标题区域 -->
+      <h1>张振华</h1>
+      <div class="title-sub">生产厂长 · 运营管理专家</div>
+      <div class="header-line"></div>
+      
+      <!-- 联系方式：纯文本行内图标，ATS完全可解析 -->
+      <div class="contact-row">
+        <div class="contact-item"><span class="contact-icon">📞</span> (86) 138-2159-4827</div>
+        <div class="contact-item"><span class="contact-icon">✉️</span> zhenhua.zhang@manufacture.cn</div>
+        <div class="contact-item"><span class="contact-icon">📍</span> 江苏 · 苏州</div>
+        <div class="contact-item"><span class="contact-icon">🔗</span> linkedin.com/in/zhenhuazhang</div>
+      </div>
+
+      <!-- 核心优势 / 专业摘要 （管理层侧重战略与精益生产）-->
+      <div class="section-title">专业摘要</div>
+      <div style="font-size: 11pt; color: #2D3748; margin-bottom: 6px; line-height: 1.6;">
+        13年生产制造管理经验，其中6年担任厂长/运营总监。精通精益生产、供应链优化与ISO 9001/14001体系。曾主导3个新工厂筹建，实现产能提升40%的同时降低单位成本18%。擅长跨部门协同与团队建设，管理规模超800人。
+      </div>
+
+      <!-- 核心技能：标签式排列，无表格 -->
+      <div class="section-title">核心能力</div>
+      <div class="skills-container">
+        <span class="skill-tag">精益生产 & 六西格玛</span>
+        <span class="skill-tag">工厂运营管理</span>
+        <span class="skill-tag">供应链与库存优化</span>
+        <span class="skill-tag">ISO体系 & 合规审计</span>
+        <span class="skill-tag">成本控制与预算</span>
+        <span class="skill-tag">团队建设与领导力</span>
+        <span class="skill-tag">TPM & OEE提升</span>
+        <span class="skill-tag">智能制造 / MES</span>
+        <span class="skill-tag">安全生产标准化</span>
+        <span class="skill-tag">新工厂筹建</span>
+      </div>
+
+      <!-- 工作经历（管理层，突出厂长经历） -->
+      <div class="section-title">工作经历</div>
+      
+      <div class="exp-item">
+        <div class="exp-header">
+          <span>
+            <span class="company-name">恒通工业集团</span>
+            <span class="job-title"> | 生产厂长</span>
+          </span>
+          <span class="date-location">2019.04 – 至今 | 苏州</span>
+        </div>
+        <ul class="bullet-list">
+          <li>全面负责年产值12亿的汽车零部件工厂运营，管理生产、质量、工程、物流等8个部门，员工650人。</li>
+          <li>主导精益转型，推广VSM价值流图分析，将主要产品线生产周期从14天缩短至8天，库存周转率提升35%。</li>
+          <li>推动自动化升级与MES系统实施，设备综合效率(OEE)由72%提升至85%，直接人工成本降低22%。</li>
+          <li>连续三年达成安全生产零重大事故，通过IATF 16949及ISO 14001复审，客户审核通过率100%。</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span>
+            <span class="company-name">天瑞精密制造</span>
+            <span class="job-title"> | 生产经理 / 副厂长</span>
+          </span>
+          <span class="date-location">2015.06 – 2019.03 | 无锡</span>
+        </div>
+        <ul class="bullet-list">
+          <li>管理300人生产团队，覆盖注塑、装配及包装车间，年交付产品超2000万件。</li>
+          <li>引入快速换模(SMED)技术，换线时间降低55%，支撑小批量多品种柔性生产模式。</li>
+          <li>协助厂长完成新车间扩建项目，从基建到投产仅用8个月，产能爬坡效率超预期30%。</li>
+          <li>建立车间层级KPI看板与每日例会机制，异常停线时间减少45%。</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span>
+            <span class="company-name">华东机械有限公司</span>
+            <span class="job-title"> | 生产主管</span>
+          </span>
+          <span class="date-location">2012.08 – 2015.05 | 常州</span>
+        </div>
+        <ul class="bullet-list">
+          <li>负责机加工车间日常排产与质量管理，带领45人团队实现月度产出目标达成率98%。</li>
+          <li>参与公司5S与TPM推进，设备故障率同比下降28%，并培养内部精益内训师3名。</li>
+          <li>优化刀具管理流程，年度刀具成本节省约12万元。</li>
+        </ul>
+      </div>
+
+      <!-- 教育背景 -->
+      <div class="section-title">教育背景</div>
+      <div class="edu-item">
+        <span>
+          <span class="edu-degree">机械工程 硕士</span>
+          <span class="edu-school"> | 东南大学</span>
+        </span>
+        <span class="edu-date">2010 – 2012</span>
+      </div>
+      <div class="edu-item">
+        <span>
+          <span class="edu-degree">工业工程 学士</span>
+          <span class="edu-school"> | 南京理工大学</span>
+        </span>
+        <span class="edu-date">2006 – 2010</span>
+      </div>
+
+      <!-- 资质与认证 (也可视为技能补充) -->
+      <div class="section-title">专业认证</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 18px 30px; font-size: 11pt; margin-top: 4px;">
+        <span>▪ 六西格玛黑带 (CSSBB)</span>
+        <span>▪ 高级生产管理师</span>
+        <span>▪ IATF 16949 内审员</span>
+        <span>▪ 注册安全工程师</span>
+        <span>▪ 精益生产认证 (Toyota Production System)</span>
+      </div>
+      
+      <!-- 语言能力及其他（低风险装饰） -->
+      <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 28px; font-size: 11pt; color: #4A5568; border-top: 1px solid #E2E8F0; padding-top: 14px;">
+        <span>语言：中文 (母语) · 英语 (商务流利)</span>
+        <span>国籍：中国</span>
+      </div>
+
+      <!-- 所有内容均为纯文本，无表格/文本框/图形叠加，完全符合ATS要求 -->
+    </div>
+  </div>
+</body>
+</html>

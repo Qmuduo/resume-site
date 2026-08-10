@@ -1,0 +1,221 @@
+{
+  "templateId": "prompt_093",
+  "name": "嵌入式开发工程师 · 简历",
+  "sourceFile": "prompt_093.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "social_3",
+      "label": "GitHub",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-role",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-list",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-list"
+    },
+    {
+      "commonPath": "experiences",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "工作经历",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "projects",
+      "selector": ".project-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "project-item"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".education-entry",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "education-entry"
+    }
+  ],
+  "sampleData": {
+    "name": "Chen Wei",
+    "title": "嵌入式系统开发工程师",
+    "phone": "+86 139 5027 6814",
+    "email": "✉️ wei.chen@embedded.io",
+    "socials": [
+      {
+        "platform": "github",
+        "url": "🐙 github.com/wei-embedded"
+      }
+    ],
+    "location": "深圳 · 中国",
+    "skills": [
+      {
+        "name": "C / C++ · Python · ARM Cortex-M · RISC-V · 嵌入式Linux",
+        "level": ""
+      },
+      {
+        "name": "I2C · SPI · UART · CAN · BLE · MQTT",
+        "level": ""
+      },
+      {
+        "name": "Keil · IAR · GCC · OpenOCD · Logic Analyzer · Altium Designer",
+        "level": ""
+      },
+      {
+        "name": "FreeRTOS · Zephyr · 任务调度 · 低功耗设计",
+        "level": ""
+      }
+    ],
+    "experiences": [
+      {
+        "position": "嵌入式固件工程师",
+        "date": "2023.08 – 至今 | 深圳"
+      },
+      {
+        "position": "初级嵌入式工程师",
+        "date": "2021.07 – 2023.06 | 广州"
+      }
+    ],
+    "projects": [
+      {
+        "description": "设计基于FT2232H的RISC-V调试探针，支持JTAG与cJTAG协议，完全开源硬件与固件。"
+      },
+      {
+        "description": "采用i.MX RT1062跨界MCU，实现CMOS传感器驱动与实时数据流处理，帧率达120fps。"
+      }
+    ],
+    "education": [
+      {
+        "school": "华南理工大学",
+        "date": "2017.09 – 2021.06"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

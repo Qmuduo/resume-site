@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
+  <title>全栈工程师 · 高级简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 15px;
+      background: #f5f5f5;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', '思源黑体', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+      background: white;
+      max-width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 0;
+      color: #1e293b;
+      line-height: 1.5;
+      box-shadow: 0 0 30px rgba(0,0,0,0.05);
+    }
+
+    /* A4 尺寸精确控制，预留页边距 */
+    .resume {
+      width: 100%;
+      min-height: 297mm;
+      padding: 0.75in 0.8in 0.7in 0.8in;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background: white;
+    }
+
+    /* 所有文本颜色统一深灰色，提高可读性与ATS解析准确度 */
+    h1, h2, h3, p, li, div, span, a, time, strong {
+      color: #1e293b;
+    }
+
+    /* 链接样式去除下划线，保持文本干净 */
+    a {
+      text-decoration: none;
+      color: #1e293b;
+    }
+
+    /* 主色调仅用于装饰线、标题强调色 */
+    .accent-color {
+      color: #0f3b5c;
+    }
+
+    /* 分割线样式 */
+    hr {
+      border: none;
+      border-top: 1.5px solid #cbd5e1;
+      margin: 0.5rem 0 0.7rem 0;
+      opacity: 0.8;
+    }
+
+    .thin-line {
+      border-top: 1px solid #94a3b8;
+      margin: 0.25rem 0 0.5rem 0;
+    }
+
+    /* 头部区域：姓名 + 头衔 */
+    .header {
+      margin-bottom: 0.8rem;
+    }
+
+    .name {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #0f3b5c;
+      font-family: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Courier New', 'Consolas', monospace;
+      line-height: 1.2;
+      margin-bottom: 0.15rem;
+    }
+
+    .title {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #334155;
+      margin-bottom: 0.5rem;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', '思源黑体', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .title::before {
+      content: "▎";
+      color: #0f3b5c;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    /* 联系信息行 - 极简图标风格 */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      font-size: 0.8rem;
+      color: #475569;
+      margin-bottom: 0.25rem;
+      font-family: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Consolas', monospace;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .contact-item span:first-child {
+      color: #0f3b5c;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* 板块标题 - 全部大写风格，保留清晰层级 */
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #0f3b5c;
+      margin-top: 1.2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', '思源黑体', sans-serif;
+      border-bottom: 1.5px solid #cbd5e1;
+      padding-bottom: 0.2rem;
+    }
+
+    /* 工作经历条目 */
+    .experience-item {
+      margin-bottom: 0.9rem;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.15rem;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #0f172a;
+      font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', sans-serif;
+    }
+
+    .job-title {
+      font-weight: 600;
+      color: #334155;
+      margin-left: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .date-range {
+      font-family: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Consolas', monospace;
+      font-size: 0.8rem;
+      color: #475569;
+      white-space: nowrap;
+    }
+
+    .description-list {
+      list-style-type: none;
+      padding-left: 0.2rem;
+      margin-top: 0.2rem;
+    }
+
+    .description-list li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.2rem;
+      font-size: 0.9rem;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    .description-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.2rem;
+      color: #0f3b5c;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    /* 技能标签 - 行内代码风格 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.2rem;
+    }
+
+    .skill-tag {
+      background: transparent;
+      border: 1px solid #cbd5e1;
+      padding: 0.2rem 0.8rem;
+      font-family: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Consolas', monospace;
+      font-size: 0.8rem;
+      color: #0f172a;
+      border-radius: 4px;
+      font-weight: 500;
+      background: #f8fafc;
+    }
+
+    /* 教育经历简洁排列 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.25rem;
+    }
+
+    .school-name {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .degree {
+      color: #334155;
+      margin-left: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* 项目经历类似样式 */
+    .project-item {
+      margin-bottom: 0.7rem;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .project-stack {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    /* 打印优化 - 去除背景色、保留清晰文字 */
+    @media print {
+      html, body {
+        background: white;
+        margin: 0;
+        padding: 0;
+        width: 210mm;
+        height: auto;
+        box-shadow: none;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .resume {
+        box-shadow: none;
+        padding: 0.7in 0.8in 0.6in 0.8in;
+        max-width: 100%;
+      }
+
+      hr {
+        border-color: #94a3b8;
+      }
+
+      a {
+        text-decoration: none;
+        color: #1e293b;
+      }
+
+      .skill-tag {
+        background: #f8fafc;
+        border: 1px solid #94a3b8;
+      }
+    }
+
+    /* 小屏适配，不影响打印 */
+    @media screen and (max-width: 700px) {
+      .resume {
+        padding: 0.5in;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    
+    <!-- 头部：姓名 + 全栈工程师标识 -->
+    <div class="header">
+      <h1 class="name">Wei Chen</h1>
+      <div class="title">全栈工程师 / 高级软件工程师</div>
+      <div class="contact-row">
+        <div class="contact-item"><span>📧</span> chen.wei@dev.me</div>
+        <div class="contact-item"><span>📞</span> +86 139 1018 2347</div>
+        <div class="contact-item"><span>🐙</span> github.com/weicheng</div>
+        <div class="contact-item"><span>📍</span> 北京 · 中国</div>
+      </div>
+    </div>
+
+    <!-- 专业技能板块 - 代码风格标签 -->
+    <div class="section-title">技术栈</div>
+    <div class="skills-container">
+      <span class="skill-tag">TypeScript</span>
+      <span class="skill-tag">React</span>
+      <span class="skill-tag">Next.js</span>
+      <span class="skill-tag">Node.js</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">PostgreSQL</span>
+      <span class="skill-tag">MongoDB</span>
+      <span class="skill-tag">GraphQL</span>
+      <span class="skill-tag">Docker</span>
+      <span class="skill-tag">AWS</span>
+      <span class="skill-tag">Rust</span>
+      <span class="skill-tag">Redis</span>
+    </div>
+
+    <!-- 工作经历 -->
+    <div class="section-title">工作经历</div>
+    
+    <div class="experience-item">
+      <div class="exp-header">
+        <span>
+          <span class="company-name">Nebula Labs</span>
+          <span class="job-title">· 高级全栈工程师</span>
+        </span>
+        <span class="date-range">2022.04 – 至今</span>
+      </div>
+      <ul class="description-list">
+        <li>主导设计并开发了分布式任务调度平台，基于 React + GraphQL + Go 微服务，支撑日均 800 万次任务调度。</li>
+        <li>重构核心数据管道，引入 Apache Kafka 与 Debezium，实现实时数据同步，延迟降低 40%。</li>
+        <li>带领 5 人前端小组搭建内部组件库，采用 Monorepo 架构，覆盖 30+ 项目，开发效率提升 35%。</li>
+        <li>推动全栈自动化测试体系，集成 Playwright 与 k6，将回归测试时间从 4 小时缩短至 45 分钟。</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="exp-header">
+        <span>
+          <span class="company-name">StreamPixel</span>
+          <span class="job-title">· 全栈工程师</span>
+        </span>
+        <span class="date-range">2020.07 – 2022.02</span>
+      </div>
+      <ul class="description-list">
+        <li>开发了视频协作 SaaS 平台的核心白板功能，使用 WebSocket + CRDT 算法保证多端实时同步。</li>
+        <li>设计并实现了基于 RBAC 的权限系统，支持细粒度资源控制，服务 2000+ 企业客户。</li>
+        <li>优化前端包体积，通过动态导入与 Tree Shaking 减少首屏加载时间约 50%。</li>
+        <li>参与后端 API 性能调优，将核心接口 p99 延迟从 320ms 降至 85ms。</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="exp-header">
+        <span>
+          <span class="company-name">智联云科技</span>
+          <span class="job-title">· 初级全栈开发者</span>
+        </span>
+        <span class="date-range">2018.09 – 2020.06</span>
+      </div>
+      <ul class="description-list">
+        <li>负责电商后台管理系统的前端开发，基于 Vue.js 与 Element UI，对接 15 个后端微服务。</li>
+        <li>使用 Node.js + Express 构建订单通知服务，集成 Redis 消息队列，处理日均 10 万级事件。</li>
+        <li>维护基于 Jenkins 的 CI/CD 流水线，编写自动化部署脚本，减少人工干预错误。</li>
+      </ul>
+    </div>
+
+    <!-- 项目经历 (开源/个人项目，吸引GitHub猎头) -->
+    <div class="section-title">开源项目</div>
+    
+    <div class="project-item">
+      <div class="project-header">
+        <span>devboard · 开发者仪表板</span>
+        <span class="project-stack">React · Tauri · Rust</span>
+      </div>
+      <ul class="description-list">
+        <li>跨平台桌面应用，聚合 GitHub 通知、CI 状态、容器监控，Stars 1.2k。</li>
+        <li>采用 Tauri 替代 Electron，内存占用降低 70%，支持 Windows/macOS/Linux。</li>
+      </ul>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <span>ts-rpc-codegen</span>
+        <span class="project-stack">TypeScript · AST</span>
+      </div>
+      <ul class="description-list">
+        <li>基于 TypeScript Compiler API 的 RPC 客户端代码生成器，支持多种传输协议。</li>
+        <li>被 8 个内部团队采用，减少手写胶水代码 90% 以上。</li>
+      </ul>
+    </div>
+
+    <!-- 教育背景 -->
+    <div class="section-title">教育</div>
+    <div class="edu-item">
+      <span>
+        <span class="school-name">北京邮电大学</span>
+        <span class="degree">· 计算机科学与技术 硕士</span>
+      </span>
+      <span class="date-range">2016 – 2018</span>
+    </div>
+    <div class="edu-item">
+      <span>
+        <span class="school-name">华中科技大学</span>
+        <span class="degree">· 软件工程 学士</span>
+      </span>
+      <span class="date-range">2012 – 2016</span>
+    </div>
+
+    <!-- 额外信息：语言与证书，简洁列表 -->
+    <div class="section-title">语言与证书</div>
+    <div style="display: flex; gap: 2rem; font-size: 0.9rem; margin-top: 0.2rem;">
+      <span><strong>英语</strong> · 流利 (IELTS 7.5)</span>
+      <span><strong>AWS 认证解决方案架构师</strong> · 助理级</span>
+      <span><strong>CKAD</strong> · Kubernetes 应用开发者</span>
+    </div>
+
+    <!-- 极简底部留白，无装饰 -->
+    <div style="margin-top: 0.8rem; font-size: 0.7rem; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 0.4rem; display: flex; justify-content: space-between;">
+      <span>github.com/weicheng · 持续交付高质量代码</span>
+      <span>Markdown 风格 · 全栈工程师</span>
+    </div>
+  </div>
+</body>
+</html>

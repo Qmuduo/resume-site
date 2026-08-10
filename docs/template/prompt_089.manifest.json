@@ -1,0 +1,205 @@
+{
+  "templateId": "prompt_089",
+  "name": "数据科学家简历 · 极简灰度等宽",
+  "sourceFile": "prompt_089.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "social_3",
+      "label": "GitHub",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": true
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-sub",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "experiences",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "专业经历",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "projects",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "Kaggle 竞赛与开源项目",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "education",
+      "selector": ".edu-entry",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "edu-entry"
+    }
+  ],
+  "sampleData": {
+    "name": "陈一宁",
+    "title": "数据科学家 | 机器学习 · 因果推断",
+    "phone": "☎ +86 139 5027 6140",
+    "email": "✉ yining.chen@data.me",
+    "socials": [
+      {
+        "platform": "github",
+        "url": "🌐 github.com/yining-c"
+      }
+    ],
+    "location": "北京 / 远程",
+    "experiences": [
+      {
+        "date": "2023.04 – 至今 | 北京"
+      },
+      {
+        "date": "2021.07 – 2023.02 | 上海"
+      }
+    ],
+    "projects": [
+      {
+        "date": "2021 – 至今"
+      },
+      {
+        "date": "2024.02 – 2024.05"
+      }
+    ],
+    "education": [
+      {
+        "date": "2019.09 – 2022.06"
+      },
+      {
+        "date": "2015.09 – 2019.06"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": false,
+      "transform": "name",
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

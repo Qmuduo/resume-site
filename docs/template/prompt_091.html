@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
+  <title>资深DevOps/SRE架构师 · 简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      background: #eef2f5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Arial', 'Helvetica Neue', 'Calibri', '思源黑体', 'Noto Sans SC', sans-serif;
+      color: #2D3748;
+      line-height: 1.5;
+    }
+
+    /* 简历卡片：固定A4尺寸，模拟纸张 */
+    .resume {
+      max-width: 210mm;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 内边距与安全区 */
+    .page {
+      padding: 0.7in 0.75in 0.65in 0.75in;
+      background: white;
+    }
+
+    /* 所有文字均为纯文本，无图形遮挡 */
+    h1, h2, h3, p, li, div, span {
+      font-weight: normal;
+      word-break: break-word;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 0.2rem;
+    }
+    .name {
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      font-weight: 700;
+      font-size: 2.4rem;
+      letter-spacing: 0.5px;
+      color: #1A365D;
+      line-height: 1.2;
+      margin-bottom: 0.08rem;
+    }
+    .title-tagline {
+      font-family: 'Calibri', 'Arial', '思源黑体', sans-serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: #4A5568;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .title-tagline span {
+      background: #EDF2F7;
+      padding: 0.15rem 0.6rem;
+      border-radius: 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #2C5282;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+
+    /* 分割线：简约细线，纯CSS */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: #CBD5E0;
+      margin: 0.65rem 0 0.85rem 0;
+      border: none;
+    }
+
+    /* 联系行：左对齐，图标用字符表示，纯文本 */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.8rem;
+      color: #2D3748;
+      margin-bottom: 0.2rem;
+      align-items: center;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      white-space: nowrap;
+    }
+    .contact-item i {
+      font-style: normal;
+      font-weight: 500;
+      color: #2C5282;
+    }
+    /* 使用标准字符代替图标：电话✆、邮件✉、GitHub/Blog链接等 */
+    .contact-item .icon-char {
+      font-size: 0.9rem;
+      margin-right: 0.1rem;
+    }
+
+    /* 版块标题 */
+    .section-title {
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: #1A365D;
+      margin: 1.2rem 0 0.5rem 0;
+      padding-bottom: 0.2rem;
+      border-bottom: 1.5px solid #CBD5E0;
+      display: flex;
+      align-items: center;
+    }
+    .section-title::after {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 2px;
+      background: #2C5282;
+      margin-left: 0.5rem;
+      border-radius: 2px;
+    }
+
+    /* 经历条目布局：完全使用流式布局，无浮动陷阱 */
+    .entry {
+      margin-bottom: 0.7rem;
+    }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.1rem;
+    }
+    .entry-left {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .company {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #1A202C;
+    }
+    .role {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #2D3748;
+      background: #F7FAFC;
+      padding: 0 0.3rem;
+      border-radius: 3px;
+    }
+    .date {
+      font-size: 0.8rem;
+      color: #4A5568;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+    .location {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-left: 0.3rem;
+    }
+
+    /* 描述列表：标准圆点 */
+    .desc-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.2rem;
+    }
+    .desc-list li {
+      font-size: 0.82rem;
+      color: #2D3748;
+      margin-bottom: 0.18rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+    .desc-list li::before {
+      content: "•";
+      color: #2C5282;
+      font-weight: bold;
+      font-size: 1rem;
+      display: inline-block;
+      width: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    /* 技能标签化布局：纯文本，无复杂图形 */
+    .skills-block {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      margin-top: 0.2rem;
+    }
+    .skill-tag {
+      background: #F1F5F9;
+      color: #1E3A5F;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.2rem 0.7rem;
+      border-radius: 14px;
+      border: 0.5px solid #E2E8F0;
+      white-space: nowrap;
+    }
+    .skill-category {
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: #2C5282;
+      margin-right: 0.2rem;
+    }
+
+    /* 两栏布局用于技能/证书（纯文本列，无浮动定位） */
+    .two-col {
+      display: flex;
+      gap: 2rem;
+      margin-top: 0.3rem;
+    }
+    .col {
+      flex: 1;
+    }
+
+    .project-title {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: #1A202C;
+    }
+    .project-desc {
+      font-size: 0.8rem;
+      color: #2D3748;
+      margin-left: 0.2rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 0.5px solid #E2E8F0;
+      margin: 0.5rem 0 0.3rem 0;
+    }
+
+    /* 低风险个性化元素：左侧窄色条（不与文字重叠） */
+    .left-accent {
+      position: relative;
+      padding-left: 1rem;
+    }
+    .left-accent::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      height: calc(100% - 0.3rem);
+      width: 3px;
+      background: #2C5282;
+      border-radius: 2px;
+    }
+
+    /* 打印样式 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+      .resume {
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+      }
+      .page {
+        padding: 0.55in 0.7in 0.5in 0.7in;
+        page-break-after: always;
+      }
+      /* 确保颜色正常，无背景色块问题 */
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background: transparent !important;
+        color: #000 !important;
+      }
+      .resume, .page {
+        background: white !important;
+        color: #000 !important;
+      }
+      .name, .section-title, .company, .skill-tag, .role {
+        color: #000 !important;
+        background: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .divider, .section-title {
+        border-color: #555 !important;
+      }
+      .left-accent::before {
+        background: #000 !important;
+      }
+      .skill-tag {
+        border: 0.5px solid #555 !important;
+        background: #f5f5f5 !important;
+        color: #000 !important;
+      }
+      .contact-item i, .icon-char {
+        color: #000 !important;
+      }
+      /* 隐藏交互元素（无按钮等） */
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    /* 响应式小屏 */
+    @media screen and (max-width: 700px) {
+      .page {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="page">
+
+      <!-- 姓名 + 标签化头衔 -->
+      <div class="name-section">
+        <h1 class="name">陈聿铭</h1>
+        <div class="title-tagline">
+          高级站点可靠性工程师 / 云架构师
+          <span>SRE · DevOps</span>
+          <span>Kubernetes</span>
+          <span>可观测性</span>
+        </div>
+      </div>
+
+      <!-- 联系方式：纯文本，字符图标 -->
+      <div class="contact-row">
+        <div class="contact-item"><span class="icon-char">✉</span> chen.yuming@sre.dev</div>
+        <div class="contact-item"><span class="icon-char">✆</span> +86 (010) 6723-8845</div>
+        <div class="contact-item"><span class="icon-char">🔗</span> github.com/ymchen-sre</div>
+        <div class="contact-item"><span class="icon-char">🌐</span> sre-architect.dev</div>
+        <div class="contact-item"><span class="icon-char">📍</span> 北京 / 远程</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 专业概述 (技术文档风格简洁) -->
+      <div class="left-accent" style="margin-bottom: 0.4rem;">
+        <p style="font-size: 0.85rem; color: #2D3748; line-height: 1.5;">
+          拥有7年DevOps/SRE经验的架构实践者，专注于大规模分布式系统可靠性、GitOps交付流水线与云原生可观测性。
+          主导过日活千万级产品的迁移与自愈体系建设，活跃于CNCF开源社区，KubeVela / ChaosMesh 贡献者。
+        </p>
+      </div>
+
+      <!-- 核心技能：标签化展示，技术文档风格 -->
+      <div class="section-title">技术领域</div>
+      <div class="skills-block">
+        <span class="skill-category">平台:</span>
+        <span class="skill-tag">Kubernetes</span>
+        <span class="skill-tag">Terraform</span>
+        <span class="skill-tag">AWS/GCP</span>
+        <span class="skill-tag">ArgoCD</span>
+        <span class="skill-tag">Prometheus</span>
+        <span class="skill-tag">Grafana</span>
+        <span class="skill-tag">ELK Stack</span>
+      </div>
+      <div class="skills-block" style="margin-top: 0.4rem;">
+        <span class="skill-category">语言:</span>
+        <span class="skill-tag">Go</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Bash</span>
+        <span class="skill-tag">Rust (工具开发)</span>
+        <span class="skill-category" style="margin-left: 1rem;">方法论:</span>
+        <span class="skill-tag">SLI/SLO</span>
+        <span class="skill-tag">Chaos Engineering</span>
+        <span class="skill-tag">GitOps</span>
+      </div>
+
+      <!-- 工作经历 -->
+      <div class="section-title">专业经历</div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-left">
+            <span class="company">星云智联</span>
+            <span class="role">高级SRE架构师</span>
+            <span class="location">北京</span>
+          </div>
+          <div class="date">2022.04 – 至今</div>
+        </div>
+        <ul class="desc-list">
+          <li>设计并落地基于Kubernetes的多集群服务网格可靠性架构，管理200+节点，将部署故障恢复时间缩短60%。</li>
+          <li>主导可观测性栈重构，基于OpenTelemetry + Grafana Loki/Tempo，将平均告警响应时间从12分钟降至2分钟。</li>
+          <li>推动GitOps工作流，使用ArgoCD + Kustomize实现15个微服务的声明式交付，并通过OPA策略保障合规。</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-left">
+            <span class="company">云迹科技</span>
+            <span class="role">DevOps 技术负责人</span>
+            <span class="location">深圳</span>
+          </div>
+          <div class="date">2019.08 – 2022.02</div>
+        </div>
+        <ul class="desc-list">
+          <li>从零搭建混合云基础设施，采用Terraform + Packer实现不可变基础设施，支撑日均500万请求。</li>
+          <li>构建内部开发者平台(IDP)，集成Backstage与评分卡，将新服务上线时间从3天缩短至4小时。</li>
+          <li>实施混沌工程实践，通过LitmusChaos验证系统韧性，成功发现并修复12个潜在级联故障。</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-left">
+            <span class="company">极光数据</span>
+            <span class="role">SRE 工程师</span>
+            <span class="location">上海</span>
+          </div>
+          <div class="date">2017.07 – 2019.06</div>
+        </div>
+        <ul class="desc-list">
+          <li>维护核心搜索服务的SLO达99.95%，设计自动化扩容策略，节省约35%云成本。</li>
+          <li>开发基于Prometheus的告警规则集与Runbook自动化，参与On-Call轮值并编写事后分析文档。</li>
+        </ul>
+      </div>
+
+      <!-- 开源贡献 / 社区 (契合开源社区+猎头渠道) -->
+      <div class="section-title">开源与社区影响</div>
+      <div class="entry" style="margin-bottom: 0.3rem;">
+        <div class="entry-header">
+          <div class="entry-left">
+            <span class="company">CNCF 项目贡献</span>
+            <span class="role">KubeVela / ChaosMesh</span>
+          </div>
+          <div class="date">2020 – 至今</div>
+        </div>
+        <ul class="desc-list">
+          <li>KubeVela 核心维护者之一，提交50+ PR，主要涉及应用交付工作流与多集群部署特性。</li>
+          <li>ChaosMesh 文档与测试贡献者，编写中英文技术博客，组织线下Meetup。</li>
+        </ul>
+      </div>
+
+      <!-- 教育背景 (简洁) -->
+      <div class="section-title">教育</div>
+      <div class="entry" style="margin-bottom: 0.2rem;">
+        <div class="entry-header">
+          <div class="entry-left">
+            <span class="company">华中科技大学</span>
+            <span class="role">计算机科学与技术 · 硕士</span>
+          </div>
+          <div class="date">2015 – 2017</div>
+        </div>
+      </div>
+
+      <!-- 证书与演讲 (两栏纯文本) -->
+      <div class="section-title">专业认证 & 演讲</div>
+      <div class="two-col">
+        <div class="col">
+          <p style="font-size:0.82rem; font-weight:600; margin-bottom:0.15rem;">认证</p>
+          <ul class="desc-list" style="margin-top:0;">
+            <li>CKA (Certified Kubernetes Administrator)</li>
+            <li>HashiCorp Terraform Associate</li>
+            <li>AWS Solutions Architect Professional</li>
+          </ul>
+        </div>
+        <div class="col">
+          <p style="font-size:0.82rem; font-weight:600; margin-bottom:0.15rem;">近期分享</p>
+          <ul class="desc-list" style="margin-top:0;">
+            <li>KubeCon China '24: 多集群GitOps实战</li>
+            <li>DevOpsDays 北京: 可观测性驱动开发</li>
+            <li>InfoQ 技术文章: SLO 落地方法论</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 附加信息：语言/工具链标签 -->
+      <div style="margin-top: 0.7rem; font-size:0.8rem; color:#4A5568; display: flex; gap: 1.5rem; border-top: 0.5px solid #E2E8F0; padding-top: 0.5rem;">
+        <span>🌐 中文 (母语) · 英文 (专业工作水平)</span>
+        <span>⚙️ 基础设施即代码 · 持续可靠性</span>
+      </div>
+
+      <!-- 注：所有文本均可选中，无图片渲染文字，完全ATS友好 -->
+    </div>
+  </div>
+</body>
+</html>

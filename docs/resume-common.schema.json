@@ -1,0 +1,258 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://resume-site.local/schemas/resume-common.schema.json",
+  "title": "ResumeCommonData",
+  "description": "简历公共数据模型：所有模板共用的字段，独立于模板存储。模板专属字段一律放在 extended_data（key-value），不得写入本模型。",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "basic": {
+      "type": "object",
+      "title": "基本信息",
+      "description": "姓名、联系方式、头像、求职意向等基础字段。",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "姓名"
+        },
+        "title": {
+          "type": "string",
+          "title": "求职意向/职位头衔"
+        },
+        "phone": {
+          "type": "string",
+          "title": "手机"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "title": "邮箱"
+        },
+        "address": {
+          "type": "string",
+          "title": "地址"
+        },
+        "location": {
+          "type": "string",
+          "title": "所在城市/地区"
+        },
+        "avatar": {
+          "type": "string",
+          "format": "uri",
+          "title": "头像"
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "title": "个人简介",
+      "description": "一句话摘要或个人描述。"
+    },
+    "experiences": {
+      "type": "array",
+      "title": "工作经历",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "company": {
+            "type": "string",
+            "title": "公司名称"
+          },
+          "position": {
+            "type": "string",
+            "title": "职位"
+          },
+          "start": {
+            "type": "string",
+            "title": "开始时间"
+          },
+          "end": {
+            "type": "string",
+            "title": "结束时间"
+          },
+          "description": {
+            "type": "string",
+            "title": "工作描述"
+          }
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "title": "教育背景",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "school": {
+            "type": "string",
+            "title": "学校"
+          },
+          "degree": {
+            "type": "string",
+            "title": "学位"
+          },
+          "major": {
+            "type": "string",
+            "title": "专业"
+          },
+          "start": {
+            "type": "string",
+            "title": "开始时间"
+          },
+          "end": {
+            "type": "string",
+            "title": "结束时间"
+          },
+          "description": {
+            "type": "string",
+            "title": "补充说明"
+          }
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "title": "技能清单",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "技能名称"
+          },
+          "level": {
+            "type": "string",
+            "title": "熟练程度"
+          }
+        }
+      }
+    },
+    "socials": {
+      "type": "array",
+      "title": "社交链接",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "platform": {
+            "type": "string",
+            "title": "平台名称"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "title": "链接地址"
+          }
+        }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "title": "项目经验",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "项目名称"
+          },
+          "role": {
+            "type": "string",
+            "title": "担任角色"
+          },
+          "start": {
+            "type": "string",
+            "title": "开始时间"
+          },
+          "end": {
+            "type": "string",
+            "title": "结束时间"
+          },
+          "description": {
+            "type": "string",
+            "title": "项目描述"
+          },
+          "link": {
+            "type": "string",
+            "format": "uri",
+            "title": "项目链接"
+          }
+        }
+      }
+    },
+    "certifications": {
+      "type": "array",
+      "title": "证书",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "证书名称"
+          },
+          "issuer": {
+            "type": "string",
+            "title": "颁发机构"
+          },
+          "date": {
+            "type": "string",
+            "title": "获得时间"
+          }
+        }
+      }
+    },
+    "languages": {
+      "type": "array",
+      "title": "语言能力",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "语言"
+          },
+          "level": {
+            "type": "string",
+            "title": "水平"
+          }
+        }
+      }
+    },
+    "awards": {
+      "type": "array",
+      "title": "荣誉奖项",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "奖项名称"
+          },
+          "date": {
+            "type": "string",
+            "title": "获奖时间"
+          },
+          "description": {
+            "type": "string",
+            "title": "说明"
+          }
+        }
+      }
+    },
+    "interests": {
+      "type": "array",
+      "title": "兴趣爱好",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

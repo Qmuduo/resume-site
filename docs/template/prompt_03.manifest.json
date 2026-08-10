@@ -1,0 +1,238 @@
+{
+  "templateId": "prompt_03",
+  "name": "陈远舟 · 战略咨询总监简历",
+  "sourceFile": "prompt_03.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "social_4",
+      "label": "领英",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "核心优势",
+      "label": "核心优势",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".job-title",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "experiences",
+      "selector": ".experience-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "experience-item"
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-item",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-item"
+    }
+  ],
+  "sampleData": {
+    "name": "陈远舟",
+    "title": "｜ 战略咨询总监",
+    "phone": "+86 138 1098 7654",
+    "email": "yuanzhou.chen@stratex.com",
+    "location": "上海 · 中国",
+    "socials": [
+      {
+        "platform": "linkedin",
+        "url": "linkedin.com/in/chenyuanzhou"
+      }
+    ],
+    "核心优势": "12年战略咨询与商业分析经验，主导过60+企业增长战略项目，涵盖消费品、科技与工业领域。前麦肯锡项目经理，现带领12人分析团队。擅长以数据驱动决策，实现平均客户营收提升22%。",
+    "experiences": [
+      {
+        "position": "｜ 战略咨询总监",
+        "date": "2022.04 – 至今 | 上海"
+      },
+      {
+        "position": "｜ 项目经理 / 商业分析顾问",
+        "date": "2016.08 – 2022.02 | 上海/新加坡"
+      },
+      {
+        "position": "｜ 高级商业分析师",
+        "date": "2013.09 – 2016.07 | 北京"
+      }
+    ],
+    "skills": [
+      {
+        "name": "市场进入",
+        "level": ""
+      },
+      {
+        "name": "数字化转型",
+        "level": ""
+      },
+      {
+        "name": "并购后整合",
+        "level": ""
+      },
+      {
+        "name": "SQL/Python",
+        "level": ""
+      },
+      {
+        "name": "Tableau",
+        "level": ""
+      },
+      {
+        "name": "预测分析",
+        "level": ""
+      },
+      {
+        "name": "消费者洞察",
+        "level": ""
+      },
+      {
+        "name": "客户关系",
+        "level": ""
+      },
+      {
+        "name": "董事会汇报",
+        "level": ""
+      },
+      {
+        "name": "跨职能协作",
+        "level": ""
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "核心优势",
+      "label": "核心优势",
+      "type": "array",
+      "commonPath": null,
+      "autoDetected": false,
+      "reason": "未识别的自定义区块"
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-color-adjust: exact;">
+  <title>税务高级经理 · 简历设计</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #E8EDF2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Arial', 'Helvetica Neue', '思源黑体', 'Noto Sans SC', sans-serif;
+      padding: 30px 20px;
+    }
+
+    /* 简历卡片：固定A4尺寸，模拟纸张 */
+    .resume {
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 6px 12px rgba(0, 20, 40, 0.06);
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      page-break-after: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* 内联样式用于最大兼容性，同时保留class */
+    .container {
+      padding: 1.2in 1in 1in 1in; /* 上下1.2英寸，左右1英寸，保留呼吸感 */
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    /* 姓名区域 */
+    .name-section {
+      margin-bottom: 28px;
+    }
+
+    .name {
+      font-size: 30pt;
+      font-weight: 700;
+      color: #1E3A5F; /* 深蓝主色 */
+      letter-spacing: 1.2px;
+      line-height: 1.2;
+      margin-bottom: 4px;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    .title-line {
+      font-size: 13pt;
+      font-weight: 500;
+      color: #4A5C6C;
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 2px;
+      background: #C8D6E5;
+      margin: 8px 0 0 0;
+      border: none;
+      /* 使用纯色细线，ATS完全安全 */
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 16px;
+      font-size: 10.5pt;
+      color: #2D3A4A;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .contact-icon {
+      font-size: 11pt;
+      color: #2C5282; /* 辅色点缀 */
+      font-weight: 400;
+      display: inline-block;
+      width: 16px;
+      text-align: center;
+    }
+
+    /* 板块通用样式 */
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-size: 11.5pt;
+      font-weight: 700;
+      color: #1E3A5F;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      margin-bottom: 12px;
+      border-bottom: 1.5px solid #D9E2EC;
+      padding-bottom: 6px;
+      font-family: 'Helvetica Neue', 'Arial', '思源黑体', sans-serif;
+    }
+
+    /* 工作经历条目 */
+    .experience-item {
+      margin-bottom: 20px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 12pt;
+      color: #1E2B3C;
+    }
+
+    .job-title {
+      font-weight: 500;
+      font-size: 11pt;
+      color: #2D3A4A;
+      margin-left: 6px;
+    }
+
+    .date-range {
+      font-size: 10pt;
+      font-weight: 400;
+      color: #5F6B7A;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    .exp-details {
+      margin-top: 6px;
+      padding-left: 18px;
+      color: #2D3748;
+      font-size: 10.5pt;
+      line-height: 1.6;
+      list-style-type: none;
+    }
+
+    .exp-details li {
+      position: relative;
+      margin-bottom: 5px;
+    }
+
+    .exp-details li::before {
+      content: "•";
+      color: #2C5282;
+      font-weight: bold;
+      position: absolute;
+      left: -16px;
+      top: 0;
+      font-size: 11pt;
+    }
+
+    /* 教育背景 */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .school-name {
+      font-weight: 700;
+      font-size: 11.5pt;
+      color: #1E2B3C;
+    }
+
+    .degree {
+      font-weight: 500;
+      font-size: 10.5pt;
+      color: #2D3A4A;
+      margin-left: 8px;
+    }
+
+    .edu-date {
+      font-size: 10pt;
+      color: #5F6B7A;
+    }
+
+    /* 技能标签式排列 */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      margin-top: 6px;
+    }
+
+    .skill-category {
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .skill-label {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: #1E3A5F;
+      margin-right: 12px;
+      display: inline-block;
+      min-width: 90px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      display: inline-flex;
+    }
+
+    .skill-tag {
+      font-size: 10pt;
+      color: #2D3748;
+      background: transparent;
+      padding: 0;
+      border: none;
+      font-weight: 400;
+    }
+
+    .skill-tag::after {
+      content: "·";
+      margin-left: 14px;
+      color: #A0B3C6;
+      font-weight: 400;
+    }
+
+    .skill-tag:last-child::after {
+      content: "";
+      margin-left: 0;
+    }
+
+    /* 证书与其他 */
+    .cert-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 10.5pt;
+    }
+
+    .cert-name {
+      font-weight: 600;
+      color: #1E2B3C;
+    }
+
+    .cert-date {
+      color: #5F6B7A;
+    }
+
+    /* 低风险个性化元素：左侧窄色条 (纯装饰，通过div实现，不干扰文字流) */
+    .left-accent {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 5mm;
+      height: 100%;
+      background: #2C5282; /* 强调色深蓝，不透明，不与文字重叠 */
+      z-index: 0;
+    }
+
+    /* 保证内容在色条上方 */
+    .container {
+      position: relative;
+      z-index: 2;
+      background: white;
+      margin-left: 5mm; /* 为左侧色条留出空间，实际视觉在纸张边缘内部 */
+    }
+
+    /* 调整简历宽度保证内部内容不溢出 */
+    .resume {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 打印样式 */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+
+      .resume {
+        box-shadow: none;
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 auto;
+        page-break-after: avoid;
+        position: relative;
+      }
+
+      .left-accent {
+        background: #2C5282 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .divider {
+        background: #C8D6E5 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .section-title {
+        border-bottom-color: #D9E2EC !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      a, button, .link {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .contact-icon {
+        color: #2C5282 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- 左侧装饰色条：低风险，纯装饰，不包含文字，不与内容重叠 -->
+    <div class="left-accent"></div>
+    <div class="container">
+      
+      <!-- 姓名与标题区域 -->
+      <div class="name-section">
+        <div class="name">陈亦舟</div>
+        <div class="title-line">税务高级经理 · 注册税务师 · 10年经验</div>
+        <div class="divider"></div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="contact-icon">✆</span> (86) 138-8215-3072</span>
+          <span class="contact-item"><span class="contact-icon">✉</span> yizhou.chen@taxpro.cn</span>
+          <span class="contact-item"><span class="contact-icon">⌂</span> 上海市浦东新区</span>
+          <span class="contact-item"><span class="contact-icon">ⓘ</span> linkedin.com/in/yizhou-chen</span>
+        </div>
+      </div>
+
+      <!-- 专业摘要 -->
+      <div class="section">
+        <div class="section-title">专业摘要</div>
+        <p style="font-size: 10.5pt; color: #2D3748; line-height: 1.6; margin-top: 4px;">
+          资深税务专家，持有CTA及CPA资格，深耕跨国企业税务合规、转让定价及并购税务架构。主导过多个逾千万的税务优化项目，累计合规管理企业税负超15亿元。善于与税务机关沟通，曾成功处理多起争议案件。致力于为猎头推荐岗位及网申渠道提供清晰的价值呈现。
+        </p>
+      </div>
+
+      <!-- 核心经历 -->
+      <div class="section">
+        <div class="section-title">工作经历</div>
+        
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company-name">蔚来资本</span><span class="job-title"> | 税务高级经理</span></span>
+            <span class="date-range">2021.04 – 至今</span>
+          </div>
+          <ul class="exp-details">
+            <li>领导集团税务合规与筹划团队，覆盖增值税、企业所得税及跨境预提税，确保零重大税务违规。</li>
+            <li>设计并实施转让定价政策，完成同期资料准备，成功应对两次反避税调查，降低潜在调整额3200万元。</li>
+            <li>主导新能源补贴相关税务架构优化，通过区域性优惠政策及研发加计扣除，年化节税逾1800万元。</li>
+            <li>作为核心成员参与收购德国技术公司税务尽职调查，识别历史税务风险并调整交易对价。</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company-name">毕马威中国</span><span class="job-title"> | 税务经理</span></span>
+            <span class="date-range">2018.07 – 2021.03</span>
+          </div>
+          <ul class="exp-details">
+            <li>为跨国企业客户提供税务合规及咨询服务，涉及行业包括汽车、科技及消费品，管理客户组合年收入超2亿。</li>
+            <li>带领6人团队完成多个转让定价文档及预约定价安排申请，协助客户获得税务机关认可。</li>
+            <li>深度参与双边预约定价磋商，成功为企业避免双重征税约900万元。</li>
+            <li>定期为客户管理层提供税务健康检查及培训，识别潜在风险点并制定改进方案。</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <span><span class="company-name">德勤华永</span><span class="job-title"> | 高级税务顾问</span></span>
+            <span class="date-range">2015.09 – 2018.06</span>
+          </div>
+          <ul class="exp-details">
+            <li>负责大型集团企业所得税汇算清缴及同期资料准备，累计服务客户超30家。</li>
+            <li>参与税务稽查应对项目，协助准备抗辩材料，减少罚款及滞纳金约560万元。</li>
+            <li>研究并解读增值税改革政策，为客户提供落地实施建议。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div class="section">
+        <div class="section-title">教育背景</div>
+        <div class="edu-row">
+          <span><span class="school-name">上海财经大学</span><span class="degree"> | 税务硕士</span></span>
+          <span class="edu-date">2013.09 – 2015.06</span>
+        </div>
+        <div class="edu-row">
+          <span><span class="school-name">西南财经大学</span><span class="degree"> | 财政学学士</span></span>
+          <span class="edu-date">2009.09 – 2013.06</span>
+        </div>
+      </div>
+
+      <!-- 专业资质与技能 -->
+      <div class="section">
+        <div class="section-title">资质与技能</div>
+        <div class="skills-container">
+          <div class="skill-category">
+            <span class="skill-label">专业资格</span>
+            <span class="skill-tags">
+              <span class="skill-tag">注册税务师 (CTA)</span>
+              <span class="skill-tag">中国注册会计师 (CPA)</span>
+              <span class="skill-tag">特许公认会计师 (ACCA)</span>
+            </span>
+          </div>
+          <div class="skill-category">
+            <span class="skill-label">核心领域</span>
+            <span class="skill-tags">
+              <span class="skill-tag">转让定价</span>
+              <span class="skill-tag">并购税务架构</span>
+              <span class="skill-tag">国际税收</span>
+              <span class="skill-tag">税务争议解决</span>
+              <span class="skill-tag">增值税合规</span>
+            </span>
+          </div>
+          <div class="skill-category">
+            <span class="skill-label">工具/系统</span>
+            <span class="skill-tags">
+              <span class="skill-tag">SAP FI-CO</span>
+              <span class="skill-tag">Oracle Tax</span>
+              <span class="skill-tag">金税系统</span>
+              <span class="skill-tag">TP Catalyst</span>
+              <span class="skill-tag">Power BI</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 证书与荣誉 -->
+      <div class="section">
+        <div class="section-title">证书与荣誉</div>
+        <div class="cert-item">
+          <span class="cert-name">上海市税务师协会优秀案例奖</span>
+          <span class="cert-date">2023</span>
+        </div>
+        <div class="cert-item">
+          <span class="cert-name">蔚来资本杰出专业贡献奖</span>
+          <span class="cert-date">2022</span>
+        </div>
+        <div class="cert-item">
+          <span class="cert-name">英语六级 (CET-6) · 流利商务英语</span>
+          <span class="cert-date">—</span>
+        </div>
+      </div>
+      
+      <!-- 底部留白自然结束，无额外装饰 -->
+    </div>
+  </div>
+</body>
+</html>

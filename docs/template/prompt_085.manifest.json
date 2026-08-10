@@ -1,0 +1,242 @@
+{
+  "templateId": "prompt_085",
+  "name": "简历 · 后端开发工程师 · 初级",
+  "sourceFile": "prompt_085.html",
+  "renderMode": "static",
+  "fields": [
+    {
+      "name": "name",
+      "label": "姓名",
+      "type": "string",
+      "commonPath": "basic.name",
+      "autoDetected": true
+    },
+    {
+      "name": "title",
+      "label": "求职意向/职位",
+      "type": "string",
+      "commonPath": "basic.title",
+      "autoDetected": true
+    },
+    {
+      "name": "email",
+      "label": "邮箱",
+      "type": "string",
+      "commonPath": "basic.email",
+      "autoDetected": true
+    },
+    {
+      "name": "phone",
+      "label": "电话",
+      "type": "string",
+      "commonPath": "basic.phone",
+      "autoDetected": true
+    },
+    {
+      "name": "social_3",
+      "label": "GitHub",
+      "type": "string",
+      "commonPath": "socials",
+      "autoDetected": true
+    },
+    {
+      "name": "location",
+      "label": "所在城市",
+      "type": "string",
+      "commonPath": "basic.location",
+      "autoDetected": true
+    },
+    {
+      "name": "skills",
+      "label": "技能清单",
+      "type": "array",
+      "commonPath": "skills",
+      "autoDetected": true,
+      "transform": "name"
+    },
+    {
+      "name": "experiences",
+      "label": "工作经历",
+      "type": "array",
+      "commonPath": "experiences",
+      "autoDetected": true
+    },
+    {
+      "name": "projects",
+      "label": "项目经验",
+      "type": "array",
+      "commonPath": "projects",
+      "autoDetected": true
+    },
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false
+    }
+  ],
+  "mappings": [
+    {
+      "commonPath": "basic.name",
+      "selector": ".name",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.title",
+      "selector": ".title-role",
+      "attribute": "textContent",
+      "autoDetected": true
+    },
+    {
+      "commonPath": "basic.email",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 1
+    },
+    {
+      "commonPath": "basic.phone",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 2
+    },
+    {
+      "commonPath": "socials",
+      "selector": ".contact-item",
+      "attribute": "href",
+      "autoDetected": true,
+      "index": 3
+    },
+    {
+      "commonPath": "basic.location",
+      "selector": ".contact-item",
+      "attribute": "textContent",
+      "autoDetected": true,
+      "index": 4
+    },
+    {
+      "commonPath": "skills",
+      "selector": ".skill-tag",
+      "attribute": "children",
+      "autoDetected": true,
+      "itemSelector": "skill-tag"
+    },
+    {
+      "commonPath": "experiences",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "工作经历",
+      "itemSelector": "entry"
+    },
+    {
+      "commonPath": "projects",
+      "attribute": "children",
+      "autoDetected": true,
+      "sectionTitle": "开源项目 / 工程实践",
+      "itemSelector": "entry"
+    }
+  ],
+  "sampleData": {
+    "name": "陈 逸 凡",
+    "title": "初级后端开发工程师 · Golang / Python",
+    "email": "📧 chenyifan@dev.me",
+    "phone": "(086) 139-5052-7614",
+    "socials": [
+      {
+        "platform": "github",
+        "url": "🐙 github.com/yifan-chen"
+      }
+    ],
+    "location": "杭州 · 中国",
+    "skills": [
+      {
+        "name": "Python",
+        "level": ""
+      },
+      {
+        "name": "Java",
+        "level": ""
+      },
+      {
+        "name": "PostgreSQL",
+        "level": ""
+      },
+      {
+        "name": "Redis",
+        "level": ""
+      },
+      {
+        "name": "Docker",
+        "level": ""
+      },
+      {
+        "name": "Kubernetes",
+        "level": ""
+      },
+      {
+        "name": "gRPC",
+        "level": ""
+      },
+      {
+        "name": "GitHub Actions",
+        "level": ""
+      },
+      {
+        "name": "REST API",
+        "level": ""
+      },
+      {
+        "name": "Linux",
+        "level": ""
+      }
+    ],
+    "experiences": [
+      {
+        "position": "广告投放平台 · 初级后端",
+        "description": "使用 Go"
+      },
+      {
+        "position": "渲染平台组 (Python/Go)",
+        "description": "基于 FastAPI"
+      }
+    ],
+    "projects": [
+      {
+        "role": "核心贡献者 · GitHub 120+ ⭐",
+        "description": "实现基于一致性哈希的分布式缓存中间件，支持LRU与TTL过期策略。"
+      },
+      {
+        "role": "个人实验项目",
+        "description": "用 FastAPI"
+      }
+    ]
+  },
+  "pendingManual": [
+    {
+      "name": "education",
+      "label": "教育背景",
+      "type": "array",
+      "commonPath": "education",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    },
+    {
+      "name": "languages",
+      "label": "语言能力",
+      "type": "array",
+      "commonPath": "languages",
+      "autoDetected": false,
+      "reason": "区块存在但未提取到条目或选择器"
+    }
+  ]
+}

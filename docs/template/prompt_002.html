@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, print-color-adjust: exact;">
+  <title>陈启明 · 副总裁 · PE/VC 投资简历</title>
+  <style>
+    /* 全局重置与打印优化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eef2f6;
+      font-family: 'Arial', 'Helvetica Neue', 'Calibri', '思源黑体', 'Source Han Sans SC', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 1.8rem 1rem;
+      margin: 0;
+    }
+
+    /* A4尺寸卡片，模拟真实简历页面 */
+    .resume {
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      padding: 0.75in 0.85in 0.7in 0.85in;  /* 舒适呼吸感 */
+      page-break-after: avoid;
+      page-break-inside: avoid;
+      display: flex;
+      flex-direction: column;
+      color: #2D3748;
+      line-height: 1.5;
+      transition: all 0.2s;
+    }
+
+    /* 打印样式：去除背景色、阴影，保留纯净文本 */
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+        margin: 0;
+      }
+      .resume {
+        box-shadow: none;
+        width: 100%;
+        min-height: auto;
+        padding: 0.7in 0.8in 0.7in 0.8in;
+        margin: 0 auto;
+        page-break-after: auto;
+      }
+      /* 隐藏任何可能出现的交互元素 */
+      button, .no-print, a:link, a:visited {
+        text-decoration: none;
+        color: #2D3748;
+      }
+      /* 强制颜色正常显示 */
+      * {
+        color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .section-title::after {
+        background-color: #1A365D !important;
+        print-color-adjust: exact;
+      }
+      .accent-line {
+        background-color: #C3924A !important;
+        print-color-adjust: exact;
+      }
+    }
+
+    /* 字体层级 */
+    h1, h2, h3, p, li, div {
+      word-break: break-word;
+    }
+
+    /* 姓名区域 */
+    .header {
+      margin-bottom: 0.35rem;
+    }
+    .name {
+      font-family: 'Georgia', 'Times New Roman', '思源宋体', 'Source Han Serif SC', serif;
+      font-size: 32pt;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #1A2E4A;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .title-sub {
+      font-size: 11.5pt;
+      font-weight: 400;
+      color: #4A5C6C;
+      letter-spacing: 0.4px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .title-sub span {
+      background: #F0F4FA;
+      padding: 2px 10px;
+      border-radius: 16px;
+      color: #1A365D;
+      font-weight: 500;
+    }
+
+    /* 分割线风格 */
+    .divider {
+      height: 2px;
+      background: #1A365D;
+      margin: 0.25rem 0 0.7rem 0;
+      width: 100%;
+      opacity: 0.9;
+    }
+
+    /* 联系信息行 (ATS友好，纯文本+图标符号) */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      font-size: 9.8pt;
+      color: #3A4B5C;
+      margin-bottom: 1.1rem;
+      align-items: center;
+    }
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+    .contact-item i.emoji {
+      font-style: normal;
+      filter: none;
+      font-size: 1rem;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-family: 'Arial', 'Helvetica Neue', 'Calibri', sans-serif;
+      font-size: 11.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: #1A365D;
+      margin: 1.1rem 0 0.55rem 0;
+      border-bottom: 1.8px solid #D9E2EC;
+      padding-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+    /* 左侧小色条装饰 (ATS安全：纯border/背景块不包含文字) */
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 17px;
+      background-color: #C3924A; /* 强调色：暗金 */
+      margin-right: 12px;
+      border-radius: 2px;
+    }
+
+    /* 工作经历条目 */
+    .experience-item {
+      margin-bottom: 0.65rem;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 2px;
+    }
+    .company-name {
+      font-weight: 700;
+      font-size: 11pt;
+      color: #1A202C;
+    }
+    .job-title {
+      font-weight: 600;
+      font-size: 10.5pt;
+      color: #2D4A6E;
+      margin-left: 6px;
+      font-style: normal;
+    }
+    .date-location {
+      font-size: 9.5pt;
+      color: #5A6B7A;
+      font-weight: 400;
+      white-space: nowrap;
+      text-align: right;
+    }
+    .exp-details {
+      margin-top: 4px;
+      padding-left: 1.2rem;
+      list-style-type: none;
+    }
+    .exp-details li {
+      font-size: 9.8pt;
+      line-height: 1.5;
+      color: #2D3748;
+      margin-bottom: 0.25rem;
+      position: relative;
+      padding-left: 0.8rem;
+    }
+    /* 标准圆点符号，ATS完美识别 */
+    .exp-details li::before {
+      content: "•";
+      position: absolute;
+      left: -0.25rem;
+      color: #2B4F7A;
+      font-weight: bold;
+    }
+
+    /* 教育经历类似样式 */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.4rem;
+    }
+    .edu-degree {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: #1A202C;
+    }
+    .edu-school {
+      font-weight: 600;
+      color: #2D4A6E;
+      margin-left: 8px;
+      font-size: 10pt;
+    }
+    .edu-date {
+      font-size: 9.5pt;
+      color: #5A6B7A;
+      white-space: nowrap;
+    }
+
+    /* 技能标签 (ATS友好纯文本排列) */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 4px;
+    }
+    .skill-category {
+      font-weight: 700;
+      font-size: 10pt;
+      color: #1A365D;
+      margin-right: 4px;
+    }
+    .skill-list {
+      font-size: 9.8pt;
+      color: #2D3748;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+    }
+    .skill-tag {
+      background: transparent;
+      border: none;
+      padding: 0;
+      font-weight: 400;
+    }
+    .skill-tag::after {
+      content: "·";
+      margin-left: 6px;
+      color: #A0B3C9;
+    }
+    .skill-tag:last-child::after {
+      content: "";
+    }
+
+    .two-col-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem 1.8rem;
+      list-style: none;
+      padding-left: 0;
+    }
+    .two-col-list li {
+      font-size: 9.8pt;
+      width: calc(50% - 1rem);
+      color: #2D3748;
+    }
+
+    /* 项目经验区块 */
+    .project-item {
+      margin-bottom: 0.55rem;
+    }
+    .project-title {
+      font-weight: 700;
+      font-size: 10.3pt;
+      color: #1A202C;
+    }
+    .project-org {
+      font-weight: 500;
+      color: #4A627A;
+      margin-left: 6px;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #E2E8F0;
+      margin: 0.5rem 0 0.3rem;
+    }
+
+    /* 右侧时间统一采用右对齐，保留在流中 */
+    .right-align {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* 低风险窄色条装饰 (仅在左侧标题体现) */
+    .gold-accent {
+      color: #C3924A;
+      font-weight: 600;
+    }
+
+    /* 确保所有文本可选 */
+    .resume * {
+      user-select: text;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    
+    <!-- 姓名与标题 -->
+    <div class="header">
+      <div class="name">陈启明</div>
+      <div class="title-sub">
+        副总裁 / 董事 · PE & VC 投资 <span>8年经验</span>
+      </div>
+      <div class="divider"></div>
+    </div>
+
+    <!-- 联系方式 (纯文本+符号，ATS完美解析) -->
+    <div class="contact-row">
+      <div class="contact-item"><i class="emoji">📞</i> +86 139 1028 5742</div>
+      <div class="contact-item"><i class="emoji">✉️</i> qiming.chen@pevc.com</div>
+      <div class="contact-item"><i class="emoji">📍</i> 北京 · 上海</div>
+      <div class="contact-item"><i class="emoji">🔗</i> linkedin.com/in/qimingchen</div>
+    </div>
+
+    <!-- 核心优势 / 专业摘要 -->
+    <div>
+      <div class="section-title">专业摘要</div>
+      <p style="font-size: 9.8pt; color: #2D3748; margin: 5px 0 2px; line-height: 1.5;">
+        拥有8年私募股权与风险投资经验，主导完成超过12笔交易，累计管理资产规模超45亿人民币。专注于科技、先进制造及医疗健康领域。具备从项目寻源、尽职调查到投后管理的完整闭环能力，曾任董事总经理特别助理。猎头直推目标：副总裁/董事层级。
+      </p>
+    </div>
+
+    <!-- 工作经历 -->
+    <div>
+      <div class="section-title">工作经历</div>
+      
+      <div class="experience-item">
+        <div class="exp-header">
+          <div>
+            <span class="company-name">鼎晖投资</span><span class="job-title"> | 投资副总裁</span>
+          </div>
+          <div class="date-location">2020.06 – 至今 | 北京</div>
+        </div>
+        <ul class="exp-details">
+          <li>主导科技与企业服务赛道投资，完成4笔成长期项目投资，总金额超18亿人民币，其中2家已申报IPO。</li>
+          <li>带领5人投资团队进行行业扫描、财务模型搭建及交易谈判，实现组合IRR 27%。</li>
+          <li>深度参与被投企业战略梳理，协助两家被投公司完成后续融资及并购退出。</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div>
+            <span class="company-name">高瓴资本</span><span class="job-title"> | 高级投资经理 / 副总裁（早期）</span>
+          </div>
+          <div class="date-location">2017.03 – 2020.05 | 上海</div>
+        </div>
+        <ul class="exp-details">
+          <li>负责医疗健康和智能制造领域投资，主导及参与交易金额合计22亿元，覆盖B轮至Pre-IPO轮次。</li>
+          <li>完成对某医疗器械龙头企业的独家投资，投后估值增长3.2倍，并于2021年成功登陆科创板。</li>
+          <li>建立行业研究框架，定期向投委会汇报细分赛道机会，累计评估项目超过200个。</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div>
+            <span class="company-name">麦肯锡公司</span><span class="job-title"> | 商业分析师 / 咨询经理</span>
+          </div>
+          <div class="date-location">2015.08 – 2017.02 | 上海</div>
+        </div>
+        <ul class="exp-details">
+          <li>为私募基金客户提供商业尽职调查服务，覆盖TMT及消费品行业，识别关键增长驱动因素。</li>
+          <li>搭建市场预测模型，协助客户完成对某连锁消费品牌5亿人民币的收购案。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 教育背景 -->
+    <div>
+      <div class="section-title">教育背景</div>
+      <div class="edu-item">
+        <div>
+          <span class="edu-degree">金融学硕士</span><span class="edu-school"> | 北京大学光华管理学院</span>
+        </div>
+        <div class="edu-date">2013 – 2015</div>
+      </div>
+      <div class="edu-item">
+        <div>
+          <span class="edu-degree">经济学学士</span><span class="edu-school"> | 复旦大学</span>
+        </div>
+        <div class="edu-date">2009 – 2013</div>
+      </div>
+    </div>
+
+    <!-- 核心能力 / 技能 (标签式与列表结合) -->
+    <div>
+      <div class="section-title">专业能力</div>
+      <div class="skills-container">
+        <div style="display: flex; flex-wrap: wrap; width: 100%;">
+          <span class="skill-category">投资技能：</span>
+          <span class="skill-list">
+            <span class="skill-tag">财务建模</span>
+            <span class="skill-tag">尽职调查</span>
+            <span class="skill-tag">交易结构设计</span>
+            <span class="skill-tag">投后管理</span>
+            <span class="skill-tag">退出策略</span>
+            <span class="skill-tag">估值分析</span>
+          </span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; width: 100%; margin-top: 5px;">
+          <span class="skill-category">行业覆盖：</span>
+          <span class="skill-list">
+            <span class="skill-tag">企业服务</span>
+            <span class="skill-tag">先进制造</span>
+            <span class="skill-tag">医疗器械</span>
+            <span class="skill-tag">半导体</span>
+            <span class="skill-tag">新能源</span>
+          </span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; width: 100%; margin-top: 5px;">
+          <span class="skill-category">语言/证书：</span>
+          <span class="skill-list">
+            <span class="skill-tag">CFA 持证人</span>
+            <span class="skill-tag">CPA（非执业）</span>
+            <span class="skill-tag">英语专业八级</span>
+            <span class="skill-tag">普通话母语</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 精选项目经验 (突出交易) -->
+    <div>
+      <div class="section-title">代表交易</div>
+      
+      <div class="project-item">
+        <div class="exp-header" style="margin-bottom: 2px;">
+          <span class="project-title">领投 · 星环半导体B轮融资</span>
+          <span class="date-location">2022.03</span>
+        </div>
+        <ul class="exp-details">
+          <li>主导3.2亿元投资，投后估值18亿元；负责商业谈判及条款清单设计，目前项目已进入上市辅导期。</li>
+        </ul>
+      </div>
+      
+      <div class="project-item">
+        <div class="exp-header" style="margin-bottom: 2px;">
+          <span class="project-title">独家投资 · 安和医疗C轮</span>
+          <span class="date-location">2019.09</span>
+        </div>
+        <ul class="exp-details">
+          <li>作为项目负责人完成2.5亿元独家投资，协助企业引入战略资源，三年内营收增长4.8倍。</li>
+        </ul>
+      </div>
+      
+      <div class="project-item">
+        <div class="exp-header" style="margin-bottom: 2px;">
+          <span class="project-title">并购退出 · 云智科技</span>
+          <span class="date-location">2021.12</span>
+        </div>
+        <ul class="exp-details">
+          <li>管理被投企业出售给上市公司，实现3.1倍回报，内部收益率达41%。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 补充信息：证书与领导力 (使用两栏列表保持简洁) -->
+    <div style="margin-top: 0.1rem;">
+      <div class="section-title">资质与活动</div>
+      <ul class="two-col-list" style="margin-top: 3px;">
+        <li>• 清华五道口金融CEO班（在读）</li>
+        <li>• 中国证券投资基金业协会会员</li>
+        <li>• 2023 年度“35位35岁以下投资人”</li>
+        <li>• 北京大学校友会PE/VC分会理事</li>
+      </ul>
+    </div>
+    
+    <!-- 底部极简分割线 (仅视觉装饰) -->
+    <div style="margin-top: 0.6rem; border-top: 1px solid #D9E2EC; padding-top: 4px; font-size: 8pt; color: #7B8DA0; text-align: right; letter-spacing: 0.3px;">
+      陈启明 · 副总裁/董事 · PE/VC · 保密
+    </div>
+  </div>
+</body>
+</html>
