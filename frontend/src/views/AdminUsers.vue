@@ -9,7 +9,7 @@ import type { UserInfo, UserRole } from '@/types/user'
 const userStore = useUserStore()
 const users = ref<UserInfo[]>([])
 const loading = ref(false)
-const changingId = ref<number | null>(null)
+const changingId = ref<string | null>(null)
 
 onMounted(load)
 

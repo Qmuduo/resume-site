@@ -126,15 +126,21 @@ async function save() {
   }
 }
 
-function parseData(raw: string): Record<string, unknown> {
-  try {
-    const parsed = JSON.parse(raw)
-    return parsed !== null && typeof parsed === 'object'
-      ? (parsed as Record<string, unknown>)
-      : {}
-  } catch {
-    return {}
+function parseData(raw: unknown): Record<string, unknown> {
+  if (raw !== null && typeof raw === 'object' && !Array.isArray(raw)) {
+    return raw as Record<string, unknown>
   }
+  if (typeof raw === 'string') {
+    try {
+      const parsed = JSON.parse(raw)
+      return parsed !== null && typeof parsed === 'object' && !Array.isArray(parsed)
+        ? (parsed as Record<string, unknown>)
+        : {}
+    } catch {
+      return {}
+    }
+  }
+  return {}
 }
 
 function mergeDefaults(schema: SchemaNode, base: Record<string, unknown>): Record<string, unknown> {

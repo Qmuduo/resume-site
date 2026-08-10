@@ -22,14 +22,19 @@ export interface ResumeTemplate {
   css: string
 }
 
-/** 简历记录（后端 Resume 实体） */
+/**
+ * 简历记录（后端 Resume 实体）。
+ * 注意：id/userId/templateId 后端通过 Jackson 序列化为字符串（避免 JS Number 精度丢失），
+ * 因此前端类型为 string 而非 number。
+ */
 export interface ResumeRecord {
-  id: number
-  userId: number
-  templateId: number | null
+  id: string
+  userId: string
+  templateId: string | null
   templateCode: string | null
   title: string
-  data: string
+  /** data 字段为 MySQL JSON 列，后端可能返回 string 或已反序列化的 object */
+  data: string | Record<string, unknown>
   status: number
   createdAt?: string
   updatedAt?: string

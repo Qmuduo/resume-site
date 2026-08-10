@@ -1,8 +1,11 @@
 export type UserRole = 'USER' | 'ADMIN'
 
-/** 用户信息（后端 UserVO，永不包含密码） */
+/**
+ * 用户信息（后端 UserVO，永不包含密码）。
+ * id 为字符串：后端 Long 通过 Jackson 序列化为字符串，避免 JS 精度丢失。
+ */
 export interface UserInfo {
-  id: number
+  id: string
   username: string
   nickname: string | null
   email: string | null
