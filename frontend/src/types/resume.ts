@@ -218,3 +218,36 @@ export interface TemplateManifest {
   sampleData?: Record<string, unknown>
   pendingManual?: TemplateFieldDef[]
 }
+
+// ============ manifest v2（语义模板） ============
+
+export interface TemplateRegion {
+  name: 'header' | 'main' | 'sidebar'
+  placement: 'main' | 'sidebar'
+  origins: string[]
+}
+
+export interface TemplateBlock {
+  type: string
+  selector: string | null
+  sectionTitle?: string
+  placement: 'main' | 'sidebar'
+}
+
+export interface TemplateThemeVar {
+  key: string
+  default: string
+  control: 'color' | 'number' | 'font' | 'select'
+}
+
+export interface TemplateManifestV2 {
+  templateId: string
+  name: string
+  sourceFile: string
+  renderMode: 'semantic' | 'placeholder'
+  regions: TemplateRegion[]
+  blocks: TemplateBlock[]
+  theme: TemplateThemeVar[]
+  sampleData: Record<string, unknown>
+  customFields: { name: string; label: string; type: string; selector?: string }[]
+}

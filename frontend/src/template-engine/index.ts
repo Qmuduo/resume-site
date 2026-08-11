@@ -1,13 +1,14 @@
 import type {
-  ResumeCommonData,
-  ResumeExtendedData,
+  ResumeData,
+  ResumeSection,
+  ResumeSectionItem,
   ResumeTemplate,
   SchemaNode,
-  TemplateManifest,
-  TemplateMapping
+  TemplateBlock,
+  TemplateManifestV2
 } from '@/types'
 
-/** 渲染上下文：目前只有一个保留变量 resumeTitle（简历标题，属于元数据，不放进简历 data） */
+/** 渲染上下文：简历标题等元数据，不放进简历 data */
 export interface RenderContext {
   resumeTitle?: string
 }
@@ -22,6 +23,194 @@ export interface RenderContext {
  */
 
 export function renderTemplate(
+  template: ResumeTemplate,
+  data: unknown,
+  context: RenderContext = {}
+): string {
+  const manifest = template.manifest
+  if (manifest && 'renderMode' in manifest && manifest.renderMode === 'semantic') {
+    return renderSemanticTemplate(template, data as ResumeData)
+  }
+  return renderPlaceholder(template, data as Record<string, unknown>, context)
+}
+
+// ============ 语义渲染（manifest v2） ============
+
+/** 语义区块 -> 条目字段类名别名表 */
+const FIELD_ALIASES: Record<string, string[]> = {
+  name: ['name', 'project-name', 'company', 'network', 'school', 'organization', 'issuer', 'project-title'],
+  headline: ['headline', 'job-title', 'position', 'role', 'degree', 'major', 'entry-subtitle'],
+  school: ['school', 'edu-school'],
+  degree: ['degree', 'edu-degree'],
+  period: ['period', 'date', 'entry-meta', 'date-location', 'entry-date', 'time'],
+  description: ['description', 'entry-body', 'details', 'summary', 'desc', 'bullet'],
+  level: ['level', 'lang-level', 'proficiency']
+}
+
+function findByToken(el: Element, tokens: string[]): Element | null {
+  for (const token of tokens) {
+    const hit = el.classList.contains(token) ? el : el.querySelector(`.${token}`)
+    if (hit) return hit
+  }
+  return null
+}
+
+function setText(el: Element | null, value: unknown) {
+  if (!el) return
+  const text = Array.isArray(value)
+    ? value.map((v) => String(v ?? '')).join(', ')
+    : String(value ?? '')
+  el.textContent = text
+}
+
+function fillItem(itemEl: Element, item: ResumeSectionItem) {
+  for (const [key, tokens] of Object.entries(FIELD_ALIASES)) {
+    setText(findByToken(itemEl, tokens), item[key])
+  }
+  const description = item['description']
+  const body = findByToken(itemEl, ['entry-body', 'details', 'description'])
+  if (body && typeof description === 'string' && description.includes('<')) {
+    body.innerHTML = sanitizeRichText(description)
+  }
+}
+
+function fillSection(
+  container: Element,
+  section: { title: string; items: ResumeSectionItem[] },
+  _manifest: TemplateManifestV2
+) {
+  setText(container.querySelector('.section-title'), section.title)
+  const itemsEl = container.querySelector('.section-items') ?? container
+  const skillTag = itemsEl.querySelector('.skill-tag')
+  if (skillTag) {
+    itemsEl.innerHTML = ''
+    for (const item of section.items) {
+      const clone = skillTag.cloneNode(true) as Element
+      clone.textContent = [item['name'], item['level']].filter(Boolean).join(' · ')
+      itemsEl.appendChild(clone)
+    }
+    return
+  }
+  const first = itemsEl.querySelector('.entry, [data-entry]')
+  if (!first) return
+  itemsEl.innerHTML = ''
+  for (const item of section.items) {
+    const clone = first.cloneNode(true) as Element
+    fillItem(clone, item)
+    itemsEl.appendChild(clone)
+  }
+}
+
+function fillSummary(container: Element, summary: ResumeData['summary']) {
+  setText(container.querySelector('.section-title'), summary.title)
+  const body = container.querySelector('.entry-body, .section-items, p')
+  if (!body) return
+  if (summary.content.includes('<')) {
+    body.innerHTML = sanitizeRichText(summary.content)
+  } else {
+    body.textContent = summary.content
+  }
+}
+
+function fillHeader(header: Element, data: ResumeData) {
+  setText(header.querySelector('.name'), data.basics.name)
+  setText(header.querySelector('.headline'), data.basics.headline)
+  const list = header.querySelector('.contact-list')
+  if (!list) return
+  const first = list.firstElementChild
+  const items = [
+    data.basics.email,
+    data.basics.phone,
+    data.basics.location,
+    ...data.basics.customFields.map((f) => f.text)
+  ].filter(Boolean)
+  list.innerHTML = ''
+  for (const text of items) {
+    const el = first ? (first.cloneNode(true) as Element) : document.createElement('span')
+    el.classList.add('contact-item')
+    el.textContent = text
+    list.appendChild(el)
+  }
+}
+
+function resolveContainer(root: Element, block: TemplateBlock): Element | null {
+  if (block.selector) {
+    try {
+      return root.querySelector(block.selector)
+    } catch {
+      return null
+    }
+  }
+  if (block.sectionTitle) {
+    const titleEl = Array.from(root.querySelectorAll('.section-title')).find(
+      (el) => normalizeText(el.textContent) === normalizeText(block.sectionTitle ?? '')
+    )
+    return titleEl?.parentElement ?? null
+  }
+  return null
+}
+
+function normalizeText(text: string | null | undefined): string {
+  return (text ?? '').replace(/\s+/g, ' ').trim()
+}
+
+function themeCss(data: ResumeData, templateCss: string): string {
+  const c = data.metadata.design.colors
+  const t = data.metadata.typography
+  const p = data.metadata.page
+  const vars = [
+    `--color-primary:${c.primary};`,
+    `--color-background:${c.background};`,
+    `--color-text:${c.text};`,
+    `--font-heading:${t.headingFont};`,
+    `--font-body:${t.bodyFont};`,
+    `--font-size-base:${t.fontSize}pt;`,
+    `--page-margin:${p.margin}px;`
+  ].join('')
+  const custom = data.metadata.stylesheet ? sanitizeCss(data.metadata.stylesheet) : ''
+  return `:root{${vars}}${custom}${templateCss}`
+}
+
+export function renderSemanticTemplate(template: ResumeTemplate, data: ResumeData): string {
+  const manifest = template.manifest as TemplateManifestV2 | null
+  if (!manifest || typeof DOMParser === 'undefined') return ''
+  const doc = new DOMParser().parseFromString(`<div id="__resume_root">${template.html ?? ''}</div>`, 'text/html')
+  const root = doc.getElementById('__resume_root')
+  if (!root) return ''
+
+  const header = root.querySelector('.resume-header')
+  if (header) fillHeader(header, data)
+
+  for (const block of manifest.blocks ?? []) {
+    const container = resolveContainer(root, block)
+    if (!container) continue
+    if (block.type === 'summary') {
+      fillSummary(container, data.summary)
+    } else {
+      const section = data.sections[block.type]
+      if (section) fillSection(container, section, manifest)
+    }
+  }
+
+  const customHost = root.querySelector('[data-section="custom"]')
+  if (customHost && data.customSections.length > 0) {
+    for (const cs of data.customSections) {
+      const sectionEl = document.createElement('div')
+      sectionEl.className = 'section'
+      sectionEl.innerHTML = '<div class="section-title"></div><div class="section-items"></div>'
+      fillSection(sectionEl, cs as unknown as ResumeSection, manifest)
+      customHost.appendChild(sectionEl)
+    }
+  }
+
+  const html = root.innerHTML
+  const css = themeCss(data, template.css ?? '')
+  return `<style>${sanitizeCss(css)}</style>${sanitizeHtml(html)}`
+}
+
+// ============ 占位符渲染（{{field}} / {{#each}}，供 AI 占位模板使用） ============
+
+export function renderPlaceholder(
   template: ResumeTemplate,
   data: Record<string, unknown>,
   context: RenderContext = {}
@@ -93,21 +282,15 @@ function findEachEnd(html: string, from: number): number {
   let i = from
   while (i < html.length) {
     const open = html.indexOf('{{', i)
-    if (open === -1) {
-      return -1
-    }
+    if (open === -1) return -1
     const close = html.indexOf('}}', open + 2)
-    if (close === -1) {
-      return -1
-    }
+    if (close === -1) return -1
     const token = html.slice(open + 2, close).trim()
     if (token.startsWith('#each ')) {
       depth++
     } else if (token === '/each') {
       depth--
-      if (depth === 0) {
-        return open
-      }
+      if (depth === 0) return open
     }
     i = close + 2
   }
@@ -115,36 +298,27 @@ function findEachEnd(html: string, from: number): number {
 }
 
 function isPathAllowed(schema: SchemaNode, parts: string[]): boolean {
-  // 保留变量：简历标题来自渲染上下文，不参与 data 的 schema 白名单校验
   if (parts.length === 1 && parts[0] === 'resumeTitle') {
     return true
   }
   let node: SchemaNode | undefined = schema
   for (const part of parts) {
-    if (!node || typeof node !== 'object') {
-      return false
-    }
+    if (!node || typeof node !== 'object') return false
     if (node.type === 'array') {
       node = node.items
     }
     node = node?.properties?.[part]
-    if (!node) {
-      return false
-    }
+    if (!node) return false
   }
   return true
 }
 
 function resolveValue(path: string, scope: unknown, root: Record<string, unknown>): unknown {
-  if (path === '.') {
-    return scope
-  }
+  if (path === '.') return scope
   const parts = path.split('.')
   for (const source of [scope, root]) {
     const value = lookup(source, parts)
-    if (value !== undefined) {
-      return value
-    }
+    if (value !== undefined) return value
   }
   return undefined
 }
@@ -152,27 +326,19 @@ function resolveValue(path: string, scope: unknown, root: Record<string, unknown
 function lookup(source: unknown, parts: string[]): unknown {
   let node: unknown = source
   for (const part of parts) {
-    if (node === null || typeof node !== 'object') {
-      return undefined
-    }
+    if (node === null || typeof node !== 'object') return undefined
     node = (node as Record<string, unknown>)[part]
-    if (node === undefined) {
-      return undefined
-    }
+    if (node === undefined) return undefined
   }
   return node
 }
 
 function stringify(value: unknown): string {
-  if (value === null || value === undefined) {
-    return ''
-  }
+  if (value === null || value === undefined) return ''
   if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
     return String(value)
   }
-  if (Array.isArray(value)) {
-    return value.map(stringify).join(', ')
-  }
+  if (Array.isArray(value)) return value.map(stringify).join(', ')
   return ''
 }
 
@@ -185,14 +351,14 @@ function escapeHtml(value: string): string {
     .replace(/'/g, '&#39;')
 }
 
+// ============ 消毒 ============
+
 /**
  * DOM 消毒：移除脚本类标签、事件属性、危险协议属性与 style 属性。
  * 不新增第三方依赖（AGENTS.md 要求新增依赖先问用户），后续可替换为 DOMPurify。
  */
 export function sanitizeHtml(html: string): string {
-  if (typeof DOMParser === 'undefined') {
-    return ''
-  }
+  if (typeof DOMParser === 'undefined') return ''
   const doc = new DOMParser().parseFromString(html, 'text/html')
   const removeTags = [
     'script',
@@ -248,329 +414,30 @@ export function sanitizeCss(css: string): string {
     .replace(/>/g, '')
 }
 
-/**
- * 占位符模板：把公共数据 + 扩展数据按 manifest 字段定义拍平成模板插值所需的扁平对象。
- * 例如 commonData.basic.name -> { name }；skills（对象数组）按 transform='name' 转为字符串数组。
- */
-export function buildViewModel(
-  commonData: ResumeCommonData,
-  extendedData: ResumeExtendedData,
-  manifest?: TemplateManifest | null
-): Record<string, unknown> {
-  const viewModel: Record<string, unknown> = {}
-  for (const field of manifest?.fields ?? []) {
-    const value = field.commonPath
-      ? getPath(commonData as unknown as Record<string, unknown>, field.commonPath)
-      : extendedData?.[field.name]
-    viewModel[field.name] = applyTransform(value, field.transform)
-  }
-  return viewModel
-}
-
-function applyTransform(value: unknown, transform?: string): unknown {
-  if (!transform || !Array.isArray(value)) {
-    return value
-  }
-  if (transform === 'name') {
-    return value.map((item) =>
-      item !== null && typeof item === 'object'
-        ? (item as Record<string, unknown>).name ?? ''
-        : item
-    )
-  }
-  return value
-}
-
-/**
- * 静态模板渲染：保留原 HTML（示例数据），再把公共数据/扩展数据按 manifest 映射回填到 DOM。
- * - selector 精确命中；sectionTitle + itemSelector 按区块标题定位列表；
- * - 数组数据按 children 模式克隆首个子元素填充；
- * - 最终结果仍经过 sanitizeHtml 消毒。
- */
-export function renderStaticTemplate(
-  template: ResumeTemplate,
-  commonData: ResumeCommonData,
-  extendedData: ResumeExtendedData
-): string {
-  const manifest = template.manifest
-  if (!manifest) {
-    return sanitizeHtml(template.html ?? '')
-  }
-  if (typeof DOMParser === 'undefined') {
-    return ''
-  }
-  const doc = new DOMParser().parseFromString(`<div id="__resume_static">${template.html ?? ''}</div>`, 'text/html')
-  const root = doc.getElementById('__resume_static')
-  if (!root) {
-    return sanitizeHtml(template.html ?? '')
-  }
-  applyMappings(doc, manifest, commonData, extendedData)
-  return sanitizeHtml(root.innerHTML)
-}
-
-function applyMappings(
-  doc: Document,
-  manifest: TemplateManifest,
-  commonData: ResumeCommonData,
-  extendedData: ResumeExtendedData
-) {
-  // 兼容历史/损坏 manifest：mappings 缺失时保持原 HTML，不抛错
-  if (!Array.isArray(manifest.mappings)) {
-    return
-  }
-  for (const mapping of manifest.mappings) {
-    const value = mapping.commonPath
-      ? getPath(commonData as unknown as Record<string, unknown>, mapping.commonPath)
-      : extendedData?.[mapping.field ?? mapping.commonPath ?? '']
-    if (isEmptyValue(value)) {
-      continue
+/** 富文本消毒：白名单外标签一律移除，仅保留基础排版。 */
+export function sanitizeRichText(html: string): string {
+  if (typeof DOMParser === 'undefined') return ''
+  const doc = new DOMParser().parseFromString(`<div>${html}</div>`, 'text/html')
+  const allowed = new Set(['p', 'br', 'strong', 'em', 'u', 's', 'ul', 'ol', 'li', 'a'])
+  doc.querySelectorAll('*').forEach((node) => {
+    const el = node as Element
+    if (!allowed.has(el.tagName.toLowerCase())) {
+      el.replaceWith(...Array.from(el.childNodes))
+      return
     }
-    const targets = resolveTargets(doc, mapping)
-    if (targets.length === 0) {
-      continue
-    }
-    fillTargets(targets, mapping, value)
-  }
-}
-
-function resolveTargets(doc: Document, mapping: TemplateMapping): Element[] {
-  if (mapping.selector) {
-    try {
-      return Array.from(doc.querySelectorAll(mapping.selector))
-    } catch {
-      // 非法选择器来自损坏的 manifest：跳过该映射，避免整个预览崩溃
-      return []
-    }
-  }
-  if (mapping.sectionTitle) {
-    const titleEl = Array.from(
-      doc.querySelectorAll('.section-title, .section h2, .section h3')
-    ).find((el) => normalizeText(el.textContent) === normalizeText(mapping.sectionTitle))
-    if (!titleEl) {
-      return []
-    }
-    if (mapping.itemSelector) {
-      return collectSectionItems(titleEl, mapping.itemSelector)
-    }
-    const blocks: Element[] = []
-    let node = titleEl.nextElementSibling
-    while (node && !isSectionHeading(node)) {
-      blocks.push(node)
-      node = node.nextElementSibling
-    }
-    return blocks.slice(0, 1)
-  }
-  return []
-}
-
-function collectSectionItems(titleEl: Element, itemSelector: string): Element[] {
-  const items: Element[] = []
-  let node = titleEl.nextElementSibling
-  while (node) {
-    if (isSectionHeading(node)) {
-      break
-    }
-    try {
-      if (node.matches(itemSelector)) {
-        items.push(node)
+    Array.from(el.attributes).forEach((attr) => {
+      const name = attr.name.toLowerCase()
+      const value = attr.value.trim().toLowerCase()
+      if (name.startsWith('on') || (name === 'href' && value.startsWith('javascript:'))) {
+        el.removeAttribute(attr.name)
       }
-      if (node.querySelectorAll) {
-        node.querySelectorAll(itemSelector).forEach((el) => {
-          if (!items.includes(el)) {
-            items.push(el)
-          }
-        })
-      }
-    } catch {
-      // itemSelector 不是合法 CSS 时跳过该节点
-    }
-    node = node.nextElementSibling
-  }
-  return items
+      if (name !== 'href' && name !== 'target') el.removeAttribute(attr.name)
+    })
+  })
+  return doc.body.innerHTML
 }
 
-function isSectionHeading(el: Element): boolean {
-  return (
-    el.classList.contains('section-title') ||
-    ((el.tagName === 'H2' || el.tagName === 'H3') &&
-      el.parentElement?.classList.contains('section') === true)
-  )
-}
-
-function fillTargets(targets: Element[], mapping: TemplateMapping, value: unknown) {
-  if (Array.isArray(value) && mapping.attribute === 'children') {
-    for (const container of targets) {
-      fillList(container, mapping, value)
-    }
-    return
-  }
-  const index = mapping.index != null ? mapping.index - 1 : -1
-  const itemValue = Array.isArray(value)
-    ? resolveArrayItem(value, index, mapping.attribute)
-    : value
-  const target = index >= 0 ? targets[index] ?? targets[0] : targets[0]
-  if (!target) {
-    return
-  }
-  setElementValue(target, mapping.attribute, stringifyValue(itemValue))
-}
-
-function resolveArrayItem(value: unknown[], index: number, attribute: string): unknown {
-  const item = index >= 0 && index < value.length ? value[index] : value[0]
-  if (item !== null && typeof item === 'object') {
-    const obj = item as Record<string, unknown>
-    if (attribute === 'href' || attribute === 'src') {
-      return obj.url ?? obj.link ?? ''
-    }
-    return obj.url ?? obj.platform ?? obj.name ?? ''
-  }
-  return item
-}
-
-function fillList(container: Element, mapping: TemplateMapping, value: unknown[]) {
-  let firstChild: Element | null = null
-  if (mapping.itemSelector) {
-    try {
-      firstChild =
-        (container.matches(mapping.itemSelector) ? container : container.querySelector(mapping.itemSelector)) ??
-        null
-    } catch {
-      firstChild = null
-    }
-  } else {
-    firstChild = firstElementChild(container)
-  }
-  if (!firstChild) {
-    return
-  }
-  container.innerHTML = ''
-  for (const item of value) {
-    const clone = firstChild.cloneNode(true) as Element
-    if (typeof item === 'string') {
-      clone.textContent = item
-    } else if (item !== null && typeof item === 'object') {
-      fillObjectInto(clone, item as Record<string, unknown>)
-    }
-    container.appendChild(clone)
-  }
-}
-
-function fillObjectInto(el: Element, item: Record<string, unknown>) {
-  const aliasMap: Record<string, string[]> = {
-    school: ['school', 'edu-school'],
-    company: ['company', 'institution', 'entry-org'],
-    position: ['position', 'role', 'job-title', 'entry-subtitle'],
-    degree: ['degree', 'edu-degree'],
-    name: ['name', 'project-name', 'project-title'],
-    date: ['date', 'date-location', 'date-range', 'entry-date', 'edu-date', 'time'],
-    description: ['desc', 'description', 'desc-list', 'entry-details', 'details', 'bullet', 'summary'],
-    level: ['level', 'lang-level', 'proficiency']
-  }
-  let filled = false
-  for (const [key, tokens] of Object.entries(aliasMap)) {
-    const raw = item[key]
-    if (isEmptyValue(raw)) {
-      continue
-    }
-    const targetEl = findByToken(el, tokens)
-    if (targetEl) {
-      if (key === 'description' && targetEl.tagName === 'UL') {
-        fillDescriptionList(targetEl, raw)
-      } else {
-        targetEl.textContent = stringifyValue(raw)
-      }
-      filled = true
-    }
-  }
-  if (!filled) {
-    const description = item.description ?? item.name ?? ''
-    el.textContent = stringifyValue(description)
-  }
-}
-
-function fillDescriptionList(ul: Element, raw: unknown) {
-  const values = Array.isArray(raw) ? raw.map(stringifyValue) : [stringifyValue(raw)]
-  ul.innerHTML = ''
-  for (const text of values) {
-    const li = document.createElement('li')
-    li.textContent = text
-    ul.appendChild(li)
-  }
-}
-
-function findByToken(el: Element, tokens: string[]): Element | null {
-  const candidates = [el, ...Array.from(el.querySelectorAll('*'))]
-  for (const candidate of candidates) {
-    for (const token of tokens) {
-      if (candidate.classList.contains(token)) {
-        return candidate
-      }
-    }
-  }
-  return null
-}
-
-function setElementValue(el: Element, attribute: string, value: string) {
-  if (attribute === 'href' || attribute === 'src') {
-    if (value) {
-      el.setAttribute(attribute, value)
-    }
-  } else if (attribute === 'children') {
-    el.textContent = value
-  } else {
-    el.textContent = value
-  }
-}
-
-function getPath(root: Record<string, unknown>, path: string): unknown {
-  const parts = path.split('.')
-  let node: unknown = root
-  for (const part of parts) {
-    if (node === null || typeof node !== 'object' || Array.isArray(node)) {
-      return undefined
-    }
-    node = (node as Record<string, unknown>)[part]
-    if (node === undefined) {
-      return undefined
-    }
-  }
-  return node
-}
-
-function isEmptyValue(value: unknown): boolean {
-  if (value === undefined || value === null) {
-    return true
-  }
-  if (typeof value === 'string') {
-    return value.trim() === ''
-  }
-  if (Array.isArray(value)) {
-    return value.length === 0
-  }
-  return false
-}
-
-function stringifyValue(value: unknown): string {
-  if (value === null || value === undefined) {
-    return ''
-  }
-  if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
-    return String(value)
-  }
-  if (Array.isArray(value)) {
-    return value.map(stringifyValue).join(', ')
-  }
-  return ''
-}
-
-function normalizeText(text: string | null | undefined): string {
-  return (text ?? '').replace(/\s+/g, ' ').trim()
-}
-
-function firstElementChild(el: Element): Element | null {
-  let node: Element | null = el.firstElementChild
-  while (node) {
-    return node
-  }
-  return null
+/** 兼容旧静态模板预览（阶段二后仅模板市场在用，Task 26 移除）。 */
+export function renderStaticTemplate(template: ResumeTemplate): string {
+  return sanitizeHtml(template.html ?? '')
 }

@@ -7,6 +7,7 @@ import type { AxiosError } from 'axios'
 import { fetchResume } from '@/api/resume'
 import { fetchTemplates } from '@/api/template'
 import { emptyResumeData, parseData } from '@/stores/resumeStore'
+import { renderTemplate } from '@/template-engine'
 import type { ResumeData, ResumeTemplate, ResumeVO } from '@/types'
 
 const route = useRoute()
@@ -20,15 +21,10 @@ const data = ref<ResumeData>(emptyResumeData())
 const loading = ref(true)
 const loadError = ref('')
 
-/** 阶段一临时渲染：JSON 预览，阶段二替换为语义渲染 */
 const previewHtml = computed(() => {
-  if (!resume.value) return ''
-  return `<pre class="json-preview">${escapeHtml(JSON.stringify(data.value, null, 2))}</pre>`
+  if (!template.value) return ''
+  return renderTemplate(template.value, data.value)
 })
-
-function escapeHtml(value: string): string {
-  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-}
 
 onMounted(load)
 

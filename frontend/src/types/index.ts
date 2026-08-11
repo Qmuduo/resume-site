@@ -1,4 +1,4 @@
-import type { TemplateManifest } from './resume'
+import type { TemplateManifest, TemplateManifestV2 } from './resume'
 
 /** 与后端统一响应体 Result<T> 对齐的骨架类型 */
 export interface ApiResult<T = unknown> {
@@ -27,7 +27,7 @@ export interface ResumeTemplate {
   css: string
   builtin?: number
   userId?: string | null
-  manifest?: TemplateManifest | null
+  manifest?: TemplateManifestV2 | TemplateManifest | null
 }
 
 export type {
@@ -42,6 +42,13 @@ export type {
   ResumeSections,
   ResumeVO,
   SwitchTemplatePayload
+} from './resume'
+
+export type {
+  TemplateBlock,
+  TemplateManifestV2,
+  TemplateRegion,
+  TemplateThemeVar
 } from './resume'
 
 export type {

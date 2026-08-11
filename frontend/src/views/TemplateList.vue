@@ -6,7 +6,6 @@ import { ElMessage } from 'element-plus'
 import { fetchTemplates } from '@/api/template'
 import { renderStaticTemplate, renderTemplate, sanitizeCss } from '@/template-engine'
 import { useUserStore } from '@/stores/userStore'
-import { emptyCommonData } from '@/stores/resumeStore'
 import type { ResumeTemplate, SchemaNode } from '@/types'
 
 const route = useRoute()
@@ -225,7 +224,7 @@ function sampleDataFor(tpl: ResumeTemplate): Record<string, unknown> {
 const previewHtml = computed(() =>
   previewTpl.value
     ? previewTpl.value.manifest?.renderMode === 'static'
-      ? renderStaticTemplate(previewTpl.value, emptyCommonData(), {})
+      ? renderStaticTemplate(previewTpl.value)
       : renderTemplate(previewTpl.value, sampleDataFor(previewTpl.value))
     : ''
 )

@@ -6,6 +6,7 @@ import { ElMessage } from 'element-plus'
 import TemplateSwitcher from '@/components/TemplateSwitcher.vue'
 import { fetchTemplates } from '@/api/template'
 import { useResumeStore } from '@/stores/resumeStore'
+import { renderTemplate } from '@/template-engine'
 import type { ResumeTemplate } from '@/types'
 
 const route = useRoute()
@@ -21,17 +22,11 @@ const selectedTemplate = computed(
   () => templates.value.find((tpl) => tpl.code === store.data.metadata.template) ?? null
 )
 
-/** 阶段一临时渲染：JSON 预览，阶段二替换为语义渲染 */
 const previewHtml = computed(() => {
-  if (!store.data.metadata.template) {
-    return '<p class="hint">请先选择模板（阶段二启用语义渲染）</p>'
-  }
-  return `<pre class="json-preview">${escapeHtml(JSON.stringify(store.data, null, 2))}</pre>`
+  const tpl = selectedTemplate.value
+  if (!tpl) return ''
+  return renderTemplate(tpl, store.data, { resumeTitle: store.title })
 })
-
-function escapeHtml(value: string): string {
-  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-}
 
 function onSwitchTemplate(newTemplateId: string) {
   store.data.metadata.template = newTemplateId
