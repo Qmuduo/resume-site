@@ -3,32 +3,77 @@
   "name": "prompt_026",
   "sourceFile": "prompt_026.html",
   "renderMode": "semantic",
-  "regions": [],
-  "blocks": [],
+  "regions": [
+    {
+      "name": "main",
+      "placement": "main",
+      "origins": [
+        "main"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "publications",
+      "selector": "[data-section='publications']",
+      "placement": "main"
+    },
+    {
+      "type": "education",
+      "selector": "[data-section='education']",
+      "placement": "main"
+    },
+    {
+      "type": "skills",
+      "selector": "[data-section='skills']",
+      "placement": "main"
+    },
+    {
+      "type": "awards",
+      "selector": "[data-section='awards']",
+      "placement": "main"
+    }
+  ],
   "theme": [
     {
-      "key": "--primary",
-      "default": "#2C3E50"
+      "key": "--color-primary",
+      "default": "#4F46E5",
+      "control": "color"
     },
     {
-      "key": "--accent",
-      "default": "#4A6A8A"
+      "key": "--color-background",
+      "default": "#FFFFFF",
+      "control": "color"
     },
     {
-      "key": "--body-text",
-      "default": "#1E2B38"
+      "key": "--color-text",
+      "default": "#1A1A1A",
+      "control": "color"
     },
     {
-      "key": "--light-bg",
-      "default": "#F8F9FA"
+      "key": "--font-heading",
+      "default": "sans-serif",
+      "control": "font"
     },
     {
-      "key": "--line",
-      "default": "#D0D7DE"
+      "key": "--font-body",
+      "default": "sans-serif",
+      "control": "font"
     },
     {
-      "key": "--white",
-      "default": "#FFFFFF"
+      "key": "--font-size-base",
+      "default": "12pt",
+      "control": "number"
+    },
+    {
+      "key": "--page-margin",
+      "default": "48px",
+      "control": "number"
+    },
+    {
+      "key": "--section-gap",
+      "default": "16px",
+      "control": "number"
     }
   ],
   "sampleData": {

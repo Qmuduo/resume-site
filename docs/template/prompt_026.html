@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
   <title>学术简历 · 苏轼 · 研究员</title>
   <style>
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
     /* 全局重置与打印优化 */
     * {
       margin: 0;
@@ -275,7 +297,7 @@
   </style>
 </head>
 <body>
-  <div class="resume">
+  <div class="resume-page">
     <div class="main-content">
       
       <!-- 姓名与基础信息 -->
@@ -291,7 +313,7 @@
       </div>
 
       <!-- 研究兴趣 / 专业概述 -->
-      <div>
+      <div class="section" data-section="publications">
         <div class="section-title">研究领域</div>
         <p style="font-size: 10.5pt; line-height: 1.5; margin-bottom: 0.1cm;">
           量子信息与量子光学 · 超导量子比特调控 · 拓扑量子计算 · 量子纠错码理论。致力于可扩展量子处理器架构及噪声中等规模量子算法实现。
@@ -299,7 +321,7 @@
       </div>
 
       <!-- 教育经历 -->
-      <div>
+      <div class="section" data-section="education">
         <div class="section-title">教育背景</div>
         
         <div class="entry">
@@ -329,7 +351,7 @@
       </div>
 
       <!-- 研究经历 -->
-      <div>
+      <div class="section" data-section="publications">
         <div class="section-title">研究经历</div>
         
         <div class="entry">
@@ -359,7 +381,7 @@
       </div>
 
       <!-- 学术成果（精选出版物） -->
-      <div>
+      <div class="section" data-section="publications">
         <div class="section-title">代表性论文</div>
         <div class="publication-item" style="margin-top: 0.1cm;">
           <strong>Zhang Z.</strong>, Li C., et al. “Real-time quantum error correction beyond break-even.” <em>Nature Physics</em>, 2024. (已接收)
@@ -396,9 +418,9 @@
       </div>
 
       <!-- 技能与标签 -->
-      <div>
+      <div class="section" data-section="skills">
         <div class="section-title">专业技能</div>
-        <div class="skills-container">
+        <div class="section-items">
           <span class="skill-tag">量子线路设计 (Qiskit/Cirq)</span>
           <span class="skill-tag">超导量子测量</span>
           <span class="skill-tag">Python/MATLAB</span>
@@ -411,7 +433,7 @@
       </div>
 
       <!-- 荣誉与奖项 使用两栏简洁列表 -->
-      <div>
+      <div class="section" data-section="awards">
         <div class="section-title">荣誉与奖项</div>
         <div class="two-col-list">
           <div class="list-item"><span class="bullet">•</span> 清华大学优秀博士论文 (2024)</div>
