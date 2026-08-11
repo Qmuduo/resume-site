@@ -3,9 +3,82 @@
   "name": "prompt_013",
   "sourceFile": "prompt_013.html",
   "renderMode": "semantic",
-  "regions": [],
-  "blocks": [],
-  "theme": [],
+  "regions": [
+    {
+      "name": "header",
+      "placement": "main",
+      "origins": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "summary",
+      "selector": "[data-section='summary']",
+      "placement": "main"
+    },
+    {
+      "type": "experience",
+      "selector": "[data-section='experience']",
+      "placement": "main"
+    },
+    {
+      "type": "education",
+      "selector": "[data-section='education']",
+      "placement": "main"
+    },
+    {
+      "type": "certifications",
+      "selector": "[data-section='certifications']",
+      "placement": "main"
+    },
+    {
+      "type": "skills",
+      "selector": "[data-section='skills']",
+      "placement": "main"
+    }
+  ],
+  "theme": [
+    {
+      "key": "--color-primary",
+      "default": "#4F46E5",
+      "control": "color"
+    },
+    {
+      "key": "--color-background",
+      "default": "#FFFFFF",
+      "control": "color"
+    },
+    {
+      "key": "--color-text",
+      "default": "#1A1A1A",
+      "control": "color"
+    },
+    {
+      "key": "--font-heading",
+      "default": "sans-serif",
+      "control": "font"
+    },
+    {
+      "key": "--font-body",
+      "default": "sans-serif",
+      "control": "font"
+    },
+    {
+      "key": "--font-size-base",
+      "default": "12pt",
+      "control": "number"
+    },
+    {
+      "key": "--page-margin",
+      "default": "48px",
+      "control": "number"
+    },
+    {
+      "key": "--section-gap",
+      "default": "16px",
+      "control": "number"
+    }
+  ],
   "sampleData": {
     "name": "杜甫",
     "headline": "| 法务专员",
