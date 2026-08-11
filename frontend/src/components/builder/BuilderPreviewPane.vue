@@ -48,12 +48,30 @@ function onMouseUp() {
 <template>
   <div class="preview-pane">
     <div class="preview-toolbar">
-      <el-radio-group v-model="format" size="small">
-        <el-radio-button value="A4">A4</el-radio-button>
-        <el-radio-button value="Letter">Letter</el-radio-button>
+      <el-radio-group
+        v-model="format"
+        size="small"
+      >
+        <el-radio-button value="A4">
+          A4
+        </el-radio-button>
+        <el-radio-button value="Letter">
+          Letter
+        </el-radio-button>
       </el-radio-group>
-      <el-input-number v-model="zoom" :min="0.2" :max="3" :step="0.1" size="small" />
-      <el-button size="small" @click="resetView">复位</el-button>
+      <el-input-number
+        v-model="zoom"
+        :min="0.2"
+        :max="3"
+        :step="0.1"
+        size="small"
+      />
+      <el-button
+        size="small"
+        @click="resetView"
+      >
+        复位
+      </el-button>
       <span class="pan-hint">拖动画布平移</span>
     </div>
     <div
@@ -65,7 +83,11 @@ function onMouseUp() {
       @mouseup="onMouseUp"
       @mouseleave="onMouseUp"
     >
-      <div class="preview-html" :style="pageStyle" v-html="previewHtml"></div>
+      <div
+        class="preview-html"
+        :style="pageStyle"
+        v-html="previewHtml"
+      />
     </div>
   </div>
 </template>

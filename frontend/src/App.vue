@@ -96,33 +96,74 @@ async function onSubmitPassword() {
 <template>
   <div class="layout">
     <header class="site-header">
-      <RouterLink class="brand" to="/">
+      <RouterLink
+        class="brand"
+        to="/"
+      >
         <span class="brand-mark">R</span>
         <span>Resume Site</span>
       </RouterLink>
       <div class="header-right">
         <nav class="nav">
-          <RouterLink to="/templates">模板市场</RouterLink>
-          <RouterLink v-if="userStore.isLoggedIn" to="/resumes">我的简历</RouterLink>
-          <RouterLink to="/editor">编辑简历</RouterLink>
-          <RouterLink v-if="isAdmin" to="/admin/users">用户管理</RouterLink>
+          <RouterLink to="/templates">
+            模板市场
+          </RouterLink>
+          <RouterLink
+            v-if="userStore.isLoggedIn"
+            to="/resumes"
+          >
+            我的简历
+          </RouterLink>
+          <RouterLink to="/editor">
+            编辑简历
+          </RouterLink>
+          <RouterLink
+            v-if="isAdmin"
+            to="/admin/users"
+          >
+            用户管理
+          </RouterLink>
         </nav>
         <div class="auth">
           <template v-if="userStore.isLoggedIn">
-            <el-tag v-if="isAdmin" size="small" type="danger" class="role-tag">ADMIN</el-tag>
+            <el-tag
+              v-if="isAdmin"
+              size="small"
+              type="danger"
+              class="role-tag"
+            >
+              ADMIN
+            </el-tag>
             <el-dropdown @command="handleUserCommand">
               <span class="user-trigger">{{ displayName }}</span>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item command="password">修改密码</el-dropdown-item>
-                  <el-dropdown-item divided command="logout">退出登录</el-dropdown-item>
+                  <el-dropdown-item command="password">
+                    修改密码
+                  </el-dropdown-item>
+                  <el-dropdown-item
+                    divided
+                    command="logout"
+                  >
+                    退出登录
+                  </el-dropdown-item>
                 </el-dropdown-menu>
               </template>
             </el-dropdown>
           </template>
           <template v-else>
-            <RouterLink class="link" to="/login">登录</RouterLink>
-            <RouterLink class="link" to="/register">注册</RouterLink>
+            <RouterLink
+              class="link"
+              to="/login"
+            >
+              登录
+            </RouterLink>
+            <RouterLink
+              class="link"
+              to="/register"
+            >
+              注册
+            </RouterLink>
           </template>
         </div>
       </div>
@@ -132,9 +173,21 @@ async function onSubmitPassword() {
       <RouterView />
     </main>
 
-    <el-dialog v-model="passwordDialogVisible" title="修改密码" width="420px">
-      <el-form ref="passwordFormRef" :model="passwordForm" :rules="passwordRules" label-position="top">
-        <el-form-item label="原密码" prop="oldPassword">
+    <el-dialog
+      v-model="passwordDialogVisible"
+      title="修改密码"
+      width="420px"
+    >
+      <el-form
+        ref="passwordFormRef"
+        :model="passwordForm"
+        :rules="passwordRules"
+        label-position="top"
+      >
+        <el-form-item
+          label="原密码"
+          prop="oldPassword"
+        >
           <el-input
             v-model="passwordForm.oldPassword"
             type="password"
@@ -142,7 +195,10 @@ async function onSubmitPassword() {
             autocomplete="current-password"
           />
         </el-form-item>
-        <el-form-item label="新密码" prop="newPassword">
+        <el-form-item
+          label="新密码"
+          prop="newPassword"
+        >
           <el-input
             v-model="passwordForm.newPassword"
             type="password"
@@ -150,7 +206,10 @@ async function onSubmitPassword() {
             autocomplete="new-password"
           />
         </el-form-item>
-        <el-form-item label="确认新密码" prop="confirmPassword">
+        <el-form-item
+          label="确认新密码"
+          prop="confirmPassword"
+        >
           <el-input
             v-model="passwordForm.confirmPassword"
             type="password"
@@ -160,8 +219,16 @@ async function onSubmitPassword() {
         </el-form-item>
       </el-form>
       <template #footer>
-        <el-button @click="passwordDialogVisible = false">取消</el-button>
-        <el-button type="primary" :loading="passwordLoading" @click="onSubmitPassword">确认修改</el-button>
+        <el-button @click="passwordDialogVisible = false">
+          取消
+        </el-button>
+        <el-button
+          type="primary"
+          :loading="passwordLoading"
+          @click="onSubmitPassword"
+        >
+          确认修改
+        </el-button>
       </template>
     </el-dialog>
   </div>

@@ -51,37 +51,76 @@ function setTemplate(code: string) {
 
 <template>
   <div class="design-pane">
-    <el-divider content-position="left">模板</el-divider>
-    <el-select :model-value="metadata.template" @update:model-value="setTemplate">
-      <el-option v-for="t in templates" :key="t.code" :label="t.name" :value="t.code" />
+    <el-divider content-position="left">
+      模板
+    </el-divider>
+    <el-select
+      :model-value="metadata.template"
+      @update:model-value="setTemplate"
+    >
+      <el-option
+        v-for="t in templates"
+        :key="t.code"
+        :label="t.name"
+        :value="t.code"
+      />
     </el-select>
 
-    <el-divider content-position="left">主题色</el-divider>
+    <el-divider content-position="left">
+      主题色
+    </el-divider>
     <el-form label-width="72px">
       <el-form-item label="主色">
-        <el-color-picker :model-value="colors.primary" @update:model-value="setColor('primary', $event)" />
+        <el-color-picker
+          :model-value="colors.primary"
+          @update:model-value="setColor('primary', $event)"
+        />
       </el-form-item>
       <el-form-item label="正文">
-        <el-color-picker :model-value="colors.text" @update:model-value="setColor('text', $event)" />
+        <el-color-picker
+          :model-value="colors.text"
+          @update:model-value="setColor('text', $event)"
+        />
       </el-form-item>
       <el-form-item label="背景">
-        <el-color-picker :model-value="colors.background" @update:model-value="setColor('background', $event)" />
+        <el-color-picker
+          :model-value="colors.background"
+          @update:model-value="setColor('background', $event)"
+        />
       </el-form-item>
     </el-form>
 
-    <el-divider content-position="left">排版</el-divider>
+    <el-divider content-position="left">
+      排版
+    </el-divider>
     <el-form label-width="72px">
       <el-form-item label="标题字体">
-        <el-input :model-value="typography.headingFont" @update:model-value="setType('headingFont', $event)" />
+        <el-input
+          :model-value="typography.headingFont"
+          @update:model-value="setType('headingFont', $event)"
+        />
       </el-form-item>
       <el-form-item label="正文字体">
-        <el-input :model-value="typography.bodyFont" @update:model-value="setType('bodyFont', $event)" />
+        <el-input
+          :model-value="typography.bodyFont"
+          @update:model-value="setType('bodyFont', $event)"
+        />
       </el-form-item>
       <el-form-item label="字号">
-        <el-input-number :model-value="typography.fontSize" :min="8" :max="20" @update:model-value="setFontSize" />
+        <el-input-number
+          :model-value="typography.fontSize"
+          :min="8"
+          :max="20"
+          @update:model-value="setFontSize"
+        />
       </el-form-item>
       <el-form-item label="页边距">
-        <el-input-number :model-value="page.margin" :min="0" :max="100" @update:model-value="setPageMargin" />
+        <el-input-number
+          :model-value="page.margin"
+          :min="0"
+          :max="100"
+          @update:model-value="setPageMargin"
+        />
       </el-form-item>
       <el-form-item label="自定义 CSS">
         <el-input

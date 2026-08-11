@@ -105,29 +105,72 @@ window.addEventListener('keydown', onKeydown)
 
 <template>
   <main class="editor">
-    <p v-if="loading" class="editor-loading">加载中…</p>
+    <p
+      v-if="loading"
+      class="editor-loading"
+    >
+      加载中…
+    </p>
     <template v-else>
       <header class="editor-header">
         <h1>{{ editId ? '编辑简历' : '新建简历' }}</h1>
-        <el-input v-model="store.title" class="title-input" placeholder="简历标题" />
-        <el-button type="primary" :loading="store.saving" @click="save">保存</el-button>
-        <el-button :disabled="!draft.canUndo.value" @click="undo">撤销</el-button>
-        <el-button :disabled="!draft.canRedo.value" @click="redo">重做</el-button>
-        <el-button @click="router.push('/resumes')">返回列表</el-button>
+        <el-input
+          v-model="store.title"
+          class="title-input"
+          placeholder="简历标题"
+        />
+        <el-button
+          type="primary"
+          :loading="store.saving"
+          @click="save"
+        >
+          保存
+        </el-button>
+        <el-button
+          :disabled="!draft.canUndo.value"
+          @click="undo"
+        >
+          撤销
+        </el-button>
+        <el-button
+          :disabled="!draft.canRedo.value"
+          @click="redo"
+        >
+          重做
+        </el-button>
+        <el-button @click="router.push('/resumes')">
+          返回列表
+        </el-button>
       </header>
-      <div v-if="selectedTemplate" class="editor-body">
+      <div
+        v-if="selectedTemplate"
+        class="editor-body"
+      >
         <BuilderSectionSidebar
           v-model:selected="selectedSection"
           :data="store.data"
           @change="draft.snapshot()"
         />
-        <BuilderFormPane :section="selectedSection" :data="store.data" @change="draft.snapshot()" />
+        <BuilderFormPane
+          :section="selectedSection"
+          :data="store.data"
+          @change="draft.snapshot()"
+        />
         <div class="builder-right">
           <el-tabs v-model="rightTab">
-            <el-tab-pane label="预览" name="preview">
-              <BuilderPreviewPane :template="selectedTemplate" :data="store.data" />
+            <el-tab-pane
+              label="预览"
+              name="preview"
+            >
+              <BuilderPreviewPane
+                :template="selectedTemplate"
+                :data="store.data"
+              />
             </el-tab-pane>
-            <el-tab-pane label="设计" name="design">
+            <el-tab-pane
+              label="设计"
+              name="design"
+            >
               <BuilderDesignPane
                 :template="selectedTemplate"
                 :templates="templates"
@@ -138,7 +181,12 @@ window.addEventListener('keydown', onKeydown)
           </el-tabs>
         </div>
       </div>
-      <p v-else class="hint">暂无可选模板</p>
+      <p
+        v-else
+        class="hint"
+      >
+        暂无可选模板
+      </p>
     </template>
   </main>
 </template>

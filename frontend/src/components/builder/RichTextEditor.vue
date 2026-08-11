@@ -30,12 +30,42 @@ function run(action: (ed: Editor) => void) {
 <template>
   <div class="rich-text-editor">
     <div class="rich-toolbar">
-      <button type="button" @mousedown.prevent="run((ed) => ed.chain().focus().toggleBold().run())">B</button>
-      <button type="button" @mousedown.prevent="run((ed) => ed.chain().focus().toggleItalic().run())">I</button>
-      <button type="button" @mousedown.prevent="run((ed) => ed.chain().focus().toggleBulletList().run())">• 列表</button>
-      <button type="button" @mousedown.prevent="run((ed) => ed.chain().focus().setTextAlign('left').run())">左</button>
-      <button type="button" @mousedown.prevent="run((ed) => ed.chain().focus().setTextAlign('center').run())">中</button>
-      <button type="button" @mousedown.prevent="run((ed) => ed.chain().focus().setTextAlign('right').run())">右</button>
+      <button
+        type="button"
+        @mousedown.prevent="run((ed) => ed.chain().focus().toggleBold().run())"
+      >
+        B
+      </button>
+      <button
+        type="button"
+        @mousedown.prevent="run((ed) => ed.chain().focus().toggleItalic().run())"
+      >
+        I
+      </button>
+      <button
+        type="button"
+        @mousedown.prevent="run((ed) => ed.chain().focus().toggleBulletList().run())"
+      >
+        • 列表
+      </button>
+      <button
+        type="button"
+        @mousedown.prevent="run((ed) => ed.chain().focus().setTextAlign('left').run())"
+      >
+        左
+      </button>
+      <button
+        type="button"
+        @mousedown.prevent="run((ed) => ed.chain().focus().setTextAlign('center').run())"
+      >
+        中
+      </button>
+      <button
+        type="button"
+        @mousedown.prevent="run((ed) => ed.chain().focus().setTextAlign('right').run())"
+      >
+        右
+      </button>
     </div>
     <EditorContent :editor="editor" />
   </div>

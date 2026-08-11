@@ -129,7 +129,14 @@ async function removeCustom(item: SidebarItem) {
   <aside class="builder-sidebar">
     <div class="sidebar-head">
       <span>区块</span>
-      <el-button size="small" type="primary" plain @click="addCustom">+ 自定义区块</el-button>
+      <el-button
+        size="small"
+        type="primary"
+        plain
+        @click="addCustom"
+      >
+        + 自定义区块
+      </el-button>
     </div>
     <el-select
       v-model="pendingStandard"
@@ -138,9 +145,20 @@ async function removeCustom(item: SidebarItem) {
       placeholder="+ 添加标准区块"
       @update:model-value="onAddStandard"
     >
-      <el-option v-for="[key, label] in availableStandard" :key="key" :label="label" :value="key" />
+      <el-option
+        v-for="[key, label] in availableStandard"
+        :key="key"
+        :label="label"
+        :value="key"
+      />
     </el-select>
-    <draggable :list="dragList" item-key="key" handle=".drag-handle" class="section-list" @end="syncOrder">
+    <draggable
+      :list="dragList"
+      item-key="key"
+      handle=".drag-handle"
+      class="section-list"
+      @end="syncOrder"
+    >
       <template #item="{ element }">
         <div
           class="section-row"

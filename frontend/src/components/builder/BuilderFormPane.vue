@@ -82,19 +82,34 @@ function setItems(list: ResumeSectionItem[]) {
     <template v-if="section === 'basics'">
       <el-form label-width="88px">
         <el-form-item label="姓名">
-          <el-input :model-value="data.basics.name" @update:model-value="data.basics.name = $event; $emit('change')" />
+          <el-input
+            :model-value="data.basics.name"
+            @update:model-value="data.basics.name = $event; $emit('change')"
+          />
         </el-form-item>
         <el-form-item label="头衔">
-          <el-input :model-value="data.basics.headline" @update:model-value="data.basics.headline = $event; $emit('change')" />
+          <el-input
+            :model-value="data.basics.headline"
+            @update:model-value="data.basics.headline = $event; $emit('change')"
+          />
         </el-form-item>
         <el-form-item label="邮箱">
-          <el-input :model-value="data.basics.email" @update:model-value="data.basics.email = $event; $emit('change')" />
+          <el-input
+            :model-value="data.basics.email"
+            @update:model-value="data.basics.email = $event; $emit('change')"
+          />
         </el-form-item>
         <el-form-item label="电话">
-          <el-input :model-value="data.basics.phone" @update:model-value="data.basics.phone = $event; $emit('change')" />
+          <el-input
+            :model-value="data.basics.phone"
+            @update:model-value="data.basics.phone = $event; $emit('change')"
+          />
         </el-form-item>
         <el-form-item label="所在地">
-          <el-input :model-value="data.basics.location" @update:model-value="data.basics.location = $event; $emit('change')" />
+          <el-input
+            :model-value="data.basics.location"
+            @update:model-value="data.basics.location = $event; $emit('change')"
+          />
         </el-form-item>
       </el-form>
     </template>
@@ -116,7 +131,12 @@ function setItems(list: ResumeSectionItem[]) {
         @change="$emit('change')"
       />
     </template>
-    <p v-else class="form-pane-hint">请先在左侧添加区块</p>
+    <p
+      v-else
+      class="form-pane-hint"
+    >
+      请先在左侧添加区块
+    </p>
   </div>
 </template>
 
