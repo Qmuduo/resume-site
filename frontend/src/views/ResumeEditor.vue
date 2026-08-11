@@ -1,14 +1,10 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch, watchEffect } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 
-import CommonForm from '@/components/CommonForm.vue'
-import TemplateFieldsForm from '@/components/TemplateFieldsForm.vue'
 import TemplateSwitcher from '@/components/TemplateSwitcher.vue'
 import { fetchTemplates } from '@/api/template'
-import { buildViewModel, renderStaticTemplate, renderTemplate, sanitizeCss } from '@/template-engine'
-import { usePageScale } from '@/composables/usePageScale'
 import { useResumeStore } from '@/stores/resumeStore'
 import type { ResumeTemplate } from '@/types'
 
@@ -18,111 +14,27 @@ const store = useResumeStore()
 
 const templates = ref<ResumeTemplate[]>([])
 const loading = ref(false)
-const previewRef = ref<HTMLElement | null>(null)
-const previewContentRef = ref<HTMLElement | null>(null)
-let previewStyleEl: HTMLStyleElement | null = null
-
-const { viewportStyle, scalerStyle } = usePageScale(previewRef, previewContentRef)
 
 const editId = computed(() => (typeof route.params.id === 'string' ? route.params.id : undefined))
 
 const selectedTemplate = computed(
-  () => templates.value.find((tpl) => tpl.code === store.currentTemplateId) ?? null
+  () => templates.value.find((tpl) => tpl.code === store.data.metadata.template) ?? null
 )
 
-const currentTemplateId = computed({
-  get: () => store.currentTemplateId ?? '',
-  set: () => {
-    // 切换经 TemplateSwitcher 的确认流程处理
-  }
-})
-
+/** 阶段一临时渲染：JSON 预览，阶段二替换为语义渲染 */
 const previewHtml = computed(() => {
-  const tpl = selectedTemplate.value
-  if (!tpl) return ''
-  const manifest = tpl.manifest
-  if (manifest?.renderMode === 'static') {
-    return renderStaticTemplate(tpl, store.commonData, store.extendedData)
+  if (!store.data.metadata.template) {
+    return '<p class="hint">请先选择模板（阶段二启用语义渲染）</p>'
   }
-  const viewModel = buildViewModel(store.commonData, store.extendedData, manifest)
-  // 新建且未填写任何数据时，用 manifest.sampleData 展示完整演示内容；一旦有数据即切换为真实数据
-  const hasUserData =
-    store.id !== null || Object.values(viewModel).some((value) => !isEmptyValue(value))
-  const data = hasUserData ? viewModel : (manifest?.sampleData ?? viewModel)
-  return renderTemplate(tpl, data as Record<string, unknown>, {
-    resumeTitle: store.title
-  })
+  return `<pre class="json-preview">${escapeHtml(JSON.stringify(store.data, null, 2))}</pre>`
 })
 
-function isEmptyValue(value: unknown): boolean {
-  if (value === undefined || value === null) return true
-  if (typeof value === 'string') return value.trim() === ''
-  if (Array.isArray(value)) return value.length === 0
-  if (typeof value === 'object') return Object.keys(value as object).length === 0
-  return false
+function escapeHtml(value: string): string {
+  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 
-const previewCss = computed(() => sanitizeCss(selectedTemplate.value?.css ?? ''))
-
-watchEffect(syncPreviewStyle)
-
-onMounted(() => {
-  previewStyleEl = document.createElement('style')
-  syncPreviewStyle()
-  init()
-})
-
-watch(previewRef, async (el) => {
-  if (el && previewStyleEl && !previewStyleEl.isConnected) {
-    el.appendChild(previewStyleEl)
-    await nextTick()
-    syncPreviewStyle()
-  }
-})
-
-onBeforeUnmount(() => {
-  previewStyleEl?.remove()
-  previewStyleEl = null
-})
-
-function syncPreviewStyle() {
-  if (previewStyleEl) {
-    previewStyleEl.textContent = previewCss.value
-  }
-}
-
-async function init() {
-  loading.value = true
-  try {
-    templates.value = await fetchTemplates()
-    if (editId.value) {
-      await store.load(editId.value)
-      if (!store.currentTemplateId && templates.value.length > 0) {
-        store.currentTemplateId = templates.value[0].code
-      }
-    } else {
-      const fromQuery = typeof route.query.template === 'string' ? route.query.template : ''
-      const initial = templates.value.some((tpl) => tpl.code === fromQuery)
-        ? fromQuery
-        : templates.value[0]?.code ?? ''
-      store.reset()
-      store.title = ''
-      store.currentTemplateId = initial
-    }
-  } catch {
-    ElMessage.error('加载失败')
-  } finally {
-    loading.value = false
-  }
-}
-
-async function onSwitchTemplate(newTemplateId: string) {
-  try {
-    await store.switchTemplate(newTemplateId)
-    ElMessage.success('已切换模板，数据已保留')
-  } catch (error) {
-    ElMessage.error('切换模板失败')
-  }
+function onSwitchTemplate(newTemplateId: string) {
+  store.data.metadata.template = newTemplateId
 }
 
 async function save() {
@@ -130,7 +42,7 @@ async function save() {
     ElMessage.warning('请填写简历标题')
     return
   }
-  if (!store.currentTemplateId) {
+  if (!store.data.metadata.template) {
     ElMessage.warning('请先选择模板')
     return
   }
@@ -142,6 +54,26 @@ async function save() {
     ElMessage.error('保存失败')
   }
 }
+
+onMounted(async () => {
+  loading.value = true
+  try {
+    templates.value = await fetchTemplates()
+    if (editId.value) {
+      await store.load(editId.value)
+      if (!store.data.metadata.template && templates.value.length > 0) {
+        store.data.metadata.template = templates.value[0].code
+      }
+    } else {
+      store.reset()
+      store.data.metadata.template = templates.value[0]?.code ?? ''
+    }
+  } catch {
+    ElMessage.error('加载失败')
+  } finally {
+    loading.value = false
+  }
+})
 </script>
 
 <template>
@@ -151,32 +83,20 @@ async function save() {
       <header class="editor-header">
         <h1>{{ editId ? '编辑简历' : '新建简历' }}</h1>
         <TemplateSwitcher
-          v-model="currentTemplateId"
+          v-model="store.data.metadata.template"
           :templates="templates"
-          :loading="store.switching"
           @switch="onSwitchTemplate"
         />
         <el-input v-model="store.title" class="title-input" placeholder="简历标题" />
         <el-button type="primary" :loading="store.saving" @click="save">保存</el-button>
         <el-button @click="router.push('/resumes')">返回列表</el-button>
       </header>
-      <div v-if="selectedTemplate" class="editor-body">
-        <section class="editor-form">
-          <CommonForm :model="store.commonData" />
-          <TemplateFieldsForm
-            :manifest="selectedTemplate.manifest ?? null"
-            :model="store.extendedData"
-          />
-        </section>
-        <section ref="previewRef" class="editor-preview">
-          <div class="preview-viewport" :style="viewportStyle">
-            <div ref="previewContentRef" class="preview-scaler" :style="scalerStyle">
-              <div class="preview-html" v-html="previewHtml"></div>
-            </div>
-          </div>
+      <div class="editor-body">
+        <section class="editor-preview">
+          <p v-if="!selectedTemplate" class="hint">暂无可选模板</p>
+          <div v-else class="preview-html" v-html="previewHtml"></div>
         </section>
       </div>
-      <p v-else>暂无可选模板</p>
     </template>
   </main>
 </template>
@@ -206,18 +126,9 @@ async function save() {
 
 .editor-body {
   display: grid;
-  grid-template-columns: 440px 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
   align-items: start;
-}
-
-.editor-form {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 16px;
-  max-height: calc(100vh - 140px);
-  overflow: auto;
 }
 
 .editor-preview {
@@ -226,5 +137,18 @@ async function save() {
   border-radius: var(--radius-lg);
   min-height: 600px;
   padding: 24px;
+}
+
+.hint {
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: 48px 0;
+}
+
+.json-preview {
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 </style>

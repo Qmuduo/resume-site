@@ -45,6 +45,22 @@ function formatTime(value?: string): string {
   const date = new Date(value)
   return Number.isNaN(date.getTime()) ? '-' : date.toLocaleString()
 }
+
+/** 列表接口返回 Resume 实体，模板编码藏在 data 单文档里 */
+function templateCodeOf(row: ResumeRecord): string {
+  if (typeof row.data === 'string') {
+    try {
+      const parsed = JSON.parse(row.data) as { metadata?: { template?: string } }
+      if (parsed?.metadata?.template) return parsed.metadata.template
+    } catch {
+      // 忽略解析失败
+    }
+  } else if (row.data && typeof row.data === 'object' && 'metadata' in row.data) {
+    const meta = (row.data as { metadata?: { template?: string } }).metadata
+    if (meta?.template) return meta.template
+  }
+  return row.templateCode || '-'
+}
 </script>
 
 <template>
@@ -61,7 +77,7 @@ function formatTime(value?: string): string {
       <el-table v-loading="loading" :data="resumes" stripe empty-text="还没有简历，点击右上角新建">
         <el-table-column prop="title" label="标题" min-width="200" />
         <el-table-column label="模板" min-width="140">
-          <template #default="{ row }">{{ row.templateCode || '-' }}</template>
+          <template #default="{ row }">{{ templateCodeOf(row as ResumeRecord) }}</template>
         </el-table-column>
         <el-table-column label="状态" width="110">
           <template #default="{ row }">

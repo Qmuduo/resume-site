@@ -1,19 +1,13 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import type { AxiosError } from 'axios'
+
 import { fetchResume } from '@/api/resume'
 import { fetchTemplates } from '@/api/template'
-import {
-  buildViewModel,
-  renderStaticTemplate,
-  renderTemplate,
-  sanitizeCss
-} from '@/template-engine'
-import { usePageScale } from '@/composables/usePageScale'
-import { emptyCommonData } from '@/stores/resumeStore'
-import type { ResumeCommonData, ResumeExtendedData, ResumeTemplate, ResumeVO } from '@/types'
+import { emptyResumeData, parseData } from '@/stores/resumeStore'
+import type { ResumeData, ResumeTemplate, ResumeVO } from '@/types'
 
 const route = useRoute()
 const router = useRouter()
@@ -22,39 +16,21 @@ const resumeId = computed(() => (typeof route.params.id === 'string' ? route.par
 const resume = ref<ResumeVO | null>(null)
 const template = ref<ResumeTemplate | null>(null)
 const missingTemplateId = ref('')
-const commonData = ref<ResumeCommonData>(emptyCommonData())
-const extendedData = ref<ResumeExtendedData>({})
+const data = ref<ResumeData>(emptyResumeData())
 const loading = ref(true)
 const loadError = ref('')
-const stageRef = ref<HTMLElement | null>(null)
-const contentRef = ref<HTMLElement | null>(null)
-let styleEl: HTMLStyleElement | null = null
 
-const { viewportStyle, scalerStyle } = usePageScale(stageRef, contentRef)
-
+/** 阶段一临时渲染：JSON 预览，阶段二替换为语义渲染 */
 const previewHtml = computed(() => {
-  if (!resume.value || !template.value) return ''
-  const manifest = template.value.manifest
-  if (manifest?.renderMode === 'static') {
-    return renderStaticTemplate(template.value, commonData.value, extendedData.value)
-  }
-  return renderTemplate(
-    template.value,
-    buildViewModel(commonData.value, extendedData.value, manifest),
-    { resumeTitle: resume.value.title }
-  )
+  if (!resume.value) return ''
+  return `<pre class="json-preview">${escapeHtml(JSON.stringify(data.value, null, 2))}</pre>`
 })
 
-onMounted(async () => {
-  document.body.classList.add('preview-mode')
-  await load()
-})
+function escapeHtml(value: string): string {
+  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}
 
-onBeforeUnmount(() => {
-  document.body.classList.remove('preview-mode')
-  styleEl?.remove()
-  styleEl = null
-})
+onMounted(load)
 
 async function load() {
   loading.value = true
@@ -83,75 +59,21 @@ async function load() {
     }
 
     resume.value = res
-    commonData.value = normalizeCommon(res.commonData)
-    extendedData.value = normalizeExtended(res.extendedData)
+    data.value = parseData(res.data)
 
-    const templateId = res.currentTemplateId ?? res.templateCode ?? ''
+    const templateId = data.value.metadata.template
     const matched = templateId ? (templates.find((tpl) => tpl.code === templateId) ?? null) : null
-    // 模板已下架（如 classic/minimal/modern）或不存在时：明确提示重新选择，不静默替换模板
     missingTemplateId.value = templateId && !matched ? templateId : ''
     template.value = matched ?? (templateId ? null : (templates[0] ?? null))
 
     if (missingTemplateId.value) {
-      ElMessage.warning(
-        `该简历使用的模板「${missingTemplateId.value}」已下架或不存在，请重新选择模板（数据已保留）`
-      )
+      ElMessage.warning(`该简历使用的模板「${missingTemplateId.value}」已下架或不存在，请重新选择模板（数据已保留）`)
     } else if (!matched && template.value) {
       ElMessage.warning(`该简历未保存模板信息，已自动使用「${template.value.name}」预览`)
-    }
-
-    document.title = `${res.title} - 简历预览`
-    if (template.value) {
-      styleEl = document.createElement('style')
-      styleEl.textContent = sanitizeCss(template.value.css)
-      document.head.appendChild(styleEl)
     }
   } finally {
     loading.value = false
   }
-}
-
-function parseObject(raw: unknown): Record<string, unknown> {
-  if (raw !== null && typeof raw === 'object' && !Array.isArray(raw)) {
-    return raw as Record<string, unknown>
-  }
-  if (typeof raw === 'string') {
-    try {
-      const parsed = JSON.parse(raw)
-      return parsed !== null && typeof parsed === 'object' && !Array.isArray(parsed)
-        ? (parsed as Record<string, unknown>)
-        : {}
-    } catch {
-      return {}
-    }
-  }
-  return {}
-}
-
-function normalizeCommon(raw: unknown): ResumeCommonData {
-  const parsed = parseObject(raw)
-  const base = emptyCommonData()
-  return {
-    basic: { ...base.basic, ...(isObject(parsed.basic) ? parsed.basic : {}) },
-    summary: typeof parsed.summary === 'string' ? parsed.summary : '',
-    experiences: Array.isArray(parsed.experiences) ? parsed.experiences : [],
-    education: Array.isArray(parsed.education) ? parsed.education : [],
-    skills: Array.isArray(parsed.skills) ? parsed.skills : [],
-    socials: Array.isArray(parsed.socials) ? parsed.socials : [],
-    projects: Array.isArray(parsed.projects) ? parsed.projects : [],
-    certifications: Array.isArray(parsed.certifications) ? parsed.certifications : [],
-    languages: Array.isArray(parsed.languages) ? parsed.languages : [],
-    awards: Array.isArray(parsed.awards) ? parsed.awards : [],
-    interests: Array.isArray(parsed.interests) ? parsed.interests : []
-  }
-}
-
-function normalizeExtended(raw: unknown): ResumeExtendedData {
-  return parseObject(raw)
-}
-
-function isObject(value: unknown): value is Record<string, unknown> {
-  return value !== null && typeof value === 'object' && !Array.isArray(value)
 }
 
 function saveAsPdf() {
@@ -174,7 +96,7 @@ function saveAsPdf() {
     </div>
     <div v-else-if="missingTemplateId" class="hint-empty">
       <p class="hint">
-        该简历使用的模板「{{ missingTemplateId }}」已下架或不存在，请重新选择模板。公共数据与模板专属数据已完整保留。
+        该简历使用的模板「{{ missingTemplateId }}」已下架或不存在，请重新选择模板。数据已完整保留。
       </p>
       <el-button type="primary" size="small" @click="router.push(`/editor/${resumeId}`)">
         重新选择模板
@@ -186,12 +108,8 @@ function saveAsPdf() {
         去编辑并关联模板
       </el-button>
     </div>
-    <div v-else ref="stageRef" class="preview-stage">
-      <div class="preview-viewport" :style="viewportStyle">
-        <div ref="contentRef" class="preview-scaler" :style="scalerStyle">
-          <div class="preview-html" v-html="previewHtml"></div>
-        </div>
-      </div>
+    <div v-else class="preview-stage">
+      <div class="preview-html" v-html="previewHtml"></div>
     </div>
   </main>
 </template>
@@ -232,5 +150,22 @@ function saveAsPdf() {
   flex-direction: column;
   align-items: center;
   padding: 48px 0;
+}
+
+.preview-stage {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  min-height: 600px;
+}
+
+.json-preview {
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 </style>

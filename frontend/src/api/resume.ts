@@ -1,5 +1,5 @@
 import http from './http'
-import type { ApiResult, ResumePayload, ResumeRecord, ResumeVO, SwitchTemplatePayload } from '@/types'
+import type { ApiResult, ResumePayload, ResumeRecord, ResumeVO } from '@/types'
 
 export async function fetchResumes(): Promise<ResumeRecord[]> {
   const response = await http.get<ApiResult<ResumeRecord[]>>('/resumes')
@@ -18,15 +18,6 @@ export async function createResume(payload: ResumePayload): Promise<ResumeVO> {
 
 export async function updateResume(id: string | number, payload: ResumePayload): Promise<ResumeVO> {
   const response = await http.put<ApiResult<ResumeVO>>(`/resumes/${id}`, payload)
-  return response.data.data
-}
-
-/** 切换模板：后端负责字段映射，返回完整新数据 */
-export async function switchResumeTemplate(
-  id: string | number,
-  payload: SwitchTemplatePayload
-): Promise<ResumeVO> {
-  const response = await http.post<ApiResult<ResumeVO>>(`/resumes/${id}/switch-template`, payload)
   return response.data.data
 }
 
