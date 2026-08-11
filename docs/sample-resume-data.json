@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "picture": { "hidden": true, "url": "", "size": 128, "borderRadius": 50 },
+  "basics": { "name": "苏轼", "headline": "全栈工程师", "email": "sushi@example.com", "phone": "13800000000", "location": "杭州", "website": { "url": "", "label": "" }, "customFields": [] },
+  "summary": { "title": "个人简介", "columns": 1, "hidden": false, "content": "" },
+  "sections": {
+    "experience": { "title": "工作经历", "columns": 1, "hidden": false, "items": [ { "id": "exp-1", "hidden": false, "company": "示例公司", "position": "工程师", "period": "2020-01 - 至今", "description": "" } ] }
+  },
+  "customSections": [],
+  "metadata": {
+    "template": "prompt_013",
+    "layout": { "main": ["experience"], "sidebar": [], "sidebarWidth": 30 },
+    "page": { "format": "A4", "margin": 48 },
+    "design": { "colors": { "primary": "#4F46E5", "text": "#1A1A1A", "background": "#FFFFFF" } },
+    "typography": { "headingFont": "sans-serif", "bodyFont": "sans-serif", "fontSize": 12 },
+    "notes": "",
+    "stylesheet": ""
+  }
+}

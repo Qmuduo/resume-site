@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://resume-site.local/schemas/resume.schema.json",
+  "title": "ResumeData",
+  "description": "简历单文档模型，对齐 reactive-resume v5；后端保存校验与前端类型定义的唯一契约。",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": { "const": "1.0" },
+    "picture": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hidden": { "type": "boolean" },
+        "url": { "type": "string" },
+        "size": { "type": "number", "minimum": 32, "maximum": 512 },
+        "borderRadius": { "type": "number", "minimum": 0, "maximum": 100 }
+      },
+      "required": ["hidden", "url", "size", "borderRadius"]
+    },
+    "basics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "headline": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "location": { "type": "string" },
+        "website": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": { "url": { "type": "string" }, "label": { "type": "string" } },
+          "required": ["url", "label"]
+        },
+        "customFields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "icon": { "type": "string" },
+              "text": { "type": "string" },
+              "link": { "type": "string" }
+            },
+            "required": ["id", "icon", "text", "link"]
+          }
+        }
+      },
+      "required": ["name", "headline", "email", "phone", "location", "website", "customFields"]
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string" },
+        "columns": { "type": "integer", "minimum": 1, "maximum": 6 },
+        "hidden": { "type": "boolean" },
+        "content": { "type": "string", "description": "受控 HTML" }
+      },
+      "required": ["title", "columns", "hidden", "content"]
+    },
+    "sections": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "profiles": { "$ref": "#/$defs/section" },
+        "experience": { "$ref": "#/$defs/section" },
+        "education": { "$ref": "#/$defs/section" },
+        "projects": { "$ref": "#/$defs/section" },
+        "skills": { "$ref": "#/$defs/section" },
+        "languages": { "$ref": "#/$defs/section" },
+        "interests": { "$ref": "#/$defs/section" },
+        "awards": { "$ref": "#/$defs/section" },
+        "certifications": { "$ref": "#/$defs/section" },
+        "publications": { "$ref": "#/$defs/section" },
+        "volunteer": { "$ref": "#/$defs/section" },
+        "references": { "$ref": "#/$defs/section" }
+      }
+    },
+    "customSections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "columns": { "type": "integer", "minimum": 1, "maximum": 6 },
+          "hidden": { "type": "boolean" },
+          "items": { "type": "array" }
+        },
+        "required": ["id", "title", "columns", "hidden", "items"]
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "template": { "type": "string" },
+        "layout": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "main": { "type": "array", "items": { "type": "string" } },
+            "sidebar": { "type": "array", "items": { "type": "string" } },
+            "sidebarWidth": { "type": "number", "minimum": 20, "maximum": 80 }
+          },
+          "required": ["main", "sidebar", "sidebarWidth"]
+        },
+        "page": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "format": { "enum": ["A4", "Letter"] },
+            "margin": { "type": "number", "minimum": 0, "maximum": 100 }
+          },
+          "required": ["format", "margin"]
+        },
+        "design": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "colors": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "primary": { "type": "string" },
+                "text": { "type": "string" },
+                "background": { "type": "string" },
+                "sidebarBackground": { "type": "string" },
+                "sidebarForeground": { "type": "string" }
+              },
+              "required": ["primary", "text", "background"]
+            }
+          },
+          "required": ["colors"]
+        },
+        "typography": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "headingFont": { "type": "string" },
+            "bodyFont": { "type": "string" },
+            "fontSize": { "type": "number", "minimum": 8, "maximum": 20 }
+          },
+          "required": ["headingFont", "bodyFont", "fontSize"]
+        },
+        "notes": { "type": "string" },
+        "stylesheet": { "type": "string", "description": "自定义 CSS（渲染前消毒）" }
+      },
+      "required": ["template", "layout", "page", "design", "typography", "notes", "stylesheet"]
+    }
+  },
+  "required": ["version", "basics", "summary", "sections", "customSections", "picture", "metadata"],
+  "$defs": {
+    "section": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string" },
+        "columns": { "type": "integer", "minimum": 1, "maximum": 6 },
+        "hidden": { "type": "boolean" },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["id", "hidden"]
+          }
+        }
+      },
+      "required": ["title", "columns", "hidden", "items"]
+    }
+  }
+}
