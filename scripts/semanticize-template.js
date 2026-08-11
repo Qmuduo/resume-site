@@ -21,7 +21,13 @@ const CLASS_MAP = {
   'date-location': 'entry-meta',
   'details': 'entry-body',
   'edu-entry': 'entry edu-entry',
-  'project-item': 'entry project-item'
+  'project-item': 'entry project-item',
+  'experience-item': 'entry experience-item',
+  'education-item': 'entry education-item',
+  'edu-item': 'entry edu-item',
+  'exp-item': 'entry exp-item',
+  'item': 'entry item',
+  'skill-tags': 'section-items skill-tags'
 };
 
 const THEME_DEFAULTS = {
@@ -34,14 +40,6 @@ const THEME_DEFAULTS = {
   '--page-margin': '48px',
   '--section-gap': '16px'
 };
-
-function injectDataSection(html) {
-  return html
-    .replace(/class="([^"]*)section-title[^"]*"/g, 'data-section-holder="$1"')
-    .replace(/<div([^>]*)class="([^"]*)section-title([^"]*)"([^>]*)>/g,
-      (all, pre, c1, c2, post, tail) => `<section data-section="__title__"${pre}class="${c1}section-title${c2}"${tail}>`)
-    .replace(/data-section-holder="/g, 'class="');
-}
 
 function ensureThemeVars(css) {
   if (/--color-primary/.test(css)) return css;
@@ -62,7 +60,6 @@ function main() {
     html = html.split(`class="${oldCls}"`).join(`class="${newCls}"`);
     html = html.split(`class="${oldCls} `).join(`class="${newCls} `);
   }
-  html = injectDataSection(html);
   html = html.replace(/<style[^>]*>/i, (tag) => `${tag}\n${ensureThemeVars('')}`);
   fs.writeFileSync(htmlFile, html, 'utf8');
   const primary = CATALOG[id] && CATALOG[id].primaryColor ? CATALOG[id].primaryColor : THEME_DEFAULTS['--color-primary'];

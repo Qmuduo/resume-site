@@ -17,7 +17,7 @@ const path = require('path')
 
 const VALID_RENDER_MODES = ['semantic', 'placeholder']
 const REQUIRED_SEMANTIC_CLASSES = ['resume-page', 'section-title', 'entry']
-const DANGEROUS_HTML = /<script|on\w+\s*=|javascript:|data:\s*text\/html/i
+const DANGEROUS_HTML = /<script|\son\w+\s*=|javascript:|data:\s*text\/html/i
 const DANGEROUS_CSS = /expression\s*\(|@import|javascript:|url\s*\(/i
 
 function validateManifestV2(manifest) {
@@ -34,7 +34,9 @@ function validateManifestV2(manifest) {
     errors.push('blocks 不能为空')
   }
   for (const b of manifest.blocks || []) {
-    if (!b.type || !b.selector) errors.push(`block 缺 type/selector: ${JSON.stringify(b)}`)
+    if (!b.type || (!b.selector && !b.sectionTitle)) {
+      errors.push(`block 缺 type 与 selector/sectionTitle: ${JSON.stringify(b)}`)
+    }
   }
   for (const t of manifest.theme || []) {
     if (!/^--[a-z0-9-]+$/.test(t.key || '')) errors.push(`theme key 非法: ${t.key}`)

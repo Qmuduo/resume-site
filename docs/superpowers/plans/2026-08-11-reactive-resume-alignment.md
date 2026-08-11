@@ -1815,7 +1815,7 @@ function validateManifestV2(manifest) {
 
 function validateContent(html, css) {
   const errors = [];
-  if (/<script|on\w+\s*=|javascript:|data:\s*text\/html/i.test(html)) errors.push('HTML 含危险内容');
+  if (/<script|\son\w+\s*=|javascript:|data:\s*text\/html/i.test(html)) errors.push('HTML 含危险内容');
   if (/expression\s*\(|@import|javascript:|url\s*\(/i.test(css)) errors.push('CSS 含危险内容');
   const required = ['resume-page', 'section-title', 'entry'];
   for (const cls of required) {
@@ -1890,14 +1890,6 @@ const THEME_DEFAULTS = {
   '--section-gap': '16px'
 };
 
-function injectDataSection(html) {
-  return html
-    .replace(/class="([^"]*)section-title[^"]*"/g, 'data-section-holder="$1"')
-    .replace(/<div([^>]*)class="([^"]*)section-title([^"]*)"([^>]*)>/g,
-      (all, pre, c1, c2, post, tail) => `<section data-section="__title__"${pre}class="${c1}section-title${c2}"${tail}>`)
-    .replace(/data-section-holder="/g, 'class="');
-}
-
 function ensureThemeVars(css) {
   if (/--color-primary/.test(css)) return css;
   const defaults = Object.entries(THEME_DEFAULTS)
@@ -1917,7 +1909,6 @@ function main() {
     html = html.split(`class="${oldCls}"`).join(`class="${newCls}"`);
     html = html.split(`class="${oldCls} `).join(`class="${newCls} `);
   }
-  html = injectDataSection(html);
   html = html.replace(/<style[^>]*>/i, (tag) => `${tag}\n${ensureThemeVars('')}`);
   fs.writeFileSync(htmlFile, html, 'utf8');
   const primary = CATALOG[id] && CATALOG[id].primaryColor ? CATALOG[id].primaryColor : THEME_DEFAULTS['--color-primary'];
