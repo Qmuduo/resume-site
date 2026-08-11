@@ -90,6 +90,11 @@ export const useResumeStore = defineStore('resume', () => {
     }
   }
 
+  /** 原地修改草稿数据（配合 useResumeDraft 快照） */
+  function applyData(mutator: (draft: ResumeData) => void) {
+    mutator(data.value)
+  }
+
   function reset() {
     id.value = null
     title.value = ''
@@ -97,5 +102,5 @@ export const useResumeStore = defineStore('resume', () => {
     status.value = 0
   }
 
-  return { id, title, data, status, saving, hasChanges, applyVO, load, save, reset }
+  return { id, title, data, status, saving, hasChanges, applyVO, applyData, load, save, reset }
 })
