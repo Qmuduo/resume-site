@@ -101,6 +101,7 @@ function fillSection(
 }
 
 function fillSummary(container: Element, summary: ResumeData['summary']) {
+  if (!summary) return
   setText(container.querySelector('.section-title'), summary.title)
   const body = container.querySelector('.entry-body, .section-items, p')
   if (!body) return
@@ -112,6 +113,7 @@ function fillSummary(container: Element, summary: ResumeData['summary']) {
 }
 
 function fillHeader(header: Element, data: ResumeData) {
+  if (!data || !data.basics) return
   setText(header.querySelector('.name'), data.basics.name)
   setText(header.querySelector('.headline'), data.basics.headline)
   const list = header.querySelector('.contact-list')
@@ -171,6 +173,9 @@ function themeCss(data: ResumeData, templateCss: string): string {
 }
 
 export function renderSemanticTemplate(template: ResumeTemplate, data: ResumeData): string {
+  if (!data || !data.basics || !data.metadata) {
+    return sanitizeHtml(template.html ?? '')
+  }
   const manifest = template.manifest as TemplateManifestV2 | null
   if (!manifest || typeof DOMParser === 'undefined') return ''
   const doc = new DOMParser().parseFromString(`<div id="__resume_root">${template.html ?? ''}</div>`, 'text/html')

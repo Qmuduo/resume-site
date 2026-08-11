@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import draggable from 'vuedraggable'
+import { computed, ref } from 'vue'
 
+import { useSortableList } from '@/composables/useSortableList'
 import type { ResumeSectionItem } from '@/types'
 
 const props = defineProps<{
@@ -14,6 +14,7 @@ const emit = defineEmits<{
 }>()
 
 const items = computed(() => props.modelValue)
+const listEl = ref<HTMLElement | null>(null)
 
 function setField(index: number, key: string, value: unknown) {
   const list = [...items.value]
@@ -34,6 +35,18 @@ function removeItem(index: number) {
   emit('change')
 }
 
+function handleDragEnd(evt: { oldIndex?: number; newIndex?: number }) {
+  const { oldIndex, newIndex } = evt
+  if (oldIndex === undefined || newIndex === undefined || oldIndex === newIndex) return
+  const list = [...items.value]
+  const [moved] = list.splice(oldIndex, 1)
+  list.splice(newIndex, 0, moved)
+  emit('update:modelValue', list)
+  emit('change')
+}
+
+useSortableList(listEl, { handle: '.drag-handle', onEnd: handleDragEnd })
+
 function titleOf(item: ResumeSectionItem): string {
   return String(item['name'] ?? item['company'] ?? item['school'] ?? item['position'] ?? '')
 }
@@ -46,47 +59,47 @@ function valueOf(item: ResumeSectionItem, key: string): string | undefined {
 
 <template>
   <div class="items-editor">
-    <draggable
-      :list="items"
-      item-key="id"
-      handle=".drag-handle"
-      @end="$emit('change')"
+    <div
+      ref="listEl"
+      class="items-list"
     >
-      <template #item="{ element, index }">
-        <div class="item-card">
-          <div class="item-card-head">
-            <span class="drag-handle">⠿</span>
-            <span class="item-title">{{ titleOf(element) || `条目 ${index + 1}` }}</span>
-            <el-button
-              size="small"
-              text
-              type="danger"
-              @click="removeItem(index)"
-            >
-              删除
-            </el-button>
-          </div>
-          <el-form-item
-            v-for="field in fields"
-            :key="field.key"
-            :label="field.label"
+      <div
+        v-for="(element, index) in items"
+        :key="element.id"
+        class="item-card"
+      >
+        <div class="item-card-head">
+          <span class="drag-handle">⠿</span>
+          <span class="item-title">{{ titleOf(element) || `条目 ${index + 1}` }}</span>
+          <el-button
+            size="small"
+            text
+            type="danger"
+            @click="removeItem(index)"
           >
-            <el-input
-              v-if="field.type !== 'textarea'"
-              :model-value="valueOf(element, field.key)"
-              @update:model-value="setField(index, field.key, $event)"
-            />
-            <el-input
-              v-else
-              type="textarea"
-              :rows="3"
-              :model-value="valueOf(element, field.key)"
-              @update:model-value="setField(index, field.key, $event)"
-            />
-          </el-form-item>
+            删除
+          </el-button>
         </div>
-      </template>
-    </draggable>
+        <el-form-item
+          v-for="field in fields"
+          :key="field.key"
+          :label="field.label"
+        >
+          <el-input
+            v-if="field.type !== 'textarea'"
+            :model-value="valueOf(element, field.key)"
+            @update:model-value="setField(index, field.key, $event)"
+          />
+          <el-input
+            v-else
+            type="textarea"
+            :rows="3"
+            :model-value="valueOf(element, field.key)"
+            @update:model-value="setField(index, field.key, $event)"
+          />
+        </el-form-item>
+      </div>
+    </div>
     <el-button
       size="small"
       type="primary"

@@ -4,9 +4,10 @@ import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 
 import { fetchTemplates } from '@/api/template'
-import { renderStaticTemplate, renderTemplate, sanitizeCss } from '@/template-engine'
+import { renderTemplate, sanitizeCss } from '@/template-engine'
 import { useUserStore } from '@/stores/userStore'
-import type { ResumeTemplate, SchemaNode, TemplateManifestV2 } from '@/types'
+import { emptyResumeData } from '@/stores/resumeStore'
+import type { ResumeData, ResumeTemplate, TemplateManifestV2 } from '@/types'
 
 const route = useRoute()
 const router = useRouter()
@@ -40,26 +41,6 @@ const CATEGORY_PALETTES: Record<string, [string, string]> = {
   政府行政: ['#334155', '#64748b'],
   法律合规: ['#1e293b', '#94a3b8'],
   通用商务: ['#4f46e5', '#818cf8']
-}
-
-const KEY_SAMPLES: Record<string, string> = {
-  name: '李白',
-  email: 'libai@example.com',
-  phone: '138-0000-0000',
-  summary: '热爱技术的前端工程师，3 年 Vue 与全栈开发经验。',
-  company: '示例科技',
-  title: '前端工程师',
-  start: '2023-01',
-  end: '至今',
-  school: '示例大学',
-  degree: '本科',
-  year: '2022'
-}
-
-const TYPE_SAMPLES: Record<string, string> = {
-  string: '示例内容',
-  number: '0',
-  boolean: 'true'
 }
 
 onMounted(async () => {
@@ -225,45 +206,42 @@ function onPreviewClosed() {
   previewStyleEl = null
 }
 
-function sampleDataFor(tpl: ResumeTemplate): Record<string, unknown> {
-  const sample = tpl.manifest?.sampleData
-  if (sample && Object.keys(sample).length > 0) {
-    return sample as Record<string, unknown>
-  }
-  return buildSampleData(tpl.schema ?? {})
-}
-
 const previewHtml = computed(() =>
   previewTpl.value
-    ? previewTpl.value.manifest?.renderMode === 'static'
-      ? renderStaticTemplate(previewTpl.value)
-      : renderTemplate(previewTpl.value, sampleDataFor(previewTpl.value))
+    ? renderTemplate(previewTpl.value, resumeSampleFor(previewTpl.value))
     : ''
 )
 
-function buildSampleData(schema: SchemaNode): Record<string, unknown> {
-  const result: Record<string, unknown> = {}
-  for (const [key, sub] of Object.entries(schema.properties ?? {})) {
-    result[key] = buildSample(sub, key)
-  }
-  return result
-}
-
-function buildSample(schema: SchemaNode, key?: string): unknown {
-  if (schema.type === 'array') {
-    const item = schema.items
-    if (item?.type === 'object') return [buildSample(item)]
-    return ['示例 1', '示例 2']
-  }
-  if (schema.type === 'object') {
-    const result: Record<string, unknown> = {}
-    for (const [k, sub] of Object.entries(schema.properties ?? {})) {
-      result[k] = buildSample(sub, k)
+/** 把模板 manifest 的示例数据组装成完整 ResumeData，供语义渲染器预览。 */
+function resumeSampleFor(tpl: ResumeTemplate): ResumeData {
+  const data = emptyResumeData()
+  data.metadata.template = tpl.code
+  const sample = (tpl.manifest?.sampleData ?? {}) as Record<string, unknown>
+  if (typeof sample.name === 'string') data.basics.name = sample.name
+  if (typeof sample.headline === 'string') data.basics.headline = sample.headline
+  if (typeof sample.email === 'string') data.basics.email = sample.email
+  if (typeof sample.phone === 'string') data.basics.phone = sample.phone
+  if (typeof sample.location === 'string') data.basics.location = sample.location
+  if (typeof sample.summary === 'string') data.summary.content = sample.summary
+  const sectionKeys = ['profiles', 'experience', 'education', 'skills', 'projects',
+    'certifications', 'languages', 'awards', 'interests', 'publications', 'volunteer', 'references'] as const
+  for (const key of sectionKeys) {
+    const arr = sample[key]
+    if (Array.isArray(arr)) {
+      data.sections[key] = {
+        title: key,
+        columns: 1,
+        hidden: false,
+        items: arr.map((item, i) => ({
+          id: `sample-${key}-${i}`,
+          hidden: false,
+          ...(item !== null && typeof item === 'object' ? (item as object) : {})
+        }))
+      }
     }
-    return result
   }
-  if (key && KEY_SAMPLES[key]) return KEY_SAMPLES[key]
-  return TYPE_SAMPLES[schema.type ?? 'string'] ?? ''
+  data.metadata.layout.main = sectionKeys.filter((key) => data.sections[key] !== undefined) as string[]
+  return data
 }
 </script>
 

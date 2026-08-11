@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
-import draggable from 'vuedraggable'
 import { ElMessageBox } from 'element-plus'
 
+import { useSortableList } from '@/composables/useSortableList'
 import type { ResumeCustomSection, ResumeData, ResumeSection } from '@/types'
 
 const props = defineProps<{ selected: string; data: ResumeData }>()
@@ -37,6 +37,7 @@ const STANDARD_LABELS: Record<string, string> = {
 
 const dragList = ref<SidebarItem[]>([])
 const pendingStandard = ref('')
+const listEl = ref<HTMLElement | null>(null)
 
 function rebuild() {
   const list: SidebarItem[] = [
@@ -92,6 +93,18 @@ function syncOrder() {
   props.data.customSections.splice(0, props.data.customSections.length, ...customOrder.map((id) => byId.get(id)).filter(Boolean) as ResumeCustomSection[])
   emit('change')
 }
+
+function handleDragEnd(evt: { oldIndex?: number; newIndex?: number }) {
+  const { oldIndex, newIndex } = evt
+  if (oldIndex === undefined || newIndex === undefined || oldIndex === newIndex) return
+  const list = [...dragList.value]
+  const [moved] = list.splice(oldIndex, 1)
+  list.splice(newIndex, 0, moved)
+  dragList.value = list
+  syncOrder()
+}
+
+useSortableList(listEl, { handle: '.drag-handle', onEnd: handleDragEnd })
 
 function toggleHidden(item: SidebarItem, value: boolean) {
   if (item.custom) {
@@ -152,39 +165,36 @@ async function removeCustom(item: SidebarItem) {
         :value="key"
       />
     </el-select>
-    <draggable
-      :list="dragList"
-      item-key="key"
-      handle=".drag-handle"
+    <div
+      ref="listEl"
       class="section-list"
-      @end="syncOrder"
     >
-      <template #item="{ element }">
-        <div
-          class="section-row"
-          :class="{ active: element.key === selected }"
-          @click="$emit('update:selected', element.key)"
+      <div
+        v-for="element in dragList"
+        :key="element.key"
+        class="section-row"
+        :class="{ active: element.key === selected }"
+        @click="$emit('update:selected', element.key)"
+      >
+        <span class="drag-handle">⠿</span>
+        <span class="section-label">{{ element.label }}</span>
+        <el-switch
+          size="small"
+          :model-value="element.hidden"
+          @update:model-value="toggleHidden(element, $event as boolean)"
+          @click.stop
+        />
+        <el-button
+          v-if="element.custom"
+          size="small"
+          text
+          type="danger"
+          @click.stop="removeCustom(element)"
         >
-          <span class="drag-handle">⠿</span>
-          <span class="section-label">{{ element.label }}</span>
-          <el-switch
-            size="small"
-            :model-value="element.hidden"
-            @update:model-value="toggleHidden(element, $event as boolean)"
-            @click.stop
-          />
-          <el-button
-            v-if="element.custom"
-            size="small"
-            text
-            type="danger"
-            @click.stop="removeCustom(element)"
-          >
-            删
-          </el-button>
-        </div>
-      </template>
-    </draggable>
+          删
+        </el-button>
+      </div>
+    </div>
   </aside>
 </template>
 
