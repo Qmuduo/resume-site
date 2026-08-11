@@ -51,11 +51,27 @@ async function onSubmit() {
   <main class="auth-page">
     <el-card class="auth-card">
       <h2>登录</h2>
-      <el-form ref="formRef" :model="form" :rules="rules" label-position="top" @keyup.enter="onSubmit">
-        <el-form-item label="用户名" prop="username">
-          <el-input v-model="form.username" placeholder="用户名" autocomplete="username" />
+      <el-form
+        ref="formRef"
+        :model="form"
+        :rules="rules"
+        label-position="top"
+        @keyup.enter="onSubmit"
+      >
+        <el-form-item
+          label="用户名"
+          prop="username"
+        >
+          <el-input
+            v-model="form.username"
+            placeholder="用户名"
+            autocomplete="username"
+          />
         </el-form-item>
-        <el-form-item label="密码" prop="password">
+        <el-form-item
+          label="密码"
+          prop="password"
+        >
           <el-input
             v-model="form.password"
             type="password"
@@ -64,10 +80,19 @@ async function onSubmit() {
             show-password
           />
         </el-form-item>
-        <el-button type="primary" class="submit" :loading="loading" @click="onSubmit">登录</el-button>
+        <el-button
+          type="primary"
+          class="submit"
+          :loading="loading"
+          @click="onSubmit"
+        >
+          登录
+        </el-button>
       </el-form>
       <p class="switch">
-        还没有账号？<RouterLink to="/register">去注册</RouterLink>
+        还没有账号？<RouterLink to="/register">
+          去注册
+        </RouterLink>
       </p>
     </el-card>
   </main>

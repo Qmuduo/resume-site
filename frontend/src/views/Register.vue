@@ -70,11 +70,27 @@ async function onSubmit() {
   <main class="auth-page">
     <el-card class="auth-card">
       <h2>注册</h2>
-      <el-form ref="formRef" :model="form" :rules="rules" label-position="top" @keyup.enter="onSubmit">
-        <el-form-item label="用户名" prop="username">
-          <el-input v-model="form.username" placeholder="3-32 位字母、数字或下划线" autocomplete="username" />
+      <el-form
+        ref="formRef"
+        :model="form"
+        :rules="rules"
+        label-position="top"
+        @keyup.enter="onSubmit"
+      >
+        <el-form-item
+          label="用户名"
+          prop="username"
+        >
+          <el-input
+            v-model="form.username"
+            placeholder="3-32 位字母、数字或下划线"
+            autocomplete="username"
+          />
         </el-form-item>
-        <el-form-item label="密码" prop="password">
+        <el-form-item
+          label="密码"
+          prop="password"
+        >
           <el-input
             v-model="form.password"
             type="password"
@@ -83,7 +99,10 @@ async function onSubmit() {
             show-password
           />
         </el-form-item>
-        <el-form-item label="确认密码" prop="confirmPassword">
+        <el-form-item
+          label="确认密码"
+          prop="confirmPassword"
+        >
           <el-input
             v-model="form.confirmPassword"
             type="password"
@@ -92,16 +111,38 @@ async function onSubmit() {
             show-password
           />
         </el-form-item>
-        <el-form-item label="昵称（可选）" prop="nickname">
-          <el-input v-model="form.nickname" placeholder="昵称" />
+        <el-form-item
+          label="昵称（可选）"
+          prop="nickname"
+        >
+          <el-input
+            v-model="form.nickname"
+            placeholder="昵称"
+          />
         </el-form-item>
-        <el-form-item label="邮箱（可选）" prop="email">
-          <el-input v-model="form.email" placeholder="邮箱" autocomplete="email" />
+        <el-form-item
+          label="邮箱（可选）"
+          prop="email"
+        >
+          <el-input
+            v-model="form.email"
+            placeholder="邮箱"
+            autocomplete="email"
+          />
         </el-form-item>
-        <el-button type="primary" class="submit" :loading="loading" @click="onSubmit">注册</el-button>
+        <el-button
+          type="primary"
+          class="submit"
+          :loading="loading"
+          @click="onSubmit"
+        >
+          注册
+        </el-button>
       </el-form>
       <p class="switch">
-        已有账号？<RouterLink to="/login">去登录</RouterLink>
+        已有账号？<RouterLink to="/login">
+          去登录
+        </RouterLink>
       </p>
     </el-card>
   </main>

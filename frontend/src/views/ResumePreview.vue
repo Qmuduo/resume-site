@@ -80,32 +80,78 @@ function saveAsPdf() {
 <template>
   <main class="preview-page">
     <div class="print-toolbar">
-      <el-button @click="router.push('/resumes')">返回列表</el-button>
-      <h1 class="preview-title">{{ resume?.title ?? '简历预览' }}</h1>
-      <el-button type="primary" @click="saveAsPdf">保存为 PDF</el-button>
+      <el-button @click="router.push('/resumes')">
+        返回列表
+      </el-button>
+      <h1 class="preview-title">
+        {{ resume?.title ?? '简历预览' }}
+      </h1>
+      <el-button
+        type="primary"
+        @click="saveAsPdf"
+      >
+        保存为 PDF
+      </el-button>
     </div>
 
-    <p v-if="loading" class="hint">加载中…</p>
-    <div v-else-if="loadError" class="hint-empty">
-      <p class="hint">{{ loadError }}</p>
-      <el-button size="small" @click="router.push('/resumes')">返回列表</el-button>
+    <p
+      v-if="loading"
+      class="hint"
+    >
+      加载中…
+    </p>
+    <div
+      v-else-if="loadError"
+      class="hint-empty"
+    >
+      <p class="hint">
+        {{ loadError }}
+      </p>
+      <el-button
+        size="small"
+        @click="router.push('/resumes')"
+      >
+        返回列表
+      </el-button>
     </div>
-    <div v-else-if="missingTemplateId" class="hint-empty">
+    <div
+      v-else-if="missingTemplateId"
+      class="hint-empty"
+    >
       <p class="hint">
         该简历使用的模板「{{ missingTemplateId }}」已下架或不存在，请重新选择模板。数据已完整保留。
       </p>
-      <el-button type="primary" size="small" @click="router.push(`/editor/${resumeId}`)">
+      <el-button
+        type="primary"
+        size="small"
+        @click="router.push(`/editor/${resumeId}`)"
+      >
         重新选择模板
       </el-button>
     </div>
-    <div v-else-if="!template" class="hint-empty">
-      <p class="hint">该简历未关联任何模板，暂时无法预览</p>
-      <el-button type="primary" size="small" @click="router.push(`/editor/${resumeId}`)">
+    <div
+      v-else-if="!template"
+      class="hint-empty"
+    >
+      <p class="hint">
+        该简历未关联任何模板，暂时无法预览
+      </p>
+      <el-button
+        type="primary"
+        size="small"
+        @click="router.push(`/editor/${resumeId}`)"
+      >
         去编辑并关联模板
       </el-button>
     </div>
-    <div v-else class="preview-stage">
-      <div class="preview-html" v-html="previewHtml"></div>
+    <div
+      v-else
+      class="preview-stage"
+    >
+      <div
+        class="preview-html"
+        v-html="previewHtml"
+      />
     </div>
   </main>
 </template>

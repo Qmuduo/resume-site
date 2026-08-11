@@ -76,8 +76,7 @@ function fillItem(itemEl: Element, item: ResumeSectionItem) {
 
 function fillSection(
   container: Element,
-  section: { title: string; items: ResumeSectionItem[] },
-  _manifest: TemplateManifestV2
+  section: { title: string; items: ResumeSectionItem[] }
 ) {
   setText(container.querySelector('.section-title'), section.title)
   const itemsEl = container.querySelector('.section-items') ?? container
@@ -188,7 +187,7 @@ export function renderSemanticTemplate(template: ResumeTemplate, data: ResumeDat
       fillSummary(container, data.summary)
     } else {
       const section = data.sections[block.type]
-      if (section) fillSection(container, section, manifest)
+      if (section) fillSection(container, section)
     }
   }
 
@@ -198,7 +197,7 @@ export function renderSemanticTemplate(template: ResumeTemplate, data: ResumeDat
       const sectionEl = document.createElement('div')
       sectionEl.className = 'section'
       sectionEl.innerHTML = '<div class="section-title"></div><div class="section-items"></div>'
-      fillSection(sectionEl, cs as unknown as ResumeSection, manifest)
+      fillSection(sectionEl, cs as unknown as ResumeSection)
       customHost.appendChild(sectionEl)
     }
   }

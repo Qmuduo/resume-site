@@ -67,33 +67,83 @@ function templateCodeOf(row: ResumeRecord): string {
   <main class="page-container">
     <header class="page-header list-header">
       <div>
-        <h1 class="page-title">我的简历</h1>
-        <p class="page-subtitle">管理当前账号下的所有简历</p>
+        <h1 class="page-title">
+          我的简历
+        </h1>
+        <p class="page-subtitle">
+          管理当前账号下的所有简历
+        </p>
       </div>
-      <el-button type="primary" @click="router.push('/editor')">新建简历</el-button>
+      <el-button
+        type="primary"
+        @click="router.push('/editor')"
+      >
+        新建简历
+      </el-button>
     </header>
 
     <div class="surface-card table-card">
-      <el-table v-loading="loading" :data="resumes" stripe empty-text="还没有简历，点击右上角新建">
-        <el-table-column prop="title" label="标题" min-width="200" />
-        <el-table-column label="模板" min-width="140">
-          <template #default="{ row }">{{ templateCodeOf(row as ResumeRecord) }}</template>
+      <el-table
+        v-loading="loading"
+        :data="resumes"
+        stripe
+        empty-text="还没有简历，点击右上角新建"
+      >
+        <el-table-column
+          prop="title"
+          label="标题"
+          min-width="200"
+        />
+        <el-table-column
+          label="模板"
+          min-width="140"
+        >
+          <template #default="{ row }">
+            {{ templateCodeOf(row as ResumeRecord) }}
+          </template>
         </el-table-column>
-        <el-table-column label="状态" width="110">
+        <el-table-column
+          label="状态"
+          width="110"
+        >
           <template #default="{ row }">
             <el-tag :type="row.status === 1 ? 'success' : 'info'">
               {{ row.status === 1 ? '已发布' : '草稿' }}
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column label="更新时间" width="180">
-          <template #default="{ row }">{{ formatTime(row.updatedAt) }}</template>
-        </el-table-column>
-        <el-table-column label="操作" width="230">
+        <el-table-column
+          label="更新时间"
+          width="180"
+        >
           <template #default="{ row }">
-            <el-button size="small" @click="router.push(`/resumes/${row.id}/preview`)">查看</el-button>
-            <el-button size="small" @click="router.push(`/editor/${row.id}`)">编辑</el-button>
-            <el-button size="small" type="danger" @click="onDelete(row as ResumeRecord)">删除</el-button>
+            {{ formatTime(row.updatedAt) }}
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="操作"
+          width="230"
+        >
+          <template #default="{ row }">
+            <el-button
+              size="small"
+              @click="router.push(`/resumes/${row.id}/preview`)"
+            >
+              查看
+            </el-button>
+            <el-button
+              size="small"
+              @click="router.push(`/editor/${row.id}`)"
+            >
+              编辑
+            </el-button>
+            <el-button
+              size="small"
+              type="danger"
+              @click="onDelete(row as ResumeRecord)"
+            >
+              删除
+            </el-button>
           </template>
         </el-table-column>
       </el-table>

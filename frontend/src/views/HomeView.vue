@@ -42,8 +42,12 @@ function pickCategory(value: string) {
 <template>
   <main class="hero">
     <div class="hero-inner">
-      <h1 class="hero-title">用模板快速生成专业简历</h1>
-      <p class="hero-subtitle">挑选心仪模板，在线编辑并保存你的简历；登录后随时回来管理。</p>
+      <h1 class="hero-title">
+        用模板快速生成专业简历
+      </h1>
+      <p class="hero-subtitle">
+        挑选心仪模板，在线编辑并保存你的简历；登录后随时回来管理。
+      </p>
 
       <div class="hero-search">
         <el-input
@@ -53,7 +57,13 @@ function pickCategory(value: string) {
           clearable
           @keyup.enter="goMarket"
         />
-        <el-button type="primary" size="large" @click="goMarket">搜索</el-button>
+        <el-button
+          type="primary"
+          size="large"
+          @click="goMarket"
+        >
+          搜索
+        </el-button>
       </div>
 
       <div class="hero-chips">
@@ -69,9 +79,26 @@ function pickCategory(value: string) {
       </div>
 
       <div class="hero-actions">
-        <RouterLink class="hero-cta" to="/templates">浏览全部模板</RouterLink>
-        <RouterLink v-if="userStore.isLoggedIn" class="hero-cta ghost" to="/resumes">我的简历</RouterLink>
-        <RouterLink v-else class="hero-cta ghost" to="/login">登录开始创作</RouterLink>
+        <RouterLink
+          class="hero-cta"
+          to="/templates"
+        >
+          浏览全部模板
+        </RouterLink>
+        <RouterLink
+          v-if="userStore.isLoggedIn"
+          class="hero-cta ghost"
+          to="/resumes"
+        >
+          我的简历
+        </RouterLink>
+        <RouterLink
+          v-else
+          class="hero-cta ghost"
+          to="/login"
+        >
+          登录开始创作
+        </RouterLink>
       </div>
     </div>
   </main>

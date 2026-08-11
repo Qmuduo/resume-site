@@ -271,8 +271,12 @@ function buildSample(schema: SchemaNode, key?: string): unknown {
   <main class="page-container">
     <header class="page-header market-header">
       <div>
-        <h1 class="page-title">模板市场</h1>
-        <p class="page-subtitle">按行业与风格筛选模板，选择喜欢的模板创建你的简历</p>
+        <h1 class="page-title">
+          模板市场
+        </h1>
+        <p class="page-subtitle">
+          按行业与风格筛选模板，选择喜欢的模板创建你的简历
+        </p>
       </div>
       <div class="market-filters">
         <el-input
@@ -306,7 +310,10 @@ function buildSample(schema: SchemaNode, key?: string): unknown {
           {{ cat }}<span class="chip-count">{{ count }}</span>
         </button>
       </div>
-      <div v-if="allTags.length" class="filter-row tag-row">
+      <div
+        v-if="allTags.length"
+        class="filter-row tag-row"
+      >
         <span class="filter-label">标签</span>
         <button
           v-for="[tag, count] in allTags"
@@ -328,8 +335,16 @@ function buildSample(schema: SchemaNode, key?: string): unknown {
       </div>
     </div>
 
-    <div v-loading="loading" class="market-grid">
-      <p v-if="!loading && filteredTemplates.length === 0" class="empty">没有匹配的模板</p>
+    <div
+      v-loading="loading"
+      class="market-grid"
+    >
+      <p
+        v-if="!loading && filteredTemplates.length === 0"
+        class="empty"
+      >
+        没有匹配的模板
+      </p>
       <article
         v-for="tpl in filteredTemplates"
         :key="tpl.code"
@@ -341,21 +356,41 @@ function buildSample(schema: SchemaNode, key?: string): unknown {
           :class="[`vibe-${layoutVibe(tpl)}`, `font-${fontVibe(tpl)}`]"
           :style="coverStyle(tpl)"
         >
-          <div class="cover-shade"></div>
+          <div class="cover-shade" />
           <span class="market-cover-name">{{ tpl.name }}</span>
-          <span v-if="tpl.category" class="cover-category">{{ tpl.category }}</span>
+          <span
+            v-if="tpl.category"
+            class="cover-category"
+          >{{ tpl.category }}</span>
         </div>
         <div class="market-body">
           <div class="market-title-row">
-            <h3 class="market-title">{{ tpl.name }}</h3>
+            <h3 class="market-title">
+              {{ tpl.name }}
+            </h3>
             <span class="market-tag">{{ tpl.code }}</span>
           </div>
-          <div v-if="tpl.tags?.length" class="market-tags">
-            <span v-for="tag in tpl.tags.slice(0, 4)" :key="tag" class="card-tag">{{ tag }}</span>
+          <div
+            v-if="tpl.tags?.length"
+            class="market-tags"
+          >
+            <span
+              v-for="tag in tpl.tags.slice(0, 4)"
+              :key="tag"
+              class="card-tag"
+            >{{ tag }}</span>
           </div>
-          <p class="market-desc">{{ tpl.description }}</p>
+          <p class="market-desc">
+            {{ tpl.description }}
+          </p>
         </div>
-        <button class="preview-btn" type="button" @click.stop="openPreview(tpl)">预览</button>
+        <button
+          class="preview-btn"
+          type="button"
+          @click.stop="openPreview(tpl)"
+        >
+          预览
+        </button>
       </article>
     </div>
 
@@ -366,8 +401,14 @@ function buildSample(schema: SchemaNode, key?: string): unknown {
       @open="onPreviewOpened"
       @closed="onPreviewClosed"
     >
-      <div ref="previewRef" class="preview-pane">
-        <div class="preview-html" v-html="previewHtml"></div>
+      <div
+        ref="previewRef"
+        class="preview-pane"
+      >
+        <div
+          class="preview-html"
+          v-html="previewHtml"
+        />
       </div>
     </el-dialog>
   </main>

@@ -27,7 +27,12 @@ function onChange(value: string) {
     placeholder="选择模板"
     @update:model-value="onChange"
   >
-    <el-option v-for="tpl in templates" :key="tpl.code" :label="tpl.name" :value="tpl.code" />
+    <el-option
+      v-for="tpl in templates"
+      :key="tpl.code"
+      :label="tpl.name"
+      :value="tpl.code"
+    />
   </el-select>
 </template>
 

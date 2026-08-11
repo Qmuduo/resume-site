@@ -73,7 +73,12 @@ onMounted(async () => {
 
 <template>
   <main class="editor">
-    <p v-if="loading" class="editor-loading">加载中…</p>
+    <p
+      v-if="loading"
+      class="editor-loading"
+    >
+      加载中…
+    </p>
     <template v-else>
       <header class="editor-header">
         <h1>{{ editId ? '编辑简历' : '新建简历' }}</h1>
@@ -82,14 +87,35 @@ onMounted(async () => {
           :templates="templates"
           @switch="onSwitchTemplate"
         />
-        <el-input v-model="store.title" class="title-input" placeholder="简历标题" />
-        <el-button type="primary" :loading="store.saving" @click="save">保存</el-button>
-        <el-button @click="router.push('/resumes')">返回列表</el-button>
+        <el-input
+          v-model="store.title"
+          class="title-input"
+          placeholder="简历标题"
+        />
+        <el-button
+          type="primary"
+          :loading="store.saving"
+          @click="save"
+        >
+          保存
+        </el-button>
+        <el-button @click="router.push('/resumes')">
+          返回列表
+        </el-button>
       </header>
       <div class="editor-body">
         <section class="editor-preview">
-          <p v-if="!selectedTemplate" class="hint">暂无可选模板</p>
-          <div v-else class="preview-html" v-html="previewHtml"></div>
+          <p
+            v-if="!selectedTemplate"
+            class="hint"
+          >
+            暂无可选模板
+          </p>
+          <div
+            v-else
+            class="preview-html"
+            v-html="previewHtml"
+          />
         </section>
       </div>
     </template>
