@@ -1,94 +1,51 @@
 # AGENTS.md — Frontend (Vue 3 + Vite)
 
 ## Tech Stack
-- Vue 3.5（Composition API + `<script setup lang="ts">`）
-- TypeScript 5.x（strict），Vite 5.x，Node 18+（本机 Node 22）
+- Vue 3.5（Composition API + `<script setup lang="ts">`），TypeScript 5.x（strict），Vite 5.x，Node 18+（本机 Node 22）
 - Pinia、Vue Router 4、Element Plus、Axios（均已安装）
+- Tiptap（富文本）、SortableJS/vuedraggable（拖拽）、ESLint + eslint-plugin-vue（lint）：本期实施计划中引入，引入后按本文件规则使用
 - dayjs、marked、DOMPurify 未引入（按根 AGENTS.md 规则，新增依赖需先问用户）
 
 ## Directory Structure（现状）
 src/
-- api/                # 接口层
-  - http.ts           # Axios 实例（baseURL='/api'，超时 10s；拦截器/Token 注入待接入）
-  - template.ts       # 模板接口（fetchTemplates）
-  - resume.ts         # 简历 CRUD 接口
-- components/
-  - SchemaForm.vue    # 按 schema 递归生成表单
-- stores/
-  - app.ts            # 应用基础 store
-- types/
-  - index.ts          # ApiResult、SchemaNode、ResumeTemplate、ResumeRecord、ResumePayload
-- template-engine/
-  - index.ts          # 受控渲染引擎（schema 白名单 + 转义 + sanitizeHtml/sanitizeCss）
-- views/
-  - HomeView.vue
-  - TemplateList.vue  # 模板卡片列表
-  - ResumeEditor.vue  # 左表单右预览编辑器
-- router/
-  - index.ts          # 路由：/、/templates、/editor、/editor/:id
-- App.vue、main.ts、env.d.ts
+- api/                # HTTP 封装：http.ts（Axios 实例 + token 注入 + 401 刷新重试）、template.ts、resume.ts、user.ts、admin.ts
+- components/         # CommonForm、SchemaForm、SectionListEditor、TemplateFieldsForm、TemplateSwitcher 等
+- composables/        # usePageScale 等
+- stores/             # userStore、resumeStore、app
+- types/              # index.ts、resume.ts、user.ts（与 docs/resume.schema.json 对齐）
+- template-engine/    # 语义渲染器：输入模板 HTML/CSS + ResumeData + manifest v2，输出消毒后 HTML
+- views/              # HomeView、TemplateList、ResumeEditor、ResumePreview、Login、Register、AdminUsers
+- router/             # index.ts、guards.ts（未登录跳 /login + ADMIN-only 拦截，已实现）
+- assets/styles/      # global.css（设计 token）
 
-### 待建（目标目录）
-- api/user.ts、api/ai.ts；views/Login.vue、Register.vue、Dashboard.vue、TemplateMarket.vue、AiAssistant.vue
-- components/common/、components/resume/（FormPanel/PreviewPane/SectionEditor）、components/template/、components/ai/
-- stores/userStore.ts、resumeStore.ts、templateStore.ts、aiStore.ts
-- types/user.ts、resume.ts、template.ts、api.ts；utils/（validation/sanitize/storage）；composables/
-- router/guards.ts（路由守卫）；assets/styles/、assets/images/
+### 编辑器（三栏，实施计划阶段三落地）
+- 左栏：区块列表（拖拽排序、增删、显隐、自定义区块）
+- 中栏：按选中区块渲染表单 + 富文本（Tiptap）
+- 右栏：预览（缩放/平移）与设计面板（模板/版式/主题/字体/页边距/导出）两个标签
 
 ## Coding Rules
-1. **命名规范**
-   - 组件/文件名 PascalCase（HomeView.vue、ResumeEditor.vue）；变量/函数 camelCase；常量 UPPER_SNAKE_CASE
-   - 类型/接口 PascalCase，不强制 Interface 后缀（现状：ApiResult、ResumeTemplate）
-
-2. **组件规范**
-   - Composition API + `<script setup lang="ts">`；一个 .vue 文件只导出一个组件
-   - Props/Emits 用 defineProps/defineEmits 带类型
-   - 复杂逻辑抽 composables/（待建）
-
-3. **状态管理**
-   - 跨组件共享数据用 Pinia store（useXxxStore）；组件内部状态用 ref()/reactive()
-
-4. **API 调用**
-   - 所有请求走 src/api/，不在组件里直接写 axios（现状一致）
-   - Token 注入、401 自动刷新重试、刷新失败跳登录已在 http.ts 拦截器实现（见 src/api/http.ts）
-
-5. **模板渲染安全（现状已落实）**
+1. **命名规范**：组件/文件 PascalCase；变量/函数 camelCase；常量 UPPER_SNAKE_CASE
+2. **组件规范**：Composition API + `<script setup lang="ts">`；一个 .vue 文件只导出一个组件；Props/Emits 带类型
+3. **状态管理**：跨组件共享用 Pinia store；组件内部状态用 ref()/reactive()
+4. **API 调用**：所有请求走 src/api/，不在组件里直接写 axios
+5. **模板渲染安全（已落实）**：
    - v-html 只允许渲染 template-engine 消毒后的输出（schema 白名单 + HTML 转义 + sanitizeHtml）
-   - CSS 注入前过 sanitizeCss；模板 HTML 结构由受控 schema 驱动，不执行任意字符串
-   - DOMPurify 未引入；如需替换自研消毒器，先按根 AGENTS.md 确认依赖
-
-6. **Vue SFC 模板样式注入（禁止 <style> 标签）**
-   - Vue SFC 模板里禁止直接写 `<style>`（含 `<style ref>`）标签，会触发 vite:vue "Tags with side effect" 编译错误（ResumeEditor 曾踩坑）
-   - 动态注入预览 CSS：onMounted 时 document.createElement('style') 挂到目标容器，watchEffect 同步消毒后的 CSS，onBeforeUnmount 时 remove 防止路由切换样式残留
-   - 参照 frontend/src/views/ResumeEditor.vue 的实现方式
-
-7. **路由规范**
-   - 懒加载：component: () => import('@/views/Xxx.vue')（现状一致）
-   - 路由守卫 guards.ts 已实现：未登录 → /login（带 redirect 回跳）、ADMIN-only 页面拦截非 ADMIN 用户
-   - path 用 kebab-case（现状：/templates、/editor；目标 /resume-editor/:id 可后续统一）
-
-8. **样式规范**
-   - 使用 scoped style，避免全局污染（现状一致）
-   - 全局样式 assets/styles/global.scss、主题变量 variables.scss 待建
-   - 颜色值用 CSS 变量（var(--primary-color)）
-
-9. **UI 风格规范（现代极简 SaaS）**
-   - 设计 token 唯一来源 frontend/src/assets/styles/global.css：背景 #F7F8FA、主文字 #1A1A1A、强调色 #4F46E5、辅助文字 #6B7280、圆角统一 12px（rounded-xl）；Element Plus 主色已通过 CSS 变量覆盖为 #4F46E5，禁止组件里写死旧色值（如 #409eff、#ebeef5）
-   - 字体优先 'Inter'，回退 'PingFang SC' / 'Microsoft YaHei' / system-ui；不引入远程字体依赖
-   - 微交互：hover/focus 一律 transition-all duration-200 ease-out；只允许 translateY(-4px)+阴影加深、透明度/颜色变化，禁止突兀位移或缩放
-   - 导航：sticky 吸顶、高 64px、border-bottom 1px #E5E7EB、logo 左对齐菜单右对齐、hover/active 变强调色
-   - Hero：浅灰背景、标题 clamp(28px,4vw,48px)、副标题灰 400、搜索框 focus 强调色描边、分类 chips pill（选中强调底白字）
-   - 模板卡片：白底 rounded-xl 柔和阴影、hover translateY(-4px)+阴影加深、封面固定 16:9（无缩略图用渐变占位）、标题加粗、标签小字 pill、右下角「预览」ghost 按钮 hover 才显示；预览样式注入遵循规则 6
+   - CSS 注入前过 sanitizeCss；富文本内容渲染走白名单消毒
+   - 设计面板通过 CSS 变量注入主题，不直接改写模板 CSS 文件
+6. **Vue SFC 模板样式注入**：禁止在 SFC 模板里直接写 `<style>` 标签（会触发 vite:vue 编译错误）；动态注入预览 CSS 用 document.createElement('style') 挂到目标容器，onBeforeUnmount 时 remove（参照 ResumeEditor.vue 现有实现）
+7. **路由规范**：懒加载 component: () => import('@/views/Xxx.vue')；path 用 kebab-case；guards.ts 已实现
+8. **样式规范**：scoped style；颜色值用 CSS 变量（以 global.css 设计 token 为准）
+9. **UI 风格**：现代极简 SaaS，设计 token 唯一来源 frontend/src/assets/styles/global.css（背景 #F7F8FA、主文字 #1A1A1A、强调色 #4F46E5、辅助文字 #6B7280、圆角 12px）；hover 过渡统一 transition-all duration-200 ease-out，只允许 translateY(-4px)+阴影加深
 
 ## Build & Run
 - 开发：npm run dev（端口 5173，proxy /api → localhost:8080）
 - 构建：npm run build（vue-tsc --noEmit + vite build，输出 dist/）
 - 类型检查：npx vue-tsc --noEmit
-- lint：package.json 暂无 lint 脚本（ESLint 未配置，待加）
+- lint：npm run lint（ESLint 配置完成后可用；验证以 build 为准）
 
 ## Environment Variables
-- 现状未使用 .env 文件：baseURL 写死在 src/api/http.ts（'/api'）
-- 目标：.env.development 设 VITE_API_BASE_URL=/api，.env.production 设线上地址；后端若启用 /api/v1 再同步调整
+- 暂未使用 .env 文件：baseURL 写死在 src/api/http.ts（'/api'）
+- 目标：.env.development 设 VITE_API_BASE_URL=/api，.env.production 设线上地址
 
 ## Commit Convention
 - feat: 新功能；fix: 修复；refactor: 重构；style: 样式；docs: 文档；chore: 构建/配置（现状提交已按此约定）
