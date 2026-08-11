@@ -100,14 +100,14 @@
 
 ### 常用命令
 ```powershell
-# 全量分析（重新生成 110+ manifest 与报告）
+# 全量分析（重新生成 docs/template 全部 manifest 与报告，当前为 12 份）
 node scripts/analyze-templates.js
 # 验证单个/全部模板
 node scripts/validate-template.js docs/template/prompt_101.html
 node scripts/validate-template.js --report
 # 重新生成内置占位符模板 manifest
 node scripts/generate-builtin-manifests.js
-# 为内置占位符模板（cv2/p03–p13）生成 sampleData（数据源 scripts/data/placeholder-sample-data.json）
+# 为内置占位符模板（cv2）生成 sampleData（数据源 scripts/data/placeholder-sample-data.json）
 node scripts/build-placeholder-sample-data.js
 # 生成模板市场目录（中文名/分类/标签/主色，输出 backend resources/template-market-catalog.json）
 node scripts/build-market-catalog.js
@@ -119,15 +119,18 @@ node scripts/randomize-demo-names.js
 - 结构变更：`docs/sql/schema-v2.sql`（幂等）。
 - 旧 `resume.data` 拆分：`docs/sql/migrate-resume-v2.sql`（必须先备份 `resume_backup_pre_v2`，迁移后跑脚本内校验 SQL，全部通过再删旧列）。
 - 模板市场 v3（分类/标签列 + 下架模板清理）：`docs/sql/template-market-v3.sql`（幂等，全新库与存量库均可执行）。
+- 内置模板精简 v4（保留 13 份、清理其余内置模板）：`docs/sql/retire-template-v4.sql`（幂等，存量库执行；全新库启动种子即只写入保留模板）。
 
 ### 模板市场与分类标签（v3）
 - `template` 表新增 `category VARCHAR(64)` 与 `tags JSON`（标签为字符串数组）。
 - 市场中文名/分类/标签/主色以 `backend/com.resume.api/src/main/resources/template-market-catalog.json` 为准，
   后端启动种子时自动写入 template 表；前端市场页从模板 CSS 提取主色/字体/版式渲染风格化卡片，并按分类/标签筛选。
-- 已下架内置模板：`classic` / `minimal` / `modern`（编码见各服务 `RETIRED_BUILTIN_CODES`）。
+- 内置模板精简为 13 份：`cv2`、`prompt_013`、`prompt_03`、`prompt_021`、`prompt_026`、`prompt_057`、
+  `prompt_044`、`prompt_04`、`prompt_05`、`prompt_063`、`prompt_09`、`prompt_10`、`prompt_089`。
+  已下架内置模板编码清单见 `backend/com.resume.api/src/main/resources/template-retired-codes.json`，
   启动种子后统一清理 builtin 记录与 template_config；存量简历仍指向下架模板时保留引用，
   前端预览/编辑给出明确提示"模板已下架，请重新选择模板"，数据不丢失。
-- 内置占位符模板（cv2/p03–p13）的 `manifest.sampleData` 来自对应静态 HTML 的示例数据；
+- 内置占位符模板（cv2）的 `manifest.sampleData` 来自对应静态 HTML 的示例数据；
   市场预览与编辑器空数据预览直接可见完整演示内容。
 - 演示数据姓名一律取自名单：屈原、陶渊明、李白、杜甫、白居易、王维、李商隐、苏轼、辛弃疾、李清照
   （同一模板内保持一致；`scripts/randomize-demo-names.js` 负责批量替换）。

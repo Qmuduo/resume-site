@@ -29,6 +29,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -57,7 +58,7 @@ public class TemplateService {
     private static final Pattern STYLE_PATTERN = Pattern.compile("(?is)<style[^>]*>(.*?)</style>");
 
     /** 已下架的内置模板编码：不再从资源文件种子，并在启动时从库中清除 builtin 记录 */
-    private static final Set<String> RETIRED_BUILTIN_CODES = Set.of("classic", "minimal", "modern");
+    private final Set<String> retiredBuiltinCodes;
 
     /** 全部模板快照缓存；写操作后置空重建 */
     private volatile List<TemplateVO> cache;
@@ -66,14 +67,27 @@ public class TemplateService {
                            ObjectMapper objectMapper,
                            @Value("classpath*:templates/template-*.json") Resource[] builtinTemplateResources,
                            @Value("classpath:template-market-catalog.json") Resource marketCatalogResource,
+                           @Value("classpath:template-retired-codes.json") Resource retiredCodesResource,
                            TemplateConfigService templateConfigService,
                            @Value("${resume.manifest-dir:../docs/template}") String manifestDir) {
         this.templateMapper = templateMapper;
         this.objectMapper = objectMapper;
         this.builtinTemplateResources = builtinTemplateResources;
         this.marketCatalogResource = marketCatalogResource;
+        this.retiredBuiltinCodes = loadRetiredCodes(retiredCodesResource);
         this.templateConfigService = templateConfigService;
         this.manifestDir = manifestDir;
+    }
+
+    /** 读取已下架模板编码清单（resources/template-retired-codes.json），文件缺失时回退为空集合 */
+    private Set<String> loadRetiredCodes(Resource resource) {
+        try (InputStream in = resource.getInputStream()) {
+            return new HashSet<>(objectMapper.readValue(in, new TypeReference<List<String>>() {
+            }));
+        } catch (IOException e) {
+            log.warn("retired template codes resource missing, fallback to empty: {}", e.getMessage());
+            return Set.of();
+        }
     }
 
     /**
@@ -168,7 +182,7 @@ public class TemplateService {
      * 并同步清理 template_config；有存量简历引用时保留引用，由前端提示重新选择模板。
      */
     private void purgeRetiredBuiltinTemplates() {
-        for (String code : RETIRED_BUILTIN_CODES) {
+        for (String code : retiredBuiltinCodes) {
             List<Template> existing = templateMapper.selectList(
                     new LambdaQueryWrapper<Template>().eq(Template::getCode, code));
             boolean removed = false;

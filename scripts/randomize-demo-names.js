@@ -4,7 +4,7 @@
  * 规则：
  *   - 名单：屈原、陶渊明、李白、杜甫、白居易、王维、李商隐、苏轼、辛弃疾、李清照
  *   - 同一模板内姓名保持一致；不同模板按模板编码哈希随机分布，不要求去重；
- *   - cv2 / p03–p13 与其对应的静态模板（prompt_002 / prompt_03–13）保持同名。
+ *   - cv2 与其对应的静态模板（prompt_002，已精简下架，缺失时按编码取名）保持同名。
  *
  * 处理范围：
  *   - docs/template/*.html 内的示例姓名
@@ -25,20 +25,9 @@ const PLACEHOLDER_SOURCE = path.join(__dirname, 'data', 'placeholder-sample-data
 
 const NAMES = ['屈原', '陶渊明', '李白', '杜甫', '白居易', '王维', '李商隐', '苏轼', '辛弃疾', '李清照']
 
-/** 内置占位符模板 -> 对应静态模板（保证同名） */
+/** 内置占位符模板 -> 对应静态模板（保证同名；cv2 的静态源 prompt_002 已精简下架，缺失时按编码取新姓名） */
 const BUILTIN_SOURCE = {
-  cv2: 'prompt_002',
-  p03: 'prompt_03',
-  p04: 'prompt_04',
-  p05: 'prompt_05',
-  p06: 'prompt_06',
-  p07: 'prompt_07',
-  p08: 'prompt_08',
-  p09: 'prompt_09',
-  p10: 'prompt_10',
-  p11: 'prompt_11',
-  p12: 'prompt_12',
-  p13: 'prompt_13'
+  cv2: 'prompt_002'
 }
 
 function pickName(code) {

@@ -1,5 +1,5 @@
 /**
- * 生成模板市场目录：为所有内置模板（cv2/p03–p13 + docs/template 110 份静态模板）
+ * 生成模板市场目录：为所有内置模板（cv2 + docs/template 12 份静态模板）
  * 生成中文名称、分类与标签，并提取主色/风格信息供市场卡片使用。
  *
  * 输出：
@@ -36,20 +36,9 @@ const OUT_BACKEND = path.join(
 )
 const OUT_DOCS = path.join(__dirname, '..', 'docs', 'template-market-catalog.json')
 
-/** 内置占位符模板 -> 对应静态 HTML 模板（用于取名与分类） */
+/** 内置占位符模板 -> 对应静态 HTML 模板（用于取名与分类；cv2 的静态源 prompt_002 已精简下架，缺失时回退用自身名称） */
 const BUILTIN_SOURCE = {
-  cv2: 'prompt_002',
-  p03: 'prompt_03',
-  p04: 'prompt_04',
-  p05: 'prompt_05',
-  p06: 'prompt_06',
-  p07: 'prompt_07',
-  p08: 'prompt_08',
-  p09: 'prompt_09',
-  p10: 'prompt_10',
-  p11: 'prompt_11',
-  p12: 'prompt_12',
-  p13: 'prompt_13'
+  cv2: 'prompt_002'
 }
 
 const STYLE_SEGMENTS = [

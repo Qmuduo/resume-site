@@ -1,8 +1,8 @@
 /**
- * 为内置占位符模板（cv2、p03–p13）生成 manifest.sampleData。
+ * 为内置占位符模板（cv2）生成 manifest.sampleData。
  *
  * 数据来源：scripts/data/placeholder-sample-data.json，
- * 内容取自 docs/template/prompt_002.html、prompt_03.html–prompt_13.html 的示例数据，
+ * 内容取自 docs/template/prompt_002.html 的示例数据（其余静态源已随模板精简下架），
  * 并按各内置模板 schema 结构转换（公共字段尽量映射到 resume-common.schema.json）。
  *
  * 用法：node scripts/build-placeholder-sample-data.js

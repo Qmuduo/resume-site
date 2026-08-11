@@ -25,6 +25,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +53,7 @@ public class TemplateConfigService {
     private final Resource[] classpathManifests;
 
     /** 已下架的内置模板编码：启动种子时跳过并清理其 template_config 记录 */
-    private static final Set<String> RETIRED_BUILTIN_CODES = Set.of("classic", "minimal", "modern");
+    private final Set<String> retiredBuiltinCodes;
 
     /** 模板编码 -> manifest 缓存；写操作后失效重建 */
     private volatile Map<String, TemplateManifest> cache;
@@ -61,12 +62,25 @@ public class TemplateConfigService {
                                  TemplateMapper templateMapper,
                                  ObjectMapper objectMapper,
                                  @Value("${resume.manifest-dir:../docs/template}") String manifestDir,
-                                 @Value("classpath*:template-manifests/*.json") Resource[] classpathManifests) {
+                                 @Value("classpath*:template-manifests/*.json") Resource[] classpathManifests,
+                                 @Value("classpath:template-retired-codes.json") Resource retiredCodesResource) {
         this.templateConfigMapper = templateConfigMapper;
         this.templateMapper = templateMapper;
         this.objectMapper = objectMapper;
         this.manifestDir = manifestDir;
         this.classpathManifests = classpathManifests;
+        this.retiredBuiltinCodes = loadRetiredCodes(retiredCodesResource);
+    }
+
+    /** 读取已下架模板编码清单（resources/template-retired-codes.json），文件缺失时回退为空集合 */
+    private Set<String> loadRetiredCodes(Resource resource) {
+        try (InputStream in = resource.getInputStream()) {
+            return new HashSet<>(objectMapper.readValue(in, new TypeReference<List<String>>() {
+            }));
+        } catch (IOException e) {
+            log.warn("retired template codes resource missing, fallback to empty: {}", e.getMessage());
+            return Set.of();
+        }
     }
 
     @PostConstruct
@@ -79,7 +93,7 @@ public class TemplateConfigService {
         for (Resource resource : sorted) {
             try (InputStream in = resource.getInputStream()) {
                 TemplateManifest manifest = objectMapper.readValue(in, TemplateManifest.class);
-                if (manifest.getTemplateId() != null && RETIRED_BUILTIN_CODES.contains(manifest.getTemplateId())) {
+                if (manifest.getTemplateId() != null && retiredBuiltinCodes.contains(manifest.getTemplateId())) {
                     continue;
                 }
                 if (upsert(manifest)) {
@@ -104,7 +118,7 @@ public class TemplateConfigService {
                         if (manifest.getTemplateId() == null || manifest.getTemplateId().isBlank()) {
                             manifest.setTemplateId(stripSuffix(file.getFileName().toString(), ".manifest.json"));
                         }
-                        if (RETIRED_BUILTIN_CODES.contains(manifest.getTemplateId())) {
+                        if (retiredBuiltinCodes.contains(manifest.getTemplateId())) {
                             continue;
                         }
                         if (upsert(manifest)) {
@@ -125,7 +139,7 @@ public class TemplateConfigService {
 
     /** 启动时清理已下架模板的 manifest 配置；可重复执行 */
     private void purgeRetiredConfigs() {
-        for (String code : RETIRED_BUILTIN_CODES) {
+        for (String code : retiredBuiltinCodes) {
             deleteConfigByCode(code);
         }
     }
