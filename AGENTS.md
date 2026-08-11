@@ -98,7 +98,7 @@
 
 ### 常用命令
 ```powershell
-# 全量分析（重新生成 docs/template 全部 manifest 与报告，当前为 13 份）
+# 全量分析（重新生成 docs/template 全部 manifest 与报告，当前为 12 份静态模板；cv2 内置模板在 backend resources 单独维护）
 node scripts/analyze-templates.js
 # 验证单个/全部模板
 node scripts/validate-template.js docs/template/prompt_101.html
