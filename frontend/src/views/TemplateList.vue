@@ -6,7 +6,7 @@ import { ElMessage } from 'element-plus'
 import { fetchTemplates } from '@/api/template'
 import { renderStaticTemplate, renderTemplate, sanitizeCss } from '@/template-engine'
 import { useUserStore } from '@/stores/userStore'
-import type { ResumeTemplate, SchemaNode } from '@/types'
+import type { ResumeTemplate, SchemaNode, TemplateManifestV2 } from '@/types'
 
 const route = useRoute()
 const router = useRouter()
@@ -165,10 +165,22 @@ function templateColors(css: string): string[] {
 }
 
 function coverStyle(tpl: ResumeTemplate) {
-  const colors = templateColors(tpl.css ?? '')
+  const primary = primaryColor(tpl)
+  const colors = templateColors(tpl.css ?? '').filter((c) => c.toLowerCase() !== primary.toLowerCase())
   const palette = CATEGORY_PALETTES[tpl.category ?? ''] ?? CATEGORY_PALETTES['通用商务']
-  const [c0, c1] = colors.length >= 2 ? colors : colors.length === 1 ? [colors[0], palette[1]] : palette
+  const c0 = primary
+  const c1 = colors[0] ?? palette[1]
   return { background: `linear-gradient(135deg, ${c0} 0%, ${c1} 100%)` }
+}
+
+/** 主色优先取 manifest v2 theme 里 --color-primary 的默认值 */
+function primaryColor(tpl: ResumeTemplate): string {
+  const manifest = tpl.manifest
+  if (manifest && 'theme' in manifest && Array.isArray(manifest.theme)) {
+    const primary = (manifest as TemplateManifestV2).theme.find((t) => t.key === '--color-primary')
+    if (primary?.default) return primary.default
+  }
+  return '#4F46E5'
 }
 
 function layoutVibe(tpl: ResumeTemplate): 'split' | 'terminal' | 'single' {
