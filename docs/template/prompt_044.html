@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
   <title>苏轼 · 新媒体运营简历</title>
   <style>
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
     /* 全局重置与打印优先 */
     * {
       margin: 0;
@@ -324,13 +346,13 @@
   </style>
 </head>
 <body>
-  <div class="resume">
+  <div class="resume-page">
     <!-- 极细左侧装饰条，ATS安全且不与文字重叠 -->
     <div class="left-accent-bar"></div>
     <div class="resume-inner">
       
       <!-- 姓名与标题 -->
-      <div class="name-section">
+      <div class="resume-header">
         <h1 class="name">苏轼</h1>
         <div class="title-sub">新媒体运营 · 内容策划</div>
       </div>
@@ -345,7 +367,7 @@
       <div class="divider-line"></div>
 
       <!-- 专业总结 -->
-      <div>
+      <div class="section" data-section="summary">
         <div class="section-title">专业概述</div>
         <p style="font-size: 10.5pt; color: #2d3748; margin: 0.2rem 0 0.2rem 0; line-height: 1.55;">
           应届新媒体运营实践者，擅长以数据驱动内容策略。在校园IP孵化与品牌社交传播中累计增粉3.2万，具备短视频脚本、图文排版及社群活跃管理经验。追求莫兰迪美学的视觉叙事，致力于创造有温度的连接。
@@ -353,10 +375,10 @@
       </div>
 
       <!-- 实习经历 -->
-      <div>
+      <div class="section" data-section="experience">
         <div class="section-title">相关经历</div>
         
-        <div class="experience-item">
+        <div class="entry experience-item">
           <div class="item-header">
             <span class="item-left">初新文化传媒</span>
             <span class="item-right">2025.03 – 2025.08</span>
@@ -369,7 +391,7 @@
           </ul>
         </div>
 
-        <div class="experience-item">
+        <div class="entry experience-item">
           <div class="item-header">
             <span class="item-left">青芒校园工作室</span>
             <span class="item-right">2024.09 – 2025.01</span>
@@ -384,9 +406,9 @@
       </div>
 
       <!-- 教育背景 -->
-      <div>
+      <div class="section" data-section="education">
         <div class="section-title">教育</div>
-        <div class="experience-item">
+        <div class="entry experience-item">
           <div class="item-header">
             <span class="item-left">浙江传媒学院</span>
             <span class="item-right">2022.09 – 2026.06</span>
@@ -399,9 +421,9 @@
       </div>
 
       <!-- 技能板块：混合标签与双栏列表，保持ATS可读 -->
-      <div>
+      <div class="section" data-section="skills">
         <div class="section-title">核心能力</div>
-        <div class="skills-container">
+        <div class="section-items">
           <span class="skill-tag">内容策划</span>
           <span class="skill-tag">短视频脚本</span>
           <span class="skill-tag">小红书运营</span>
@@ -425,9 +447,9 @@
       </div>
 
       <!-- 项目/校园实践突出年轻活力 -->
-      <div>
+      <div class="section" data-section="projects">
         <div class="section-title">项目实践</div>
-        <div class="experience-item">
+        <div class="entry experience-item">
           <div class="item-header">
             <span class="project-title">“莫兰迪青年”播客企划</span>
             <span class="item-right">2024.10 – 至今</span>

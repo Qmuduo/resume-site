@@ -3,36 +3,80 @@
   "name": "prompt_044",
   "sourceFile": "prompt_044.html",
   "renderMode": "semantic",
-  "regions": [],
-  "blocks": [],
+  "regions": [
+    {
+      "name": "header",
+      "placement": "main",
+      "origins": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "summary",
+      "selector": "[data-section='summary']",
+      "placement": "main"
+    },
+    {
+      "type": "experience",
+      "selector": "[data-section='experience']",
+      "placement": "main"
+    },
+    {
+      "type": "education",
+      "selector": "[data-section='education']",
+      "placement": "main"
+    },
+    {
+      "type": "skills",
+      "selector": "[data-section='skills']",
+      "placement": "main"
+    },
+    {
+      "type": "projects",
+      "selector": "[data-section='projects']",
+      "placement": "main"
+    }
+  ],
   "theme": [
     {
-      "key": "--primary",
-      "default": "#3e5a4b"
+      "key": "--color-primary",
+      "default": "#4F46E5",
+      "control": "color"
     },
     {
-      "key": "--accent",
-      "default": "#b5826b"
+      "key": "--color-background",
+      "default": "#FFFFFF",
+      "control": "color"
     },
     {
-      "key": "--soft-bg",
-      "default": "#f7f5f0"
+      "key": "--color-text",
+      "default": "#1A1A1A",
+      "control": "color"
     },
     {
-      "key": "--text-primary",
-      "default": "#2d3748"
+      "key": "--font-heading",
+      "default": "sans-serif",
+      "control": "font"
     },
     {
-      "key": "--text-secondary",
-      "default": "#4a5568"
+      "key": "--font-body",
+      "default": "sans-serif",
+      "control": "font"
     },
     {
-      "key": "--divider",
-      "default": "#d9d2c5"
+      "key": "--font-size-base",
+      "default": "12pt",
+      "control": "number"
     },
     {
-      "key": "--tag-bg",
-      "default": "#f0ede6"
+      "key": "--page-margin",
+      "default": "48px",
+      "control": "number"
+    },
+    {
+      "key": "--section-gap",
+      "default": "16px",
+      "control": "number"
     }
   ],
   "sampleData": {
