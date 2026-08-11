@@ -50,11 +50,12 @@ public class ResumeService {
 
     @Transactional(rollbackFor = Exception.class)
     public Resume create(Long userId, ResumeRequest request) {
-        resumeSchemaValidator.validate(request.getData());
+        JsonNode document = normalizeDocument(request.getData());
+        resumeSchemaValidator.validate(document);
         Resume resume = new Resume();
         resume.setUserId(userId);
         resume.setTitle(request.getTitle().trim());
-        resume.setData(writeJson(request.getData()));
+        resume.setData(writeJson(document));
         resume.setStatus(request.getStatus() == null ? 0 : request.getStatus());
         resumeMapper.insert(resume);
         return resume;
@@ -66,9 +67,10 @@ public class ResumeService {
         if (resume == null) {
             return null;
         }
-        resumeSchemaValidator.validate(request.getData());
+        JsonNode document = normalizeDocument(request.getData());
+        resumeSchemaValidator.validate(document);
         resume.setTitle(request.getTitle().trim());
-        resume.setData(writeJson(request.getData()));
+        resume.setData(writeJson(document));
         if (request.getStatus() != null) {
             resume.setStatus(request.getStatus());
         }
@@ -95,6 +97,28 @@ public class ResumeService {
         vo.setCreatedAt(resume.getCreatedAt());
         vo.setUpdatedAt(resume.getUpdatedAt());
         return vo;
+    }
+
+    /** 兼容 data 传对象或 JSON 字符串两种形态，统一归一化为对象节点。 */
+    private JsonNode normalizeDocument(JsonNode node) {
+        if (node == null) {
+            throw new BusinessException(ErrorCode.BAD_REQUEST, "data 不能为空");
+        }
+        if (node.isTextual()) {
+            try {
+                JsonNode parsed = objectMapper.readTree(node.asText());
+                if (!parsed.isObject()) {
+                    throw new BusinessException(ErrorCode.BAD_REQUEST, "data 必须是 JSON 对象");
+                }
+                return parsed;
+            } catch (JsonProcessingException e) {
+                throw new BusinessException(ErrorCode.BAD_REQUEST, "data 不是合法 JSON");
+            }
+        }
+        if (!node.isObject()) {
+            throw new BusinessException(ErrorCode.BAD_REQUEST, "data 必须是 JSON 对象");
+        }
+        return node;
     }
 
     private Map<String, Object> parseObjectMap(String json) {

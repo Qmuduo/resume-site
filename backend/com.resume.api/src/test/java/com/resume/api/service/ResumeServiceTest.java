@@ -71,6 +71,17 @@ class ResumeServiceTest {
     }
 
     @Test
+    void createAcceptsTextualDocument() throws Exception {
+        ObjectNode data = (ObjectNode) validRequest().getData();
+        ResumeRequest req = new ResumeRequest();
+        req.setTitle("字符串文档");
+        // 模拟前端 JSON.stringify(data)：data 字段是一个 JSON 字符串
+        req.setData(objectMapper.getNodeFactory().textNode(objectMapper.writeValueAsString(data)));
+        service.create(1L, req);
+        verify(mapper).insert(any(Resume.class));
+    }
+
+    @Test
     void createRejectsInvalidDocument() {
         ResumeRequest req = validRequest();
         ((ObjectNode) req.getData()).remove("version");
