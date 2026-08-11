@@ -601,7 +601,7 @@ SET r.data = JSON_OBJECT(
   ), JSON_ARRAY()),
   'metadata', JSON_OBJECT(
     'template', COALESCE(r.current_template_id, 'cv2'),
-    'layout', JSON_OBJECT('main', JSON_ARRAY(), 'sidebar', JSON_ARRAY(), 'sidebarWidth', 30),
+    'layout', JSON_OBJECT('main', JSON_ARRAY('profiles','experience','education','skills','projects','certifications','languages','awards','interests'), 'sidebar', JSON_ARRAY(), 'sidebarWidth', 30),
     'page', JSON_OBJECT('format', 'A4', 'margin', 48),
     'design', JSON_OBJECT('colors', JSON_OBJECT('primary', '#4F46E5', 'text', '#1A1A1A', 'background', '#FFFFFF')),
     'typography', JSON_OBJECT('headingFont', 'sans-serif', 'bodyFont', 'sans-serif', 'fontSize', 12),
@@ -1993,6 +1993,7 @@ git commit -m "feat: add semantic template converter script"
       <div class="section-title">技能清单</div>
       <div class="section-items"><span class="skill-tag"></span></div>
     </section>
+    <section class="section" data-section="custom"></section>
   </main>
 </div>
 ```
@@ -2205,6 +2206,16 @@ function fillItem(itemEl: Element, item: ResumeSectionItem) {
 function fillSection(container: Element, section: { title: string; items: ResumeSectionItem[] }, manifest: TemplateManifestV2) {
   setText(container.querySelector('.section-title'), section.title)
   const itemsEl = container.querySelector('.section-items') ?? container
+  const skillTag = itemsEl.querySelector('.skill-tag')
+  if (skillTag) {
+    itemsEl.innerHTML = ''
+    for (const item of section.items) {
+      const clone = skillTag.cloneNode(true) as Element
+      clone.textContent = [item['name'], item['level']].filter(Boolean).join(' · ')
+      itemsEl.appendChild(clone)
+    }
+    return
+  }
   const first = itemsEl.querySelector('.entry, [data-entry]')
   if (!first) return
   itemsEl.innerHTML = ''
@@ -2630,6 +2641,15 @@ git commit -m "feat: scaffold three-pane resume editor shell"
       <span>区块</span>
       <el-button size="small" type="primary" plain @click="addCustom">+ 自定义区块</el-button>
     </div>
+    <el-select
+      v-model="pendingStandard"
+      size="small"
+      class="add-standard"
+      placeholder="+ 添加标准区块"
+      @update:model-value="onAddStandard"
+    >
+      <el-option v-for="[key, label] in availableStandard" :key="key" :label="label" :value="key" />
+    </el-select>
     <draggable :list="orderedKeys" item-key="key" @end="$emit('change')">
       <template #item="{ element }">
         <div
@@ -2659,7 +2679,9 @@ import draggable from 'vuedraggable'
 import { ElMessageBox } from 'element-plus'
 import { computed } from 'vue'
 
-import type { ResumeCustomSection, ResumeData } from '@/types'
+import { ref } from 'vue'
+
+import type { ResumeCustomSection, ResumeData, ResumeSection } from '@/types'
 
 const props = defineProps<{ selected: string; data: ResumeData }>()
 const emit = defineEmits<{
@@ -2689,6 +2711,33 @@ const orderedKeys = computed(() => {
   }
   return list
 })
+
+const pendingStandard = ref('')
+
+const availableStandard = computed(() => {
+  const existing = new Set([
+    ...props.data.metadata.layout.main,
+    ...props.data.metadata.layout.sidebar,
+    'basics',
+    'summary'
+  ])
+  return Object.entries(STANDARD_LABELS).filter(([key]) => !existing.has(key))
+})
+
+function onAddStandard(key: string) {
+  pendingStandard.value = ''
+  if (!key) return
+  const label = STANDARD_LABELS[key]
+  if (!props.data.sections[key]) {
+    const section: ResumeSection = { title: label, columns: 1, hidden: false, items: [] }
+    props.data.sections[key] = section
+  }
+  if (!props.data.metadata.layout.main.includes(key)) {
+    props.data.metadata.layout.main.push(key)
+  }
+  emit('update:selected', key)
+  emit('change')
+}
 
 function findSection(key: string): { section: { hidden: boolean }; index?: number } {
   const customIndex = props.data.customSections.findIndex((c) => c.id === key)
