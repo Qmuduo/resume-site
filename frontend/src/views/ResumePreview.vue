@@ -210,4 +210,22 @@ function saveAsPdf() {
   white-space: pre-wrap;
   word-break: break-all;
 }
+
+@media print {
+  .print-toolbar {
+    display: none;
+  }
+
+  .preview-page {
+    padding: 0;
+    background: #fff;
+  }
+
+  .preview-stage {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    max-width: none;
+  }
+}
 </style>

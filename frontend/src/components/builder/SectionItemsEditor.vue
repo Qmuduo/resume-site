@@ -37,36 +37,64 @@ function removeItem(index: number) {
 function titleOf(item: ResumeSectionItem): string {
   return String(item['name'] ?? item['company'] ?? item['school'] ?? item['position'] ?? '')
 }
+
+function valueOf(item: ResumeSectionItem, key: string): string | undefined {
+  const value = item[key]
+  return typeof value === 'string' ? value : undefined
+}
 </script>
 
 <template>
   <div class="items-editor">
-    <draggable :list="items" item-key="id" handle=".drag-handle" @end="$emit('change')">
+    <draggable
+      :list="items"
+      item-key="id"
+      handle=".drag-handle"
+      @end="$emit('change')"
+    >
       <template #item="{ element, index }">
         <div class="item-card">
           <div class="item-card-head">
             <span class="drag-handle">⠿</span>
             <span class="item-title">{{ titleOf(element) || `条目 ${index + 1}` }}</span>
-            <el-button size="small" text type="danger" @click="removeItem(index)">删除</el-button>
+            <el-button
+              size="small"
+              text
+              type="danger"
+              @click="removeItem(index)"
+            >
+              删除
+            </el-button>
           </div>
-          <el-form-item v-for="field in fields" :key="field.key" :label="field.label">
+          <el-form-item
+            v-for="field in fields"
+            :key="field.key"
+            :label="field.label"
+          >
             <el-input
               v-if="field.type !== 'textarea'"
-              :model-value="element[field.key] as string | undefined"
+              :model-value="valueOf(element, field.key)"
               @update:model-value="setField(index, field.key, $event)"
             />
             <el-input
               v-else
               type="textarea"
               :rows="3"
-              :model-value="element[field.key] as string | undefined"
+              :model-value="valueOf(element, field.key)"
               @update:model-value="setField(index, field.key, $event)"
             />
           </el-form-item>
         </div>
       </template>
     </draggable>
-    <el-button size="small" type="primary" plain @click="addItem">添加条目</el-button>
+    <el-button
+      size="small"
+      type="primary"
+      plain
+      @click="addItem"
+    >
+      添加条目
+    </el-button>
   </div>
 </template>
 
