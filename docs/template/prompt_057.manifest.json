@@ -3,36 +3,85 @@
   "name": "prompt_057",
   "sourceFile": "prompt_057.html",
   "renderMode": "semantic",
-  "regions": [],
-  "blocks": [],
+  "regions": [
+    {
+      "name": "header",
+      "placement": "main",
+      "origins": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "summary",
+      "selector": "[data-section='summary']",
+      "placement": "main"
+    },
+    {
+      "type": "skills",
+      "selector": "[data-section='skills']",
+      "placement": "main"
+    },
+    {
+      "type": "experience",
+      "selector": "[data-section='experience']",
+      "placement": "main"
+    },
+    {
+      "type": "projects",
+      "selector": "[data-section='projects']",
+      "placement": "main"
+    },
+    {
+      "type": "education",
+      "selector": "[data-section='education']",
+      "placement": "main"
+    },
+    {
+      "type": "certifications",
+      "selector": "[data-section='certifications']",
+      "placement": "main"
+    }
+  ],
   "theme": [
     {
-      "key": "--primary-deep",
-      "default": "#1e3b2f"
+      "key": "--color-primary",
+      "default": "#4F46E5",
+      "control": "color"
     },
     {
-      "key": "--accent-green",
-      "default": "#2c5e44"
+      "key": "--color-background",
+      "default": "#FFFFFF",
+      "control": "color"
     },
     {
-      "key": "--soft-bg",
-      "default": "#f4f9f4"
+      "key": "--color-text",
+      "default": "#1A1A1A",
+      "control": "color"
     },
     {
-      "key": "--text-main",
-      "default": "#1f2a2e"
+      "key": "--font-heading",
+      "default": "sans-serif",
+      "control": "font"
     },
     {
-      "key": "--text-secondary",
-      "default": "#3a454a"
+      "key": "--font-body",
+      "default": "sans-serif",
+      "control": "font"
     },
     {
-      "key": "--border-light",
-      "default": "#d0d9d4"
+      "key": "--font-size-base",
+      "default": "12pt",
+      "control": "number"
     },
     {
-      "key": "--tag-bg",
-      "default": "#edf4ef"
+      "key": "--page-margin",
+      "default": "48px",
+      "control": "number"
+    },
+    {
+      "key": "--section-gap",
+      "default": "16px",
+      "control": "number"
     }
   ],
   "sampleData": {
