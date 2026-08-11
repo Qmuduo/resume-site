@@ -1,150 +1,83 @@
 {
-  "generatedAt": "2026-08-11T10:58:57.243Z",
+  "generatedAt": "2026-08-11T11:04:54.829Z",
   "summary": {
     "total": 12,
-    "valid": 0,
-    "invalid": 12,
-    "errors": 55,
+    "valid": 12,
+    "invalid": 0,
+    "errors": 0,
     "warnings": 0
   },
   "results": [
     {
       "file": "prompt_013.html",
-      "valid": false,
-      "errors": [
-        "HTML 含危险内容",
-        "缺少语义类名 resume-page",
-        "regions 不能为空",
-        "blocks 不能为空"
-      ],
+      "valid": true,
+      "errors": [],
       "warnings": []
     },
     {
       "file": "prompt_021.html",
-      "valid": false,
-      "errors": [
-        "HTML 含危险内容",
-        "缺少语义类名 resume-page",
-        "regions 不能为空",
-        "blocks 不能为空"
-      ],
+      "valid": true,
+      "errors": [],
       "warnings": []
     },
     {
       "file": "prompt_026.html",
-      "valid": false,
-      "errors": [
-        "HTML 含危险内容",
-        "缺少语义类名 resume-page",
-        "regions 不能为空",
-        "blocks 不能为空"
-      ],
+      "valid": true,
+      "errors": [],
       "warnings": []
     },
     {
       "file": "prompt_03.html",
-      "valid": false,
-      "errors": [
-        "HTML 含危险内容",
-        "缺少语义类名 resume-page",
-        "缺少语义类名 entry",
-        "regions 不能为空",
-        "blocks 不能为空"
-      ],
+      "valid": true,
+      "errors": [],
       "warnings": []
     },
     {
       "file": "prompt_04.html",
-      "valid": false,
-      "errors": [
-        "HTML 含危险内容",
-        "缺少语义类名 resume-page",
-        "缺少语义类名 entry",
-        "regions 不能为空",
-        "blocks 不能为空"
-      ],
+      "valid": true,
+      "errors": [],
       "warnings": []
     },
     {
       "file": "prompt_044.html",
-      "valid": false,
-      "errors": [
-        "HTML 含危险内容",
-        "缺少语义类名 resume-page",
-        "缺少语义类名 entry",
-        "regions 不能为空",
-        "blocks 不能为空"
-      ],
+      "valid": true,
+      "errors": [],
       "warnings": []
     },
     {
       "file": "prompt_05.html",
-      "valid": false,
-      "errors": [
-        "HTML 含危险内容",
-        "缺少语义类名 resume-page",
-        "缺少语义类名 entry",
-        "regions 不能为空",
-        "blocks 不能为空"
-      ],
+      "valid": true,
+      "errors": [],
       "warnings": []
     },
     {
       "file": "prompt_057.html",
-      "valid": false,
-      "errors": [
-        "HTML 含危险内容",
-        "缺少语义类名 resume-page",
-        "regions 不能为空",
-        "blocks 不能为空"
-      ],
+      "valid": true,
+      "errors": [],
       "warnings": []
     },
     {
       "file": "prompt_063.html",
-      "valid": false,
-      "errors": [
-        "HTML 含危险内容",
-        "缺少语义类名 resume-page",
-        "缺少语义类名 entry",
-        "regions 不能为空",
-        "blocks 不能为空"
-      ],
+      "valid": true,
+      "errors": [],
       "warnings": []
     },
     {
       "file": "prompt_089.html",
-      "valid": false,
-      "errors": [
-        "HTML 含危险内容",
-        "缺少语义类名 resume-page",
-        "regions 不能为空",
-        "blocks 不能为空"
-      ],
+      "valid": true,
+      "errors": [],
       "warnings": []
     },
     {
       "file": "prompt_09.html",
-      "valid": false,
-      "errors": [
-        "HTML 含危险内容",
-        "缺少语义类名 resume-page",
-        "缺少语义类名 entry",
-        "regions 不能为空",
-        "blocks 不能为空"
-      ],
+      "valid": true,
+      "errors": [],
       "warnings": []
     },
     {
       "file": "prompt_10.html",
-      "valid": false,
-      "errors": [
-        "HTML 含危险内容",
-        "缺少语义类名 resume-page",
-        "缺少语义类名 entry",
-        "regions 不能为空",
-        "blocks 不能为空"
-      ],
+      "valid": true,
+      "errors": [],
       "warnings": []
     }
   ]
