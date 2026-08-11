@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>王维·UI/UX设计师简历</title>
   <style>
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
     /* 全局重置与打印优化 */
     * {
       margin: 0;
@@ -343,19 +365,19 @@
   </style>
 </head>
 <body>
-  <div class="resume">
+  <div class="resume-page">
     <div class="resume-layout">
       <!-- 左侧装饰色条：低风险个性化，不包含文字 -->
       <div class="accent-bar"></div>
       
       <div class="main-content">
         <!-- 姓名与标题区域 -->
-        <div class="name-section">
+        <div class="resume-header">
           <div class="name-title">
             <h1 class="name">王维</h1>
             <div class="subtitle">UI/UX 设计师 · 数字体验塑造者</div>
           </div>
-          <div class="contact-info">
+          <div class="contact-list">
             <span class="contact-item"><span class="icon">📞</span> +86 139 5028 7614</span>
             <span class="contact-item"><span class="icon">✉️</span> lin.qing@ux.studio</span>
             <span class="contact-item"><span class="icon">🔗</span> portfolio.com/linqing</span>
@@ -364,7 +386,7 @@
         </div>
 
         <!-- 专业总结 -->
-        <div>
+        <div class="section" data-section="summary">
           <div class="section-title">专业概述</div>
           <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.25rem; color: #2d3748;">
             2年UI/UX设计经验，专注以用户为中心的界面设计与交互逻辑。擅长将复杂流程转化为简洁优雅的视觉语言。
@@ -375,10 +397,10 @@
         <hr>
 
         <!-- 工作经历 -->
-        <div>
+        <div class="section" data-section="experience">
           <div class="section-title">工作经历</div>
           
-          <div class="experience-item">
+          <div class="entry experience-item">
             <div class="exp-header">
               <span><span class="company">星核科技</span> <span class="role">· UI/UX设计师</span></span>
               <span class="date">2024.03 – 至今</span>
@@ -392,7 +414,7 @@
             </div>
           </div>
 
-          <div class="experience-item">
+          <div class="entry experience-item">
             <div class="exp-header">
               <span><span class="company">云雀设计工作室</span> <span class="role">· 初级UI设计师</span></span>
               <span class="date">2022.07 – 2024.01</span>
@@ -408,16 +430,16 @@
         </div>
 
         <!-- 项目精选 (体现UI/UX作品集思维) -->
-        <div style="margin-top: 0.2rem;">
+        <div class="section" data-section="projects">
           <div class="section-title">设计项目</div>
           
-          <div class="project-item">
+          <div class="entry project-item">
             <div class="project-title">「FlowMark」协作白板工具 · UX设计</div>
             <div class="project-desc">
               从0到1设计实时协作工具，聚焦非对称画布布局与手势交互。完成用户流、线框图及高保真原型，通过A/B测试优化工具栏位置，用户效率提升18%。
             </div>
           </div>
-          <div class="project-item">
+          <div class="entry project-item">
             <div class="project-title">「植觉」植物识别App · 视觉与动效</div>
             <div class="project-desc">
               负责整体视觉风格定义，采用有机线条与低饱和自然色系。设计微交互与加载动画，强化品牌识别度。项目入选国内设计灵感平台周榜。
@@ -426,12 +448,12 @@
         </div>
 
         <!-- 技能与工具 采用标签+两栏列表混合 -->
-        <div style="margin-top: 0.7rem;">
+        <div class="section" data-section="skills">
           <div class="section-title">专业技能</div>
           <div class="two-columns">
             <div class="col">
               <p style="font-weight: 700; font-size:0.9rem; margin-bottom:0.4rem;">设计工具</p>
-              <div class="skills-container" style="margin-bottom:0.8rem;">
+              <div class="section-items" style="margin-bottom:0.8rem;">
                 <span class="skill-tag">Figma</span>
                 <span class="skill-tag">Sketch</span>
                 <span class="skill-tag">Adobe XD</span>
@@ -441,7 +463,7 @@
             </div>
             <div class="col">
               <p style="font-weight: 700; font-size:0.9rem; margin-bottom:0.4rem;">核心能力</p>
-              <div class="skills-container">
+              <div class="section-items">
                 <span class="skill-tag">用户研究</span>
                 <span class="skill-tag">线框图</span>
                 <span class="skill-tag">原型设计</span>
@@ -453,7 +475,7 @@
           </div>
           <div style="margin-top: 0.7rem;">
             <p style="font-weight: 700; font-size:0.9rem; margin-bottom:0.3rem;">前端基础</p>
-            <div class="skills-container">
+            <div class="section-items">
               <span class="skill-tag">HTML5</span>
               <span class="skill-tag">CSS3</span>
               <span class="skill-tag">基础JavaScript</span>
@@ -463,9 +485,9 @@
         </div>
 
         <!-- 教育背景 -->
-        <div style="margin-top: 1rem;">
+        <div class="section" data-section="education">
           <div class="section-title">教育背景</div>
-          <div class="education-item">
+          <div class="entry education-item">
             <span><span class="school">江南大学</span> <span class="degree">· 数字媒体艺术 本科</span></span>
             <span class="date">2018 – 2022</span>
           </div>
