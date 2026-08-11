@@ -6,9 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.time.LocalDateTime;
 
-/**
- * 简历实体：公共数据（common_data）与模板专属数据（extended_data）分离存储。
- */
+/** 简历实体：元数据列 + data JSON 单文档（ResumeData v1.0）。 */
 @TableName("resume")
 public class Resume {
 
@@ -17,21 +15,10 @@ public class Resume {
 
     private Long userId;
 
-    private Long templateId;
-
-    /** 使用的内置模板编码（对应 resources/templates/*.json 的 code） */
-    private String templateCode;
-
-    /** 当前使用的模板ID（template.code） */
-    private String currentTemplateId;
-
     private String title;
 
-    /** 公共数据（ResumeCommonData 结构，JSON） */
-    private String commonData;
-
-    /** 模板专属数据（key-value，JSON） */
-    private String extendedData;
+    /** ResumeData 单文档 JSON（version 1.0）。 */
+    private String data;
 
     private Integer status;
 
@@ -39,91 +26,18 @@ public class Resume {
 
     private LocalDateTime updatedAt;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Long getTemplateId() {
-        return templateId;
-    }
-
-    public void setTemplateId(Long templateId) {
-        this.templateId = templateId;
-    }
-
-    public String getTemplateCode() {
-        return templateCode;
-    }
-
-    public void setTemplateCode(String templateCode) {
-        this.templateCode = templateCode;
-    }
-
-    public String getCurrentTemplateId() {
-        return currentTemplateId;
-    }
-
-    public void setCurrentTemplateId(String currentTemplateId) {
-        this.currentTemplateId = currentTemplateId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getCommonData() {
-        return commonData;
-    }
-
-    public void setCommonData(String commonData) {
-        this.commonData = commonData;
-    }
-
-    public String getExtendedData() {
-        return extendedData;
-    }
-
-    public void setExtendedData(String extendedData) {
-        this.extendedData = extendedData;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public Long getUserId() { return userId; }
+    public void setUserId(Long userId) { this.userId = userId; }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+    public String getData() { return data; }
+    public void setData(String data) { this.data = data; }
+    public Integer getStatus() { return status; }
+    public void setStatus(Integer status) { this.status = status; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
 }

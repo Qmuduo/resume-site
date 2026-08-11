@@ -2,7 +2,6 @@ package com.resume.api.controller;
 
 import com.resume.api.common.Result;
 import com.resume.api.dto.ResumeRequest;
-import com.resume.api.dto.SwitchTemplateRequest;
 import com.resume.api.entity.Resume;
 import com.resume.api.security.CustomUserDetails;
 import com.resume.api.service.ResumeService;
@@ -22,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * 简历 CRUD 接口：公共数据 / 扩展数据 / 当前模板ID 三参数，切换模板走独立接口。
+ * 简历 CRUD 接口：整份 ResumeData 单文档 + 标题/状态；切换模板只改 metadata.template，走 update。
  */
 @RestController
 @RequestMapping("/api/resumes")
@@ -60,20 +59,6 @@ public class ResumeController {
                                    @Valid @RequestBody ResumeRequest body,
                                    @AuthenticationPrincipal CustomUserDetails user) {
         Resume resume = resumeService.update(user.getId(), id, body);
-        if (resume == null) {
-            return Result.fail(404, "简历不存在或无权限访问");
-        }
-        return Result.ok(resumeService.toVO(resume));
-    }
-
-    /**
-     * 切换模板：公共数据不变，专属字段按 manifest 尽量迁移，无法映射的暂存保留。
-     */
-    @PostMapping("/{id}/switch-template")
-    public Result<ResumeVO> switchTemplate(@PathVariable Long id,
-                                           @Valid @RequestBody SwitchTemplateRequest body,
-                                           @AuthenticationPrincipal CustomUserDetails user) {
-        Resume resume = resumeService.switchTemplate(user.getId(), id, body.getNewTemplateId());
         if (resume == null) {
             return Result.fail(404, "简历不存在或无权限访问");
         }
