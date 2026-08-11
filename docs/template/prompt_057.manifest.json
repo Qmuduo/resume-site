@@ -1,254 +1,42 @@
 {
   "templateId": "prompt_057",
-  "name": "陶渊明 · 新能源项目经理简历",
+  "name": "prompt_057",
   "sourceFile": "prompt_057.html",
-  "renderMode": "static",
-  "fields": [
+  "renderMode": "semantic",
+  "regions": [],
+  "blocks": [],
+  "theme": [
     {
-      "name": "name",
-      "label": "姓名",
-      "type": "string",
-      "commonPath": "basic.name",
-      "autoDetected": true
+      "key": "--primary-deep",
+      "default": "#1e3b2f"
     },
     {
-      "name": "title",
-      "label": "求职意向/职位",
-      "type": "string",
-      "commonPath": "basic.title",
-      "autoDetected": true
+      "key": "--accent-green",
+      "default": "#2c5e44"
     },
     {
-      "name": "phone",
-      "label": "电话",
-      "type": "string",
-      "commonPath": "basic.phone",
-      "autoDetected": true
+      "key": "--soft-bg",
+      "default": "#f4f9f4"
     },
     {
-      "name": "email",
-      "label": "邮箱",
-      "type": "string",
-      "commonPath": "basic.email",
-      "autoDetected": true
+      "key": "--text-main",
+      "default": "#1f2a2e"
     },
     {
-      "name": "location",
-      "label": "所在城市",
-      "type": "string",
-      "commonPath": "basic.location",
-      "autoDetected": true
+      "key": "--text-secondary",
+      "default": "#3a454a"
     },
     {
-      "name": "social_4",
-      "label": "领英",
-      "type": "string",
-      "commonPath": "socials",
-      "autoDetected": true
+      "key": "--border-light",
+      "default": "#d0d9d4"
     },
     {
-      "name": "summary",
-      "label": "专业概述",
-      "type": "array",
-      "commonPath": "summary",
-      "autoDetected": false
-    },
-    {
-      "name": "skills",
-      "label": "技能清单",
-      "type": "array",
-      "commonPath": "skills",
-      "autoDetected": true,
-      "transform": "name"
-    },
-    {
-      "name": "experiences",
-      "label": "工作经历",
-      "type": "array",
-      "commonPath": "experiences",
-      "autoDetected": true
-    },
-    {
-      "name": "projects",
-      "label": "项目经验",
-      "type": "array",
-      "commonPath": "projects",
-      "autoDetected": true
-    },
-    {
-      "name": "education",
-      "label": "教育背景",
-      "type": "array",
-      "commonPath": "education",
-      "autoDetected": true
-    },
-    {
-      "name": "languages",
-      "label": "语言能力",
-      "type": "array",
-      "commonPath": "languages",
-      "autoDetected": false
-    }
-  ],
-  "mappings": [
-    {
-      "commonPath": "basic.name",
-      "selector": ".name",
-      "attribute": "textContent",
-      "autoDetected": true
-    },
-    {
-      "commonPath": "basic.title",
-      "selector": ".title-sub",
-      "attribute": "textContent",
-      "autoDetected": true
-    },
-    {
-      "commonPath": "basic.phone",
-      "selector": ".contact-item",
-      "attribute": "textContent",
-      "autoDetected": true,
-      "index": 1
-    },
-    {
-      "commonPath": "basic.email",
-      "selector": ".contact-item",
-      "attribute": "textContent",
-      "autoDetected": true,
-      "index": 2
-    },
-    {
-      "commonPath": "basic.location",
-      "selector": ".contact-item",
-      "attribute": "textContent",
-      "autoDetected": true,
-      "index": 3
-    },
-    {
-      "commonPath": "socials",
-      "selector": ".contact-item",
-      "attribute": "href",
-      "autoDetected": true,
-      "index": 4
-    },
-    {
-      "commonPath": "skills",
-      "selector": ".skill-tag",
-      "attribute": "children",
-      "autoDetected": true,
-      "itemSelector": "skill-tag"
-    },
-    {
-      "commonPath": "experiences",
-      "attribute": "children",
-      "autoDetected": true,
-      "sectionTitle": "工作经历",
-      "itemSelector": "entry"
-    },
-    {
-      "commonPath": "projects",
-      "selector": ".project-item",
-      "attribute": "children",
-      "autoDetected": true,
-      "itemSelector": "project-item"
-    },
-    {
-      "commonPath": "education",
-      "attribute": "children",
-      "autoDetected": true,
-      "sectionTitle": "教育背景",
-      "itemSelector": "entry"
+      "key": "--tag-bg",
+      "default": "#edf4ef"
     }
   ],
   "sampleData": {
-    "name": "陶渊明",
-    "title": "新能源项目经理 · 光伏/储能方向",
-    "phone": "+86 139 5027 3841",
-    "email": "✉️ mingyuan.zhang@energypro.cn",
-    "location": "上海 · 中国",
-    "socials": [
-      {
-        "platform": "linkedin",
-        "url": "🔗 linkedin.com/in/mingyuan-zhang"
-      }
-    ],
-    "skills": [
-      {
-        "name": "储能系统集成",
-        "level": ""
-      },
-      {
-        "name": "项目预算控制",
-        "level": ""
-      },
-      {
-        "name": "供应链采购",
-        "level": ""
-      },
-      {
-        "name": "并网调试",
-        "level": ""
-      },
-      {
-        "name": "AutoCAD / PVsyst",
-        "level": ""
-      },
-      {
-        "name": "MS Project",
-        "level": ""
-      },
-      {
-        "name": "PMP®认证",
-        "level": ""
-      },
-      {
-        "name": "跨职能团队领导",
-        "level": ""
-      },
-      {
-        "name": "可再生能源政策",
-        "level": ""
-      }
-    ],
-    "experiences": [
-      {
-        "date": "2022.04 – 至今 | 上海"
-      },
-      {
-        "date": "2020.07 – 2022.02 | 杭州"
-      }
-    ],
-    "projects": [
-      {
-        "description": "主导12MW/24MWh磷酸铁锂储能电站建设，从设备选型到并网投运全程管理。"
-      },
-      {
-        "description": "协助管理桩基施工与组件安装，协调水面作业安全方案，提前20天完成全容量并网。"
-      }
-    ],
-    "education": [
-      {
-        "date": "2016.09 – 2020.06",
-        "description": "主修课程：光伏发电系统、储能原理、电力电子技术、项目管理"
-      }
-    ]
+    "name": "陶渊明"
   },
-  "pendingManual": [
-    {
-      "name": "summary",
-      "label": "专业概述",
-      "type": "array",
-      "commonPath": "summary",
-      "autoDetected": false,
-      "reason": "区块存在但未提取到条目或选择器"
-    },
-    {
-      "name": "languages",
-      "label": "语言能力",
-      "type": "array",
-      "commonPath": "languages",
-      "autoDetected": false,
-      "reason": "区块存在但未提取到条目或选择器"
-    }
-  ]
+  "customFields": []
 }

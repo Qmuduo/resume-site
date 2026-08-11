@@ -1,118 +1,39 @@
 {
   "templateId": "prompt_021",
-  "name": "公务员简历 · 庄重正式版",
+  "name": "prompt_021",
   "sourceFile": "prompt_021.html",
-  "renderMode": "static",
-  "fields": [
+  "renderMode": "semantic",
+  "regions": [],
+  "blocks": [],
+  "theme": [
     {
-      "name": "name",
-      "label": "姓名",
-      "type": "string",
-      "commonPath": "basic.name",
-      "autoDetected": true
+      "key": "--primary",
+      "default": "#1e3a5f"
     },
     {
-      "name": "核心优势",
-      "label": "核心优势",
-      "type": "array",
-      "commonPath": null,
-      "autoDetected": false
+      "key": "--accent",
+      "default": "#2c5282"
     },
     {
-      "name": "experiences",
-      "label": "工作经历",
-      "type": "array",
-      "commonPath": "experiences",
-      "autoDetected": false
+      "key": "--divider",
+      "default": "#cbd5e0"
     },
     {
-      "name": "education",
-      "label": "教育背景",
-      "type": "array",
-      "commonPath": "education",
-      "autoDetected": false
+      "key": "--text-main",
+      "default": "#1e293b"
     },
     {
-      "name": "skills",
-      "label": "技能清单",
-      "type": "array",
-      "commonPath": "skills",
-      "autoDetected": true,
-      "transform": "name"
+      "key": "--text-secondary",
+      "default": "#475569"
     },
     {
-      "name": "awards",
-      "label": "荣誉奖项",
-      "type": "array",
-      "commonPath": "awards",
-      "autoDetected": false
-    }
-  ],
-  "mappings": [
-    {
-      "commonPath": "basic.name",
-      "selector": ".name",
-      "attribute": "textContent",
-      "autoDetected": true
-    },
-    {
-      "commonPath": "skills",
-      "selector": ".skill-list",
-      "attribute": "children",
-      "autoDetected": true,
-      "itemSelector": "skill-list"
+      "key": "--bg-light",
+      "default": "#f8fafc"
     }
   ],
   "sampleData": {
     "name": "李白",
-    "核心优势": "8年党政机关综合工作经验，长期负责政策调研、公文撰写与跨部门协调。熟悉行政决策流程，具备较强政治素养与保密意识。连续三年年度考核优秀，多次参与市级重点改革课题。",
-    "skills": [
-      {
-        "name": "党政机关公文格式 (GB/T 9704)",
-        "level": ""
-      },
-      {
-        "name": "宏观经济分析",
-        "level": ""
-      },
-      {
-        "name": "法律职业资格 (A证)",
-        "level": ""
-      }
-    ]
+    "headline": ""
   },
-  "pendingManual": [
-    {
-      "name": "核心优势",
-      "label": "核心优势",
-      "type": "array",
-      "commonPath": null,
-      "autoDetected": false,
-      "reason": "未识别的自定义区块"
-    },
-    {
-      "name": "experiences",
-      "label": "工作经历",
-      "type": "array",
-      "commonPath": "experiences",
-      "autoDetected": false,
-      "reason": "区块存在但未提取到条目或选择器"
-    },
-    {
-      "name": "education",
-      "label": "教育背景",
-      "type": "array",
-      "commonPath": "education",
-      "autoDetected": false,
-      "reason": "区块存在但未提取到条目或选择器"
-    },
-    {
-      "name": "awards",
-      "label": "荣誉奖项",
-      "type": "array",
-      "commonPath": "awards",
-      "autoDetected": false,
-      "reason": "区块存在但未提取到条目或选择器"
-    }
-  ]
+  "customFields": []
 }
