@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
   <title>数据科学家简历 · 极简灰度等宽</title>
   <style>
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
     /* 全局重置与A4尺寸定义 */
     * {
       margin: 0;
@@ -276,7 +298,7 @@
   </style>
 </head>
 <body>
-  <div class="resume">
+  <div class="resume-page">
     
     <!-- 姓名与标题区域 -->
     <div>
@@ -298,7 +320,7 @@
     <hr>
 
     <!-- 专业技能板块 (两栏列表，ATS安全纯文本) -->
-    <div>
+    <div class="section" data-section="skills">
       <h2 class="section-title">技术能力</h2>
       <div class="two-col-skills">
         <div class="col">
@@ -315,13 +337,13 @@
     </div>
 
     <!-- 工作经历板块 -->
-    <div>
+    <div class="section" data-section="experience">
       <h2 class="section-title">专业经历</h2>
       
       <div class="entry left-accent">
         <div class="entry-header">
           <span class="company-position">星云数据 <span class="position-title">| 数据科学家</span></span>
-          <span class="date-location mono-num">2023.04 – 至今 | 北京</span>
+          <span class="entry-meta mono-num">2023.04 – 至今 | 北京</span>
         </div>
         <ul class="bullet-list">
           <li>设计并落地用户生命周期价值预测模型，基于XGBoost与生存分析，将高价值用户识别准确率提升27%，直接优化营销预算分配。</li>
@@ -333,7 +355,7 @@
       <div class="entry left-accent">
         <div class="entry-header">
           <span class="company-position">量子科技 <span class="position-title">| 初级数据科学家</span></span>
-          <span class="date-location mono-num">2021.07 – 2023.02 | 上海</span>
+          <span class="entry-meta mono-num">2021.07 – 2023.02 | 上海</span>
         </div>
         <ul class="bullet-list">
           <li>参与智能推荐系统迭代，开发协同过滤与深度兴趣网络混合模型，线上点击率提升19%。</li>
@@ -344,13 +366,13 @@
     </div>
 
     <!-- Kaggle 与项目亮点（突出Kaggle+猎头渠道偏好） -->
-    <div>
+    <div class="section" data-section="projects">
       <h2 class="section-title">Kaggle 竞赛与开源项目</h2>
       
       <div class="entry">
         <div class="entry-header">
           <span class="company-position">Kaggle 竞赛 | <span class="position-title">Master (Top 2%)</span></span>
-          <span class="date-location mono-num">2021 – 至今</span>
+          <span class="entry-meta mono-num">2021 – 至今</span>
         </div>
         <ul class="bullet-list">
           <li><strong>OTTO – 多目标推荐系统</strong> (银牌, Top 4%): 设计基于Transformer的序列模型，融合点击、购物车与订单目标，单一模型排名117/2587。</li>
@@ -362,7 +384,7 @@
       <div class="entry">
         <div class="entry-header">
           <span class="company-position">个人研究项目 <span class="position-title">| 因果推断与定价</span></span>
-          <span class="date-location mono-num">2024.02 – 2024.05</span>
+          <span class="entry-meta mono-num">2024.02 – 2024.05</span>
         </div>
         <ul class="bullet-list">
           <li>基于双重机器学习与元学习器，估计动态定价对用户转化的处理效应，使用合成控制法验证稳健性。</li>
@@ -372,22 +394,22 @@
     </div>
 
     <!-- 教育背景 -->
-    <div>
+    <div class="section" data-section="education">
       <h2 class="section-title">教育背景</h2>
-      <div class="edu-entry">
+      <div class="entry edu-entry">
         <span class="school-name">复旦大学 <span class="degree">| 统计学 硕士</span></span>
-        <span class="date-location mono-num">2019.09 – 2022.06</span>
+        <span class="entry-meta mono-num">2019.09 – 2022.06</span>
       </div>
-      <div class="edu-entry" style="margin-top: 0.1rem;">
+      <div class="entry edu-entry" style="margin-top: 0.1rem;">
         <span class="school-name">浙江大学 <span class="degree">| 数学与应用数学 学士</span></span>
-        <span class="date-location mono-num">2015.09 – 2019.06</span>
+        <span class="entry-meta mono-num">2015.09 – 2019.06</span>
       </div>
     </div>
 
     <!-- 附加信息：语言/证书等，使用标签式排列 -->
-    <div>
+    <div class="section" data-section="certifications">
       <h2 class="section-title">语言与证书</h2>
-      <div class="skill-tags">
+      <div class="section-items skill-tags">
         <span><span class="skill-category">英语：</span>IELTS 7.5 (工作语言)</span>
         <span><span class="skill-category">中文：</span>母语</span>
         <span><span class="skill-category">认证：</span>AWS Certified Machine Learning – Specialty</span>
