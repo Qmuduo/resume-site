@@ -3,48 +3,77 @@
   "name": "prompt_05",
   "sourceFile": "prompt_05.html",
   "renderMode": "semantic",
-  "regions": [],
-  "blocks": [],
+  "regions": [
+    {
+      "name": "main",
+      "placement": "main",
+      "origins": [
+        "main"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "summary",
+      "selector": "[data-section='summary']",
+      "placement": "main"
+    },
+    {
+      "type": "experience",
+      "selector": "[data-section='experience']",
+      "placement": "main"
+    },
+    {
+      "type": "skills",
+      "selector": "[data-section='skills']",
+      "placement": "main"
+    },
+    {
+      "type": "education",
+      "selector": "[data-section='education']",
+      "placement": "main"
+    }
+  ],
   "theme": [
     {
-      "key": "--page-width",
-      "default": "210mm"
+      "key": "--color-primary",
+      "default": "#4F46E5",
+      "control": "color"
     },
     {
-      "key": "--page-height",
-      "default": "297mm"
+      "key": "--color-background",
+      "default": "#FFFFFF",
+      "control": "color"
     },
     {
-      "key": "--primary",
-      "default": "#1A3B47"
+      "key": "--color-text",
+      "default": "#1A1A1A",
+      "control": "color"
     },
     {
-      "key": "--accent",
-      "default": "#D94F2B"
+      "key": "--font-heading",
+      "default": "sans-serif",
+      "control": "font"
     },
     {
-      "key": "--body-text",
-      "default": "#2E2E2C"
+      "key": "--font-body",
+      "default": "sans-serif",
+      "control": "font"
     },
     {
-      "key": "--muted",
-      "default": "#5C5C5A"
+      "key": "--font-size-base",
+      "default": "12pt",
+      "control": "number"
     },
     {
-      "key": "--bg-light",
-      "default": "#F9F7F4"
+      "key": "--page-margin",
+      "default": "48px",
+      "control": "number"
     },
     {
-      "key": "--divider",
-      "default": "#D2CFC7"
-    },
-    {
-      "key": "--safe-white",
-      "default": "#FFFFFF"
-    },
-    {
-      "key": "--geometric-light",
-      "default": "#F0E9DF"
+      "key": "--section-gap",
+      "default": "16px",
+      "control": "number"
     }
   ],
   "sampleData": {

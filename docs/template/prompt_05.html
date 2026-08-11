@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale=1">
   <title>李商隐 · 品牌视觉设计师简历</title>
   <style>
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
     /* 全局重置与打印优化 */
     * {
       margin: 0;
@@ -345,7 +367,7 @@
   </style>
 </head>
 <body>
-  <div class="resume">
+  <div class="resume-page">
     <!-- 几何装饰层：不影响文本选择 -->
     <div class="geometric-decor"></div>
     <div class="geometric-line"></div>
@@ -367,7 +389,7 @@
       </div>
 
       <!-- 专业概述 -->
-      <div>
+      <div class="section" data-section="summary">
         <div class="section-title">专业概述</div>
         <p style="font-size: 10.5pt; color: var(--body-text); line-height: 1.6;">
           拥有5年品牌视觉与数字设计经验，曾主导多个新消费品牌从0到1的视觉体系搭建。擅长通过大胆的色彩叙事与几何构成传递品牌精神，同时确保设计系统在多触点的可执行性。服务客户涵盖科技、生活方式及文化机构。
@@ -375,10 +397,10 @@
       </div>
 
       <!-- 工作经历 -->
-      <div>
+      <div class="section" data-section="experience">
         <div class="section-title">工作经历</div>
         
-        <div class="experience-item">
+        <div class="entry experience-item">
           <div class="exp-header">
             <span><span class="company">望山创意咨询</span> <span class="role">资深品牌设计师</span></span>
             <span class="date">2021.09 – 至今</span>
@@ -390,7 +412,7 @@
           </ul>
         </div>
 
-        <div class="experience-item">
+        <div class="entry experience-item">
           <div class="exp-header">
             <span><span class="company">未墨设计工作室</span> <span class="role">视觉设计师</span></span>
             <span class="date">2019.04 – 2021.08</span>
@@ -402,7 +424,7 @@
           </ul>
         </div>
 
-        <div class="experience-item">
+        <div class="entry experience-item">
           <div class="exp-header">
             <span><span class="company">蓝狮广告</span> <span class="role">初级设计师</span></span>
             <span class="date">2017.07 – 2019.02</span>
@@ -415,24 +437,24 @@
       </div>
 
       <!-- 技能与工具 -->
-      <div>
+      <div class="section" data-section="skills">
         <div class="section-title">核心能力</div>
-        <div class="skills-container">
+        <div class="section-items">
           <div class="skill-group">
             <span class="skill-label">品牌设计</span>
-            <div class="skill-tags">
+            <div class="section-items skill-tags">
               <span class="tag">视觉识别系统</span><span class="tag">标志设计</span><span class="tag">色彩策略</span><span class="tag">包装设计</span>
             </div>
           </div>
           <div class="skill-group">
             <span class="skill-label">数字设计</span>
-            <div class="skill-tags">
+            <div class="section-items skill-tags">
               <span class="tag">UI/UX界面</span><span class="tag">动效原型</span><span class="tag">社交媒体视觉</span>
             </div>
           </div>
           <div class="skill-group">
             <span class="skill-label">软件工具</span>
-            <div class="skill-tags">
+            <div class="section-items skill-tags">
               <span class="tag">Figma</span><span class="tag">Adobe Illustrator</span><span class="tag">Photoshop</span><span class="tag">After Effects</span><span class="tag">Blender</span>
             </div>
           </div>
@@ -440,13 +462,13 @@
       </div>
 
       <!-- 教育背景 -->
-      <div>
+      <div class="section" data-section="education">
         <div class="section-title">教育</div>
-        <div class="education-item">
+        <div class="entry education-item">
           <span><span class="school">中国美术学院</span><span class="degree">视觉传达设计 本科</span></span>
           <span class="date">2013 – 2017</span>
         </div>
-        <div class="education-item" style="margin-top: 0.2rem;">
+        <div class="entry education-item" style="margin-top: 0.2rem;">
           <span><span class="school">丹麦设计学院</span><span class="degree">交换项目 · 品牌与叙事</span></span>
           <span class="date">2016春</span>
         </div>
