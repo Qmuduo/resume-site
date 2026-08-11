@@ -859,12 +859,12 @@ class SchemaValidatorTest {
 
     private ResumeSchemaValidator resumeValidator() throws Exception {
         return new ResumeSchemaValidatorImpl(new FileSystemResource(
-                Paths.get("../docs/resume.schema.json").toAbsolutePath().normalize().toFile()));
+                Paths.get("../../docs/resume.schema.json").toAbsolutePath().normalize().toFile()));
     }
 
     private TemplateSchemaValidator templateValidator() throws Exception {
         return new TemplateSchemaValidatorImpl(new FileSystemResource(
-                Paths.get("../docs/template-schema.json").toAbsolutePath().normalize().toFile()));
+                Paths.get("../../docs/template-schema.json").toAbsolutePath().normalize().toFile()));
     }
 
     @Test
@@ -882,7 +882,10 @@ class SchemaValidatorTest {
         doc.putArray("customSections");
         ObjectNode metadata = doc.putObject("metadata");
         metadata.put("template", "prompt_013");
-        metadata.putObject("layout").putArray("main").add("experience").putArray("sidebar").put("sidebarWidth", 30);
+        ObjectNode layout = metadata.putObject("layout");
+        layout.putArray("main").add("experience");
+        layout.putArray("sidebar");
+        layout.put("sidebarWidth", 30);
         metadata.putObject("page").put("format", "A4").put("margin", 48);
         metadata.putObject("design").putObject("colors")
                 .put("primary", "#4F46E5").put("text", "#1A1A1A").put("background", "#FFFFFF");
@@ -1226,7 +1229,7 @@ class ResumeServiceTest {
     void setUp() throws Exception {
         mapper = mock(ResumeMapper.class);
         ResumeSchemaValidator validator = new ResumeSchemaValidatorImpl(new FileSystemResource(
-                Paths.get("../docs/resume.schema.json").toAbsolutePath().normalize().toFile()));
+                Paths.get("../../docs/resume.schema.json").toAbsolutePath().normalize().toFile()));
         service = new ResumeService(mapper, objectMapper, validator);
     }
 
@@ -1244,7 +1247,10 @@ class ResumeServiceTest {
         data.putArray("customSections");
         ObjectNode metadata = data.putObject("metadata");
         metadata.put("template", "prompt_013");
-        metadata.putObject("layout").putArray("main").putArray("sidebar").put("sidebarWidth", 30);
+        ObjectNode layout = metadata.putObject("layout");
+        layout.putArray("main");
+        layout.putArray("sidebar");
+        layout.put("sidebarWidth", 30);
         metadata.putObject("page").put("format", "A4").put("margin", 48);
         metadata.putObject("design").putObject("colors")
                 .put("primary", "#4F46E5").put("text", "#1A1A1A").put("background", "#FFFFFF");
