@@ -505,13 +505,13 @@ LEFT JOIN ext_map em
   ON em.template_code = r.current_template_id
 SET r.data = JSON_OBJECT(
   'version', '1.0',
-  'picture', JSON_OBJECT('hidden', COALESCE(JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.avatar')), '') = '', 'url', COALESCE(JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.avatar')), ''), 'size', 128, 'borderRadius', 50),
+  'picture', JSON_OBJECT('hidden', COALESCE(NULLIF(JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.avatar')), 'null'), '') = '', 'url', COALESCE(NULLIF(JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.avatar')), 'null'), ''), 'size', 128, 'borderRadius', 50),
   'basics', JSON_OBJECT(
-    'name', JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.name')),
-    'headline', JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.title')),
-    'email', JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.email')),
-    'phone', JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.phone')),
-    'location', JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.location')),
+    'name', COALESCE(NULLIF(JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.name')), 'null'), ''),
+    'headline', COALESCE(NULLIF(JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.title')), 'null'), ''),
+    'email', COALESCE(NULLIF(JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.email')), 'null'), ''),
+    'phone', COALESCE(NULLIF(JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.phone')), 'null'), ''),
+    'location', COALESCE(NULLIF(JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.location')), 'null'), ''),
     'website', JSON_OBJECT('url', '', 'label', ''),
     'customFields', IF(
       JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.basic.address')) IS NULL
@@ -521,7 +521,7 @@ SET r.data = JSON_OBJECT(
     )
   ),
   'summary', JSON_OBJECT('title', '个人简介', 'columns', 1, 'hidden', FALSE,
-    'content', COALESCE(JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.summary')), '')),
+    'content', COALESCE(NULLIF(JSON_UNQUOTE(JSON_EXTRACT(r.common_data, '$.summary')), 'null'), '')),
   'sections', JSON_OBJECT(
     'profiles', JSON_OBJECT('title', '社交链接', 'columns', 1, 'hidden', FALSE, 'items', COALESCE((
       SELECT JSON_ARRAYAGG(JSON_OBJECT('id', UUID(), 'hidden', FALSE,
@@ -631,7 +631,7 @@ LIMIT 20;
 -- 3.2 模板专属字段不丢：extended_data 有键的行，customSections 数量应等于其键数
 SELECT
   COUNT(*) AS rows_with_extended,
-  SUM(JSON_LENGTH(customSections) <> JSON_LENGTH(JSON_KEYS(COALESCE(extended_data, JSON_OBJECT())))) AS extended_keys_lost
+  SUM(JSON_LENGTH(JSON_EXTRACT(data, '$.customSections')) <> JSON_LENGTH(JSON_KEYS(COALESCE(extended_data, JSON_OBJECT())))) AS extended_keys_lost
 FROM resume
 WHERE extended_data IS NOT NULL;
 
