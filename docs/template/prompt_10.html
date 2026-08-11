@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, print-color-adjust: exact;">
   <title>终端暗色 · 前端开发简历</title>
   <style>
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
     /* 全局重置与暗色基调 */
     * {
       margin: 0;
@@ -322,7 +344,7 @@
   </style>
 </head>
 <body>
-  <div class="resume">
+  <div class="resume-page">
     
     <!-- 姓名与标题，模拟命令行风格 -->
     <h1><span class="cli-prefix">$ </span>李白<span class="cli-prefix" style="margin-left:0.3rem;">_</span></h1>
@@ -340,7 +362,7 @@
     <div class="section-title">技能栈</div>
     <div class="two-col">
       <div class="col">
-        <div class="skill-tags">
+        <div class="section-items skill-tags">
           <span class="tag"><strong>JS/TS</strong> ES6+</span>
           <span class="tag"><strong>React</strong> 18</span>
           <span class="tag"><strong>Vue</strong> 3</span>
@@ -348,7 +370,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="skill-tags">
+        <div class="section-items skill-tags">
           <span class="tag"><strong>Node.js</strong> Express</span>
           <span class="tag"><strong>Python</strong> FastAPI</span>
           <span class="tag"><strong>Docker</strong> CI/CD</span>
@@ -363,7 +385,7 @@
     <!-- 工作经历 -->
     <div class="section-title">工作经验</div>
     
-    <div class="exp-item">
+    <div class="entry exp-item">
       <div class="exp-header">
         <span><span class="company">Nexus Digital</span><span class="role"> — 全栈开发工程师</span></span>
         <span class="date">2022.04 – 至今</span>
@@ -376,7 +398,7 @@
       </ul>
     </div>
 
-    <div class="exp-item">
+    <div class="entry exp-item">
       <div class="exp-header">
         <span><span class="company">CloudBase Studio</span><span class="role"> — 前端开发工程师</span></span>
         <span class="date">2020.07 – 2022.02</span>
@@ -388,7 +410,7 @@
       </ul>
     </div>
 
-    <div class="exp-item">
+    <div class="entry exp-item">
       <div class="exp-header">
         <span><span class="company">InnoTech Solutions</span><span class="role"> — 初级全栈开发</span></span>
         <span class="date">2019.03 – 2020.06</span>
@@ -402,7 +424,7 @@
 
     <!-- 项目亮点（命令行感描述） -->
     <div class="section-title">精选项目</div>
-    <div class="exp-item">
+    <div class="entry exp-item">
       <div class="exp-header">
         <span><span class="company">DevTerminal Portfolio</span><span class="role"> — 个人作品</span></span>
         <span class="date">2023.08</span>
@@ -412,7 +434,7 @@
         <li>实现WebSocket实时预览，集成GitHub Contributions热力图，访问量月均3k+。</li>
       </ul>
     </div>
-    <div class="exp-item">
+    <div class="entry exp-item">
       <div class="exp-header">
         <span><span class="company">QuickPoll (开源)</span><span class="role"> — 全栈应用</span></span>
         <span class="date">2022.11</span>
@@ -425,7 +447,7 @@
 
     <!-- 教育背景 -->
     <div class="section-title">教育</div>
-    <div class="edu-item">
+    <div class="entry edu-item">
       <span><span class="school-name">上海理工大学</span><span class="degree"> · 计算机科学与技术 本科</span></span>
       <span class="date">2015 – 2019</span>
     </div>

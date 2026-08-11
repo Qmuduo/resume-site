@@ -3,64 +3,82 @@
   "name": "prompt_10",
   "sourceFile": "prompt_10.html",
   "renderMode": "semantic",
-  "regions": [],
-  "blocks": [],
+  "regions": [
+    {
+      "name": "main",
+      "placement": "main",
+      "origins": [
+        "main"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "skills",
+      "selector": "[data-section='skills']",
+      "placement": "main"
+    },
+    {
+      "type": "experience",
+      "selector": "[data-section='experience']",
+      "placement": "main"
+    },
+    {
+      "type": "projects",
+      "selector": "[data-section='projects']",
+      "placement": "main"
+    },
+    {
+      "type": "education",
+      "selector": "[data-section='education']",
+      "placement": "main"
+    },
+    {
+      "type": "certifications",
+      "selector": "[data-section='certifications']",
+      "placement": "main"
+    }
+  ],
   "theme": [
     {
-      "key": "--bg",
-      "default": "#0a0c0f"
+      "key": "--color-primary",
+      "default": "#4F46E5",
+      "control": "color"
     },
     {
-      "key": "--surface",
-      "default": "#13171c"
+      "key": "--color-background",
+      "default": "#FFFFFF",
+      "control": "color"
     },
     {
-      "key": "--border",
-      "default": "#2a3038"
+      "key": "--color-text",
+      "default": "#1A1A1A",
+      "control": "color"
     },
     {
-      "key": "--text-primary",
-      "default": "#e1e4e8"
+      "key": "--font-heading",
+      "default": "sans-serif",
+      "control": "font"
     },
     {
-      "key": "--text-secondary",
-      "default": "#b0b8c1"
+      "key": "--font-body",
+      "default": "sans-serif",
+      "control": "font"
     },
     {
-      "key": "--text-muted",
-      "default": "#6e7681"
+      "key": "--font-size-base",
+      "default": "12pt",
+      "control": "number"
     },
     {
-      "key": "--accent-green",
-      "default": "#3fb950"
+      "key": "--page-margin",
+      "default": "48px",
+      "control": "number"
     },
     {
-      "key": "--accent-blue",
-      "default": "#58a6ff"
-    },
-    {
-      "key": "--accent-orange",
-      "default": "#d2991d"
-    },
-    {
-      "key": "--accent-red",
-      "default": "#f85149"
-    },
-    {
-      "key": "--highlight-line",
-      "default": "#1f6feb"
-    },
-    {
-      "key": "--code-bg",
-      "default": "#161b22"
-    },
-    {
-      "key": "--font-mono",
-      "default": "'SF Mono', 'Cascadia Code', 'Consolas', 'Fira Code', 'Courier New', monospace"
-    },
-    {
-      "key": "--font-sans",
-      "default": "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, '思源黑体', 'Noto Sans SC', sans-serif"
+      "key": "--section-gap",
+      "default": "16px",
+      "control": "number"
     }
   ],
   "sampleData": {},
