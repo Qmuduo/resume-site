@@ -1,32 +1,69 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://resume-site.local/schemas/template.schema.json",
-  "title": "ResumeTemplate",
-  "description": "简历模板对象受控 schema：AI 生成 template 只允许输出以下白名单字段。",
+  "title": "TemplateManifestV2",
+  "description": "语义化模板 manifest v2 白名单：AI 生成 template 只允许输出以下字段。",
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "code": {
-      "type": "string",
-      "minLength": 1
+    "templateId": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "sourceFile": { "type": "string" },
+    "renderMode": { "enum": ["semantic", "placeholder"] },
+    "regions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": { "enum": ["header", "main", "sidebar"] },
+          "placement": { "enum": ["main", "sidebar"] },
+          "origins": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["name", "placement", "origins"]
+      }
     },
-    "name": {
-      "type": "string",
-      "minLength": 1
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": { "type": "string", "minLength": 1 },
+          "selector": { "type": "string", "minLength": 1 },
+          "placement": { "enum": ["main", "sidebar"] }
+        },
+        "required": ["type", "selector", "placement"]
+      }
     },
-    "description": {
-      "type": "string"
+    "theme": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "key": { "type": "string", "pattern": "^--[a-z0-9-]+$" },
+          "default": { "type": "string" },
+          "control": { "enum": ["color", "number", "font", "select"] }
+        },
+        "required": ["key", "default", "control"]
+      }
     },
-    "schema": {
-      "type": "object",
-      "description": "该模板接受的简历数据 JSON Schema"
-    },
-    "html": {
-      "type": "string"
-    },
-    "css": {
-      "type": "string"
+    "sampleData": { "type": "object" },
+    "customFields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "label": { "type": "string" },
+          "type": { "enum": ["string", "boolean", "array"] },
+          "selector": { "type": "string" }
+        },
+        "required": ["name", "label", "type"]
+      }
     }
   },
-  "required": ["code", "name", "html", "css"]
+  "required": ["templateId", "name", "sourceFile", "renderMode", "regions", "blocks", "theme", "sampleData", "customFields"]
 }

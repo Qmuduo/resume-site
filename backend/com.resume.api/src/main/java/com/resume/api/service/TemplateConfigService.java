@@ -202,7 +202,7 @@ public class TemplateConfigService {
     }
 
     /**
-     * 由模板 schema 推导 manifest（自定义模板兜底，字段全部标记为待人工确认）。
+     * 由模板 schema 推导 manifest v2（自定义模板兜底：renderMode=placeholder，字段进 customFields）。
      */
     public TemplateManifest deriveFromSchema(Template template) {
         TemplateManifest manifest = new TemplateManifest();
@@ -210,57 +210,30 @@ public class TemplateConfigService {
         manifest.setName(template.getName());
         manifest.setSourceFile("schema://" + template.getCode());
         manifest.setRenderMode("placeholder");
-        JsonNode schema;
+        manifest.setRegions(new ArrayList<>());
+        manifest.setBlocks(new ArrayList<>());
+        manifest.setTheme(new ArrayList<>());
+        manifest.setSampleData(new LinkedHashMap<>());
+        List<Map<String, Object>> customFields = new ArrayList<>();
         try {
-            schema = objectMapper.readTree(template.getSchemaJson());
-        } catch (JsonProcessingException e) {
-            schema = null;
-        }
-        if (schema != null && schema.isObject()) {
-            JsonNode properties = schema.get("properties");
-            if (properties != null && properties.isObject()) {
-                properties.fields().forEachRemaining(entry -> {
-                    TemplateManifest.FieldDef field = new TemplateManifest.FieldDef();
-                    field.setName(entry.getKey());
-                    field.setLabel(entry.getKey());
-                    field.setType(nodeType(entry.getValue()));
-                    field.setCommonPath(resolveCommonPath(entry.getKey()));
-                    field.setAutoDetected(false);
-                    manifest.getFields().add(field);
-                    if (field.getCommonPath() == null) {
-                        manifest.getPendingManual().add(field);
-                    }
-                });
+            JsonNode schema = objectMapper.readTree(template.getSchemaJson());
+            if (schema != null && schema.isObject()) {
+                JsonNode properties = schema.get("properties");
+                if (properties != null && properties.isObject()) {
+                    properties.fields().forEachRemaining(entry -> {
+                        Map<String, Object> field = new LinkedHashMap<>();
+                        field.put("name", entry.getKey());
+                        field.put("label", entry.getKey());
+                        field.put("type", nodeType(entry.getValue()));
+                        customFields.add(field);
+                    });
+                }
             }
+        } catch (JsonProcessingException e) {
+            log.warn("derive manifest from schema failed for {}", template.getCode(), e);
         }
+        manifest.setCustomFields(customFields);
         return manifest;
-    }
-
-    /** 公共模型路径注册表：模板字段别名 -> 公共模型路径 */
-    public static String resolveCommonPath(String key) {
-        if (key == null) {
-            return null;
-        }
-        return switch (key.trim()) {
-            case "name", "fullName", "full_name", "candidateName" -> "basic.name";
-            case "title", "jobTitle", "job_title", "headline", "position" -> "basic.title";
-            case "phone", "mobile", "tel", "telephone", "cell" -> "basic.phone";
-            case "email", "mail" -> "basic.email";
-            case "address", "addr" -> "basic.address";
-            case "location", "city", "region", "basedIn" -> "basic.location";
-            case "avatar", "photo", "headshot", "profileImage" -> "basic.avatar";
-            case "summary", "about", "profile", "intro", "objective", "bio" -> "summary";
-            case "experiences", "experience", "work", "workExperiences", "career", "employment" -> "experiences";
-            case "education", "educations", "edu" -> "education";
-            case "skills", "skill", "technologies", "techStack" -> "skills";
-            case "socials", "social", "links", "profiles", "contactLinks" -> "socials";
-            case "projects", "project", "portfolio" -> "projects";
-            case "certifications", "certification", "certs", "certificates" -> "certifications";
-            case "languages", "language" -> "languages";
-            case "awards", "honors", "honorsAwards" -> "awards";
-            case "interests", "hobbies", "activities" -> "interests";
-            default -> null;
-        };
     }
 
     private boolean upsert(TemplateManifest manifest) {

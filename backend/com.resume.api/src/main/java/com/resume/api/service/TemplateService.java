@@ -319,20 +319,20 @@ public class TemplateService {
         }
     }
 
-    /** 由 manifest 字段列表推导 JSON Schema（静态模板的表单/预览兼容旧渲染器） */
+    /** 由 manifest v2 customFields 推导 JSON Schema（自定义模板表单兜底） */
     private JsonNode buildSchemaFromManifest(TemplateManifest manifest) {
         ObjectNode schema = objectMapper.createObjectNode();
         schema.put("type", "object");
         ObjectNode properties = schema.putObject("properties");
-        for (TemplateManifest.FieldDef field : manifest.getFields()) {
-            properties.set(field.getName(), fieldSchemaNode(field));
+        for (Map<String, Object> field : manifest.getCustomFields()) {
+            properties.set(String.valueOf(field.get("name")), fieldSchemaNode(field));
         }
         return schema;
     }
 
-    private JsonNode fieldSchemaNode(TemplateManifest.FieldDef field) {
+    private JsonNode fieldSchemaNode(Map<String, Object> field) {
         ObjectNode node = objectMapper.createObjectNode();
-        String type = field.getType() == null ? "string" : field.getType();
+        String type = field.get("type") == null ? "string" : String.valueOf(field.get("type"));
         if ("array".equals(type)) {
             node.put("type", "array");
             node.set("items", objectMapper.createObjectNode().put("type", "string"));
