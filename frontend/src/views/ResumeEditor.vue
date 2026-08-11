@@ -1,20 +1,28 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
+import { storeToRefs } from 'pinia'
 
-import TemplateSwitcher from '@/components/TemplateSwitcher.vue'
+import BuilderDesignPane from '@/components/builder/BuilderDesignPane.vue'
+import BuilderFormPane from '@/components/builder/BuilderFormPane.vue'
+import BuilderPreviewPane from '@/components/builder/BuilderPreviewPane.vue'
+import BuilderSectionSidebar from '@/components/builder/BuilderSectionSidebar.vue'
 import { fetchTemplates } from '@/api/template'
+import { useResumeDraft } from '@/composables/useResumeDraft'
 import { useResumeStore } from '@/stores/resumeStore'
-import { renderTemplate } from '@/template-engine'
 import type { ResumeTemplate } from '@/types'
 
 const route = useRoute()
 const router = useRouter()
 const store = useResumeStore()
+const { data } = storeToRefs(store)
 
 const templates = ref<ResumeTemplate[]>([])
 const loading = ref(false)
+const selectedSection = ref('basics')
+const rightTab = ref('preview')
+const draft = useResumeDraft(data)
 
 const editId = computed(() => (typeof route.params.id === 'string' ? route.params.id : undefined))
 
@@ -22,14 +30,12 @@ const selectedTemplate = computed(
   () => templates.value.find((tpl) => tpl.code === store.data.metadata.template) ?? null
 )
 
-const previewHtml = computed(() => {
-  const tpl = selectedTemplate.value
-  if (!tpl) return ''
-  return renderTemplate(tpl, store.data, { resumeTitle: store.title })
-})
+function undo() {
+  draft.undo()
+}
 
-function onSwitchTemplate(newTemplateId: string) {
-  store.data.metadata.template = newTemplateId
+function redo() {
+  draft.redo()
 }
 
 async function save() {
@@ -42,6 +48,7 @@ async function save() {
     return
   }
   try {
+    draft.snapshot()
     await store.save()
     ElMessage.success('已保存')
     await router.replace('/resumes')
@@ -69,62 +76,76 @@ onMounted(async () => {
     loading.value = false
   }
 })
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', onKeydown)
+})
+
+function onKeydown(e: KeyboardEvent) {
+  const mod = e.ctrlKey || e.metaKey
+  if (!mod) return
+  const key = e.key.toLowerCase()
+  if (key === 's') {
+    e.preventDefault()
+    void save()
+  } else if (key === 'z' && e.shiftKey) {
+    e.preventDefault()
+    redo()
+  } else if (key === 'z') {
+    e.preventDefault()
+    undo()
+  } else if (key === 'p') {
+    e.preventDefault()
+    window.print()
+  }
+}
+
+window.addEventListener('keydown', onKeydown)
 </script>
 
 <template>
   <main class="editor">
-    <p
-      v-if="loading"
-      class="editor-loading"
-    >
-      加载中…
-    </p>
+    <p v-if="loading" class="editor-loading">加载中…</p>
     <template v-else>
       <header class="editor-header">
         <h1>{{ editId ? '编辑简历' : '新建简历' }}</h1>
-        <TemplateSwitcher
-          v-model="store.data.metadata.template"
-          :templates="templates"
-          @switch="onSwitchTemplate"
-        />
-        <el-input
-          v-model="store.title"
-          class="title-input"
-          placeholder="简历标题"
-        />
-        <el-button
-          type="primary"
-          :loading="store.saving"
-          @click="save"
-        >
-          保存
-        </el-button>
-        <el-button @click="router.push('/resumes')">
-          返回列表
-        </el-button>
+        <el-input v-model="store.title" class="title-input" placeholder="简历标题" />
+        <el-button type="primary" :loading="store.saving" @click="save">保存</el-button>
+        <el-button :disabled="!draft.canUndo.value" @click="undo">撤销</el-button>
+        <el-button :disabled="!draft.canRedo.value" @click="redo">重做</el-button>
+        <el-button @click="router.push('/resumes')">返回列表</el-button>
       </header>
-      <div class="editor-body">
-        <section class="editor-preview">
-          <p
-            v-if="!selectedTemplate"
-            class="hint"
-          >
-            暂无可选模板
-          </p>
-          <div
-            v-else
-            class="preview-html"
-            v-html="previewHtml"
-          />
-        </section>
+      <div v-if="selectedTemplate" class="editor-body">
+        <BuilderSectionSidebar
+          v-model:selected="selectedSection"
+          :data="store.data"
+          @change="draft.snapshot()"
+        />
+        <BuilderFormPane :section="selectedSection" :data="store.data" @change="draft.snapshot()" />
+        <div class="builder-right">
+          <el-tabs v-model="rightTab">
+            <el-tab-pane label="预览" name="preview">
+              <BuilderPreviewPane :template="selectedTemplate" :data="store.data" />
+            </el-tab-pane>
+            <el-tab-pane label="设计" name="design">
+              <BuilderDesignPane
+                :template="selectedTemplate"
+                :templates="templates"
+                :data="store.data"
+                @change="draft.snapshot()"
+              />
+            </el-tab-pane>
+          </el-tabs>
+        </div>
       </div>
+      <p v-else class="hint">暂无可选模板</p>
     </template>
   </main>
 </template>
 
 <style scoped>
 .editor {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 24px;
 }
@@ -147,29 +168,22 @@ onMounted(async () => {
 
 .editor-body {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 280px minmax(320px, 1fr) 420px;
   gap: 16px;
   align-items: start;
 }
 
-.editor-preview {
+.builder-right {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  min-height: 600px;
-  padding: 24px;
+  padding: 12px;
+  min-height: 70vh;
 }
 
 .hint {
   color: var(--color-text-secondary);
   text-align: center;
   padding: 48px 0;
-}
-
-.json-preview {
-  font-size: 12px;
-  line-height: 1.5;
-  white-space: pre-wrap;
-  word-break: break-all;
 }
 </style>
