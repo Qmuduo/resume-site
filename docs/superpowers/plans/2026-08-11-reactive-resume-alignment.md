@@ -1863,6 +1863,7 @@ const CATALOG = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../backend/c
 
 // 旧类名 -> 语义类名 映射（按 v2 模板 HTML 的常见命名）
 const CLASS_MAP = {
+  'resume': 'resume-page',
   'name-section': 'resume-header',
   'contact-info': 'contact-list',
   'contact-item': 'contact-item',

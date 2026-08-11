@@ -1,31 +1,57 @@
 /**
- * 模板验证脚本：新模板接入时校验 HTML + manifest 是否合规。
- *
- * 用法：
+ * 模板验证脚本（manifest v2 语义校验）：
  *   node scripts/validate-template.js <template.html> [manifest.json]
- *   node scripts/validate-template.js <directory>          # 校验目录下全部 html + manifest
- *   node scripts/validate-template.js --report              # 生成 docs/template-validation-report.json
+ *   node scripts/validate-template.js <directory>
+ *   node scripts/validate-template.js --report
  *
  * 校验项：
- *  1. HTML 可读、含 <body>、不含 <script>
- *  2. manifest 为合法 JSON，必填字段齐全
- *  3. 字段 commonPath 必须存在于 docs/resume-common.schema.json
- *  4. 静态模板 mappings.selector 必须能在 HTML 中找到对应选择器
- *  5. attribute / type / renderMode 取值白名单
+ *  1. HTML/CSS 无 script、on*、javascript: 等危险内容
+ *  2. HTML 含语义类名：resume-page / section-title / entry
+ *  3. manifest v2：renderMode 白名单、regions/blocks 非空、block 有 type+selector、
+ *     theme key 形如 --xxx 且有默认值
  */
 'use strict'
 
 const fs = require('fs')
 const path = require('path')
-const {
-  COMMON_SCHEMA,
-  resolveCommonPath,
-  pathExistsInSchema
-} = require('./common-model')
 
-const VALID_RENDER_MODES = ['static', 'placeholder']
-const VALID_TYPES = ['string', 'number', 'boolean', 'string[]', 'object', 'object[]', 'array']
-const VALID_ATTRIBUTES = ['textContent', 'href', 'src', 'children']
+const VALID_RENDER_MODES = ['semantic', 'placeholder']
+const REQUIRED_SEMANTIC_CLASSES = ['resume-page', 'section-title', 'entry']
+const DANGEROUS_HTML = /<script|on\w+\s*=|javascript:|data:\s*text\/html/i
+const DANGEROUS_CSS = /expression\s*\(|@import|javascript:|url\s*\(/i
+
+function validateManifestV2(manifest) {
+  const errors = []
+  if (!manifest || !manifest.templateId) errors.push('manifest.templateId 缺失')
+  if (!manifest || !manifest.name) errors.push('manifest.name 缺失')
+  if (!manifest || !['semantic', 'placeholder'].includes(manifest.renderMode)) {
+    errors.push(`renderMode 非法: ${manifest && manifest.renderMode}`)
+  }
+  if (!Array.isArray(manifest.regions) || manifest.regions.length === 0) {
+    errors.push('regions 不能为空')
+  }
+  if (!Array.isArray(manifest.blocks) || manifest.blocks.length === 0) {
+    errors.push('blocks 不能为空')
+  }
+  for (const b of manifest.blocks || []) {
+    if (!b.type || !b.selector) errors.push(`block 缺 type/selector: ${JSON.stringify(b)}`)
+  }
+  for (const t of manifest.theme || []) {
+    if (!/^--[a-z0-9-]+$/.test(t.key || '')) errors.push(`theme key 非法: ${t.key}`)
+    if (t.default === undefined) errors.push(`theme ${t.key} 缺默认值`)
+  }
+  return errors
+}
+
+function validateContent(html, css) {
+  const errors = []
+  if (DANGEROUS_HTML.test(html)) errors.push('HTML 含危险内容')
+  if (DANGEROUS_CSS.test(css)) errors.push('CSS 含危险内容')
+  for (const cls of REQUIRED_SEMANTIC_CLASSES) {
+    if (!html.includes(cls)) errors.push(`缺少语义类名 ${cls}`)
+  }
+  return errors
+}
 
 function readJson(file) {
   try {
@@ -35,38 +61,18 @@ function readJson(file) {
   }
 }
 
-function selectorExistsInHtml(html, selector) {
-  if (!selector) return false
-  if (selector.startsWith('.')) {
-    const cls = selector.slice(1)
-    const re = new RegExp(`class=["'][^"']*\\b${escapeRegExp(cls)}\\b[^"']*["']`, 'i')
-    return re.test(html)
-  }
-  if (selector.startsWith('#')) {
-    return new RegExp(`id=["']${escapeRegExp(selector.slice(1))}["']`, 'i').test(html)
-  }
-  return new RegExp(`<${escapeRegExp(selector.replace(/[>]*$/, ''))}(\\s|>)`, 'i').test(html)
-}
-
-function escapeRegExp(text) {
-  return String(text).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-}
-
 function validateOne(htmlFile, manifestFile) {
   const errors = []
   const warnings = []
   const fileName = path.basename(htmlFile)
 
   if (!fs.existsSync(htmlFile)) {
-    return { file: fileName, valid: false, errors: ['HTML 文件不存在'] }
+    return { file: fileName, valid: false, errors: ['HTML 文件不存在'], warnings }
   }
   const html = fs.readFileSync(htmlFile, 'utf8')
-  if (!/<body[\s>]/i.test(html)) {
-    errors.push('HTML 缺少 <body>')
-  }
-  if (/<script[\s>]/i.test(html)) {
-    errors.push('HTML 包含 <script>，禁止执行脚本')
-  }
+  const cssMatch = /<style[^>]*>([\s\S]*?)<\/style>/i.exec(html)
+  const css = cssMatch ? cssMatch[1] : ''
+  errors.push(...validateContent(html, css))
 
   if (!manifestFile || !fs.existsSync(manifestFile)) {
     errors.push('manifest.json 不存在')
@@ -78,63 +84,9 @@ function validateOne(htmlFile, manifestFile) {
     errors.push(`manifest 不是合法 JSON: ${manifest.__error}`)
     return { file: fileName, valid: false, errors, warnings }
   }
+  errors.push(...validateManifestV2(manifest))
 
-  const required = ['templateId', 'renderMode', 'fields', 'mappings']
-  for (const key of required) {
-    if (manifest[key] === undefined) errors.push(`manifest 缺少必填字段 ${key}`)
-  }
-  if (manifest.templateId === '') errors.push('templateId 不能为空')
-  if (manifest.renderMode && !VALID_RENDER_MODES.includes(manifest.renderMode)) {
-    errors.push(`renderMode 非法: ${manifest.renderMode}，允许 ${VALID_RENDER_MODES.join('/')}`)
-  }
-
-  const fields = Array.isArray(manifest.fields) ? manifest.fields : []
-  const fieldNames = new Set()
-  for (const field of fields) {
-    if (!field.name) {
-      errors.push('存在缺少 name 的字段定义')
-      continue
-    }
-    if (fieldNames.has(field.name)) warnings.push(`字段 ${field.name} 重复定义`)
-    fieldNames.add(field.name)
-    if (field.type && !VALID_TYPES.includes(field.type)) {
-      warnings.push(`字段 ${field.name} type 不在白名单: ${field.type}`)
-    }
-    if (field.commonPath !== undefined && field.commonPath !== null) {
-      if (!pathExistsInSchema(COMMON_SCHEMA, field.commonPath)) {
-        errors.push(`字段 ${field.name} 的 commonPath 不存在于公共模型: ${field.commonPath}`)
-      }
-    } else {
-      warnings.push(`字段 ${field.name} 未映射公共模型（模板专属字段，需人工确认）`)
-    }
-  }
-
-  const mappings = Array.isArray(manifest.mappings) ? manifest.mappings : []
-  for (const mapping of mappings) {
-    if (mapping.attribute && !VALID_ATTRIBUTES.includes(mapping.attribute)) {
-      errors.push(`mapping ${mapping.selector} attribute 非法: ${mapping.attribute}`)
-    }
-    if (mapping.commonPath && !pathExistsInSchema(COMMON_SCHEMA, mapping.commonPath)) {
-      errors.push(`mapping ${mapping.selector} 的 commonPath 不存在: ${mapping.commonPath}`)
-    }
-    if (mapping.commonPath && !mapping.selector) {
-      warnings.push(`mapping ${mapping.commonPath} 缺少 selector，预览无法回填`)
-    }
-    if (manifest.renderMode === 'static' && mapping.selector) {
-      if (!selectorExistsInHtml(html, mapping.selector)) {
-        warnings.push(`mapping selector 未在 HTML 中找到: ${mapping.selector}`)
-      }
-    }
-  }
-
-  if (manifest.renderMode === 'static' && mappings.length === 0) {
-    warnings.push('静态模板没有 mappings，用户数据无法回填（仅展示示例数据）')
-  }
-  if (manifest.templateId && path.basename(htmlFile).startsWith(manifest.templateId)) {
-    // OK
-  }
-
-  return { file: fileName, valid: errors.length === 0, errors, warnings, fields: fields.length, mappings: mappings.length }
+  return { file: fileName, valid: errors.length === 0, errors, warnings }
 }
 
 function main() {
