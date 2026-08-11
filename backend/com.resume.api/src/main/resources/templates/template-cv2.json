@@ -1,7 +1,7 @@
 {
   "code": "cv2",
   "name": "学术简历",
-  "description": "Times New Roman 单栏简历：居中姓名与联系方式，教育/经历/活动三段式，适合金融与学术岗位投递。",
+  "description": "Times New Roman 单栏简历：居中姓名与联系方式，教育/经历/技能三段式，适合金融与学术岗位投递。",
   "schema": {
     "type": "object",
     "required": ["name"],
@@ -11,47 +11,11 @@
       "phone": { "type": "string" },
       "linkedin": { "type": "string" },
       "summary": { "type": "string" },
-      "education": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "school": { "type": "string" },
-            "location": { "type": "string" },
-            "degree": { "type": "string" },
-            "date": { "type": "string" },
-            "bullets": { "type": "array", "items": { "type": "string" } }
-          }
-        }
-      },
-      "experience": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "company": { "type": "string" },
-            "location": { "type": "string" },
-            "role": { "type": "string" },
-            "date": { "type": "string" },
-            "bullets": { "type": "array", "items": { "type": "string" } }
-          }
-        }
-      },
-      "activities": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "organization": { "type": "string" },
-            "location": { "type": "string" },
-            "role": { "type": "string" },
-            "date": { "type": "string" },
-            "bullets": { "type": "array", "items": { "type": "string" } }
-          }
-        }
-      }
+      "education": { "type": "array", "items": { "type": "object" } },
+      "experience": { "type": "array", "items": { "type": "object" } },
+      "skills": { "type": "array", "items": { "type": "object" } }
     }
   },
-  "html": "<div class=\"cv2-page\"><div class=\"name\">{{name}}</div><div class=\"contact\">{{email}} | {{phone}} | {{linkedin}}</div><div class=\"summary\">{{summary}}</div><div class=\"section-header\">EDUCATION</div>{{#each education}}<div class=\"entry-header\"><span class=\"entry-title\">{{school}}</span><span class=\"entry-location\">{{location}}</span></div><div class=\"entry-subheader\"><span class=\"entry-role\">{{degree}}</span><span class=\"entry-date\">{{date}}</span></div><div class=\"bullets\">{{#each bullets}}<div class=\"bullet-item\">{{.}}</div>{{/each}}</div>{{/each}}<div class=\"section-header\">RELEVANT EXPERIENCE</div>{{#each experience}}<div class=\"entry-header\"><span class=\"entry-title\">{{company}}</span><span class=\"entry-location\">{{location}}</span></div><div class=\"entry-subheader\"><span class=\"entry-role\">{{role}}</span><span class=\"entry-date\">{{date}}</span></div><div class=\"bullets\">{{#each bullets}}<div class=\"bullet-item\">{{.}}</div>{{/each}}</div>{{/each}}<div class=\"section-header\">EXTRACURRICULAR ACTIVITIES</div>{{#each activities}}<div class=\"entry-header\"><span class=\"entry-title\">{{organization}}</span><span class=\"entry-location\">{{location}}</span></div><div class=\"entry-subheader\"><span class=\"entry-role\">{{role}}</span><span class=\"entry-date\">{{date}}</span></div><div class=\"bullets\">{{#each bullets}}<div class=\"bullet-item\">{{.}}</div>{{/each}}</div>{{/each}}</div>",
-  "css": ".cv2-page{font-family:'Times New Roman',Times,serif;font-size:11pt;line-height:1.2;width:595.5pt;min-height:842pt;margin:0 auto;padding:0 42.5pt;background:#ffffff;color:#000000}.cv2-page .name{font-size:24pt;text-align:center;margin-top:50pt;margin-bottom:6pt;font-weight:normal}.cv2-page .contact{font-size:12pt;text-align:center;margin-bottom:10pt}.cv2-page .summary{font-size:11pt;text-align:center;margin-bottom:8pt}.cv2-page .section-header{font-size:11pt;font-weight:bold;margin-top:25pt;margin-bottom:8pt;border-bottom:1px solid #000000;padding-bottom:2pt}.cv2-page .entry-header{display:flex;justify-content:space-between;align-items:baseline;margin-top:5pt}.cv2-page .entry-title{font-weight:bold;font-size:11pt}.cv2-page .entry-location{font-size:11pt;font-style:italic}.cv2-page .entry-subheader{display:flex;justify-content:space-between;align-items:baseline;margin-top:2pt}.cv2-page .entry-role{font-style:italic;font-size:11pt}.cv2-page .entry-date{font-style:italic;font-size:11pt}.cv2-page .bullets{margin-top:4pt;margin-left:22.5pt}.cv2-page .bullet-item{font-size:11pt;margin-bottom:2pt;text-indent:-12pt}.cv2-page .bullet-item::before{content:'● ';font-size:8pt}.cv2-page a{color:#000000;text-decoration:none}@media print{.cv2-page{min-height:auto}}"
+  "html": "<div class=\"resume-page\"><header class=\"resume-header\"><h1 class=\"name\"></h1><div class=\"headline\"></div><div class=\"contact-list\"></div></header><main class=\"resume-main\"><section class=\"section\" data-section=\"summary\"><div class=\"section-title\">个人简介</div><div class=\"section-items\"><p class=\"entry-body\"></p></div></section><section class=\"section\" data-section=\"experience\"><div class=\"section-title\">工作经历</div><div class=\"section-items\"><div class=\"entry\"><div class=\"entry-header\"><span class=\"company\"></span><span class=\"entry-meta\"></span></div><div class=\"entry-body\"></div></div></div></section><section class=\"section\" data-section=\"education\"><div class=\"section-title\">教育背景</div><div class=\"section-items\"><div class=\"entry edu-entry\"><div class=\"entry-header\"><span class=\"school\"></span><span class=\"entry-meta\"></span></div><div class=\"entry-body\"></div></div></div></section><section class=\"section\" data-section=\"skills\"><div class=\"section-title\">技能清单</div><div class=\"section-items\"><span class=\"skill-tag\"></span></div></section><section class=\"section\" data-section=\"custom\"></section></main></div>",
+  "css": ":root{--color-primary:#4F46E5;--color-background:#FFFFFF;--color-text:#1A1A1A;--font-heading:sans-serif;--font-body:sans-serif;--font-size-base:12pt;--page-margin:48px;--section-gap:16px}.resume-page{font-family:'Times New Roman',Times,serif;font-size:11pt;line-height:1.2;width:595.5pt;min-height:842pt;margin:0 auto;padding:0 42.5pt;background:var(--color-background,#ffffff);color:var(--color-text,#000000)}.resume-header{text-align:center;margin-top:50pt}.resume-header .name{font-size:24pt;margin-bottom:6pt;font-weight:normal}.resume-header .headline{font-size:12pt;margin-bottom:10pt}.contact-list{display:flex;justify-content:center;gap:10pt;flex-wrap:wrap;font-size:11pt;margin-bottom:10pt}.resume-main .section{margin-top:25pt}.section-title{font-size:11pt;font-weight:bold;margin-bottom:8pt;border-bottom:1px solid #000;padding-bottom:2pt}.entry-body{font-size:11pt;margin-top:4pt}.section[data-section='summary'] .entry-body{text-align:center}.entry{display:flex;flex-direction:column;margin-top:5pt}.entry-header{display:flex;justify-content:space-between;align-items:baseline;margin-top:5pt}.company{font-weight:bold}.entry-meta{font-style:italic}.school{font-weight:bold}.skill-tag{display:inline-block;margin-right:8pt}@media print{.resume-page{min-height:auto}}"
 }

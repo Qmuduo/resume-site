@@ -2,147 +2,45 @@
   "templateId": "cv2",
   "name": "学术简历",
   "sourceFile": "template-cv2.json",
-  "renderMode": "placeholder",
-  "fields": [
-    {
-      "name": "name",
-      "label": "name",
-      "type": "string",
-      "commonPath": "basic.name",
-      "autoDetected": true
-    },
-    {
-      "name": "email",
-      "label": "email",
-      "type": "string",
-      "commonPath": "basic.email",
-      "autoDetected": true
-    },
-    {
-      "name": "phone",
-      "label": "phone",
-      "type": "string",
-      "commonPath": "basic.phone",
-      "autoDetected": true
-    },
-    {
-      "name": "linkedin",
-      "label": "linkedin",
-      "type": "string",
-      "commonPath": null,
-      "autoDetected": true
-    },
-    {
-      "name": "summary",
-      "label": "summary",
-      "type": "string",
-      "commonPath": "summary",
-      "autoDetected": true
-    },
-    {
-      "name": "education",
-      "label": "education",
-      "type": "array",
-      "commonPath": "education",
-      "autoDetected": true
-    },
-    {
-      "name": "experience",
-      "label": "experience",
-      "type": "array",
-      "commonPath": "experiences",
-      "autoDetected": true
-    },
-    {
-      "name": "activities",
-      "label": "activities",
-      "type": "array",
-      "commonPath": "interests",
-      "autoDetected": true
-    }
+  "renderMode": "semantic",
+  "regions": [
+    { "name": "header", "placement": "main", "origins": [] },
+    { "name": "main", "placement": "main", "origins": ["main"] }
   ],
-  "mappings": [],
+  "blocks": [
+    { "type": "experience", "selector": "[data-section='experience']", "placement": "main" },
+    { "type": "education", "selector": "[data-section='education']", "placement": "main" },
+    { "type": "skills", "selector": "[data-section='skills']", "placement": "main" }
+  ],
+  "theme": [
+    { "key": "--color-primary", "default": "#4F46E5", "control": "color" },
+    { "key": "--color-background", "default": "#FFFFFF", "control": "color" },
+    { "key": "--color-text", "default": "#1A1A1A", "control": "color" },
+    { "key": "--font-heading", "default": "sans-serif", "control": "font" },
+    { "key": "--font-body", "default": "sans-serif", "control": "font" },
+    { "key": "--font-size-base", "default": "12pt", "control": "number" },
+    { "key": "--page-margin", "default": "48px", "control": "number" },
+    { "key": "--section-gap", "default": "16px", "control": "number" }
+  ],
   "sampleData": {
     "name": "陶渊明",
+    "headline": "私募股权投资 | 金融学硕士",
     "email": "qiming.chen@pevc.com",
     "phone": "+86 139 1028 5742",
-    "linkedin": "linkedin.com/in/qimingchen",
-    "summary": "拥有8年私募股权与风险投资经验，主导完成超过12笔交易，累计管理资产规模超45亿人民币。专注于科技、先进制造及医疗健康领域，具备从项目寻源、尽职调查到投后管理的完整闭环能力。",
-    "education": [
-      {
-        "school": "北京大学光华管理学院",
-        "location": "北京",
-        "degree": "金融学硕士",
-        "date": "2013 – 2015",
-        "bullets": []
-      },
-      {
-        "school": "复旦大学",
-        "location": "上海",
-        "degree": "经济学学士",
-        "date": "2009 – 2013",
-        "bullets": []
-      }
-    ],
+    "location": "北京",
+    "summary": "拥有8年私募股权与风险投资经验，主导完成超过12笔交易，累计管理资产规模超45亿人民币。",
     "experience": [
-      {
-        "company": "鼎晖投资",
-        "location": "北京",
-        "role": "投资副总裁",
-        "date": "2020.06 – 至今",
-        "bullets": [
-          "主导科技与企业服务赛道投资，完成4笔成长期项目投资，总金额超18亿人民币，其中2家已申报IPO。",
-          "带领5人投资团队进行行业扫描、财务模型搭建及交易谈判，实现组合IRR 27%。",
-          "深度参与被投企业战略梳理，协助两家被投公司完成后续融资及并购退出。"
-        ]
-      },
-      {
-        "company": "高瓴资本",
-        "location": "上海",
-        "role": "高级投资经理 / 副总裁（早期）",
-        "date": "2017.03 – 2020.05",
-        "bullets": [
-          "负责医疗健康和智能制造领域投资，主导及参与交易金额合计22亿元，覆盖B轮至Pre-IPO轮次。",
-          "完成对某医疗器械龙头企业的独家投资，投后估值增长3.2倍，并于2021年成功登陆科创板。",
-          "建立行业研究框架，定期向投委会汇报细分赛道机会，累计评估项目超过200个。"
-        ]
-      },
-      {
-        "company": "麦肯锡公司",
-        "location": "上海",
-        "role": "商业分析师 / 咨询经理",
-        "date": "2015.08 – 2017.02",
-        "bullets": [
-          "为私募基金客户提供商业尽职调查服务，覆盖TMT及消费品行业，识别关键增长驱动因素。",
-          "搭建市场预测模型，协助客户完成对某连锁消费品牌5亿人民币的收购案。"
-        ]
-      }
+      { "id": "cv2-exp-1", "hidden": false, "company": "鼎晖投资", "position": "投资副总裁", "period": "2020.06 – 至今", "description": "主导科技与企业服务赛道投资，完成4笔成长期项目投资。", "location": "北京" },
+      { "id": "cv2-exp-2", "hidden": false, "company": "高瓴资本", "position": "高级投资经理", "period": "2017.03 – 2020.05", "description": "负责医疗健康和智能制造领域投资。", "location": "上海" }
     ],
-    "activities": [
-      {
-        "organization": "清华五道口金融CEO班",
-        "location": "北京",
-        "role": "在读学员",
-        "date": "2024 – 至今",
-        "bullets": []
-      },
-      {
-        "organization": "中国证券投资基金业协会",
-        "location": "北京",
-        "role": "会员",
-        "date": "2018 – 至今",
-        "bullets": []
-      },
-      {
-        "organization": "北京大学校友会PE/VC分会",
-        "location": "北京",
-        "role": "理事",
-        "date": "2021 – 至今",
-        "bullets": [
-          "获评2023年度“35位35岁以下投资人”。"
-        ]
-      }
+    "education": [
+      { "id": "cv2-edu-1", "hidden": false, "school": "北京大学光华管理学院", "degree": "金融学硕士", "period": "2013 – 2015" },
+      { "id": "cv2-edu-2", "hidden": false, "school": "复旦大学", "degree": "经济学学士", "period": "2009 – 2013" }
+    ],
+    "skills": [
+      { "id": "cv2-skill-1", "hidden": false, "name": "私募股权投资" },
+      { "id": "cv2-skill-2", "hidden": false, "name": "财务建模" }
     ]
   },
-  "pendingManual": []
+  "customFields": []
 }
