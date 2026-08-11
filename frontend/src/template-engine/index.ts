@@ -13,6 +13,12 @@ export interface RenderContext {
   resumeTitle?: string
 }
 
+/** 供沙箱 iframe 渲染的完整模板文档。 */
+export interface TemplateDocument {
+  html: string
+  css: string
+}
+
 /**
  * 受控模板渲染引擎。
  *
@@ -22,6 +28,10 @@ export interface RenderContext {
  * 3. 最终 HTML 经 sanitizeHtml 消毒后才会被 v-html 渲染，不允许执行任意 JS。
  */
 
+/**
+ * 旧字符串 API（模板文档请用 renderTemplateDocument + TemplateFrame）。
+ * 注意：语义模板返回未整体消毒的 HTML，仅建议在沙箱 iframe 内使用。
+ */
 export function renderTemplate(
   template: ResumeTemplate,
   data: unknown,
@@ -29,9 +39,33 @@ export function renderTemplate(
 ): string {
   const manifest = template.manifest
   if (manifest && 'renderMode' in manifest && manifest.renderMode === 'semantic') {
-    return renderSemanticTemplate(template, data as ResumeData)
+    return renderSemanticDocument(template, data as ResumeData).html
   }
   return renderPlaceholder(template, data as Record<string, unknown>, context)
+}
+
+/**
+ * 生成模板文档（html/css 分离，供 TemplateFrame 沙箱 iframe 渲染）。
+ * 模板 HTML 允许 <script>/on*（沙箱隔离执行），不做整体 sanitize；
+ * 插入的用户数据仍全部转义，富文本走白名单消毒。
+ */
+export function renderTemplateDocument(
+  template: ResumeTemplate,
+  data: unknown,
+  context: RenderContext = {}
+): TemplateDocument {
+  const manifest = template.manifest
+  if (manifest && 'renderMode' in manifest && manifest.renderMode === 'semantic') {
+    return renderSemanticDocument(template, data as ResumeData)
+  }
+  const root: Record<string, unknown> = { ...(data as Record<string, unknown>) }
+  if (context.resumeTitle !== undefined) {
+    root.resumeTitle = context.resumeTitle
+  }
+  return {
+    html: renderSegment(template.html ?? '', root, root, [], template.schema ?? {}),
+    css: sanitizeCss(template.css ?? '')
+  }
 }
 
 // ============ 语义渲染（manifest v2） ============
@@ -172,15 +206,17 @@ function themeCss(data: ResumeData, templateCss: string): string {
   return `:root{${vars}}${custom}${templateCss}`
 }
 
-export function renderSemanticTemplate(template: ResumeTemplate, data: ResumeData): string {
+export function renderSemanticDocument(template: ResumeTemplate, data: ResumeData): TemplateDocument {
   if (!data || !data.basics || !data.metadata) {
-    return sanitizeHtml(template.html ?? '')
+    return { html: template.html ?? '', css: sanitizeCss(template.css ?? '') }
   }
   const manifest = template.manifest as TemplateManifestV2 | null
-  if (!manifest || typeof DOMParser === 'undefined') return ''
+  if (!manifest || typeof DOMParser === 'undefined') {
+    return { html: template.html ?? '', css: sanitizeCss(template.css ?? '') }
+  }
   const doc = new DOMParser().parseFromString(`<div id="__resume_root">${template.html ?? ''}</div>`, 'text/html')
   const root = doc.getElementById('__resume_root')
-  if (!root) return ''
+  if (!root) return { html: template.html ?? '', css: sanitizeCss(template.css ?? '') }
 
   const header = root.querySelector('.resume-header')
   if (header) fillHeader(header, data)
@@ -209,7 +245,7 @@ export function renderSemanticTemplate(template: ResumeTemplate, data: ResumeDat
 
   const html = root.innerHTML
   const css = themeCss(data, template.css ?? '')
-  return `<style>${sanitizeCss(css)}</style>${sanitizeHtml(html)}`
+  return { html, css: sanitizeCss(css) }
 }
 
 // ============ 占位符渲染（{{field}} / {{#each}}，供 AI 占位模板使用） ============

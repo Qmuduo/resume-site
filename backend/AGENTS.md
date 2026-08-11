@@ -50,7 +50,7 @@
 6. **AI 输出约束**：
    - 模板字段白名单以 docs/template-schema.json 为准（HTML/CSS + manifest v2）
    - ai/ 包接口：ResumeSchemaValidator / TemplateSchemaValidator（本期仅接口，不实现 LLM 调用）
-   - 禁止输出 <script>、on* 事件、javascript: 等危险内容（前端渲染层已消毒）
+   - 模板 HTML 允许 <script>/on*（前端沙箱 iframe 隔离执行）；校验器仅拦截危险 CSS（expression/@import/url()）
 7. **日志规范**：SLF4J + Logback；关键操作 log.info("userId={}, action={}", userId, action)；异常 log.error("msg", e)
 
 ## Configuration

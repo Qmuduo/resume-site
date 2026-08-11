@@ -21,7 +21,7 @@ const { data } = storeToRefs(store)
 const templates = ref<ResumeTemplate[]>([])
 const loading = ref(false)
 const selectedSection = ref('basics')
-const rightTab = ref('preview')
+const designVisible = ref(false)
 const draft = useResumeDraft(data)
 
 const editId = computed(() => (typeof route.params.id === 'string' ? route.params.id : undefined))
@@ -114,17 +114,25 @@ window.addEventListener('keydown', onKeydown)
     <template v-else>
       <header class="editor-header">
         <h1>{{ editId ? '编辑简历' : '新建简历' }}</h1>
+        <el-select
+          v-model="store.data.metadata.template"
+          class="template-select"
+          placeholder="选择模板"
+        >
+          <el-option
+            v-for="tpl in templates"
+            :key="tpl.code"
+            :label="tpl.name"
+            :value="tpl.code"
+          />
+        </el-select>
         <el-input
           v-model="store.title"
           class="title-input"
           placeholder="简历标题"
         />
-        <el-button
-          type="primary"
-          :loading="store.saving"
-          @click="save"
-        >
-          保存
+        <el-button @click="designVisible = true">
+          设计
         </el-button>
         <el-button
           :disabled="!draft.canUndo.value"
@@ -137,6 +145,13 @@ window.addEventListener('keydown', onKeydown)
           @click="redo"
         >
           重做
+        </el-button>
+        <el-button
+          type="primary"
+          :loading="store.saving"
+          @click="save"
+        >
+          保存
         </el-button>
         <el-button @click="router.push('/resumes')">
           返回列表
@@ -156,29 +171,11 @@ window.addEventListener('keydown', onKeydown)
           :data="store.data"
           @change="draft.snapshot()"
         />
-        <div class="builder-right">
-          <el-tabs v-model="rightTab">
-            <el-tab-pane
-              label="预览"
-              name="preview"
-            >
-              <BuilderPreviewPane
-                :template="selectedTemplate"
-                :data="store.data"
-              />
-            </el-tab-pane>
-            <el-tab-pane
-              label="设计"
-              name="design"
-            >
-              <BuilderDesignPane
-                :template="selectedTemplate"
-                :templates="templates"
-                :data="store.data"
-                @change="draft.snapshot()"
-              />
-            </el-tab-pane>
-          </el-tabs>
+        <div class="builder-preview">
+          <BuilderPreviewPane
+            :template="selectedTemplate"
+            :data="store.data"
+          />
         </div>
       </div>
       <p
@@ -188,12 +185,25 @@ window.addEventListener('keydown', onKeydown)
         暂无可选模板
       </p>
     </template>
+
+    <el-drawer
+      v-model="designVisible"
+      title="设计设置"
+      size="380px"
+    >
+      <BuilderDesignPane
+        :template="selectedTemplate"
+        :templates="templates"
+        :data="store.data"
+        @change="draft.snapshot()"
+      />
+    </el-drawer>
   </main>
 </template>
 
 <style scoped>
 .editor {
-  max-width: 1600px;
+  max-width: 1680px;
   margin: 0 auto;
   padding: 24px;
 }
@@ -210,23 +220,23 @@ window.addEventListener('keydown', onKeydown)
   flex-wrap: wrap;
 }
 
+.template-select {
+  width: 200px;
+}
+
 .title-input {
-  width: 240px;
+  width: 220px;
 }
 
 .editor-body {
   display: grid;
-  grid-template-columns: 280px minmax(320px, 1fr) 420px;
+  grid-template-columns: 280px minmax(360px, 1fr) 480px;
   gap: 16px;
   align-items: start;
 }
 
-.builder-right {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 12px;
-  min-height: 70vh;
+.builder-preview {
+  min-width: 0;
 }
 
 .hint {

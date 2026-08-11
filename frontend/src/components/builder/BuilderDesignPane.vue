@@ -96,12 +96,14 @@ function setTemplate(code: string) {
     <el-form label-width="72px">
       <el-form-item label="标题字体">
         <el-input
+          id="dp-heading-font"
           :model-value="typography.headingFont"
           @update:model-value="setType('headingFont', $event)"
         />
       </el-form-item>
       <el-form-item label="正文字体">
         <el-input
+          id="dp-body-font"
           :model-value="typography.bodyFont"
           @update:model-value="setType('bodyFont', $event)"
         />

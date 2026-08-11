@@ -13,7 +13,7 @@ src/
 - composables/        # usePageScale 等
 - stores/             # userStore、resumeStore、app
 - types/              # index.ts、resume.ts、user.ts（与 docs/resume.schema.json 对齐）
-- template-engine/    # 语义渲染器：输入模板 HTML/CSS + ResumeData + manifest v2，输出消毒后 HTML
+- template-engine/    # 语义渲染器：输入模板 HTML/CSS + ResumeData + manifest v2，输出模板文档（html/css），由 TemplateFrame 沙箱渲染
 - views/              # HomeView、TemplateList、ResumeEditor、ResumePreview、Login、Register、AdminUsers
 - router/             # index.ts、guards.ts（未登录跳 /login + ADMIN-only 拦截，已实现）
 - assets/styles/      # global.css（设计 token）
@@ -29,7 +29,7 @@ src/
 3. **状态管理**：跨组件共享用 Pinia store；组件内部状态用 ref()/reactive()
 4. **API 调用**：所有请求走 src/api/，不在组件里直接写 axios
 5. **模板渲染安全（已落实）**：
-   - v-html 只允许渲染 template-engine 消毒后的输出（schema 白名单 + HTML 转义 + sanitizeHtml）
+   - v-html 只用于富文本白名单消毒后的内容；模板渲染统一走 TemplateFrame（沙箱 iframe sandbox=allow-scripts），禁止直接用 v-html 渲染模板 HTML
    - CSS 注入前过 sanitizeCss；富文本内容渲染走白名单消毒
    - 设计面板通过 CSS 变量注入主题，不直接改写模板 CSS 文件
 6. **Vue SFC 模板样式注入**：禁止在 SFC 模板里直接写 `<style>` 标签（会触发 vite:vue 编译错误）；动态注入预览 CSS 用 document.createElement('style') 挂到目标容器，onBeforeUnmount 时 remove（参照 ResumeEditor.vue 现有实现）

@@ -5,7 +5,7 @@
  *   node scripts/validate-template.js --report
  *
  * 校验项：
- *  1. HTML/CSS 无 script、on*、javascript: 等危险内容
+ *  1. 模板 HTML 允许 <script>/on*（沙箱 iframe 隔离执行）；CSS 拦截 expression/@import/url() 等危险内容
  *  2. HTML 含语义类名：resume-page / section-title / entry
  *  3. manifest v2：renderMode 白名单、regions/blocks 非空、block 有 type+selector、
  *     theme key 形如 --xxx 且有默认值
@@ -17,7 +17,6 @@ const path = require('path')
 
 const VALID_RENDER_MODES = ['semantic', 'placeholder']
 const REQUIRED_SEMANTIC_CLASSES = ['resume-page', 'section-title', 'entry']
-const DANGEROUS_HTML = /<script|\son\w+\s*=|javascript:|data:\s*text\/html/i
 const DANGEROUS_CSS = /expression\s*\(|@import|javascript:|url\s*\(/i
 
 function validateManifestV2(manifest) {
@@ -47,7 +46,6 @@ function validateManifestV2(manifest) {
 
 function validateContent(html, css) {
   const errors = []
-  if (DANGEROUS_HTML.test(html)) errors.push('HTML 含危险内容')
   if (DANGEROUS_CSS.test(css)) errors.push('CSS 含危险内容')
   for (const cls of REQUIRED_SEMANTIC_CLASSES) {
     if (!html.includes(cls)) errors.push(`缺少语义类名 ${cls}`)

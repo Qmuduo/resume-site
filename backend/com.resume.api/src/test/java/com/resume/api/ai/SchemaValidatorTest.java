@@ -61,11 +61,11 @@ class SchemaValidatorTest {
     }
 
     @Test
-    void rejectsScriptInHtml() throws Exception {
-        assertThrows(BusinessException.class,
-                () -> templateValidator().validateContent("<script>alert(1)</script>", ""));
-        assertThrows(BusinessException.class,
-                () -> templateValidator().validateContent("<a onclick=\"x()\">x</a>", ""));
+    void allowsScriptInHtmlAndRejectsDangerousCss() throws Exception {
+        // 模板 HTML 允许 script/on*（沙箱 iframe 隔离执行）
+        assertDoesNotThrow(() -> templateValidator().validateContent(
+                "<script>alert(1)</script><a onclick=\"x()\">x</a>", ""));
+        // CSS 仍拦截 url(javascript:) 等危险内容
         assertThrows(BusinessException.class,
                 () -> templateValidator().validateContent("", "body { background: url(javascript:alert(1)); }"));
     }

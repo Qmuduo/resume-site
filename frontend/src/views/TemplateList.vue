@@ -4,7 +4,8 @@ import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 
 import { fetchTemplates } from '@/api/template'
-import { renderTemplate, sanitizeCss } from '@/template-engine'
+import TemplateFrame from '@/components/TemplateFrame.vue'
+import { renderTemplateDocument } from '@/template-engine'
 import { useUserStore } from '@/stores/userStore'
 import { emptyResumeData } from '@/stores/resumeStore'
 import type { ResumeData, ResumeTemplate, TemplateManifestV2 } from '@/types'
@@ -21,8 +22,6 @@ const selectedTags = ref<string[]>([])
 
 const previewVisible = ref(false)
 const previewTpl = ref<ResumeTemplate | null>(null)
-const previewRef = ref<HTMLElement | null>(null)
-let previewStyleEl: HTMLStyleElement | null = null
 
 const NEUTRAL_COLORS = new Set([
   '#ffffff', '#fff', '#000000', '#000', '#f7f8fa', '#f5f7fa', '#fafafa', '#f8f9fa',
@@ -187,29 +186,10 @@ function openPreview(tpl: ResumeTemplate) {
   previewVisible.value = true
 }
 
-function onPreviewOpened() {
-  const tpl = previewTpl.value
-  if (!tpl || !previewRef.value) return
-  previewStyleEl = document.createElement('style')
-  previewRef.value.appendChild(previewStyleEl)
-  syncPreviewStyle()
-}
-
-function syncPreviewStyle() {
-  if (previewTpl.value && previewStyleEl) {
-    previewStyleEl.textContent = sanitizeCss(previewTpl.value.css)
-  }
-}
-
-function onPreviewClosed() {
-  previewStyleEl?.remove()
-  previewStyleEl = null
-}
-
-const previewHtml = computed(() =>
+const previewDocument = computed(() =>
   previewTpl.value
-    ? renderTemplate(previewTpl.value, resumeSampleFor(previewTpl.value))
-    : ''
+    ? renderTemplateDocument(previewTpl.value, resumeSampleFor(previewTpl.value))
+    : { html: '', css: '' }
 )
 
 /** 把模板 manifest 的示例数据组装成完整 ResumeData，供语义渲染器预览。 */
@@ -376,17 +356,9 @@ function resumeSampleFor(tpl: ResumeTemplate): ResumeData {
       v-model="previewVisible"
       :title="previewTpl?.name ?? '模板预览'"
       width="720px"
-      @open="onPreviewOpened"
-      @closed="onPreviewClosed"
     >
-      <div
-        ref="previewRef"
-        class="preview-pane"
-      >
-        <div
-          class="preview-html"
-          v-html="previewHtml"
-        />
+      <div class="preview-pane">
+        <TemplateFrame :document="previewDocument" />
       </div>
     </el-dialog>
   </main>

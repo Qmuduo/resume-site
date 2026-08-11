@@ -87,11 +87,13 @@ function valueOf(item: ResumeSectionItem, key: string): string | undefined {
         >
           <el-input
             v-if="field.type !== 'textarea'"
+            :id="`${element.id}-${field.key}`"
             :model-value="valueOf(element, field.key)"
             @update:model-value="setField(index, field.key, $event)"
           />
           <el-input
             v-else
+            :id="`${element.id}-${field.key}`"
             type="textarea"
             :rows="3"
             :model-value="valueOf(element, field.key)"

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
-import { renderTemplate } from '@/template-engine'
+import TemplateFrame from '@/components/TemplateFrame.vue'
+import { renderTemplateDocument } from '@/template-engine'
 import type { ResumeData, ResumeTemplate } from '@/types'
 
 const props = defineProps<{ template: ResumeTemplate | null; data: ResumeData }>()
@@ -11,14 +12,17 @@ const zoom = ref(1)
 const pan = ref({ x: 0, y: 0 })
 const dragging = ref(false)
 const dragStart = ref({ x: 0, y: 0 })
-const stageRef = ref<HTMLElement | null>(null)
 
 const PAGE_WIDTH: Record<'A4' | 'Letter', number> = { A4: 794, Letter: 816 }
 const PAGE_HEIGHT: Record<'A4' | 'Letter', number> = { A4: 1123, Letter: 1056 }
 
-const previewHtml = computed(() => (props.template ? renderTemplate(props.template, props.data) : ''))
+const document = computed(() =>
+  props.template
+    ? renderTemplateDocument(props.template, props.data)
+    : { html: '', css: '' }
+)
 
-const pageStyle = computed(() => ({
+const frameStyle = computed(() => ({
   width: `${PAGE_WIDTH[format.value]}px`,
   minHeight: `${PAGE_HEIGHT[format.value]}px`,
   transform: `translate(${pan.value.x}px, ${pan.value.y}px) scale(${zoom.value})`,
@@ -75,7 +79,6 @@ function onMouseUp() {
       <span class="pan-hint">拖动画布平移</span>
     </div>
     <div
-      ref="stageRef"
       class="preview-stage"
       :class="{ dragging }"
       @mousedown="onMouseDown"
@@ -83,11 +86,9 @@ function onMouseUp() {
       @mouseup="onMouseUp"
       @mouseleave="onMouseUp"
     >
-      <div
-        class="preview-html"
-        :style="pageStyle"
-        v-html="previewHtml"
-      />
+      <div :style="frameStyle">
+        <TemplateFrame :document="document" />
+      </div>
     </div>
   </div>
 </template>
@@ -102,6 +103,7 @@ function onMouseUp() {
   align-items: center;
   gap: 8px;
   margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .pan-hint {
@@ -121,10 +123,5 @@ function onMouseUp() {
 
 .preview-stage.dragging {
   cursor: grabbing;
-}
-
-.preview-html {
-  background: #fff;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 </style>

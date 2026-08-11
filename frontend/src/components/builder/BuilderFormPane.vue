@@ -83,30 +83,35 @@ function setItems(list: ResumeSectionItem[]) {
       <el-form label-width="88px">
         <el-form-item label="姓名">
           <el-input
+            id="bf-name"
             :model-value="data.basics.name"
             @update:model-value="data.basics.name = $event; $emit('change')"
           />
         </el-form-item>
         <el-form-item label="头衔">
           <el-input
+            id="bf-headline"
             :model-value="data.basics.headline"
             @update:model-value="data.basics.headline = $event; $emit('change')"
           />
         </el-form-item>
         <el-form-item label="邮箱">
           <el-input
+            id="bf-email"
             :model-value="data.basics.email"
             @update:model-value="data.basics.email = $event; $emit('change')"
           />
         </el-form-item>
         <el-form-item label="电话">
           <el-input
+            id="bf-phone"
             :model-value="data.basics.phone"
             @update:model-value="data.basics.phone = $event; $emit('change')"
           />
         </el-form-item>
         <el-form-item label="所在地">
           <el-input
+            id="bf-location"
             :model-value="data.basics.location"
             @update:model-value="data.basics.location = $event; $emit('change')"
           />

@@ -21,8 +21,6 @@ import java.util.stream.Collectors;
 @Component
 public class TemplateSchemaValidatorImpl implements TemplateSchemaValidator {
 
-    private static final Pattern DANGEROUS_HTML =
-            Pattern.compile("(?is)<script|\\son\\w+\\s*=|javascript:|data:\\s*text/html|vbscript:");
     private static final Pattern DANGEROUS_CSS =
             Pattern.compile("(?i)expression\\s*\\(|@import|javascript:|url\\s*\\(");
 
@@ -46,9 +44,6 @@ public class TemplateSchemaValidatorImpl implements TemplateSchemaValidator {
 
     @Override
     public void validateContent(String html, String css) {
-        if (html != null && DANGEROUS_HTML.matcher(html).find()) {
-            throw new BusinessException(ErrorCode.BAD_REQUEST, "模板 HTML 包含危险内容");
-        }
         if (css != null && DANGEROUS_CSS.matcher(css).find()) {
             throw new BusinessException(ErrorCode.BAD_REQUEST, "模板 CSS 包含危险内容");
         }

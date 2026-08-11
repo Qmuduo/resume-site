@@ -3,7 +3,7 @@
 ## Stack
 - Backend: Spring Boot 3.2 + Java 17 + MyBatis-Plus + MySQL 8 + Redis + RabbitMQ
 - Frontend: Vue 3 + Vite + TypeScript + Pinia + Vue Router + Element Plus + Tiptap（富文本）+ SortableJS/vuedraggable（拖拽）
-- AI: LLM 调用走后端 ai 包，输出必须过 JSON Schema 校验；禁止 AI 直接写 JS 到库
+- AI: LLM 调用走后端 ai 包，输出必须过 JSON Schema 校验；模板可含 JS，渲染在沙箱 iframe（sandbox=allow-scripts，无 allow-same-origin/allow-top-navigation）中隔离执行
 - Resume data: `resume.data` 单 JSON 列存完整 ResumeData 文档（带 version）；Template = 语义化 HTML/CSS + manifest v2（主题变量）
 
 ## Layout
@@ -37,7 +37,7 @@
 ## Rules
 - 后端 DTO 用 JSR-380 校验；`resume.data` 写入前还必须通过 docs/resume.schema.json 的 JSON Schema 校验
 - 统一响应体 Result<T>
-- 前端禁止在 v-html 里渲染未 sanitize 的 AI 输出
+- 用户内容/富文本渲染前必须 sanitize；模板渲染统一走 TemplateFrame 沙箱 iframe，禁止直接用 v-html 渲染模板 HTML
 - AI 生成 template 只许输出 docs/template-schema.json 内白名单字段（HTML/CSS + manifest v2）
 - 不改代码风格；新增依赖先问用户
 - 改完后端跑 `mvn -q test`，改完前端跑 `npm run build`（lint 可用后一并跑），都过再算完成
@@ -74,7 +74,7 @@
 6. 前端刷新模板市场，检查预览与原版一致；用编辑器填一次数据并切换模板验证数据保留。
 
 ### 模板 HTML 要求
-- 允许 `<style>`；禁止 `<script>`、`on*` 事件、`javascript:` 等可执行内容（前端渲染会二次消毒）。
+- 允许 `<style>` 与 `<script>`/`on*` 事件；模板 JS 在沙箱 iframe 内隔离执行，不得访问父页面 DOM 与本地存储；渲染器插入的用户数据仍全部转义。
 - 强制语义类名：页面骨架 `resume-page` / `resume-header` / `resume-main` / `resume-sidebar`；区块 `section` + `section-title` + `section-items`；条目 `entry`（内部 `entry-header` / `entry-meta` / `entry-body`）；联系信息 `contact-item`；技能 `skill-tag`；教育/项目 `edu-*`、`proj-*`。
 - 主题定制用 CSS 变量：`--color-primary`、`--color-background`、`--color-text`、`--color-sidebar-background`、`--color-sidebar-foreground`、`--font-heading`、`--font-body`、`--font-size-base`、`--page-margin`、`--section-gap` 等（manifest 声明默认值与控件类型）。
 
@@ -94,7 +94,7 @@
 ```
 - `renderMode`：semantic（内置模板）| placeholder（`{{field}}` 占位符，供 AI 生成模板）。
 - `blocks` 的 `type` 必须能在 [docs/resume.schema.json](docs/resume.schema.json) 的 sections/customSections 中找到；找不到的进 `customFields` 或 `customSections`。
-- 校验脚本同时检查：语义类名齐全、CSS 变量有默认值、无危险内容。
+- 校验脚本同时检查：语义类名齐全、CSS 变量有默认值、CSS 无危险内容（expression/@import/url()）。
 
 ### 常用命令
 ```powershell

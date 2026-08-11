@@ -8,6 +8,6 @@ public interface TemplateSchemaValidator {
     /** 校验 manifest v2 结构，不合法抛 BusinessException(BAD_REQUEST)。 */
     void validateManifest(JsonNode manifest);
 
-    /** 校验 HTML/CSS 不含 script、on 事件、javascript: 等危险内容。 */
+    /** 校验模板内容：HTML 允许 script/on*（沙箱 iframe 隔离），CSS 拦截危险内容。 */
     void validateContent(String html, String css);
 }

@@ -6,8 +6,9 @@ import type { AxiosError } from 'axios'
 
 import { fetchResume } from '@/api/resume'
 import { fetchTemplates } from '@/api/template'
+import TemplateFrame from '@/components/TemplateFrame.vue'
 import { emptyResumeData, parseData } from '@/stores/resumeStore'
-import { renderTemplate } from '@/template-engine'
+import { renderTemplateDocument } from '@/template-engine'
 import type { ResumeData, ResumeTemplate, ResumeVO } from '@/types'
 
 const route = useRoute()
@@ -21,10 +22,11 @@ const data = ref<ResumeData>(emptyResumeData())
 const loading = ref(true)
 const loadError = ref('')
 
-const previewHtml = computed(() => {
-  if (!template.value) return ''
-  return renderTemplate(template.value, data.value)
-})
+const previewDocument = computed(() =>
+  template.value
+    ? renderTemplateDocument(template.value, data.value)
+    : { html: '', css: '' }
+)
 
 onMounted(load)
 
@@ -148,10 +150,7 @@ function saveAsPdf() {
       v-else
       class="preview-stage"
     >
-      <div
-        class="preview-html"
-        v-html="previewHtml"
-      />
+      <TemplateFrame :document="previewDocument" />
     </div>
   </main>
 </template>
