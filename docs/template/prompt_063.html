@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
   <title>辛弃疾 · 旅游策划师简历</title>
   <style>
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
     /* 全局重置与打印优化 */
     * {
       margin: 0;
@@ -314,13 +336,13 @@
   </style>
 </head>
 <body>
-  <div class="resume">
+  <div class="resume-page">
     <!-- 左侧活力珊瑚橙装饰条，不干扰文字 -->
     <div class="accent-bar"></div>
     
     <div class="content">
       <!-- 姓名与标题 -->
-      <div class="name-section">
+      <div class="resume-header">
         <h1 class="name">辛弃疾</h1>
         <div class="title">
           <span class="title-accent">旅游策划师</span>  ·  体验设计 · 目的地灵感
@@ -344,10 +366,10 @@
       </p>
       
       <!-- 工作经验 -->
-      <div>
+      <div class="section" data-section="experience">
         <div class="section-title">工作经历</div>
         
-        <div class="experience-item">
+        <div class="entry experience-item">
           <div class="exp-header">
             <span><span class="company">野趣旅行工作室</span> <span class="job-title">· 旅游策划师</span></span>
             <span class="date">2023.04 - 至今</span>
@@ -359,7 +381,7 @@
           </ul>
         </div>
         
-        <div class="experience-item">
+        <div class="entry experience-item">
           <div class="exp-header">
             <span><span class="company">云游文化传播</span> <span class="job-title">· 助理策划师</span></span>
             <span class="date">2021.07 - 2023.02</span>
@@ -375,9 +397,9 @@
       <div class="divider thin"></div>
       
       <!-- 项目亮点（突出年轻活力与创意） -->
-      <div>
+      <div class="section" data-section="projects">
         <div class="section-title">代表项目</div>
-        <div class="project-item">
+        <div class="entry project-item">
           <div class="exp-header">
             <span class="project-name">「城市出逃计划」· 周边微度假系列</span>
             <span class="date">2024</span>
@@ -387,7 +409,7 @@
             <li>上线3个月售出240+套，复购率32%，成为工作室季度爆款</li>
           </ul>
         </div>
-        <div class="project-item">
+        <div class="entry project-item">
           <div class="exp-header">
             <span class="project-name">「跟着美食去旅行」· 潮汕文化深潜</span>
             <span class="date">2023</span>
@@ -405,7 +427,7 @@
       <div class="two-col">
         <div class="col">
           <div class="section-title" style="margin-bottom: 3mm;">核心能力</div>
-          <div class="skills-container" style="flex-direction: column; gap: 2mm;">
+          <div class="section-items" style="flex-direction: column; gap: 2mm;">
             <span class="skill-tag">📋 行程规划与资源整合</span>
             <span class="skill-tag">📊 客户需求分析与产品迭代</span>
             <span class="skill-tag">🎨 体验设计 & 在地文化挖掘</span>
@@ -414,7 +436,7 @@
         </div>
         <div class="col">
           <div class="section-title" style="margin-bottom: 3mm;">工具 & 语言</div>
-          <div class="skills-container" style="flex-direction: column; gap: 2mm;">
+          <div class="section-items" style="flex-direction: column; gap: 2mm;">
             <span class="skill-tag"><strong>行程工具：</strong>Excel高级, TripIt, 谷歌地图</span>
             <span class="skill-tag"><strong>设计协作：</strong>Canva, Figma, Notion</span>
             <span class="skill-tag"><strong>语言：</strong>中文(母语), 英语(流利), 基础日语</span>
@@ -426,9 +448,9 @@
       <div class="divider thin"></div>
       
       <!-- 教育背景 -->
-      <div>
+      <div class="section" data-section="education">
         <div class="section-title">教育</div>
-        <div class="edu-item">
+        <div class="entry edu-item">
           <span><span class="edu-school">四川旅游学院</span> <span class="edu-major">· 旅游管理 本科</span></span>
           <span class="date">2017 - 2021</span>
         </div>

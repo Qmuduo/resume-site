@@ -3,9 +3,72 @@
   "name": "prompt_063",
   "sourceFile": "prompt_063.html",
   "renderMode": "semantic",
-  "regions": [],
-  "blocks": [],
-  "theme": [],
+  "regions": [
+    {
+      "name": "header",
+      "placement": "main",
+      "origins": []
+    }
+  ],
+  "blocks": [
+    {
+      "type": "experience",
+      "selector": "[data-section='experience']",
+      "placement": "main"
+    },
+    {
+      "type": "skills",
+      "selector": "[data-section='skills']",
+      "placement": "main"
+    },
+    {
+      "type": "education",
+      "selector": "[data-section='education']",
+      "placement": "main"
+    }
+  ],
+  "theme": [
+    {
+      "key": "--color-primary",
+      "default": "#4F46E5",
+      "control": "color"
+    },
+    {
+      "key": "--color-background",
+      "default": "#FFFFFF",
+      "control": "color"
+    },
+    {
+      "key": "--color-text",
+      "default": "#1A1A1A",
+      "control": "color"
+    },
+    {
+      "key": "--font-heading",
+      "default": "sans-serif",
+      "control": "font"
+    },
+    {
+      "key": "--font-body",
+      "default": "sans-serif",
+      "control": "font"
+    },
+    {
+      "key": "--font-size-base",
+      "default": "12pt",
+      "control": "number"
+    },
+    {
+      "key": "--page-margin",
+      "default": "48px",
+      "control": "number"
+    },
+    {
+      "key": "--section-gap",
+      "default": "16px",
+      "control": "number"
+    }
+  ],
   "sampleData": {
     "name": "辛弃疾",
     "headline": "· 旅游策划师"
