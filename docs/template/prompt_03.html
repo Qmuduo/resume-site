@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, print-size: A4">
   <title>白居易 · 战略咨询总监简历</title>
   <style>
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
+:root {
+  --color-primary: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-text: #1A1A1A;
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+  --font-size-base: 12pt;
+  --page-margin: 48px;
+  --section-gap: 16px;
+}
+
     /* 全局重置与打印优化 */
     * {
       margin: 0;
@@ -343,7 +365,7 @@
   </style>
 </head>
 <body>
-  <div class="resume">
+  <div class="resume-page">
     <!-- 头部：姓名与联系方式 -->
     <div class="header">
       <h1 class="name">白居易</h1>
@@ -360,7 +382,7 @@
     </div>
 
     <!-- 专业摘要 -->
-    <div>
+    <div class="section" data-section="summary">
       <div class="section-title">核心优势</div>
       <p style="font-size:10.5pt; color:#2E3B3A; margin:6px 0 10px;">
         12年战略咨询与商业分析经验，主导过60+企业增长战略项目，涵盖消费品、科技与工业领域。前麦肯锡项目经理，现带领12人分析团队。擅长以数据驱动决策，实现平均客户营收提升22%。
@@ -368,16 +390,16 @@
     </div>
 
     <!-- 工作经历 -->
-    <div>
+    <div class="section" data-section="experience">
       <div class="section-title">专业经历</div>
       
-      <div class="experience-item">
+      <div class="entry experience-item">
         <div class="exp-header">
           <span>
             <span class="company-name">源策咨询 (Stratex Partners)</span>
             <span class="job-title">｜ 战略咨询总监</span>
           </span>
-          <span class="date-location">2022.04 – 至今 | 上海</span>
+          <span class="entry-meta">2022.04 – 至今 | 上海</span>
         </div>
         <ul class="bullet-list">
           <li>领导零售与消费品行业战略业务，年度营收贡献超3800万元，客户续约率91%。</li>
@@ -386,13 +408,13 @@
         </ul>
       </div>
 
-      <div class="experience-item">
+      <div class="entry experience-item">
         <div class="exp-header">
           <span>
             <span class="company-name">麦肯锡公司</span>
             <span class="job-title">｜ 项目经理 / 商业分析顾问</span>
           </span>
-          <span class="date-location">2016.08 – 2022.02 | 上海/新加坡</span>
+          <span class="entry-meta">2016.08 – 2022.02 | 上海/新加坡</span>
         </div>
         <ul class="bullet-list">
           <li>主导亚太区科技与工业4.0战略项目，为两家全球500强企业设计海外市场进入模式。</li>
@@ -401,13 +423,13 @@
         </ul>
       </div>
 
-      <div class="experience-item">
+      <div class="entry experience-item">
         <div class="exp-header">
           <span>
             <span class="company-name">波士顿咨询 (BCG)</span>
             <span class="job-title">｜ 高级商业分析师</span>
           </span>
-          <span class="date-location">2013.09 – 2016.07 | 北京</span>
+          <span class="entry-meta">2013.09 – 2016.07 | 北京</span>
         </div>
         <ul class="bullet-list">
           <li>参与消费品与医疗健康领域战略项目，完成市场进入可行性分析与竞品深度扫描。</li>
@@ -417,7 +439,7 @@
     </div>
 
     <!-- 教育背景 -->
-    <div>
+    <div class="section" data-section="education">
       <div class="section-title">教育背景</div>
       <div class="education-row">
         <span class="edu-degree">工商管理硕士 (MBA)</span>
@@ -432,9 +454,9 @@
     </div>
 
     <!-- 核心能力 + 技能标签 -->
-    <div>
+    <div class="section" data-section="skills">
       <div class="section-title">核心能力</div>
-      <div class="skill-tags">
+      <div class="section-items skill-tags">
         <div style="display:flex; flex-wrap:wrap; width:100%;">
           <span class="skill-category">战略规划：</span>
           <span class="skill-list">
@@ -467,7 +489,7 @@
     </div>
 
     <!-- 重点项目精选 (无多余装饰) -->
-    <div style="margin-top:0.25in;">
+    <div class="section" data-section="projects">
       <div class="section-title">代表项目</div>
       <div style="font-size:10.5pt; margin-bottom:8px;">
         <span style="font-weight:700; color:#0F2A3F;">某跨国科技公司亚太区重组</span>

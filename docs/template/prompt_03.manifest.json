@@ -3,56 +3,77 @@
   "name": "prompt_03",
   "sourceFile": "prompt_03.html",
   "renderMode": "semantic",
-  "regions": [],
-  "blocks": [],
+  "regions": [
+    {
+      "name": "main",
+      "placement": "main",
+      "origins": [
+        "main"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "summary",
+      "selector": "[data-section='summary']",
+      "placement": "main"
+    },
+    {
+      "type": "experience",
+      "selector": "[data-section='experience']",
+      "placement": "main"
+    },
+    {
+      "type": "education",
+      "selector": "[data-section='education']",
+      "placement": "main"
+    },
+    {
+      "type": "skills",
+      "selector": "[data-section='skills']",
+      "placement": "main"
+    }
+  ],
   "theme": [
     {
-      "key": "--deep-teal",
-      "default": "#1A3C34"
+      "key": "--color-primary",
+      "default": "#4F46E5",
+      "control": "color"
     },
     {
-      "key": "--navy-shadow",
-      "default": "#0F2A3F"
+      "key": "--color-background",
+      "default": "#FFFFFF",
+      "control": "color"
     },
     {
-      "key": "--soft-slate",
-      "default": "#F5F7FA"
+      "key": "--color-text",
+      "default": "#1A1A1A",
+      "control": "color"
     },
     {
-      "key": "--accent-bronze",
-      "default": "#B8864A"
+      "key": "--font-heading",
+      "default": "sans-serif",
+      "control": "font"
     },
     {
-      "key": "--text-primary",
-      "default": "#1E2B32"
+      "key": "--font-body",
+      "default": "sans-serif",
+      "control": "font"
     },
     {
-      "key": "--text-secondary",
-      "default": "#3A4952"
+      "key": "--font-size-base",
+      "default": "12pt",
+      "control": "number"
     },
     {
-      "key": "--divider",
-      "default": "#DCE3E8"
+      "key": "--page-margin",
+      "default": "48px",
+      "control": "number"
     },
     {
-      "key": "--white-pure",
-      "default": "#FFFFFF"
-    },
-    {
-      "key": "--page-width",
-      "default": "210mm"
-    },
-    {
-      "key": "--page-height",
-      "default": "297mm"
-    },
-    {
-      "key": "--margin-h",
-      "default": "0.7in"
-    },
-    {
-      "key": "--margin-v",
-      "default": "0.7in"
+      "key": "--section-gap",
+      "default": "16px",
+      "control": "number"
     }
   ],
   "sampleData": {
